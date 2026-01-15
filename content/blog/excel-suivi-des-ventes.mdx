@@ -1,0 +1,230 @@
+---
+title: "Excel Suivi des Ventes : Guide Complet"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Creez un tableau de suivi des ventes efficace dans Excel."
+description: "Guide pour creer un suivi des ventes dans Excel. Dashboard commercial, KPI et reporting."
+category: "Analyse de donnees Excel"
+categories: ["Analyse de donnees Excel", "Modeles"]
+tags: ["Ventes", "Commercial", "Suivi", "Dashboard"]
+---
+
+# Suivi des Ventes dans Excel
+
+Un bon suivi des ventes permet de piloter efficacement votre activite commerciale.
+
+## Structure du tableau de ventes
+
+### Colonnes essentielles
+
+| Colonne | Description |
+|---------|-------------|
+| Date | Date de la vente |
+| Client | Nom du client |
+| Produit | Article vendu |
+| Quantite | Nombre d'unites |
+| Prix unitaire | Prix de vente |
+| Montant HT | Total ligne |
+| Commercial | Vendeur |
+
+## Tableau des ventes
+
+### Exemple
+
+| Date | Client | Produit | Qte | PU | Total |
+|------|--------|---------|-----|-----|-------|
+| 01/01 | Client A | Produit 1 | 10 | 100 | 1 000 |
+| 02/01 | Client B | Produit 2 | 5 | 200 | 1 000 |
+
+### Formule total ligne
+
+```excel
+=D2*E2
+```
+
+## KPI commerciaux
+
+### Indicateurs cles
+
+| KPI | Formule |
+|-----|---------|
+| CA total | =SOMME(Total) |
+| Nb ventes | =NB(Ventes) |
+| Panier moyen | =MOYENNE(Total) |
+| Nb clients | =NB.SI.ENS(unique) |
+
+### Formules detaillees
+
+```excel
+=SOMME(Ventes[Total])                    ' CA total
+=NB(Ventes[Total])                        ' Nombre de ventes
+=MOYENNE(Ventes[Total])                   ' Panier moyen
+=SOMMEPROD((Ventes[Client]<>"")/NB.SI(Ventes[Client];Ventes[Client]))  ' Clients uniques
+```
+
+## Analyse par periode
+
+### CA mensuel
+
+```excel
+=SOMME.SI.ENS(Ventes[Total];Ventes[Date];">="&DATE(2024;1;1);Ventes[Date];"<="&DATE(2024;1;31))
+```
+
+### Tableau mensuel
+
+| Mois | Objectif | Realise | Ecart | % |
+|------|----------|---------|-------|---|
+| Janvier | 50 000 | 48 000 | -2 000 | 96% |
+| Fevrier | 55 000 | 60 000 | +5 000 | 109% |
+
+## Analyse par produit
+
+### Top produits
+
+| Produit | Qte vendue | CA | % CA |
+|---------|------------|-----|------|
+| Produit 1 | 150 | 75 000 | 45% |
+| Produit 2 | 100 | 50 000 | 30% |
+
+### Formules
+
+```excel
+=SOMME.SI(Ventes[Produit];"Produit 1";Ventes[Total])
+=Grande.valeur(CA_produits;1)            ' Meilleur CA
+```
+
+## Analyse par commercial
+
+### Performance par vendeur
+
+| Commercial | CA | Nb ventes | PM | Objectif | % |
+|------------|-----|-----------|-----|----------|---|
+| Jean | 80 000 | 40 | 2 000 | 75 000 | 107% |
+| Marie | 70 000 | 50 | 1 400 | 70 000 | 100% |
+
+### Classement
+
+```excel
+=RANG(B2;$B$2:$B$10)                     ' Rang du commercial
+```
+
+## Analyse par client
+
+### Segmentation ABC
+
+| Segment | Clients | CA | % CA |
+|---------|---------|-----|------|
+| A | 10 | 120 000 | 60% |
+| B | 20 | 60 000 | 30% |
+| C | 70 | 20 000 | 10% |
+
+### CA par client
+
+```excel
+=SOMME.SI(Ventes[Client];Client;Ventes[Total])
+```
+
+## Pipeline commercial
+
+### Suivi des opportunites
+
+| Opportunite | Client | Montant | Proba | Pondere | Etape |
+|-------------|--------|---------|-------|---------|-------|
+| Projet X | Client A | 50 000 | 80% | 40 000 | Nego |
+| Projet Y | Client B | 30 000 | 50% | 15 000 | Devis |
+
+### Formules pipeline
+
+```excel
+=SOMME(Pondere)                          ' Total pondere
+=SOMME.SI(Etape;"Gagne";Montant)         ' Ventes conclues
+```
+
+## Taux de conversion
+
+### Entonnoir de vente
+
+| Etape | Nombre | Taux |
+|-------|--------|------|
+| Prospects | 100 | 100% |
+| Qualifies | 60 | 60% |
+| RDV | 40 | 40% |
+| Devis | 25 | 25% |
+| Ventes | 15 | 15% |
+
+### Formule taux
+
+```excel
+=B2/B$2                                  ' Taux par rapport aux prospects
+```
+
+## Graphiques commerciaux
+
+### Evolution CA mensuel
+
+1. Courbe du CA mensuel
+2. Ajoutez la ligne d'objectif
+
+### Repartition par produit
+
+1. Camembert ou treemap
+2. Pourcentages affiches
+
+### Performance commerciaux
+
+1. Histogramme comparatif
+2. Objectif en ligne de reference
+
+## Tableau de bord commercial
+
+### Structure
+
+```
++----------------+----------------+
+|    CA YTD      |   Objectif     |
+|   [Jauge]      |   [Barre]      |
++----------------+----------------+
+|   Top produits |  Top clients   |
++----------------+----------------+
+|      Evolution mensuelle        |
++--------------------------------+
+```
+
+## Filtres et segments
+
+### Filtrer les donnees
+
+1. Convertissez en tableau structure
+2. Utilisez les filtres automatiques
+3. Ou creez des segments
+
+### Segments TCD
+
+1. Creez un tableau croise dynamique
+2. **Insertion** > **Segment**
+3. Filtrez par periode, produit, commercial
+
+## Prevision des ventes
+
+### Projection simple
+
+```excel
+=TENDANCE(Historique;Periodes;Nouvelle_periode)
+```
+
+### Forecast
+
+| Mois | Historique | Prevision |
+|------|------------|-----------|
+| Jan-Juin | Reel | - |
+| Juil-Dec | - | Forecast |
+
+## Bonnes pratiques
+
+1. **Saisissez** les ventes quotidiennement
+2. **Categorisez** correctement
+3. **Analysez** regulierement
+4. **Partagez** avec l'equipe
+5. **Ajustez** les objectifs
+
+[Decouvrir nos formations Excel](/formations-excel)

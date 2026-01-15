@@ -1,0 +1,158 @@
+---
+title: "Formule SI Avancee dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maitrisez les techniques avancees de la fonction SI dans Excel."
+description: "Guide avance de la fonction SI. SI imbriques, SI.CONDITIONS et astuces."
+category: "Formules Excel"
+categories: ["Formules Excel", "Logique"]
+tags: ["SI", "Avance", "Logique", "Formules"]
+---
+
+# Formule SI Avancee
+
+Au-dela du SI simple, decouvrez les techniques avancees.
+
+## Rappel de la syntaxe
+
+```excel
+=SI(condition;valeur_si_vrai;valeur_si_faux)
+```
+
+## SI imbriques
+
+### Plusieurs conditions
+
+```excel
+=SI(A1>=90;"Excellent";
+  SI(A1>=80;"Tres bien";
+    SI(A1>=70;"Bien";
+      SI(A1>=60;"Passable";"Insuffisant"))))
+```
+
+### Limite
+
+Maximum 64 niveaux d'imbrication (mais evitez d'en avoir autant).
+
+## SI.CONDITIONS (Excel 365)
+
+### Plus lisible
+
+```excel
+=SI.CONDITIONS(
+  A1>=90;"Excellent";
+  A1>=80;"Tres bien";
+  A1>=70;"Bien";
+  A1>=60;"Passable";
+  VRAI;"Insuffisant"
+)
+```
+
+Le dernier `VRAI` sert de cas par defaut.
+
+## Combinaison avec ET / OU
+
+### Plusieurs conditions simultanees
+
+```excel
+=SI(ET(A1>10;B1="Actif");"Valide";"Invalide")
+```
+
+### Au moins une condition
+
+```excel
+=SI(OU(A1="Paris";A1="Lyon");"Grande ville";"Autre")
+```
+
+### Combinaison complexe
+
+```excel
+=SI(ET(A1>100;OU(B1="A";B1="B"));"Prioritaire";"Standard")
+```
+
+## SI avec calculs
+
+### Formule dans la condition
+
+```excel
+=SI(SOMME(A1:A10)>1000;SOMME(A1:A10)*0.1;0)
+```
+
+### Optimisation avec LET
+
+```excel
+=LET(
+  total;SOMME(A1:A10);
+  SI(total>1000;total*0.1;0)
+)
+```
+
+## SI avec dates
+
+### Verifier si date passee
+
+```excel
+=SI(A1<AUJOURDHUI();"Expire";"Valide")
+```
+
+### Echeance proche
+
+```excel
+=SI(A1-AUJOURDHUI()<7;"Urgent";
+  SI(A1-AUJOURDHUI()<30;"A traiter";"OK"))
+```
+
+## SI avec texte
+
+### Contient un mot
+
+```excel
+=SI(CHERCHE("urgent";A1)>0;"Prioritaire";"Normal")
+```
+
+### Version avec SIERREUR
+
+```excel
+=SIERREUR(SI(CHERCHE("urgent";A1)>0;"Prioritaire";"Normal");"Normal")
+```
+
+## Eviter les SI multiples
+
+### Utiliser CHOISIR
+
+```excel
+=CHOISIR(A1;"Janvier";"Fevrier";"Mars";...)
+```
+
+### Utiliser RECHERCHEV
+
+Creez une table de correspondance plutot que des SI imbriques.
+
+## Cas pratiques
+
+### Calcul de remise
+
+```excel
+=SI.CONDITIONS(
+  Montant>=1000;Montant*0.15;
+  Montant>=500;Montant*0.10;
+  Montant>=100;Montant*0.05;
+  VRAI;0
+)
+```
+
+### Statut de commande
+
+```excel
+=SI(ET(Paye="Oui";Expedie="Oui");"Termine";
+  SI(Paye="Oui";"En preparation";"En attente"))
+```
+
+## Bonnes pratiques
+
+1. **Utilisez** SI.CONDITIONS pour plus de 3 conditions
+2. **Combinez** avec LET pour eviter les calculs repetes
+3. **Preferez** une table de correspondance aux SI multiples
+4. **Simplifiez** avec ET/OU plutot que SI imbriques
+
+[Decouvrir nos formations Excel](/formations-excel)

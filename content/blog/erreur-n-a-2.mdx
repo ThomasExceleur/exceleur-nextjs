@@ -1,0 +1,114 @@
+---
+title: "Erreur #N/A Excel : Solutions"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Comprendre et resoudre l'erreur #N/A dans Excel."
+description: "Guide pour resoudre l'erreur #N/A dans Excel."
+category: "Gestion d'erreurs"
+categories: ["Gestion d'erreurs", "Depannage"]
+tags: ["Erreur", "N/A", "Depannage", "Excel"]
+---
+
+# Erreur #N/A Excel
+
+Comprendre et corriger cette erreur courante.
+
+## Signification
+
+### Definition
+
+#N/A = "Non Applicable" ou "Non Disponible"
+
+### Cause principale
+
+Une valeur recherchee n'a pas ete trouvee.
+
+## Causes frequentes
+
+| Cause | Fonction concernee |
+|-------|-------------------|
+| Valeur absente | RECHERCHEV, RECHERCHEX |
+| Espaces invisibles | Toutes les recherches |
+| Format different | Recherches |
+| Plage incorrecte | Toutes |
+
+## Solutions
+
+### SIERREUR
+
+```excel
+=SIERREUR(RECHERCHEV(...);"Non trouve")
+```
+
+### SI.NON.DISP
+
+```excel
+=SI.NON.DISP(RECHERCHEV(...);"Valeur par defaut")
+```
+
+### RECHERCHEX natif
+
+```excel
+=RECHERCHEX(val;plage;result;"Non trouve")
+```
+
+## Diagnostic
+
+### Verifier les espaces
+
+```excel
+=SUPPRESPACE(A1)=A1
+```
+
+FAUX = il y a des espaces.
+
+### Verifier le format
+
+```excel
+=ESTNUM(A1)
+=ESTTEXTE(A1)
+```
+
+### Comparer manuellement
+
+```excel
+=A1=B1
+```
+
+## Corrections
+
+### Supprimer les espaces
+
+```excel
+=SUPPRESPACE(A1)
+```
+
+### Convertir en nombre
+
+```excel
+=CNUM(A1)
+```
+
+### Convertir en texte
+
+```excel
+=TEXTE(A1;"0")
+```
+
+## Prevention
+
+| Action | Methode |
+|--------|---------|
+| Nettoyage | SUPPRESPACE systematique |
+| Validation | Listes deroulantes |
+| Format | Coherence des types |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| SIERREUR | Toujours gerer les erreurs |
+| Diagnostic | Identifiez la cause |
+| Source | Corrigez a la source |
+
+[Decouvrir nos formations Excel](/formations-excel)

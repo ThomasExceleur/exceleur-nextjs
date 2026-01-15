@@ -1,0 +1,146 @@
+---
+title: "Pourquoi Excel ne Reconnait Pas les Chiffres"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Solutions quand Excel traite vos nombres comme du texte."
+description: "Guide pour resoudre le probleme des nombres non reconnus dans Excel."
+category: "Depannage"
+categories: ["Depannage", "Manipulation de donnees"]
+tags: ["Nombres", "Texte", "Format", "Depannage"]
+---
+
+# Pourquoi Excel ne Reconnait Pas les Chiffres
+
+Vos nombres sont alignes a gauche et les calculs ne fonctionnent pas ? Ils sont probablement en format texte.
+
+## Symptomes
+
+- Nombres alignes a gauche (au lieu de droite)
+- SOMME retourne 0
+- Triangle vert dans le coin de la cellule
+- Erreur #VALEUR! dans les calculs
+
+## Causes courantes
+
+### 1. Import de donnees
+
+Les donnees importees (CSV, base de donnees) arrivent souvent en texte.
+
+### 2. Apostrophe en debut
+
+'123 est traite comme du texte.
+
+### 3. Espaces caches
+
+"123 " ou " 123" contient des espaces.
+
+### 4. Format de cellule texte
+
+La cellule etait formatee en texte avant la saisie.
+
+## Solution 1 : Convertir via Convertir
+
+1. Selectionnez les cellules
+2. **Donnees** > **Convertir**
+3. **Terminer** directement
+
+Excel reconvertit les valeurs.
+
+## Solution 2 : Collage special
+
+1. Tapez **1** dans une cellule vide
+2. Copiez cette cellule
+3. Selectionnez vos nombres-texte
+4. **Collage special** > **Multiplier**
+
+Multiplier par 1 force la conversion en nombre.
+
+## Solution 3 : Formule CNUM
+
+```excel
+=CNUM(A1)
+```
+
+Convertit le texte en nombre.
+
+### Avec nettoyage
+
+```excel
+=CNUM(SUPPRESPACE(A1))
+```
+
+## Solution 4 : Triangle vert
+
+1. Selectionnez les cellules avec le triangle vert
+2. Cliquez sur l'icone d'avertissement
+3. **Convertir en nombre**
+
+## Solution 5 : Multiplier par 1
+
+```excel
+=A1*1
+```
+
+Force Excel a traiter comme un nombre.
+
+## Solution 6 : Double moins
+
+```excel
+=--A1
+```
+
+Astuce courante pour forcer la conversion.
+
+## Nettoyer les caracteres
+
+### Supprimer les espaces
+
+```excel
+=SUPPRESPACE(A1)
+```
+
+### Supprimer les caracteres non imprimables
+
+```excel
+=EPURAGE(A1)
+```
+
+### Combinaison complete
+
+```excel
+=CNUM(SUPPRESPACE(EPURAGE(A1)))
+```
+
+## Verifier le type
+
+### Formules de test
+
+```excel
+=ESTNUM(A1)        ' VRAI si nombre
+=ESTTEXTE(A1)      ' VRAI si texte
+=NBCAR(A1)         ' Longueur (detecte les espaces)
+```
+
+## Prevention
+
+### Avant l'import
+
+1. Formatez les colonnes en "Standard"
+2. Utilisez Power Query pour nettoyer
+
+### Lors de la saisie
+
+- Ne commencez pas par une apostrophe
+- Evitez les espaces
+
+## Tableau recapitulatif
+
+| Probleme | Solution |
+|----------|----------|
+| Import CSV | Donnees > Convertir |
+| Triangle vert | Icone > Convertir |
+| Espaces | SUPPRESPACE |
+| Caracteres caches | EPURAGE |
+| General | CNUM |
+
+[Decouvrir nos formations Excel](/formations-excel)

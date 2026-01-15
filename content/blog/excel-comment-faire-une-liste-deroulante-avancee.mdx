@@ -1,0 +1,145 @@
+---
+title: "Liste Deroulante Avancee dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Creez des listes deroulantes avancees et dependantes dans Excel."
+description: "Guide des listes deroulantes avancees dans Excel. Listes dependantes et dynamiques."
+category: "Astuces Excel"
+categories: ["Astuces Excel", "Validation"]
+tags: ["Liste deroulante", "Validation", "Dependante", "Avance"]
+---
+
+# Liste Deroulante Avancee
+
+Au-dela de la liste simple, decouvrez les techniques avancees.
+
+## Rappel : Liste simple
+
+### Creation
+
+1. Selectionnez la cellule
+2. **Donnees** > **Validation des donnees**
+3. **Autoriser** : Liste
+4. **Source** : vos valeurs ou plage
+
+## Liste dynamique avec tableau
+
+### Avantage
+
+La liste s'agrandit automatiquement avec les nouvelles valeurs.
+
+### Etapes
+
+1. Convertissez votre liste en tableau (**Ctrl + T**)
+2. Nommez le tableau (ex: "Produits")
+3. Dans la validation : `=Produits[Nom]`
+
+## Liste dependante (en cascade)
+
+### Principe
+
+La liste 2 depend du choix fait dans la liste 1.
+
+### Exemple
+
+- Liste 1 : Pays (France, Belgique)
+- Liste 2 : Villes (selon le pays)
+
+### Etapes
+
+1. Creez une liste de pays en A1:A3
+2. Nommez chaque liste de villes avec le nom du pays :
+   - Selectionnez les villes francaises
+   - Nommez la plage "France"
+   - Idem pour "Belgique"
+3. Pour la liste des villes : `=INDIRECT(A1)`
+
+### Formule INDIRECT
+
+```excel
+=INDIRECT(CellulePays)
+```
+
+Retourne la plage nommee correspondant au pays selectionne.
+
+## Liste avec recherche (Excel 365)
+
+### Utiliser FILTRE
+
+```excel
+=FILTRE(Produits;CHERCHE(Recherche;Produits)>0)
+```
+
+### Combiner avec validation
+
+Utilisez une colonne auxiliaire filtree comme source.
+
+## Liste sans doublons
+
+### Avec UNIQUE
+
+```excel
+=UNIQUE(A:A)
+```
+
+### Comme source de liste
+
+Nommez la plage contenant UNIQUE, puis utilisez ce nom.
+
+## Liste triee
+
+### Avec TRIER
+
+```excel
+=TRIER(UNIQUE(A:A))
+```
+
+Valeurs uniques et triees.
+
+## Message d'aide
+
+### Configuration
+
+1. Dans Validation des donnees
+2. Onglet **Message de saisie**
+3. Remplissez titre et message
+
+### Exemple
+
+- Titre : "Selection"
+- Message : "Choisissez un produit dans la liste"
+
+## Message d'erreur
+
+### Configuration
+
+1. Onglet **Alerte d'erreur**
+2. Choisissez le style (Arret, Avertissement, Information)
+3. Remplissez le message
+
+## Autoriser les valeurs personnalisees
+
+### Style Avertissement
+
+Permet la saisie libre avec un avertissement.
+
+### Style Information
+
+Simple notification sans blocage.
+
+## Supprimer les listes vides
+
+### Dans la source
+
+```excel
+=FILTRE(Liste;Liste<>"")
+```
+
+## Bonnes pratiques
+
+1. **Utilisez** des tableaux pour les listes dynamiques
+2. **Nommez** vos plages de maniere explicite
+3. **Testez** les listes dependantes soigneusement
+4. **Ajoutez** des messages d'aide pour les utilisateurs
+
+[Decouvrir nos formations Excel](/formations-excel)

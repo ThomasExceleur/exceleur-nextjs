@@ -1,0 +1,222 @@
+---
+title: "Excel Controle de Gestion : Outils et Tableaux"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Decouvrez les outils Excel indispensables pour le controle de gestion."
+description: "Guide Excel pour le controle de gestion. Budgets, ecarts, rentabilite et reporting."
+category: "Finance"
+categories: ["Finance", "Analyse de donnees Excel"]
+tags: ["Controle de gestion", "Budget", "Analyse", "Reporting"]
+---
+
+# Excel pour le Controle de Gestion
+
+Excel est l'outil de predilection des controleurs de gestion pour l'analyse et le reporting.
+
+## Budget et previsions
+
+### Structure budgetaire
+
+| Poste | Budget | Reel | Ecart | % |
+|-------|--------|------|-------|---|
+| CA | 1 000 000 | 950 000 | -50 000 | -5% |
+| Achats | 400 000 | 380 000 | 20 000 | 5% |
+| Masse salariale | 300 000 | 310 000 | -10 000 | -3% |
+
+### Formules d'ecart
+
+```excel
+=C2-B2                    ' Ecart absolu
+=(C2-B2)/B2              ' Ecart relatif
+=SI(D2<0;"Defavorable";"Favorable")
+```
+
+## Analyse des ecarts
+
+### Types d'ecarts
+
+| Type | Formule |
+|------|---------|
+| Ecart sur prix | (Prix reel - Prix budget) x Qte reelle |
+| Ecart sur quantite | (Qte reelle - Qte budget) x Prix budget |
+| Ecart sur mix | Analyse par produit |
+
+### Decomposition
+
+```excel
+=Ecart_prix + Ecart_quantite + Ecart_mix
+```
+
+## Calcul des couts
+
+### Cout de revient
+
+| Element | Montant |
+|---------|---------|
+| Matieres premieres | 100 |
+| Main d'oeuvre directe | 50 |
+| Frais generaux | 30 |
+| **Cout de revient** | **180** |
+
+### Formule prix de vente
+
+```excel
+=Cout_revient * (1 + Marge_souhaitee)
+```
+
+## Rentabilite
+
+### Marge brute
+
+```excel
+=CA - Cout_des_ventes
+=Marge_brute / CA              ' Taux de marge
+```
+
+### Marge nette
+
+```excel
+=Resultat_net / CA
+```
+
+### Point mort (seuil de rentabilite)
+
+```excel
+=Charges_fixes / Taux_marge_sur_couts_variables
+```
+
+## Tableau de bord de gestion
+
+### KPI financiers
+
+| Indicateur | Formule | Cible |
+|------------|---------|-------|
+| Marge brute | CA - Achats | 40% |
+| EBITDA | CA - Charges | 15% |
+| BFR | Stocks + Creances - Dettes | < 30j CA |
+
+### Mise en forme conditionnelle
+
+```excel
+Si realise < cible : Rouge
+Si realise > cible : Vert
+```
+
+## Suivi mensuel
+
+### Tableau de suivi
+
+| Mois | Budget | Cumul budget | Reel | Cumul reel | Ecart |
+|------|--------|--------------|------|------------|-------|
+| Jan | 100 | 100 | 95 | 95 | -5 |
+| Fev | 100 | 200 | 105 | 200 | 0 |
+
+### Formules de cumul
+
+```excel
+=SOMME($C$2:C2)          ' Cumul budget
+=SOMME($D$2:D2)          ' Cumul reel
+```
+
+## Prevision glissante (Forecast)
+
+### Re-estimation mensuelle
+
+| Mois | Budget | Reel | Forecast |
+|------|--------|------|----------|
+| Jan | 100 | 95 | 95 |
+| Fev | 100 | - | 98 |
+
+### Landing annuel
+
+```excel
+=Cumul_reel + Somme_forecast_restant
+```
+
+## Analyse de la tresorerie
+
+### Plan de tresorerie
+
+| Semaine | Encaissements | Decaissements | Solde |
+|---------|---------------|---------------|-------|
+| S1 | 50 000 | 45 000 | 5 000 |
+| S2 | 30 000 | 40 000 | -5 000 |
+
+### Solde cumule
+
+```excel
+=Solde_initial + SOMME(Encaissements) - SOMME(Decaissements)
+```
+
+## Reporting automatise
+
+### Tableaux croises dynamiques
+
+1. Importez les donnees comptables
+2. Creez un TCD par nature et periode
+3. Ajoutez des segments pour filtrer
+
+### Actualisation
+
+```excel
+' Rafraichir automatiquement
+Clic droit sur TCD > Options > Actualiser a l'ouverture
+```
+
+## Graphiques de gestion
+
+### Bridge (cascade)
+
+1. CA budget
+2. Ecart volume
+3. Ecart prix
+4. CA reel
+
+### Graphique budget vs reel
+
+1. Histogramme groupe
+2. Budget en bleu, reel en vert
+
+## Consolidation
+
+### Multi-entites
+
+```excel
+=SOMME('Entite1:Entite3'!B5)    ' Somme sur plusieurs feuilles
+```
+
+### Eliminations inter-compagnies
+
+```excel
+=Total_brut - Eliminations
+```
+
+## Outils avancés
+
+### Scenarisation
+
+1. **Donnees** > **Analyse de scenarios**
+2. Creez plusieurs hypotheses
+3. Comparez les resultats
+
+### Tables de donnees
+
+```excel
+Simulez l'impact d'une variable sur le resultat
+```
+
+### Solveur
+
+```excel
+Optimisez un objectif sous contraintes
+```
+
+## Bonnes pratiques
+
+1. **Structurez** vos fichiers par periode
+2. **Automatisez** les imports de donnees
+3. **Documentez** vos hypotheses
+4. **Verifiez** la coherence des totaux
+5. **Securisez** les fichiers sensibles
+
+[Decouvrir nos formations Excel](/formations-excel)

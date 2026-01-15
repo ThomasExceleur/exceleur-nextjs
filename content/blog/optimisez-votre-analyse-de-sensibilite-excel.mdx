@@ -1,0 +1,146 @@
+---
+title: "Optimiser votre Analyse de Sensibilite dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maitrisez l'analyse de sensibilite pour evaluer vos scenarios."
+description: "Guide d'analyse de sensibilite dans Excel. Tables de donnees et scenarios."
+category: "Analyse de donnees Excel"
+categories: ["Analyse de donnees Excel", "Finance"]
+tags: ["Analyse sensibilite", "Scenarios", "Finance", "Modelisation"]
+---
+
+# Analyse de Sensibilite dans Excel
+
+L'analyse de sensibilite evalue l'impact des variations de parametres sur vos resultats.
+
+## Qu'est-ce que l'analyse de sensibilite ?
+
+### Definition
+
+Etudier comment les changements de variables d'entree affectent le resultat d'un modele.
+
+### Usage
+
+- Evaluer les risques
+- Identifier les variables critiques
+- Tester des scenarios
+
+## Methode 1 : Table de donnees a une variable
+
+### Principe
+
+Varier un parametre et observer l'impact.
+
+### Creation
+
+1. Listez les valeurs a tester verticalement
+2. En haut de la colonne suivante, referencez votre formule de resultat
+3. Selectionnez la plage (valeurs + formule)
+4. **Donnees** > **Analyse de simulation** > **Table de donnees**
+5. **Cellule d'entree en colonne** : la cellule variable
+6. **OK**
+
+### Exemple
+
+| Prix | Marge |
+|------|-------|
+| 80 | =B2 |
+| 90 | |
+| 100 | |
+| 110 | |
+
+## Methode 2 : Table de donnees a deux variables
+
+### Principe
+
+Varier deux parametres simultanement.
+
+### Creation
+
+1. Valeurs du parametre 1 : en colonne
+2. Valeurs du parametre 2 : en ligne
+3. A l'intersection : formule de resultat
+4. **Table de donnees**
+5. **Cellule d'entree en ligne** : parametre 2
+6. **Cellule d'entree en colonne** : parametre 1
+
+### Resultat
+
+Une matrice montrant toutes les combinaisons.
+
+## Methode 3 : Gestionnaire de scenarios
+
+### Creation
+
+1. **Donnees** > **Analyse de simulation** > **Gestionnaire de scenarios**
+2. **Ajouter**
+3. Nommez le scenario
+4. Selectionnez les cellules variables
+5. Entrez les valeurs
+6. **OK**
+
+### Comparer les scenarios
+
+1. **Gestionnaire de scenarios** > **Synthese**
+2. Choisissez les cellules de resultat
+3. **OK**
+
+## Methode 4 : Valeur cible
+
+### Principe
+
+Trouver la valeur d'entree necessaire pour atteindre un resultat cible.
+
+### Utilisation
+
+1. **Donnees** > **Analyse de simulation** > **Valeur cible**
+2. **Cellule a definir** : resultat souhaite
+3. **Valeur a atteindre** : votre objectif
+4. **Cellule a modifier** : variable d'ajustement
+5. **OK**
+
+## Exemple pratique : Business plan
+
+### Variables
+
+- Prix de vente
+- Cout unitaire
+- Volume de ventes
+
+### Formule de resultat
+
+```excel
+=Volume*(Prix-Cout)-ChargesFixes
+```
+
+### Analyse
+
+Testez differentes combinaisons Prix/Volume pour la rentabilite.
+
+## Visualisation
+
+### Graphique tornado
+
+Montre l'impact relatif de chaque variable.
+
+### Graphique spider
+
+Montre comment le resultat varie selon chaque parametre.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Identifier | Les variables les plus incertaines |
+| Definir | Des plages realistes |
+| Documenter | Les hypotheses |
+| Interpreter | Les resultats avec prudence |
+
+## Conseils
+
+1. **Commencez** par une variable a la fois
+2. **Utilisez** des plages realistes
+3. **Visualisez** les resultats en graphique
+4. **Documentez** vos hypotheses
+
+[Decouvrir nos formations Excel](/formations-excel)

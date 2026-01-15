@@ -1,0 +1,89 @@
+---
+title: "Supprimer les Lignes Vides"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Eliminez les lignes vides de vos tableaux Excel."
+description: "Guide pour supprimer les lignes vides dans Excel."
+category: "Manipulation de donnees"
+categories: ["Manipulation de donnees", "Astuces Excel"]
+tags: ["Lignes vides", "Suppression", "Nettoyage", "Excel"]
+---
+
+# Supprimer les Lignes Vides
+
+Nettoyez vos donnees efficacement.
+
+## Methode Atteindre
+
+### Etapes
+
+1. Selectionnez vos donnees
+2. **Ctrl+G** ou **F5**
+3. **Cellules**
+4. **Cellules vides**
+5. Clic droit > **Supprimer** > **Ligne entiere**
+
+## Methode Filtre
+
+### Etapes
+
+1. Activez les filtres (**Ctrl+Maj+L**)
+2. Filtrez pour voir les vides
+3. Selectionnez toutes les lignes visibles
+4. Supprimez
+5. Retirez le filtre
+
+## Methode Tri
+
+### Etapes
+
+1. Triez vos donnees (les vides vont en bas)
+2. Selectionnez les lignes vides
+3. Supprimez
+
+## Power Query
+
+### Pour gros volumes
+
+1. **Donnees** > **A partir d'un tableau**
+2. **Accueil** > **Supprimer les lignes** > **Supprimer les lignes vides**
+3. **Fermer et charger**
+
+## Attention aux faux vides
+
+### Detection
+
+```excel
+=NBCAR(A1)
+```
+
+Si > 0, la cellule contient quelque chose.
+
+### Causes
+
+| Cause | Solution |
+|-------|----------|
+| Espaces | SUPPRESPACE |
+| Formule vide | Verifier la formule |
+| Caractere invisible | EPURAGE |
+
+## VBA
+
+### Code
+
+```vba
+Sub SupprimerLignesVides()
+    On Error Resume Next
+    Selection.SpecialCells(xlCellTypeBlanks).EntireRow.Delete
+End Sub
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Sauvegarde | Copiez avant de supprimer |
+| Verification | Controlez le resultat |
+| Source | Evitez les vides a la source |
+
+[Decouvrir nos formations Excel](/formations-excel)

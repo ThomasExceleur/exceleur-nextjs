@@ -1,0 +1,84 @@
+---
+title: "Fonction FILTRE Excel pour des Donnees Dynamiques"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Creez des extractions dynamiques avec la fonction FILTRE."
+description: "Guide de la fonction FILTRE pour donnees dynamiques Excel."
+category: "Excel 365"
+categories: ["Excel 365", "Formules Excel"]
+tags: ["FILTRE", "Dynamique", "Extraction", "Excel 365"]
+---
+
+# Fonction FILTRE pour des Donnees Dynamiques
+
+Extractions qui se mettent a jour automatiquement.
+
+## Avantage du dynamisme
+
+### Comparaison
+
+| Filtre auto | Fonction FILTRE |
+|-------------|-----------------|
+| Manuel | Automatique |
+| Statique | Dynamique |
+| Sur place | Resultat separe |
+
+## Criteres dynamiques
+
+### Reference cellule
+
+```excel
+=FILTRE(Donnees;Region=E1)
+```
+
+E1 contient le critere selectionne.
+
+### Liste deroulante + FILTRE
+
+1. Creez une liste deroulante en E1
+2. FILTRE utilise E1 comme critere
+3. Le resultat change selon la selection
+
+## Mise a jour automatique
+
+### Ajout de donnees
+
+Le resultat de FILTRE s'etend automatiquement.
+
+### Avec tableaux structures
+
+```excel
+=FILTRE(Tableau[#All];Tableau[Region]=E1)
+```
+
+## Formules cascadees
+
+### Rapport dynamique
+
+```excel
+=LET(
+  filtre1;FILTRE(Donnees;Annee=E1);
+  filtre2;FILTRE(filtre1;Region=E2);
+  TRIER(filtre2;Montant;-1)
+)
+```
+
+## Applications
+
+### Dashboard
+
+Graphiques lies aux resultats filtres.
+
+### Rapports
+
+Extraction selon selection utilisateur.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Tableaux | References dynamiques |
+| Validation | Listes deroulantes controlees |
+| Test | Verifiez tous les cas |
+
+[Decouvrir nos formations Excel](/formations-excel)

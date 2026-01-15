@@ -1,0 +1,151 @@
+---
+title: "Remplissage Automatique avec Ctrl+E : Le Raccourci Magique"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Decouvrez le raccourci Ctrl+E pour le remplissage instantane dans Excel."
+description: "Guide du raccourci Ctrl+E pour le remplissage automatique dans Excel. Exemples et astuces."
+category: "Raccourcis"
+categories: ["Raccourcis", "Astuces Excel"]
+tags: ["Ctrl+E", "Remplissage", "Raccourci", "Flash Fill"]
+---
+
+# Remplissage Automatique avec Ctrl+E
+
+Ctrl+E (Flash Fill) est l'un des raccourcis les plus puissants d'Excel.
+
+## Qu'est-ce que Ctrl+E ?
+
+### Principe
+
+Excel detecte un pattern a partir d'un exemple et l'applique a toute la colonne.
+
+### Disponibilite
+
+- Excel 2013 et versions ulterieures
+- Excel pour Mac 2016+
+
+## Exemples d'utilisation
+
+### Extraire le prenom
+
+| A (Complet) | B (Prenom) |
+|-------------|------------|
+| Jean Dupont | Jean |
+| Marie Martin | (Ctrl+E) |
+| Pierre Durand | |
+
+1. Saisissez "Jean" en B1
+2. Placez-vous en B2
+3. Appuyez sur **Ctrl+E**
+
+### Extraire le nom
+
+| A (Complet) | B (Nom) |
+|-------------|---------|
+| Jean Dupont | Dupont |
+| Marie Martin | (Ctrl+E) |
+
+### Combiner des donnees
+
+| A (Prenom) | B (Nom) | C (Email) |
+|------------|---------|-----------|
+| Jean | Dupont | jean.dupont@mail.com |
+| Marie | Martin | (Ctrl+E) |
+
+### Extraire des numeros
+
+| A (Texte) | B (Numero) |
+|-----------|------------|
+| CMD-12345 | 12345 |
+| CMD-67890 | (Ctrl+E) |
+
+### Changer le format
+
+| A (Date) | B (Format) |
+|----------|------------|
+| 15/01/2024 | 15 janvier 2024 |
+| 20/03/2024 | (Ctrl+E) |
+
+## Comment ca marche
+
+### Etapes
+
+1. Creez une colonne vide a cote de vos donnees
+2. Saisissez le premier exemple du resultat souhaite
+3. Passez a la cellule suivante
+4. Appuyez sur **Ctrl+E**
+
+### Detection du pattern
+
+Excel analyse :
+- Les caracteres communs
+- Les positions des elements
+- Les separateurs
+
+## Cas d'usage courants
+
+### Nettoyage de donnees
+
+- Supprimer des prefixes/suffixes
+- Standardiser des formats
+- Corriger des erreurs
+
+### Extraction
+
+- Prenom/Nom
+- Code postal/Ville
+- Numero de telephone
+
+### Transformation
+
+- Changer la casse
+- Reformater des dates
+- Creer des codes
+
+## Alternative : Menu
+
+### Via le ruban
+
+1. **Donnees** > **Remplissage instantane**
+2. Ou **Accueil** > **Remplissage** > **Remplissage instantane**
+
+## Limites
+
+### Ne fonctionne pas toujours
+
+- Patterns trop complexes
+- Donnees incoherentes
+- Trop peu d'exemples
+
+### Solutions
+
+- Donnez plusieurs exemples
+- Verifiez la coherence des donnees
+- Utilisez des formules pour les cas complexes
+
+## Comparaison avec les formules
+
+| Aspect | Ctrl+E | Formules |
+|--------|--------|----------|
+| Rapidite | Instantane | Plus lent |
+| Flexibilite | Limitee | Elevee |
+| Resultat | Valeurs | Formules |
+| Mise a jour | Non | Automatique |
+
+## Bonnes pratiques
+
+1. **Verifiez** toujours les resultats
+2. **Donnez** des exemples clairs
+3. **Utilisez** sur des donnees coherentes
+4. **Completez** manuellement si necessaire
+
+## Alternative : Formules
+
+Si Ctrl+E ne fonctionne pas :
+
+```excel
+=GAUCHE(A1;TROUVE(" ";A1)-1)          ' Extraire avant l'espace
+=DROITE(A1;NBCAR(A1)-TROUVE(" ";A1))  ' Extraire apres l'espace
+```
+
+[Decouvrir nos formations Excel](/formations-excel)

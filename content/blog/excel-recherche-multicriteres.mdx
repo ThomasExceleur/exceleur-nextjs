@@ -1,0 +1,86 @@
+---
+title: "Excel : Recherche Multicriteres"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Effectuez des recherches avec plusieurs criteres dans Excel."
+description: "Guide de la recherche multicriteres dans Excel."
+category: "Formules Excel"
+categories: ["Formules Excel", "Recherche"]
+tags: ["Recherche", "Multicriteres", "RECHERCHEX", "INDEX EQUIV"]
+---
+
+# Recherche Multicriteres dans Excel
+
+Trouvez des donnees avec plusieurs conditions.
+
+## Methodes disponibles
+
+| Methode | Version |
+|---------|---------|
+| INDEX/EQUIV concatene | Toutes versions |
+| RECHERCHEX concatene | Excel 365 |
+| FILTRE | Excel 365 |
+
+## INDEX/EQUIV multicriteres
+
+### Syntaxe
+
+```excel
+=INDEX(Resultat;EQUIV(1;(Critere1=Plage1)*(Critere2=Plage2);0))
+```
+
+### Validation matricielle
+
+Ctrl+Maj+Entree (versions anciennes).
+
+## RECHERCHEX multicriteres
+
+### Avec concatenation
+
+```excel
+=RECHERCHEX(A1&B1;Colonne1&Colonne2;ColonneResultat)
+```
+
+### Exemple
+
+```excel
+=RECHERCHEX(Region&Produit;Table[Region]&Table[Produit];Table[Prix])
+```
+
+## Avec FILTRE
+
+### Methode moderne
+
+```excel
+=FILTRE(Resultat;(Critere1=Plage1)*(Critere2=Plage2))
+```
+
+### Premier resultat
+
+```excel
+=INDEX(FILTRE(Resultat;(Critere1=Plage1)*(Critere2=Plage2));1)
+```
+
+## Cas pratique
+
+### Trouver le prix
+
+| Region | Produit | Prix |
+|--------|---------|------|
+| Nord | A | 100 |
+| Nord | B | 120 |
+| Sud | A | 95 |
+
+```excel
+=RECHERCHEX(E1&F1;A:A&B:B;C:C)
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| FILTRE | Preferez pour Excel 365 |
+| Separateur | Evitez les collisions |
+| Test | Verifiez les resultats |
+
+[Decouvrir nos formations Excel](/formations-excel)

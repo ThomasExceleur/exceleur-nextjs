@@ -1,0 +1,238 @@
+---
+title: "Debuter avec LET et LAMBDA : Simplifier les Formules Complexes"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Guide pour debutants sur LET et LAMBDA pour simplifier vos formules."
+description: "Apprenez a simplifier vos formules complexes avec LET et LAMBDA."
+category: "Excel 365"
+categories: ["Excel 365", "Formules Excel"]
+tags: ["LET", "LAMBDA", "Debutant", "Formules"]
+---
+
+# Debuter avec LET et LAMBDA
+
+Simplifiez vos formules complexes grace a ces deux fonctions revolutionnaires.
+
+## Pourquoi LET et LAMBDA ?
+
+### Le probleme des formules complexes
+
+```excel
+=SI(RECHERCHEX(A1;B:B;C:C)>100;
+  RECHERCHEX(A1;B:B;C:C)*1.1;
+  RECHERCHEX(A1;B:B;C:C)*0.9)
+```
+
+Problemes :
+- RECHERCHEX execute 3 fois
+- Difficile a lire
+- Erreurs de modification
+
+### La solution : LET
+
+```excel
+=LET(
+  resultat;RECHERCHEX(A1;B:B;C:C);
+  SI(resultat>100;resultat*1.1;resultat*0.9)
+)
+```
+
+Avantages :
+- Un seul calcul
+- Plus lisible
+- Facile a modifier
+
+## La fonction LET
+
+### Syntaxe
+
+```excel
+=LET(nom1;valeur1;nom2;valeur2;...;calcul_final)
+```
+
+### Regles
+
+- Definissez d'abord les variables
+- Le dernier argument est le resultat
+- Les noms ne doivent pas etre des references (pas "A1")
+
+### Exemple simple
+
+```excel
+=LET(
+  x;10;
+  y;5;
+  x+y
+)
+```
+
+Resultat : 15
+
+## LET en pratique
+
+### Calcul avec etapes
+
+```excel
+=LET(
+  ventes;SOMME(A:A);
+  couts;SOMME(B:B);
+  marge;ventes-couts;
+  taux;marge/ventes;
+  TEXTE(taux;"0,00%")
+)
+```
+
+### Eviter les repetitions
+
+**Avant :**
+```excel
+=SI(ESTNA(RECHERCHEX(A1;B:B;C:C));0;RECHERCHEX(A1;B:B;C:C))
+```
+
+**Apres :**
+```excel
+=LET(
+  val;RECHERCHEX(A1;B:B;C:C;"Non trouve");
+  SI(val="Non trouve";0;val)
+)
+```
+
+### Formules lisibles
+
+```excel
+=LET(
+  prix_ht;B1;
+  quantite;C1;
+  tva;0,2;
+  total_ht;prix_ht*quantite;
+  total_ttc;total_ht*(1+tva);
+  total_ttc
+)
+```
+
+## La fonction LAMBDA
+
+### Syntaxe
+
+```excel
+=LAMBDA(param1;param2;...;expression)
+```
+
+### Concept
+
+LAMBDA cree une fonction personnalisee que vous pouvez reutiliser.
+
+### Exemple simple
+
+```excel
+=LAMBDA(x;x*2)
+```
+
+Cree une fonction qui double une valeur.
+
+## Utiliser LAMBDA avec des noms
+
+### Etape 1 : Creer la fonction
+
+Dans le Gestionnaire de noms :
+- Nom : DOUBLER
+- Fait reference a : `=LAMBDA(x;x*2)`
+
+### Etape 2 : Utiliser
+
+```excel
+=DOUBLER(5)   ' Resultat : 10
+```
+
+## LAMBDA en pratique
+
+### Fonction de calcul TVA
+
+```excel
+Nom: TTC
+Formule: =LAMBDA(ht;tva;ht*(1+tva))
+```
+
+Usage : `=TTC(100;0,2)` retourne 120
+
+### Fonction de nettoyage
+
+```excel
+Nom: NETTOYER_TEXTE
+Formule: =LAMBDA(txt;SUPPRESPACE(EPURAGE(txt)))
+```
+
+Usage : `=NETTOYER_TEXTE("  bonjour  ")` retourne "bonjour"
+
+### Fonction avec condition
+
+```excel
+Nom: STATUT_VENTE
+Formule: =LAMBDA(montant;
+  SI(montant>=1000;"VIP";
+    SI(montant>=500;"Premium";"Standard"))
+)
+```
+
+## Combiner LET et LAMBDA
+
+### Pour des fonctions complexes
+
+```excel
+Nom: ANALYSE_CLIENT
+Formule: =LAMBDA(ventes;anciennete;
+  LET(
+    score_ventes;MIN(50;ventes/100);
+    score_fidelite;MIN(50;anciennete*5);
+    total;score_ventes+score_fidelite;
+    SI(total>=80;"VIP";SI(total>=50;"Premium";"Standard"))
+  )
+)
+```
+
+## Exercices pour debuter
+
+### Exercice 1 : LET basique
+
+Creez une formule qui calcule :
+- La somme de A1:A10
+- La moyenne
+- Affiche "Somme: X | Moyenne: Y"
+
+### Exercice 2 : LAMBDA simple
+
+Creez une fonction CARRE qui retourne le carre d'un nombre.
+
+### Exercice 3 : Combinaison
+
+Creez une fonction REMISE qui :
+- Prend un prix et un pourcentage
+- Calcule la remise
+- Retourne le prix final
+
+## Erreurs courantes
+
+### LET
+
+| Erreur | Cause | Solution |
+|--------|-------|----------|
+| #NOM? | Nom invalide | Evitez les noms de cellules |
+| #VALEUR! | Types incompatibles | Verifiez les donnees |
+
+### LAMBDA
+
+| Erreur | Cause | Solution |
+|--------|-------|----------|
+| #CALC! | Parametres manquants | Verifiez le nombre de params |
+| Non defini | Pas de nom | Creez un nom defini |
+
+## Bonnes pratiques debutant
+
+| Pratique | Description |
+|----------|-------------|
+| Noms explicites | Variables claires |
+| Etapes simples | Un calcul par variable |
+| Tests | Verifiez chaque etape |
+| Documentation | Commentez les noms |
+
+[Decouvrir nos formations Excel](/formations-excel)

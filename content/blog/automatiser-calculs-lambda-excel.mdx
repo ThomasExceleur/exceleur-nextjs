@@ -1,0 +1,193 @@
+---
+title: "Automatiser vos Calculs avec LAMBDA Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Creez des fonctions personnalisees avec LAMBDA pour automatiser vos calculs."
+description: "Guide pour automatiser les calculs Excel avec la fonction LAMBDA."
+category: "Excel 365"
+categories: ["Excel 365", "Formules Excel"]
+tags: ["LAMBDA", "Automatisation", "Fonctions", "Excel 365"]
+---
+
+# Automatiser vos Calculs avec LAMBDA
+
+LAMBDA vous permet de creer vos propres fonctions reutilisables.
+
+## Qu'est-ce que LAMBDA ?
+
+### Definition
+
+LAMBDA cree des fonctions personnalisees sans VBA.
+
+### Syntaxe
+
+```excel
+=LAMBDA(param1;param2;...;calcul)
+```
+
+### Exemple simple
+
+```excel
+=LAMBDA(x;x*2)
+```
+
+Cette fonction double la valeur.
+
+## Creer une fonction nommee
+
+### Etapes
+
+1. **Formules** > **Gestionnaire de noms** > **Nouveau**
+2. Nom : TVA
+3. Fait reference a : `=LAMBDA(montant;montant*1,2)`
+4. **OK**
+
+### Utilisation
+
+```excel
+=TVA(100)   ' Resultat : 120
+```
+
+## Exemples pratiques
+
+### Calcul de marge
+
+```excel
+Nom: MARGE
+Formule: =LAMBDA(vente;cout;(vente-cout)/vente)
+```
+
+Usage : `=MARGE(100;60)` retourne 40%
+
+### Conversion temperature
+
+```excel
+Nom: CELSIUS_VERS_FAHRENHEIT
+Formule: =LAMBDA(c;c*9/5+32)
+```
+
+Usage : `=CELSIUS_VERS_FAHRENHEIT(20)` retourne 68
+
+### Prix TTC avec remise
+
+```excel
+Nom: PRIX_FINAL
+Formule: =LAMBDA(ht;tva;remise;ht*(1+tva)*(1-remise))
+```
+
+Usage : `=PRIX_FINAL(100;0,2;0,1)` retourne 108
+
+## LAMBDA avec conditions
+
+### Validation de donnees
+
+```excel
+Nom: VALIDER_EMAIL
+Formule: =LAMBDA(email;ET(
+  ESTERREUR(CHERCHE(" ";email));
+  CHERCHE("@";email)>1;
+  CHERCHE(".";email;CHERCHE("@";email))>CHERCHE("@";email)+1
+))
+```
+
+### Classification
+
+```excel
+Nom: CLASSIFIER_VENTE
+Formule: =LAMBDA(montant;
+  SI(montant>=10000;"VIP";
+    SI(montant>=5000;"Premium";
+      SI(montant>=1000;"Standard";"Petit")))
+)
+```
+
+## LAMBDA recursif avec LET
+
+### Factorielle
+
+```excel
+Nom: FACTORIELLE
+Formule: =LAMBDA(n;
+  SI(n<=1;1;n*FACTORIELLE(n-1))
+)
+```
+
+### Fibonacci
+
+```excel
+Nom: FIBONACCI
+Formule: =LAMBDA(n;
+  SI(n<=2;1;FIBONACCI(n-1)+FIBONACCI(n-2))
+)
+```
+
+## Combiner avec MAP et REDUCE
+
+### MAP avec LAMBDA
+
+Appliquer une fonction a chaque element :
+
+```excel
+=MAP(A1:A10;LAMBDA(x;x*2))
+```
+
+### REDUCE avec LAMBDA
+
+Agreger des valeurs :
+
+```excel
+=REDUCE(0;A1:A10;LAMBDA(acc;val;acc+val))
+```
+
+Equivalent a SOMME.
+
+## LAMBDA pour tableaux
+
+### Transposer et doubler
+
+```excel
+=LAMBDA(tab;TRANSPOSE(tab)*2)
+```
+
+### Filtrer avec LAMBDA
+
+```excel
+=FILTER(A:A;MAP(A:A;LAMBDA(x;x>100)))
+```
+
+## Avantages de LAMBDA
+
+| Avantage | Description |
+|----------|-------------|
+| Reutilisabilite | Une seule definition, multiples usages |
+| Lisibilite | Nom explicite au lieu de formule |
+| Maintenance | Modification centralisee |
+| Pas de VBA | Fonctionne sans macros |
+
+## Bonnes pratiques
+
+### Nommage
+
+1. **Utilisez** des noms explicites
+2. **Prefixez** par categorie (FIN_, RH_, etc.)
+3. **Documentez** dans le commentaire du nom
+
+### Organisation
+
+1. **Groupez** les fonctions liees
+2. **Testez** avant deploiement
+3. **Partagez** le classeur avec les definitions
+
+## Limites
+
+### A considerer
+
+- Disponible uniquement Excel 365
+- Peut etre complexe a deboguer
+- Recursion limitee
+
+### Debug
+
+Testez d'abord la formule directement dans une cellule.
+
+[Decouvrir nos formations Excel](/formations-excel)

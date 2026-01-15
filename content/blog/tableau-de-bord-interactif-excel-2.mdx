@@ -1,0 +1,149 @@
+---
+title: "Tableau de Bord Interactif Excel : Techniques Avancees"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Techniques avancees pour creer des tableaux de bord interactifs."
+description: "Guide avance pour les tableaux de bord interactifs Excel."
+category: "Visualisation"
+categories: ["Visualisation", "Analyse de donnees Excel"]
+tags: ["Tableau de bord", "Interactif", "Avance", "Excel"]
+---
+
+# Tableau de Bord Interactif : Techniques Avancees
+
+Elevez vos dashboards au niveau professionnel.
+
+## Architecture d'un dashboard pro
+
+### Structure recommandee
+
+| Onglet | Role |
+|--------|------|
+| DATA | Donnees brutes |
+| CALCULS | Formules intermediaires |
+| PARAMETRES | Variables de configuration |
+| DASHBOARD | Affichage uniquement |
+
+## Indicateurs KPI dynamiques
+
+### Formule type
+
+```excel
+=LET(
+  periode;$E$1;
+  valeur;SOMME.SI(Dates;">="&periode;Montants);
+  objectif;RECHERCHEV(periode;Objectifs;2;FAUX);
+  ecart;(valeur-objectif)/objectif;
+  CONCAT(TEXTE(valeur;"# ##0 €");" (";TEXTE(ecart;"+0%;-0%");")")
+)
+```
+
+### Mise en forme conditionnelle
+
+Coloration automatique selon la performance.
+
+## Graphiques dynamiques
+
+### Plages dynamiques
+
+Utilisez des tableaux structures ou DECALER().
+
+### Source de donnees
+
+```excel
+=DECALER($A$1;0;0;NB.SI.ENS($A:$A;"<>""");1)
+```
+
+## Menus de navigation
+
+### Boutons avec formes
+
+1. **Insertion** > **Formes**
+2. Ajoutez un lien hypertexte vers l'onglet cible
+
+### Menus deroulants
+
+Listes deroulantes controlant les graphiques.
+
+## Segments interconnectes
+
+### Connecter plusieurs TCD
+
+1. Clic droit sur le segment
+2. **Connexions de rapport**
+3. Cochez les TCD a connecter
+
+## Graphiques sparklines
+
+### Insertion
+
+1. Selectionnez les cellules cibles
+2. **Insertion** > **Sparklines**
+3. Choisissez le type
+
+### Configuration
+
+- Couleur des points hauts/bas
+- Axe et echelle
+
+## Interactivite avec RECHERCHEX
+
+### KPI qui change selon selection
+
+```excel
+=RECHERCHEX($E$1;Periodes;Ventes)
+```
+
+E1 contient la periode selectionnee.
+
+## Jauges personnalisees
+
+### Avec graphique en anneau
+
+1. Creez un graphique en anneau
+2. 3 valeurs : performance, reste, invisible
+3. Colorez la portion "invisible" en blanc
+
+### Formule
+
+```excel
+Performance : =MIN(100;Valeur/Objectif*100)
+Reste : =MAX(0;100-Performance)
+Invisible : =100
+```
+
+## Design professionnel
+
+### Regles
+
+| Element | Recommandation |
+|---------|----------------|
+| Couleurs | 3-4 max, coherentes |
+| Polices | 1-2 familles |
+| Espacement | Genereux et equilibre |
+| Alignement | Sur une grille invisible |
+
+### Masquer les elements
+
+- Masquez le quadrillage
+- Masquez les en-tetes
+- Figez les volets
+
+## Performance
+
+### Optimisation
+
+- Limitez les formules volatiles
+- Utilisez des tableaux structures
+- Calculez une fois, affichez plusieurs fois
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Simplicite | Un message par vue |
+| Coherence | Conventions identiques |
+| Test | Verifiez tous les scenarios |
+| Documentation | Guide utilisateur |
+
+[Decouvrir nos formations Excel](/formations-excel)

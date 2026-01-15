@@ -1,0 +1,168 @@
+---
+title: "Proteger un Classeur Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Securisez la structure de votre classeur Excel."
+description: "Guide pour proteger la structure d'un classeur Excel."
+category: "Securite"
+categories: ["Astuces Excel", "Securite"]
+tags: ["Protection", "Classeur", "Securite", "Excel"]
+---
+
+# Proteger un Classeur Excel
+
+La protection du classeur securise sa structure et ses fenetres.
+
+## Types de protection
+
+### Protection du classeur
+
+Empeche les modifications de structure :
+- Ajouter/supprimer des feuilles
+- Renommer des feuilles
+- Masquer/afficher des feuilles
+- Deplacer des feuilles
+
+### Protection de la feuille
+
+Empeche les modifications du contenu (voir article dedie).
+
+### Protection par mot de passe
+
+Chiffre le fichier lui-meme.
+
+## Proteger la structure
+
+### Etapes
+
+1. **Revision** > **Proteger le classeur**
+2. Cochez **Structure**
+3. Entrez un mot de passe (optionnel)
+4. Confirmez le mot de passe
+
+### Options
+
+| Option | Effet |
+|--------|-------|
+| Structure | Empeche les modifications d'onglets |
+| Fenetres | Empeche le redimensionnement |
+
+## Effets de la protection structure
+
+### Actions bloquees
+
+- Insertion de nouvelles feuilles
+- Suppression de feuilles
+- Renommage de feuilles
+- Deplacement de feuilles
+- Copie de feuilles
+- Affichage de feuilles masquees
+
+### Actions permises
+
+- Modification du contenu des feuilles
+- Modification de la mise en forme
+- Ajout de donnees
+
+## Oter la protection
+
+### Etapes
+
+1. **Revision** > **Proteger le classeur**
+2. Entrez le mot de passe si defini
+3. La protection est retiree
+
+## Protection par mot de passe
+
+### Chiffrer le fichier
+
+1. **Fichier** > **Informations**
+2. **Proteger le classeur** > **Chiffrer avec mot de passe**
+3. Entrez un mot de passe
+4. Confirmez
+
+### Attention
+
+Si vous perdez ce mot de passe, le fichier est irrecuperable.
+
+## Marquer comme final
+
+### Objectif
+
+Indique que le document est termine.
+
+### Etapes
+
+1. **Fichier** > **Informations**
+2. **Proteger le classeur** > **Marquer comme final**
+
+### Effet
+
+Le fichier passe en lecture seule (mais modifiable si souhaite).
+
+## Protection VBA
+
+### Proteger par macro
+
+```vba
+Sub ProtegerClasseur()
+    ThisWorkbook.Protect Password:="MonMotDePasse", Structure:=True
+End Sub
+```
+
+### Deproteger
+
+```vba
+Sub DeprotegerClasseur()
+    ThisWorkbook.Unprotect Password:="MonMotDePasse"
+End Sub
+```
+
+## Combiner les protections
+
+### Strategie complete
+
+1. Protegez le classeur (structure)
+2. Protegez chaque feuille (contenu)
+3. Optionnel : Chiffrez le fichier
+
+### Exemple VBA
+
+```vba
+Sub ProtectionComplete()
+    ' Protection classeur
+    ThisWorkbook.Protect Password:="mdp1", Structure:=True
+
+    ' Protection feuilles
+    Dim ws As Worksheet
+    For Each ws In ThisWorkbook.Worksheets
+        ws.Protect Password:="mdp2"
+    Next ws
+End Sub
+```
+
+## Limites de securite
+
+### Attention
+
+| Type | Niveau de securite |
+|------|-------------------|
+| Protection structure | Faible |
+| Protection feuille | Faible |
+| Mot de passe ouverture | Moyen |
+| Chiffrement | Eleve |
+
+### Important
+
+Les protections sans chiffrement peuvent etre contournees par des outils specialises.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Mots de passe differents | Un par type de protection |
+| Documentation | Notez les mots de passe en lieu sur |
+| Sauvegarde | Gardez une copie non protegee |
+| Test | Verifiez que tout fonctionne |
+
+[Decouvrir nos formations Excel](/formations-excel)

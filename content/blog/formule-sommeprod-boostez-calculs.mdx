@@ -1,0 +1,88 @@
+---
+title: "Formule SOMMEPROD : Boostez vos Calculs"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Exploitez SOMMEPROD pour des calculs avances."
+description: "Guide de la formule SOMMEPROD pour booster vos calculs."
+category: "Formules Excel"
+categories: ["Formules Excel", "Calculs"]
+tags: ["SOMMEPROD", "Calculs", "Formules", "Avance"]
+---
+
+# SOMMEPROD : Boostez vos Calculs
+
+Une fonction polyvalente pour les calculs complexes.
+
+## Syntaxe
+
+```excel
+=SOMMEPROD(tableau1;[tableau2];...)
+```
+
+## Usage de base
+
+### Multiplication et somme
+
+```excel
+=SOMMEPROD(Quantites;Prix)
+```
+
+Equivalent a la somme de Quantite*Prix pour chaque ligne.
+
+## Comptage conditionnel
+
+### Alternative a NB.SI.ENS
+
+```excel
+=SOMMEPROD((Region="Nord")*(Statut="Actif"))
+```
+
+## Somme conditionnelle
+
+### Alternative a SOMME.SI.ENS
+
+```excel
+=SOMMEPROD((Region="Nord")*(Statut="Actif")*Montants)
+```
+
+## Avantages
+
+| SOMMEPROD | Fonctions SI.ENS |
+|-----------|------------------|
+| Flexible | Structure fixe |
+| Criteres complexes | Criteres simples |
+| Toutes versions | Versions recentes |
+
+## Cas avances
+
+### Moyenne conditionnelle
+
+```excel
+=SOMMEPROD((Region="Nord")*Montants)/SOMMEPROD((Region="Nord")*1)
+```
+
+### Valeurs uniques (comptage)
+
+```excel
+=SOMMEPROD(1/NB.SI(Plage;Plage))
+```
+
+## Performance
+
+### Attention
+
+SOMMEPROD peut etre lent sur grandes plages.
+
+### Alternative
+
+Preferez NB.SI.ENS et SOMME.SI.ENS quand possible.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Plages egales | Meme nombre de lignes |
+| Criteres | Utilisez () pour chaque condition |
+| Performance | Limitez les plages |
+
+[Decouvrir nos formations Excel](/formations-excel)

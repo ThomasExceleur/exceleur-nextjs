@@ -1,0 +1,160 @@
+---
+title: "Excel Comment Compter les Cellules Contenant un Mot"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez a compter les cellules contenant un mot ou texte specifique dans Excel."
+description: "Guide pour compter les cellules contenant un mot dans Excel. Formules NB.SI et astuces."
+category: "Formules Excel"
+categories: ["Formules Excel", "Fonctions"]
+tags: ["NB.SI", "Compter", "Texte", "Recherche"]
+---
+
+# Compter les Cellules Contenant un Mot
+
+Plusieurs formules permettent de compter les cellules selon leur contenu textuel.
+
+## Correspondance exacte
+
+### NB.SI pour un mot exact
+
+```excel
+=NB.SI(A:A;"Paris")
+```
+
+Compte les cellules contenant exactement "Paris".
+
+## Cellules contenant un mot
+
+### Avec les jokers
+
+```excel
+=NB.SI(A:A;"*Paris*")
+```
+
+Compte les cellules contenant "Paris" n'importe ou.
+
+### Jokers disponibles
+
+| Joker | Signification |
+|-------|---------------|
+| * | N'importe quels caracteres |
+| ? | Un seul caractere |
+
+## Exemples pratiques
+
+### Commence par
+
+```excel
+=NB.SI(A:A;"Paris*")          ' Commence par Paris
+```
+
+### Se termine par
+
+```excel
+=NB.SI(A:A;"*Paris")          ' Se termine par Paris
+```
+
+### Contient un mot de X lettres
+
+```excel
+=NB.SI(A:A;"???")             ' Exactement 3 caracteres
+```
+
+## Avec une reference
+
+### Mot dans une cellule
+
+```excel
+=NB.SI(A:A;"*"&C1&"*")
+```
+
+C1 contient le mot a rechercher.
+
+## Compter plusieurs mots
+
+### Somme de NB.SI
+
+```excel
+=NB.SI(A:A;"*Paris*")+NB.SI(A:A;"*Lyon*")
+```
+
+### Avec SOMMEPROD
+
+```excel
+=SOMMEPROD((ESTNUM(CHERCHE("Paris";A1:A100)))*1)
+```
+
+## Insensible a la casse
+
+### NB.SI est deja insensible
+
+"Paris", "PARIS" et "paris" sont comptes de la meme facon.
+
+## Comptage conditionnel
+
+### NB.SI.ENS pour plusieurs criteres
+
+```excel
+=NB.SI.ENS(A:A;"*Paris*";B:B;"Client")
+```
+
+## Compter les cellules vides
+
+### Cellules vides
+
+```excel
+=NB.VIDE(A1:A100)
+```
+
+### Cellules non vides
+
+```excel
+=NBVAL(A1:A100)
+```
+
+## Compter les cellules avec texte
+
+### Uniquement du texte
+
+```excel
+=SOMMEPROD((ESTTEXTE(A1:A100))*1)
+```
+
+## Astuces
+
+### Supprimer les doublons dans le comptage
+
+Utilisez UNIQUE puis NB.SI sur le resultat.
+
+### Ignorer les espaces
+
+```excel
+=NB.SI(A:A;"*"&SUPPRESPACE(C1)&"*")
+```
+
+## Erreurs courantes
+
+### Oublier les guillemets
+
+```excel
+=NB.SI(A:A;Paris)             ' ERREUR
+=NB.SI(A:A;"Paris")           ' CORRECT
+```
+
+### Oublier les jokers
+
+```excel
+=NB.SI(A:A;"Paris")           ' Exact uniquement
+=NB.SI(A:A;"*Paris*")         ' Contient
+```
+
+## Tableau recapitulatif
+
+| Objectif | Formule |
+|----------|---------|
+| Exactement | `=NB.SI(A:A;"Paris")` |
+| Contient | `=NB.SI(A:A;"*Paris*")` |
+| Commence par | `=NB.SI(A:A;"Paris*")` |
+| Se termine par | `=NB.SI(A:A;"*Paris")` |
+
+[Decouvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,145 @@
+---
+title: "Analyse de Sensibilite Excel avec Scenarios"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maitrisez l'analyse de sensibilite avec le gestionnaire de scenarios Excel."
+description: "Guide analyse de sensibilite et scenarios dans Excel pour decisions."
+category: "Analyse de donnees Excel"
+categories: ["Analyse de donnees Excel", "Finance"]
+tags: ["Scenarios", "Analyse sensibilite", "Hypotheses", "Decision"]
+---
+
+# Analyse de Sensibilite avec Scenarios
+
+Explorez differentes hypotheses pour prendre de meilleures decisions.
+
+## Qu'est-ce que l'analyse de sensibilite ?
+
+### Definition
+
+L'analyse de sensibilite evalue l'impact de changements de variables sur un resultat.
+
+### Cas d'usage
+
+- Previsions budgetaires
+- Analyse d'investissement
+- Planification strategique
+- Evaluation de risques
+
+## Le Gestionnaire de scenarios
+
+### Acces
+
+1. **Donnees** > **Analyse de scenarios** > **Gestionnaire de scenarios**
+2. Ou **Alt+D+S**
+
+### Creer un scenario
+
+1. Cliquez **Ajouter**
+2. Nommez le scenario (ex: "Optimiste")
+3. Selectionnez les cellules variables
+4. Entrez les valeurs pour ce scenario
+
+## Exemple pratique : Projet immobilier
+
+### Donnees de base
+
+| Variable | Cellule | Valeur |
+|----------|---------|--------|
+| Prix d'achat | B2 | 200000 |
+| Apport | B3 | 40000 |
+| Taux | B4 | 3,5% |
+| Duree | B5 | 20 |
+
+### Formule de mensualite
+
+```excel
+=VPM(B4/12;B5*12;-(B2-B3))
+```
+
+### Scenarios a creer
+
+| Scenario | Prix | Taux | Duree |
+|----------|------|------|-------|
+| Pessimiste | 220000 | 4,5% | 15 |
+| Base | 200000 | 3,5% | 20 |
+| Optimiste | 180000 | 3% | 25 |
+
+## Tables de donnees
+
+### Table a une variable
+
+1. Listez les valeurs a tester dans une colonne
+2. Placez la formule en haut
+3. **Donnees** > **Analyse de scenarios** > **Table de donnees**
+4. Indiquez la cellule d'entree en ligne ou colonne
+
+### Table a deux variables
+
+1. Valeurs en ligne et en colonne
+2. Formule a l'intersection
+3. **Table de donnees** avec les deux cellules d'entree
+
+## Valeur cible
+
+### Trouver la valeur necessaire
+
+1. **Donnees** > **Analyse de scenarios** > **Valeur cible**
+2. Cellule a definir : la formule
+3. Valeur a atteindre : l'objectif
+4. Cellule a modifier : la variable
+
+### Exemple
+
+"Quel prix maximum pour une mensualite de 900€ ?"
+
+## Solveur
+
+### Pour des analyses plus complexes
+
+1. **Donnees** > **Solveur**
+2. Definissez l'objectif (min, max, valeur)
+3. Ajoutez des contraintes
+4. Choisissez la methode de resolution
+
+### Installation
+
+Le Solveur doit etre active dans **Fichier** > **Options** > **Complements**.
+
+## Rapport de synthese
+
+### Creer un rapport
+
+1. Dans le gestionnaire de scenarios
+2. Cliquez **Synthese**
+3. Choisissez les cellules de resultat
+4. Type de rapport : Synthese ou Tableau croise
+
+### Contenu du rapport
+
+Comparaison cote a cote de tous les scenarios avec leurs resultats.
+
+## Bonnes pratiques
+
+### Organisation
+
+1. **Nommez** clairement vos scenarios
+2. **Documentez** les hypotheses
+3. **Limitez** le nombre de variables
+4. **Verifiez** la coherence des valeurs
+
+### Interpretation
+
+- Identifiez les variables sensibles
+- Evaluez la plage des resultats possibles
+- Prenez des decisions eclairees
+
+## Visualisation
+
+### Graphique de sensibilite
+
+1. Creez une table de donnees
+2. Inserez un graphique en nuage de points
+3. Ajoutez une courbe de tendance
+
+[Decouvrir nos formations Excel](/formations-excel)

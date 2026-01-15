@@ -1,0 +1,116 @@
+---
+title: "Mettre en Evidence les Erreurs dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez a identifier et mettre en evidence les erreurs dans vos feuilles Excel."
+description: "Techniques pour reperer visuellement les erreurs dans Excel. Mise en forme conditionnelle."
+category: "Gestion d'erreurs"
+categories: ["Gestion d'erreurs", "Astuces Excel"]
+tags: ["Erreurs", "Mise en forme", "Validation", "Depannage"]
+---
+
+# Mettre en Evidence les Erreurs Excel
+
+Identifiez rapidement les cellules contenant des erreurs dans vos feuilles de calcul.
+
+## Types d'erreurs Excel
+
+| Erreur | Signification |
+|--------|---------------|
+| #N/A | Valeur non disponible |
+| #VALEUR! | Type de donnee incorrect |
+| #REF! | Reference invalide |
+| #DIV/0! | Division par zero |
+| #NOM? | Nom non reconnu |
+| #NOMBRE! | Nombre invalide |
+| #NUL! | Intersection nulle |
+
+## Mise en forme conditionnelle
+
+### Colorer les erreurs automatiquement
+
+1. Selectionnez votre plage de donnees
+2. **Accueil** > **Mise en forme conditionnelle** > **Nouvelle regle**
+3. Choisissez "Utiliser une formule"
+4. Formule : `=ESTERREUR(A1)`
+5. Format : fond rouge, texte blanc
+6. **OK**
+
+### Formule pour erreurs specifiques
+
+```excel
+=OU(ESTNA(A1);ESTERREUR(A1))
+```
+
+## Formule ESTERREUR
+
+### Verifier une erreur
+
+```excel
+=ESTERREUR(A1)     ' VRAI si erreur
+```
+
+### Compter les erreurs
+
+```excel
+=SOMMEPROD(ESTERREUR(A1:A100)*1)
+```
+
+## Gerer les erreurs dans les formules
+
+### SIERREUR
+
+```excel
+=SIERREUR(Formule;"Erreur")
+```
+
+### SI.NON.DISP
+
+```excel
+=SI.NON.DISP(RECHERCHEV(A1;B:C;2;FAUX);"Non trouve")
+```
+
+## Localiser les erreurs
+
+### Recherche manuelle
+
+1. **Ctrl + G** (Atteindre)
+2. **Special...**
+3. Cochez **Formules** > **Erreurs**
+4. **OK**
+
+Toutes les cellules avec erreurs sont selectionnees.
+
+## Audit de formules
+
+### Reperer les dependances
+
+1. Selectionnez une cellule avec erreur
+2. **Formules** > **Reperer les antecedents**
+3. Suivez les fleches pour trouver la source
+
+## Tableau de bord des erreurs
+
+### Compter par type
+
+```excel
+=NB.SI.ENS(A:A;"#N/A")        ' Nombre de #N/A
+=NB.SI.ENS(A:A;"#VALEUR!")    ' Nombre de #VALEUR!
+```
+
+### Resume
+
+| Indicateur | Formule |
+|------------|---------|
+| Total erreurs | `=SOMMEPROD(ESTERREUR(A:A)*1)` |
+| Cellules OK | `=SOMMEPROD(NON(ESTERREUR(A:A))*1)` |
+| Taux d'erreur | `=Total erreurs / Total cellules` |
+
+## Bonnes pratiques
+
+1. **Utilisez** SIERREUR dans vos formules
+2. **Appliquez** une mise en forme conditionnelle
+3. **Verifiez** regulierement les erreurs
+4. **Documentez** les causes courantes
+
+[Decouvrir nos formations Excel](/formations-excel)

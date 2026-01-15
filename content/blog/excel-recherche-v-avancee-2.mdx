@@ -1,0 +1,77 @@
+---
+title: "Excel RECHERCHEV Avancee"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Techniques avancees pour maitriser RECHERCHEV."
+description: "Guide avance de RECHERCHEV dans Excel."
+category: "Fonctions"
+categories: ["Fonctions", "Recherche"]
+tags: ["RECHERCHEV", "Avance", "Recherche", "Excel"]
+---
+
+# RECHERCHEV Avancee
+
+Allez plus loin avec RECHERCHEV.
+
+## Multi-criteres
+
+### Avec concatenation
+
+```excel
+=RECHERCHEV(A1&B1;tableau;3;FAUX)
+```
+
+Necessite une colonne helper.
+
+## Recherche approximative
+
+### 4eme argument VRAI
+
+```excel
+=RECHERCHEV(100;A:B;2;VRAI)
+```
+
+Trouve la plus grande valeur inferieure.
+
+## Jokers
+
+### Utilisation
+
+```excel
+=RECHERCHEV("*Paris*";A:B;2;FAUX)
+```
+
+| Joker | Signification |
+|-------|---------------|
+| * | N'importe quoi |
+| ? | Un caractere |
+
+## INDEX+EQUIV alternative
+
+### Pourquoi migrer
+
+- Recherche bidirectionnelle
+- Plus flexible
+- Plus performant
+
+```excel
+=INDEX(B:B;EQUIV(A1;A:A;0))
+```
+
+## Erreurs courantes
+
+| Erreur | Solution |
+|--------|----------|
+| #N/A | SIERREUR |
+| #REF! | Verifier index |
+| Mauvais resultat | FAUX obligatoire |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| FAUX | Toujours pour exact |
+| SIERREUR | Gerer les erreurs |
+| Migration | RECHERCHEX si possible |
+
+[Decouvrir nos formations Excel](/formations-excel)

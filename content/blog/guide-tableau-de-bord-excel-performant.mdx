@@ -1,0 +1,186 @@
+---
+title: "Guide : Tableau de Bord Excel Performant"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Creez des tableaux de bord Excel rapides et performants."
+description: "Guide pour creer des tableaux de bord Excel performants."
+category: "Visualisation"
+categories: ["Visualisation", "Performance"]
+tags: ["Tableau de bord", "Performance", "Optimisation", "Excel"]
+---
+
+# Tableau de Bord Excel Performant
+
+Optimisez vos dashboards pour la vitesse et la reactivite.
+
+## Principes de performance
+
+### Sources de lenteur
+
+| Cause | Impact |
+|-------|--------|
+| Formules volatiles | Recalcul constant |
+| Colonnes entieres | Calculs excessifs |
+| Trop de formules | Surcharge |
+| Images non compressees | Fichier lourd |
+
+## Architecture optimisee
+
+### Structure recommandee
+
+| Onglet | Role |
+|--------|------|
+| DATA | Donnees brutes |
+| CALC | Calculs intermediaires |
+| CACHE | Valeurs pre-calculees |
+| DASHBOARD | Affichage uniquement |
+
+### Principe
+
+Calculez une fois, affichez plusieurs fois.
+
+## Eviter les formules volatiles
+
+### Fonctions a eviter
+
+- INDIRECT()
+- DECALER()
+- MAINTENANT()
+- AUJOURDHUI()
+- ALEA()
+
+### Alternatives
+
+| Volatil | Alternative |
+|---------|-------------|
+| INDIRECT | INDEX |
+| DECALER | INDEX |
+| MAINTENANT | Cellule mise a jour manuellement |
+
+## Optimiser les plages
+
+### Mauvais
+
+```excel
+=SOMME(A:A)
+```
+
+### Bon
+
+```excel
+=SOMME(A1:A10000)
+```
+
+### Meilleur
+
+```excel
+=SOMME(TableauDonnees[Montant])
+```
+
+## Utiliser LET
+
+### Avantage performance
+
+```excel
+=LET(
+  moyenne;MOYENNE(A:A);
+  SI(B1>moyenne;"Haut";"Bas")
+)
+```
+
+Le calcul de moyenne n'est fait qu'une fois.
+
+## Pre-calculer les valeurs
+
+### Onglet CACHE
+
+| Indicateur | Valeur |
+|------------|--------|
+| Total CA | =SOMME(DATA!C:C) |
+| Nb clients | =NB(DATA!A:A) |
+| Date maj | =AUJOURDHUI() |
+
+### Dans le dashboard
+
+```excel
+=CACHE!B1
+```
+
+Simple reference, pas de calcul.
+
+## Tableaux croises dynamiques
+
+### Avantages
+
+- Calculs optimises par Excel
+- Mise en cache automatique
+- Filtrage rapide
+
+### Configuration performance
+
+1. Clic droit > Options
+2. Donnees > Decochez "Enregistrer les donnees source"
+
+## Graphiques optimises
+
+### Bonnes pratiques
+
+| Conseil | Raison |
+|---------|--------|
+| Limiter les points | Moins de rendu |
+| Eviter les effets 3D | Calcul supplementaire |
+| Plages fixes | Pas de recalcul |
+
+## Segments et filtres
+
+### Connecter les segments
+
+Un segment pour plusieurs TCD = un seul filtre.
+
+### Performance
+
+Les segments sont plus performants que les formules de filtre.
+
+## Charger les donnees
+
+### Power Query
+
+Transformez avant de charger, pas dans Excel.
+
+### Connexion seule
+
+Chargez uniquement ce qui est necessaire.
+
+## Mesurer la performance
+
+### Temps de calcul
+
+Regardez la barre de statut pendant le recalcul.
+
+### Avant/Apres
+
+1. Notez le temps
+2. Appliquez une optimisation
+3. Comparez
+
+## Checklist performance
+
+| Action | Fait |
+|--------|------|
+| Eviter colonnes entieres | |
+| Supprimer formules volatiles | |
+| Pre-calculer les valeurs | |
+| Compresser les images | |
+| Utiliser des TCD | |
+| Connecter les segments | |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Test regulier | Mesurez les temps |
+| Incremental | Optimisez une chose a la fois |
+| Documentation | Notez les optimisations |
+| Equilibre | Performance vs maintenabilite |
+
+[Decouvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,159 @@
+---
+title: "Trier et Dedupliquer dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maitrisez le tri et la suppression des doublons dans Excel."
+description: "Guide complet pour trier et dedupliquer vos donnees Excel."
+category: "Manipulation de donnees"
+categories: ["Manipulation de donnees", "Astuces Excel"]
+tags: ["Tri", "Doublons", "Donnees", "Excel"]
+---
+
+# Trier et Dedupliquer dans Excel
+
+Deux operations essentielles pour organiser vos donnees.
+
+## Trier les donnees
+
+### Tri simple
+
+1. Selectionnez une cellule dans la colonne
+2. **Donnees** > **Trier de A a Z** ou **Trier de Z a A**
+
+### Tri multicriteres
+
+1. **Donnees** > **Trier**
+2. Ajoutez des niveaux de tri
+3. Definissez l'ordre pour chaque niveau
+
+## Options de tri
+
+| Option | Description |
+|--------|-------------|
+| Croissant | A a Z, petit a grand |
+| Decroissant | Z a A, grand a petit |
+| Liste personnalisee | Ordre specifique |
+| Couleur | Par couleur de cellule |
+| Icone | Par icone conditionnelle |
+
+### Listes personnalisees
+
+Creez des ordres de tri specifiques :
+- Jours de la semaine
+- Mois
+- Priorites personnalisees
+
+## Fonction TRIER (Excel 365)
+
+### Syntaxe
+
+```excel
+=TRIER(tableau;[index_tri];[ordre];[par_col])
+```
+
+### Exemples
+
+```excel
+=TRIER(A2:C10;1;1)      ' Tri par 1ere colonne croissant
+=TRIER(A2:C10;2;-1)     ' Tri par 2eme colonne decroissant
+```
+
+## Fonction TRIERPAR (Excel 365)
+
+### Syntaxe
+
+```excel
+=TRIERPAR(tableau;plage_tri1;[ordre1];...)
+```
+
+### Exemple
+
+```excel
+=TRIERPAR(A2:B10;C2:C10;1)
+```
+
+Trie le tableau A:B selon les valeurs de C.
+
+## Supprimer les doublons
+
+### Methode manuelle
+
+1. Selectionnez la plage
+2. **Donnees** > **Supprimer les doublons**
+3. Cochez les colonnes a comparer
+4. Cliquez **OK**
+
+### Resultat
+
+Excel indique combien de doublons ont ete supprimes.
+
+## Fonction UNIQUE (Excel 365)
+
+### Syntaxe
+
+```excel
+=UNIQUE(tableau;[par_col];[exactement_une_fois])
+```
+
+### Exemples
+
+```excel
+=UNIQUE(A2:A100)              ' Valeurs uniques
+=UNIQUE(A2:A100;;VRAI)        ' Valeurs apparaissant une seule fois
+```
+
+## Identifier les doublons
+
+### Mise en forme conditionnelle
+
+1. Selectionnez la plage
+2. **Mise en forme conditionnelle** > **Regles de mise en surbrillance** > **Valeurs en double**
+
+### Formule
+
+```excel
+=NB.SI($A$2:$A$100;A2)>1
+```
+
+## Combiner tri et deduplication
+
+### Exemple pratique
+
+```excel
+=UNIQUE(TRIER(A2:B100;1;1))
+```
+
+Trie les donnees puis extrait les valeurs uniques.
+
+## Cas pratiques
+
+### Nettoyer une liste de clients
+
+1. Supprimez les doublons par email
+2. Triez par nom alphabetiquement
+3. Filtrez les donnees incompletes
+
+### Consolider des donnees
+
+1. Combinez plusieurs sources
+2. Supprimez les doublons
+3. Triez par date
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Sauvegarde | Copiez avant de supprimer |
+| Verification | Revoyez les doublons identifies |
+| Criteres | Choisissez bien les colonnes cles |
+| Validation | Verifiez le resultat final |
+
+## Erreurs courantes
+
+| Erreur | Solution |
+|--------|----------|
+| Tri partiel | Selectionnez toutes les colonnes |
+| Doublons restants | Verifiez les espaces invisibles |
+| Perte de donnees | Sauvegardez avant |
+
+[Decouvrir nos formations Excel](/formations-excel)

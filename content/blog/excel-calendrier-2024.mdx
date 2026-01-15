@@ -1,0 +1,155 @@
+---
+title: "Excel Calendrier 2024 : Creez votre Propre Calendrier"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez a creer un calendrier personnalise dans Excel ou telechargez nos modeles gratuits."
+description: "Guide pour creer un calendrier Excel 2024. Modeles gratuits, formules automatiques et personnalisation complete."
+category: "Modeles"
+categories: ["Modeles", "Productivite"]
+tags: ["Calendrier", "2024", "Modele", "Planning"]
+---
+
+# Excel Calendrier 2024 : Guide Complet
+
+Creez votre propre calendrier Excel ou utilisez nos modeles pour organiser votre annee.
+
+## Telecharger un modele
+
+### Modeles integres a Excel
+
+1. **Fichier** > **Nouveau**
+2. Recherchez "calendrier"
+3. Choisissez parmi les modeles proposes
+
+### Notre modele gratuit
+
+Inscrivez-vous a notre newsletter pour recevoir notre modele de calendrier Excel personnalisable.
+
+## Creer un calendrier de zero
+
+### Structure de base
+
+Creez une grille avec :
+- 7 colonnes (Lun-Dim)
+- 5-6 lignes par mois
+
+### Formules automatiques
+
+#### Date du premier jour
+
+```excel
+=DATE(2024;1;1)
+```
+
+#### Jour de la semaine
+
+```excel
+=JOURSEM(A1;2)
+```
+Retourne 1 pour lundi, 7 pour dimanche.
+
+#### Afficher le nom du jour
+
+```excel
+=TEXTE(A1;"jjjj")
+```
+
+## Calendrier mensuel automatique
+
+### Etape 1 : Configuration
+
+1. Creez une cellule pour le mois (ex: A1 = janvier 2024)
+2. Creez les en-tetes Lun-Dim en ligne 3
+
+### Etape 2 : Premier jour du mois
+
+```excel
+=DATE(ANNEE($A$1);MOIS($A$1);1)
+```
+
+### Etape 3 : Remplir le calendrier
+
+```excel
+=SI(MOIS(B4+1)=MOIS($A$1);B4+1;"")
+```
+
+## Mise en forme conditionnelle
+
+### Surligner les week-ends
+
+1. Selectionnez les dates
+2. **Mise en forme conditionnelle** > **Nouvelle regle**
+3. Formule : `=OU(JOURSEM(A1;2)=6;JOURSEM(A1;2)=7)`
+4. Choisissez une couleur de fond
+
+### Surligner aujourd'hui
+
+Formule : `=A1=AUJOURDHUI()`
+
+### Surligner les jours feries
+
+Creez une liste de jours feries et utilisez :
+```excel
+=NB.SI(JoursFeries;A1)>0
+```
+
+## Calendrier annuel
+
+### Vue d'ensemble
+
+Creez 12 petits calendriers sur une seule page pour une vue annuelle.
+
+### Formule pour chaque mois
+
+```excel
+=MOIS.DECALER(DATE(2024;1;1);NumeroMois-1;0)
+```
+
+## Fonctionnalites avancees
+
+### Ajouter des evenements
+
+1. Creez une feuille "Evenements" avec dates et descriptions
+2. Utilisez RECHERCHEV pour afficher les evenements
+
+```excel
+=SIERREUR(RECHERCHEV(A1;Evenements!A:B;2;FAUX);"")
+```
+
+### Compteur de jours
+
+```excel
+=AUJOURDHUI()-DATE(2024;1;1)+1
+```
+Affiche le numero du jour dans l'annee.
+
+## Imprimer le calendrier
+
+### Configuration
+
+1. **Mise en page** > **Orientation** : Paysage
+2. Ajustez les marges
+3. Verifiez l'apercu
+
+### Conseils
+
+- Utilisez des bordures claires
+- Augmentez la taille des cellules
+- Ajoutez un en-tete avec l'annee
+
+## Synchronisation avec Outlook
+
+Pour synchroniser avec votre calendrier Outlook :
+
+1. Exportez les evenements au format CSV
+2. Importez dans Outlook
+3. Ou utilisez Power Automate pour l'automatisation
+
+## Modeles pour cas specifiques
+
+- **Calendrier scolaire** : Avec vacances et rentrees
+- **Calendrier editorial** : Pour planifier les publications
+- **Calendrier de projet** : Avec jalons et echeances
+- **Calendrier d'equipe** : Pour les conges et presences
+
+[Decouvrir la formation Excel Avance](/formations-excel/excel-avance)

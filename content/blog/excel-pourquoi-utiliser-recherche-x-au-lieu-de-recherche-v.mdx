@@ -1,0 +1,153 @@
+---
+title: "Pourquoi Utiliser RECHERCHEX au lieu de RECHERCHEV"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Decouvrez les avantages de RECHERCHEX par rapport a RECHERCHEV."
+description: "Comparatif RECHERCHEX vs RECHERCHEV. Avantages et migration."
+category: "Formules Excel"
+categories: ["Formules Excel", "Excel 365"]
+tags: ["RECHERCHEX", "RECHERCHEV", "Comparatif", "Migration"]
+---
+
+# Pourquoi Utiliser RECHERCHEX
+
+RECHERCHEX est le successeur de RECHERCHEV avec de nombreux avantages.
+
+## Disponibilite
+
+RECHERCHEX est disponible dans :
+- Excel 365
+- Excel 2021
+- Excel pour le web
+
+## Avantage 1 : Syntaxe plus claire
+
+### RECHERCHEV
+
+```excel
+=RECHERCHEV(valeur;tableau;3;FAUX)
+```
+
+L'index de colonne (3) est peu intuitif.
+
+### RECHERCHEX
+
+```excel
+=RECHERCHEX(valeur;colonne_recherche;colonne_retour)
+```
+
+On specifie directement les colonnes.
+
+## Avantage 2 : Recherche dans toutes les directions
+
+### RECHERCHEV
+
+Ne peut retourner que des valeurs a droite.
+
+### RECHERCHEX
+
+```excel
+=RECHERCHEX(A1;C:C;A:A)    ' Recherche a gauche
+```
+
+Peut rechercher dans n'importe quelle direction.
+
+## Avantage 3 : Gestion des erreurs integree
+
+### RECHERCHEV
+
+```excel
+=SIERREUR(RECHERCHEV(A1;B:C;2;FAUX);"Non trouve")
+```
+
+Necessite SIERREUR.
+
+### RECHERCHEX
+
+```excel
+=RECHERCHEX(A1;B:B;C:C;"Non trouve")
+```
+
+Valeur par defaut integree.
+
+## Avantage 4 : Derniere occurrence
+
+### RECHERCHEV
+
+Retourne toujours la premiere occurrence.
+
+### RECHERCHEX
+
+```excel
+=RECHERCHEX(A1;B:B;C:C;;0;-1)
+```
+
+Le -1 permet de chercher depuis la fin.
+
+## Avantage 5 : Correspondance flexible
+
+### RECHERCHEV
+
+Seulement exacte ou approchante.
+
+### RECHERCHEX
+
+```excel
+' Valeur exacte ou inferieure
+=RECHERCHEX(150;A:A;B:B;;-1)
+
+' Valeur exacte ou superieure
+=RECHERCHEX(150;A:A;B:B;;1)
+
+' Avec caracteres joker
+=RECHERCHEX("*Paris*";A:A;B:B;;2)
+```
+
+## Avantage 6 : Retour multi-colonnes
+
+### RECHERCHEX
+
+```excel
+=RECHERCHEX(A1;B:B;C:E)
+```
+
+Retourne plusieurs colonnes en une seule formule.
+
+## Comparaison directe
+
+| Critere | RECHERCHEV | RECHERCHEX |
+|---------|------------|------------|
+| Direction | Droite seulement | Toutes |
+| Erreur par defaut | Non | Oui |
+| Derniere occurrence | Non | Oui |
+| Multi-colonnes | Non | Oui |
+| Performance | Bonne | Excellente |
+
+## Migration
+
+### Avant
+
+```excel
+=SIERREUR(RECHERCHEV(A1;$B$1:$D$100;3;FAUX);"")
+```
+
+### Apres
+
+```excel
+=RECHERCHEX(A1;$B$1:$B$100;$D$1:$D$100;"")
+```
+
+## Quand garder RECHERCHEV ?
+
+- Fichiers partages avec utilisateurs sans Excel 365
+- Compatibilite avec anciennes versions
+- Macros existantes
+
+## Conclusion
+
+Si vous avez Excel 365 ou 2021, preferez RECHERCHEX pour :
+- Une syntaxe plus claire
+- Plus de flexibilite
+- De meilleures performances
+
+[Decouvrir nos formations Excel](/formations-excel)

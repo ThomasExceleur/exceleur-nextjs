@@ -1,0 +1,78 @@
+---
+title: "Excel : Fractionner du Texte"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Divisez du texte en plusieurs colonnes."
+description: "Guide pour fractionner du texte dans Excel."
+category: "Manipulation de donnees"
+categories: ["Manipulation de donnees", "Texte"]
+tags: ["Fractionner", "Texte", "Colonnes", "Excel"]
+---
+
+# Fractionner du Texte Excel
+
+Separaez vos donnees en colonnes.
+
+## Convertir (Classique)
+
+### Etapes
+
+1. Selectionnez la colonne
+2. **Donnees** > **Convertir**
+3. Choisissez le delimiteur
+
+## TEXTE.SEPARER (Excel 365)
+
+```excel
+=TEXTE.SEPARER(A1;" ")
+```
+
+## Ctrl+E (Flash Fill)
+
+1. Tapez le resultat
+2. Descendez
+3. **Ctrl+E**
+
+## Formules classiques
+
+### GAUCHE
+
+```excel
+=GAUCHE(A1;5)
+```
+
+### DROITE
+
+```excel
+=DROITE(A1;3)
+```
+
+### STXT
+
+```excel
+=STXT(A1;2;4)
+```
+
+## Exemple prenom/nom
+
+### Prenom
+
+```excel
+=GAUCHE(A1;TROUVE(" ";A1)-1)
+```
+
+### Nom
+
+```excel
+=DROITE(A1;NBCAR(A1)-TROUVE(" ";A1))
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Ctrl+E | Le plus rapide |
+| TEXTE.SEPARER | Pour Excel 365 |
+| Convertir | Pour anciennes versions |
+
+[Decouvrir nos formations Excel](/formations-excel)

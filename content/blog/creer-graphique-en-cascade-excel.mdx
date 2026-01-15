@@ -1,0 +1,200 @@
+---
+title: "Creer un Graphique en Cascade dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Guide complet pour creer un graphique en cascade (waterfall) dans Excel."
+description: "Tutoriel pour creer un graphique en cascade waterfall dans Excel."
+category: "Graphiques"
+categories: ["Graphiques", "Visualisation"]
+tags: ["Cascade", "Waterfall", "Graphique", "Visualisation"]
+---
+
+# Creer un Graphique en Cascade
+
+Le graphique en cascade montre comment une valeur evolue par ajouts et retraits successifs.
+
+## Qu'est-ce qu'un graphique en cascade ?
+
+### Definition
+
+Visualise les contributions positives et negatives a un total.
+
+### Cas d'usage
+
+- Evolution du chiffre d'affaires
+- Decomposition budgetaire
+- Analyse des ecarts
+- Variation de tresorerie
+
+## Disponibilite
+
+- Excel 2016+
+- Excel 365
+- Excel pour Mac 2016+
+
+## Creer le graphique
+
+### Etape 1 : Preparer les donnees
+
+| Element | Montant |
+|---------|---------|
+| CA Initial | 100000 |
+| Nouveaux clients | 25000 |
+| Ventes additionnelles | 15000 |
+| Clients perdus | -20000 |
+| Remises | -8000 |
+| CA Final | 112000 |
+
+### Etape 2 : Inserer le graphique
+
+1. Selectionnez les donnees (A1:B7)
+2. **Insertion** > **Graphiques** > **Cascade**
+3. Le graphique est cree automatiquement
+
+### Etape 3 : Definir les totaux
+
+1. Cliquez sur la barre "CA Initial"
+2. Clic droit > **Definir comme total**
+3. Repetez pour "CA Final"
+
+## Personnalisation
+
+### Couleurs standards
+
+| Type | Couleur |
+|------|---------|
+| Augmentation | Vert |
+| Diminution | Rouge |
+| Total | Gris/Bleu |
+
+### Modifier les couleurs
+
+1. Cliquez sur une barre
+2. **Format** > **Remplissage**
+3. Choisissez votre couleur
+
+### Lignes de connexion
+
+1. Selectionnez une serie
+2. **Format** > **Options de serie**
+3. Cochez/decochez **Afficher les lignes de connexion**
+
+## Ajouter des sous-totaux
+
+### Structure avec sous-totaux
+
+| Element | Montant |
+|---------|---------|
+| CA Initial | 100000 |
+| Nouveaux clients | 25000 |
+| Ventes add. | 15000 |
+| **Sous-total ventes** | 140000 |
+| Clients perdus | -20000 |
+| Remises | -8000 |
+| CA Final | 112000 |
+
+### Definir comme sous-total
+
+1. Selectionnez la barre du sous-total
+2. Clic droit > **Definir comme total**
+
+## Etiquettes de donnees
+
+### Ajouter les valeurs
+
+1. Cliquez sur le graphique
+2. **+** > **Etiquettes de donnees**
+3. Choisissez la position
+
+### Formater les etiquettes
+
+- Nombre : format personnalise
+- Position : au-dessus ou a l'interieur
+
+## Exemples pratiques
+
+### Evolution de tresorerie
+
+| Element | Montant |
+|---------|---------|
+| Solde initial | 50000 |
+| Encaissements | 80000 |
+| Salaires | -35000 |
+| Fournisseurs | -25000 |
+| Charges | -12000 |
+| Solde final | 58000 |
+
+### Analyse des ecarts budgetaires
+
+| Element | Ecart |
+|---------|-------|
+| Budget initial | 0 |
+| Volume | 5000 |
+| Prix | -3000 |
+| Mix produits | 2000 |
+| Couts | -4000 |
+| Ecart total | 0 |
+
+## Version manuelle (anciennes versions)
+
+### Pour Excel sans graphique cascade natif
+
+1. Creez des colonnes auxiliaires :
+   - Base (invisible)
+   - Augmentation
+   - Diminution
+
+2. Utilisez un histogramme empile
+
+3. Masquez la serie "Base"
+
+### Calcul des colonnes
+
+```excel
+' Base
+=SI(A2="Initial";0;SI(B2>0;E1;E1+B2))
+
+' Augmentation
+=SI(B2>0;B2;0)
+
+' Diminution
+=SI(B2<0;-B2;0)
+```
+
+## Astuces
+
+### Ordre des elements
+
+L'ordre des lignes determine l'ordre d'affichage.
+
+### Valeurs nulles
+
+Les valeurs a 0 n'affichent pas de barre.
+
+### Echelle
+
+Ajustez l'axe vertical pour une meilleure lisibilite.
+
+## Limites
+
+### Ce que le graphique ne fait pas
+
+- Plusieurs series simultanees
+- Sous-categories imbriquees
+- Animations
+
+### Alternatives
+
+- Power BI pour plus de fonctionnalites
+- Graphiques personnalises
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Ordre logique | Du debut a la fin |
+| Couleurs coherentes | Vert=positif, Rouge=negatif |
+| Etiquettes claires | Valeurs visibles |
+| Totaux identifies | Definir comme total |
+
+[Decouvrir nos formations Excel](/formations-excel)

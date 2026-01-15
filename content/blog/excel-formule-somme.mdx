@@ -1,0 +1,219 @@
+---
+title: "Excel Formule SOMME : Tout Savoir sur l'Addition"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Maitrisez la fonction SOMME dans Excel pour additionner rapidement vos donnees."
+description: "Guide complet de la fonction SOMME dans Excel. Syntaxe, exemples, variantes et astuces pour additionner efficacement."
+category: "Formules Excel"
+categories: ["Formules Excel", "Calculs"]
+tags: ["SOMME", "Formules", "Calculs", "Addition"]
+---
+
+# Excel Formule SOMME : Guide Complet
+
+La fonction SOMME est la plus utilisee dans Excel. Elle permet d'additionner des valeurs rapidement.
+
+## Syntaxe de base
+
+```excel
+=SOMME(nombre1; [nombre2]; ...)
+```
+
+### Arguments
+
+- **nombre1** : Premier nombre ou plage a additionner (obligatoire)
+- **nombre2** : Arguments supplementaires (optionnels)
+
+## Exemples simples
+
+### Additionner des cellules
+
+```excel
+=SOMME(A1; A2; A3)
+```
+
+### Additionner une plage
+
+```excel
+=SOMME(A1:A10)
+```
+
+### Additionner plusieurs plages
+
+```excel
+=SOMME(A1:A10; C1:C10; E1:E10)
+```
+
+### Additionner une colonne entiere
+
+```excel
+=SOMME(A:A)
+```
+
+## Raccourci clavier
+
+### Somme automatique
+
+1. Placez-vous sous la colonne de nombres
+2. Appuyez sur **Alt + =** (Windows) ou **Cmd + Maj + T** (Mac)
+3. Excel propose automatiquement la formule SOMME
+
+## Variantes de SOMME
+
+### SOMME.SI
+
+Additionne selon un critere :
+
+```excel
+=SOMME.SI(A:A; "Fruits"; B:B)
+```
+
+### SOMME.SI.ENS
+
+Additionne selon plusieurs criteres :
+
+```excel
+=SOMME.SI.ENS(C:C; A:A; "Paris"; B:B; ">100")
+```
+
+### SOMMEPROD
+
+Multiplie puis additionne :
+
+```excel
+=SOMMEPROD(A1:A10; B1:B10)
+```
+
+## Sommes sur plusieurs feuilles
+
+### Meme cellule sur plusieurs feuilles
+
+```excel
+=SOMME(Feuil1:Feuil12!A1)
+```
+
+Additionne A1 de Feuil1 a Feuil12.
+
+### Plage sur plusieurs feuilles
+
+```excel
+=SOMME(Janvier:Decembre!B2:B100)
+```
+
+## Sommes avec conditions
+
+### Somme des positifs
+
+```excel
+=SOMMEPROD((A1:A100>0)*A1:A100)
+```
+
+### Somme des negatifs
+
+```excel
+=SOMMEPROD((A1:A100<0)*A1:A100)
+```
+
+### Somme si non vide
+
+```excel
+=SOMMEPROD((A1:A100<>"")*A1:A100)
+```
+
+## Gestion des erreurs
+
+### SOMME ignore les erreurs
+
+La fonction SOMME ignore automatiquement :
+- Les cellules vides
+- Les cellules contenant du texte
+
+### Mais pas les erreurs de formule
+
+Si une cellule contient #VALEUR! ou #N/A, la somme retournera une erreur.
+
+### Solution
+
+```excel
+=SOMMEPROD(SIERREUR(A1:A100;0))
+```
+
+## Somme cumulative
+
+### Formule
+
+```excel
+=SOMME($A$1:A1)
+```
+
+Copie vers le bas pour obtenir un cumul progressif.
+
+### Exemple
+
+| Valeur | Cumul |
+|--------|-------|
+| 10 | 10 |
+| 20 | 30 |
+| 15 | 45 |
+
+## Astuces pratiques
+
+### Somme rapide dans la barre d'etat
+
+Selectionnez des cellules pour voir la somme en bas de l'ecran.
+
+### Somme avec filtres
+
+SOMME additionne meme les lignes masquees. Utilisez SOUS.TOTAL pour n'additionner que les lignes visibles :
+
+```excel
+=SOUS.TOTAL(9; A1:A100)
+```
+
+### Somme d'heures
+
+Pour additionner des heures, formatez le resultat en [h]:mm :
+
+```excel
+=SOMME(A1:A10)
+```
+
+Format : [h]:mm:ss pour depasser 24h.
+
+## Erreurs courantes
+
+### #VALEUR!
+
+**Cause** : Argument non numerique
+
+**Solution** : Verifiez les references de cellules
+
+### Resultat inattendu
+
+**Causes possibles** :
+- Cellules formatees en texte
+- Espaces invisibles
+
+**Solution** :
+```excel
+=SOMME(CNUM(A1:A10))
+```
+
+## Comparaison des methodes
+
+| Methode | Usage | Exemple |
+|---------|-------|---------|
+| + | Quelques cellules | =A1+A2+A3 |
+| SOMME | Plages | =SOMME(A:A) |
+| SOMME.SI | Avec condition | =SOMME.SI(...) |
+| SOUS.TOTAL | Donnees filtrees | =SOUS.TOTAL(9;...) |
+| SOMMEPROD | Calculs matriciels | =SOMMEPROD(...) |
+
+## Bonnes pratiques
+
+1. **Utilisez des plages** : Plus robuste que des cellules individuelles
+2. **Evitez les colonnes entieres** : Sauf si necessaire (performances)
+3. **Nommez vos plages** : Pour plus de lisibilite
+4. **Verifiez le format** : Assurez-vous que les cellules sont numeriques
+
+[Decouvrir nos formations Excel](/formations-excel)

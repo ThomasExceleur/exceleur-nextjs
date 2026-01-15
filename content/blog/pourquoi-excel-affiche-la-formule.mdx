@@ -1,0 +1,149 @@
+---
+title: "Pourquoi Excel Affiche la Formule et Pas le Resultat"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Votre formule s'affiche en texte au lieu du resultat ? Voici toutes les causes et solutions a ce probleme courant."
+description: "Solutions au probleme d'Excel qui affiche la formule au lieu du resultat. Causes : format texte, mode formules, erreurs de syntaxe."
+category: "Depannage"
+categories: ["Depannage", "Formules Excel"]
+tags: ["Formules", "Depannage", "Erreurs", "Format texte"]
+---
+
+# Pourquoi Excel Affiche la Formule et Pas le Resultat
+
+Un probleme frustrant mais facile a resoudre : votre formule s'affiche en texte au lieu de calculer le resultat.
+
+## Cause 1 : Format Texte
+
+### Le probleme
+
+La cellule est formatee en "Texte", empechant Excel d'interpreter la formule.
+
+### Solution
+
+1. Selectionnez la cellule
+2. Onglet **Accueil** > **Format de nombre** > **Standard** ou **Nombre**
+3. **Appuyez sur F2** pour editer la cellule
+4. **Appuyez sur Entree** pour revalider
+
+### Verification
+
+Avant de taper votre formule, verifiez que la cellule n'est pas en format Texte (affiche dans le groupe Nombre).
+
+## Cause 2 : Mode Affichage des Formules
+
+### Le probleme
+
+Excel peut afficher toutes les formules au lieu des resultats.
+
+### Solution
+
+Appuyez sur **Ctrl + `** (accent grave, touche sous Echap)
+
+Ou : **Formules** > decochez **Afficher les formules**
+
+### Comment ca s'active par erreur
+
+Ce mode s'active avec un raccourci clavier accidentel ou depuis le menu Formules.
+
+## Cause 3 : Espace avant le signe =
+
+### Le probleme
+
+Un espace avant le = transforme la formule en texte.
+
+```
+ =SOMME(A1:A10)   ' Ne marche pas (espace avant)
+=SOMME(A1:A10)    ' Fonctionne
+```
+
+### Solution
+
+1. Editez la cellule (F2)
+2. Supprimez l'espace avant le =
+3. Validez avec Entree
+
+## Cause 4 : Apostrophe en debut
+
+### Le probleme
+
+Une apostrophe (') avant la formule la convertit en texte.
+
+```
+'=SOMME(A1:A10)   ' Affiche comme texte
+```
+
+### Solution
+
+1. Editez la cellule (F2)
+2. Supprimez l'apostrophe
+3. Validez
+
+### Pourquoi ca arrive
+
+L'apostrophe est parfois ajoutee automatiquement lors d'imports de donnees.
+
+## Cause 5 : Option de calcul
+
+### Le probleme
+
+Le calcul automatique peut etre desactive.
+
+### Solution
+
+1. **Formules** > **Options de calcul**
+2. Selectionnez **Automatique**
+
+Ou appuyez sur **F9** pour forcer le calcul.
+
+## Solutions rapides
+
+### Pour une seule cellule
+
+1. Appuyez sur **F2** (mode edition)
+2. Appuyez sur **Entree**
+
+La cellule est recalculee.
+
+### Pour plusieurs cellules
+
+1. Selectionnez toutes les cellules problematiques
+2. **Donnees** > **Texte en colonnes**
+3. **Terminer** directement
+4. Re-entrez les formules si necessaire
+
+### Convertir texte en nombre
+
+1. Dans une cellule vide, tapez **1**
+2. Copiez cette cellule
+3. Selectionnez les cellules problematiques
+4. **Collage special** > **Multiplication**
+
+## Prevention
+
+### Avant de taper une formule
+
+1. Verifiez le format de la cellule (pas "Texte")
+2. Commencez directement par =
+3. Ne mettez pas d'espace avant
+
+### Pour les imports
+
+1. Verifiez le format apres import
+2. Utilisez "Texte en colonnes" pour nettoyer
+
+## Tableau recapitulatif
+
+| Cause | Symptome | Solution |
+|-------|----------|----------|
+| Format Texte | Formule alignee a gauche | Changer format + F2 + Entree |
+| Mode Formules | Toutes les formules visibles | Ctrl + ` |
+| Espace avant = | Une cellule | Supprimer l'espace |
+| Apostrophe | Une cellule | Supprimer l'apostrophe |
+| Calcul manuel | Formules affichees | F9 ou passer en Automatique |
+
+## Astuce finale
+
+Si le probleme persiste, copiez le contenu de la cellule, supprimez la cellule, et retapez la formule dans une nouvelle cellule.
+
+[Decouvrir la formation Excel Avance](/formations-excel/excel-avance)

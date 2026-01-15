@@ -1,0 +1,210 @@
+---
+title: "Excel Renommer Tous les Fichiers d'un Dossier"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Utilisez Excel et VBA pour renommer plusieurs fichiers d'un dossier automatiquement."
+description: "Guide pour renommer des fichiers en masse avec Excel. Methodes manuelles et automatisees avec VBA."
+category: "Macros et VBA"
+categories: ["Macros et VBA", "Automatisation"]
+tags: ["VBA", "Fichiers", "Automatisation", "Renommer"]
+---
+
+# Renommer des Fichiers avec Excel
+
+Excel peut vous aider a preparer et executer le renommage de fichiers en masse.
+
+## Methode 1 : Preparation dans Excel
+
+### Lister les fichiers
+
+1. Ouvrez l'Invite de commandes
+2. Naviguez vers le dossier
+3. Tapez : `dir /b > liste.txt`
+4. Importez liste.txt dans Excel
+
+### Structure du tableau
+
+| Ancien nom | Nouveau nom |
+|------------|-------------|
+| fichier1.jpg | photo_001.jpg |
+| fichier2.jpg | photo_002.jpg |
+
+### Generer les commandes
+
+```excel
+="ren """&A1&""" """&B1&""""
+```
+
+### Executer
+
+1. Copiez les commandes generees
+2. Collez dans un fichier .bat
+3. Executez le fichier batch
+
+## Methode 2 : VBA automatise
+
+### Code complet
+
+```vba
+Sub RenommerFichiers()
+    Dim dossier As String
+    Dim ancien As String
+    Dim nouveau As String
+    Dim ligne As Long
+
+    ' Dossier contenant les fichiers
+    dossier = "C:\MonDossier\"
+
+    ' Parcourir les lignes
+    For ligne = 2 To Cells(Rows.Count, 1).End(xlUp).Row
+        ancien = Cells(ligne, 1).Value
+        nouveau = Cells(ligne, 2).Value
+
+        ' Renommer
+        On Error Resume Next
+        Name dossier & ancien As dossier & nouveau
+        On Error GoTo 0
+    Next ligne
+
+    MsgBox "Renommage termine!"
+End Sub
+```
+
+### Utilisation
+
+1. Preparez le tableau (ancien nom, nouveau nom)
+2. Modifiez le chemin du dossier
+3. Executez la macro
+
+## Methode 3 : Avec FileSystemObject
+
+### Code avance
+
+```vba
+Sub RenommerAvecFSO()
+    Dim fso As Object
+    Dim dossier As String
+    Dim ligne As Long
+
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    dossier = "C:\MonDossier\"
+
+    For ligne = 2 To Cells(Rows.Count, 1).End(xlUp).Row
+        If fso.FileExists(dossier & Cells(ligne, 1).Value) Then
+            fso.MoveFile dossier & Cells(ligne, 1).Value, _
+                         dossier & Cells(ligne, 2).Value
+        End If
+    Next ligne
+
+    Set fso = Nothing
+    MsgBox "Renommage termine!"
+End Sub
+```
+
+## Generer les nouveaux noms
+
+### Numerotation sequentielle
+
+```excel
+="photo_"&TEXTE(LIGNE()-1;"000")&".jpg"
+```
+
+### Ajouter une date
+
+```excel
+=TEXTE(AUJOURDHUI();"AAAA-MM-DD")&"_"&A1
+```
+
+### Remplacer du texte
+
+```excel
+=SUBSTITUE(A1;"ancien";"nouveau")
+```
+
+### Nettoyer les noms
+
+```excel
+=SUBSTITUE(SUBSTITUE(A1;" ";"_");"'";"")
+```
+
+## Verification avant renommage
+
+### Detecter les doublons
+
+```excel
+=NB.SI(B:B;B1)>1
+```
+
+### Verifier la longueur
+
+```excel
+=SI(NBCAR(B1)>255;"Trop long";"OK")
+```
+
+### Caracteres interdits
+
+Evitez : \ / : * ? " < > |
+
+## Securite
+
+### Sauvegarde
+
+Faites une copie du dossier avant de renommer.
+
+### Test sur un echantillon
+
+Testez d'abord sur quelques fichiers.
+
+### Annulation
+
+Le renommage est reversible si vous gardez la correspondance ancien/nouveau.
+
+## Methode avec Power Query
+
+### Lister les fichiers
+
+1. **Donnees** > **Obtenir des donnees** > **A partir d'un dossier**
+2. Selectionnez le dossier
+3. Transformez pour garder uniquement les noms
+
+### Avantages
+
+- Actualisation automatique
+- Pas de code VBA
+
+## Cas pratiques
+
+### Photos
+
+- Renommer avec la date EXIF
+- Ajouter un prefixe de projet
+- Numerotation continue
+
+### Documents
+
+- Standardiser les noms
+- Ajouter des versions
+- Organiser par categorie
+
+## Erreurs courantes
+
+### Fichier en cours d'utilisation
+
+Fermez tous les fichiers avant le renommage.
+
+### Droits insuffisants
+
+Executez en tant qu'administrateur si necessaire.
+
+### Caracteres speciaux
+
+Certains caracteres sont interdits dans les noms de fichiers.
+
+## Bonnes pratiques
+
+1. **Sauvegardez** avant de renommer
+2. **Testez** sur un petit echantillon
+3. **Verifiez** les nouveaux noms
+4. **Conservez** la correspondance ancien/nouveau
+
+[Decouvrir nos formations Excel](/formations-excel)

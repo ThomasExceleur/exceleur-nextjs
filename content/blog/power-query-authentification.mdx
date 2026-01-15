@@ -1,0 +1,154 @@
+---
+title: "Power Query : Authentification et Connexions Securisees"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Configurez l'authentification pour vos connexions Power Query."
+description: "Guide d'authentification et connexions securisees Power Query."
+category: "Power Query"
+categories: ["Power Query", "Securite"]
+tags: ["Power Query", "Authentification", "Securite", "Connexions"]
+---
+
+# Power Query : Authentification et Connexions Securisees
+
+Connectez-vous en toute securite a vos sources de donnees.
+
+## Types d'authentification
+
+### Anonyme
+
+Pas d'authentification requise.
+
+### Windows
+
+Utilise les credentials Windows actuels.
+
+### Base
+
+Nom d'utilisateur et mot de passe.
+
+### Organisationnelle
+
+Compte Microsoft 365 / Azure AD.
+
+### OAuth2
+
+Authentification via un fournisseur tiers.
+
+## Configurer l'authentification
+
+### Premiere connexion
+
+1. Connectez-vous a une source
+2. Power Query demande l'authentification
+3. Choisissez la methode
+4. Entrez les credentials
+
+### Modifier l'authentification
+
+1. **Fichier** > **Options** > **Parametres de source de donnees**
+2. Selectionnez la source
+3. **Modifier les autorisations**
+
+## Sources web
+
+### API REST avec cle
+
+1. Selectionnez **Anonyme** ou **Basique**
+2. Ajoutez la cle dans l'en-tete
+
+### Ajouter un en-tete
+
+```m
+Web.Contents(
+    "https://api.exemple.com/data",
+    [
+        Headers=[
+            #"Authorization"="Bearer VOTRE_CLE",
+            #"Content-Type"="application/json"
+        ]
+    ]
+)
+```
+
+## Bases de donnees
+
+### SQL Server
+
+| Methode | Usage |
+|---------|-------|
+| Windows | Domaine d'entreprise |
+| SQL Server | Compte SQL specifique |
+| Azure AD | Cloud Microsoft |
+
+### Connection string
+
+```m
+Sql.Database(
+    "serveur.database.windows.net",
+    "NomBDD",
+    [Query="SELECT * FROM Table"]
+)
+```
+
+## SharePoint et OneDrive
+
+### Authentification
+
+Utilisez le compte organisationnel (Microsoft 365).
+
+### Connexion
+
+```m
+SharePoint.Files("https://entreprise.sharepoint.com/sites/MonSite")
+```
+
+## Gestion des credentials
+
+### Stockage
+
+Les credentials sont stockes localement de maniere securisee.
+
+### Effacer les credentials
+
+1. **Parametres de source de donnees**
+2. Selectionnez la source
+3. **Effacer les autorisations**
+
+## Niveaux de confidentialite
+
+### Types
+
+| Niveau | Description |
+|--------|-------------|
+| Public | Donnees non sensibles |
+| Organisationnel | Donnees internes |
+| Prive | Donnees confidentielles |
+
+### Configuration
+
+1. **Parametres de source de donnees**
+2. **Modifier les niveaux de confidentialite**
+
+### Impact
+
+Empeche la combinaison de sources incompatibles.
+
+## Erreurs courantes
+
+| Erreur | Solution |
+|--------|----------|
+| Acces refuse | Verifiez les credentials |
+| Certificat | Ajoutez une exception |
+| Timeout | Verifiez la connexion reseau |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Credentials securises | Ne les stockez pas en clair |
+| Compte de service | Pour les connexions automatisees |
+| Audit | Tracez les acces |
+| Rotation | Changez regulierement les mots de passe |
+
+[Decouvrir nos formations Excel](/formations-excel)

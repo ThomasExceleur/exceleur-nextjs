@@ -1,0 +1,89 @@
+---
+title: "Excel : Fractionner du Texte dans Plusieurs Cellules"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Divisez du texte en plusieurs colonnes dans Excel."
+description: "Guide pour fractionner du texte dans plusieurs cellules Excel."
+category: "Manipulation de donnees"
+categories: ["Manipulation de donnees", "Astuces Excel"]
+tags: ["Fractionner", "Texte", "Colonnes", "Excel"]
+---
+
+# Fractionner du Texte en Plusieurs Cellules
+
+Divisez vos donnees textuelles en colonnes.
+
+## Methode 1 : Convertir
+
+### Assistant
+
+1. Selectionnez les cellules
+2. **Donnees** > **Convertir**
+3. Choisissez le type de separation
+
+### Types de separation
+
+| Type | Exemple |
+|------|---------|
+| Delimiteur | Virgule, espace, point-virgule |
+| Largeur fixe | Position precise |
+
+## Methode 2 : STXT et autres
+
+### STXT (Extraire)
+
+```excel
+=STXT(A1;debut;nb_caracteres)
+```
+
+### GAUCHE / DROITE
+
+```excel
+=GAUCHE(A1;5)
+=DROITE(A1;3)
+```
+
+## Methode 3 : TEXTE.SEPARER (Excel 365)
+
+### Syntaxe
+
+```excel
+=TEXTE.SEPARER(A1;" ")
+```
+
+### Avantage
+
+Retourne un tableau dynamique.
+
+## Methode 4 : Ctrl+E (Flash Fill)
+
+### Etapes
+
+1. Tapez le resultat souhaite
+2. Descendez d'une cellule
+3. **Ctrl+E**
+
+## Exemples pratiques
+
+### Separer prenom et nom
+
+| Avant | Formule | Resultat |
+|-------|---------|----------|
+| Jean Dupont | `=GAUCHE(A1;TROUVE(" ";A1)-1)` | Jean |
+| Jean Dupont | `=DROITE(A1;NBCAR(A1)-TROUVE(" ";A1))` | Dupont |
+
+### Separer par virgule
+
+```excel
+=TEXTE.SEPARER(A1;",")
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Sauvegarde | Gardez l'original |
+| Delimiteur constant | Verifiez la coherence |
+| Test | Testez sur un echantillon |
+
+[Decouvrir nos formations Excel](/formations-excel)

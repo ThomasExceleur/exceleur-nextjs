@@ -1,0 +1,204 @@
+---
+title: "Creez votre Diagramme de Gantt Excel Interactif"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Tutoriel pas a pas pour creer un Gantt interactif dans Excel."
+description: "Creez votre propre diagramme de Gantt interactif dans Excel."
+category: "Graphiques"
+categories: ["Graphiques", "Productivite"]
+tags: ["Gantt", "Interactif", "Projet", "Tutoriel"]
+---
+
+# Creez votre Diagramme de Gantt Interactif
+
+Suivez ce tutoriel pour creer un Gantt professionnel et interactif.
+
+## Objectif final
+
+Un diagramme de Gantt avec :
+- Barres de progression
+- Filtres par responsable
+- Ligne de date actuelle
+- Mise a jour automatique
+
+## Etape 1 : Structurer les donnees
+
+### Creer le tableau
+
+| Tache | Responsable | Debut | Duree | Fin | Progression | Statut |
+|-------|-------------|-------|-------|-----|-------------|--------|
+| | | | | | | |
+
+### Formules automatiques
+
+**Date de fin :**
+```excel
+=[@Debut]+[@Duree]-1
+```
+
+**Statut automatique :**
+```excel
+=SI([@Progression]=100%;"Termine";
+  SI([@Fin]<AUJOURDHUI();"En retard";
+    SI([@Debut]<=AUJOURDHUI();"En cours";"A faire")))
+```
+
+### Convertir en tableau
+
+1. Selectionnez les donnees
+2. **Ctrl+T**
+3. Nommez le tableau : "Projet"
+
+## Etape 2 : Creer le graphique de base
+
+### Preparer les donnees pour le graphique
+
+Ajoutez des colonnes auxiliaires :
+
+**Decalage depuis debut projet :**
+```excel
+=[@Debut]-MIN(Projet[Debut])
+```
+
+**Duree progression :**
+```excel
+=[@Duree]*[@Progression]
+```
+
+### Inserer le graphique
+
+1. Selectionnez Taches, Decalage et Duree
+2. **Insertion** > **Barres empilees**
+3. Ajoutez la serie "Duree progression"
+
+### Masquer la premiere serie
+
+1. Cliquez sur les barres de decalage
+2. **Remplissage** > **Aucun remplissage**
+
+## Etape 3 : Personnaliser le graphique
+
+### Inverser l'ordre des taches
+
+1. Clic droit sur l'axe vertical
+2. **Format de l'axe**
+3. Cochez **Categories dans l'ordre inverse**
+
+### Couleurs
+
+| Serie | Couleur |
+|-------|---------|
+| Duree totale | Gris clair |
+| Progression | Bleu |
+
+### Etiquettes
+
+Ajoutez les noms des taches sur les barres.
+
+## Etape 4 : Ajouter la ligne de date actuelle
+
+### Creer une serie
+
+1. Ajoutez une colonne "Aujourd'hui"
+2. Formule pour la premiere ligne : `=AUJOURDHUI()-MIN(Projet[Debut])`
+3. Ajoutez cette serie au graphique
+
+### Formater en ligne
+
+1. Selectionnez la serie
+2. **Changer le type** > **Ligne avec marqueur**
+3. Style : ligne verticale rouge pointillee
+
+## Etape 5 : Ajouter l'interactivite
+
+### Inserer des segments
+
+1. Cliquez dans le tableau
+2. **Insertion** > **Segment**
+3. Selectionnez : Responsable, Statut
+
+### Connecter au graphique
+
+Les segments filtrent automatiquement le tableau lie au graphique.
+
+### Style des segments
+
+Personnalisez les couleurs pour correspondre a votre charte.
+
+## Etape 6 : Ajouter des KPI
+
+### Zone de resume
+
+| KPI | Formule |
+|-----|---------|
+| Total taches | `=LIGNES(Projet)` |
+| Terminees | `=NB.SI(Projet[Statut];"Termine")` |
+| En retard | `=NB.SI(Projet[Statut];"En retard")` |
+| Avancement | `=MOYENNE(Projet[Progression])` |
+
+### Format conditionnel
+
+Utilisez des barres de donnees ou des icones.
+
+## Etape 7 : Mise en forme finale
+
+### Masquer les elements inutiles
+
+- Quadrillage
+- Lignes de construction
+- En-tetes de colonnes auxiliaires
+
+### Proteger la feuille
+
+1. Debloquebz les cellules de saisie
+2. **Revision** > **Proteger la feuille**
+
+### Ajouter un titre
+
+Incluez la date de derniere mise a jour.
+
+## Utilisation quotidienne
+
+### Ajouter une tache
+
+1. Ajoutez une ligne au tableau
+2. Le graphique se met a jour
+
+### Mettre a jour la progression
+
+1. Modifiez le pourcentage
+2. Le statut et le graphique s'actualisent
+
+### Filtrer
+
+Utilisez les segments pour voir les taches d'un responsable.
+
+## Ameliorations possibles
+
+### Avec VBA
+
+- Bouton "Actualiser"
+- Rappels par email
+- Export automatique
+
+### Avec Power BI
+
+Pour des projets plus complexes avec plus de 50 taches.
+
+## Fichier modele
+
+Sauvegardez votre Gantt vide comme modele :
+
+1. Supprimez les donnees de test
+2. **Fichier** > **Enregistrer sous** > **Modele Excel (.xltx)**
+
+## Bonnes pratiques
+
+| Pratique | Avantage |
+|----------|----------|
+| Tableau structure | Mise a jour auto |
+| Formules | Coherence |
+| Segments | Filtrage facile |
+| Protection | Evite les erreurs |
+
+[Decouvrir nos formations Excel](/formations-excel)

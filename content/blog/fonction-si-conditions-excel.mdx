@@ -1,0 +1,217 @@
+---
+title: "Fonction SI et Conditions dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maitrisez la fonction SI et toutes les conditions logiques Excel."
+description: "Guide complet de la fonction SI et des conditions dans Excel."
+category: "Formules Excel"
+categories: ["Formules Excel", "Logique"]
+tags: ["SI", "Conditions", "Logique", "Formules"]
+---
+
+# Fonction SI et Conditions dans Excel
+
+La fonction SI est fondamentale pour creer des formules conditionnelles.
+
+## Syntaxe de base
+
+```excel
+=SI(condition;valeur_si_vrai;valeur_si_faux)
+```
+
+## Exemple simple
+
+```excel
+=SI(A1>10;"Grand";"Petit")
+```
+
+Si A1 est superieur a 10, retourne "Grand", sinon "Petit".
+
+## Operateurs de comparaison
+
+| Operateur | Signification |
+|-----------|---------------|
+| `=` | Egal a |
+| `<>` | Different de |
+| `>` | Superieur a |
+| `<` | Inferieur a |
+| `>=` | Superieur ou egal |
+| `<=` | Inferieur ou egal |
+
+## SI imbrique
+
+### Syntaxe
+
+```excel
+=SI(condition1;resultat1;
+  SI(condition2;resultat2;
+    resultat_defaut))
+```
+
+### Exemple
+
+```excel
+=SI(Note>=90;"A";
+  SI(Note>=80;"B";
+    SI(Note>=70;"C";
+      SI(Note>=60;"D";"F"))))
+```
+
+### Limite
+
+Maximum 64 niveaux d'imbrication (pratiquement 7-8 restent lisibles).
+
+## SI.CONDITIONS (Excel 365)
+
+### Syntaxe
+
+```excel
+=SI.CONDITIONS(
+  condition1;resultat1;
+  condition2;resultat2;
+  condition3;resultat3;
+  VRAI;resultat_defaut
+)
+```
+
+### Exemple
+
+```excel
+=SI.CONDITIONS(
+  Note>=90;"A";
+  Note>=80;"B";
+  Note>=70;"C";
+  Note>=60;"D";
+  VRAI;"F"
+)
+```
+
+Plus lisible que les SI imbriques.
+
+## Combiner avec ET, OU
+
+### ET (toutes les conditions)
+
+```excel
+=SI(ET(A1>10;B1<20);"OK";"NON")
+```
+
+### OU (au moins une condition)
+
+```excel
+=SI(OU(A1="Rouge";A1="Bleu");"Couleur primaire";"Autre")
+```
+
+### Combinaison
+
+```excel
+=SI(ET(OU(A1="A";A1="B");B1>100);"Valid";"Invalid")
+```
+
+## NON (negation)
+
+### Syntaxe
+
+```excel
+=SI(NON(A1="X");"Pas X";"X")
+```
+
+### Equivalent
+
+```excel
+=SI(A1<>"X";"Pas X";"X")
+```
+
+## Cas pratiques
+
+### Calcul de remise
+
+```excel
+=SI(Quantite>=100;Prix*0,9;
+  SI(Quantite>=50;Prix*0,95;Prix))
+```
+
+### Classification client
+
+```excel
+=SI(CA>=10000;"VIP";
+  SI(CA>=5000;"Premium";"Standard"))
+```
+
+### Validation de donnees
+
+```excel
+=SI(ET(Age>=18;Age<=65);"Eligible";"Non eligible")
+```
+
+### Statut de commande
+
+```excel
+=SI(Date_livraison<AUJOURDHUI();
+  "Livre";
+  SI(Date_expedition<>"";"En transit";"En attente"))
+```
+
+## SI avec texte
+
+### Verifier si vide
+
+```excel
+=SI(A1="";"Vide";"Rempli")
+=SI(ESTVIDE(A1);"Vide";"Rempli")
+```
+
+### Comparer du texte
+
+```excel
+=SI(A1="oui";"Accepte";"Refuse")
+```
+
+Note : La comparaison n'est pas sensible a la casse.
+
+## SI avec dates
+
+### Date passee
+
+```excel
+=SI(A1<AUJOURDHUI();"Passe";"Futur")
+```
+
+### Dans les 7 jours
+
+```excel
+=SI(ET(A1>=AUJOURDHUI();A1<=AUJOURDHUI()+7);"Cette semaine";"Plus tard")
+```
+
+## Gestion des erreurs
+
+### SIERREUR
+
+```excel
+=SIERREUR(A1/B1;"Division impossible")
+```
+
+### SI + ESTERREUR
+
+```excel
+=SI(ESTERREUR(RECHERCHEV(...));"Non trouve";RECHERCHEV(...))
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Lisibilite | Evitez plus de 3-4 imbrications |
+| SI.CONDITIONS | Preferez pour plusieurs conditions |
+| Documentation | Commentez les logiques complexes |
+| Tests | Verifiez tous les cas |
+
+## Erreurs courantes
+
+| Erreur | Cause | Solution |
+|--------|-------|----------|
+| #VALEUR! | Types incompatibles | Verifiez les donnees |
+| Resultat inattendu | Ordre des conditions | Condition stricte d'abord |
+| Parentheses | Mauvais appariement | Comptez les parentheses |
+
+[Decouvrir nos formations Excel](/formations-excel)

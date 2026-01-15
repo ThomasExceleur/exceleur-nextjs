@@ -1,0 +1,94 @@
+---
+title: "RECHERCHEV Avancee"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Techniques avancees pour maitriser RECHERCHEV."
+description: "Guide des techniques avancees de RECHERCHEV dans Excel."
+category: "Fonctions"
+categories: ["Fonctions", "Recherche"]
+tags: ["RECHERCHEV", "Avance", "Recherche", "Excel"]
+---
+
+# RECHERCHEV Avancee
+
+Allez plus loin avec RECHERCHEV.
+
+## Rappel syntaxe
+
+```excel
+=RECHERCHEV(valeur;tableau;col;[correspondance])
+```
+
+## Multi-criteres
+
+### Concatenation
+
+```excel
+=RECHERCHEV(A1&B1;tableau;3;FAUX)
+```
+
+Necessite une colonne helper concatenee.
+
+## Recherche a gauche
+
+### RECHERCHEV ne peut pas
+
+RECHERCHEV cherche toujours dans la premiere colonne.
+
+### Solution INDEX+EQUIV
+
+```excel
+=INDEX(A:A;EQUIV(val;B:B;0))
+```
+
+## Gerer les erreurs
+
+### SIERREUR
+
+```excel
+=SIERREUR(RECHERCHEV(...);"Non trouve")
+```
+
+### SI.NON.DISP
+
+```excel
+=SI.NON.DISP(RECHERCHEV(...);"Valeur par defaut")
+```
+
+## Correspondance approximative
+
+### 4eme argument VRAI
+
+```excel
+=RECHERCHEV(100;A:B;2;VRAI)
+```
+
+Trouve la plus grande valeur inferieure ou egale.
+
+### Prerequis
+
+Les donnees doivent etre triees.
+
+## RECHERCHEV avec caracteres joker
+
+### Utilisation
+
+```excel
+=RECHERCHEV("*Paris*";A:B;2;FAUX)
+=RECHERCHEV("Dupon?";A:B;2;FAUX)
+```
+
+| Joker | Signification |
+|-------|---------------|
+| `*` | N'importe quels caracteres |
+| `?` | Un caractere quelconque |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| FAUX | Preferez correspondance exacte |
+| Tableaux | Utilisez des references structurees |
+| Migration | Passez a RECHERCHEX si possible |
+
+[Decouvrir nos formations Excel](/formations-excel)

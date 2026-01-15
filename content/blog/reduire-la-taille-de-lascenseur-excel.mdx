@@ -1,0 +1,103 @@
+---
+title: "Excel : Reduire la Taille de l'Ascenseur"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Comment corriger un ascenseur trop large ou trop petit dans Excel."
+description: "Solutions pour ajuster la taille de l'ascenseur dans Excel. Nettoyage de feuille."
+category: "Depannage"
+categories: ["Depannage", "Astuces Excel"]
+tags: ["Ascenseur", "Scrollbar", "Nettoyage", "Depannage"]
+---
+
+# Reduire la Taille de l'Ascenseur Excel
+
+L'ascenseur (barre de defilement) d'Excel peut devenir tres petit quand la zone utilisee est trop etendue.
+
+## Comprendre le probleme
+
+### Cause principale
+
+Excel calcule la taille de l'ascenseur en fonction de la zone utilisee. Si des cellules sont formatees ou contiennent des donnees loin de votre zone de travail, l'ascenseur devient minuscule.
+
+## Solution rapide
+
+### Etape 1 : Identifier la derniere cellule
+
+Appuyez sur **Ctrl + Fin** pour voir ou Excel pense que vos donnees se terminent.
+
+### Etape 2 : Supprimer les lignes inutiles
+
+1. Selectionnez la premiere ligne vide apres vos donnees
+2. **Ctrl + Shift + Fin** pour selectionner jusqu'a la fin
+3. Clic droit > **Supprimer**
+
+### Etape 3 : Supprimer les colonnes inutiles
+
+1. Selectionnez la premiere colonne vide apres vos donnees
+2. **Ctrl + Shift + Fin** pour selectionner jusqu'a la fin
+3. Clic droit > **Supprimer**
+
+### Etape 4 : Sauvegarder
+
+Sauvegardez et rouvrez le fichier.
+
+## Methode VBA
+
+### Reinitialiser la zone utilisee
+
+```vba
+Sub NettoyerFeuille()
+    Dim ws As Worksheet
+    Set ws = ActiveSheet
+
+    ' Derniere ligne avec donnees
+    Dim derLigne As Long
+    derLigne = ws.Cells.Find("*", SearchOrder:=xlByRows, SearchDirection:=xlPrevious).Row
+
+    ' Derniere colonne avec donnees
+    Dim derCol As Long
+    derCol = ws.Cells.Find("*", SearchOrder:=xlByColumns, SearchDirection:=xlPrevious).Column
+
+    ' Supprimer les lignes apres
+    ws.Rows(derLigne + 1 & ":" & ws.Rows.Count).Delete
+
+    ' Supprimer les colonnes apres
+    ws.Columns(derCol + 1 & ":" & ws.Columns.Count).Delete
+End Sub
+```
+
+## Effacer le formatage
+
+### Methode
+
+1. Selectionnez les cellules vides (apres vos donnees)
+2. **Accueil** > **Effacer** > **Effacer tout**
+3. Sauvegardez
+
+## Verifier les objets
+
+### Volet de selection
+
+1. **Accueil** > **Rechercher** > **Volet de selection**
+2. Identifiez les objets eloignes
+3. Supprimez ou deplacez-les
+
+## Prevention
+
+### Bonnes pratiques
+
+| A eviter | A preferer |
+|----------|------------|
+| Formater colonnes entieres | Formater les cellules utilisees |
+| Ctrl+Shift+Fin sans verifier | Selectionner precisement |
+| Copier avec formatage | Coller valeurs |
+
+## Raccourcis utiles
+
+| Raccourci | Action |
+|-----------|--------|
+| Ctrl + Fin | Derniere cellule utilisee |
+| Ctrl + Home | Retour en A1 |
+| Ctrl + Shift + Fin | Selectionner jusqu'a la fin |
+
+[Decouvrir nos formations Excel](/formations-excel)

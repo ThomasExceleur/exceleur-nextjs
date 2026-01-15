@@ -1,0 +1,198 @@
+---
+title: "Excel Ou Mettre Les Donnees : Bonnes Pratiques"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez ou placer vos donnees dans Excel pour une organisation optimale."
+description: "Guide des bonnes pratiques pour organiser vos donnees dans Excel. Structure et conseils."
+category: "Astuces Excel"
+categories: ["Astuces Excel", "Productivite"]
+tags: ["Organisation", "Donnees", "Structure", "Bonnes pratiques"]
+---
+
+# Ou Mettre les Donnees dans Excel
+
+Une bonne organisation des donnees est essentielle pour un fichier Excel efficace.
+
+## Structure recommandee
+
+### Une feuille = une fonction
+
+| Feuille | Contenu |
+|---------|---------|
+| Donnees | Donnees brutes |
+| Parametres | Constantes et listes |
+| Calculs | Formules et analyses |
+| Rapport | Resultats et graphiques |
+
+## Feuille de donnees
+
+### Structure ideale
+
+1. **En-tetes en ligne 1** : noms de colonnes clairs
+2. **Donnees a partir de la ligne 2** : une ligne = un enregistrement
+3. **Pas de lignes vides** : donnees continues
+4. **Pas de cellules fusionnees** : structure tabulaire
+
+### Exemple
+
+| Date | Client | Produit | Quantite | Montant |
+|------|--------|---------|----------|---------|
+| 01/01 | Client A | Produit 1 | 10 | 100 |
+| 02/01 | Client B | Produit 2 | 5 | 50 |
+
+## Feuille de parametres
+
+### Contenu
+
+- Constantes (taux TVA, seuils, etc.)
+- Listes pour menus deroulants
+- Tables de reference
+
+### Exemple
+
+| Parametre | Valeur |
+|-----------|--------|
+| Taux_TVA | 20% |
+| Seuil_alerte | 1000 |
+| Date_debut | 01/01/2024 |
+
+### Nommer les cellules
+
+1. Selectionnez la cellule
+2. **Formules** > **Definir un nom**
+3. Utilisez ce nom dans vos formules
+
+## Feuille de calculs
+
+### Placement des formules
+
+- Referez aux donnees avec des formules
+- Utilisez les plages nommees
+- Documentez les calculs complexes
+
+### Bonnes pratiques
+
+```excel
+=SOMME(Donnees[Montant])           ' Reference au tableau
+=Total_ventes * Parametres!$B$2    ' Reference nommee
+```
+
+## Tableaux structures
+
+### Avantages
+
+- Expansion automatique
+- References structurees
+- Filtres integres
+
+### Creer un tableau
+
+1. Selectionnez vos donnees
+2. **Ctrl + T**
+3. Nommez le tableau
+
+## Ou placer les formules
+
+### A cote des donnees
+
+```
+A : Donnees
+B : Calculs sur A
+```
+
+### Dans une zone separee
+
+```
+A1:E100 : Donnees
+G1:J20 : Resume et calculs
+```
+
+### Dans une feuille dediee
+
+```
+Feuille "Donnees" : donnees brutes
+Feuille "Analyse" : formules et TCD
+```
+
+## Organisation par projet
+
+### Petit projet
+
+Un seul fichier avec plusieurs feuilles.
+
+### Projet moyen
+
+```
+- Fichier principal (formules et analyses)
+- Fichier de donnees (donnees brutes)
+```
+
+### Grand projet
+
+```
+- Dossier projet/
+  - Donnees/
+  - Rapports/
+  - Archives/
+```
+
+## Ce qu'il faut eviter
+
+### Mauvaises pratiques
+
+1. **Donnees dispersees** : donnees eparpillees sur plusieurs feuilles
+2. **Cellules fusionnees** : problemes avec les formules
+3. **Lignes vides** : casse les plages et filtres
+4. **Melanger donnees et calculs** : difficile a maintenir
+
+### Exemples a eviter
+
+```
+' MAL : donnees et calculs melanges
+A1: Janvier
+A2: 100
+A3: (vide)
+A4: Total: 100
+```
+
+## Bonnes pratiques de nommage
+
+### Feuilles
+
+- Noms courts et explicites
+- Pas de caracteres speciaux
+- Prefixes pour le tri (01_Donnees, 02_Calculs)
+
+### Plages nommees
+
+- Noms en minuscules avec underscore
+- Explicites (total_ventes, taux_tva)
+- Pas d'espaces
+
+## Documentation
+
+### Commenter vos fichiers
+
+1. Ajoutez une feuille "Readme"
+2. Documentez la structure
+3. Expliquez les formules complexes
+
+### Feuille Readme
+
+| Element | Description |
+|---------|-------------|
+| Auteur | Votre nom |
+| Date creation | Date |
+| Objectif | Description du fichier |
+| Sources | Origine des donnees |
+
+## Resume
+
+| Quoi | Ou |
+|------|-----|
+| Donnees brutes | Feuille dediee, format tableau |
+| Parametres | Feuille separee, cellules nommees |
+| Calculs | A cote ou feuille dediee |
+| Resultats | Feuille rapport |
+
+[Decouvrir nos formations Excel](/formations-excel)

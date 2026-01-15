@@ -1,0 +1,191 @@
+---
+title: "Excel Afficher le Jour de la Semaine"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez a afficher le jour de la semaine a partir d'une date dans Excel."
+description: "Guide pour afficher le jour de la semaine dans Excel. Fonctions JOURSEM, TEXTE et formats personnalises."
+category: "Dates"
+categories: ["Dates", "Formules Excel"]
+tags: ["Jour", "Date", "Semaine", "Format"]
+---
+
+# Afficher le Jour de la Semaine dans Excel
+
+Plusieurs methodes permettent d'obtenir le jour de la semaine a partir d'une date.
+
+## Methode 1 : Format personnalise
+
+### Afficher le jour complet
+
+1. Selectionnez la cellule avec la date
+2. **Ctrl + 1** (Format de cellule)
+3. **Personnalisee**
+4. Tapez : `jjjj`
+
+### Formats disponibles
+
+| Format | Resultat |
+|--------|----------|
+| `j` | Jour (1-31) |
+| `jj` | Jour sur 2 chiffres (01-31) |
+| `jjj` | Jour abrege (lun, mar...) |
+| `jjjj` | Jour complet (lundi, mardi...) |
+
+### Combiner avec la date
+
+```
+jjjj jj/mm/aaaa
+```
+
+Affiche : lundi 15/01/2024
+
+## Methode 2 : Fonction TEXTE
+
+### Syntaxe
+
+```excel
+=TEXTE(date; "jjjj")
+```
+
+### Exemples
+
+```excel
+=TEXTE(A1; "jjjj")      ' lundi
+=TEXTE(A1; "jjj")       ' lun
+=TEXTE(AUJOURDHUI(); "jjjj")  ' Jour actuel
+```
+
+### Avantage
+
+Le resultat est du texte utilisable dans des concatenations.
+
+```excel
+="Nous sommes "&TEXTE(AUJOURDHUI();"jjjj")
+```
+
+## Methode 3 : Fonction JOURSEM
+
+### Syntaxe
+
+```excel
+=JOURSEM(date; [type])
+```
+
+### Types de retour
+
+| Type | Dimanche | Lundi |
+|------|----------|-------|
+| 1 (defaut) | 1 | 2 |
+| 2 | 7 | 1 |
+| 3 | 6 | 0 |
+
+### Exemples
+
+```excel
+=JOURSEM(A1)       ' 1=Dim, 2=Lun... 7=Sam
+=JOURSEM(A1; 2)    ' 1=Lun, 2=Mar... 7=Dim
+```
+
+## Convertir le numero en nom
+
+### Avec CHOISIR
+
+```excel
+=CHOISIR(JOURSEM(A1;2);"Lundi";"Mardi";"Mercredi";"Jeudi";"Vendredi";"Samedi";"Dimanche")
+```
+
+### Avec INDEX
+
+```excel
+=INDEX({"Lundi";"Mardi";"Mercredi";"Jeudi";"Vendredi";"Samedi";"Dimanche"};JOURSEM(A1;2))
+```
+
+## Cas pratiques
+
+### Identifier les week-ends
+
+```excel
+=SI(OU(JOURSEM(A1)=1;JOURSEM(A1)=7);"Weekend";"Semaine")
+```
+
+### Identifier les jours ouvres
+
+```excel
+=SI(ET(JOURSEM(A1;2)>=1;JOURSEM(A1;2)<=5);"Ouvre";"Ferme")
+```
+
+### Mise en forme conditionnelle
+
+Colorez les week-ends en gris :
+1. Selectionnez la plage de dates
+2. **Mise en forme conditionnelle** > **Nouvelle regle**
+3. Formule : `=OU(JOURSEM(A1)=1;JOURSEM(A1)=7)`
+4. Format : fond gris
+
+## Premier jour de la semaine
+
+### Trouver le lundi de la semaine
+
+```excel
+=A1-JOURSEM(A1;2)+1
+```
+
+### Trouver le dimanche de la semaine
+
+```excel
+=A1-JOURSEM(A1;2)+7
+```
+
+## Numero de semaine
+
+### Fonction NO.SEMAINE
+
+```excel
+=NO.SEMAINE(A1)
+```
+
+### Norme ISO
+
+```excel
+=NO.SEMAINE.ISO(A1)
+```
+
+## Langues
+
+### Francais par defaut
+
+Le jour s'affiche dans la langue de votre Excel.
+
+### Forcer une langue
+
+Modifiez les parametres regionaux de Windows.
+
+## Comparaison des methodes
+
+| Methode | Resultat | Type |
+|---------|----------|------|
+| Format jjjj | lundi | Affichage |
+| TEXTE | "lundi" | Texte |
+| JOURSEM | 2 | Nombre |
+
+## Erreurs courantes
+
+### Date en texte
+
+Si la date est stockee comme texte, convertissez-la d'abord :
+
+```excel
+=TEXTE(DATEVAL(A1);"jjjj")
+```
+
+### Mauvais type JOURSEM
+
+Verifiez le parametre type selon vos besoins.
+
+## Bonnes pratiques
+
+1. **Format** pour l'affichage simple
+2. **TEXTE** pour les concatenations
+3. **JOURSEM** pour les calculs et conditions
+
+[Decouvrir nos formations Excel](/formations-excel)

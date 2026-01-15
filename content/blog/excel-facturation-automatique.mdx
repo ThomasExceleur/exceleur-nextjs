@@ -1,0 +1,231 @@
+---
+title: "Excel Facturation Automatique : Guide Complet"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Automatisez votre facturation dans Excel avec ce guide complet."
+description: "Guide pour creer un systeme de facturation automatique dans Excel. Modeles et formules."
+category: "Comptabilite"
+categories: ["Comptabilite", "Automatisation"]
+tags: ["Facturation", "Facture", "Automatisation", "Comptabilite"]
+---
+
+# Facturation Automatique dans Excel
+
+Automatisez votre facturation pour gagner du temps et eviter les erreurs.
+
+## Structure de la facture
+
+### En-tete entreprise
+
+| Element | Description |
+|---------|-------------|
+| Logo | Image de l'entreprise |
+| Raison sociale | Nom de l'entreprise |
+| Adresse | Coordonnees completes |
+| SIRET | Numero d'identification |
+| TVA intracommunautaire | Numero TVA |
+
+### Informations facture
+
+| Element | Exemple |
+|---------|---------|
+| Numero facture | FAC-2024-0001 |
+| Date emission | 15/01/2024 |
+| Date echeance | 15/02/2024 |
+| Reference client | CLI-001 |
+
+## Base de donnees clients
+
+### Structure
+
+| ID | Societe | Adresse | CP | Ville | Email |
+|----|---------|---------|----|----|-------|
+| CLI-001 | Societe A | 10 rue X | 75001 | Paris | contact@a.fr |
+
+### Recuperation automatique
+
+```excel
+=RECHERCHEX(Ref_client;Clients[ID];Clients[Societe])
+=RECHERCHEX(Ref_client;Clients[ID];Clients[Adresse])
+```
+
+## Catalogue produits
+
+### Structure
+
+| Ref | Designation | Prix HT | TVA |
+|-----|-------------|---------|-----|
+| PRD-001 | Service A | 100 | 20% |
+| PRD-002 | Produit B | 50 | 20% |
+
+### Prix automatique
+
+```excel
+=RECHERCHEX(Ref_produit;Produits[Ref];Produits[Prix HT])
+```
+
+## Corps de la facture
+
+### Lignes de detail
+
+| Ref | Designation | Qte | Prix unit | Total HT |
+|-----|-------------|-----|-----------|----------|
+| PRD-001 | Service A | 2 | 100 | 200 |
+| PRD-002 | Produit B | 5 | 50 | 250 |
+
+### Formules
+
+```excel
+=C2*D2                           ' Total ligne HT
+=RECHERCHEX(A2;Produits[Ref];Produits[Designation])  ' Designation auto
+```
+
+## Calcul des totaux
+
+### Structure
+
+| Element | Montant |
+|---------|---------|
+| Total HT | 450.00 |
+| TVA 20% | 90.00 |
+| Total TTC | 540.00 |
+
+### Formules
+
+```excel
+=SOMME(Total_HT)                 ' Total HT
+=Total_HT * Taux_TVA             ' TVA
+=Total_HT + TVA                  ' Total TTC
+```
+
+## TVA multiple
+
+### Ventilation par taux
+
+| Taux | Base HT | TVA |
+|------|---------|-----|
+| 20% | 400 | 80 |
+| 10% | 50 | 5 |
+| 5.5% | 0 | 0 |
+
+### Formule par taux
+
+```excel
+=SOMME.SI(Lignes[TVA];20%;Lignes[Total HT])
+```
+
+## Numerotation automatique
+
+### Format recommande
+
+```excel
+="FAC-"&ANNEE(AUJOURDHUI())&"-"&TEXTE(Numero_seq;"0000")
+```
+
+### Increment automatique
+
+```excel
+=MAX(Factures[Numero])+1
+```
+
+## Conditions de paiement
+
+### Echeance automatique
+
+```excel
+=Date_facture + 30               ' 30 jours
+=FIN.MOIS(Date_facture;0)        ' Fin de mois
+=FIN.MOIS(Date_facture;1)        ' Fin de mois suivant
+```
+
+### Texte conditions
+
+```excel
+="Paiement a 30 jours. Date d'echeance : "&TEXTE(Echeance;"JJ/MM/AAAA")
+```
+
+## Mentions legales
+
+### Obligatoires
+
+- Numero SIRET
+- Forme juridique et capital
+- RCS
+- Numero TVA intracommunautaire
+- Penalites de retard
+
+### Conditionnelles
+
+```excel
+=SI(TVA=0;"TVA non applicable - art. 293B du CGI";"")
+```
+
+## Historique des factures
+
+### Tableau de suivi
+
+| Numero | Client | Date | HT | TTC | Paye |
+|--------|--------|------|----|----|------|
+| FAC-001 | Client A | 15/01 | 450 | 540 | Oui |
+| FAC-002 | Client B | 20/01 | 300 | 360 | Non |
+
+### Statistiques
+
+```excel
+=SOMME.SI(Factures[Paye];"Oui";Factures[TTC])   ' Total paye
+=SOMME.SI(Factures[Paye];"Non";Factures[TTC])   ' En attente
+```
+
+## Relance automatique
+
+### Liste des impayes
+
+```excel
+=FILTRE(Factures;(Factures[Paye]="Non")*(Factures[Echeance]<AUJOURDHUI()))
+```
+
+### Nombre de jours de retard
+
+```excel
+=AUJOURDHUI()-Echeance
+```
+
+## Export et impression
+
+### Preparation PDF
+
+1. Definissez la zone d'impression
+2. **Mise en page** > **Ajuster**
+3. **Fichier** > **Exporter** > **PDF**
+
+### Envoi par email
+
+1. Exportez en PDF
+2. Joignez a un email
+3. Ou utilisez VBA pour automatiser
+
+## VBA pour automatisation
+
+### Generer une facture
+
+```vba
+Sub GenererFacture()
+    ' Copier le modele
+    Sheets("Modele").Copy After:=Sheets(Sheets.Count)
+    ' Renommer avec le numero
+    ActiveSheet.Name = "FAC-" & Format(Date, "YYYYMMDD")
+    ' Incrementer le compteur
+    Sheets("Parametres").Range("Numero") = _
+        Sheets("Parametres").Range("Numero") + 1
+End Sub
+```
+
+## Bonnes pratiques
+
+1. **Sauvegardez** chaque facture
+2. **Archivez** par annee
+3. **Verifiez** les calculs
+4. **Numerotez** sans rupture
+5. **Respectez** les mentions legales
+
+[Decouvrir nos formations Excel](/formations-excel)

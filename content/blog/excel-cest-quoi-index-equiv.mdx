@@ -1,0 +1,134 @@
+---
+title: "C'est Quoi INDEX EQUIV dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Comprendre la combinaison INDEX EQUIV dans Excel."
+description: "Explication simple de INDEX EQUIV dans Excel. Alternative a RECHERCHEV."
+category: "Formules Excel"
+categories: ["Formules Excel", "Recherche"]
+tags: ["INDEX", "EQUIV", "Definition", "Recherche"]
+---
+
+# C'est Quoi INDEX EQUIV
+
+INDEX EQUIV est une combinaison de deux fonctions pour rechercher des valeurs.
+
+## Pourquoi INDEX EQUIV ?
+
+C'est une alternative plus puissante a RECHERCHEV qui permet de :
+- Chercher dans n'importe quelle direction
+- Utiliser plusieurs criteres
+- Etre plus performant sur de grandes donnees
+
+## Les deux fonctions
+
+### EQUIV : Trouve la position
+
+```excel
+=EQUIV(valeur;plage;0)
+```
+
+Retourne le numero de ligne ou se trouve la valeur.
+
+### INDEX : Retourne une valeur a une position
+
+```excel
+=INDEX(plage;numero_ligne)
+```
+
+Retourne la valeur a la position indiquee.
+
+## Combinaison
+
+```excel
+=INDEX(plage_resultat;EQUIV(valeur;plage_recherche;0))
+```
+
+EQUIV trouve la position, INDEX retourne la valeur.
+
+## Exemple concret
+
+### Tableau
+
+| A (Produit) | B (Prix) |
+|-------------|----------|
+| Pomme | 2 |
+| Banane | 3 |
+| Orange | 2.5 |
+
+### Trouver le prix de "Banane"
+
+```excel
+=INDEX(B:B;EQUIV("Banane";A:A;0))
+```
+
+1. EQUIV trouve que "Banane" est en ligne 2
+2. INDEX retourne la valeur en B2 = 3
+
+## Comparaison avec RECHERCHEV
+
+| Critere | RECHERCHEV | INDEX EQUIV |
+|---------|------------|-------------|
+| Direction | Droite seulement | Toutes |
+| Performance | Bonne | Meilleure |
+| Flexibilite | Limitee | Elevee |
+| Complexite | Simple | Plus complexe |
+
+## Recherche a gauche
+
+### Impossible avec RECHERCHEV
+
+RECHERCHEV ne peut retourner que des valeurs a droite.
+
+### Possible avec INDEX EQUIV
+
+```excel
+=INDEX(A:A;EQUIV(C1;B:B;0))
+```
+
+Recherche dans B, retourne dans A.
+
+## Recherche multi-criteres
+
+### Formule
+
+```excel
+=INDEX(C:C;EQUIV(A1&B1;Critere1&Critere2;0))
+```
+
+Recherche sur deux criteres concatenes.
+
+## Syntaxe de EQUIV
+
+### Troisieme argument
+
+| Valeur | Signification |
+|--------|---------------|
+| 0 | Correspondance exacte |
+| 1 | Inferieur ou egal (tri croissant) |
+| -1 | Superieur ou egal (tri decroissant) |
+
+## Gestion des erreurs
+
+### Avec SIERREUR
+
+```excel
+=SIERREUR(INDEX(B:B;EQUIV(A1;A:A;0));"Non trouve")
+```
+
+## Quand utiliser INDEX EQUIV ?
+
+- Recherche a gauche
+- Recherche sur plusieurs criteres
+- Grandes bases de donnees
+- Besoin de flexibilite
+
+## Alternative moderne : RECHERCHEX
+
+Dans Excel 365, RECHERCHEX remplace avantageusement les deux :
+
+```excel
+=RECHERCHEX(A1;B:B;C:C)
+```
+
+[Decouvrir nos formations Excel](/formations-excel)

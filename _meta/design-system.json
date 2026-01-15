@@ -1,0 +1,510 @@
+{
+  "extracted_at": "2026-01-14T12:00:00.000Z",
+  "source_url": "https://www.exceleur.fr",
+
+  "colors": {
+    "primary": "#CB6AED",
+    "primary-light": "#CA6AED",
+    "primary-hover": "#B55DD4",
+    "secondary": "#5048DD",
+    "secondary-hover": "#4640C7",
+    "accent": "#7CC3EE",
+    "background": "#FFFFFF",
+    "background-alt": "rgba(203, 106, 237, 0.12)",
+    "background-muted": "rgba(0, 0, 0, 0.05)",
+    "text": "#333333",
+    "text-dark": "#100F0D",
+    "text-light": "#69727D",
+    "text-white": "#FFFFFF",
+    "link": "#CA6AED",
+    "link-footer": "#CC3366",
+    "border": "transparent",
+    "success": "#008000",
+    "gradient": {
+      "primary": "linear-gradient(rgb(203, 106, 237) 0%, rgb(124, 195, 238) 100%)",
+      "hero": "linear-gradient(270deg, rgb(203, 106, 237) 0%, rgb(124, 195, 238) 100%)",
+      "footer": "linear-gradient(rgb(124, 195, 238) 0%, rgb(255, 255, 255) 87%)",
+      "section-alt": "linear-gradient(rgb(255, 255, 255) 0%, rgb(203, 106, 237) 100%)"
+    }
+  },
+
+  "fonts": {
+    "heading": {
+      "family": "Montserrat",
+      "fallback": "sans-serif",
+      "weights": [800],
+      "css_family": "\"Montserrat IMP\", sans-serif"
+    },
+    "body": {
+      "family": "Clear Sans",
+      "fallback": "sans-serif",
+      "weights": [400, 500, 600],
+      "css_family": "\"Clear Sans IMP\", sans-serif"
+    },
+    "display": {
+      "family": "Arapix",
+      "fallback": "sans-serif",
+      "css_family": "\"Arapix IMP\", sans-serif",
+      "note": "Used for decorative elements"
+    }
+  },
+
+  "typography": {
+    "h1": {
+      "fontFamily": "Montserrat",
+      "fontSize": "43.2px",
+      "fontWeight": 800,
+      "lineHeight": "64.8px",
+      "color": "#FFFFFF",
+      "textTransform": "uppercase (on some pages)"
+    },
+    "h2": {
+      "fontFamily": "Montserrat",
+      "fontSize": "32px",
+      "fontWeight": 800,
+      "lineHeight": "41.6px",
+      "color": "#333333"
+    },
+    "h3": {
+      "fontFamily": "Montserrat",
+      "fontSize": "19.2px",
+      "fontWeight": 800,
+      "color": "#333333"
+    },
+    "h3-blog-card": {
+      "fontFamily": "Montserrat",
+      "fontSize": "20.8px",
+      "fontWeight": 800,
+      "color": "#100F0D"
+    },
+    "body": {
+      "fontFamily": "Clear Sans",
+      "fontSize": "17.6px",
+      "fontWeight": 400,
+      "lineHeight": "26.4px",
+      "color": "#333333"
+    },
+    "nav": {
+      "fontFamily": "Montserrat",
+      "fontSize": "16px",
+      "fontWeight": 400,
+      "color": "#100F0D"
+    },
+    "readMore": {
+      "fontFamily": "Clear Sans",
+      "fontSize": "14.4px",
+      "fontWeight": 800,
+      "textTransform": "uppercase",
+      "color": "#CB6AED"
+    },
+    "footerHeading": {
+      "fontFamily": "Montserrat",
+      "fontSize": "16px",
+      "fontWeight": 800,
+      "color": "#FFFFFF"
+    }
+  },
+
+  "spacing": {
+    "container": {
+      "maxWidth": "1140px"
+    },
+    "section": {
+      "paddingY": "80px",
+      "paddingY-large": "96px"
+    },
+    "card": {
+      "padding": "48px",
+      "borderRadius": "20px"
+    },
+    "button": {
+      "paddingX": "16px",
+      "paddingY": "12px",
+      "borderRadius": "100px"
+    }
+  },
+
+  "components": [
+    {
+      "name": "Header",
+      "description": "Sticky header with logo and navigation menu",
+      "structure": {
+        "container": "full-width with centered content",
+        "logo": "Left-aligned, links to homepage",
+        "navigation": "Right-aligned horizontal menu with dropdowns",
+        "cta_button": "Se connecter button with primary style"
+      },
+      "styles": {
+        "height": "101px",
+        "backgroundColor": "transparent",
+        "position": "static"
+      },
+      "children": {
+        "logo": {
+          "maxWidth": "auto"
+        },
+        "navLink": {
+          "fontFamily": "Montserrat",
+          "fontSize": "16px",
+          "fontWeight": 400,
+          "color": "#100F0D",
+          "hasDropdown": true
+        },
+        "navButton": {
+          "backgroundColor": "#5048DD",
+          "color": "#FFFFFF",
+          "padding": "13px 20px",
+          "borderRadius": "50px",
+          "fontWeight": 400
+        }
+      }
+    },
+    {
+      "name": "Footer",
+      "description": "Multi-column footer with gradient background",
+      "structure": {
+        "layout": "3 columns - Logo/credits, Legal links, Social/Newsletter",
+        "background": "Gradient from accent to white"
+      },
+      "styles": {
+        "backgroundGradient": "linear-gradient(rgb(124, 195, 238) 0%, rgb(255, 255, 255) 87%)"
+      },
+      "children": {
+        "heading": {
+          "fontFamily": "Montserrat",
+          "fontSize": "16px",
+          "fontWeight": 800,
+          "color": "#FFFFFF"
+        },
+        "link": {
+          "color": "#CC3366",
+          "fontSize": "17.6px",
+          "textDecoration": "none",
+          "hoverDecoration": "underline"
+        },
+        "socialIcons": {
+          "display": "inline horizontal list",
+          "iconColor": "#100F0D"
+        }
+      }
+    },
+    {
+      "name": "Hero Section",
+      "description": "Full-width hero with gradient background and headline",
+      "structure": {
+        "background": "Gradient with background image overlay",
+        "content": "H1 headline + photo of Thomas"
+      },
+      "styles": {
+        "backgroundGradient": "linear-gradient(270deg, rgb(203, 106, 237) 0%, rgb(124, 195, 238) 100%)",
+        "backgroundImage": "hero-lexceleur-2.jpg overlay",
+        "textColor": "#FFFFFF"
+      },
+      "children": {
+        "h1": {
+          "fontFamily": "Montserrat",
+          "fontSize": "43.2px",
+          "fontWeight": 800,
+          "lineHeight": "64.8px",
+          "color": "#FFFFFF"
+        }
+      }
+    },
+    {
+      "name": "Blog Card",
+      "description": "Article preview card in blog listing",
+      "structure": {
+        "layout": "Vertical card with title, excerpt, read more link",
+        "gridDisplay": "3-column grid on desktop"
+      },
+      "styles": {
+        "backgroundColor": "transparent",
+        "border": "none",
+        "boxShadow": "none"
+      },
+      "children": {
+        "title": {
+          "fontFamily": "Montserrat",
+          "fontSize": "20.8px",
+          "fontWeight": 800,
+          "color": "#100F0D",
+          "linkColor": "#100F0D"
+        },
+        "excerpt": {
+          "fontFamily": "Clear Sans",
+          "fontSize": "17.6px",
+          "color": "#333333",
+          "lineHeight": "26.4px"
+        },
+        "readMore": {
+          "fontFamily": "Clear Sans",
+          "fontSize": "14.4px",
+          "fontWeight": 800,
+          "textTransform": "uppercase",
+          "color": "#CB6AED"
+        }
+      }
+    },
+    {
+      "name": "Button Primary",
+      "description": "Main CTA button used across the site",
+      "variants": [
+        {
+          "name": "solid",
+          "backgroundColor": "#CB6AED",
+          "color": "#FFFFFF",
+          "border": "1px solid #CB6AED"
+        },
+        {
+          "name": "outline-white",
+          "backgroundColor": "transparent",
+          "color": "#FFFFFF",
+          "border": "3px solid #FFFFFF"
+        },
+        {
+          "name": "secondary",
+          "backgroundColor": "#5048DD",
+          "color": "#FFFFFF"
+        }
+      ],
+      "styles": {
+        "padding": "12px 16px",
+        "borderRadius": "100px",
+        "fontWeight": 800,
+        "fontSize": "14.4px",
+        "cursor": "pointer"
+      },
+      "states": {
+        "hover": {
+          "opacity": 0.9
+        }
+      }
+    },
+    {
+      "name": "Section Title",
+      "description": "Section headings throughout the site",
+      "structure": {
+        "layout": "Centered or left-aligned",
+        "elements": "H2 with optional subtitle"
+      },
+      "styles": {
+        "fontFamily": "Montserrat",
+        "fontSize": "32px",
+        "fontWeight": 800,
+        "color": "#333333",
+        "textAlign": "center"
+      }
+    },
+    {
+      "name": "CTA Section",
+      "description": "Call-to-action section with colored background",
+      "variants": [
+        {
+          "name": "primary",
+          "backgroundColor": "#CB6AED"
+        },
+        {
+          "name": "secondary",
+          "backgroundColor": "#5048DD"
+        },
+        {
+          "name": "accent",
+          "backgroundColor": "#7CC3EE"
+        }
+      ],
+      "styles": {
+        "padding": "48px",
+        "borderRadius": "20px",
+        "textColor": "#FFFFFF"
+      },
+      "children": {
+        "heading": {
+          "color": "#FFFFFF"
+        },
+        "button": {
+          "variant": "outline-white"
+        }
+      }
+    },
+    {
+      "name": "Newsletter Box",
+      "description": "Email signup box with gradient background",
+      "structure": {
+        "layout": "Centered content with headline, text, and form",
+        "form": "Email input + submit button"
+      },
+      "styles": {
+        "backgroundGradient": "linear-gradient(rgb(203, 106, 237) 0%, rgb(124, 195, 238) 100%)",
+        "padding": "48px",
+        "borderRadius": "20px",
+        "textColor": "#FFFFFF"
+      },
+      "children": {
+        "input": {
+          "backgroundColor": "#FFFFFF",
+          "border": "none",
+          "borderRadius": "6px",
+          "padding": "10px"
+        },
+        "submitButton": {
+          "backgroundColor": "#CB6AED",
+          "color": "#FFFFFF",
+          "borderRadius": "6px",
+          "fontWeight": 500
+        }
+      }
+    },
+    {
+      "name": "Logo Carousel",
+      "description": "Client/partner logos slider",
+      "structure": {
+        "layout": "Horizontal slider with navigation dots",
+        "items": "Grayscale or colored logos"
+      },
+      "styles": {
+        "itemSpacing": "auto",
+        "dotColor": "#CB6AED"
+      }
+    },
+    {
+      "name": "Feature Card",
+      "description": "Card showing features/benefits with icon",
+      "structure": {
+        "layout": "Icon + title + description",
+        "gridDisplay": "2x2 grid on desktop"
+      },
+      "styles": {
+        "backgroundColor": "transparent"
+      },
+      "children": {
+        "icon": {
+          "size": "48px"
+        },
+        "title": {
+          "fontFamily": "Montserrat",
+          "fontSize": "19.2px",
+          "fontWeight": 800
+        },
+        "description": {
+          "fontFamily": "Clear Sans",
+          "fontSize": "17.6px"
+        }
+      }
+    },
+    {
+      "name": "Breadcrumb",
+      "description": "Navigation breadcrumb on article pages",
+      "structure": {
+        "layout": "Horizontal list with separators"
+      },
+      "styles": {
+        "fontSize": "17.6px",
+        "linkColor": "#FFFFFF",
+        "separator": ">"
+      }
+    },
+    {
+      "name": "Share Buttons",
+      "description": "Social sharing buttons on articles",
+      "structure": {
+        "layout": "Horizontal list of icon buttons"
+      },
+      "styles": {
+        "backgroundColor": "transparent",
+        "border": "1px solid currentColor",
+        "borderRadius": "4px"
+      },
+      "platforms": ["email", "linkedin", "facebook"]
+    }
+  ],
+
+  "tailwind_extend": {
+    "colors": {
+      "primary": {
+        "DEFAULT": "#CB6AED",
+        "light": "#CA6AED",
+        "hover": "#B55DD4"
+      },
+      "secondary": {
+        "DEFAULT": "#5048DD",
+        "hover": "#4640C7"
+      },
+      "accent": "#7CC3EE",
+      "text": {
+        "DEFAULT": "#333333",
+        "dark": "#100F0D",
+        "light": "#69727D"
+      },
+      "background": {
+        "DEFAULT": "#FFFFFF",
+        "alt": "rgba(203, 106, 237, 0.12)",
+        "muted": "rgba(0, 0, 0, 0.05)"
+      },
+      "footer-link": "#CC3366"
+    },
+    "fontFamily": {
+      "heading": ["Montserrat", "sans-serif"],
+      "body": ["Clear Sans", "sans-serif"],
+      "display": ["Arapix", "sans-serif"]
+    },
+    "fontSize": {
+      "h1": ["43.2px", { "lineHeight": "64.8px", "fontWeight": "800" }],
+      "h2": ["32px", { "lineHeight": "41.6px", "fontWeight": "800" }],
+      "h3": ["19.2px", { "lineHeight": "1.4", "fontWeight": "800" }],
+      "h3-card": ["20.8px", { "lineHeight": "1.4", "fontWeight": "800" }],
+      "body": ["17.6px", { "lineHeight": "26.4px", "fontWeight": "400" }],
+      "nav": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+      "small": ["14.4px", { "lineHeight": "1.5", "fontWeight": "400" }],
+      "footer-heading": ["16px", { "lineHeight": "1.5", "fontWeight": "800" }]
+    },
+    "borderRadius": {
+      "button": "100px",
+      "card": "20px",
+      "input": "6px"
+    },
+    "spacing": {
+      "section-y": "80px",
+      "section-y-lg": "96px",
+      "card-padding": "48px"
+    },
+    "maxWidth": {
+      "container": "1140px"
+    },
+    "backgroundImage": {
+      "gradient-primary": "linear-gradient(to bottom, #CB6AED, #7CC3EE)",
+      "gradient-hero": "linear-gradient(270deg, #CB6AED, #7CC3EE)",
+      "gradient-footer": "linear-gradient(to bottom, #7CC3EE, #FFFFFF)"
+    },
+    "boxShadow": {
+      "card": "none"
+    }
+  },
+
+  "global_css": {
+    "body": {
+      "fontFamily": "Clear Sans, sans-serif",
+      "fontSize": "17.6px",
+      "lineHeight": "26.4px",
+      "color": "#333333",
+      "backgroundColor": "#FFFFFF"
+    },
+    "headings": {
+      "fontFamily": "Montserrat, sans-serif",
+      "fontWeight": 800
+    },
+    "links": {
+      "color": "#CA6AED",
+      "textDecoration": "underline"
+    },
+    "strong": {
+      "fontWeight": 600
+    }
+  },
+
+  "breakpoints": {
+    "note": "Elementor default breakpoints detected",
+    "mobile": "767px",
+    "tablet": "1024px",
+    "desktop": "1025px+"
+  }
+}

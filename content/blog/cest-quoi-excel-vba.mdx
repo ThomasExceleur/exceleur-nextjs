@@ -1,0 +1,202 @@
+---
+title: "C'est Quoi Excel VBA : Introduction a la Programmation"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Decouvrez ce qu'est VBA et comment l'utiliser pour automatiser Excel."
+description: "Introduction a VBA dans Excel. Qu'est-ce que c'est, a quoi ca sert et comment debuter."
+category: "Macros et VBA"
+categories: ["Macros et VBA", "Automatisation"]
+tags: ["VBA", "Macros", "Programmation", "Automatisation"]
+---
+
+# C'est Quoi Excel VBA ?
+
+VBA (Visual Basic for Applications) est le langage de programmation integre a Excel.
+
+## Definition
+
+### VBA = Visual Basic for Applications
+
+- Langage de programmation de Microsoft
+- Integre a Excel, Word, Access, etc.
+- Permet d'automatiser des taches
+
+### Macro vs VBA
+
+| Macro | VBA |
+|-------|-----|
+| Enregistrement d'actions | Code ecrit |
+| Simple | Plus puissant |
+| Limite | Flexible |
+
+## A quoi ca sert ?
+
+### Automatisation
+
+- Repeter des taches repetitives
+- Enchainer des operations
+- Gagner du temps
+
+### Exemples d'utilisation
+
+1. Generer des rapports automatiquement
+2. Formater des donnees
+3. Creer des formulaires de saisie
+4. Envoyer des emails depuis Excel
+5. Interagir avec d'autres applications
+
+## Acceder a VBA
+
+### Afficher l'onglet Developpeur
+
+1. **Fichier** > **Options**
+2. **Personnaliser le ruban**
+3. Cochez **Developpeur**
+
+### Ouvrir l'editeur VBA
+
+- **Alt + F11**
+- Ou **Developpeur** > **Visual Basic**
+
+## Premier code VBA
+
+### Structure d'une macro
+
+```vba
+Sub MaPremiereMarco()
+    ' Ceci est un commentaire
+    MsgBox "Bonjour !"
+End Sub
+```
+
+### Executer
+
+1. Placez le curseur dans la macro
+2. Appuyez sur **F5**
+3. Ou cliquez sur le bouton Executer
+
+## Elements de base
+
+### Variables
+
+```vba
+Dim nom As String
+Dim age As Integer
+Dim salaire As Double
+
+nom = "Jean"
+age = 30
+salaire = 2500.50
+```
+
+### Conditions
+
+```vba
+If age >= 18 Then
+    MsgBox "Majeur"
+Else
+    MsgBox "Mineur"
+End If
+```
+
+### Boucles
+
+```vba
+For i = 1 To 10
+    Cells(i, 1).Value = i
+Next i
+```
+
+## Manipuler Excel avec VBA
+
+### Ecrire dans une cellule
+
+```vba
+Cells(1, 1).Value = "Bonjour"
+Range("A1").Value = "Bonjour"
+```
+
+### Lire une cellule
+
+```vba
+Dim valeur As String
+valeur = Cells(1, 1).Value
+```
+
+### Selectionner
+
+```vba
+Range("A1:B10").Select
+Cells(1, 1).Select
+```
+
+## Enregistrer une macro
+
+### Methode simple
+
+1. **Developpeur** > **Enregistrer une macro**
+2. Donnez un nom
+3. Effectuez vos actions
+4. **Arreter l'enregistrement**
+
+### Voir le code genere
+
+1. **Alt + F11**
+2. Ouvrez le module
+
+## Enregistrer un fichier avec macros
+
+### Format requis
+
+- **.xlsm** : Classeur Excel avec macros
+- **.xlsb** : Format binaire (plus rapide)
+
+### Attention
+
+Le format .xlsx ne conserve pas les macros.
+
+## Securite des macros
+
+### Niveaux de securite
+
+1. **Fichier** > **Options** > **Centre de gestion de la confidentialite**
+2. **Parametres des macros**
+
+### Options
+
+| Niveau | Description |
+|--------|-------------|
+| Desactiver tout | Aucune macro |
+| Desactiver avec notification | Demande confirmation |
+| Activer tout | Risque de securite |
+
+## Avantages et inconvenients
+
+### Avantages
+
+- Automatisation puissante
+- Gain de temps
+- Personnalisation poussee
+
+### Inconvenients
+
+- Courbe d'apprentissage
+- Fichiers plus lourds
+- Risques de securite
+
+## Pour aller plus loin
+
+### Ressources
+
+1. Aide VBA integree (F1 dans l'editeur)
+2. Forums specialises
+3. Formations Excel avancees
+
+### Bonnes pratiques
+
+1. Commentez votre code
+2. Testez sur des copies
+3. Sauvegardez regulierement
+4. Nommez vos variables clairement
+
+[Decouvrir nos formations Excel](/formations-excel)

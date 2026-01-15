@@ -1,0 +1,141 @@
+---
+title: "Nettoyer et Fusionner des Donnees avec Power Query"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maitrisez Power Query pour nettoyer et fusionner vos donnees."
+description: "Guide Power Query pour nettoyer et fusionner des sources de donnees."
+category: "Analyse de donnees Excel"
+categories: ["Analyse de donnees Excel", "Automatisation"]
+tags: ["Power Query", "Nettoyage", "Fusion", "ETL"]
+---
+
+# Nettoyer et Fusionner avec Power Query
+
+Power Query est l'outil ideal pour transformer vos donnees.
+
+## Acceder a Power Query
+
+### Depuis un tableau
+
+1. Cliquez dans vos donnees
+2. **Donnees** > **A partir d'un tableau/plage**
+
+### Depuis un fichier
+
+1. **Donnees** > **Obtenir des donnees** > **A partir d'un fichier**
+2. Choisissez le type de fichier
+
+## Nettoyage des donnees
+
+### Supprimer les colonnes
+
+1. Selectionnez les colonnes a garder
+2. Clic droit > **Supprimer les autres colonnes**
+
+### Renommer les colonnes
+
+Double-cliquez sur l'en-tete et tapez le nouveau nom.
+
+### Changer le type
+
+1. Cliquez sur l'icone de type (en-tete)
+2. Selectionnez le type correct
+
+### Supprimer les lignes
+
+- **Supprimer les lignes vides**
+- **Supprimer les doublons**
+- **Supprimer les erreurs**
+
+### Remplacer les valeurs
+
+1. Selectionnez la colonne
+2. **Transformer** > **Remplacer les valeurs**
+
+### Nettoyer le texte
+
+- **Transformer** > **Format** > **Supprimer les espaces**
+- **Transformer** > **Format** > **Majuscule/Minuscule**
+
+## Fusionner des requetes
+
+### Jointure de tables
+
+1. **Accueil** > **Combiner** > **Fusionner des requetes**
+2. Selectionnez la deuxieme table
+3. Choisissez les colonnes cles
+4. Selectionnez le type de jointure
+
+### Types de jointure
+
+| Type | Description |
+|------|-------------|
+| Externe gauche | Toutes les lignes de gauche |
+| Externe droite | Toutes les lignes de droite |
+| Externe complete | Toutes les lignes |
+| Interne | Correspondances uniquement |
+| Anti gauche | Gauche sans correspondance |
+
+### Developper la colonne fusionnee
+
+1. Cliquez sur l'icone d'expansion
+2. Selectionnez les colonnes a afficher
+3. **OK**
+
+## Ajouter des requetes (union)
+
+### Empiler des tables
+
+1. **Accueil** > **Combiner** > **Ajouter des requetes**
+2. Selectionnez les requetes a empiler
+3. **OK**
+
+## Transformations avancees
+
+### Pivoter
+
+Transformer des lignes en colonnes.
+
+### Depivoter
+
+Transformer des colonnes en lignes.
+
+### Colonne personnalisee
+
+```m
+= [Prix] * [Quantite]
+```
+
+### Colonne conditionnelle
+
+```m
+= if [Montant] > 1000 then "VIP" else "Standard"
+```
+
+## Etapes appliquees
+
+### Gestion
+
+- Voir toutes les etapes dans le volet droit
+- Supprimer une etape (X)
+- Renommer une etape (clic droit)
+
+## Charger les donnees
+
+### Options
+
+1. **Fermer et charger**
+2. Choisissez : Tableau, TCD, ou Connexion
+
+### Actualiser
+
+**Donnees** > **Actualiser tout**
+
+## Bonnes pratiques
+
+1. **Nommez** vos requetes clairement
+2. **Documentez** les transformations
+3. **Testez** avec un echantillon
+4. **Utilisez** des parametres pour les chemins
+
+[Decouvrir nos formations Excel](/formations-excel)

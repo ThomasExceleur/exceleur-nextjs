@@ -1,0 +1,176 @@
+---
+title: "Reduire la Taille de vos Fichiers Excel pour la Performance"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Techniques pour reduire la taille de vos fichiers Excel."
+description: "Guide pour reduire la taille et ameliorer la performance Excel."
+category: "Performance"
+categories: ["Performance", "Astuces Excel"]
+tags: ["Taille fichier", "Performance", "Optimisation", "Excel"]
+---
+
+# Reduire la Taille de vos Fichiers Excel
+
+Un fichier plus leger est plus rapide et plus facile a partager.
+
+## Diagnostiquer la taille
+
+### Verifier la taille actuelle
+
+Clic droit sur le fichier > Proprietes.
+
+### Identifier les causes
+
+- Donnees excessives
+- Images non compressees
+- Mise en forme inutile
+- Formules volatiles
+
+## Supprimer les donnees inutiles
+
+### Lignes et colonnes vides
+
+1. Ctrl+Fin pour voir la derniere cellule utilisee
+2. Si trop loin, supprimez les lignes/colonnes vides
+3. Sauvegardez le fichier
+
+### Effacer vraiment
+
+Selectionner > Supprimer (pas juste effacer le contenu).
+
+## Compresser les images
+
+### Compression manuelle
+
+1. Selectionnez une image
+2. **Format** > **Compresser les images**
+3. Choisissez la resolution
+
+### Options de resolution
+
+| Resolution | Usage |
+|------------|-------|
+| Haute fidelite | Qualite maximale |
+| HD (330 ppp) | Impression |
+| Web (150 ppp) | Ecran |
+| Email (96 ppp) | Taille minimale |
+
+### Supprimer les zones rognes
+
+Cochez "Supprimer les zones de rognage".
+
+## Optimiser les formules
+
+### Remplacer par valeurs
+
+Si les donnees ne changent plus :
+1. Selectionnez les cellules
+2. Ctrl+C
+3. Clic droit > Collage special > Valeurs
+
+### Eviter les formules volatiles
+
+Remplacez quand possible :
+- INDIRECT() par INDEX()
+- DECALER() par plages fixes
+
+## Nettoyer la mise en forme
+
+### Mise en forme conditionnelle
+
+Supprimez les regles inutilisees :
+**Accueil** > **Mise en forme conditionnelle** > **Gerer les regles**
+
+### Styles non utilises
+
+Les styles s'accumulent avec les copier-coller.
+
+### Cellules "utilisees" mais vides
+
+```
+1. Selectionnez les cellules vides en fin de plage
+2. Clic droit > Effacer > Tout effacer
+3. Clic droit > Supprimer
+```
+
+## Objets caches
+
+### Trouver les objets
+
+**Accueil** > **Rechercher et selectionner** > **Volet de selection**
+
+### Supprimer les objets inutiles
+
+Selectionnez et supprimez les formes, images, graphiques non necessaires.
+
+## Format de fichier
+
+### XLSX vs XLSB
+
+| XLSX | XLSB |
+|------|------|
+| Format standard | Format binaire |
+| Plus compatible | Plus compact |
+| Plus lent | Plus rapide |
+
+### Convertir en XLSB
+
+**Fichier** > **Enregistrer sous** > Type : Classeur binaire Excel
+
+### Reduction typique
+
+30-50% de reduction avec XLSB.
+
+## Feuilles cachees
+
+### Verifier les feuilles
+
+Clic droit sur un onglet > Afficher
+
+### Supprimer si inutiles
+
+Les feuilles cachees occupent de l'espace.
+
+## Tableaux croises dynamiques
+
+### Cache du TCD
+
+Les TCD stockent un cache des donnees.
+
+### Reduire le cache
+
+1. Clic droit sur le TCD
+2. Options du tableau croise dynamique
+3. Donnees > Decochez "Enregistrer les donnees source"
+
+## Power Query
+
+### Connexions inutilisees
+
+Supprimez les requetes non utilisees.
+
+### Chargement
+
+Ne chargez que les requetes necessaires.
+
+## Checklist de reduction
+
+| Action | Impact typique |
+|--------|----------------|
+| Supprimer lignes vides | Variable |
+| Compresser images | Eleve |
+| Convertir en XLSB | 30-50% |
+| Valeurs vs formules | Moyen |
+| Nettoyer mise en forme | Faible-Moyen |
+| Supprimer objets | Variable |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Regulierement | Nettoyez periodiquement |
+| Avant partage | Optimisez avant d'envoyer |
+| Sauvegarde | Gardez l'original |
+| Test | Verifiez que tout fonctionne |
+
+[Decouvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,87 @@
+---
+title: "Guide Diagramme de Gantt Excel Pas a Pas"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Creez un diagramme de Gantt etape par etape dans Excel."
+description: "Guide pas a pas pour creer un diagramme de Gantt Excel."
+category: "Graphiques"
+categories: ["Graphiques", "Gestion de projet"]
+tags: ["Gantt", "Projet", "Guide", "Pas a pas"]
+---
+
+# Diagramme de Gantt Excel Pas a Pas
+
+Guide complet pour creer votre premier Gantt.
+
+## Etape 1 : Preparer les donnees
+
+### Structure
+
+| Tache | Date debut | Duree (jours) |
+|-------|------------|---------------|
+| Phase 1 | 01/01/2024 | 10 |
+| Phase 2 | 11/01/2024 | 15 |
+| Phase 3 | 26/01/2024 | 20 |
+
+## Etape 2 : Calculer les dates
+
+### Date de fin
+
+```excel
+=DateDebut+Duree-1
+```
+
+### Jours depuis debut projet
+
+```excel
+=DateDebut-$B$2
+```
+
+## Etape 3 : Creer le graphique
+
+1. Selectionnez Tache, Debut, Duree
+2. **Insertion** > **Graphiques** > **Barres empilees**
+
+## Etape 4 : Configurer
+
+### Inverser l'axe
+
+1. Clic droit sur l'axe vertical
+2. **Mettre en forme l'axe**
+3. Cochez \"Categories dans l'ordre inverse\"
+
+### Masquer la premiere serie
+
+1. Selectionnez la serie \"Debut\"
+2. Remplissage > Aucun
+3. Bordure > Aucune
+
+## Etape 5 : Personnaliser
+
+### Couleurs
+
+Colorez les barres selon le statut ou le responsable.
+
+### Echelle de temps
+
+Ajustez les bornes de l'axe horizontal.
+
+## Etape 6 : Ajouter des details
+
+### Aujourd'hui
+
+Ajoutez une ligne verticale pour la date du jour.
+
+### Jalons
+
+Utilisez des marqueurs pour les dates cles.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Mise a jour | Actualisez les donnees regulierement |
+| Couleurs | Code coherent |
+| Lisibilite | Pas trop de taches |
+
+[Decouvrir nos formations Excel](/formations-excel)

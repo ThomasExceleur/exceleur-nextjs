@@ -1,0 +1,179 @@
+---
+title: "Explications des Formules NB et NBVAL dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Comprenez les differences entre NB, NBVAL et NB.VIDE dans Excel."
+description: "Guide des fonctions de comptage NB, NBVAL et NB.VIDE. Differences et exemples d'utilisation."
+category: "Formules Excel"
+categories: ["Formules Excel", "Fonctions"]
+tags: ["NB", "NBVAL", "Compter", "Fonctions"]
+---
+
+# Les Fonctions NB, NBVAL et NB.VIDE
+
+Ces fonctions de comptage ont des comportements differents.
+
+## NB : Compter les nombres
+
+### Syntaxe
+
+```excel
+=NB(plage)
+```
+
+### Compte uniquement
+
+- Les nombres
+- Les dates (qui sont des nombres)
+- Les heures
+
+### Ne compte pas
+
+- Le texte
+- Les cellules vides
+- Les erreurs
+- Les valeurs logiques (VRAI/FAUX)
+
+### Exemple
+
+| A |
+|---|
+| 10 |
+| "Texte" |
+| 20 |
+| (vide) |
+
+```excel
+=NB(A1:A4)   ' Resultat : 2
+```
+
+## NBVAL : Compter les cellules non vides
+
+### Syntaxe
+
+```excel
+=NBVAL(plage)
+```
+
+### Compte
+
+- Les nombres
+- Le texte
+- Les erreurs
+- Les valeurs logiques
+- Les formules retournant ""
+
+### Ne compte pas
+
+- Les cellules completement vides
+
+### Exemple
+
+| A |
+|---|
+| 10 |
+| "Texte" |
+| (vide) |
+| VRAI |
+
+```excel
+=NBVAL(A1:A4)   ' Resultat : 3
+```
+
+## NB.VIDE : Compter les cellules vides
+
+### Syntaxe
+
+```excel
+=NB.VIDE(plage)
+```
+
+### Compte
+
+- Les cellules vides
+- Les formules retournant "" (chaîne vide)
+
+### Exemple
+
+| A |
+|---|
+| 10 |
+| (vide) |
+| "" |
+| (vide) |
+
+```excel
+=NB.VIDE(A1:A4)   ' Resultat : 3
+```
+
+## Comparaison
+
+| Fonction | Nombres | Texte | Vide | Erreurs |
+|----------|---------|-------|------|---------|
+| NB | Oui | Non | Non | Non |
+| NBVAL | Oui | Oui | Non | Oui |
+| NB.VIDE | Non | Non | Oui | Non |
+
+## Cas pratiques
+
+### Nombre de donnees saisies
+
+```excel
+=NBVAL(A:A)-1                 ' Moins l'en-tete
+```
+
+### Verifier la completude
+
+```excel
+=SI(NB.VIDE(A1:A100)=0;"Complet";"Incomplet")
+```
+
+### Taux de remplissage
+
+```excel
+=NBVAL(A1:A100)/LIGNES(A1:A100)
+```
+
+## Fonctions complementaires
+
+### NB.SI
+
+Compte selon un critere.
+
+```excel
+=NB.SI(A:A;">10")
+```
+
+### NB.SI.ENS
+
+Compte selon plusieurs criteres.
+
+```excel
+=NB.SI.ENS(A:A;">10";B:B;"Actif")
+```
+
+## Pieges courants
+
+### Formules retournant ""
+
+```excel
+=SI(A1>10;A1;"")              ' Retourne "" si faux
+```
+
+- NB.VIDE compte cette cellule comme vide
+- NBVAL la compte comme non vide (contient une formule)
+
+### Espaces invisibles
+
+Une cellule avec un espace n'est pas vide.
+
+## Resume
+
+| Pour compter | Utilisez |
+|--------------|----------|
+| Nombres uniquement | NB |
+| Tout sauf vide | NBVAL |
+| Cellules vides | NB.VIDE |
+| Avec condition | NB.SI |
+
+[Decouvrir nos formations Excel](/formations-excel)

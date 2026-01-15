@@ -1,0 +1,130 @@
+---
+title: "Creer un Formulaire de Saisie dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Creez un formulaire de saisie pour faciliter l'entree de donnees."
+description: "Guide pour creer un formulaire de saisie dans Excel. Sans VBA et avec VBA."
+category: "Automatisation"
+categories: ["Automatisation", "Astuces Excel"]
+tags: ["Formulaire", "Saisie", "UserForm", "VBA"]
+---
+
+# Creer un Formulaire de Saisie
+
+Facilitez la saisie de donnees avec un formulaire Excel.
+
+## Methode 1 : Formulaire integre
+
+### Activer le formulaire
+
+1. Clic droit sur le ruban
+2. **Personnaliser le ruban**
+3. Dans **Choisir les commandes**, selectionnez **Toutes les commandes**
+4. Trouvez **Formulaire** et ajoutez-le
+
+### Utilisation
+
+1. Cliquez dans votre tableau
+2. Cliquez sur le bouton **Formulaire**
+3. Saisissez les donnees
+4. **Nouveau** pour ajouter une ligne
+
+## Methode 2 : Validation des donnees
+
+### Liste deroulante
+
+1. Selectionnez la cellule
+2. **Donnees** > **Validation des donnees**
+3. **Autoriser** : Liste
+4. **Source** : vos valeurs
+
+### Nombres limites
+
+1. **Autoriser** : Nombre entier
+2. Definissez min et max
+
+### Message d'aide
+
+Dans l'onglet **Message de saisie**, ajoutez des instructions.
+
+## Methode 3 : UserForm VBA
+
+### Creer le formulaire
+
+1. **Alt + F11** (Editeur VBA)
+2. **Insertion** > **UserForm**
+3. Ajoutez des controles (zones de texte, boutons)
+
+### Exemple simple
+
+```vba
+Private Sub CommandButton1_Click()
+    Dim ws As Worksheet
+    Set ws = ThisWorkbook.Sheets("Donnees")
+
+    Dim derniereLigne As Long
+    derniereLigne = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row + 1
+
+    ws.Cells(derniereLigne, 1) = TextBox1.Text
+    ws.Cells(derniereLigne, 2) = TextBox2.Text
+    ws.Cells(derniereLigne, 3) = TextBox3.Text
+
+    TextBox1.Text = ""
+    TextBox2.Text = ""
+    TextBox3.Text = ""
+End Sub
+```
+
+### Afficher le formulaire
+
+```vba
+Sub AfficherFormulaire()
+    UserForm1.Show
+End Sub
+```
+
+## Methode 4 : Feuille de saisie
+
+### Conception
+
+1. Creez une feuille "Saisie"
+2. Ajoutez des cellules pour chaque champ
+3. Utilisez la validation des donnees
+4. Ajoutez un bouton pour enregistrer
+
+### Macro d'enregistrement
+
+```vba
+Sub EnregistrerSaisie()
+    Dim ws As Worksheet
+    Set ws = Sheets("Donnees")
+
+    Dim derniereLigne As Long
+    derniereLigne = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row + 1
+
+    ws.Cells(derniereLigne, 1) = Sheets("Saisie").Range("B2")
+    ws.Cells(derniereLigne, 2) = Sheets("Saisie").Range("B3")
+    ws.Cells(derniereLigne, 3) = Sheets("Saisie").Range("B4")
+
+    ' Effacer les champs
+    Sheets("Saisie").Range("B2:B4").ClearContents
+End Sub
+```
+
+## Elements de formulaire
+
+| Element | Usage |
+|---------|-------|
+| Zone de texte | Saisie libre |
+| Liste deroulante | Choix limite |
+| Case a cocher | Oui/Non |
+| Bouton | Declencheur d'action |
+
+## Bonnes pratiques
+
+1. **Validez** les donnees a l'entree
+2. **Guidez** l'utilisateur avec des messages
+3. **Protegez** la feuille de destination
+4. **Confirmez** l'enregistrement
+
+[Decouvrir nos formations Excel](/formations-excel)

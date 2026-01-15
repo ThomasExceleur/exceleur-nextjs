@@ -1,0 +1,136 @@
+---
+title: "JOINDRE.TEXTE : Concatener avec Delimiteur"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Utilisez JOINDRE.TEXTE pour concatener du texte avec un separateur."
+description: "Guide de la fonction JOINDRE.TEXTE dans Excel. Concatenation avancee."
+category: "Formules Excel"
+categories: ["Formules Excel", "Excel 365"]
+tags: ["JOINDRE.TEXTE", "Concatenation", "Texte", "Excel 365"]
+---
+
+# JOINDRE.TEXTE dans Excel
+
+JOINDRE.TEXTE concatene plusieurs textes avec un delimiteur.
+
+## Disponibilite
+
+- Excel 365
+- Excel 2021
+- Excel 2019
+
+## Syntaxe
+
+```excel
+=JOINDRE.TEXTE(delimiteur;ignorer_vides;texte1;[texte2];...)
+```
+
+### Arguments
+
+| Argument | Description |
+|----------|-------------|
+| delimiteur | Separateur entre les textes |
+| ignorer_vides | VRAI pour ignorer les cellules vides |
+| texte1, texte2... | Textes a concatener |
+
+## Exemples de base
+
+### Avec virgule
+
+```excel
+=JOINDRE.TEXTE(", ";VRAI;A1:A5)
+```
+
+Resultat : "Paris, Lyon, Marseille"
+
+### Avec retour a la ligne
+
+```excel
+=JOINDRE.TEXTE(CAR(10);VRAI;A1:A5)
+```
+
+Chaque element sur une nouvelle ligne.
+
+## Ignorer les cellules vides
+
+### Avec VRAI
+
+```excel
+=JOINDRE.TEXTE("; ";VRAI;"A";"";"B";"C")
+```
+
+Resultat : "A; B; C" (vide ignore)
+
+### Avec FAUX
+
+```excel
+=JOINDRE.TEXTE("; ";FAUX;"A";"";"B";"C")
+```
+
+Resultat : "A; ; B; C" (vide conserve)
+
+## Cas pratiques
+
+### Creer une adresse
+
+```excel
+=JOINDRE.TEXTE(", ";VRAI;Adresse;CodePostal;Ville)
+```
+
+### Liste a puces
+
+```excel
+="- "&JOINDRE.TEXTE(CAR(10)&"- ";VRAI;A1:A10)
+```
+
+### Email groupé
+
+```excel
+=JOINDRE.TEXTE("; ";VRAI;Emails[Adresse])
+```
+
+## Comparaison avec CONCATENER
+
+| Fonction | Delimiteur | Plage | Ignore vides |
+|----------|------------|-------|--------------|
+| CONCATENER | Non | Non | Non |
+| CONCAT | Non | Oui | Non |
+| JOINDRE.TEXTE | Oui | Oui | Oui |
+
+## Combinaison avec autres fonctions
+
+### JOINDRE.TEXTE + FILTRE
+
+```excel
+=JOINDRE.TEXTE(", ";VRAI;FILTRE(A:A;B:B="Actif"))
+```
+
+### JOINDRE.TEXTE + UNIQUE
+
+```excel
+=JOINDRE.TEXTE(", ";VRAI;UNIQUE(A:A))
+```
+
+### JOINDRE.TEXTE + TRIER
+
+```excel
+=JOINDRE.TEXTE(", ";VRAI;TRIER(A1:A10))
+```
+
+## Delimiteurs speciaux
+
+| Delimiteur | Code | Usage |
+|------------|------|-------|
+| Retour ligne | CAR(10) | Liste verticale |
+| Tabulation | CAR(9) | Export |
+| Point-virgule | ";" | CSV francais |
+| Virgule | "," | CSV anglais |
+
+## Bonnes pratiques
+
+1. **Utilisez** VRAI pour ignorer les vides
+2. **Combinez** avec FILTRE pour filtrer avant concatenation
+3. **Choisissez** le bon delimiteur selon l'usage
+4. **Testez** sur quelques cellules d'abord
+
+[Decouvrir nos formations Excel](/formations-excel)

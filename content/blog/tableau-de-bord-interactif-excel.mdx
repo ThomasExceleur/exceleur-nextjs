@@ -1,0 +1,190 @@
+---
+title: "Tableau de Bord Interactif Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Creez un tableau de bord interactif professionnel dans Excel."
+description: "Guide complet pour creer un tableau de bord interactif dans Excel."
+category: "Visualisation"
+categories: ["Visualisation", "Analyse de donnees Excel"]
+tags: ["Tableau de bord", "Dashboard", "Interactif", "Excel"]
+---
+
+# Tableau de Bord Interactif Excel
+
+Creez des dashboards dynamiques pour visualiser vos donnees.
+
+## Elements d'un tableau de bord
+
+### Composants essentiels
+
+- KPIs (indicateurs cles)
+- Graphiques
+- Tableaux synthetiques
+- Filtres interactifs
+
+## Preparer les donnees
+
+### Structure recommandee
+
+| Onglet | Contenu |
+|--------|---------|
+| Donnees | Donnees brutes |
+| Calculs | Formules intermediaires |
+| Dashboard | Affichage final |
+
+### Tableaux structures
+
+Utilisez Ctrl+T pour creer des tableaux structures.
+
+## KPIs dynamiques
+
+### Formules pour KPIs
+
+```excel
+Total Ventes : =SOMME(Ventes[Montant])
+Moyenne : =MOYENNE(Ventes[Montant])
+Objectif : =SOMME.SI.ENS(...)
+Ecart : =(Reel-Objectif)/Objectif
+```
+
+### Mise en forme
+
+- Police grande et lisible
+- Couleur selon performance
+- Icones conditionnelles
+
+## Graphiques interactifs
+
+### Types recommandes
+
+| Type | Usage |
+|------|-------|
+| Colonnes | Comparaisons |
+| Lignes | Tendances |
+| Secteurs | Repartitions |
+| Jauges | KPIs |
+
+### Lier aux filtres
+
+Les graphiques se mettent a jour automatiquement avec les segments.
+
+## Segments (Slicers)
+
+### Ajouter un segment
+
+1. Selectionnez un tableau croise ou tableau
+2. **Insertion** > **Segment**
+3. Choisissez les champs
+
+### Personnalisation
+
+- Taille et position
+- Nombre de colonnes
+- Style et couleurs
+
+## Chronologies
+
+### Pour les dates
+
+1. Tableau croise dynamique avec dates
+2. **Insertion** > **Chronologie**
+3. Selectionnez le champ date
+
+### Filtrage temporel
+
+- Par jour, mois, trimestre, annee
+- Selection de plages
+
+## Listes deroulantes
+
+### Validation de donnees
+
+1. **Donnees** > **Validation des donnees**
+2. Liste de valeurs
+3. Source : plage ou UNIQUE()
+
+### Formules connectees
+
+```excel
+=SOMME.SI(Region;$E$1;Ventes)
+```
+
+## Mise en forme conditionnelle
+
+### Applications
+
+- Barres de donnees dans les cellules
+- Icones de tendance
+- Echelles de couleurs
+
+### Exemple pour ecarts
+
+- Vert : `>0`
+- Jaune : entre `-10%` et `0`
+- Rouge : `<-10%`
+
+## Navigation
+
+### Boutons de navigation
+
+1. **Insertion** > **Formes**
+2. Creez un bouton
+3. Lien hypertexte vers autre onglet
+
+### Organisation
+
+- Menu principal
+- Onglets caches pour les donnees
+- Dashboard visible uniquement
+
+## Actualisation
+
+### Donnees externes
+
+Configurez l'actualisation automatique.
+
+### Formules volatiles
+
+Utilisez MAINTENANT() ou AUJOURDHUI() pour les dates.
+
+## Design professionnel
+
+### Principes
+
+| Element | Recommandation |
+|---------|----------------|
+| Couleurs | Palette coherente (3-4 couleurs) |
+| Police | Une seule famille |
+| Espacement | Aere et equilibre |
+| Alignement | Grille invisible |
+
+### Cacher les elements
+
+- Masquez le quadrillage
+- Masquez les en-tetes
+- Figez les volets
+
+## Exemple complet
+
+### Structure
+
+```
+[Logo]              [Periode: Segment]
+
+[KPI Ventes]  [KPI Marge]  [KPI Clients]
+
+[Graphique Evolution]    [Top Produits]
+
+[Repartition Region]     [Details]
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Simplicite | Ne surchargez pas |
+| Coherence | Memes conventions partout |
+| Performance | Optimisez les calculs |
+| Documentation | Expliquez les metriques |
+
+[Decouvrir nos formations Excel](/formations-excel)

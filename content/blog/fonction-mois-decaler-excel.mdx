@@ -1,0 +1,171 @@
+---
+title: "Fonction MOIS.DECALER dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maitrisez la fonction MOIS.DECALER pour manipuler les dates."
+description: "Guide de la fonction MOIS.DECALER pour les calculs de dates Excel."
+category: "Dates"
+categories: ["Dates", "Formules Excel"]
+tags: ["MOIS.DECALER", "Dates", "Formules", "Calculs"]
+---
+
+# Fonction MOIS.DECALER dans Excel
+
+MOIS.DECALER ajoute ou soustrait des mois a une date.
+
+## Syntaxe
+
+```excel
+=MOIS.DECALER(date_depart;mois)
+```
+
+## Parametres
+
+| Parametre | Description |
+|-----------|-------------|
+| date_depart | Date de reference |
+| mois | Nombre de mois a ajouter (negatif pour soustraire) |
+
+## Exemples de base
+
+### Ajouter des mois
+
+```excel
+=MOIS.DECALER("15/01/2024";3)   ' Resultat : 15/04/2024
+=MOIS.DECALER(A1;6)             ' 6 mois apres A1
+```
+
+### Soustraire des mois
+
+```excel
+=MOIS.DECALER("15/06/2024";-3)  ' Resultat : 15/03/2024
+=MOIS.DECALER(A1;-12)           ' Un an avant A1
+```
+
+## Cas particuliers
+
+### Fin de mois
+
+Si le jour n'existe pas dans le mois cible :
+
+```excel
+=MOIS.DECALER("31/01/2024";1)   ' Resultat : 29/02/2024
+```
+
+Le resultat est le dernier jour du mois.
+
+### Annees bissextiles
+
+```excel
+=MOIS.DECALER("29/02/2024";12)  ' Resultat : 28/02/2025
+```
+
+## Cas pratiques
+
+### Echeances de facturation
+
+```excel
+=MOIS.DECALER(Date_facture;1)   ' Echeance a 30 jours
+```
+
+### Date de renouvellement
+
+```excel
+=MOIS.DECALER(Date_contrat;12)  ' Un an plus tard
+```
+
+### Planning mensuel
+
+```excel
+=MOIS.DECALER($A$1;LIGNE()-1)   ' Dates successives
+```
+
+## Combiner avec FIN.MOIS
+
+### Obtenir le dernier jour du mois suivant
+
+```excel
+=FIN.MOIS(A1;1)
+```
+
+### Obtenir le premier jour du mois suivant
+
+```excel
+=FIN.MOIS(A1;0)+1
+```
+
+## Difference avec MOIS
+
+### MOIS
+
+Extrait le numero du mois d'une date.
+
+```excel
+=MOIS("15/06/2024")   ' Resultat : 6
+```
+
+### MOIS.DECALER
+
+Deplace la date de X mois.
+
+```excel
+=MOIS.DECALER("15/06/2024";1)   ' Resultat : 15/07/2024
+```
+
+## Avec DATE
+
+### Alternative sans MOIS.DECALER
+
+```excel
+=DATE(ANNEE(A1);MOIS(A1)+3;JOUR(A1))
+```
+
+Equivalent a `=MOIS.DECALER(A1;3)` mais moins fiable pour les fins de mois.
+
+## Calcul d'anciennete
+
+### Mois complets
+
+```excel
+=DATEDIF(Date_debut;AUJOURDHUI();"m")
+```
+
+### Prochaine date anniversaire
+
+```excel
+=MOIS.DECALER(Date_embauche;12*Annees)
+```
+
+## Tableau de dates
+
+### Generer 12 mois
+
+```excel
+=MOIS.DECALER($A$1;SEQUENCE(12;1;0;1))
+```
+
+Retourne un tableau de 12 dates.
+
+## Erreurs courantes
+
+### #VALEUR!
+
+Cause : La date n'est pas valide.
+
+Solution : Verifiez le format de la date.
+
+### Resultat inattendu
+
+Cause : Calcul sur texte au lieu de date.
+
+Solution : Utilisez DATEVAL pour convertir.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Format date | Verifiez que c'est une vraie date |
+| Jours de mois | Attention aux 31, 30, 28/29 |
+| Signe | Positif = futur, negatif = passe |
+
+[Decouvrir nos formations Excel](/formations-excel)

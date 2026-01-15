@@ -1,0 +1,187 @@
+---
+title: "La Fonction SEQUENCE dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Creez des sequences de nombres automatiquement avec SEQUENCE."
+description: "Guide de la fonction SEQUENCE dans Excel 365. Generer des series."
+category: "Formules Excel"
+categories: ["Formules Excel", "Excel 365"]
+tags: ["SEQUENCE", "Nombres", "Series", "Excel 365"]
+---
+
+# La Fonction SEQUENCE dans Excel
+
+SEQUENCE genere automatiquement des sequences de nombres.
+
+## Disponibilite
+
+- Excel 365
+- Excel 2021
+- Excel pour le web
+
+## Syntaxe
+
+```excel
+=SEQUENCE(lignes;[colonnes];[debut];[pas])
+```
+
+### Arguments
+
+| Argument | Description | Par defaut |
+|----------|-------------|------------|
+| lignes | Nombre de lignes | Requis |
+| colonnes | Nombre de colonnes | 1 |
+| debut | Premiere valeur | 1 |
+| pas | Increment | 1 |
+
+## Exemples de base
+
+### Serie simple
+
+```excel
+=SEQUENCE(10)
+```
+
+Resultat : 1, 2, 3... 10
+
+### Serie avec debut
+
+```excel
+=SEQUENCE(5;;10)
+```
+
+Resultat : 10, 11, 12, 13, 14
+
+### Serie avec pas
+
+```excel
+=SEQUENCE(5;;0;5)
+```
+
+Resultat : 0, 5, 10, 15, 20
+
+### Decroissante
+
+```excel
+=SEQUENCE(5;;10;-1)
+```
+
+Resultat : 10, 9, 8, 7, 6
+
+## Matrice 2D
+
+### Grille de nombres
+
+```excel
+=SEQUENCE(3;4)
+```
+
+Resultat :
+```
+1  2  3  4
+5  6  7  8
+9  10 11 12
+```
+
+### Grille personnalisee
+
+```excel
+=SEQUENCE(5;3;100;10)
+```
+
+## Cas pratiques
+
+### Jours d'un mois
+
+```excel
+=SEQUENCE(31;;DATE(2024;1;1))
+```
+
+Genere les 31 jours de janvier 2024.
+
+### Heures de la journee
+
+```excel
+=SEQUENCE(24;;TEMPS(0;0;0);TEMPS(1;0;0))
+```
+
+### Annees
+
+```excel
+=SEQUENCE(10;;2020)
+```
+
+Resultat : 2020, 2021... 2029
+
+## Combinaisons
+
+### SEQUENCE + FILTRE
+
+```excel
+=FILTRE(Donnees;LIGNE(Donnees)<=SEQUENCE(10))
+```
+
+### SEQUENCE + INDEX
+
+```excel
+=INDEX(Tableau;SEQUENCE(LIGNES(Tableau));SEQUENCE(1;COLONNES(Tableau)))
+```
+
+### SEQUENCE + TEXTE
+
+```excel
+="Mois "&SEQUENCE(12)
+```
+
+### SEQUENCE + DATE
+
+```excel
+=DATE(2024;SEQUENCE(12);1)
+```
+
+Premier jour de chaque mois 2024.
+
+## Alterner des valeurs
+
+### Pair/Impair
+
+```excel
+=RESTE(SEQUENCE(10);2)
+```
+
+Resultat : 1, 0, 1, 0...
+
+### Alterner deux valeurs
+
+```excel
+=SI(RESTE(SEQUENCE(10);2)=0;"A";"B")
+```
+
+## Performance
+
+SEQUENCE est tres efficace pour generer de grandes series sans formules repetitives.
+
+## Comparaison avec anciennes methodes
+
+### Avant
+
+1. Taper 1 dans une cellule
+2. Taper 2 en dessous
+3. Selectionner et faire glisser
+
+### Avec SEQUENCE
+
+```excel
+=SEQUENCE(100)
+```
+
+Une seule formule.
+
+## Bonnes pratiques
+
+1. **Utilisez** des plages dynamiques avec SEQUENCE
+2. **Combinez** avec d'autres fonctions pour plus de puissance
+3. **Preferez** SEQUENCE aux series manuelles
+4. **Attention** a l'espace disponible
+
+[Decouvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,159 @@
+---
+title: "Optimiser vos Formules avec la Fonction LET"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez a optimiser vos formules Excel avec la fonction LET."
+description: "Guide pour optimiser les formules Excel avec LET. Variables et performance."
+category: "Formules Excel"
+categories: ["Formules Excel", "Excel 365"]
+tags: ["LET", "Optimisation", "Performance", "Formules"]
+---
+
+# Optimiser vos Formules avec LET
+
+La fonction LET permet de creer des variables dans vos formules pour plus de performance et de lisibilite.
+
+## Disponibilite
+
+- Excel 365
+- Excel 2021
+
+## Pourquoi utiliser LET ?
+
+### Probleme classique
+
+Sans LET, vous repetez les memes calculs :
+
+```excel
+=SI(SOMME(A1:A100)>1000;SOMME(A1:A100)*0.1;SOMME(A1:A100)*0.05)
+```
+
+SOMME(A1:A100) est calcule 3 fois.
+
+### Solution avec LET
+
+```excel
+=LET(
+  total;SOMME(A1:A100);
+  SI(total>1000;total*0.1;total*0.05)
+)
+```
+
+Le calcul n'est fait qu'une seule fois.
+
+## Syntaxe
+
+```excel
+=LET(nom1;valeur1;[nom2;valeur2;...];calcul)
+```
+
+## Avantages
+
+### Performance
+
+Les calculs complexes ne sont executes qu'une fois.
+
+### Lisibilite
+
+Les formules deviennent auto-documentees.
+
+### Maintenance
+
+Plus facile de modifier une variable que plusieurs occurrences.
+
+## Exemples pratiques
+
+### Calcul de remise
+
+```excel
+=LET(
+  montant;B2;
+  taux;SI(montant>1000;0.15;SI(montant>500;0.10;0.05));
+  remise;montant*taux;
+  montant-remise
+)
+```
+
+### Statistiques
+
+```excel
+=LET(
+  donnees;A1:A100;
+  moy;MOYENNE(donnees);
+  ecart;ECARTYPE.STANDARD(donnees);
+  "Moyenne: "&moy&" | Ecart-type: "&ecart
+)
+```
+
+### Recherche avec traitement
+
+```excel
+=LET(
+  resultat;RECHERCHEX(E1;A:A;B:B);
+  SI(ESTERREUR(resultat);"Non trouve";resultat*1.2)
+)
+```
+
+## Variables en cascade
+
+### Reutiliser les variables precedentes
+
+```excel
+=LET(
+  x;A1;
+  y;x*2;
+  z;y+10;
+  resultat;z/5;
+  resultat
+)
+```
+
+Chaque variable peut utiliser les precedentes.
+
+## Combinaison avec autres fonctions
+
+### LET + FILTRE
+
+```excel
+=LET(
+  filtre;FILTRE(A:D;B:B="Actif");
+  TRIER(filtre;3;-1)
+)
+```
+
+### LET + RECHERCHEX
+
+```excel
+=LET(
+  id;E1;
+  nom;RECHERCHEX(id;A:A;B:B);
+  prix;RECHERCHEX(id;A:A;C:C);
+  nom&" - "&prix&" euros"
+)
+```
+
+## Regles de nommage
+
+### Noms valides
+
+- Commencer par une lettre
+- Lettres, chiffres, underscore
+- Pas de noms reserves (VRAI, FAUX)
+
+### Exemples
+
+```excel
+=LET(total;...;...)           ' OK
+=LET(mon_total;...;...)       ' OK
+=LET(1total;...;...)          ' ERREUR
+=LET(VRAI;...;...)            ' ERREUR
+```
+
+## Bonnes pratiques
+
+1. **Nommez** clairement vos variables
+2. **Limitez** le nombre de variables (5-7 max)
+3. **Groupez** les calculs logiquement
+4. **Testez** chaque variable separement
+
+[Decouvrir nos formations Excel](/formations-excel)

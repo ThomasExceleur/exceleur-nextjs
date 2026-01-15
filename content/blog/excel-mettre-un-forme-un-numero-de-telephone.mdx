@@ -1,0 +1,207 @@
+---
+title: "Excel Mettre en Forme un Numero de Telephone"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez a formater correctement les numeros de telephone dans Excel."
+description: "Guide pour formater les numeros de telephone dans Excel. Formats personnalises et formules."
+category: "Formatage"
+categories: ["Formatage", "Astuces Excel"]
+tags: ["Telephone", "Format", "Mise en forme", "Texte"]
+---
+
+# Formater un Numero de Telephone dans Excel
+
+Les numeros de telephone necessitent un formatage special pour etre lisibles.
+
+## Problemes courants
+
+### Le zero initial disparait
+
+Si vous tapez 0612345678, Excel affiche 612345678.
+
+### Cause
+
+Excel traite les numeros comme des nombres mathematiques.
+
+### Solution
+
+Formatez la cellule en texte AVANT de saisir.
+
+## Format texte
+
+### Methode 1 : Avant saisie
+
+1. Selectionnez les cellules
+2. **Accueil** > **Format** > **Texte**
+3. Saisissez le numero
+
+### Methode 2 : Apostrophe
+
+Tapez une apostrophe avant le numero :
+```
+'0612345678
+```
+
+L'apostrophe n'apparait pas mais force le format texte.
+
+## Format personnalise
+
+### Creer un format
+
+1. Selectionnez les cellules
+2. **Ctrl + 1** (Format de cellule)
+3. **Personnalisee**
+4. Entrez le format
+
+### Formats francais
+
+| Format | Affichage |
+|--------|-----------|
+| `00" "00" "00" "00" "00` | 06 12 34 56 78 |
+| `00.00.00.00.00` | 06.12.34.56.78 |
+| `00-00-00-00-00` | 06-12-34-56-78 |
+
+### Format international
+
+```
+"+33 "0" "00" "00" "00" "00
+```
+
+Affiche : +33 6 12 34 56 78
+
+## Formules de formatage
+
+### Ajouter des espaces
+
+```excel
+=GAUCHE(A1;2)&" "&STXT(A1;3;2)&" "&STXT(A1;5;2)&" "&STXT(A1;7;2)&" "&DROITE(A1;2)
+```
+
+### Conserver le zero
+
+```excel
+=TEXTE(A1;"0000000000")
+```
+
+### Format avec indicatif
+
+```excel
+="+33 "&DROITE(TEXTE(A1;"0000000000");9)
+```
+
+## Nettoyer les numeros
+
+### Supprimer les espaces
+
+```excel
+=SUBSTITUE(A1;" ";"")
+```
+
+### Supprimer tous les caracteres non numeriques
+
+```excel
+=SUBSTITUE(SUBSTITUE(SUBSTITUE(A1;" ";"");"-";"");".";"")
+```
+
+### Fonction personnalisee (VBA)
+
+```vba
+Function NettoyerTel(tel As String) As String
+    Dim i As Integer
+    For i = 1 To Len(tel)
+        If IsNumeric(Mid(tel, i, 1)) Then
+            NettoyerTel = NettoyerTel & Mid(tel, i, 1)
+        End If
+    Next i
+End Function
+```
+
+## Validation des numeros
+
+### Longueur correcte
+
+```excel
+=SI(NBCAR(A1)=10;"OK";"Verifier")
+```
+
+### Commence par 0
+
+```excel
+=SI(GAUCHE(A1;1)="0";"OK";"Ajouter 0")
+```
+
+### Verification complete
+
+```excel
+=SI(ET(NBCAR(A1)=10;GAUCHE(A1;1)="0");"Valide";"Invalide")
+```
+
+## Formats internationaux
+
+### Format E.164
+
+Standard international sans espaces :
+```
++33612345678
+```
+
+### Avec indicatif pays
+
+| Pays | Format |
+|------|--------|
+| France | +33 X XX XX XX XX |
+| Belgique | +32 X XX XX XX XX |
+| Suisse | +41 XX XXX XX XX |
+
+## Import de donnees
+
+### Numeros qui perdent le zero
+
+1. Importez en format texte
+2. Ou utilisez Power Query avec type Texte
+
+### Convertir apres import
+
+```excel
+=TEXTE(A1;"0000000000")
+```
+
+## Liens cliquables
+
+### Creer un lien telephone
+
+```excel
+=LIEN_HYPERTEXTE("tel:"&A1;A1)
+```
+
+### Format complet
+
+```excel
+=LIEN_HYPERTEXTE("tel:+33"&DROITE(A1;9);TEXTE(A1;"00 00 00 00 00"))
+```
+
+## Detecter les mobiles vs fixes
+
+### En France
+
+```excel
+=SI(OU(GAUCHE(A1;2)="06";GAUCHE(A1;2)="07");"Mobile";"Fixe")
+```
+
+## Bonnes pratiques
+
+1. **Formatez** les colonnes en texte avant saisie
+2. **Standardisez** le format dans toute la base
+3. **Validez** la longueur et le format
+4. **Stockez** sans formatage, formatez a l'affichage
+
+## Resume des formats
+
+| Besoin | Format personnalise |
+|--------|---------------------|
+| Espaces | `00" "00" "00" "00" "00` |
+| Points | `00"."00"."00"."00"."00` |
+| Tirets | `00"-"00"-"00"-"00"-"00` |
+| International | `"+33 "0" "00" "00" "00" "00` |
+
+[Decouvrir nos formations Excel](/formations-excel)

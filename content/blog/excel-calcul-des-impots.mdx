@@ -1,0 +1,196 @@
+---
+title: "Excel Calcul des Impots : Simulateur et Formules"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Creez un simulateur de calcul d'impots dans Excel pour estimer votre imposition."
+description: "Guide pour creer un calculateur d'impots dans Excel. Bareme, quotient familial et formules."
+category: "Finance"
+categories: ["Finance", "Calculs"]
+tags: ["Impots", "Fiscalite", "Calculs", "Simulation"]
+---
+
+# Calcul des Impots dans Excel
+
+Excel permet de creer un simulateur pour estimer votre impot sur le revenu.
+
+## Avertissement
+
+Ce guide est a but pedagogique. Pour votre declaration officielle, utilisez le simulateur des impots.
+
+## Le bareme progressif
+
+### Tranches d'imposition 2024
+
+| Tranche | De | A | Taux |
+|---------|-----|------|------|
+| 1 | 0 | 11 294 | 0% |
+| 2 | 11 295 | 28 797 | 11% |
+| 3 | 28 798 | 82 341 | 30% |
+| 4 | 82 342 | 177 106 | 41% |
+| 5 | 177 107 | + | 45% |
+
+## Structure du simulateur
+
+### Donnees d'entree
+
+| Champ | Valeur |
+|-------|--------|
+| Revenu net imposable | 50 000 |
+| Parts fiscales | 2 |
+| Quotient familial | =B1/B2 |
+
+### Calcul du quotient
+
+```excel
+=Revenu_net / Parts
+```
+
+## Formule de calcul par tranche
+
+### Impot par tranche
+
+```excel
+=SI(Quotient<=11294;0;
+  SI(Quotient<=28797;(Quotient-11294)*0.11;
+    SI(Quotient<=82341;1925+(Quotient-28797)*0.30;
+      SI(Quotient<=177106;17988+(Quotient-82341)*0.41;
+        56857+(Quotient-177106)*0.45))))
+```
+
+### Impot total
+
+```excel
+=Impot_par_part * Parts
+```
+
+## Methode detaillee par tranche
+
+### Structure du tableau
+
+| Tranche | Min | Max | Taux | Base | Impot |
+|---------|-----|-----|------|------|-------|
+| 1 | 0 | 11294 | 0% | =MIN(Max;Quotient)-Min | =E2*D2 |
+
+### Formule base imposable par tranche
+
+```excel
+=MAX(0;MIN(C2;$G$1)-B2)    ' G1 = Quotient familial
+```
+
+## Le quotient familial
+
+### Nombre de parts
+
+| Situation | Parts |
+|-----------|-------|
+| Celibataire | 1 |
+| Couple marie/pacse | 2 |
+| + 1er enfant | +0.5 |
+| + 2e enfant | +0.5 |
+| + 3e enfant et suivants | +1 |
+
+### Formule automatique
+
+```excel
+=2 + SI(Enfants>=1;0.5;0) + SI(Enfants>=2;0.5;0) + SI(Enfants>=3;(Enfants-2);0)
+```
+
+## Plafonnement du quotient familial
+
+### Plafond par demi-part
+
+Environ 1 759 par demi-part supplementaire.
+
+### Verification
+
+```excel
+=SI(Avantage_QF > Plafond; Impot_sans_QF - Plafond; Impot_avec_QF)
+```
+
+## Decote
+
+### Seuils de decote
+
+- Celibataire : si impot < 1 929
+- Couple : si impot < 3 191
+
+### Formule decote
+
+```excel
+=SI(Parts=1;
+  SI(Impot_brut<=1929;MAX(0;Impot_brut-(873-(Impot_brut*0.4525)));Impot_brut);
+  SI(Impot_brut<=3191;MAX(0;Impot_brut-(1444-(Impot_brut*0.4525)));Impot_brut))
+```
+
+## Reductions et credits d'impot
+
+### Tableau des reductions
+
+| Type | Montant | Plafond |
+|------|---------|---------|
+| Dons | 66% | 20% du revenu |
+| Emploi domicile | 50% | 12 000 |
+| Garde enfant | 50% | 2 300 |
+
+### Calcul
+
+```excel
+=MIN(Montant*Taux;Plafond)
+```
+
+## Taux marginal d'imposition
+
+### Formule
+
+```excel
+=SI(Quotient<=11294;0%;
+  SI(Quotient<=28797;11%;
+    SI(Quotient<=82341;30%;
+      SI(Quotient<=177106;41%;45%))))
+```
+
+## Taux moyen d'imposition
+
+```excel
+=Impot_net / Revenu_net * 100
+```
+
+## Tableau de simulation
+
+### Structure complete
+
+| Element | Montant |
+|---------|---------|
+| Salaires declares | 60 000 |
+| Frais reels/10% | -6 000 |
+| Revenu net imposable | 54 000 |
+| Parts fiscales | 2.5 |
+| Quotient familial | 21 600 |
+| Impot brut | 2 267 |
+| Decote | 0 |
+| Reductions | -500 |
+| Impot net | 1 767 |
+
+## Graphique du bareme
+
+1. Creez un tableau avec les revenus de 0 a 200 000
+2. Calculez l'impot correspondant
+3. **Insertion** > **Graphique** > **Aires**
+
+## Comparaison de scenarios
+
+### Tableau comparatif
+
+| Scenario | Revenu | Parts | Impot | Taux moyen |
+|----------|--------|-------|-------|------------|
+| Actuel | 50 000 | 2 | 3 500 | 7% |
+| Avec enfant | 50 000 | 2.5 | 2 800 | 5.6% |
+
+## Bonnes pratiques
+
+1. **Verifiez** les baremes chaque annee
+2. **Comparez** avec le simulateur officiel
+3. **Documentez** vos hypotheses
+4. **Sauvegardez** vos simulations
+
+[Decouvrir nos formations Excel](/formations-excel)

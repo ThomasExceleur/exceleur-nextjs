@@ -1,0 +1,165 @@
+---
+title: "Tutoriel : Graphique en Cascade dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez a creer un graphique en cascade (waterfall) dans Excel."
+description: "Tutoriel complet pour creer un graphique en cascade dans Excel."
+category: "Graphiques"
+categories: ["Graphiques", "Visualisation"]
+tags: ["Graphique", "Cascade", "Waterfall", "Excel"]
+---
+
+# Tutoriel : Graphique en Cascade dans Excel
+
+Le graphique en cascade montre l'evolution d'une valeur a travers des increments positifs et negatifs.
+
+## Qu'est-ce qu'un graphique en cascade ?
+
+### Definition
+
+Aussi appele "waterfall chart", il visualise :
+- La valeur initiale
+- Les variations successives
+- La valeur finale
+
+### Applications
+
+- Analyse financiere
+- Evolution du CA
+- Budget vs reel
+- Decomposition de resultats
+
+## Creer un graphique en cascade natif
+
+### Excel 2016 et plus
+
+1. Selectionnez vos donnees
+2. **Insertion** > **Graphiques** > **Cascade**
+
+### Structure des donnees
+
+| Element | Valeur |
+|---------|--------|
+| Debut | 1000 |
+| Ventes | 500 |
+| Couts | -300 |
+| Marketing | -100 |
+| Autre | 50 |
+| Total | 1150 |
+
+## Configurer le graphique
+
+### Definir les totaux
+
+1. Clic droit sur la barre "Debut"
+2. **Definir comme total**
+3. Idem pour "Total" final
+
+### Resultat
+
+Les barres de total sont ancrees sur l'axe.
+
+## Personnalisation
+
+### Couleurs
+
+- Augmentations : Vert
+- Diminutions : Rouge
+- Totaux : Bleu ou gris
+
+### Modifier les couleurs
+
+1. Cliquez sur une barre
+2. **Format** > **Remplissage**
+
+### Connecteurs
+
+Les lignes de connexion sont automatiques.
+
+## Methode manuelle (versions anterieures)
+
+### Structure des donnees
+
+| Element | Base | Augmentation | Diminution |
+|---------|------|--------------|------------|
+| Debut | 0 | 1000 | 0 |
+| Ventes | 1000 | 500 | 0 |
+| Couts | 1500 | 0 | 300 |
+| Marketing | 1200 | 0 | 100 |
+| Autre | 1100 | 50 | 0 |
+| Total | 0 | 1150 | 0 |
+
+### Creer le graphique
+
+1. Creez un graphique a barres empilees
+2. Rendez la serie "Base" invisible
+3. Colorez Augmentation en vert, Diminution en rouge
+
+### Rendre la base invisible
+
+1. Selectionnez la serie Base
+2. Remplissage : Aucun
+3. Bordure : Aucune
+
+## Formules pour le calcul
+
+### Base
+
+```excel
+=SI(LIGNE()=2;0;SI(C2>0;D1;D1-C2))
+```
+
+### Ou avec cumul
+
+Calculez le cumul a chaque etape.
+
+## Cas pratique : P&L
+
+### Donnees
+
+| Element | Montant |
+|---------|---------|
+| Chiffre d'affaires | 10000 |
+| Cout des ventes | -6000 |
+| Marge brute | 4000 |
+| Charges | -2500 |
+| Resultat | 1500 |
+
+### Graphique
+
+Visualisez clairement comment le CA devient le resultat.
+
+## Astuces avancees
+
+### Ajouter des etiquettes
+
+1. Cliquez sur le graphique
+2. **+** > **Etiquettes de donnees**
+
+### Positionner les etiquettes
+
+- Extremite exterieure pour les augmentations
+- Extremite interieure pour les diminutions
+
+### Sous-totaux
+
+Ajoutez des barres de sous-total intermediaires.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Ordre logique | Debut > Variations > Fin |
+| Couleurs coherentes | Rouge=negatif, Vert=positif |
+| Etiquettes | Montrez les valeurs importantes |
+| Titre clair | Expliquez ce que montre le graphique |
+
+## Erreurs courantes
+
+| Erreur | Solution |
+|--------|----------|
+| Barres non alignees | Definissez les totaux |
+| Couleurs confuses | Standardisez rouge/vert |
+| Trop de categories | Regroupez les petites valeurs |
+
+[Decouvrir nos formations Excel](/formations-excel)

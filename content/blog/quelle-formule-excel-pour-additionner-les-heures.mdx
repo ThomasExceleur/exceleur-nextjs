@@ -1,0 +1,147 @@
+---
+title: "Quelle Formule Excel pour Additionner les Heures"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez a additionner des heures dans Excel correctement."
+description: "Formules pour additionner des heures dans Excel. Depassement de 24h."
+category: "Calculs"
+categories: ["Calculs", "Dates"]
+tags: ["Heures", "Addition", "Temps", "Format"]
+---
+
+# Additionner les Heures dans Excel
+
+L'addition des heures necessite quelques precautions.
+
+## Addition simple
+
+### Formule SOMME
+
+```excel
+=SOMME(A1:A10)
+```
+
+Fonctionne si les heures sont bien formatees.
+
+## Probleme du depassement de 24h
+
+### Le probleme
+
+Si le total depasse 24 heures, Excel affiche :
+- 25:00 → 01:00 (incorrect)
+
+### La solution
+
+Changez le format de cellule :
+
+1. Selectionnez la cellule du total
+2. **Ctrl + 1** (Format de cellule)
+3. Onglet **Nombre** > **Personnalise**
+4. Tapez : `[h]:mm`
+
+### Formats utiles
+
+| Format | Affichage |
+|--------|-----------|
+| h:mm | 1:30 (max 24h) |
+| [h]:mm | 25:30 (depasse 24h) |
+| [h]:mm:ss | 25:30:45 |
+
+## Convertir en heures decimales
+
+### Formule
+
+```excel
+=SOMME(A1:A10)*24
+```
+
+8:30 devient 8.5 heures.
+
+### Usage
+
+Utile pour les calculs de salaire :
+```excel
+=HeuresDecimales*TauxHoraire
+```
+
+## Saisie correcte des heures
+
+### Format attendu
+
+- 8:30 (pas 8h30)
+- 17:45 (pas 17.45)
+- 0:30 (trente minutes)
+
+### Saisie rapide
+
+Utilisez les deux-points (`:`) pour separer heures et minutes.
+
+## Exemples pratiques
+
+### Temps de travail hebdomadaire
+
+| Jour | Heures |
+|------|--------|
+| Lundi | 8:00 |
+| Mardi | 7:30 |
+| Mercredi | 8:15 |
+| Jeudi | 8:00 |
+| Vendredi | 7:15 |
+| **Total** | **39:00** |
+
+```excel
+=SOMME(B2:B6)    ' Format [h]:mm
+```
+
+### Heures supplementaires
+
+```excel
+=SI(Total>TEMPS(35;0;0);Total-TEMPS(35;0;0);0)
+```
+
+## Additionner heures et minutes separees
+
+### Avec TEMPS
+
+```excel
+=TEMPS(Heures;Minutes;0)
+```
+
+### Exemple
+
+```excel
+=TEMPS(A1;B1;0)+TEMPS(A2;B2;0)
+```
+
+## Fonction TEMPS
+
+### Syntaxe
+
+```excel
+=TEMPS(heures;minutes;secondes)
+```
+
+### Creer une duree
+
+```excel
+=TEMPS(8;30;0)    ' 8 heures 30
+```
+
+## Erreurs courantes
+
+### Texte au lieu d'heure
+
+Si la cellule contient "8h30" (texte), la SOMME ne fonctionne pas.
+
+### Mauvais format
+
+Verifiez que les cellules sont formatees en heure.
+
+## Bonnes pratiques
+
+1. **Utilisez** le format [h]:mm pour les totaux
+2. **Saisissez** avec deux-points (8:30)
+3. **Verifiez** le format des cellules
+4. **Convertissez** en decimal pour les calculs financiers
+
+[Decouvrir nos formations Excel](/formations-excel)

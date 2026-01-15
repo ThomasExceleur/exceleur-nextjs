@@ -1,0 +1,97 @@
+---
+title: "Excel : Separer du Texte et des Nombres"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Techniques pour separer texte et nombres dans Excel."
+description: "Guide pour separer le texte des nombres dans Excel."
+category: "Manipulation de donnees"
+categories: ["Manipulation de donnees", "Astuces Excel"]
+tags: ["Texte", "Nombres", "Separation", "Excel"]
+---
+
+# Separer Texte et Nombres
+
+Extrayez le texte et les nombres de vos cellules.
+
+## Methode Ctrl+E
+
+### Etapes
+
+1. Tapez le resultat souhaite (texte seul)
+2. Descendez d'une cellule
+3. **Ctrl+E**
+
+## Formules pour le texte
+
+### Supprimer les chiffres
+
+```excel
+=SUBSTITUE(SUBSTITUE(SUBSTITUE(A1;0;"");1;"");2;"")...
+```
+
+### TEXTE.APRES (Excel 365)
+
+```excel
+=TEXTE.APRES(A1;SEQUENCE(1;10;0;1))
+```
+
+## Formules pour les nombres
+
+### SOMME matricielle
+
+```excel
+=SOMMEPROD(STXT(A1;SEQUENCE(NBCAR(A1));1)*ESTNUM(STXT(A1;SEQUENCE(NBCAR(A1));1)*1))
+```
+
+### Plus simple avec FILTRE (Excel 365)
+
+Utilisez Ctrl+E pour les cas simples.
+
+## Exemples
+
+| Avant | Texte | Nombre |
+|-------|-------|--------|
+| ABC123 | ABC | 123 |
+| 50kg | kg | 50 |
+| Paris75001 | Paris | 75001 |
+
+## Power Query
+
+### Methode
+
+1. Selectionnez la colonne
+2. **Transformer** > **Extraire**
+3. Choisissez le type d'extraction
+
+### Options
+
+- Premiers caracteres
+- Derniers caracteres
+- Plage de caracteres
+- Texte avant/apres delimiteur
+
+## VBA
+
+### Code simple
+
+```vba
+Function ExtraireNombre(texte As String) As Double
+    Dim i As Integer, resultat As String
+    For i = 1 To Len(texte)
+        If IsNumeric(Mid(texte, i, 1)) Then
+            resultat = resultat & Mid(texte, i, 1)
+        End If
+    Next i
+    ExtraireNombre = Val(resultat)
+End Function
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Ctrl+E d'abord | Le plus rapide |
+| Power Query | Pour les volumes |
+| Formules | Si besoin de mise a jour |
+
+[Decouvrir nos formations Excel](/formations-excel)

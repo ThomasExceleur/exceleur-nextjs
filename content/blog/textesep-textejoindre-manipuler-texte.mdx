@@ -1,0 +1,94 @@
+---
+title: "FRACTIONNER.TEXTE et JOINDRE.TEXTE : Manipuler le Texte"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maitrisez les fonctions de manipulation de texte avancees."
+description: "Guide FRACTIONNER.TEXTE et JOINDRE.TEXTE pour Excel."
+category: "Excel 365"
+categories: ["Excel 365", "Formules Excel"]
+tags: ["FRACTIONNER.TEXTE", "JOINDRE.TEXTE", "Texte", "Manipulation"]
+---
+
+# FRACTIONNER.TEXTE et JOINDRE.TEXTE
+
+Fonctions modernes pour la manipulation de texte.
+
+## FRACTIONNER.TEXTE (TEXTSPLIT)
+
+### Syntaxe
+
+```excel
+=FRACTIONNER.TEXTE(texte;delimiteur_col;[delimiteur_ligne])
+```
+
+### Exemple simple
+
+```excel
+=FRACTIONNER.TEXTE(\"Paris;Lyon;Marseille\";\";\")"
+```
+
+Resultat : Paris | Lyon | Marseille (en colonnes)
+
+### Avec lignes et colonnes
+
+```excel
+=FRACTIONNER.TEXTE(\"A1,B1;A2,B2\";\",\";\";\")
+```
+
+Cree une matrice 2x2.
+
+## JOINDRE.TEXTE (TEXTJOIN)
+
+### Syntaxe
+
+```excel
+=JOINDRE.TEXTE(delimiteur;ignorer_vides;texte1;...)
+```
+
+### Exemple
+
+```excel
+=JOINDRE.TEXTE(\", \";VRAI;A1:A10)
+```
+
+### Ignorer les vides
+
+Le parametre VRAI ignore les cellules vides.
+
+## Cas pratiques
+
+### Separer nom et prenom
+
+```excel
+=FRACTIONNER.TEXTE(A1;\" \")
+```
+
+### Creer une liste
+
+```excel
+=JOINDRE.TEXTE(\" | \";VRAI;UNIQUE(A:A))
+```
+
+### Adresse email depuis elements
+
+```excel
+=JOINDRE.TEXTE(\"\";VRAI;Prenom;\".\";Nom;\"@entreprise.com\")
+```
+
+## Combiner les deux
+
+### Nettoyer et reformater
+
+```excel
+=JOINDRE.TEXTE(\" \";VRAI;FRACTIONNER.TEXTE(A1;\",\"))
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| VRAI pour ignorer vides | Evite les doublons de separateurs |
+| Caracteres speciaux | Echappez si necessaire |
+| Test | Verifiez avec differentes donnees |
+
+[Decouvrir nos formations Excel](/formations-excel)

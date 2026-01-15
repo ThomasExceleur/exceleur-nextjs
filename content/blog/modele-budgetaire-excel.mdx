@@ -1,0 +1,107 @@
+---
+title: "Modele Budgetaire Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Creez un modele budgetaire professionnel dans Excel."
+description: "Guide pour creer un modele budgetaire Excel."
+category: "Finance"
+categories: ["Finance", "Comptabilite"]
+tags: ["Budget", "Modele", "Finance", "Excel"]
+---
+
+# Modele Budgetaire Excel
+
+Construisez un outil de gestion budgetaire efficace.
+
+## Structure du modele
+
+### Onglets recommandes
+
+| Onglet | Contenu |
+|--------|---------|
+| Parametres | Hypotheses |
+| Budget | Previsions |
+| Reel | Donnees reelles |
+| Ecarts | Comparaison |
+| Dashboard | Synthese |
+
+## Budget previsionnel
+
+### Revenus
+
+| Categorie | Jan | Fev | Mar | ... |
+|-----------|-----|-----|-----|-----|
+| Ventes | 100 | 110 | 120 | ... |
+| Services | 50 | 55 | 60 | ... |
+
+### Depenses
+
+| Categorie | Jan | Fev | Mar | ... |
+|-----------|-----|-----|-----|-----|
+| Salaires | 40 | 40 | 42 | ... |
+| Loyer | 10 | 10 | 10 | ... |
+| Marketing | 15 | 20 | 18 | ... |
+
+## Formules cles
+
+### Total mensuel
+
+```excel
+=SOMME(B2:B10)-SOMME(B12:B20)
+```
+
+### Cumul annuel
+
+```excel
+=SOMME($B5:G5)
+```
+
+### Ecart budget/reel
+
+```excel
+=Reel-Budget
+```
+
+### Ecart en %
+
+```excel
+=(Reel-Budget)/Budget
+```
+
+## Analyse des ecarts
+
+### Mise en forme conditionnelle
+
+- Vert : ecart positif
+- Rouge : ecart negatif
+
+### Seuils d'alerte
+
+```excel
+=SI(ABS(Ecart%)>0.1;\"Alerte\";\"\")
+```
+
+## Dashboard budgetaire
+
+### KPIs
+
+- Total revenus YTD
+- Total depenses YTD
+- Resultat net
+- Ecart vs budget
+
+### Graphiques
+
+- Evolution mensuelle
+- Repartition des depenses
+- Ecarts par categorie
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Hypotheses centralisees | Facilitent les modifications |
+| Formules liees | Coherence automatique |
+| Validation | Verifiez les totaux |
+
+[Decouvrir nos formations Excel](/formations-excel)

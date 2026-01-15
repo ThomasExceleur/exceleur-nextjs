@@ -1,0 +1,221 @@
+---
+title: "Excel Case a Cocher : Creer et Utiliser des Checkbox"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez a creer et utiliser des cases a cocher dans Excel pour vos formulaires et listes."
+description: "Guide complet des cases a cocher dans Excel. Creation, liaison aux cellules et exemples pratiques."
+category: "Astuces Excel"
+categories: ["Astuces Excel", "Formulaires"]
+tags: ["Case a cocher", "Checkbox", "Formulaire", "Controles"]
+---
+
+# Case a Cocher Excel : Guide Complet
+
+Les cases a cocher permettent de creer des listes interactives et des formulaires dynamiques.
+
+## Activer l'onglet Developpeur
+
+### Etapes
+
+1. **Fichier** > **Options**
+2. **Personnaliser le ruban**
+3. Cochez **Developpeur**
+4. **OK**
+
+## Inserer une case a cocher
+
+### Methode
+
+1. Onglet **Developpeur**
+2. **Inserer** (dans le groupe Controles)
+3. Selectionnez **Case a cocher** (controles de formulaire)
+4. Cliquez dans votre feuille pour inserer
+
+### Modifier le texte
+
+Double-cliquez sur le texte de la case pour le modifier.
+
+### Redimensionner
+
+Selectionnez la case (clic droit) et ajustez les poignees.
+
+## Lier a une cellule
+
+### Pourquoi lier
+
+La liaison permet de recuperer la valeur VRAI/FAUX dans une cellule.
+
+### Comment faire
+
+1. Clic droit sur la case > **Format de controle**
+2. Onglet **Controle**
+3. Dans **Cellule liee**, entrez une reference (ex: $A$1)
+4. **OK**
+
+### Resultat
+
+- Case cochee = VRAI
+- Case decochee = FAUX
+
+## Utiliser la valeur
+
+### Formule SI
+
+```excel
+=SI(A1; "Complete"; "A faire")
+```
+
+### Calcul conditionnel
+
+```excel
+=SI(A1; B1*0.1; 0)
+```
+
+Applique 10% de remise si coche.
+
+### Somme conditionnelle
+
+```excel
+=SOMMEPROD(A1:A10*B1:B10)
+```
+
+Additionne les valeurs ou la case est cochee.
+
+## Creer une liste de taches
+
+### Structure
+
+| Case | Tache | Statut |
+|------|-------|--------|
+| [ ] | Tache 1 | =SI(A2;"Fait";"A faire") |
+| [ ] | Tache 2 | =SI(A3;"Fait";"A faire") |
+| [ ] | Tache 3 | =SI(A4;"Fait";"A faire") |
+
+### Compteur de progression
+
+```excel
+=NB.SI(A:A; VRAI) & " / " & NB(A:A)
+```
+
+### Pourcentage d'avancement
+
+```excel
+=NB.SI(A2:A10; VRAI) / NBVAL(A2:A10)
+```
+
+Format : Pourcentage
+
+## Mise en forme conditionnelle
+
+### Barrer les taches terminees
+
+1. Selectionnez la ligne des taches
+2. **Mise en forme conditionnelle** > **Nouvelle regle**
+3. **Utiliser une formule**
+4. Formule : `=$A2=VRAI`
+5. Format : Police barree, couleur grise
+
+### Colorer les lignes
+
+Meme principe avec un fond vert pour les taches terminees.
+
+## Supprimer une case a cocher
+
+### Une seule
+
+Clic droit sur la case > **Couper** ou touche Suppr.
+
+### Plusieurs
+
+1. Selectionnez avec Ctrl + clic
+2. Appuyez sur Suppr
+
+### Toutes
+
+1. **Accueil** > **Rechercher et selectionner** > **Objets**
+2. Tous les objets sont selectionnes
+3. Appuyez sur Suppr
+
+## Controles de formulaire vs ActiveX
+
+### Controles de formulaire
+
+- Plus simples
+- Fonctionnent sans macros
+- Recommandes pour la plupart des usages
+
+### Controles ActiveX
+
+- Plus de personnalisation
+- Necessitent parfois du VBA
+- Plus complexes
+
+## Cas pratiques
+
+### Liste de courses
+
+| [ ] | Article | Quantite |
+|-----|---------|----------|
+| [ ] | Lait | 2 |
+| [ ] | Pain | 1 |
+| [ ] | Oeufs | 6 |
+
+### Checklist de verification
+
+- [ ] Document 1 recu
+- [ ] Document 2 verifie
+- [ ] Signature obtenue
+
+### Calcul de devis
+
+| [ ] | Option | Prix |
+|-----|--------|------|
+| [ ] | Option A | 100 |
+| [ ] | Option B | 200 |
+| [ ] | Option C | 150 |
+
+Total : `=SOMMEPROD(A2:A4*C2:C4)`
+
+## Astuces
+
+### Copier rapidement
+
+Copiez une case et collez-la. La liaison sera automatiquement ajustee.
+
+### Aligner les cases
+
+Utilisez la grille ou les outils d'alignement dans le menu Format.
+
+### Grouper
+
+Selectionnez plusieurs cases et **Format** > **Grouper**.
+
+## Problemes courants
+
+### Case qui ne se coche pas
+
+Vous etes en mode Edition. Appuyez sur Echap puis cliquez.
+
+### Valeur non mise a jour
+
+Verifiez que la case est bien liee a une cellule.
+
+### Case qui se deplace
+
+Clic droit > **Taille et proprietes** > Decochez **Deplacer avec les cellules**.
+
+## Alternatives
+
+### Validation de donnees
+
+Creer une liste deroulante avec Oui/Non.
+
+### Symboles
+
+Utiliser des caracteres speciaux (coche, croix).
+
+### Mise en forme conditionnelle
+
+Afficher des icones selon les valeurs.
+
+[Decouvrir nos formations Excel](/formations-excel)

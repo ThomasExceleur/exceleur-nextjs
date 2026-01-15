@@ -1,0 +1,116 @@
+---
+title: "Trouver les Valeurs Uniques dans 2 Listes Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez a identifier les valeurs presentes dans une liste mais pas dans l'autre."
+description: "Techniques pour comparer deux listes et trouver les valeurs uniques dans Excel."
+category: "Formules Excel"
+categories: ["Formules Excel", "Analyse de donnees Excel"]
+tags: ["Comparaison", "Listes", "UNIQUE", "Doublons"]
+---
+
+# Trouver les Valeurs Uniques dans 2 Listes
+
+Comparez deux listes pour identifier les elements presents dans une seule.
+
+## Methode 1 : FILTRE + ESTNA (Excel 365)
+
+### Valeurs de Liste1 absentes de Liste2
+
+```excel
+=FILTRE(A:A;ESTNA(EQUIV(A:A;B:B;0)))
+```
+
+### Valeurs de Liste2 absentes de Liste1
+
+```excel
+=FILTRE(B:B;ESTNA(EQUIV(B:B;A:A;0)))
+```
+
+## Methode 2 : Mise en forme conditionnelle
+
+### Etapes
+
+1. Selectionnez la Liste1
+2. **Accueil** > **Mise en forme conditionnelle** > **Nouvelle regle**
+3. Choisissez "Utiliser une formule"
+4. Formule : `=ESTNA(EQUIV(A1;$B:$B;0))`
+5. Definissez un format (couleur de fond)
+
+## Methode 3 : NB.SI pour identifier
+
+### Formule auxiliaire
+
+```excel
+=SI(NB.SI($B:$B;A1)=0;"Unique";"Present")
+```
+
+Affichez dans une colonne helper, puis filtrez sur "Unique".
+
+## Methode 4 : RECHERCHEV
+
+### Identifier les absents
+
+```excel
+=SIERREUR(RECHERCHEV(A1;$B:$B;1;FAUX);"Non trouve")
+```
+
+## Excel 365 : Solution elegante
+
+### Avec FILTRE et EQUIV
+
+```excel
+=LET(
+  liste1;A2:A100;
+  liste2;B2:B100;
+  absents;FILTRE(liste1;ESTNA(EQUIV(liste1;liste2;0)));
+  absents
+)
+```
+
+## Comparaison bidirectionnelle
+
+### Elements exclusifs a chaque liste
+
+```excel
+' Uniquement dans Liste1
+=FILTRE(A:A;ESTNA(EQUIV(A:A;B:B;0)))
+
+' Uniquement dans Liste2
+=FILTRE(B:B;ESTNA(EQUIV(B:B;A:A;0)))
+
+' Toutes les differences
+=ASSEMB.V(
+  FILTRE(A:A;ESTNA(EQUIV(A:A;B:B;0)));
+  FILTRE(B:B;ESTNA(EQUIV(B:B;A:A;0)))
+)
+```
+
+## Cas pratiques
+
+### Clients perdus
+
+Comparer la liste clients de cette annee vs l'annee precedente.
+
+### Produits manquants
+
+Identifier les produits en catalogue mais pas en stock.
+
+## Visualisation
+
+### Tableau de resultats
+
+| Statut | Formule |
+|--------|---------|
+| Commun | Dans les deux listes |
+| Unique A | Seulement dans Liste A |
+| Unique B | Seulement dans Liste B |
+
+## Bonnes pratiques
+
+1. **Nettoyez** les donnees avant comparaison
+2. **Supprimez** les espaces superflus
+3. **Uniformisez** la casse (majuscules/minuscules)
+4. **Verifiez** les doublons dans chaque liste
+
+[Decouvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,171 @@
+---
+title: "Guide Pratique : Modelisation DCF dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Construisez un modele DCF professionnel dans Excel."
+description: "Guide pratique de modelisation DCF (Discounted Cash Flow) Excel."
+category: "Finance"
+categories: ["Finance", "Analyse de donnees Excel"]
+tags: ["DCF", "Valorisation", "Finance", "Modelisation"]
+---
+
+# Modelisation DCF dans Excel
+
+Construisez un modele de valorisation par actualisation des flux.
+
+## Qu'est-ce que le DCF ?
+
+### Definition
+
+Le DCF (Discounted Cash Flow) valorise une entreprise en actualisant ses flux de tresorerie futurs.
+
+### Formule
+
+```
+Valeur = Σ (CFt / (1+r)^t) + VT / (1+r)^n
+```
+
+| Element | Description |
+|---------|-------------|
+| CFt | Cash flow de la periode t |
+| r | Taux d'actualisation (WACC) |
+| VT | Valeur terminale |
+
+## Structure du modele
+
+### Onglets recommandes
+
+| Onglet | Contenu |
+|--------|---------|
+| Hypotheses | Variables d'entree |
+| P&L | Compte de resultat previsionnel |
+| CF | Flux de tresorerie |
+| DCF | Calcul de valorisation |
+
+## Etape 1 : Hypotheses
+
+### Variables cles
+
+```excel
+Croissance CA : 5%
+Marge EBITDA : 20%
+Capex % CA : 3%
+BFR % CA : 10%
+WACC : 8%
+Croissance perpetuelle : 2%
+```
+
+## Etape 2 : Projections P&L
+
+### Structure
+
+| Element | N | N+1 | N+2 | N+3 | N+4 | N+5 |
+|---------|---|-----|-----|-----|-----|-----|
+| CA | 100 | 105 | 110 | 116 | 122 | 128 |
+| EBITDA | 20 | 21 | 22 | 23 | 24 | 26 |
+| D&A | 5 | 5 | 5 | 6 | 6 | 6 |
+| EBIT | 15 | 16 | 17 | 17 | 18 | 20 |
+
+## Etape 3 : Free Cash Flow
+
+### Formule
+
+```excel
+FCF = EBIT * (1 - Taux IS)
+    + D&A
+    - Capex
+    - Variation BFR
+```
+
+### Excel
+
+```excel
+=B5*(1-$B$20)+B6-B7-B8
+```
+
+## Etape 4 : Actualisation
+
+### Facteur d'actualisation
+
+```excel
+=1/(1+WACC)^Annee
+```
+
+### FCF actualise
+
+```excel
+=FCF*Facteur_actualisation
+```
+
+## Etape 5 : Valeur terminale
+
+### Methode Gordon
+
+```excel
+=FCF_N5*(1+g)/(WACC-g)
+```
+
+g = taux de croissance perpetuelle
+
+### Actualisation de la VT
+
+```excel
+=VT/(1+WACC)^5
+```
+
+## Etape 6 : Valeur d'entreprise
+
+### Calcul
+
+```excel
+EV = Somme FCF actualises + VT actualisee
+```
+
+## Etape 7 : Valeur des fonds propres
+
+### Formule
+
+```excel
+Equity Value = EV - Dette nette
+```
+
+### Par action
+
+```excel
+Prix/action = Equity Value / Nb actions
+```
+
+## Analyse de sensibilite
+
+### Table 2D
+
+| WACC \\ g | 1.5% | 2.0% | 2.5% |
+|-----------|------|------|------|
+| 7.5% | 120 | 130 | 142 |
+| 8.0% | 110 | 118 | 128 |
+| 8.5% | 102 | 108 | 116 |
+
+## Formules utiles
+
+### VAN
+
+```excel
+=VAN(WACC;FCF_N1:FCF_N5)+VT_actualisee
+```
+
+### TRI
+
+```excel
+=TRI(FCF_0:FCF_N5)
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Hypotheses separees | Facilitent les scenarios |
+| Verification | Comparez aux comparables |
+| Documentation | Notez les sources |
+| Sensibilite | Testez les variables cles |
+
+[Decouvrir nos formations Excel](/formations-excel)

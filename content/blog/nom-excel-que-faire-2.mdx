@@ -1,0 +1,82 @@
+---
+title: "NOM? Excel : Que Faire"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Resolvez l'erreur #NOM? dans Excel."
+description: "Guide pour corriger l'erreur #NOM? dans Excel."
+category: "Gestion d'erreurs"
+categories: ["Gestion d'erreurs", "Depannage"]
+tags: ["NOM", "Erreur", "Resolution", "Excel"]
+---
+
+# Erreur #NOM? : Que Faire
+
+Comprendre et corriger cette erreur de nom.
+
+## Signification
+
+#NOM? indique qu'Excel ne reconnait pas un nom dans la formule.
+
+## Causes
+
+| Cause | Exemple |
+|-------|---------|
+| Faute de frappe | =SOMM(A:A) |
+| Plage nommee absente | =MaPlage |
+| Guillemets manquants | =SI(A1=Oui;...) |
+| Fonction inexistante | =RECHERCHEX (anciennes versions) |
+
+## Diagnostic
+
+### Verifier l'orthographe
+
+Comparez avec la syntaxe officielle.
+
+### Verifier les plages nommees
+
+**Formules** > **Gestionnaire de noms**
+
+## Solutions
+
+### Faute de frappe
+
+```excel
+=SOMM(A:A)  →  =SOMME(A:A)
+```
+
+### Guillemets manquants
+
+```excel
+=SI(A1=Oui;1;0)  →  =SI(A1="Oui";1;0)
+```
+
+### Plage nommee
+
+Creez la plage nommee ou corrigez le nom.
+
+## Fonction non disponible
+
+### RECHERCHEX
+
+Non disponible avant Excel 365.
+
+### Solutions
+
+- Mettre a jour Excel
+- Utiliser INDEX+EQUIV
+
+## Autocomplete
+
+### Astuce
+
+Utilisez Tab pour completer les fonctions.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Autocomplete | Utilisez Tab |
+| Verifier | Gestionnaire de noms |
+| Guillemets | Toujours pour le texte |
+
+[Decouvrir nos formations Excel](/formations-excel)

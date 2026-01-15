@@ -1,0 +1,83 @@
+---
+title: "Excel : Separer du Texte et des Nombres"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Techniques pour separer texte et nombres."
+description: "Guide pour separer texte et nombres dans Excel."
+category: "Manipulation de donnees"
+categories: ["Manipulation de donnees", "Texte"]
+tags: ["Texte", "Nombres", "Separation", "Excel"]
+---
+
+# Separer Texte et Nombres
+
+Extrayez les differents elements.
+
+## Methode Ctrl+E
+
+### La plus simple
+
+1. Tapez le resultat attendu
+2. Descendez
+3. **Ctrl+E**
+
+## Exemples
+
+| Avant | Texte | Nombre |
+|-------|-------|--------|
+| ABC123 | ABC | 123 |
+| 50kg | kg | 50 |
+| Paris75 | Paris | 75 |
+
+## Formules avancees
+
+### Avec expressions regulieres
+
+Non natif dans Excel, mais possible avec VBA.
+
+## Power Query
+
+### Methode
+
+1. Importez les donnees
+2. **Transformer** > **Extraire**
+3. Choisissez le type
+
+## Fonctions utiles
+
+### Detecter
+
+```excel
+=ESTNUM(STXT(A1;1;1)*1)
+```
+
+### Nettoyer
+
+```excel
+=SUPPRESPACE(A1)
+```
+
+## VBA personnalise
+
+### Fonction texte
+
+```vba
+Function ExtraireTexte(cellule As String) As String
+    Dim i As Integer
+    For i = 1 To Len(cellule)
+        If Not IsNumeric(Mid(cellule, i, 1)) Then
+            ExtraireTexte = ExtraireTexte & Mid(cellule, i, 1)
+        End If
+    Next i
+End Function
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Ctrl+E d'abord | Le plus rapide |
+| Power Query | Pour volumes |
+| Test | Verifiez les resultats |
+
+[Decouvrir nos formations Excel](/formations-excel)

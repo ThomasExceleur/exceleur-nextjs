@@ -1,0 +1,225 @@
+---
+title: "Comparatif CHOISIRCOLS, PRENDRECOLS et FILTRE Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Comparez CHOISIRCOLS, PRENDRECOLS et FILTRE pour manipuler vos donnees."
+description: "Comparatif des fonctions CHOISIRCOLS, PRENDRECOLS et FILTRE dans Excel."
+category: "Excel 365"
+categories: ["Excel 365", "Formules Excel"]
+tags: ["CHOISIRCOLS", "PRENDRECOLS", "FILTRE", "Excel 365"]
+---
+
+# Comparatif CHOISIRCOLS, PRENDRECOLS et FILTRE
+
+Trois fonctions pour manipuler les colonnes et filtrer les donnees.
+
+## CHOISIRCOLS : Selectionner des colonnes specifiques
+
+### Syntaxe
+
+```excel
+=CHOISIRCOLS(tableau;num_col1;[num_col2];...)
+```
+
+### Exemples
+
+```excel
+=CHOISIRCOLS(A1:D10;1;3)      ' Colonnes 1 et 3
+=CHOISIRCOLS(A1:D10;4;2;1)    ' Ordre inverse
+=CHOISIRCOLS(A1:D10;-1)       ' Derniere colonne
+```
+
+### Cas d'usage
+
+- Reorganiser les colonnes
+- Exclure des colonnes intermediaires
+- Inverser l'ordre des colonnes
+
+## PRENDRECOLS : Extraire un nombre de colonnes
+
+### Syntaxe
+
+```excel
+=PRENDRECOLS(tableau;[nb_colonnes])
+```
+
+### Exemples
+
+```excel
+=PRENDRECOLS(A1:D10;2)    ' 2 premieres colonnes
+=PRENDRECOLS(A1:D10;-2)   ' 2 dernieres colonnes
+```
+
+### Cas d'usage
+
+- Obtenir les N premieres colonnes
+- Obtenir les N dernieres colonnes
+
+## FILTRE : Extraire selon des criteres
+
+### Syntaxe
+
+```excel
+=FILTRE(tableau;inclure;[si_vide])
+```
+
+### Exemples
+
+```excel
+=FILTRE(A1:D10;B1:B10>100)              ' Ou B>100
+=FILTRE(A1:D10;(B1:B10>100)*(C1:C10="Oui"))  ' Multicriteres
+=FILTRE(A1:D10;B1:B10>100;"Aucun")     ' Avec message si vide
+```
+
+### Cas d'usage
+
+- Filtrer les lignes selon conditions
+- Creer des sous-ensembles dynamiques
+
+## Tableau comparatif
+
+| Aspect | CHOISIRCOLS | PRENDRECOLS | FILTRE |
+|--------|-------------|-------------|--------|
+| Colonnes specifiques | Oui | Non | Non |
+| N colonnes | Non | Oui | Non |
+| Filtrer lignes | Non | Non | Oui |
+| Criteres | Non | Non | Oui |
+| Ordre flexible | Oui | Non | Non |
+
+## Combinaisons utiles
+
+### CHOISIRCOLS + FILTRE
+
+Filtrer puis selectionner des colonnes :
+
+```excel
+=CHOISIRCOLS(
+  FILTRE(A1:D10;B1:B10>100);
+  1;3
+)
+```
+
+### PRENDRECOLS + TRIER
+
+Prendre les colonnes apres tri :
+
+```excel
+=PRENDRECOLS(
+  TRIER(A1:D10;2;-1);
+  2
+)
+```
+
+### FILTRE + CHOISIRCOLS + TRIER
+
+Chaine complete :
+
+```excel
+=TRIER(
+  CHOISIRCOLS(
+    FILTRE(A1:D10;B1:B10>100);
+    1;3;4
+  );
+  1
+)
+```
+
+## Equivalents pour les lignes
+
+### CHOISIRLIGS
+
+```excel
+=CHOISIRLIGS(tableau;num_lig1;num_lig2;...)
+```
+
+### PRENDRELIGS
+
+```excel
+=PRENDRELIGS(tableau;nb_lignes)
+```
+
+## Exemples pratiques
+
+### 1. Rapport avec colonnes specifiques
+
+```excel
+=CHOISIRCOLS(Ventes;1;3;5)  ' Nom, Montant, Statut
+```
+
+### 2. Top 5 des ventes
+
+```excel
+=PRENDRELIGS(
+  TRIER(Ventes;2;-1);
+  5
+)
+```
+
+### 3. Clients avec commandes recentes
+
+```excel
+=FILTRE(
+  Clients;
+  MOIS(Clients[DernierAchat])=MOIS(AUJOURDHUI())
+)
+```
+
+### 4. Export personnalise
+
+```excel
+=CHOISIRCOLS(
+  FILTRE(Donnees;Donnees[Region]="Paris");
+  1;4;5;2
+)
+```
+
+## Gestion des erreurs
+
+### FILTRE sans resultat
+
+```excel
+=FILTRE(A:A;B:B="Inexistant";"Aucun resultat")
+```
+
+### CHOISIRCOLS avec colonne hors limites
+
+Verifiez que les numeros de colonnes existent.
+
+### PRENDRECOLS depassant le tableau
+
+Retourne toutes les colonnes disponibles.
+
+## Performance
+
+| Fonction | Performance |
+|----------|-------------|
+| CHOISIRCOLS | Tres rapide |
+| PRENDRECOLS | Tres rapide |
+| FILTRE | Depend des criteres |
+
+### Optimisation
+
+1. Limitez les plages sources
+2. Evitez les criteres complexes dans FILTRE
+3. Utilisez LET pour les calculs intermediaires
+
+## Quand utiliser quoi ?
+
+### CHOISIRCOLS
+
+- Selectionner colonnes specifiques
+- Reordonner les colonnes
+- Exclure des colonnes
+
+### PRENDRECOLS
+
+- Premieres ou dernieres colonnes
+- Simplifier les extractions
+
+### FILTRE
+
+- Extraire selon conditions
+- Creer des vues dynamiques
+- Tableaux de bord interactifs
+
+[Decouvrir nos formations Excel](/formations-excel)

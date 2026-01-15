@@ -1,0 +1,150 @@
+---
+title: "Excel : Aller a la Ligne dans une Cellule"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Comment faire un retour a la ligne dans une cellule Excel."
+description: "Techniques pour aller a la ligne dans une cellule Excel. Alt+Entree."
+category: "Astuces Excel"
+categories: ["Astuces Excel", "Mise en forme"]
+tags: ["Retour ligne", "Cellule", "Mise en forme", "Texte"]
+---
+
+# Aller a la Ligne dans une Cellule
+
+Plusieurs methodes pour creer des retours a la ligne dans Excel.
+
+## Methode 1 : Alt + Entree
+
+### Le raccourci essentiel
+
+Pendant la saisie, appuyez sur **Alt + Entree** pour passer a la ligne.
+
+### Exemple
+
+```
+Ligne 1
+Ligne 2
+Ligne 3
+```
+
+Tout reste dans la meme cellule.
+
+## Methode 2 : Renvoyer a la ligne automatique
+
+### Activation
+
+1. Selectionnez la cellule
+2. **Accueil** > **Renvoyer a la ligne**
+
+### Comportement
+
+Le texte passe automatiquement a la ligne selon la largeur de la colonne.
+
+### Raccourci
+
+**Alt + H** puis **W**
+
+## Methode 3 : Formule CAR(10)
+
+### Dans une formule
+
+```excel
+=A1&CAR(10)&B1
+```
+
+CAR(10) est le code du retour a la ligne.
+
+### Exemple complet
+
+```excel
+="Nom: "&A1&CAR(10)&"Prenom: "&B1
+```
+
+Affiche :
+```
+Nom: Dupont
+Prenom: Jean
+```
+
+## Ajuster la hauteur de ligne
+
+### Automatique
+
+Double-cliquez sur la bordure entre deux numeros de ligne.
+
+### Manuel
+
+Faites glisser la bordure de la ligne.
+
+## Supprimer les retours a la ligne
+
+### Avec SUBSTITUE
+
+```excel
+=SUBSTITUE(A1;CAR(10);" ")
+```
+
+Remplace les retours a la ligne par des espaces.
+
+### Avec EPURAGE
+
+```excel
+=EPURAGE(A1)
+```
+
+Supprime tous les caracteres non imprimables.
+
+## Compter les lignes dans une cellule
+
+### Formule
+
+```excel
+=NBCAR(A1)-NBCAR(SUBSTITUE(A1;CAR(10);""))+1
+```
+
+Compte le nombre de retours a la ligne + 1.
+
+## Format de cellule
+
+### Pour voir les retours
+
+La cellule doit avoir :
+- "Renvoyer a la ligne" active, ou
+- Hauteur suffisante
+
+## Imprimer avec retours
+
+### Verification
+
+Les retours a la ligne sont conserves a l'impression si la cellule est correctement configuree.
+
+## Cas pratiques
+
+### Adresse sur plusieurs lignes
+
+```excel
+="12 rue Example"&CAR(10)&"75001 Paris"&CAR(10)&"France"
+```
+
+### Liste dans une cellule
+
+```excel
+=JOINDRE.TEXTE(CAR(10);VRAI;A1:A5)
+```
+
+## Difference avec fusion
+
+| Methode | Usage |
+|---------|-------|
+| Alt + Entree | Plusieurs lignes, une cellule |
+| Fusion | Plusieurs cellules, un contenu |
+| Renvoyer | Ajustement automatique |
+
+## Bonnes pratiques
+
+1. **Utilisez** Alt + Entree pour les saisies manuelles
+2. **Activez** le renvoi automatique pour les textes longs
+3. **Ajustez** la hauteur de ligne
+4. **Utilisez** CAR(10) dans les formules
+
+[Decouvrir nos formations Excel](/formations-excel)

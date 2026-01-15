@@ -1,0 +1,129 @@
+---
+title: "Creer une Heatmap dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Visualisez vos donnees avec une carte de chaleur dans Excel."
+description: "Guide pour creer une heatmap dans Excel. Mise en forme conditionnelle."
+category: "Visualisation"
+categories: ["Visualisation", "Graphiques"]
+tags: ["Heatmap", "Visualisation", "Mise en forme", "Analyse"]
+---
+
+# Creer une Heatmap dans Excel
+
+Une heatmap (carte de chaleur) utilise les couleurs pour visualiser les donnees.
+
+## Qu'est-ce qu'une heatmap ?
+
+Une representation visuelle ou :
+- Les valeurs elevees sont en couleur chaude (rouge)
+- Les valeurs faibles sont en couleur froide (vert/bleu)
+- Les couleurs intermediaires indiquent les valeurs moyennes
+
+## Methode : Mise en forme conditionnelle
+
+### Etapes
+
+1. Selectionnez vos donnees
+2. **Accueil** > **Mise en forme conditionnelle**
+3. **Nuances de couleurs**
+4. Choisissez un schema (ex: Rouge-Jaune-Vert)
+
+### Schemas disponibles
+
+| Schema | Usage |
+|--------|-------|
+| Rouge-Jaune-Vert | Performance (vert = bon) |
+| Vert-Jaune-Rouge | Risque (rouge = mauvais) |
+| Bleu-Blanc-Rouge | Ecarts (neutre au centre) |
+
+## Personnaliser les couleurs
+
+### Echelle personnalisee
+
+1. **Mise en forme conditionnelle** > **Gerer les regles**
+2. Selectionnez la regle
+3. **Modifier la regle**
+4. Choisissez **Echelle a 3 couleurs**
+5. Definissez les seuils et couleurs
+
+### Exemple de seuils
+
+| Position | Valeur | Couleur |
+|----------|--------|---------|
+| Minimum | Automatique | Vert |
+| Milieu | Percentile 50 | Jaune |
+| Maximum | Automatique | Rouge |
+
+## Heatmap avec valeurs specifiques
+
+### Seuils fixes
+
+1. **Mise en forme conditionnelle** > **Nouvelle regle**
+2. **Mettre en forme les cellules qui contiennent**
+3. Definissez vos conditions
+
+### Exemple
+
+- Inferieur a 50 : Rouge
+- Entre 50 et 80 : Jaune
+- Superieur a 80 : Vert
+
+## Masquer les valeurs
+
+### Afficher uniquement les couleurs
+
+1. Selectionnez les cellules
+2. **Ctrl + 1** (Format de cellule)
+3. **Personnalise**
+4. Tapez `;;;` (trois points-virgules)
+
+Les nombres sont masques, les couleurs restent.
+
+## Cas pratiques
+
+### Matrice de correlation
+
+Affiche les relations entre variables.
+
+### Calendrier de chaleur
+
+Visualisez l'activite par jour.
+
+### Performance par region
+
+Comparez les resultats geographiques.
+
+### Tableau de bord
+
+Identifiez rapidement les anomalies.
+
+## Astuces avancees
+
+### Combiner avec des icones
+
+1. Ajoutez une mise en forme conditionnelle
+2. Choisissez **Jeux d'icones**
+3. Les icones completent les couleurs
+
+### Heatmap negative/positive
+
+Utilisez une echelle centree sur zero :
+- Negatif : Rouge
+- Zero : Blanc
+- Positif : Vert
+
+## Bonnes pratiques
+
+1. **Choisissez** des couleurs intuitives
+2. **Ajoutez** une legende si necessaire
+3. **Evitez** trop de categories de couleurs
+4. **Testez** avec des daltoniens en tete
+
+## Limites
+
+- Pas de vraie carte geographique
+- Necessite des donnees numeriques
+- Peut etre difficile a imprimer
+
+[Decouvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google Fonts - Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+/* Clear Sans - Local font fallback to system fonts */
+@font-face {
+  font-family: 'Clear Sans';
+  src: local('Clear Sans'), local('ClearSans');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clear Sans';
+  src: local('Clear Sans Medium'), local('ClearSans-Medium');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clear Sans';
+  src: local('Clear Sans Bold'), local('ClearSans-Bold');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --color-primary: #CB6AED;
+    --color-primary-light: #CA6AED;
+    --color-primary-hover: #B55DD4;
+    --color-secondary: #5048DD;
+    --color-secondary-hover: #4640C7;
+    --color-accent: #7CC3EE;
+    --color-text: #333333;
+    --color-text-dark: #100F0D;
+    --color-text-light: #69727D;
+    --color-background: #FFFFFF;
+    --color-footer-link: #CC3366;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body text-body text-text bg-background;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-extrabold;
+  }
+
+  h1 {
+    @apply text-h1;
+  }
+
+  h2 {
+    @apply text-h2;
+  }
+
+  h3 {
+    @apply text-h3;
+  }
+
+  a {
+    @apply text-primary hover:underline transition-colors;
+  }
+
+  strong {
+    @apply font-semibold;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-section-y lg:py-section-y-lg;
+  }
+
+  .gradient-hero {
+    background: linear-gradient(270deg, #CB6AED 0%, #7CC3EE 100%);
+  }
+
+  .gradient-primary {
+    background: linear-gradient(to bottom, #CB6AED 0%, #7CC3EE 100%);
+  }
+
+  .gradient-footer {
+    background: linear-gradient(to bottom, #7CC3EE 0%, #FFFFFF 87%);
+  }
+
+  .gradient-section {
+    background: linear-gradient(to bottom, #FFFFFF 0%, #CB6AED 100%);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Prose styles for MDX content */
+.prose {
+  @apply text-text;
+}
+
+.prose h1 {
+  @apply text-h1 font-heading font-extrabold mb-8;
+}
+
+.prose h2 {
+  @apply text-h2 font-heading font-extrabold mt-12 mb-6;
+}
+
+.prose h3 {
+  @apply text-h3 font-heading font-extrabold mt-8 mb-4;
+}
+
+.prose p {
+  @apply text-body mb-6;
+}
+
+.prose ul, .prose ol {
+  @apply mb-6 pl-6;
+}
+
+.prose li {
+  @apply mb-2;
+}
+
+.prose a {
+  @apply text-primary hover:text-primary-hover underline;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-primary pl-4 italic my-6;
+}
+
+.prose code {
+  @apply bg-background-muted px-1 py-0.5 rounded text-sm;
+}
+
+.prose pre {
+  @apply bg-text-dark text-white p-4 rounded-lg overflow-x-auto my-6;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0;
+}
+
+.prose img {
+  @apply rounded-lg my-6;
+}
+
+.prose table {
+  @apply w-full border-collapse my-6;
+}
+
+.prose th, .prose td {
+  @apply border border-background-muted px-4 py-2 text-left;
+}
+
+.prose th {
+  @apply bg-background-muted font-heading font-bold;
+}

@@ -1,0 +1,222 @@
+---
+title: "Excel Separer Nom et Prenom : Toutes les Methodes"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez a separer les noms et prenoms dans Excel avec differentes techniques."
+description: "Guide complet pour separer nom et prenom dans Excel. Fonctions GAUCHE, DROITE, TROUVE et Flash Fill."
+category: "Manipulation de donnees"
+categories: ["Manipulation de donnees", "Astuces Excel"]
+tags: ["Texte", "Separation", "Nom", "Prenom"]
+---
+
+# Separer Nom et Prenom dans Excel
+
+Plusieurs methodes permettent de diviser une cellule contenant nom et prenom.
+
+## Format des donnees
+
+### Cas courants
+
+- "Dupont Jean" (Nom Prenom)
+- "Jean Dupont" (Prenom Nom)
+- "Jean-Pierre Dupont" (Prenom compose)
+- "Dupont, Jean" (Avec virgule)
+
+## Methode 1 : Remplissage instantane (Flash Fill)
+
+### Etapes
+
+1. Dans la cellule adjacente, tapez le prenom extrait
+2. Descendez a la cellule suivante
+3. Appuyez sur **Ctrl + E**
+4. Excel detecte le motif et complete
+
+### Avantages
+
+- Tres rapide
+- Pas de formule
+- Fonctionne avec des motifs complexes
+
+### Limites
+
+- Necessite quelques exemples
+- Resultats statiques (non mis a jour)
+
+## Methode 2 : Convertir texte en colonnes
+
+### Etapes
+
+1. Selectionnez la colonne
+2. **Donnees** > **Convertir**
+3. **Delimite** > **Suivant**
+4. Cochez **Espace** (ou autre separateur)
+5. **Terminer**
+
+### Pour une virgule
+
+Cochez **Virgule** comme delimiteur.
+
+## Methode 3 : Formules
+
+### Extraire le premier mot (avant l'espace)
+
+```excel
+=GAUCHE(A1; TROUVE(" "; A1)-1)
+```
+
+### Extraire le reste (apres l'espace)
+
+```excel
+=DROITE(A1; NBCAR(A1)-TROUVE(" "; A1))
+```
+
+### Avec gestion d'erreur
+
+```excel
+=SIERREUR(GAUCHE(A1; TROUVE(" "; A1)-1); A1)
+```
+
+## Format "Nom Prenom"
+
+### Extraire le nom
+
+```excel
+=GAUCHE(A1; TROUVE(" "; A1)-1)
+```
+
+### Extraire le prenom
+
+```excel
+=STXT(A1; TROUVE(" "; A1)+1; 100)
+```
+
+## Format "Prenom Nom"
+
+### Extraire le prenom
+
+```excel
+=GAUCHE(A1; TROUVE(" "; A1)-1)
+```
+
+### Extraire le nom
+
+```excel
+=STXT(A1; TROUVE(" "; A1)+1; 100)
+```
+
+## Format "Nom, Prenom"
+
+### Extraire le nom
+
+```excel
+=GAUCHE(A1; TROUVE(","; A1)-1)
+```
+
+### Extraire le prenom
+
+```excel
+=SUPPRESPACE(STXT(A1; TROUVE(","; A1)+1; 100))
+```
+
+## Prenoms composes
+
+### Probleme
+
+"Jean-Pierre Dupont" doit donner :
+- Prenom : Jean-Pierre
+- Nom : Dupont
+
+### Solution : Dernier espace
+
+```excel
+=DROITE(A1; NBCAR(A1)-TROUVE("~"; SUBSTITUE(A1; " "; "~"; NBCAR(A1)-NBCAR(SUBSTITUE(A1; " "; "")))))
+```
+
+### Alternative simplifiee
+
+Utilisez Convertir ou Flash Fill pour ces cas.
+
+## Fonctions Excel 365
+
+### FRACTIONNER.TEXTE
+
+```excel
+=FRACTIONNER.TEXTE(A1; " ")
+```
+
+Retourne un tableau avec chaque partie.
+
+### Extraire le premier
+
+```excel
+=INDEX(FRACTIONNER.TEXTE(A1; " "); 1)
+```
+
+### Extraire le dernier
+
+```excel
+=INDEX(FRACTIONNER.TEXTE(A1; " "); NBVAL(FRACTIONNER.TEXTE(A1; " ")))
+```
+
+## Cas particuliers
+
+### Plusieurs prenoms
+
+"Jean Pierre Marie Dupont"
+
+Utilisez le dernier mot comme nom :
+```excel
+=STXT(A1; TROUVE("~"; SUBSTITUE(A1;" ";"~";NBCAR(A1)-NBCAR(SUBSTITUE(A1;" ";""))))+1; 100)
+```
+
+### Particules (de, du, van)
+
+"Jean de la Fontaine" - detection manuelle necessaire.
+
+## Nettoyer les donnees
+
+### Supprimer les espaces superflus
+
+```excel
+=SUPPRESPACE(A1)
+```
+
+### Uniformiser la casse
+
+```excel
+=NOMPROPRE(A1)
+```
+
+Jean DUPONT devient Jean Dupont.
+
+## Assembler nom et prenom
+
+### Format "Prenom Nom"
+
+```excel
+=B1 & " " & A1
+```
+
+### Format "Nom, Prenom"
+
+```excel
+=A1 & ", " & B1
+```
+
+## Resume des methodes
+
+| Methode | Rapidite | Mise a jour | Cas complexes |
+|---------|----------|-------------|---------------|
+| Flash Fill | Tres rapide | Non | Moyen |
+| Convertir | Rapide | Non | Simple |
+| Formules | Moyen | Oui | Bon |
+| FRACTIONNER.TEXTE | Rapide | Oui | Excellent |
+
+## Conseils
+
+1. **Nettoyez d'abord** avec SUPPRESPACE
+2. **Identifiez le format** avant de choisir la methode
+3. **Testez** sur quelques exemples
+4. **Verifiez** les cas particuliers
+
+[Decouvrir nos formations Excel](/formations-excel)

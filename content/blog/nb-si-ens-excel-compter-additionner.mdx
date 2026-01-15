@@ -1,0 +1,190 @@
+---
+title: "NB.SI.ENS Excel : Compter et Additionner avec Conditions"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maitrisez NB.SI.ENS pour compter avec plusieurs criteres dans Excel."
+description: "Guide complet de NB.SI.ENS pour le comptage multi-criteres Excel."
+category: "Formules Excel"
+categories: ["Formules Excel", "Statistiques"]
+tags: ["NB.SI.ENS", "Comptage", "Conditions", "Formules"]
+---
+
+# NB.SI.ENS : Compter avec Plusieurs Criteres
+
+NB.SI.ENS compte les cellules repondant a plusieurs conditions simultanement.
+
+## Syntaxe
+
+```excel
+=NB.SI.ENS(plage_critere1;critere1;[plage_critere2;critere2];...)
+```
+
+## Parametres
+
+| Parametre | Description |
+|-----------|-------------|
+| plage_critere1 | Premiere plage a evaluer |
+| critere1 | Condition pour la premiere plage |
+| plage_critere2 | Deuxieme plage (optionnel) |
+| critere2 | Condition pour la deuxieme plage |
+
+## Difference avec NB.SI
+
+| NB.SI | NB.SI.ENS |
+|-------|-----------|
+| Un seul critere | Plusieurs criteres |
+| Une seule plage | Plusieurs plages |
+
+## Exemples de base
+
+### Deux criteres
+
+```excel
+=NB.SI.ENS(A:A;"Paris";B:B;"Actif")
+```
+
+Compte les lignes ou A="Paris" ET B="Actif".
+
+### Criteres numeriques
+
+```excel
+=NB.SI.ENS(C:C;">100";D:D;"<50")
+```
+
+Compte les lignes ou `C>100` ET `D<50`.
+
+## Operateurs de comparaison
+
+| Operateur | Exemple | Description |
+|-----------|---------|-------------|
+| `=` | `"=Paris"` | Egal a |
+| `<>` | `"<>Paris"` | Different de |
+| `>` | `">100"` | Superieur a |
+| `<` | `"<100"` | Inferieur a |
+| `>=` | `">=100"` | Superieur ou egal |
+| `<=` | `"<=100"` | Inferieur ou egal |
+
+## Criteres avec references
+
+### Cellule reference
+
+```excel
+=NB.SI.ENS(A:A;E1;B:B;F1)
+```
+
+E1 et F1 contiennent les criteres.
+
+### Avec operateur
+
+```excel
+=NB.SI.ENS(A:A;">="&E1)
+```
+
+## Caracteres generiques
+
+| Caractere | Signification |
+|-----------|---------------|
+| * | N'importe quels caracteres |
+| ? | Un seul caractere |
+| ~ | Echapper * ou ? |
+
+### Exemple
+
+```excel
+=NB.SI.ENS(A:A;"Mar*";B:B;"?anvier")
+```
+
+## Cas pratiques
+
+### Ventes par region et periode
+
+```excel
+=NB.SI.ENS(
+  Region;"Nord";
+  Mois;"Janvier";
+  Statut;"Valide"
+)
+```
+
+### Commandes entre deux dates
+
+```excel
+=NB.SI.ENS(
+  Dates;">="&DATE(2024;1;1);
+  Dates;"<="&DATE(2024;12;31)
+)
+```
+
+### Clients actifs par ville
+
+```excel
+=NB.SI.ENS(
+  Ville;$E$1;
+  Statut;"Actif";
+  CA;">0"
+)
+```
+
+## SOMME.SI.ENS
+
+### Syntaxe similaire
+
+```excel
+=SOMME.SI.ENS(plage_somme;plage_critere1;critere1;...)
+```
+
+### Exemple
+
+```excel
+=SOMME.SI.ENS(Ventes;Region;"Nord";Mois;"Janvier")
+```
+
+Somme des ventes du Nord en Janvier.
+
+## MOYENNE.SI.ENS
+
+### Syntaxe
+
+```excel
+=MOYENNE.SI.ENS(plage_moyenne;plage_critere1;critere1;...)
+```
+
+### Exemple
+
+```excel
+=MOYENNE.SI.ENS(Notes;Classe;"A";Matiere;"Maths")
+```
+
+## Combiner avec autres fonctions
+
+### Pourcentage
+
+```excel
+=NB.SI.ENS(A:A;"Paris";B:B;"Actif")/NB.SI(A:A;"Paris")
+```
+
+Pourcentage d'actifs parmi les Parisiens.
+
+### Avec SOMMEPROD (alternative)
+
+```excel
+=SOMMEPROD((A:A="Paris")*(B:B="Actif"))
+```
+
+## Erreurs courantes
+
+| Erreur | Cause | Solution |
+|--------|-------|----------|
+| 0 inattendu | Plages de tailles differentes | Alignez les plages |
+| #VALEUR! | Critere mal forme | Verifiez les guillemets |
+| Resultat faux | Type de donnees | Verifiez texte vs nombre |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Plages entieres | Utilisez A:A pour tableaux evolutifs |
+| References nommees | Clarifiez les formules |
+| Test | Verifiez avec des filtres |
+
+[Decouvrir nos formations Excel](/formations-excel)

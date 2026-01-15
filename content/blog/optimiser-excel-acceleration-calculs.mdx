@@ -1,0 +1,192 @@
+---
+title: "Optimiser Excel : Accelerer vos Calculs"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Techniques pour accelerer les calculs dans Excel."
+description: "Guide pour optimiser et accelerer les calculs Excel."
+category: "Performance"
+categories: ["Performance", "Astuces Excel"]
+tags: ["Performance", "Optimisation", "Calculs", "Excel"]
+---
+
+# Optimiser Excel : Accelerer vos Calculs
+
+Rendez vos classeurs plus rapides avec ces techniques d'optimisation.
+
+## Diagnostiquer les problemes
+
+### Symptomes de lenteur
+
+- Calcul long apres chaque modification
+- Barre de statut "Calcul en cours..."
+- Gel temporaire de l'interface
+
+### Identifier les coupables
+
+1. Activez le mode de calcul manuel
+2. Testez chaque feuille individuellement
+3. Utilisez l'analyseur de performances
+
+## Modes de calcul
+
+### Automatique
+
+Excel recalcule apres chaque modification.
+
+### Manuel
+
+Ctrl+Maj+F9 pour recalculer.
+
+### Changer le mode
+
+**Formules** > **Options de calcul**
+
+## Optimiser les formules
+
+### Eviter les colonnes entieres
+
+| Mauvais | Bon |
+|---------|-----|
+| `=SOMME(A:A)` | `=SOMME(A1:A1000)` |
+| `=RECHERCHEV(...;A:D;...)` | `=RECHERCHEV(...;A1:D1000;...)` |
+
+### Reduire les fonctions volatiles
+
+Fonctions recalculees a chaque fois :
+- MAINTENANT()
+- AUJOURDHUI()
+- INDIRECT()
+- DECALER()
+- ALEA()
+
+### Remplacer INDIRECT
+
+```excel
+' Au lieu de
+=INDIRECT("Feuille"&A1&"!B2")
+
+' Utilisez INDEX
+=INDEX(CHOISIR(A1;Feuille1!B:B;Feuille2!B:B);2)
+```
+
+## Optimiser RECHERCHEV
+
+### Correspondance approximative
+
+Plus rapide si les donnees sont triees.
+
+### Remplacer par INDEX/EQUIV
+
+```excel
+=INDEX(B:B;EQUIV(valeur;A:A;0))
+```
+
+### Utiliser RECHERCHEX
+
+Plus efficace pour les grandes plages.
+
+## Tableaux structures
+
+### Avantages
+
+- References intelligentes
+- Pas de colonnes entieres implicites
+
+### Utilisation
+
+Ctrl+T pour convertir en tableau.
+
+## Reduire la taille du fichier
+
+### Supprimer les donnees inutiles
+
+- Lignes et colonnes vides
+- Mises en forme excessives
+- Objets caches
+
+### Compresser les images
+
+1. Selectionnez une image
+2. **Format** > **Compresser les images**
+
+### Effacer la mise en forme
+
+Selectionnez les cellules vides > **Effacer** > **Tout effacer**
+
+## Power Query vs Formules
+
+### Quand utiliser Power Query
+
+- Donnees volumineuses
+- Transformations complexes
+- Sources externes
+
+### Avantage
+
+Les calculs sont faits une fois, pas a chaque modification.
+
+## Multithread
+
+### Activer
+
+**Fichier** > **Options** > **Options avancees** > **Formules**
+
+- Cochez "Activer le calcul multithread"
+
+### Quand ca aide
+
+Formules independantes calculables en parallele.
+
+## Eviter les boucles circulaires
+
+### Probleme
+
+Les references circulaires ralentissent considerablement.
+
+### Detection
+
+**Formules** > **Verification des erreurs** > **References circulaires**
+
+## Astuces supplementaires
+
+### Desactiver les animations
+
+**Fichier** > **Options** > **Options avancees** > Decochez les animations
+
+### Mode protege
+
+Desactivez pour les fichiers de confiance.
+
+### Complements
+
+Desactivez les complements inutiles.
+
+## Mesurer l'amelioration
+
+### Avant/Apres
+
+1. Notez le temps de calcul (barre de statut)
+2. Appliquez les optimisations
+3. Comparez
+
+## Checklist d'optimisation
+
+| Action | Impact |
+|--------|--------|
+| Remplacer colonnes entieres | Eleve |
+| Reduire fonctions volatiles | Eleve |
+| Optimiser RECHERCHEV | Moyen |
+| Supprimer donnees inutiles | Moyen |
+| Activer multithread | Variable |
+| Compresser images | Faible |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Prevention | Concevez bien des le depart |
+| Test | Verifiez regulierement les performances |
+| Documentation | Notez les formules complexes |
+| Sauvegarde | Avant toute optimisation majeure |
+
+[Decouvrir nos formations Excel](/formations-excel)

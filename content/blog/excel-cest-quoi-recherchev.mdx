@@ -1,0 +1,123 @@
+---
+title: "C'est Quoi RECHERCHEV dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Comprendre la fonction RECHERCHEV dans Excel simplement."
+description: "Explication simple de RECHERCHEV dans Excel. Syntaxe et exemples."
+category: "Formules Excel"
+categories: ["Formules Excel", "Recherche"]
+tags: ["RECHERCHEV", "Definition", "Debutant", "Recherche"]
+---
+
+# C'est Quoi RECHERCHEV
+
+RECHERCHEV est une fonction Excel pour trouver une valeur dans un tableau.
+
+## Definition simple
+
+RECHERCHEV signifie "Recherche Verticale". Elle :
+1. Cherche une valeur dans la premiere colonne d'un tableau
+2. Retourne une valeur de la meme ligne, dans une autre colonne
+
+## Exemple concret
+
+### Tableau de reference
+
+| ID | Produit | Prix |
+|----|---------|------|
+| A1 | Pomme | 2 |
+| A2 | Banane | 3 |
+| A3 | Orange | 2.5 |
+
+### Recherche
+
+Pour trouver le prix du produit "A2" :
+
+```excel
+=RECHERCHEV("A2";A:C;3;FAUX)
+```
+
+Resultat : **3** (le prix de la Banane)
+
+## Syntaxe
+
+```excel
+=RECHERCHEV(valeur;tableau;index;[correspondance])
+```
+
+### Arguments
+
+| Argument | Description |
+|----------|-------------|
+| valeur | Ce que vous cherchez |
+| tableau | Ou chercher |
+| index | Numero de colonne du resultat |
+| correspondance | FAUX pour exact, VRAI pour approche |
+
+## Etape par etape
+
+1. **valeur** : Quelle valeur chercher ? (ex: "A2")
+2. **tableau** : Dans quel tableau ? (ex: A:C)
+3. **index** : Quelle colonne retourner ? (ex: 3 = Prix)
+4. **correspondance** : Recherche exacte ? (FAUX = oui)
+
+## Exemple pratique
+
+### Situation
+
+Vous avez une liste de commandes avec des codes produits, et vous voulez afficher le nom du produit.
+
+### Formule
+
+```excel
+=RECHERCHEV(CodeProduit;TableauProduits;2;FAUX)
+```
+
+## Erreurs courantes
+
+### #N/A
+
+La valeur n'existe pas dans le tableau.
+
+**Solution** :
+```excel
+=SIERREUR(RECHERCHEV(A1;B:C;2;FAUX);"Non trouve")
+```
+
+### Mauvais resultat
+
+L'index de colonne est incorrect.
+
+## Limites de RECHERCHEV
+
+- Cherche uniquement dans la premiere colonne
+- Retourne uniquement vers la droite
+- Index de colonne peu intuitif
+
+## Alternative : RECHERCHEX
+
+Plus moderne et flexible :
+
+```excel
+=RECHERCHEX(A1;ColRecherche;ColResultat)
+```
+
+Disponible dans Excel 365 et 2021.
+
+## Quand utiliser RECHERCHEV ?
+
+| Situation | Utiliser |
+|-----------|----------|
+| Trouver un prix | Oui |
+| Associer des donnees | Oui |
+| Recherche a gauche | Non (utiliser RECHERCHEX) |
+| Grandes donnees | Oui avec INDEX/EQUIV |
+
+## Resume
+
+RECHERCHEV est comme chercher dans un annuaire :
+1. Vous cherchez un nom (valeur)
+2. Dans la liste (premiere colonne)
+3. Et vous lisez son numero de telephone (autre colonne)
+
+[Decouvrir nos formations Excel](/formations-excel)

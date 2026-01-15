@@ -1,0 +1,85 @@
+---
+title: "Excel : Comment Faire une Liste Deroulante Avancee"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Creez des listes deroulantes avancees."
+description: "Guide pour creer des listes deroulantes avancees dans Excel."
+category: "Astuces Excel"
+categories: ["Astuces Excel", "Validation"]
+tags: ["Liste deroulante", "Avance", "Validation", "Excel"]
+---
+
+# Liste Deroulante Avancee
+
+Au-dela des listes simples.
+
+## Liste simple rappel
+
+1. **Donnees** > **Validation des donnees**
+2. **Liste**
+3. Source : plage ou valeurs
+
+## Liste dynamique
+
+### Avec UNIQUE
+
+```excel
+=UNIQUE(Tableau[Colonne])
+```
+
+Se met a jour automatiquement.
+
+## Liste dependante
+
+### Scenario
+
+Pays → Villes
+
+### Methode
+
+1. Nommez les plages par pays
+2. Utilisez INDIRECT
+
+```excel
+=INDIRECT(CellulePays)
+```
+
+## Avec FILTRE
+
+### Liste conditionnelle
+
+```excel
+=FILTRE(Villes[Nom];Villes[Pays]=A1)
+```
+
+## Recherche dans la liste
+
+### Excel 365
+
+Tapez pour filtrer automatiquement.
+
+## Personnalisation
+
+### Message de saisie
+
+Guidez l'utilisateur.
+
+### Alerte d'erreur
+
+Personnalisez le message d'erreur.
+
+## Multi-selection (VBA)
+
+### Code necessaire
+
+Pour selectionner plusieurs elements.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Tableaux | Source dans tableaux |
+| Nommage | Plages nommees |
+| Test | Verifiez le comportement |
+
+[Decouvrir nos formations Excel](/formations-excel)

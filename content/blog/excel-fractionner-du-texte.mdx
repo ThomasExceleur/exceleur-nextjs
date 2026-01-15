@@ -1,0 +1,150 @@
+---
+title: "Fractionner du Texte dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez a separer du texte en plusieurs colonnes dans Excel."
+description: "Guide pour fractionner du texte dans Excel. Convertir et formules."
+category: "Manipulation de donnees"
+categories: ["Manipulation de donnees", "Formules Excel"]
+tags: ["Texte", "Fractionnement", "Donnees", "Formules"]
+---
+
+# Fractionner du Texte dans Excel
+
+Separisez du texte en plusieurs colonnes facilement.
+
+## Methode 1 : Convertir
+
+### Etapes
+
+1. Selectionnez les cellules a fractionner
+2. **Donnees** > **Convertir**
+3. Choisissez **Delimite** ou **Largeur fixe**
+4. Selectionnez le delimiteur (virgule, espace, etc.)
+5. **Suivant** > **Terminer**
+
+### Delimiteurs courants
+
+| Delimiteur | Utilisation |
+|------------|-------------|
+| Virgule | CSV, listes |
+| Point-virgule | Donnees francaises |
+| Espace | Noms, adresses |
+| Tabulation | Donnees tabulees |
+
+## Methode 2 : Formules texte
+
+### GAUCHE
+
+```excel
+=GAUCHE(A1;5)    ' 5 premiers caracteres
+```
+
+### DROITE
+
+```excel
+=DROITE(A1;3)    ' 3 derniers caracteres
+```
+
+### STXT
+
+```excel
+=STXT(A1;3;5)    ' 5 caracteres a partir du 3e
+```
+
+### Trouver la position
+
+```excel
+=CHERCHE(" ";A1)    ' Position du premier espace
+```
+
+## Methode 3 : Remplissage instantane
+
+### Ctrl + E (Flash Fill)
+
+1. Dans la colonne adjacente, tapez le resultat souhaite
+2. Descendez d'une cellule
+3. **Ctrl + E**
+4. Excel complete automatiquement
+
+### Exemple
+
+| Original | Resultat |
+|----------|----------|
+| Jean Dupont | Jean |
+| Marie Martin | (vide) |
+
+Apres Ctrl + E : Marie, etc.
+
+## Methode 4 : FRACTIONNER.TEXTE (Excel 365)
+
+### Syntaxe
+
+```excel
+=FRACTIONNER.TEXTE(texte;delimiteur)
+```
+
+### Exemple
+
+```excel
+=FRACTIONNER.TEXTE("A;B;C";";")
+```
+
+Resultat : A | B | C (dans 3 colonnes)
+
+## Formules avancees
+
+### Extraire le prenom
+
+```excel
+=GAUCHE(A1;CHERCHE(" ";A1)-1)
+```
+
+### Extraire le nom
+
+```excel
+=STXT(A1;CHERCHE(" ";A1)+1;100)
+```
+
+### Extraire le domaine email
+
+```excel
+=DROITE(A1;NBCAR(A1)-CHERCHE("@";A1))
+```
+
+## Excel 365 : TEXTE.AVANT / TEXTE.APRES
+
+### Avant le delimiteur
+
+```excel
+=TEXTE.AVANT(A1;" ")
+```
+
+### Apres le delimiteur
+
+```excel
+=TEXTE.APRES(A1;" ")
+```
+
+## Cas pratiques
+
+### Adresse complete
+
+Separer : numero, rue, code postal, ville
+
+### Nom complet
+
+Separer : prenom, nom, (particule)
+
+### Reference produit
+
+Separer : categorie, sous-categorie, identifiant
+
+## Bonnes pratiques
+
+1. **Sauvegardez** avant de convertir
+2. **Prevoyez** l'espace pour les colonnes
+3. **Testez** sur quelques lignes
+4. **Utilisez** Ctrl + E pour les cas simples
+
+[Decouvrir nos formations Excel](/formations-excel)

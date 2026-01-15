@@ -1,0 +1,119 @@
+---
+title: "Erreurs Communes avec RECHERCHEV"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Les erreurs frequentes avec RECHERCHEV et comment les eviter."
+description: "Guide pour eviter les erreurs courantes avec RECHERCHEV."
+category: "Gestion d'erreurs"
+categories: ["Gestion d'erreurs", "Fonctions"]
+tags: ["RECHERCHEV", "Erreurs", "Depannage", "Excel"]
+---
+
+# Erreurs Communes RECHERCHEV
+
+Evitez les pieges classiques.
+
+## Erreur #N/A
+
+### Causes
+
+| Cause | Solution |
+|-------|----------|
+| Valeur absente | Verifiez les donnees |
+| Espaces invisibles | SUPPRESPACE |
+| Format different | Nombre vs Texte |
+
+### Solution
+
+```excel
+=SIERREUR(RECHERCHEV(...);"Non trouve")
+```
+
+## Erreur #REF!
+
+### Cause
+
+Index de colonne superieur au nombre de colonnes.
+
+### Exemple
+
+```excel
+=RECHERCHEV(A1;B:C;5;FAUX)
+```
+
+5 > 2 colonnes = #REF!
+
+## Mauvais resultat
+
+### Cause frequente
+
+4eme argument manquant ou VRAI.
+
+### Solution
+
+Toujours specifier FAUX pour correspondance exacte.
+
+```excel
+=RECHERCHEV(A1;B:C;2;FAUX)
+```
+
+## Espace invisible
+
+### Probleme
+
+"Paris " n'est pas "Paris".
+
+### Detection
+
+```excel
+=NBCAR(A1)
+```
+
+### Correction
+
+```excel
+=RECHERCHEV(SUPPRESPACE(A1);...)
+```
+
+## Texte vs Nombre
+
+### Probleme
+
+"123" (texte) != 123 (nombre).
+
+### Detection
+
+```excel
+=ESTNUM(A1)
+=ESTTEXTE(A1)
+```
+
+### Correction
+
+```excel
+=RECHERCHEV(CNUM(A1);...)
+=RECHERCHEV(TEXTE(A1;"0");...)
+```
+
+## Index dynamique
+
+### Probleme
+
+Insertion de colonne casse la formule.
+
+### Solution
+
+```excel
+=RECHERCHEV(A1;tableau;EQUIV("Colonne";headers;0);FAUX)
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| FAUX toujours | Correspondance exacte |
+| SIERREUR | Gerer les erreurs |
+| Nettoyage | SUPPRESPACE avant recherche |
+| Test | Verifiez avec des exemples connus |
+
+[Decouvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,237 @@
+---
+title: "Excel Base de Donnees Clients : Guide Complet"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Creez et gerez une base de donnees clients efficace dans Excel."
+description: "Guide pour creer une base de donnees clients dans Excel. Structure, recherche et analyse."
+category: "Modeles"
+categories: ["Modeles", "Productivite"]
+tags: ["Clients", "Base de donnees", "CRM", "Gestion"]
+---
+
+# Base de Donnees Clients dans Excel
+
+Une base de donnees clients bien structuree est essentielle pour gerer votre relation client.
+
+## Structure de la base
+
+### Champs essentiels
+
+| Champ | Type | Description |
+|-------|------|-------------|
+| ID Client | Numero | Identifiant unique |
+| Societe | Texte | Raison sociale |
+| Contact | Texte | Nom du contact |
+| Email | Texte | Adresse email |
+| Telephone | Texte | Numero de telephone |
+| Adresse | Texte | Adresse postale |
+| Ville | Texte | Ville |
+| Code postal | Texte | CP |
+| Categorie | Liste | Type de client |
+| Date creation | Date | Date ajout |
+
+### Champs complementaires
+
+| Champ | Description |
+|-------|-------------|
+| CA annuel | Chiffre d'affaires |
+| Dernier achat | Date derniere commande |
+| Nb commandes | Nombre total de commandes |
+| Commentaires | Notes libres |
+
+## Creer la structure
+
+### Etape 1 : En-tetes
+
+Creez une ligne avec tous les noms de champs.
+
+### Etape 2 : Tableau structure
+
+1. Selectionnez vos donnees
+2. **Ctrl + T** pour creer un tableau
+3. Nommez le tableau "Clients"
+
+### Etape 3 : Validation des donnees
+
+```excel
+' Pour le champ Email
+Donnees > Validation > Personnalisee
+=ET(CHERCHE("@";A1)>0;CHERCHE(".";A1;CHERCHE("@";A1))>0)
+```
+
+## Listes deroulantes
+
+### Categories de clients
+
+1. Creez une liste sur une feuille separee
+2. **Donnees** > **Validation** > **Liste**
+3. Source : =Categories
+
+### Exemple de categories
+
+- Prospect
+- Client actif
+- Client inactif
+- Partenaire
+- VIP
+
+## Recherche de clients
+
+### RECHERCHEV
+
+```excel
+=RECHERCHEV(ID_recherche;Clients;2;FAUX)    ' Retourne le nom
+```
+
+### RECHERCHEX (recommande)
+
+```excel
+=RECHERCHEX(Email_recherche;Clients[Email];Clients[Societe])
+```
+
+### INDEX + EQUIV
+
+```excel
+=INDEX(Clients[Telephone];EQUIV(Nom_recherche;Clients[Contact];0))
+```
+
+## Formulaire de recherche
+
+### Structure
+
+| Champ | Valeur |
+|-------|--------|
+| Rechercher | [Saisie] |
+| Resultat | =FORMULE |
+
+### Recherche multicritere
+
+```excel
+=FILTRE(Clients;(Clients[Ville]=G2)*(Clients[Categorie]=G3))
+```
+
+## Analyse des clients
+
+### Statistiques globales
+
+```excel
+=NB(Clients[ID])                           ' Nombre de clients
+=NB.SI(Clients[Categorie];"VIP")           ' Clients VIP
+=SOMME(Clients[CA annuel])                 ' CA total
+=MOYENNE(Clients[CA annuel])               ' CA moyen
+```
+
+### Repartition par categorie
+
+```excel
+=NB.SI(Clients[Categorie];"Prospect")
+=NB.SI(Clients[Categorie];"Client actif")
+```
+
+## Segmentation RFM
+
+### Recence (R)
+
+```excel
+=AUJOURDHUI()-[@[Dernier achat]]
+=SI(Recence<30;5;SI(Recence<90;4;SI(Recence<180;3;SI(Recence<365;2;1))))
+```
+
+### Frequence (F)
+
+```excel
+=[@[Nb commandes]]
+=SI(Frequence>20;5;SI(Frequence>10;4;SI(Frequence>5;3;SI(Frequence>2;2;1))))
+```
+
+### Montant (M)
+
+```excel
+=[@[CA annuel]]
+=SI(Montant>10000;5;SI(Montant>5000;4;SI(Montant>2000;3;SI(Montant>500;2;1))))
+```
+
+### Score RFM
+
+```excel
+=[@R]*100+[@F]*10+[@M]
+```
+
+## Doublons et nettoyage
+
+### Detecter les doublons
+
+```excel
+=NB.SI(Clients[Email];[@Email])>1
+```
+
+### Mise en forme conditionnelle
+
+1. Selectionnez la colonne Email
+2. **Mise en forme conditionnelle** > **Regles de mise en surbrillance**
+3. **Valeurs en double**
+
+### Supprimer les doublons
+
+1. Selectionnez le tableau
+2. **Donnees** > **Supprimer les doublons**
+
+## Export et import
+
+### Export CSV
+
+1. **Fichier** > **Enregistrer sous**
+2. Format CSV UTF-8
+
+### Import depuis autre source
+
+1. **Donnees** > **Obtenir des donnees**
+2. Selectionnez la source
+3. Transformez dans Power Query
+
+## Publipostage
+
+### Preparation
+
+Assurez-vous que les champs sont bien nommes.
+
+### Dans Word
+
+1. **Publipostage** > **Selectionner les destinataires**
+2. Choisissez votre fichier Excel
+3. Inserez les champs de fusion
+
+## Protection des donnees
+
+### Proteger la feuille
+
+1. **Revision** > **Proteger la feuille**
+2. Definissez un mot de passe
+3. Autorisez certaines actions
+
+### RGPD
+
+- Documentez l'utilisation des donnees
+- Prevoyez une procedure de suppression
+- Limitez l'acces aux personnes autorisees
+
+## Tableau de bord clients
+
+### KPI clients
+
+| Indicateur | Formule |
+|------------|---------|
+| Nb clients actifs | =NB.SI(Categorie;"Actif") |
+| Taux d'attrition | =Perdus/Total |
+| Valeur moyenne | =MOYENNE(CA) |
+| Top 10 clients | =GRANDE.VALEUR(CA;10) |
+
+## Bonnes pratiques
+
+1. **Normalisez** les donnees (format, casse)
+2. **Validez** les saisies avec des listes
+3. **Sauvegardez** regulierement
+4. **Archivez** les clients inactifs
+5. **Documentez** les champs
+
+[Decouvrir nos formations Excel](/formations-excel)

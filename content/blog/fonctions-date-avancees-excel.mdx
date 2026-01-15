@@ -1,0 +1,123 @@
+---
+title: "Fonctions Date Avancees Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maitrisez les fonctions de date avancees dans Excel."
+description: "Guide des fonctions de date avancees Excel."
+category: "Dates"
+categories: ["Dates", "Formules Excel"]
+tags: ["Dates", "Fonctions", "Avance", "Calculs"]
+---
+
+# Fonctions Date Avancees Excel
+
+Allez au-dela des fonctions de date basiques.
+
+## DATEDIF
+
+### Syntaxe
+
+```excel
+=DATEDIF(date_debut;date_fin;unite)
+```
+
+### Unites
+
+| Unite | Description |
+|-------|-------------|
+| \"Y\" | Annees completes |
+| \"M\" | Mois complets |
+| \"D\" | Jours |
+| \"YM\" | Mois (hors annees) |
+| \"YD\" | Jours (hors annees) |
+| \"MD\" | Jours (hors mois et annees) |
+
+### Age complet
+
+```excel
+=DATEDIF(Naissance;AUJOURDHUI();\"Y\")&\" ans, \"&DATEDIF(Naissance;AUJOURDHUI();\"YM\")&\" mois\"
+```
+
+## FIN.MOIS
+
+### Syntaxe
+
+```excel
+=FIN.MOIS(date;mois)
+```
+
+### Exemples
+
+```excel
+=FIN.MOIS(A1;0)   ' Dernier jour du mois
+=FIN.MOIS(A1;1)   ' Dernier jour du mois suivant
+=FIN.MOIS(A1;-1)  ' Dernier jour du mois precedent
+```
+
+## NO.SEMAINE
+
+### Syntaxe
+
+```excel
+=NO.SEMAINE(date;[type])
+```
+
+### Types
+
+| Type | Premier jour |
+|------|-------------|
+| 1 | Dimanche |
+| 2 | Lundi |
+| 21 | Lundi (ISO) |
+
+## NB.JOURS.OUVRES
+
+### Syntaxe
+
+```excel
+=NB.JOURS.OUVRES(debut;fin;[jours_feries])
+```
+
+### Avec jours feries
+
+```excel
+=NB.JOURS.OUVRES(A1;B1;Feries)
+```
+
+## SERIE.JOUR.OUVRE
+
+### Syntaxe
+
+```excel
+=SERIE.JOUR.OUVRE(debut;jours;[jours_feries])
+```
+
+### Echeance
+
+```excel
+=SERIE.JOUR.OUVRE(AUJOURDHUI();20;Feries)
+```
+
+## Calculs temporels
+
+### Trimestre
+
+```excel
+=ARRONDI.SUP(MOIS(A1)/3;0)
+```
+
+### Debut de trimestre
+
+```excel
+=DATE(ANNEE(A1);(TRIMESTRE-1)*3+1;1)
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Format | Verifiez que c'est une date |
+| Feries | Maintenez une liste a jour |
+| Test | Verifiez aux limites |
+
+[Decouvrir nos formations Excel](/formations-excel)

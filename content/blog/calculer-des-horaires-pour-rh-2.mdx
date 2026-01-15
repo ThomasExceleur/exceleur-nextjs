@@ -1,0 +1,110 @@
+---
+title: "Calculer des Horaires pour RH"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Gerez les horaires de travail pour les ressources humaines."
+description: "Guide pour calculer les horaires RH dans Excel."
+category: "RH"
+categories: ["RH", "Calculs"]
+tags: ["Horaires", "RH", "Temps", "Excel"]
+---
+
+# Calculer des Horaires pour RH
+
+Outils Excel pour la gestion du temps RH.
+
+## Calcul des heures travaillees
+
+### Formule de base
+
+```excel
+=Heure_fin-Heure_debut-Pause
+```
+
+### Exemple
+
+| Arrivee | Depart | Pause | Travail |
+|---------|--------|-------|---------|
+| 08:30 | 17:30 | 01:00 | 08:00 |
+
+## Heures supplementaires
+
+### Calcul
+
+```excel
+=MAX(0;Heures_travaillees-Heures_contrat)
+```
+
+### Avec majoration
+
+```excel
+=Heures_sup*Taux_horaire*1,25
+```
+
+## Total hebdomadaire
+
+### Somme
+
+```excel
+=SOMME(D2:D6)
+```
+
+### Format au-dela de 24h
+
+Format personnalise : `[hh]:mm`
+
+## Gestion des nuits
+
+### Travail de nuit
+
+```excel
+=SI(Fin<Debut;Fin+1-Debut;Fin-Debut)
+```
+
+## Conges et absences
+
+### Decompte jours
+
+```excel
+=NB.JOURS.OUVRES(date_debut;date_fin)
+```
+
+### Solde conges
+
+```excel
+=Acquis-Pris
+```
+
+## Rapport mensuel
+
+### Structure
+
+| Employe | Heures | Supp | Absences |
+|---------|--------|------|----------|
+| Nom | Total | Heures | Jours |
+
+### Formules TCD
+
+Utilisez un tableau croise dynamique pour synthetiser.
+
+## Alertes
+
+### Heures excessives
+
+```excel
+=SI(Heures_semaine>48;"ALERTE";"OK")
+```
+
+### Mise en forme conditionnelle
+
+Colorez les depassements en rouge.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Validation | Listes deroulantes pour types |
+| Historique | Conservez les donnees |
+| Conformite | Respectez le code du travail |
+
+[Decouvrir nos formations Excel](/formations-excel)

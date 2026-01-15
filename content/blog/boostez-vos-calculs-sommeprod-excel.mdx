@@ -1,0 +1,199 @@
+---
+title: "Boostez vos Calculs avec SOMMEPROD Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maitrisez SOMMEPROD pour des calculs avances et multicriteres dans Excel."
+description: "Guide pour booster vos calculs Excel avec la fonction SOMMEPROD."
+category: "Formules Excel"
+categories: ["Formules Excel", "Calculs"]
+tags: ["SOMMEPROD", "Calculs", "Multicriteres", "Performance"]
+---
+
+# Boostez vos Calculs avec SOMMEPROD
+
+SOMMEPROD est une fonction puissante pour les calculs multicriteres.
+
+## Syntaxe de base
+
+```excel
+=SOMMEPROD(matrice1;[matrice2];...)
+```
+
+## Fonctionnement
+
+SOMMEPROD multiplie les elements correspondants des matrices, puis additionne les produits.
+
+### Exemple simple
+
+| A | B |
+|---|---|
+| 2 | 5 |
+| 3 | 4 |
+| 1 | 6 |
+
+```excel
+=SOMMEPROD(A1:A3;B1:B3)
+' = (2*5) + (3*4) + (1*6)
+' = 10 + 12 + 6 = 28
+```
+
+## Calculs conditionnels
+
+### Somme avec une condition
+
+```excel
+=SOMMEPROD((A:A="Paris")*B:B)
+```
+
+Somme de B ou A contient "Paris".
+
+### Somme avec plusieurs conditions
+
+```excel
+=SOMMEPROD((A:A="Paris")*(C:C>100)*B:B)
+```
+
+Somme de B ou A="Paris" ET C>100.
+
+## Comptage conditionnel
+
+### Compter avec critere
+
+```excel
+=SOMMEPROD((A:A="Paris")*1)
+```
+
+### Compter avec plusieurs criteres
+
+```excel
+=SOMMEPROD((A:A="Paris")*(B:B>100)*1)
+```
+
+## Moyenne conditionnelle
+
+```excel
+=SOMMEPROD((A:A="Paris")*B:B)/SOMMEPROD((A:A="Paris")*1)
+```
+
+Moyenne de B pour les lignes ou A="Paris".
+
+## Cas avances
+
+### Recherche partielle
+
+```excel
+=SOMMEPROD((ESTERREUR(CHERCHE("mot";A:A))=FAUX)*B:B)
+```
+
+Somme ou A contient "mot".
+
+### Ignorer les erreurs
+
+```excel
+=SOMMEPROD((ESTERREUR(A:A)=FAUX)*A:A)
+```
+
+### Valeurs uniques
+
+```excel
+=SOMMEPROD((A2:A100<>"")/NB.SI(A2:A100;A2:A100))
+```
+
+Compte les valeurs distinctes.
+
+## Avec des dates
+
+### Ventes d'un mois
+
+```excel
+=SOMMEPROD((MOIS(A:A)=1)*(ANNEE(A:A)=2024)*B:B)
+```
+
+### Entre deux dates
+
+```excel
+=SOMMEPROD((A:A>=DATE(2024;1;1))*(A:A<=DATE(2024;12;31))*B:B)
+```
+
+## Comparaison avec alternatives
+
+| Fonction | Usage |
+|----------|-------|
+| SOMME.SI | Un critere simple |
+| SOMME.SI.ENS | Plusieurs criteres simples |
+| SOMMEPROD | Criteres complexes |
+
+### Quand utiliser SOMMEPROD ?
+
+- Conditions avec calculs
+- Recherches partielles
+- Logique complexe
+
+## Optimisation
+
+### Limitez les plages
+
+```excel
+=SOMMEPROD((A2:A1000="Paris")*B2:B1000)
+```
+
+Au lieu de A:A qui ralentit les calculs.
+
+### Evitez les calculs inutiles
+
+Faites les calculs dans des colonnes auxiliaires si possible.
+
+## Exemples pratiques
+
+### Chiffre d'affaires par vendeur et region
+
+```excel
+=SOMMEPROD((Vendeurs="Alice")*(Region="Nord")*Montants)
+```
+
+### Commission par palier
+
+```excel
+=SOMMEPROD(
+  (Ventes>=0)*(Ventes<1000)*Ventes*0,05+
+  (Ventes>=1000)*(Ventes<5000)*Ventes*0,08+
+  (Ventes>=5000)*Ventes*0,12
+)
+```
+
+### Top N des ventes
+
+```excel
+=SOMMEPROD(GRANDE.VALEUR(Ventes;LIGNE(INDIRECT("1:5"))))
+```
+
+Somme des 5 plus grandes valeurs.
+
+## Pieges a eviter
+
+### Tailles de plages differentes
+
+```excel
+=SOMMEPROD(A1:A10;B1:B5)   ' ERREUR
+```
+
+Les plages doivent avoir la meme taille.
+
+### Cellules vides
+
+Les cellules vides sont traitees comme 0.
+
+### Performance
+
+Sur de grandes plages, SOMMEPROD peut etre lent.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Plages nommees | Plus lisible |
+| Plages limitees | Plus rapide |
+| Tests | Verifiez les resultats |
+| Documentation | Commentez les formules complexes |
+
+[Decouvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,161 @@
+---
+title: "Maitrisez EQUIVX : La Fonction de Recherche Moderne"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Decouvrez EQUIVX, la version moderne de la fonction EQUIV."
+description: "Guide de la fonction EQUIVX pour les recherches modernes Excel."
+category: "Excel 365"
+categories: ["Excel 365", "Formules Excel"]
+tags: ["EQUIVX", "Recherche", "Excel 365", "Formules"]
+---
+
+# EQUIVX : La Fonction de Recherche Moderne
+
+EQUIVX remplace EQUIV avec plus de fonctionnalites.
+
+## Syntaxe
+
+```excel
+=EQUIVX(valeur_cherchee;plage;[mode_correspondance];[mode_recherche])
+```
+
+## Parametres
+
+| Parametre | Description |
+|-----------|-------------|
+| valeur_cherchee | Ce que vous recherchez |
+| plage | Ou chercher |
+| mode_correspondance | Type de correspondance |
+| mode_recherche | Direction de recherche |
+
+## Modes de correspondance
+
+| Valeur | Description |
+|--------|-------------|
+| 0 | Exacte (defaut) |
+| -1 | Exacte ou inferieur |
+| 1 | Exacte ou superieur |
+| 2 | Caracteres generiques |
+
+## Modes de recherche
+
+| Valeur | Description |
+|--------|-------------|
+| 1 | Premier au dernier (defaut) |
+| -1 | Dernier au premier |
+| 2 | Binaire croissant |
+| -2 | Binaire decroissant |
+
+## Comparaison EQUIV vs EQUIVX
+
+| EQUIV | EQUIVX |
+|-------|--------|
+| Moins flexible | Plus d'options |
+| Ordre des arguments different | Syntaxe modernisee |
+| Pas de recherche inverse | Recherche inverse possible |
+
+## Exemples
+
+### Correspondance exacte
+
+```excel
+=EQUIVX("Paris";A:A;0)
+```
+
+### Derniere occurrence
+
+```excel
+=EQUIVX("Paris";A:A;0;-1)
+```
+
+### Correspondance approximative
+
+```excel
+=EQUIVX(150;B:B;-1)
+```
+
+Trouve 150 ou la valeur juste inferieure.
+
+## Avec INDEX
+
+### Combinaison classique
+
+```excel
+=INDEX(B:B;EQUIVX(Critere;A:A;0))
+```
+
+### Equivalent de RECHERCHEX
+
+```excel
+=RECHERCHEX(Critere;A:A;B:B)
+```
+
+Plus simple que INDEX/EQUIVX.
+
+## Recherche avec generiques
+
+### Commence par
+
+```excel
+=EQUIVX("Par*";A:A;2)
+```
+
+### Contient
+
+```excel
+=EQUIVX("*aris*";A:A;2)
+```
+
+## Recherche binaire
+
+### Quand l'utiliser
+
+Donnees triees et tres grandes plages.
+
+### Performance
+
+Plus rapide que la recherche lineaire.
+
+## Cas pratiques
+
+### Trouver la position d'un client
+
+```excel
+=EQUIVX(NomClient;ListeClients;0)
+```
+
+### Derniere vente d'un produit
+
+```excel
+=INDEX(Dates;EQUIVX(Produit;ListeProduits;0;-1))
+```
+
+### Tranche de prix
+
+```excel
+=EQUIVX(Montant;Seuils;-1)
+```
+
+## Gestion des erreurs
+
+### Si non trouve
+
+```excel
+=SIERREUR(EQUIVX(...);"Non trouve")
+```
+
+### Verifier l'existence
+
+```excel
+=ESTNUM(EQUIVX(Valeur;Plage;0))
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| RECHERCHEX | Preferez-la pour valeur + position |
+| Mode explicite | Specifiez toujours le mode |
+| Performance | Binaire pour grandes plages triees |
+
+[Decouvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,173 @@
+---
+title: "Excel Power Query : Importez et Transformez vos Donnees"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Decouvrez Power Query pour importer et transformer vos donnees Excel."
+description: "Guide Power Query pour l'import et la transformation de donnees."
+category: "Power Query"
+categories: ["Power Query", "Analyse de donnees Excel"]
+tags: ["Power Query", "Import", "Transformation", "ETL"]
+---
+
+# Power Query : Importez et Transformez vos Donnees
+
+Power Query est l'outil ETL (Extract, Transform, Load) integre a Excel.
+
+## Qu'est-ce que Power Query ?
+
+### Definition
+
+Power Query permet de :
+- Connecter plusieurs sources
+- Transformer les donnees
+- Charger dans Excel
+
+### Avantages
+
+- Transformations reproductibles
+- Pas de formules complexes
+- Actualisation automatique
+
+## Acceder a Power Query
+
+### Excel 2016+
+
+**Donnees** > **Obtenir des donnees**
+
+### Editeur Power Query
+
+**Donnees** > **Obtenir des donnees** > **Lancer l'editeur Power Query**
+
+## Sources de donnees
+
+| Source | Type |
+|--------|------|
+| Fichier Excel | .xlsx, .xls |
+| CSV/Texte | .csv, .txt |
+| Base de donnees | SQL Server, Access |
+| Web | Tables HTML, API |
+| Dossier | Plusieurs fichiers |
+
+## Importer un fichier Excel
+
+### Etapes
+
+1. **Donnees** > **Obtenir des donnees** > **A partir d'un fichier** > **Excel**
+2. Selectionnez le fichier
+3. Choisissez la feuille ou table
+4. **Transformer les donnees** ou **Charger**
+
+## Transformations de base
+
+### Supprimer des colonnes
+
+1. Selectionnez les colonnes a garder
+2. Clic droit > **Supprimer les autres colonnes**
+
+### Renommer des colonnes
+
+Double-cliquez sur l'en-tete.
+
+### Filtrer les lignes
+
+Cliquez sur la fleche de l'en-tete et filtrez.
+
+### Supprimer les lignes
+
+- **Accueil** > **Supprimer les lignes**
+- Options : vides, erreurs, premieres, dernieres
+
+## Transformations de texte
+
+| Transformation | Description |
+|----------------|-------------|
+| Majuscules | Convertir en majuscules |
+| Minuscules | Convertir en minuscules |
+| Supprespace | Supprimer les espaces |
+| Fractionner | Separer par delimiteur |
+| Extraire | Premiers/derniers caracteres |
+
+### Acces
+
+**Transformer** > **Colonne de texte**
+
+## Transformations de nombres
+
+| Transformation | Description |
+|----------------|-------------|
+| Arrondi | Arrondir a X decimales |
+| Operations | +, -, *, / |
+| Statistiques | Somme, moyenne, etc. |
+
+## Transformations de dates
+
+| Transformation | Description |
+|----------------|-------------|
+| Annee | Extraire l'annee |
+| Mois | Extraire le mois |
+| Jour | Extraire le jour |
+| Nom du jour | Lundi, Mardi... |
+
+## Colonnes personnalisees
+
+### Ajouter une colonne
+
+1. **Ajouter une colonne** > **Colonne personnalisee**
+2. Nommez la colonne
+3. Entrez la formule M
+
+### Syntaxe M
+
+```m
+[Colonne1] * [Colonne2]
+if [Statut] = "Actif" then 1 else 0
+```
+
+## Combiner des fichiers
+
+### Fusionner des requetes
+
+1. **Accueil** > **Combiner** > **Fusionner des requetes**
+2. Selectionnez les colonnes de liaison
+3. Choisissez le type de jointure
+
+### Ajouter des requetes
+
+Empile les lignes de plusieurs tables.
+
+## Charger les donnees
+
+### Options de chargement
+
+| Option | Description |
+|--------|-------------|
+| Table | Charge dans une feuille |
+| Connexion seule | Pas de chargement, juste la requete |
+| Modele de donnees | Pour Power Pivot |
+
+### Choisir la destination
+
+**Accueil** > **Fermer et charger** > **Fermer et charger dans**
+
+## Actualiser les donnees
+
+### Actualisation manuelle
+
+**Donnees** > **Actualiser tout**
+
+### Actualisation automatique
+
+1. Clic droit sur la table
+2. **Proprietes de la table**
+3. Configurez l'actualisation
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Nommer les etapes | Renommez pour clarte |
+| Documenter | Commentez les transformations complexes |
+| Modularite | Une requete par source |
+| Test | Verifiez chaque etape |
+
+[Decouvrir nos formations Excel](/formations-excel)

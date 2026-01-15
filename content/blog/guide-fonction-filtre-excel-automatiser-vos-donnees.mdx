@@ -1,0 +1,154 @@
+---
+title: "Guide FILTRE Excel : Automatisez vos Donnees"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Automatisez l'extraction de donnees avec la fonction FILTRE."
+description: "Guide complet de la fonction FILTRE pour automatiser vos donnees."
+category: "Excel 365"
+categories: ["Excel 365", "Formules Excel"]
+tags: ["FILTRE", "Automatisation", "Extraction", "Excel 365"]
+---
+
+# FILTRE Excel : Automatisez vos Donnees
+
+Transformez vos extractions manuelles en processus automatiques.
+
+## Rappel de la syntaxe
+
+```excel
+=FILTRE(tableau;inclure;[si_vide])
+```
+
+## Automatisation avec references
+
+### Critere dynamique
+
+```excel
+=FILTRE(Donnees;Region=CelluleCritere)
+```
+
+### Multiples criteres dynamiques
+
+```excel
+=FILTRE(Donnees;(Region=E1)*(Mois=F1))
+```
+
+## Extraction automatique
+
+### Rapport par region
+
+Cellule E1 : Liste deroulante des regions
+
+```excel
+=FILTRE(A2:D100;B2:B100=E1;"Aucune donnee pour cette region")
+```
+
+### Mise a jour instantanee
+
+Changez la selection, le rapport se met a jour.
+
+## Tableaux de synthese automatiques
+
+### Top 10 clients
+
+```excel
+=LET(
+  donnees;FILTRE(Clients;Ventes>0);
+  triees;TRIER(donnees;3;-1);
+  INDEX(triees;SEQUENCE(MIN(10;LIGNES(triees)));SEQUENCE(1;COLONNES(triees)))
+)
+```
+
+### Ventes du mois en cours
+
+```excel
+=FILTRE(Ventes;MOIS(Dates)=MOIS(AUJOURDHUI()))
+```
+
+## Integration avec autres fonctions
+
+### FILTRE + SOMME
+
+```excel
+=SOMME(FILTRE(Montants;Region="Nord"))
+```
+
+### FILTRE + MOYENNE
+
+```excel
+=MOYENNE(FILTRE(Notes;Classe="A"))
+```
+
+### FILTRE + NB
+
+```excel
+=LIGNES(FILTRE(Donnees;Statut="Actif"))
+```
+
+## Alertes automatiques
+
+### Commandes en retard
+
+```excel
+=FILTRE(Commandes;(DateLivraison<AUJOURDHUI())*(Statut<>"Livre");"Aucun retard")
+```
+
+### Stocks critiques
+
+```excel
+=FILTRE(Produits;Stock<SeuilAlerte)
+```
+
+## Rapports periodiques
+
+### Cette semaine
+
+```excel
+=FILTRE(Donnees;
+  (Dates>=AUJOURDHUI()-JOURSEM(AUJOURDHUI();2)+1)*
+  (Dates<=AUJOURDHUI()-JOURSEM(AUJOURDHUI();2)+7)
+)
+```
+
+### Ce mois
+
+```excel
+=FILTRE(Donnees;
+  (MOIS(Dates)=MOIS(AUJOURDHUI()))*
+  (ANNEE(Dates)=ANNEE(AUJOURDHUI()))
+)
+```
+
+## Extraction conditionnelle complexe
+
+### Avec LET pour lisibilite
+
+```excel
+=LET(
+  region;E1;
+  mois_debut;F1;
+  mois_fin;G1;
+  filtre_region;Region=region;
+  filtre_date;(MOIS(Date)>=mois_debut)*(MOIS(Date)<=mois_fin);
+  FILTRE(Donnees;filtre_region*filtre_date;"Aucune donnee")
+)
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| LET | Structurez les formules complexes |
+| Noms | Utilisez des plages nommees |
+| si_vide | Toujours gerer les cas sans resultat |
+| Test | Verifiez avec differentes donnees |
+
+## Erreurs courantes
+
+| Erreur | Cause | Solution |
+|--------|-------|----------|
+| #CALC! | Aucun resultat | Ajoutez si_vide |
+| #PROPAGATION! | Pas d'espace | Liberez les cellules |
+| #VALEUR! | Plages incompatibles | Alignez les tailles |
+
+[Decouvrir nos formations Excel](/formations-excel)

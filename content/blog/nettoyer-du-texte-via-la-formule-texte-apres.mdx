@@ -1,0 +1,133 @@
+---
+title: "Nettoyer du Texte avec TEXTE.APRES dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Utilisez TEXTE.APRES pour extraire et nettoyer du texte dans Excel 365."
+description: "Guide de la fonction TEXTE.APRES dans Excel 365. Extraction et nettoyage de texte."
+category: "Formules Excel"
+categories: ["Formules Excel", "Excel 365"]
+tags: ["TEXTE.APRES", "Nettoyage", "Texte", "Excel 365"]
+---
+
+# Nettoyer du Texte avec TEXTE.APRES
+
+TEXTE.APRES est une fonction Excel 365 qui extrait le texte apres un delimiteur specifique.
+
+## Disponibilite
+
+- Excel 365
+- Excel pour le web
+
+## Syntaxe
+
+```excel
+=TEXTE.APRES(texte;delimiteur;[numero_instance];[mode_correspondance];[fin_si_non_trouve];[si_non_trouve])
+```
+
+### Arguments principaux
+
+| Argument | Description |
+|----------|-------------|
+| texte | Le texte source |
+| delimiteur | Le caractere de separation |
+| numero_instance | Quelle occurrence (1 par defaut) |
+
+## Exemples de base
+
+### Extraire apres un espace
+
+```excel
+=TEXTE.APRES("Jean Dupont";" ")
+```
+
+Resultat : **Dupont**
+
+### Extraire le domaine d'un email
+
+```excel
+=TEXTE.APRES("contact@exceleur.fr";"@")
+```
+
+Resultat : **exceleur.fr**
+
+## Fonction complementaire : TEXTE.AVANT
+
+### Extraire avant le delimiteur
+
+```excel
+=TEXTE.AVANT("contact@exceleur.fr";"@")
+```
+
+Resultat : **contact**
+
+## Cas pratiques
+
+### Separer nom et prenom
+
+```excel
+=TEXTE.AVANT(A1;" ")    ' Prenom
+=TEXTE.APRES(A1;" ")    ' Nom
+```
+
+### Extraire l'extension de fichier
+
+```excel
+=TEXTE.APRES(A1;".")
+```
+
+### Recuperer le chemin apres le domaine
+
+```excel
+=TEXTE.APRES(A1;"/";;2)    ' Apres le 2e slash
+```
+
+## Gestion des cas speciaux
+
+### Si delimiteur absent
+
+```excel
+=TEXTE.APRES(A1;"@";;;;"Email invalide")
+```
+
+Retourne "Email invalide" si @ absent.
+
+### Plusieurs occurrences
+
+```excel
+=TEXTE.APRES("A/B/C";"/";2)
+```
+
+Resultat : **C** (apres le 2e /)
+
+## Combinaison avec d'autres fonctions
+
+### TEXTE.APRES + SUPPRESPACE
+
+```excel
+=SUPPRESPACE(TEXTE.APRES(A1;":"))
+```
+
+### TEXTE.APRES + MAJUSCULE
+
+```excel
+=MAJUSCULE(TEXTE.APRES(A1;" "))
+```
+
+## Alternative pour versions anterieures
+
+### Avec DROITE et CHERCHE
+
+```excel
+=DROITE(A1;NBCAR(A1)-CHERCHE(" ";A1))
+```
+
+Cette formule fait le meme travail mais est plus complexe.
+
+## Bonnes pratiques
+
+1. **Verifiez** que le delimiteur existe
+2. **Utilisez** si_non_trouve pour gerer les erreurs
+3. **Combinez** avec SUPPRESPACE pour nettoyer
+4. **Testez** sur differents cas
+
+[Decouvrir nos formations Excel](/formations-excel)

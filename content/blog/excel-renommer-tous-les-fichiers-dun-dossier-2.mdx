@@ -1,0 +1,84 @@
+---
+title: "Excel : Renommer Tous les Fichiers d'un Dossier"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Renommez des fichiers en masse avec Excel et VBA."
+description: "Guide pour renommer des fichiers en masse avec Excel."
+category: "Macros et VBA"
+categories: ["Macros et VBA", "Astuces Excel"]
+tags: ["Renommer", "Fichiers", "VBA", "Excel"]
+---
+
+# Renommer des Fichiers en Masse
+
+Utilisez Excel pour renommer vos fichiers.
+
+## Methode VBA
+
+### Code
+
+```vba
+Sub RenommerFichiers()
+    Dim fso As Object
+    Dim dossier As Object
+    Dim fichier As Object
+    Dim i As Integer
+
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    Set dossier = fso.GetFolder("C:\MonDossier")
+
+    i = 1
+    For Each fichier In dossier.Files
+        Name fichier.Path As dossier.Path & "\" & "Fichier_" & i & "." & fso.GetExtensionName(fichier.Name)
+        i = i + 1
+    Next fichier
+End Sub
+```
+
+## Avec liste Excel
+
+### Structure
+
+| Ancien nom | Nouveau nom |
+|------------|-------------|
+| fichier1.pdf | Document_A.pdf |
+| fichier2.pdf | Document_B.pdf |
+
+### Code adapte
+
+```vba
+Sub RenommerDepuisListe()
+    Dim i As Integer
+    Dim chemin As String
+
+    chemin = "C:\MonDossier\"
+
+    For i = 2 To Cells(Rows.Count, 1).End(xlUp).Row
+        Name chemin & Cells(i, 1) As chemin & Cells(i, 2)
+    Next i
+End Sub
+```
+
+## Preparation
+
+1. Listez les fichiers actuels
+2. Preparez les nouveaux noms
+3. Executez la macro
+
+## Precautions
+
+| Action | Importance |
+|--------|------------|
+| Sauvegarde | Copiez le dossier |
+| Test | Sur un petit echantillon |
+| Verification | Controlez les noms |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Sauvegarde | Toujours avant |
+| Test | Petit echantillon |
+| Nommage | Coherent et clair |
+
+[Decouvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,158 @@
+---
+title: "SOMMEPROD Excel : Exemples Puissants pour l'Analyse"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maitrisez SOMMEPROD pour des analyses multicriteres avancees."
+description: "Guide SOMMEPROD dans Excel. Exemples avances et cas pratiques."
+category: "Formules Excel"
+categories: ["Formules Excel", "Analyse de donnees Excel"]
+tags: ["SOMMEPROD", "Analyse", "Multicriteres", "Formules"]
+---
+
+# SOMMEPROD : Exemples Puissants
+
+SOMMEPROD est une fonction versatile pour les calculs multicriteres.
+
+## Syntaxe de base
+
+```excel
+=SOMMEPROD(matrice1;[matrice2];...)
+```
+
+## Usage simple : Produit de colonnes
+
+### Exemple
+
+| Quantite | Prix |
+|----------|------|
+| 5 | 10 |
+| 3 | 20 |
+| 2 | 15 |
+
+```excel
+=SOMMEPROD(A2:A4;B2:B4)
+```
+
+Resultat : 5*10 + 3*20 + 2*15 = 140
+
+## Comptage avec conditions
+
+### Compter avec un critere
+
+```excel
+=SOMMEPROD((A:A="Paris")*1)
+```
+
+Compte les cellules contenant "Paris".
+
+### Compter avec plusieurs criteres
+
+```excel
+=SOMMEPROD((A:A="Paris")*(B:B>100)*1)
+```
+
+Compte ou A="Paris" ET B>100.
+
+## Somme conditionnelle
+
+### Un critere
+
+```excel
+=SOMMEPROD((A:A="Paris")*C:C)
+```
+
+Somme de C ou A="Paris".
+
+### Plusieurs criteres
+
+```excel
+=SOMMEPROD((A:A="Paris")*(B:B="Actif")*C:C)
+```
+
+## Moyenne conditionnelle
+
+### Formule
+
+```excel
+=SOMMEPROD((A:A="Paris")*C:C)/SOMMEPROD((A:A="Paris")*1)
+```
+
+## Comparaison avec SOMME.SI.ENS
+
+| Fonction | Usage |
+|----------|-------|
+| SOMME.SI.ENS | Criteres simples |
+| SOMMEPROD | Criteres complexes, calculs |
+
+## Exemples avances
+
+### Somme des N plus grandes valeurs
+
+```excel
+=SOMMEPROD(GRANDE.VALEUR(A:A;LIGNE(INDIRECT("1:5"))))
+```
+
+Somme des 5 plus grandes valeurs.
+
+### Somme avec texte partiel
+
+```excel
+=SOMMEPROD((ESTERREUR(CHERCHE("mot";A:A))=FAUX)*B:B)
+```
+
+Somme ou A contient "mot".
+
+### Somme unique (eviter les doublons)
+
+```excel
+=SOMMEPROD((A2:A100<>"")/NB.SI(A2:A100;A2:A100))
+```
+
+Compte les valeurs uniques.
+
+## Avec des dates
+
+### Ventes d'un mois specifique
+
+```excel
+=SOMMEPROD((MOIS(A:A)=1)*(ANNEE(A:A)=2024)*B:B)
+```
+
+### Ventes entre deux dates
+
+```excel
+=SOMMEPROD((A:A>=DATE(2024;1;1))*(A:A<=DATE(2024;12;31))*B:B)
+```
+
+## Performance
+
+### Conseils
+
+- Limitez les plages (A2:A1000 au lieu de A:A)
+- Evitez les calculs dans les criteres
+- Utilisez des plages nommees
+
+## SOMMEPROD vs formules matricielles
+
+### Avant (Ctrl+Shift+Entree)
+
+```excel
+{=SOMME(SI(A:A="Paris";C:C))}
+```
+
+### Avec SOMMEPROD
+
+```excel
+=SOMMEPROD((A:A="Paris")*C:C)
+```
+
+Plus simple, pas de validation matricielle.
+
+## Bonnes pratiques
+
+1. **Limitez** la taille des plages
+2. **Testez** les criteres individuellement
+3. **Utilisez** des noms pour la lisibilite
+4. **Preferez** SOMME.SI.ENS quand possible
+
+[Decouvrir nos formations Excel](/formations-excel)

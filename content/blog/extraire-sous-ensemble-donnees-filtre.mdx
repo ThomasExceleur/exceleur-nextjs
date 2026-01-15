@@ -1,0 +1,88 @@
+---
+title: "Extraire un Sous-ensemble de Donnees avec FILTRE"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Extrayez des sous-ensembles de donnees avec la fonction FILTRE."
+description: "Guide pour extraire des sous-ensembles avec FILTRE Excel."
+category: "Excel 365"
+categories: ["Excel 365", "Formules Excel"]
+tags: ["FILTRE", "Extraction", "Sous-ensemble", "Excel 365"]
+---
+
+# Extraire un Sous-ensemble avec FILTRE
+
+Creez des extractions ciblees de vos donnees.
+
+## Syntaxe
+
+```excel
+=FILTRE(tableau;inclure;[si_vide])
+```
+
+## Extraction simple
+
+### Par critere
+
+```excel
+=FILTRE(A2:D100;B2:B100="Paris")
+```
+
+### Par valeur numerique
+
+```excel
+=FILTRE(A2:D100;C2:C100>1000)
+```
+
+## Extraction multicriteres
+
+### ET logique
+
+```excel
+=FILTRE(Donnees;(Region="Nord")*(Montant>100))
+```
+
+### OU logique
+
+```excel
+=FILTRE(Donnees;(Statut="A")+(Statut="B"))
+```
+
+## Top N valeurs
+
+### Les 10 plus grands
+
+```excel
+=FILTRE(Donnees;Montant>=GRANDE.VALEUR(Montant;10))
+```
+
+## Plage de dates
+
+### Ce mois
+
+```excel
+=FILTRE(Donnees;(MOIS(Dates)=MOIS(AUJOURDHUI()))*(ANNEE(Dates)=ANNEE(AUJOURDHUI())))
+```
+
+## Exclure des valeurs
+
+### Different de
+
+```excel
+=FILTRE(Donnees;Statut<>"Exclu")
+```
+
+## Gestion des vides
+
+```excel
+=FILTRE(Donnees;Critere;"Aucun resultat")
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| si_vide | Toujours definir |
+| Plages alignees | Meme taille |
+| Test | Verifiez les resultats |
+
+[Decouvrir nos formations Excel](/formations-excel)

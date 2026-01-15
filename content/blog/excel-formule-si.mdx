@@ -1,0 +1,211 @@
+---
+title: "Excel Formule SI : Guide Complet de la Fonction Logique"
+date: "2024-07-20"
+author: "Thomas L'Exceleur"
+excerpt: "Maitrisez la fonction SI, la formule logique la plus utilisee dans Excel pour creer des conditions."
+description: "Guide complet de la fonction SI dans Excel. Syntaxe, SI imbriques, combinaison avec ET/OU et exemples pratiques."
+category: "Formules Excel"
+categories: ["Formules Excel", "Logique"]
+tags: ["SI", "Formules", "Logique", "Conditions"]
+---
+
+# Excel Formule SI : Guide Complet
+
+La fonction SI est l'une des formules les plus puissantes et utilisees dans Excel. Elle permet de creer des conditions logiques.
+
+## Syntaxe de base
+
+```excel
+=SI(test_logique; valeur_si_vrai; valeur_si_faux)
+```
+
+### Arguments
+
+- **test_logique** : La condition a evaluer
+- **valeur_si_vrai** : Resultat si la condition est vraie
+- **valeur_si_faux** : Resultat si la condition est fausse
+
+## Exemples simples
+
+### Verification de seuil
+
+```excel
+=SI(A1>100; "Depasse"; "OK")
+```
+
+### Note de passage
+
+```excel
+=SI(B1>=10; "Admis"; "Refuse")
+```
+
+### Cellule vide
+
+```excel
+=SI(C1=""; "Manquant"; C1)
+```
+
+## Operateurs de comparaison
+
+| Operateur | Signification |
+|-----------|---------------|
+| `=` | Egal a |
+| `<>` | Different de |
+| `>` | Superieur a |
+| `<` | Inferieur a |
+| `>=` | Superieur ou egal |
+| `<=` | Inferieur ou egal |
+
+## SI imbriques
+
+Pour plusieurs conditions, imbriquez les SI :
+
+```excel
+=SI(A1>=16; "Tres bien"; SI(A1>=14; "Bien"; SI(A1>=12; "Assez bien"; SI(A1>=10; "Passable"; "Insuffisant"))))
+```
+
+### Limite
+
+Excel 2007+ permet jusqu'a 64 niveaux d'imbrication, mais preferez d'autres methodes pour plus de 3-4 niveaux.
+
+## SI avec ET
+
+Toutes les conditions doivent etre vraies :
+
+```excel
+=SI(ET(A1>100; B1="Actif"); "Valide"; "Non valide")
+```
+
+### Exemples
+
+```excel
+=SI(ET(Age>=18; Age<=65); "Eligible"; "Non eligible")
+=SI(ET(Note>=10; Presence="Oui"); "Valide"; "A revoir")
+```
+
+## SI avec OU
+
+Au moins une condition doit etre vraie :
+
+```excel
+=SI(OU(A1="Paris"; A1="Lyon"); "Grande ville"; "Autre")
+```
+
+### Exemples
+
+```excel
+=SI(OU(Statut="VIP"; CA>10000); "Prioritaire"; "Standard")
+=SI(OU(Jour="Samedi"; Jour="Dimanche"); "Weekend"; "Semaine")
+```
+
+## SI avec NON
+
+Inverse la condition :
+
+```excel
+=SI(NON(A1=""); "Rempli"; "Vide")
+```
+
+## Alternatives au SI imbrique
+
+### CHOISIR
+
+Pour des valeurs numeriques :
+
+```excel
+=CHOISIR(A1; "Lundi"; "Mardi"; "Mercredi"; "Jeudi"; "Vendredi")
+```
+
+### SI.CONDITIONS (Excel 365)
+
+Plus lisible que les SI imbriques :
+
+```excel
+=SI.CONDITIONS(A1>=16; "Tres bien"; A1>=14; "Bien"; A1>=12; "Assez bien"; A1>=10; "Passable"; VRAI; "Insuffisant")
+```
+
+### RECHERCHEV ou RECHERCHEX
+
+Pour des correspondances dans une table de reference.
+
+## Combiner SI avec d'autres fonctions
+
+### SI + ESTVIDE
+
+```excel
+=SI(ESTVIDE(A1); "A remplir"; A1)
+```
+
+### SI + ESTNUM
+
+```excel
+=SI(ESTNUM(A1); A1*2; "Erreur")
+```
+
+### SI + ESTTEXTE
+
+```excel
+=SI(ESTTEXTE(A1); MAJUSCULE(A1); A1)
+```
+
+## Cas pratiques
+
+### Calcul de commission
+
+```excel
+=SI(Ventes>50000; Ventes*0.1; SI(Ventes>25000; Ventes*0.07; Ventes*0.05))
+```
+
+### Tarif reduit
+
+```excel
+=SI(OU(Age<12; Age>65); Prix*0.5; Prix)
+```
+
+### Statut de stock
+
+```excel
+=SI(Stock=0; "Rupture"; SI(Stock<10; "Bas"; "OK"))
+```
+
+### Delai de paiement
+
+```excel
+=SI(DatePaiement>DateEcheance; "Retard"; "OK")
+```
+
+## Erreurs courantes
+
+### Guillemets manquants
+
+Texte toujours entre guillemets :
+
+```excel
+=SI(A1>10; Oui; Non)      ' ERREUR
+=SI(A1>10; "Oui"; "Non")  ' CORRECT
+```
+
+### Point-virgule vs virgule
+
+Selon les parametres regionaux :
+
+```excel
+=SI(A1>10; "Oui"; "Non")  ' France
+=SI(A1>10, "Oui", "Non")  ' Anglais
+```
+
+### Oublier le troisieme argument
+
+```excel
+=SI(A1>10; "Oui")         ' Affiche FAUX si condition non remplie
+=SI(A1>10; "Oui"; "")     ' Affiche rien
+```
+
+## Bonnes pratiques
+
+1. **Simplicite** : Evitez plus de 3 niveaux d'imbrication
+2. **Lisibilite** : Utilisez des sauts de ligne (Alt + Entree)
+3. **Noms** : Utilisez des plages nommees pour plus de clarte
+4. **Alternatives** : Preferez SI.CONDITIONS ou RECHERCHEV pour les cas complexes
+
+[Decouvrir la formation Excel Avance](/formations-excel/excel-avance)

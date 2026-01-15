@@ -1,0 +1,228 @@
+---
+title: "Excel Suivi de Projet : Guide Complet"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Gerez vos projets efficacement avec Excel grace a ce guide de suivi de projet."
+description: "Guide pour le suivi de projet dans Excel. Gantt, jalons, budget et reporting."
+category: "Productivite"
+categories: ["Productivite", "Modeles"]
+tags: ["Projet", "Gestion de projet", "Gantt", "Suivi"]
+---
+
+# Suivi de Projet dans Excel
+
+Excel permet de gerer des projets de maniere simple et efficace.
+
+## Structure du projet
+
+### Informations generales
+
+| Element | Description |
+|---------|-------------|
+| Nom du projet | Titre |
+| Chef de projet | Responsable |
+| Date debut | Lancement |
+| Date fin prevue | Deadline |
+| Budget | Enveloppe financiere |
+| Statut | Phase actuelle |
+
+## Liste des taches
+
+### Colonnes essentielles
+
+| Tache | Responsable | Debut | Fin | Duree | Predecesseur | Statut |
+|-------|-------------|-------|-----|-------|--------------|--------|
+| Etude | Jean | 01/01 | 15/01 | 15j | | Termine |
+| Conception | Marie | 16/01 | 31/01 | 16j | 1 | En cours |
+| Dev | Paul | 01/02 | 28/02 | 28j | 2 | A faire |
+
+### Calcul de la duree
+
+```excel
+=E2-D2+1                         ' Duree en jours
+=JOURS.OUVRES(D2;E2)             ' Jours ouvres uniquement
+```
+
+## Diagramme de Gantt
+
+### Creer la grille de dates
+
+1. Ligne d'en-tete avec les dates (ou semaines)
+2. Chaque tache sur une ligne
+
+### Formule de coloration
+
+```excel
+=ET(G$1>=[@Debut];G$1<=[@Fin])
+```
+
+### Mise en forme conditionnelle
+
+1. Selectionnez la grille
+2. **Mise en forme conditionnelle** > **Nouvelle regle**
+3. Formule avec condition ci-dessus
+4. Remplissage de couleur
+
+### Differencier les statuts
+
+```excel
+' Bleu = Planifie, Vert = En cours, Gris = Termine
+```
+
+## Jalons (Milestones)
+
+### Tableau des jalons
+
+| Jalon | Date prevue | Date reelle | Statut |
+|-------|-------------|-------------|--------|
+| Lancement | 01/01 | 01/01 | Atteint |
+| Validation specs | 15/01 | 17/01 | Atteint (retard) |
+| Livraison | 28/02 | | A venir |
+
+### Formule de statut
+
+```excel
+=SI(ESTVIDE(C2);"A venir";SI(C2<=B2;"Atteint";"Atteint (retard)"))
+```
+
+## Suivi de l'avancement
+
+### Pourcentage par tache
+
+| Tache | % Avancement | Reste |
+|-------|--------------|-------|
+| Etude | 100% | 0j |
+| Conception | 60% | 6j |
+| Dev | 0% | 28j |
+
+### Avancement global
+
+```excel
+=SOMME(B:B*C:C)/SOMME(C:C)       ' Moyenne ponderee par duree
+=NB.SI(Statut;"Termine")/NB(Taches)  ' % taches terminees
+```
+
+## Suivi du budget
+
+### Tableau budgetaire
+
+| Poste | Budget | Engage | Reste |
+|-------|--------|--------|-------|
+| Dev | 50 000 | 30 000 | 20 000 |
+| Design | 10 000 | 8 000 | 2 000 |
+| Tests | 15 000 | 0 | 15 000 |
+
+### Formules
+
+```excel
+=B2-C2                           ' Reste
+=C2/B2                           ' % consomme
+=SOMME(Budget)                   ' Budget total
+```
+
+## Risques et problemes
+
+### Registre des risques
+
+| Risque | Probabilite | Impact | Score | Action |
+|--------|-------------|--------|-------|--------|
+| Retard fournisseur | Haute | Moyen | 6 | Plan B |
+| Bug critique | Moyenne | Haut | 6 | Tests |
+
+### Score de risque
+
+```excel
+=SI(B2="Haute";3;SI(B2="Moyenne";2;1)) * SI(C2="Haut";3;SI(C2="Moyen";2;1))
+```
+
+## Charge de travail
+
+### Par ressource
+
+| Ressource | Sem 1 | Sem 2 | Sem 3 | Sem 4 |
+|-----------|-------|-------|-------|-------|
+| Jean | 40h | 40h | 20h | 0h |
+| Marie | 0h | 40h | 40h | 40h |
+
+### Alerte surcharge
+
+```excel
+=SI(B2>40;"Surcharge";"OK")
+```
+
+## Indicateurs projet
+
+### KPI essentiels
+
+| Indicateur | Prevu | Reel | Ecart |
+|------------|-------|------|-------|
+| Duree | 90j | 95j | +5j |
+| Budget | 75 000 | 70 000 | -5 000 |
+| Taches | 25 | 23 | -2 |
+
+### SPI (Schedule Performance Index)
+
+```excel
+=Valeur_acquise / Valeur_planifiee
+' SPI > 1 = en avance, SPI < 1 = en retard
+```
+
+### CPI (Cost Performance Index)
+
+```excel
+=Valeur_acquise / Cout_reel
+' CPI > 1 = sous budget, CPI < 1 = depassement
+```
+
+## Reporting projet
+
+### Rapport d'avancement
+
+1. **Resume executif** : statut global, faits marquants
+2. **Avancement** : % completion, jalons
+3. **Budget** : consommation, prevision
+4. **Risques** : nouveaux, mitiges
+5. **Prochaines etapes** : actions semaine suivante
+
+### Dashboard projet
+
+- Jauge d'avancement global
+- Budget consomme vs total
+- Timeline avec jalons
+- Top risques
+
+## Communication projet
+
+### RACI
+
+| Tache | Responsable | Accountable | Consulte | Informe |
+|-------|-------------|-------------|----------|---------|
+| Specs | Jean | Chef projet | Client | Equipe |
+| Dev | Paul | Jean | | Chef projet |
+
+## Cloture projet
+
+### Checklist cloture
+
+- [ ] Livrables acceptes
+- [ ] Documentation complete
+- [ ] Retour d'experience
+- [ ] Archivage
+
+### Bilan projet
+
+| Element | Prevu | Reel | Commentaire |
+|---------|-------|------|-------------|
+| Duree | 3 mois | 3.5 mois | Retard specs |
+| Budget | 75K | 72K | Economies tests |
+| Qualite | 95% | 98% | Depasse |
+
+## Bonnes pratiques
+
+1. **Mettez a jour** hebdomadairement
+2. **Communiquez** regulierement
+3. **Anticipez** les risques
+4. **Documentez** les decisions
+5. **Capitalisez** sur les retours d'experience
+
+[Decouvrir nos formations Excel](/formations-excel)

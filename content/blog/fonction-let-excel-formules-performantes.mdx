@@ -1,0 +1,229 @@
+---
+title: "Fonction LET Excel : Des Formules Performantes"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Optimisez les performances de vos formules avec la fonction LET."
+description: "Guide pour creer des formules performantes avec LET dans Excel."
+category: "Excel 365"
+categories: ["Excel 365", "Formules Excel"]
+tags: ["LET", "Performance", "Formules", "Optimisation"]
+---
+
+# Fonction LET : Des Formules Performantes
+
+LET ameliore a la fois la lisibilite et les performances de vos formules.
+
+## Impact sur les performances
+
+### Le probleme des calculs repetes
+
+```excel
+=SI(RECHERCHEX(A1;B:B;C:C)>100;
+  RECHERCHEX(A1;B:B;C:C)*1,1;
+  RECHERCHEX(A1;B:B;C:C)*0,9)
+```
+
+RECHERCHEX est execute **3 fois**.
+
+### Avec LET
+
+```excel
+=LET(
+  val;RECHERCHEX(A1;B:B;C:C);
+  SI(val>100;val*1,1;val*0,9)
+)
+```
+
+RECHERCHEX est execute **1 seule fois**.
+
+## Mesurer l'amelioration
+
+### Methode
+
+1. Desactivez le calcul automatique
+2. **Formules** > **Options de calcul** > **Manuel**
+3. Mesurez le temps de recalcul (Ctrl+Shift+F9)
+4. Comparez avant/apres LET
+
+### Gains typiques
+
+| Repetitions | Gain estime |
+|-------------|-------------|
+| 2 fois | ~50% |
+| 3 fois | ~66% |
+| 5 fois | ~80% |
+
+## Fonctions couteuses a optimiser
+
+### Recherches
+
+```excel
+' Avant
+=SI(ESTNA(RECHERCHEX(...));0;RECHERCHEX(...)+RECHERCHEX(...)*0,1)
+
+' Apres
+=LET(v;RECHERCHEX(...;"N/A");SI(v="N/A";0;v+v*0,1))
+```
+
+### Fonctions matricielles
+
+```excel
+' Avant
+=SOMME(FILTRE(A:A;B:B>100))+MOYENNE(FILTRE(A:A;B:B>100))
+
+' Apres
+=LET(
+  filtrees;FILTRE(A:A;B:B>100);
+  SOMME(filtrees)+MOYENNE(filtrees)
+)
+```
+
+### Statistiques
+
+```excel
+' Avant
+=MOYENNE(A:A)&" ± "&ECARTYPE(A:A)&" (n="&NB(A:A)&")"
+
+' Apres
+=LET(
+  moy;MOYENNE(A:A);
+  et;ECARTYPE(A:A);
+  n;NB(A:A);
+  moy&" ± "&et&" (n="&n&")"
+)
+```
+
+## Bonnes pratiques performance
+
+### 1. Limitez les plages
+
+```excel
+=LET(
+  donnees;A2:A1000;  ' Pas A:A
+  resultat;SOMME(donnees);
+  resultat
+)
+```
+
+### 2. Stockez les calculs intermediaires
+
+```excel
+=LET(
+  total;SOMME(A:A);
+  n;NB(A:A);
+  moyenne;total/n;
+  ecart;ECARTYPE(A:A);
+  zscore;(B1-moyenne)/ecart;
+  zscore
+)
+```
+
+### 3. Evitez les recalculs dans les conditions
+
+```excel
+' Avant
+=SI(SOMME(A:A)>1000;SOMME(A:A)*0,1;SOMME(A:A)*0,05)
+
+' Apres
+=LET(
+  total;SOMME(A:A);
+  taux;SI(total>1000;0,1;0,05);
+  total*taux
+)
+```
+
+## Cas ou LET n'aide pas
+
+### Calculs uniques
+
+```excel
+=A1+B1
+```
+
+Pas besoin de LET pour un calcul simple.
+
+### Fonctions rapides
+
+Les fonctions basiques (SOMME simple, references) sont deja optimisees.
+
+## LET et recalcul automatique
+
+### Impact sur le classeur
+
+LET n'affecte pas le declenchement du recalcul, mais accelere son execution.
+
+### Volatilite
+
+Les fonctions volatiles restent volatiles dans LET :
+
+```excel
+=LET(
+  ajd;AUJOURDHUI();  ' Recalcule a chaque ouverture
+  ajd+30
+)
+```
+
+## Combiner avec d'autres optimisations
+
+### LET + Tableaux structures
+
+```excel
+=LET(
+  ventes;Tableau1[Montant];
+  total;SOMME(ventes);
+  total
+)
+```
+
+### LET + Plages nommees
+
+```excel
+=LET(
+  donnees;PlageVentes;
+  filtrees;FILTRE(donnees;donnees>100);
+  SOMME(filtrees)
+)
+```
+
+## Exemples complexes optimises
+
+### Analyse statistique complete
+
+```excel
+=LET(
+  donnees;A2:A1000;
+  n;NB(donnees);
+  somme;SOMME(donnees);
+  moyenne;somme/n;
+  variance;SOMMEPROD((donnees-moyenne)^2)/n;
+  ecart;RACINE(variance);
+  min;MIN(donnees);
+  max;MAX(donnees);
+  "n="&n&" | μ="&ARRONDI(moyenne;2)&" | σ="&ARRONDI(ecart;2)&" | ["&min&";"&max&"]"
+)
+```
+
+### Score multicritere
+
+```excel
+=LET(
+  ca;RECHERCHEX(A1;Clients[ID];Clients[CA];0);
+  anciennete;RECHERCHEX(A1;Clients[ID];Clients[Anciennete];0);
+  retours;RECHERCHEX(A1;Clients[ID];Clients[Retours];0);
+  score_ca;MIN(40;ca/250);
+  score_anc;MIN(30;anciennete*3);
+  score_ret;MAX(0;30-retours*5);
+  score_ca+score_anc+score_ret
+)
+```
+
+## Bonnes pratiques
+
+| Pratique | Impact |
+|----------|--------|
+| Noms explicites | Lisibilite |
+| Plages limitees | Performance |
+| Calculs stockes | Optimisation |
+| Tests | Validation |
+
+[Decouvrir nos formations Excel](/formations-excel)

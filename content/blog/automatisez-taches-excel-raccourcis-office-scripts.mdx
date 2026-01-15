@@ -1,0 +1,205 @@
+---
+title: "Automatisez vos Taches Excel avec les Raccourcis et Office Scripts"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Decouvrez comment automatiser Excel avec les raccourcis et Office Scripts."
+description: "Guide pour automatiser Excel avec raccourcis clavier et Office Scripts."
+category: "Productivite"
+categories: ["Productivite", "Excel 365"]
+tags: ["Automatisation", "Raccourcis", "Office Scripts", "Productivite"]
+---
+
+# Automatisez vos Taches avec Raccourcis et Office Scripts
+
+Deux approches complementaires pour gagner en productivite.
+
+## Raccourcis essentiels pour l'automatisation
+
+### Navigation rapide
+
+| Raccourci | Action |
+|-----------|--------|
+| Ctrl+Fleche | Aller au bord de la plage |
+| Ctrl+Home | Aller en A1 |
+| Ctrl+End | Aller a la derniere cellule |
+| Ctrl+G | Atteindre |
+
+### Selection intelligente
+
+| Raccourci | Action |
+|-----------|--------|
+| Ctrl+Shift+Fin | Selectionner jusqu'a la fin |
+| Ctrl+Espace | Selectionner colonne |
+| Shift+Espace | Selectionner ligne |
+| Ctrl+A | Selectionner tout |
+
+### Edition rapide
+
+| Raccourci | Action |
+|-----------|--------|
+| Ctrl+D | Copier vers le bas |
+| Ctrl+R | Copier vers la droite |
+| Ctrl+E | Remplissage instantane |
+| F4 | Repeter derniere action |
+
+## Enregistrer une macro simple
+
+### Etapes
+
+1. **Affichage** > **Macros** > **Enregistrer une macro**
+2. Nommez la macro
+3. Effectuez vos actions
+4. **Arreter l'enregistrement**
+
+### Assigner un raccourci
+
+Lors de l'enregistrement, choisissez Ctrl+[lettre].
+
+## Office Scripts : L'automatisation moderne
+
+### Qu'est-ce qu'Office Scripts ?
+
+Scripts TypeScript pour Excel Online, plus modernes que VBA.
+
+### Acces
+
+1. Onglet **Automatiser**
+2. **Nouveau script** ou **Enregistrer les actions**
+
+### Premier script
+
+```typescript
+function main(workbook: ExcelScript.Workbook) {
+  let sheet = workbook.getActiveWorksheet();
+  sheet.getRange("A1").setValue("Bonjour!");
+}
+```
+
+## Scripts pratiques
+
+### Formater un tableau
+
+```typescript
+function main(workbook: ExcelScript.Workbook) {
+  let sheet = workbook.getActiveWorksheet();
+  let range = sheet.getUsedRange();
+
+  // Bordures
+  range.getFormat().getRangeBorder(ExcelScript.BorderIndex.edgeTop).setStyle(ExcelScript.BorderLineStyle.thin);
+  range.getFormat().getRangeBorder(ExcelScript.BorderIndex.edgeBottom).setStyle(ExcelScript.BorderLineStyle.thin);
+
+  // En-tete en gras
+  let header = sheet.getRange("1:1");
+  header.getFormat().getFont().setBold(true);
+}
+```
+
+### Supprimer les lignes vides
+
+```typescript
+function main(workbook: ExcelScript.Workbook) {
+  let sheet = workbook.getActiveWorksheet();
+  let range = sheet.getUsedRange();
+  let values = range.getValues();
+
+  for (let i = values.length - 1; i >= 0; i--) {
+    if (values[i].every(cell => cell === "")) {
+      sheet.getRange(`${i + 1}:${i + 1}`).delete(ExcelScript.DeleteShiftDirection.up);
+    }
+  }
+}
+```
+
+### Creer un resume
+
+```typescript
+function main(workbook: ExcelScript.Workbook) {
+  let sheet = workbook.getActiveWorksheet();
+  let data = sheet.getRange("A2:B100").getValues();
+
+  let total = 0;
+  let count = 0;
+
+  for (let row of data) {
+    if (typeof row[1] === "number") {
+      total += row[1];
+      count++;
+    }
+  }
+
+  sheet.getRange("D1").setValue("Total:");
+  sheet.getRange("E1").setValue(total);
+  sheet.getRange("D2").setValue("Moyenne:");
+  sheet.getRange("E2").setValue(total / count);
+}
+```
+
+## Combiner avec Power Automate
+
+### Declencheurs possibles
+
+- Planification (quotidien, hebdomadaire)
+- Email recu
+- Fichier modifie
+- Formulaire soumis
+
+### Workflow type
+
+1. Declencheur Power Automate
+2. Execution du script Office
+3. Notification ou action suivante
+
+## Comparaison des approches
+
+| Aspect | Raccourcis | VBA | Office Scripts |
+|--------|------------|-----|----------------|
+| Courbe d'apprentissage | Facile | Moyenne | Moyenne |
+| Plateforme | Desktop | Desktop | Online |
+| Automatisation | Non | Oui | Oui |
+| Power Automate | Non | Non | Oui |
+
+## Quand utiliser quoi ?
+
+### Raccourcis
+
+- Actions repetitives simples
+- Travail quotidien
+- Pas de programmation
+
+### VBA
+
+- Automatisations complexes Desktop
+- Compatibilite ancienne
+- Acces complet a Excel
+
+### Office Scripts
+
+- Excel Online
+- Integration Power Automate
+- Partage facile des scripts
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Documentation | Commentez vos scripts |
+| Test | Testez sur copie des donnees |
+| Modularite | Petits scripts reutilisables |
+| Sauvegarde | Exportez vos scripts |
+
+## Exemples de workflow automatise
+
+### Rapport hebdomadaire
+
+1. Power Automate declenche le lundi
+2. Office Script met a jour les donnees
+3. Email envoye avec le fichier
+
+### Traitement de formulaires
+
+1. Formulaire Microsoft soumis
+2. Donnees ajoutees a Excel
+3. Script formate et calcule
+4. Notification Teams
+
+[Decouvrir nos formations Excel](/formations-excel)

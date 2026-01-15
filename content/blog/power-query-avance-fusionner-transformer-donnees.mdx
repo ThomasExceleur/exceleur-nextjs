@@ -1,0 +1,171 @@
+---
+title: "Power Query Avance : Fusionner et Transformer vos Donnees"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Techniques avancees de Power Query pour fusionner et transformer les donnees."
+description: "Guide avance Power Query pour la fusion et transformation de donnees."
+category: "Power Query"
+categories: ["Power Query", "Analyse de donnees Excel"]
+tags: ["Power Query", "Fusion", "Transformation", "Avance"]
+---
+
+# Power Query Avance : Fusionner et Transformer vos Donnees
+
+Maitrisez les techniques avancees de Power Query pour des analyses puissantes.
+
+## Types de fusion
+
+### Fusion interne (Inner Join)
+
+Ne garde que les correspondances dans les deux tables.
+
+### Fusion externe gauche (Left Outer)
+
+Garde toutes les lignes de la premiere table.
+
+### Fusion externe droite (Right Outer)
+
+Garde toutes les lignes de la deuxieme table.
+
+### Fusion externe complete (Full Outer)
+
+Garde toutes les lignes des deux tables.
+
+### Anti-jointure gauche
+
+Lignes de gauche sans correspondance a droite.
+
+## Fusionner des requetes
+
+### Etapes
+
+1. **Accueil** > **Combiner** > **Fusionner des requetes**
+2. Selectionnez la table secondaire
+3. Choisissez les colonnes de correspondance
+4. Selectionnez le type de jointure
+5. Developpez les colonnes resultantes
+
+## Ajouter des requetes (Union)
+
+### Quand utiliser
+
+Combiner des tables avec la meme structure.
+
+### Etapes
+
+1. **Accueil** > **Combiner** > **Ajouter des requetes**
+2. Selectionnez les tables a combiner
+3. Choisissez entre deux ou plusieurs tables
+
+## Transformations avancees
+
+### Pivoter des colonnes
+
+Transformer des lignes en colonnes.
+
+```m
+= Table.Pivot(Source, {"Valeur1", "Valeur2"}, "Categorie", "Montant")
+```
+
+### Depivoter des colonnes
+
+Transformer des colonnes en lignes.
+
+```m
+= Table.Unpivot(Source, {"Jan", "Fev", "Mar"}, "Mois", "Ventes")
+```
+
+## Colonnes personnalisees
+
+### Formules M
+
+```m
+= Table.AddColumn(Source, "NouvelleColonne", each [Colonne1] * [Colonne2])
+```
+
+### Conditions
+
+```m
+= Table.AddColumn(Source, "Categorie", each if [Montant] > 1000 then "Grand" else "Petit")
+```
+
+## Grouper les donnees
+
+### Agregations
+
+| Fonction | Description |
+|----------|-------------|
+| Somme | Total des valeurs |
+| Moyenne | Moyenne des valeurs |
+| Min | Valeur minimum |
+| Max | Valeur maximum |
+| Nombre | Compter les lignes |
+
+### Exemple
+
+```m
+= Table.Group(Source, {"Region"}, {{"Total", each List.Sum([Ventes]), type number}})
+```
+
+## Gestion des erreurs
+
+### Remplacer les erreurs
+
+```m
+= Table.ReplaceErrorValues(Source, {{"Colonne", 0}})
+```
+
+### Supprimer les erreurs
+
+```m
+= Table.RemoveRowsWithErrors(Source, {"Colonne"})
+```
+
+## Parametres et fonctions
+
+### Creer un parametre
+
+1. **Accueil** > **Gerer les parametres**
+2. **Nouveau parametre**
+3. Definissez nom, type, valeur
+
+### Utiliser dans une requete
+
+```m
+= Table.SelectRows(Source, each [Date] >= DateDebut)
+```
+
+## Fonctions personnalisees
+
+### Definition
+
+```m
+(x as number, y as number) as number =>
+    x * y
+```
+
+### Invocation
+
+Utilisez la fonction sur chaque ligne d'une table.
+
+## Performance
+
+### Optimisation
+
+| Technique | Impact |
+|-----------|--------|
+| Filtrer tot | Reduit les donnees |
+| Supprimer colonnes inutiles | Moins de memoire |
+| Desactiver le chargement | Requetes intermediaires |
+| Plier les requetes | Execution sur la source |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Nommage clair | Requetes et etapes explicites |
+| Documentation | Commentez les transformations complexes |
+| Modularite | Separarez les transformations |
+| Tests | Verifiez les resultats intermediaires |
+
+[Decouvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,221 @@
+---
+title: "Creer un Tableau de Bord Excel Interactif"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Guide complet pour creer un tableau de bord interactif dans Excel."
+description: "Tutoriel pour creer un tableau de bord Excel interactif et dynamique."
+category: "Visualisation"
+categories: ["Visualisation", "Analyse de donnees Excel"]
+tags: ["Tableau de bord", "Dashboard", "Interactif", "KPI"]
+---
+
+# Creer un Tableau de Bord Excel Interactif
+
+Un tableau de bord efficace presente les KPI de maniere claire et actionnable.
+
+## Planifier le tableau de bord
+
+### Questions cles
+
+- Qui sont les utilisateurs ?
+- Quels KPI suivre ?
+- Quelle frequence de mise a jour ?
+- Quelles interactions necessaires ?
+
+### Structure recommandee
+
+| Zone | Contenu |
+|------|---------|
+| En-tete | Titre, date, filtres |
+| KPI | Chiffres cles |
+| Graphiques | Visualisations |
+| Details | Tableaux de donnees |
+
+## Preparer les donnees
+
+### Organisation
+
+1. **Feuille Donnees** : donnees brutes
+2. **Feuille Calculs** : formules et agregations
+3. **Feuille Dashboard** : visualisation
+
+### Convertir en tableaux
+
+**Ctrl+T** pour chaque plage de donnees.
+
+## Creer les KPI
+
+### Indicateurs avec mise en forme
+
+```excel
+=SOMME(Ventes[Montant])
+```
+
+### Format conditionnel
+
+| Condition | Affichage |
+|-----------|-----------|
+| Objectif atteint | Vert |
+| Proche | Orange |
+| En dessous | Rouge |
+
+### Icones
+
+Utilisez des symboles : ✓ ✗ ● ▲ ▼
+
+## Ajouter des graphiques
+
+### Types recommandes
+
+| Type | Usage |
+|------|-------|
+| Courbe | Evolution temporelle |
+| Barres | Comparaison |
+| Camembert | Repartition |
+| Jauge | Performance vs objectif |
+
+### Graphiques lies aux tableaux
+
+Les graphiques se mettent a jour automatiquement avec les donnees.
+
+## Interactivite avec segments
+
+### Ajouter des segments
+
+1. Cliquez dans un TCD lie aux donnees
+2. **Insertion** > **Segment**
+3. Selectionnez les champs de filtre
+
+### Connecter plusieurs graphiques
+
+1. Clic droit sur le segment
+2. **Connexions de rapport**
+3. Cochez les TCD/graphiques a connecter
+
+## Chronologie
+
+### Pour les dates
+
+1. Cliquez dans un TCD avec des dates
+2. **Insertion** > **Chronologie**
+3. Selectionnez le champ date
+
+### Options de vue
+
+- Annees
+- Trimestres
+- Mois
+- Jours
+
+## Listes deroulantes
+
+### Creer un filtre personnalise
+
+1. Validation de donnees sur une cellule
+2. Source : votre liste de valeurs
+3. Liez vos formules a cette cellule
+
+### Exemple
+
+```excel
+=SOMME.SI(Ventes[Region];$B$1;Ventes[Montant])
+```
+
+Ou B1 contient la region selectionnee.
+
+## Mise en page
+
+### Design professionnel
+
+| Element | Recommandation |
+|---------|----------------|
+| Couleurs | 3-4 maximum |
+| Police | Lisible, coherente |
+| Espacement | Aere |
+| Alignement | Grille |
+
+### Masquer le quadrillage
+
+**Affichage** > Decochez **Quadrillage**
+
+### Proteger la mise en page
+
+**Revision** > **Proteger la feuille**
+
+## Navigation
+
+### Liens entre feuilles
+
+```excel
+=LIEN_HYPERTEXTE("#Details!A1";"Voir les details")
+```
+
+### Boutons de navigation
+
+1. **Insertion** > **Formes**
+2. Ajoutez un lien hypertexte
+
+## Actualisation
+
+### Donnees externes
+
+**Donnees** > **Actualiser tout**
+
+### Automatique a l'ouverture
+
+1. Proprietes de la connexion
+2. Cochez **Actualiser a l'ouverture**
+
+## Formules utiles
+
+### Variation en pourcentage
+
+```excel
+=(Actuel-Precedent)/Precedent
+```
+
+### Objectif atteint
+
+```excel
+=SI(Actuel>=Objectif;"✓";"✗")
+```
+
+### Tendance
+
+```excel
+=SI(Actuel>Precedent;"▲";"▼")
+```
+
+## Export et partage
+
+### PDF
+
+**Fichier** > **Exporter** > **PDF**
+
+### Image
+
+Copiez le dashboard comme image.
+
+### Excel Online
+
+Partagez via OneDrive pour l'interactivite.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Simplicite | Pas de surcharge visuelle |
+| Coherence | Meme style partout |
+| Actualite | Date de mise a jour visible |
+| Documentation | Mode d'emploi |
+
+## Checklist finale
+
+- [ ] Donnees sources fiables
+- [ ] KPI pertinents
+- [ ] Filtres fonctionnels
+- [ ] Graphiques clairs
+- [ ] Mise en page propre
+- [ ] Protection activee
+
+[Decouvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,110 @@
+---
+title: "Transposer un Tableau avec la Formule TRANSPOSE"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez a inverser lignes et colonnes avec la fonction TRANSPOSE."
+description: "Guide de la fonction TRANSPOSE dans Excel. Inverser lignes et colonnes."
+category: "Formules Excel"
+categories: ["Formules Excel", "Manipulation de donnees"]
+tags: ["TRANSPOSE", "Tableaux", "Rotation", "Formules"]
+---
+
+# Transposer un Tableau avec TRANSPOSE
+
+La fonction TRANSPOSE permet d'inverser les lignes et les colonnes d'un tableau.
+
+## Syntaxe
+
+```excel
+=TRANSPOSE(tableau)
+```
+
+## Utilisation dans Excel 365
+
+### Methode simple
+
+1. Selectionnez une cellule de destination
+2. Tapez `=TRANSPOSE(A1:D5)`
+3. Appuyez sur Entree
+4. Le tableau transpose s'affiche automatiquement
+
+### Exemple
+
+Si votre tableau est :
+
+| A | B | C |
+|---|---|---|
+| 1 | 2 | 3 |
+| 4 | 5 | 6 |
+
+Le resultat transpose sera :
+
+| A | B |
+|---|---|
+| 1 | 4 |
+| 2 | 5 |
+| 3 | 6 |
+
+## Excel versions anterieures
+
+### Formule matricielle
+
+1. Selectionnez la zone de destination (inverse : 3 lignes x 2 colonnes)
+2. Tapez `=TRANSPOSE(A1:B3)`
+3. Validez avec **Ctrl + Shift + Entree**
+
+## Methode sans formule
+
+### Collage special
+
+1. Copiez votre tableau
+2. Selectionnez la destination
+3. **Clic droit** > **Collage special**
+4. Cochez **Transposer**
+5. **OK**
+
+### Avantages
+
+- Pas de lien avec l'original
+- Valeurs statiques
+- Plus simple pour les modifications
+
+## Comparaison des methodes
+
+| Methode | Dynamique | Lien source |
+|---------|-----------|-------------|
+| TRANSPOSE | Oui | Oui |
+| Collage special | Non | Non |
+
+## Cas pratiques
+
+### Tableau de donnees
+
+```excel
+=TRANSPOSE(Ventes[#Donnees])
+```
+
+### Matrice de correlation
+
+```excel
+=TRANSPOSE(A1:J10)
+```
+
+## Erreurs courantes
+
+### #VALEUR!
+
+La zone de destination est trop petite (anciennes versions).
+
+### #PROPAGATION
+
+Cellules non vides dans la zone de sortie.
+
+## Bonnes pratiques
+
+1. **Verifiez** les dimensions du tableau original
+2. **Reservez** suffisamment d'espace
+3. **Utilisez** le collage special pour les donnees statiques
+4. **Preferez** TRANSPOSE pour les mises a jour automatiques
+
+[Decouvrir nos formations Excel](/formations-excel)

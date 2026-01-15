@@ -1,0 +1,194 @@
+---
+title: "Fonction RECHERCHEH dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maitrisez RECHERCHEH pour les recherches horizontales dans Excel."
+description: "Guide complet de la fonction RECHERCHEH pour recherches horizontales."
+category: "Formules Excel"
+categories: ["Formules Excel", "Recherche"]
+tags: ["RECHERCHEH", "Recherche", "Horizontale", "Formules"]
+---
+
+# Fonction RECHERCHEH dans Excel
+
+RECHERCHEH effectue des recherches dans des tableaux horizontaux.
+
+## Syntaxe
+
+```excel
+=RECHERCHEH(valeur_cherchee;table;no_index_ligne;[correspondance])
+```
+
+## Parametres
+
+| Parametre | Description |
+|-----------|-------------|
+| valeur_cherchee | Ce que vous recherchez |
+| table | Plage de recherche |
+| no_index_ligne | Ligne du resultat |
+| correspondance | VRAI (approx) ou FAUX (exact) |
+
+## Difference avec RECHERCHEV
+
+| RECHERCHEV | RECHERCHEH |
+|------------|------------|
+| Vertical | Horizontal |
+| Colonnes | Lignes |
+| Recherche dans 1ere colonne | Recherche dans 1ere ligne |
+
+## Exemple de base
+
+### Tableau horizontal
+
+| Jan | Fev | Mar | Avr |
+|-----|-----|-----|-----|
+| 100 | 150 | 200 | 180 |
+| 50 | 75 | 100 | 90 |
+
+### Formule
+
+```excel
+=RECHERCHEH("Mar";A1:D3;2;FAUX)
+```
+
+Resultat : 200 (valeur de la ligne 2 sous "Mar")
+
+## Correspondance exacte vs approximative
+
+### Correspondance exacte (FAUX)
+
+```excel
+=RECHERCHEH("Fev";A1:D3;2;FAUX)
+```
+
+Trouve exactement "Fev".
+
+### Correspondance approximative (VRAI)
+
+```excel
+=RECHERCHEH(125;A1:D3;3;VRAI)
+```
+
+Trouve la valeur la plus proche inferieure ou egale.
+
+## Cas pratiques
+
+### Tableau de tarifs
+
+| 0 | 100 | 500 | 1000 |
+|---|-----|-----|------|
+| 5% | 8% | 10% | 12% |
+
+```excel
+=RECHERCHEH(Quantite;Tarifs;2;VRAI)
+```
+
+Trouve le taux correspondant a la quantite.
+
+### Calendrier horizontal
+
+| Lun | Mar | Mer | Jeu | Ven |
+|-----|-----|-----|-----|-----|
+| 9h | 9h | 10h | 9h | 8h |
+
+```excel
+=RECHERCHEH("Mer";Planning;2;FAUX)
+```
+
+## Erreur #N/A
+
+### Causes
+
+- Valeur non trouvee
+- Orthographe differente
+- Espaces invisibles
+
+### Solution avec SIERREUR
+
+```excel
+=SIERREUR(RECHERCHEH("X";A1:D3;2;FAUX);"Non trouve")
+```
+
+## Limites de RECHERCHEH
+
+### Inconvenients
+
+- Recherche uniquement dans la 1ere ligne
+- Retourne la premiere correspondance
+- Syntaxe peu intuitive
+
+### Alternative moderne
+
+Utilisez **INDEX/EQUIV** ou **RECHERCHEX** :
+
+```excel
+=INDEX(Ligne_resultat;EQUIV(Recherche;Ligne_cles;0))
+```
+
+## RECHERCHEX horizontal
+
+### Equivalent moderne
+
+```excel
+=RECHERCHEX(Valeur;Ligne_recherche;Ligne_resultat)
+```
+
+Plus flexible et lisible.
+
+## Combiner RECHERCHEH et RECHERCHEV
+
+### Pour des tableaux 2D
+
+```excel
+=INDEX(Tableau;
+  EQUIV(Ligne_cherchee;En_tetes_lignes;0);
+  EQUIV(Colonne_cherchee;En_tetes_colonnes;0)
+)
+```
+
+## Cas d'usage typiques
+
+| Scenario | Pourquoi RECHERCHEH |
+|----------|---------------------|
+| Planning horizontal | Jours en colonnes |
+| Tarifs par paliers | Seuils en ligne |
+| Matrice de conversion | Valeurs horizontales |
+| Calendrier | Mois en ligne |
+
+## Optimisation
+
+### Performance
+
+RECHERCHEH est relativement rapide mais :
+- Limitez la plage de recherche
+- Evitez les colonnes entieres
+
+### Lisibilite
+
+```excel
+=RECHERCHEH(
+  Valeur;
+  Tableau;
+  Ligne;
+  FAUX
+)
+```
+
+## Erreurs courantes
+
+| Erreur | Cause | Solution |
+|--------|-------|----------|
+| #N/A | Valeur absente | SIERREUR ou verifier |
+| #REF! | Ligne hors tableau | Verifier no_index |
+| Mauvais resultat | VRAI au lieu de FAUX | Utiliser FAUX |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| FAUX | Preferez correspondance exacte |
+| SIERREUR | Gerez les erreurs |
+| Noms | Utilisez des plages nommees |
+| Documentation | Commentez les formules complexes |
+
+[Decouvrir nos formations Excel](/formations-excel)

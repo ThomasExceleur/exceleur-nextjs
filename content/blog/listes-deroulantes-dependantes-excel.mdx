@@ -1,0 +1,146 @@
+---
+title: "Listes Deroulantes Dependantes dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Creez des listes deroulantes en cascade dans Excel."
+description: "Guide pour creer des listes deroulantes dependantes."
+category: "Astuces Excel"
+categories: ["Astuces Excel", "Validation"]
+tags: ["Liste deroulante", "Dependante", "Cascade", "Validation"]
+---
+
+# Listes Deroulantes Dependantes
+
+Les listes dependantes filtrent les options selon un choix precedent.
+
+## Principe
+
+### Exemple
+
+1. Liste 1 : Choisir un continent
+2. Liste 2 : Affiche les pays de ce continent
+
+## Methode classique avec INDIRECT
+
+### Etape 1 : Preparer les donnees
+
+| Europe | Asie | Amerique |
+|--------|------|----------|
+| France | Japon | USA |
+| Allemagne | Chine | Canada |
+| Italie | Inde | Bresil |
+
+### Etape 2 : Nommer les plages
+
+1. Selectionnez chaque colonne
+2. **Formules** > **Definir un nom**
+3. Nommez : Europe, Asie, Amerique
+
+### Etape 3 : Premiere liste
+
+1. Cellule A1 : **Donnees** > **Validation**
+2. Autoriser : Liste
+3. Source : Europe,Asie,Amerique
+
+### Etape 4 : Liste dependante
+
+1. Cellule B1 : **Donnees** > **Validation**
+2. Autoriser : Liste
+3. Source : `=INDIRECT(A1)`
+
+## Gestion des espaces
+
+### Probleme
+
+"Etats Unis" ne peut pas etre un nom de plage.
+
+### Solution
+
+Utilisez SUBSTITUE :
+
+```excel
+=INDIRECT(SUBSTITUE(A1;" ";"_"))
+```
+
+Nommez la plage "Etats_Unis".
+
+## Methode moderne avec FILTRE
+
+### Structure des donnees
+
+| Continent | Pays |
+|-----------|------|
+| Europe | France |
+| Europe | Allemagne |
+| Asie | Japon |
+| Asie | Chine |
+
+### Liste 1 : Continents
+
+Source : `=UNIQUE(A2:A100)`
+
+### Liste 2 : Pays filtres
+
+Source : `=FILTRE(B2:B100;A2:A100=E1)`
+
+E1 contient le continent choisi.
+
+## Trois niveaux
+
+### Donnees
+
+| Continent | Pays | Ville |
+|-----------|------|-------|
+| Europe | France | Paris |
+| Europe | France | Lyon |
+| Europe | Allemagne | Berlin |
+
+### Listes
+
+- Liste 1 : Continents (UNIQUE)
+- Liste 2 : `=UNIQUE(FILTRE(Pays;Continent=A1))`
+- Liste 3 : `=UNIQUE(FILTRE(Ville;Pays=B1))`
+
+## Reinitialiser automatiquement
+
+### Probleme
+
+Si on change Liste 1, Liste 2 peut garder une valeur invalide.
+
+### Solution VBA
+
+```vba
+Private Sub Worksheet_Change(ByVal Target As Range)
+    If Target.Address = "$A$1" Then
+        Range("B1").ClearContents
+        Range("C1").ClearContents
+    End If
+End Sub
+```
+
+## Message d'erreur personnalise
+
+### Configuration
+
+1. **Donnees** > **Validation**
+2. Onglet **Alerte d'erreur**
+3. Personnalisez le message
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Noms clairs | Plages bien nommees |
+| Test | Verifiez toutes les combinaisons |
+| Documentation | Expliquez la structure |
+| Erreurs | Gerez les cas limites |
+
+## Erreurs courantes
+
+| Erreur | Cause | Solution |
+|--------|-------|----------|
+| #REF! | Nom inexistant | Verifiez les noms de plages |
+| Liste vide | Espaces dans le nom | Utilisez SUBSTITUE |
+| Valeur invalide | Liste 1 changee | Reinitialisation |
+
+[Decouvrir nos formations Excel](/formations-excel)

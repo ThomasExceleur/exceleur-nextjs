@@ -1,0 +1,136 @@
+---
+title: "Separer du Texte et des Nombres dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Techniques pour extraire les nombres et le texte d'une cellule."
+description: "Guide pour separer texte et nombres dans Excel. Formules et astuces."
+category: "Manipulation de donnees"
+categories: ["Manipulation de donnees", "Formules Excel"]
+tags: ["Texte", "Nombres", "Extraction", "Formules"]
+---
+
+# Separer du Texte et des Nombres
+
+Techniques pour extraire les parties numeriques et textuelles d'une cellule.
+
+## Methode 1 : Remplissage instantane (Ctrl+E)
+
+### La methode la plus simple
+
+1. Dans la colonne adjacente, tapez le resultat souhaite
+2. Passez a la cellule suivante
+3. Appuyez sur **Ctrl + E**
+
+### Exemple
+
+| Original | Nombre | Texte |
+|----------|--------|-------|
+| ABC123 | 123 | ABC |
+| XYZ456 | (vide) | (vide) |
+
+Apres Ctrl+E : Excel complete automatiquement.
+
+## Methode 2 : Formules Excel 365
+
+### TEXTE.AVANT et TEXTE.APRES
+
+Si le format est coherent (ex: toujours lettres puis chiffres).
+
+### FRACTIONNER.TEXTE
+
+```excel
+=FRACTIONNER.TEXTE(A1;" ")
+```
+
+## Methode 3 : Formules classiques
+
+### Extraire les nombres (debut)
+
+```excel
+=GAUCHE(A1;SOMME(NBCAR(A1)-NBCAR(SUBSTITUE(A1;{"0";"1";"2";"3";"4";"5";"6";"7";"8";"9"};"")))))
+```
+
+### Extraire le texte (fin)
+
+```excel
+=DROITE(A1;NBCAR(A1)-EQUIV(FAUX;ESTNUM(1*STXT(A1;LIGNE(INDIRECT("1:"&NBCAR(A1)));1));0)+1)
+```
+
+Ces formules sont complexes - preferez Ctrl+E ou Power Query.
+
+## Methode 4 : Power Query
+
+### Etapes
+
+1. Selectionnez vos donnees
+2. **Donnees** > **A partir d'un tableau**
+3. Selectionnez la colonne
+4. **Transformer** > **Extraire** > **Texte avant le delimiteur**
+
+### Avantage
+
+Interface visuelle, reproductible, sans formules.
+
+## Cas courants
+
+### Code produit + Description
+
+"AB123 Widget bleu" → "AB123" | "Widget bleu"
+
+### Mesure avec unite
+
+"150 kg" → 150 | "kg"
+
+### Reference alphanum
+
+"REF-12345" → "REF" | "12345"
+
+## Formules specifiques
+
+### Extraire uniquement les chiffres
+
+#### Avec VBA (fonction personnalisee)
+
+```vba
+Function ExtraireNombres(texte As String) As String
+    Dim i As Integer
+    For i = 1 To Len(texte)
+        If IsNumeric(Mid(texte, i, 1)) Then
+            ExtraireNombres = ExtraireNombres & Mid(texte, i, 1)
+        End If
+    Next i
+End Function
+```
+
+Usage : `=ExtraireNombres(A1)`
+
+### Extraire uniquement les lettres
+
+```vba
+Function ExtraireTexte(texte As String) As String
+    Dim i As Integer
+    For i = 1 To Len(texte)
+        If Not IsNumeric(Mid(texte, i, 1)) Then
+            ExtraireTexte = ExtraireTexte & Mid(texte, i, 1)
+        End If
+    Next i
+End Function
+```
+
+## Tableau recapitulatif
+
+| Methode | Difficulte | Dynamique |
+|---------|------------|-----------|
+| Ctrl+E | Facile | Non |
+| Power Query | Moyenne | Oui |
+| Formules | Difficile | Oui |
+| VBA | Moyenne | Oui |
+
+## Bonnes pratiques
+
+1. **Utilisez** Ctrl+E pour les cas simples
+2. **Preferez** Power Query pour les donnees recurrentes
+3. **Evitez** les formules trop complexes
+4. **Nettoyez** les donnees a la source si possible
+
+[Decouvrir nos formations Excel](/formations-excel)

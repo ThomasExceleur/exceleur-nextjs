@@ -1,0 +1,197 @@
+---
+title: "Excel Suivi des Depenses : Creez Votre Tableau"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez a creer un tableau de suivi des depenses dans Excel pour gerer votre budget."
+description: "Guide pour creer un suivi des depenses dans Excel. Modele gratuit et formules automatiques."
+category: "Comptabilite"
+categories: ["Comptabilite", "Finance"]
+tags: ["Depenses", "Budget", "Suivi", "Comptabilite"]
+---
+
+# Suivi des Depenses dans Excel
+
+Un bon suivi des depenses permet de maitriser son budget personnel ou professionnel.
+
+## Structure du tableau de suivi
+
+### Colonnes essentielles
+
+| Colonne | Description |
+|---------|-------------|
+| Date | Date de la depense |
+| Description | Libelle de la depense |
+| Categorie | Type de depense |
+| Montant | Somme depensee |
+| Mode de paiement | CB, especes, virement |
+
+### Categories de depenses
+
+- Alimentation
+- Transport
+- Logement
+- Loisirs
+- Sante
+- Divers
+
+## Creer le tableau
+
+### Etape 1 : En-tetes
+
+```
+A1: Date
+B1: Description
+C1: Categorie
+D1: Montant
+E1: Mode de paiement
+```
+
+### Etape 2 : Liste deroulante pour les categories
+
+1. Creez une liste de categories sur une autre feuille
+2. Selectionnez la colonne Categorie
+3. **Donnees** > **Validation des donnees** > **Liste**
+
+### Etape 3 : Formatage
+
+1. Selectionnez le tableau
+2. **Ctrl + T** pour creer un tableau structure
+3. Appliquez un format de nombre pour les montants
+
+## Formules utiles
+
+### Total des depenses
+
+```excel
+=SOMME(Tableau[Montant])
+```
+
+### Total par categorie
+
+```excel
+=SOMME.SI(Tableau[Categorie];"Alimentation";Tableau[Montant])
+```
+
+### Total par mois
+
+```excel
+=SOMME.SI.ENS(Tableau[Montant];Tableau[Date];">="&DATE(2024;1;1);Tableau[Date];"<="&DATE(2024;1;31))
+```
+
+### Moyenne des depenses
+
+```excel
+=MOYENNE(Tableau[Montant])
+```
+
+## Tableau recapitulatif par categorie
+
+### Structure
+
+| Categorie | Budget | Depenses | Reste |
+|-----------|--------|----------|-------|
+| Alimentation | 500 | =FORMULE | =B2-C2 |
+
+### Formule de depenses
+
+```excel
+=SOMME.SI(Depenses[Categorie];A2;Depenses[Montant])
+```
+
+## Graphiques de suivi
+
+### Camembert des categories
+
+1. Selectionnez le recap par categorie
+2. **Insertion** > **Graphique** > **Secteurs**
+3. Ajoutez les pourcentages
+
+### Evolution mensuelle
+
+1. Creez un recap par mois
+2. **Insertion** > **Graphique** > **Courbes**
+3. Comparez avec le budget
+
+## Mise en forme conditionnelle
+
+### Alerter sur les depassements
+
+1. Selectionnez la colonne "Reste"
+2. **Mise en forme conditionnelle** > **Regles de mise en surbrillance**
+3. Inferieur a 0 > Format rouge
+
+### Colorer les categories
+
+```excel
+Utilisez des regles de mise en forme par valeur de texte
+```
+
+## Suivi mensuel
+
+### Tableau mensuel
+
+| Mois | Budget | Depenses | Ecart |
+|------|--------|----------|-------|
+| Janvier | 2000 | =FORMULE | =B2-C2 |
+
+### Formule pour depenses du mois
+
+```excel
+=SOMME.SI.ENS(Depenses[Montant];Depenses[Date];">="&DATE(2024;1;1);Depenses[Date];"<="&FIN.MOIS(DATE(2024;1;1);0))
+```
+
+## Conseils de saisie
+
+### Regularite
+
+Saisissez vos depenses quotidiennement ou hebdomadairement.
+
+### Precision
+
+Gardez tous vos tickets et factures.
+
+### Categories coherentes
+
+Utilisez toujours les memes categories.
+
+## Automatisation
+
+### Import bancaire
+
+1. Telechargez le releve CSV de votre banque
+2. **Donnees** > **Obtenir des donnees** > **A partir d'un fichier**
+3. Nettoyez et categorisez
+
+### Macros pour saisie rapide
+
+```vba
+Sub AjouterDepense()
+    Dim ligne As Long
+    ligne = Cells(Rows.Count, 1).End(xlUp).Row + 1
+    Cells(ligne, 1).Value = Date
+    Cells(ligne, 2).Select
+End Sub
+```
+
+## Analyse des depenses
+
+### Top 5 des depenses
+
+```excel
+=GRANDE.VALEUR(Tableau[Montant];1)  ' Plus grande depense
+```
+
+### Pourcentage par categorie
+
+```excel
+=SOMME.SI(Tableau[Categorie];"Alimentation";Tableau[Montant])/SOMME(Tableau[Montant])
+```
+
+## Bonnes pratiques
+
+1. **Sauvegardez** regulierement
+2. **Archivez** par annee
+3. **Analysez** chaque mois
+4. **Ajustez** votre budget selon les tendances
+
+[Decouvrir nos formations Excel](/formations-excel)

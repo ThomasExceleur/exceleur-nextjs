@@ -1,0 +1,216 @@
+---
+title: "Excel Moyenne Ponderee : Calcul et Formules"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez a calculer une moyenne ponderee dans Excel avec SOMMEPROD."
+description: "Guide complet pour calculer une moyenne ponderee dans Excel. Formules, exemples pratiques et cas d'utilisation."
+category: "Calculs"
+categories: ["Calculs", "Formules Excel"]
+tags: ["Moyenne", "Ponderee", "SOMMEPROD", "Calculs"]
+---
+
+# Moyenne Ponderee dans Excel
+
+La moyenne ponderee attribue un poids different a chaque valeur, contrairement a la moyenne simple.
+
+## Difference avec la moyenne simple
+
+### Moyenne simple
+
+Toutes les valeurs ont le meme poids.
+
+```excel
+=MOYENNE(A1:A3)
+```
+
+Exemple : (10 + 15 + 20) / 3 = 15
+
+### Moyenne ponderee
+
+Chaque valeur a un coefficient (poids).
+
+Exemple : Notes avec coefficients
+- Note 10, coefficient 1
+- Note 15, coefficient 2
+- Note 20, coefficient 3
+
+Moyenne ponderee = (10*1 + 15*2 + 20*3) / (1+2+3) = 16.67
+
+## Formule de base
+
+```excel
+=SOMMEPROD(valeurs; poids) / SOMME(poids)
+```
+
+### Exemple concret
+
+| Note | Coefficient |
+|------|-------------|
+| 10 | 1 |
+| 15 | 2 |
+| 20 | 3 |
+
+```excel
+=SOMMEPROD(A2:A4; B2:B4) / SOMME(B2:B4)
+```
+
+Resultat : 16.67
+
+## Cas pratiques
+
+### Notes scolaires
+
+| Matiere | Note | Coefficient |
+|---------|------|-------------|
+| Maths | 14 | 4 |
+| Francais | 12 | 3 |
+| Histoire | 16 | 2 |
+| Sport | 18 | 1 |
+
+```excel
+=SOMMEPROD(B2:B5; C2:C5) / SOMME(C2:C5)
+```
+
+Moyenne ponderee : 14.2
+
+### Prix moyen pondere
+
+| Produit | Prix | Quantite |
+|---------|------|----------|
+| A | 10 | 100 |
+| B | 15 | 50 |
+| C | 20 | 25 |
+
+Prix moyen pondere :
+```excel
+=SOMMEPROD(B2:B4; C2:C4) / SOMME(C2:C4)
+```
+
+Resultat : 12.86 (et non 15 comme la moyenne simple)
+
+### Performance ponderee
+
+| Periode | Rendement | Investissement |
+|---------|-----------|----------------|
+| Jan | 5% | 1000 |
+| Fev | -2% | 2000 |
+| Mar | 8% | 3000 |
+
+```excel
+=SOMMEPROD(B2:B4; C2:C4) / SOMME(C2:C4)
+```
+
+Rendement moyen pondere : 4.17%
+
+## Variantes de formules
+
+### Avec multiplication explicite
+
+```excel
+=(A1*B1 + A2*B2 + A3*B3) / (B1+B2+B3)
+```
+
+Moins elegant mais comprehensible.
+
+### Avec plages nommees
+
+```excel
+=SOMMEPROD(Notes; Coefficients) / SOMME(Coefficients)
+```
+
+Plus lisible avec des noms de plages.
+
+### Ignorer les valeurs nulles
+
+```excel
+=SOMMEPROD((A1:A10>0)*(A1:A10)*(B1:B10)) / SOMMEPROD((A1:A10>0)*(B1:B10))
+```
+
+## Moyenne ponderee conditionnelle
+
+### Par categorie
+
+```excel
+=SOMMEPROD((A1:A10=D1)*(B1:B10)*(C1:C10)) / SOMMEPROD((A1:A10=D1)*(C1:C10))
+```
+
+Ou D1 contient la categorie recherchee.
+
+### Avec plusieurs criteres
+
+```excel
+=SOMMEPROD((A:A=Critere1)*(B:B=Critere2)*(C:C)*(D:D)) / SOMMEPROD((A:A=Critere1)*(B:B=Critere2)*(D:D))
+```
+
+## Moyenne mobile ponderee
+
+### Formule
+
+Pour les 3 dernieres periodes avec poids 1, 2, 3 :
+
+```excel
+=SOMMEPROD(A1:A3; {1;2;3}) / SOMME({1;2;3})
+```
+
+### Glissante
+
+Copiez la formule vers le bas en ajustant les references.
+
+## Verifier votre calcul
+
+### Decomposition
+
+1. Calculez chaque produit (valeur * poids)
+2. Additionnez les produits
+3. Divisez par la somme des poids
+
+### Formule de verification
+
+```excel
+=SOMME(A:A*B:B) / SOMME(B:B)
+```
+
+Doit donner le meme resultat.
+
+## Erreurs courantes
+
+### Poids a zero
+
+Si la somme des poids est zero, vous obtenez une erreur #DIV/0!
+
+```excel
+=SIERREUR(SOMMEPROD(...)/SOMME(...); 0)
+```
+
+### Plages de tailles differentes
+
+Les plages valeurs et poids doivent avoir la meme taille.
+
+### Format texte
+
+Assurez-vous que les cellules sont au format nombre.
+
+## Comparaison visuelle
+
+| Type | Formule | Quand utiliser |
+|------|---------|----------------|
+| Simple | MOYENNE | Valeurs equivalentes |
+| Ponderee | SOMMEPROD/SOMME | Valeurs avec importance differente |
+| Geometrique | SOMMEPROD(LOG(...)) | Pourcentages composes |
+
+## Applications courantes
+
+- Notes scolaires avec coefficients
+- Prix moyen d'achat d'actions
+- Evaluation de fournisseurs
+- Calcul d'indices boursiers
+- Moyenne de scores d'evaluation
+
+## Bonnes pratiques
+
+1. **Verifiez les poids** : Somme non nulle
+2. **Documentez** : Expliquez la logique des poids
+3. **Utilisez des noms** : Pour plus de lisibilite
+4. **Arrondir** : Si necessaire pour l'affichage
+
+[Decouvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,112 @@
+---
+title: "Guide API REST avec Power Query : Importer des Donnees"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Connectez Power Query aux API REST pour importer des donnees."
+description: "Guide pour importer des donnees API REST avec Power Query."
+category: "Power Query"
+categories: ["Power Query", "API"]
+tags: ["API REST", "Power Query", "Import", "Donnees"]
+---
+
+# API REST avec Power Query
+
+Importez des donnees depuis des API web dans Excel.
+
+## Qu'est-ce qu'une API REST ?
+
+### Definition
+
+Interface permettant d'acceder a des donnees via HTTP.
+
+### Formats courants
+
+- JSON
+- XML
+- CSV
+
+## Connexion de base
+
+### Web.Contents
+
+```m
+let
+    Source = Web.Contents(\"https://api.exemple.com/data\"),
+    JSON = Json.Document(Source)
+in
+    JSON
+```
+
+## Avec parametres
+
+### Query parameters
+
+```m
+let
+    Source = Web.Contents(
+        \"https://api.exemple.com/data\",
+        [Query = [region = \"France\", annee = \"2024\"]]
+    )
+in
+    Json.Document(Source)
+```
+
+## Authentification
+
+### API Key
+
+```m
+let
+    Source = Web.Contents(
+        \"https://api.exemple.com/data\",
+        [Headers = [#\"Authorization\" = \"Bearer VOTRE_CLE\"]]
+    )
+in
+    Json.Document(Source)
+```
+
+## Pagination
+
+### Boucle sur les pages
+
+```m
+let
+    GetPage = (page) =>
+        let
+            Source = Web.Contents(url, [Query = [page = Text.From(page)]]),
+            JSON = Json.Document(Source)
+        in
+            JSON,
+    AllPages = List.Generate(
+        () => [Page = 1, Data = GetPage(1)],
+        each [Page] <= TotalPages,
+        each [Page = [Page] + 1, Data = GetPage([Page] + 1)],
+        each [Data]
+    )
+in
+    Table.FromList(AllPages)
+```
+
+## Transformer le JSON
+
+### Record to Table
+
+```m
+= Table.FromRecords({Source})
+```
+
+### List to Table
+
+```m
+= Table.FromList(Source, Splitter.SplitByNothing())
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Cache | Limitez les appels |
+| Erreurs | Gerez les timeout |
+| Documentation | Notez les endpoints |
+
+[Decouvrir nos formations Excel](/formations-excel)

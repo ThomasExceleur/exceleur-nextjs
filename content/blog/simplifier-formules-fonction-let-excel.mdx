@@ -1,0 +1,168 @@
+---
+title: "Simplifier vos Formules avec LET Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Utilisez LET pour rendre vos formules plus lisibles et performantes."
+description: "Guide pour simplifier vos formules Excel avec la fonction LET."
+category: "Excel 365"
+categories: ["Excel 365", "Formules Excel"]
+tags: ["LET", "Formules", "Simplification", "Excel 365"]
+---
+
+# Simplifier vos Formules avec LET
+
+LET transforme les formules complexes en expressions lisibles.
+
+## Syntaxe
+
+```excel
+=LET(nom1;valeur1;[nom2;valeur2;...];calcul)
+```
+
+## Concept
+
+### Le probleme
+
+Formules repetitives et illisibles :
+
+```excel
+=SOMME(SI(A1:A100>MOYENNE(A1:A100);A1:A100;0))/NB.SI(A1:A100;">"&MOYENNE(A1:A100))
+```
+
+### La solution avec LET
+
+```excel
+=LET(
+  donnees;A1:A100;
+  moy;MOYENNE(donnees);
+  sup;FILTRE(donnees;donnees>moy);
+  MOYENNE(sup)
+)
+```
+
+## Avantages
+
+### Lisibilite
+
+Variables nommees explicitement.
+
+### Performance
+
+Calculs intermediaires executes une seule fois.
+
+### Maintenance
+
+Facile a modifier et deboguer.
+
+## Exemples pratiques
+
+### Calcul de marge
+
+```excel
+=LET(
+  ca;B2;
+  couts;C2;
+  marge;ca-couts;
+  taux;marge/ca;
+  SI(taux>0.2;"Bon";"A ameliorer")
+)
+```
+
+### Recherche avec condition
+
+```excel
+=LET(
+  critere;E1;
+  resultat;RECHERCHEV(critere;A:D;4;FAUX);
+  SI(ESTERREUR(resultat);"Non trouve";resultat)
+)
+```
+
+### Calcul statistique
+
+```excel
+=LET(
+  valeurs;B2:B100;
+  moy;MOYENNE(valeurs);
+  ecart;ECARTYPE(valeurs);
+  z_score;(B2-moy)/ecart;
+  z_score
+)
+```
+
+## Variables multiples
+
+### Enchainage
+
+```excel
+=LET(
+  x;10;
+  y;20;
+  z;x+y;
+  resultat;z*2;
+  resultat
+)
+```
+
+Chaque variable peut utiliser les precedentes.
+
+## LET avec tableaux
+
+### Filtrage et calcul
+
+```excel
+=LET(
+  donnees;A2:C100;
+  filtrees;FILTRE(donnees;B2:B100="Actif");
+  triees;TRIER(filtrees;3;-1);
+  INDEX(triees;1;3)
+)
+```
+
+## Deboguer avec LET
+
+### Technique
+
+Retournez une variable intermediaire :
+
+```excel
+=LET(
+  x;CalculComplexe1;
+  y;CalculComplexe2;
+  z;x+y;
+  x  ' Retourne x pour verifier
+)
+```
+
+## Combiner LET et LAMBDA
+
+### Fonction personnalisee
+
+```excel
+=LAMBDA(param;
+  LET(
+    x;param*2;
+    y;x+10;
+    y
+  )
+)
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Noms explicites | x, y sont moins clairs que total, moyenne |
+| Decomposition | Une etape par variable |
+| Commentaires | Documentez la logique |
+| Test | Verifiez chaque variable |
+
+## Erreurs courantes
+
+| Erreur | Cause | Solution |
+|--------|-------|----------|
+| #NOM? | Variable mal definie | Verifiez l'ordre |
+| #VALEUR! | Type incompatible | Verifiez les donnees |
+| Resultat faux | Mauvais calcul | Debuggez etape par etape |
+
+[Decouvrir nos formations Excel](/formations-excel)

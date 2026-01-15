@@ -1,0 +1,243 @@
+---
+title: "Creer un Formulaire VBA Dynamique dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez a creer des formulaires VBA dynamiques pour la saisie de donnees."
+description: "Guide pour creer des formulaires VBA dynamiques dans Excel."
+category: "Macros et VBA"
+categories: ["Macros et VBA", "Productivite"]
+tags: ["VBA", "Formulaire", "UserForm", "Dynamique"]
+---
+
+# Creer un Formulaire VBA Dynamique
+
+Les UserForms permettent une saisie de donnees professionnelle.
+
+## Creer un UserForm
+
+### Acceder a VBA
+
+1. **Alt+F11** pour ouvrir l'editeur VBA
+2. **Insertion** > **UserForm**
+3. Un formulaire vide apparait
+
+### Boite a outils
+
+| Controle | Usage |
+|----------|-------|
+| Label | Texte informatif |
+| TextBox | Saisie de texte |
+| ComboBox | Liste deroulante |
+| ListBox | Liste de selection |
+| CheckBox | Case a cocher |
+| OptionButton | Bouton radio |
+| CommandButton | Bouton d'action |
+| Frame | Groupe de controles |
+
+## Concevoir le formulaire
+
+### Exemple : Saisie client
+
+1. Ajoutez les labels : Nom, Email, Telephone
+2. Ajoutez les TextBox correspondantes
+3. Ajoutez un bouton "Enregistrer"
+4. Ajoutez un bouton "Annuler"
+
+### Nommer les controles
+
+- txtNom, txtEmail, txtTel
+- cmbCategorie
+- btnEnregistrer, btnAnnuler
+
+## Code de base
+
+### Afficher le formulaire
+
+```vba
+Sub AfficherFormulaire()
+    frmClient.Show
+End Sub
+```
+
+### Bouton Enregistrer
+
+```vba
+Private Sub btnEnregistrer_Click()
+    Dim ws As Worksheet
+    Dim ligneSuivante As Long
+
+    Set ws = ThisWorkbook.Sheets("Clients")
+    ligneSuivante = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row + 1
+
+    ws.Cells(ligneSuivante, 1).Value = txtNom.Value
+    ws.Cells(ligneSuivante, 2).Value = txtEmail.Value
+    ws.Cells(ligneSuivante, 3).Value = txtTel.Value
+
+    MsgBox "Client enregistre!", vbInformation
+    Me.Hide
+End Sub
+```
+
+### Bouton Annuler
+
+```vba
+Private Sub btnAnnuler_Click()
+    Me.Hide
+End Sub
+```
+
+## Rendre le formulaire dynamique
+
+### Charger une liste deroulante
+
+```vba
+Private Sub UserForm_Initialize()
+    With cmbCategorie
+        .AddItem "Particulier"
+        .AddItem "Entreprise"
+        .AddItem "Association"
+    End With
+End Sub
+```
+
+### Depuis une plage Excel
+
+```vba
+Private Sub UserForm_Initialize()
+    Dim cell As Range
+    For Each cell In Sheets("Parametres").Range("A2:A10")
+        If cell.Value <> "" Then
+            cmbCategorie.AddItem cell.Value
+        End If
+    Next cell
+End Sub
+```
+
+## Validation des donnees
+
+### Verifier avant enregistrement
+
+```vba
+Private Sub btnEnregistrer_Click()
+    ' Validation
+    If txtNom.Value = "" Then
+        MsgBox "Le nom est obligatoire", vbExclamation
+        txtNom.SetFocus
+        Exit Sub
+    End If
+
+    If Not IsValidEmail(txtEmail.Value) Then
+        MsgBox "Email invalide", vbExclamation
+        txtEmail.SetFocus
+        Exit Sub
+    End If
+
+    ' Enregistrement...
+End Sub
+```
+
+### Fonction de validation email
+
+```vba
+Function IsValidEmail(email As String) As Boolean
+    IsValidEmail = (InStr(email, "@") > 1) And (InStr(email, ".") > InStr(email, "@") + 1)
+End Function
+```
+
+## Formulaire de modification
+
+### Charger des donnees existantes
+
+```vba
+Sub ModifierClient(ligne As Long)
+    With frmClient
+        .txtNom.Value = Cells(ligne, 1).Value
+        .txtEmail.Value = Cells(ligne, 2).Value
+        .txtTel.Value = Cells(ligne, 3).Value
+        .Tag = ligne  ' Stocker la ligne
+        .Show
+    End With
+End Sub
+```
+
+### Sauvegarder les modifications
+
+```vba
+Private Sub btnEnregistrer_Click()
+    Dim ligne As Long
+
+    If Me.Tag <> "" Then
+        ligne = CLng(Me.Tag)  ' Mode modification
+    Else
+        ligne = Cells(Rows.Count, 1).End(xlUp).Row + 1  ' Nouveau
+    End If
+
+    Cells(ligne, 1).Value = txtNom.Value
+    ' ...
+End Sub
+```
+
+## Controles dynamiques
+
+### Ajouter des controles au runtime
+
+```vba
+Private Sub AjouterChamp()
+    Dim newTextBox As MSForms.TextBox
+    Set newTextBox = Me.Controls.Add("Forms.TextBox.1", "txtDynamique")
+    With newTextBox
+        .Top = 100
+        .Left = 100
+        .Width = 150
+    End With
+End Sub
+```
+
+## Bonnes pratiques
+
+### Organisation du code
+
+| Module | Contenu |
+|--------|---------|
+| UserForm | Code du formulaire |
+| Module standard | Procedures d'appel |
+| Module de validation | Fonctions de validation |
+
+### Gestion des erreurs
+
+```vba
+Private Sub btnEnregistrer_Click()
+    On Error GoTo ErrHandler
+
+    ' Code...
+
+    Exit Sub
+ErrHandler:
+    MsgBox "Erreur : " & Err.Description, vbCritical
+End Sub
+```
+
+## Style et apparence
+
+### Personnaliser le formulaire
+
+| Propriete | Effet |
+|-----------|-------|
+| BackColor | Couleur de fond |
+| Caption | Titre du formulaire |
+| Font | Police des controles |
+| BorderStyle | Style de bordure |
+
+### Coherence visuelle
+
+Utilisez les memes couleurs que votre charte graphique.
+
+## Alternative : Data Form
+
+Pour des besoins simples :
+
+1. Selectionnez votre tableau
+2. **Alt+D+O** (Data Form)
+3. Formulaire automatique
+
+[Decouvrir nos formations Excel](/formations-excel)

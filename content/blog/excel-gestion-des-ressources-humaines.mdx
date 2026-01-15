@@ -1,0 +1,233 @@
+---
+title: "Excel Gestion des Ressources Humaines : Guide Complet"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Gerez efficacement vos ressources humaines avec Excel grace a ce guide pratique."
+description: "Guide pour la gestion RH dans Excel. Effectifs, conges, formation et reporting."
+category: "RH"
+categories: ["RH", "Modeles"]
+tags: ["RH", "Ressources humaines", "Gestion", "Personnel"]
+---
+
+# Gestion des Ressources Humaines dans Excel
+
+Excel est un outil precieux pour les fonctions RH, de la gestion des effectifs au reporting.
+
+## Base de donnees salaries
+
+### Structure
+
+| Champ | Description |
+|-------|-------------|
+| Matricule | Identifiant unique |
+| Nom | Nom de famille |
+| Prenom | Prenom |
+| Date naissance | Pour calcul age |
+| Date entree | Pour anciennete |
+| Poste | Fonction |
+| Service | Departement |
+| Contrat | CDI/CDD/Interim |
+| Statut | Actif/Sorti |
+
+### Calculs automatiques
+
+```excel
+=DATEDIF(Date_naissance;AUJOURDHUI();"Y")    ' Age
+=DATEDIF(Date_entree;AUJOURDHUI();"Y")       ' Anciennete
+```
+
+## Gestion des conges
+
+### Tableau des droits
+
+| Salarie | Acquis | Pris | Solde |
+|---------|--------|------|-------|
+| Dupont | 25 | 15 | 10 |
+| Martin | 25 | 20 | 5 |
+
+### Formules
+
+```excel
+=B2-C2                                        ' Solde
+=SOMME.SI(Conges[Salarie];A2;Conges[Jours])  ' Jours pris
+```
+
+### Calendrier des absences
+
+| Salarie | Jan | Fev | Mar | ... |
+|---------|-----|-----|-----|-----|
+| Dupont | CP | | CP CP | |
+| Martin | | M | | |
+
+Legende : CP = Conge paye, M = Maladie, F = Formation
+
+## Suivi des formations
+
+### Plan de formation
+
+| Formation | Salarie | Date | Duree | Cout |
+|-----------|---------|------|-------|------|
+| Excel avance | Dupont | 15/03 | 2j | 800 |
+| Management | Martin | 20/04 | 3j | 1500 |
+
+### Budget formation
+
+```excel
+=SOMME(Formations[Cout])                      ' Total
+=SOMME.SI(Formations[Salarie];A2;Formations[Cout])  ' Par salarie
+```
+
+## Entretiens annuels
+
+### Suivi des entretiens
+
+| Salarie | Date EA | Note | Objectifs | Suivant |
+|---------|---------|------|-----------|---------|
+| Dupont | 15/01/24 | B | Atteints | 15/01/25 |
+| Martin | 20/01/24 | A | Depasses | 20/01/25 |
+
+### Alerte echeance
+
+```excel
+=SI(E2-AUJOURDHUI()<30;"A planifier";"OK")
+```
+
+## Recrutement
+
+### Suivi des candidatures
+
+| Poste | Candidat | Date | Etape | Statut |
+|-------|----------|------|-------|--------|
+| Commercial | Durand | 01/02 | Entretien 2 | En cours |
+| Technicien | Petit | 05/02 | Test | En attente |
+
+### Pipeline recrutement
+
+```excel
+=NB.SI(Recrutement[Etape];"CV recu")
+=NB.SI(Recrutement[Etape];"Entretien 1")
+=NB.SI(Recrutement[Statut];"Embauche")
+```
+
+## Organigramme
+
+### Tableau hierarchique
+
+| Salarie | Manager | Service | Niveau |
+|---------|---------|---------|--------|
+| Dupont | Martin | Commercial | N-1 |
+| Martin | Directeur | Direction | N |
+
+### Calcul des equipes
+
+```excel
+=NB.SI(Salaries[Manager];"Martin")    ' Taille equipe
+```
+
+## Masse salariale
+
+### Suivi mensuel
+
+| Mois | Brut | Charges | Cout total |
+|------|------|---------|------------|
+| Jan | 150 000 | 75 000 | 225 000 |
+| Fev | 152 000 | 76 000 | 228 000 |
+
+### Analyse
+
+```excel
+=SOMME(Salaries[Brut])                ' Masse salariale
+=MOYENNE(Salaries[Brut])              ' Salaire moyen
+```
+
+## Indicateurs RH
+
+### Tableau de bord
+
+| KPI | Valeur | Objectif |
+|-----|--------|----------|
+| Effectif | 120 | 125 |
+| Turnover | 8% | 10% |
+| Absenteisme | 4% | 5% |
+| Formation | 2% MS | 2% |
+
+### Formules KPI
+
+```excel
+=NB.SI(Salaries[Statut];"Actif")                    ' Effectif
+=(Departs/Effectif_moyen)*100                       ' Turnover
+=(Jours_absence/Jours_theoriques)*100               ' Absenteisme
+```
+
+## Pyramide des ages
+
+### Tableau par tranche
+
+| Tranche | H | F | Total | % |
+|---------|---|---|-------|---|
+| 18-25 | 5 | 4 | 9 | 7.5% |
+| 26-35 | 20 | 18 | 38 | 31.7% |
+| 36-45 | 25 | 22 | 47 | 39.2% |
+| 46-55 | 10 | 8 | 18 | 15% |
+| 56+ | 5 | 3 | 8 | 6.6% |
+
+### Formule de comptage
+
+```excel
+=NB.SI.ENS(Salaries[Age];">="&A2;Salaries[Age];"<"&B2;Salaries[Sexe];"H")
+```
+
+## GPEC
+
+### Matrice des competences
+
+| Competence | Niveau requis | Niveau actuel | Ecart |
+|------------|---------------|---------------|-------|
+| Excel | 3 | 2 | -1 |
+| Anglais | 2 | 3 | +1 |
+
+### Plan d'action
+
+```excel
+=SI(D2<0;"Formation requise";"OK")
+```
+
+## Reporting RH
+
+### Bilan social
+
+| Element | N-1 | N | Evolution |
+|---------|-----|---|-----------|
+| Effectif | 115 | 120 | +4.3% |
+| Masse salariale | 2.5M | 2.7M | +8% |
+| Turnover | 12% | 8% | -4pts |
+
+### Graphiques
+
+1. Evolution effectifs (courbe)
+2. Repartition H/F (camembert)
+3. Pyramide des ages (histogramme)
+
+## Protection des donnees
+
+### Securite
+
+1. **Revision** > **Proteger la feuille**
+2. Masquez les colonnes sensibles (salaires)
+3. Limitez l'acces aux fichiers
+
+### RGPD
+
+- Registre des traitements
+- Conservation limitee
+- Droit d'acces des salaries
+
+## Bonnes pratiques
+
+1. **Centralisez** les donnees RH
+2. **Actualisez** regulierement
+3. **Securisez** les informations
+4. **Automatisez** les calculs
+5. **Documentez** les processus
+
+[Decouvrir nos formations Excel](/formations-excel)

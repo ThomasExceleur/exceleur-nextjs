@@ -1,0 +1,219 @@
+---
+title: "Excel Tableau de Bord RH : Guide Complet"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Creez un tableau de bord RH efficace dans Excel pour suivre vos indicateurs cles."
+description: "Guide pour creer un tableau de bord RH dans Excel. KPI, effectifs, absences et reporting."
+category: "RH"
+categories: ["RH", "Analyse de donnees Excel"]
+tags: ["RH", "Tableau de bord", "Effectifs", "KPI"]
+---
+
+# Tableau de Bord RH dans Excel
+
+Un tableau de bord RH permet de piloter efficacement les ressources humaines de votre entreprise.
+
+## KPI RH essentiels
+
+### Effectifs
+
+| KPI | Description |
+|-----|-------------|
+| Effectif total | Nombre de salaries |
+| ETP | Equivalent temps plein |
+| Repartition H/F | Parite |
+| Pyramide des ages | Structure demographique |
+
+### Absences et conges
+
+| KPI | Calcul |
+|-----|--------|
+| Taux d'absenteisme | Jours absence / Jours theoriques |
+| Solde CP moyen | Moyenne des conges restants |
+| Jours maladie | Total par periode |
+
+### Turnover
+
+| KPI | Calcul |
+|-----|--------|
+| Taux de turnover | (Entrees + Sorties) / 2 / Effectif moyen |
+| Anciennete moyenne | Moyenne des anciennetes |
+| Retention | 1 - Turnover |
+
+## Tableau des effectifs
+
+### Structure
+
+| Service | CDI | CDD | Interim | Total | ETP |
+|---------|-----|-----|---------|-------|-----|
+| Commercial | 10 | 2 | 1 | 13 | 12.5 |
+| Production | 25 | 5 | 3 | 33 | 31 |
+
+### Formules
+
+```excel
+=SOMME(B2:D2)              ' Total
+=NB.SI(Salaries[Service];"Commercial")  ' Comptage
+=SOMME.SI(Salaries[Service];"Commercial";Salaries[ETP])
+```
+
+## Suivi des absences
+
+### Tableau d'absences
+
+| Salarie | Type | Debut | Fin | Jours |
+|---------|------|-------|-----|-------|
+| Dupont | Maladie | 10/01 | 15/01 | 6 |
+
+### Calcul des jours
+
+```excel
+=JOURS.OUVRES(C2;D2)       ' Jours ouvres
+=NB.JOURS.OUVRES(C2;D2)    ' Alternative
+```
+
+### Taux d'absenteisme
+
+```excel
+=SOMME(Absences[Jours]) / (Effectif * Jours_ouvres_mois) * 100
+```
+
+## Pyramide des ages
+
+### Tranches d'age
+
+| Tranche | Hommes | Femmes |
+|---------|--------|--------|
+| 18-25 | 5 | 3 |
+| 26-35 | 15 | 12 |
+| 36-45 | 20 | 18 |
+| 46-55 | 10 | 8 |
+| 56+ | 5 | 4 |
+
+### Formule par tranche
+
+```excel
+=NB.SI.ENS(Salaries[Age];">="&A2;Salaries[Age];"<"&B2;Salaries[Sexe];"H")
+```
+
+### Graphique pyramide
+
+1. Mettez les hommes en negatif
+2. Creez un histogramme groupe horizontal
+3. Inversez l'axe des abscisses pour les hommes
+
+## Suivi du turnover
+
+### Tableau mensuel
+
+| Mois | Entrees | Sorties | Effectif | Turnover |
+|------|---------|---------|----------|----------|
+| Jan | 5 | 2 | 100 | 3.5% |
+
+### Formule turnover
+
+```excel
+=((B2+C2)/2) / D2 * 100
+```
+
+## Masse salariale
+
+### Par service
+
+```excel
+=SOMME.SI(Salaries[Service];"Commercial";Salaries[Salaire_brut])
+```
+
+### Evolution
+
+| Mois | Masse salariale | Evolution |
+|------|-----------------|-----------|
+| Jan | 250 000 | - |
+| Fev | 255 000 | +2% |
+
+## Formation
+
+### Indicateurs formation
+
+| KPI | Valeur |
+|-----|--------|
+| Heures de formation | 500 |
+| Budget formation | 50 000 |
+| Taux de formation | 80% des salaries |
+
+### Suivi par salarie
+
+```excel
+=SOMME.SI(Formations[Salarie];A2;Formations[Heures])
+```
+
+## Graphiques RH
+
+### Repartition par service
+
+1. Camembert des effectifs par service
+2. Ajoutez les pourcentages
+
+### Evolution effectifs
+
+1. Courbe de l'evolution mensuelle
+2. Ajoutez les entrees/sorties en barres
+
+### Absenteisme par mois
+
+1. Histogramme du taux mensuel
+2. Ligne de tendance
+
+## Mise en forme conditionnelle
+
+### Alertes absenteisme
+
+```excel
+Si taux > 5% : Rouge
+Si taux > 3% : Orange
+Sinon : Vert
+```
+
+### Alertes turnover
+
+```excel
+Si turnover > 15% : Rouge
+Si turnover > 10% : Orange
+Sinon : Vert
+```
+
+## Automatisation
+
+### Actualisation des ages
+
+```excel
+=ENT((AUJOURDHUI()-Date_naissance)/365.25)
+```
+
+### Calcul anciennete
+
+```excel
+=DATEDIF(Date_entree;AUJOURDHUI();"Y")&" ans et "&DATEDIF(Date_entree;AUJOURDHUI();"YM")&" mois"
+```
+
+## Reporting
+
+### Rapport mensuel
+
+1. Page de synthese avec KPI cles
+2. Detail par service
+3. Graphiques de tendance
+
+### Export
+
+1. **Fichier** > **Exporter** > **PDF**
+2. Selectionnez la plage d'impression
+
+## Bonnes pratiques
+
+1. **Actualisez** les donnees regulierement
+2. **Verifiez** la coherence des donnees
+3. **Securisez** les informations personnelles
+4. **Historisez** les indicateurs
+
+[Decouvrir nos formations Excel](/formations-excel)

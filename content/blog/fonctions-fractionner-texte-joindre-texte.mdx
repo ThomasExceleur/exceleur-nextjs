@@ -1,0 +1,165 @@
+---
+title: "FRACTIONNER.TEXTE et JOINDRE.TEXTE dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maitrisez les fonctions de manipulation de texte dans Excel 365."
+description: "Guide FRACTIONNER.TEXTE et JOINDRE.TEXTE dans Excel 365."
+category: "Formules Excel"
+categories: ["Formules Excel", "Excel 365"]
+tags: ["FRACTIONNER.TEXTE", "JOINDRE.TEXTE", "Texte", "Excel 365"]
+---
+
+# FRACTIONNER.TEXTE et JOINDRE.TEXTE
+
+Ces fonctions Excel 365 simplifient la manipulation de texte.
+
+## FRACTIONNER.TEXTE
+
+### Syntaxe
+
+```excel
+=FRACTIONNER.TEXTE(texte;delimiteur;[lignes_ou_colonnes])
+```
+
+### Arguments
+
+| Argument | Description |
+|----------|-------------|
+| texte | Le texte a fractionner |
+| delimiteur | Le caractere separateur |
+| lignes_ou_colonnes | FAUX = colonnes (defaut), VRAI = lignes |
+
+### Exemple simple
+
+```excel
+=FRACTIONNER.TEXTE("A;B;C";";")
+```
+
+Resultat : A | B | C (dans 3 colonnes)
+
+### En lignes
+
+```excel
+=FRACTIONNER.TEXTE("A;B;C";";";VRAI)
+```
+
+Resultat en 3 lignes.
+
+## JOINDRE.TEXTE
+
+### Syntaxe
+
+```excel
+=JOINDRE.TEXTE(delimiteur;ignorer_vides;texte1;[texte2];...)
+```
+
+### Arguments
+
+| Argument | Description |
+|----------|-------------|
+| delimiteur | Le separateur |
+| ignorer_vides | VRAI pour ignorer les vides |
+| texte1... | Les textes a joindre |
+
+### Exemple simple
+
+```excel
+=JOINDRE.TEXTE("; ";VRAI;A1:A5)
+```
+
+Resultat : "A; B; C; D; E"
+
+## Cas pratiques
+
+### Separer nom complet
+
+```excel
+=FRACTIONNER.TEXTE(A1;" ")
+```
+
+"Jean Dupont" devient : Jean | Dupont
+
+### Creer une liste
+
+```excel
+=JOINDRE.TEXTE(", ";VRAI;B2:B10)
+```
+
+### Adresse sur une ligne
+
+```excel
+=JOINDRE.TEXTE(", ";VRAI;Adresse;Ville;CodePostal)
+```
+
+## Combinaisons
+
+### Inverser prenom/nom
+
+```excel
+=LET(
+  parts;FRACTIONNER.TEXTE(A1;" ");
+  JOINDRE.TEXTE(" ";VRAI;INDEX(parts;;2);INDEX(parts;;1))
+)
+```
+
+### Nettoyer et joindre
+
+```excel
+=JOINDRE.TEXTE("-";VRAI;SUPPRESPACE(FRACTIONNER.TEXTE(A1;" ")))
+```
+
+## Comparaison avec anciennes methodes
+
+### Avant (pour separer)
+
+```excel
+=GAUCHE(A1;CHERCHE(" ";A1)-1)
+=DROITE(A1;NBCAR(A1)-CHERCHE(" ";A1))
+```
+
+### Avec FRACTIONNER.TEXTE
+
+```excel
+=FRACTIONNER.TEXTE(A1;" ")
+```
+
+Beaucoup plus simple.
+
+### Avant (pour joindre)
+
+```excel
+=A1&", "&B1&", "&C1
+```
+
+### Avec JOINDRE.TEXTE
+
+```excel
+=JOINDRE.TEXTE(", ";VRAI;A1:C1)
+```
+
+Gere automatiquement les vides.
+
+## Astuces
+
+### Plusieurs delimiteurs
+
+```excel
+=FRACTIONNER.TEXTE(SUBSTITUE(A1;",";" ");" ")
+```
+
+Remplace les virgules par des espaces puis fractionne.
+
+### Retour a la ligne comme delimiteur
+
+```excel
+=FRACTIONNER.TEXTE(A1;CAR(10))
+```
+
+## Bonnes pratiques
+
+1. **Verifiez** le delimiteur correct
+2. **Utilisez** VRAI pour ignorer les vides
+3. **Combinez** avec LET pour la lisibilite
+4. **Testez** sur differents cas
+
+[Decouvrir nos formations Excel](/formations-excel)

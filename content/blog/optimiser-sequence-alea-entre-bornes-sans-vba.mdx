@@ -1,0 +1,162 @@
+---
+title: "Optimiser SEQUENCE et ALEA.ENTRE.BORNES sans VBA"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Creez des donnees aleatoires structurees sans VBA."
+description: "Guide pour utiliser SEQUENCE et ALEA.ENTRE.BORNES sans VBA."
+category: "Excel 365"
+categories: ["Excel 365", "Formules Excel"]
+tags: ["SEQUENCE", "ALEA", "Aleatoire", "Sans VBA"]
+---
+
+# SEQUENCE et ALEA.ENTRE.BORNES sans VBA
+
+Generez des donnees aleatoires structurees avec des formules.
+
+## SEQUENCE
+
+### Syntaxe
+
+```excel
+=SEQUENCE(lignes;[colonnes];[debut];[pas])
+```
+
+### Exemples
+
+```excel
+=SEQUENCE(10)           ' 1 a 10
+=SEQUENCE(5;3)          ' Matrice 5x3
+=SEQUENCE(10;1;0;5)     ' 0, 5, 10, 15...
+=SEQUENCE(12;1;100;-10) ' 100, 90, 80...
+```
+
+## ALEA.ENTRE.BORNES
+
+### Syntaxe
+
+```excel
+=ALEA.ENTRE.BORNES(min;max)
+```
+
+### Exemples
+
+```excel
+=ALEA.ENTRE.BORNES(1;100)    ' Entier entre 1 et 100
+=ALEA.ENTRE.BORNES(10;20)    ' Entier entre 10 et 20
+```
+
+## Combinaisons utiles
+
+### Tableau de nombres aleatoires
+
+```excel
+=ALEA.ENTRE.BORNES(1;100)*SEQUENCE(10;5;1;0)
+```
+
+Attention : les valeurs changent a chaque recalcul.
+
+### Dates aleatoires
+
+```excel
+=ALEA.ENTRE.BORNES(DATE(2024;1;1);DATE(2024;12;31))
+```
+
+### Heures aleatoires
+
+```excel
+=ALEA.ENTRE.BORNES(8;18)+ALEA()/24
+```
+
+## Figer les valeurs aleatoires
+
+### Methode 1 : Copier-valeurs
+
+1. Copiez les cellules
+2. Collage special > Valeurs
+
+### Methode 2 : Mode de calcul manuel
+
+**Formules** > **Options de calcul** > **Manuel**
+
+## Donnees de test
+
+### IDs uniques
+
+```excel
+=SEQUENCE(100;1;1000;1)
+```
+
+IDs de 1000 a 1099.
+
+### Montants aleatoires
+
+```excel
+=ARRONDI(ALEA.ENTRE.BORNES(100;10000)/100;2)*100
+```
+
+Montants entre 100 et 10000, arrondis au centime.
+
+### Dates dans une plage
+
+```excel
+=DATE(2024;1;1)+SEQUENCE(365;1;0;1)*ALEA()
+```
+
+## RANDARRAY (Excel 365)
+
+### Syntaxe
+
+```excel
+=TABLEAU.ALEA(lignes;colonnes;min;max;entier)
+```
+
+### Exemple
+
+```excel
+=TABLEAU.ALEA(10;3;1;100;VRAI)
+```
+
+Matrice 10x3 d'entiers entre 1 et 100.
+
+## Cas pratiques
+
+### Echantillon aleatoire
+
+```excel
+=INDEX(TRIER(HPILE(Donnees;TABLEAU.ALEA(LIGNES(Donnees)));2);SEQUENCE(10);1)
+```
+
+10 elements aleatoires d'une liste.
+
+### Melanger une liste
+
+```excel
+=TRIER(A:A;TABLEAU.ALEA(LIGNES(A:A)))
+```
+
+### Generer des codes
+
+```excel
+=CONCAT("CODE-";SEQUENCE(100;1;1000))
+```
+
+## Performance
+
+### Volatilite
+
+ALEA et ALEA.ENTRE.BORNES sont volatiles (recalcul a chaque modification).
+
+### Optimisation
+
+- Figez les valeurs si possibles
+- Limitez le nombre de cellules
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Figer si possible | Evite les recalculs |
+| Plage raisonnable | Pas trop de cellules |
+| Test | Verifiez la distribution |
+
+[Decouvrir nos formations Excel](/formations-excel)

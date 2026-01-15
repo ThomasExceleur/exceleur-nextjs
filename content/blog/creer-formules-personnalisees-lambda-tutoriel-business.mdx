@@ -1,0 +1,237 @@
+---
+title: "Creer des Formules Personnalisees LAMBDA - Tutoriel Business"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Tutoriel pour creer des fonctions LAMBDA adaptees aux besoins business."
+description: "Tutoriel business pour creer des formules personnalisees avec LAMBDA."
+category: "Excel 365"
+categories: ["Excel 365", "Formules Excel"]
+tags: ["LAMBDA", "Business", "Formules", "Tutoriel"]
+---
+
+# Formules Personnalisees LAMBDA pour le Business
+
+Creez des fonctions metier reutilisables dans toute votre organisation.
+
+## Pourquoi des fonctions metier ?
+
+### Problematique
+
+- Formules complexes copiees-collees
+- Erreurs de transcription
+- Maintenance difficile
+- Formation des equipes
+
+### Solution LAMBDA
+
+Une fonction nommee, testee, documentee et partagee.
+
+## Fonctions Finance
+
+### Calcul de marge brute
+
+```excel
+Nom: FIN_MARGE_BRUTE
+Formule: =LAMBDA(ca;cout_direct;
+  (ca-cout_direct)/ca
+)
+```
+
+Usage : `=FIN_MARGE_BRUTE(100000;60000)` retourne 40%
+
+### Calcul de TVA
+
+```excel
+Nom: FIN_TVA
+Formule: =LAMBDA(montant_ht;taux;
+  LET(
+    tva;montant_ht*taux;
+    ttc;montant_ht+tva;
+    ttc
+  )
+)
+```
+
+### Amortissement lineaire
+
+```excel
+Nom: FIN_AMORT_LINEAIRE
+Formule: =LAMBDA(valeur;duree;annee;
+  SI(annee<=duree;valeur/duree;0)
+)
+```
+
+### ROI
+
+```excel
+Nom: FIN_ROI
+Formule: =LAMBDA(gain;investissement;
+  (gain-investissement)/investissement
+)
+```
+
+## Fonctions RH
+
+### Calcul d'anciennete
+
+```excel
+Nom: RH_ANCIENNETE
+Formule: =LAMBDA(date_embauche;
+  LET(
+    diff;DATEDIF(date_embauche;AUJOURDHUI();"y");
+    diff&" ans"
+  )
+)
+```
+
+### Jours de conges restants
+
+```excel
+Nom: RH_CONGES_RESTANTS
+Formule: =LAMBDA(acquis;pris;
+  acquis-pris
+)
+```
+
+### Prime d'anciennete
+
+```excel
+Nom: RH_PRIME_ANCIENNETE
+Formule: =LAMBDA(salaire;anciennete;
+  LET(
+    taux;SI(anciennete>=10;0,05;SI(anciennete>=5;0,03;SI(anciennete>=2;0,01;0)));
+    salaire*taux
+  )
+)
+```
+
+## Fonctions Ventes
+
+### Commission par paliers
+
+```excel
+Nom: VENTES_COMMISSION
+Formule: =LAMBDA(ca;
+  LET(
+    seuil1;10000;
+    seuil2;50000;
+    SI(ca<=seuil1;ca*0,05;
+      SI(ca<=seuil2;seuil1*0,05+(ca-seuil1)*0,08;
+        seuil1*0,05+(seuil2-seuil1)*0,08+(ca-seuil2)*0,12
+      )
+    )
+  )
+)
+```
+
+### Scoring client
+
+```excel
+Nom: VENTES_SCORE_CLIENT
+Formule: =LAMBDA(ca_annuel;frequence;anciennete;
+  LET(
+    score_ca;MIN(40;ca_annuel/1000);
+    score_freq;MIN(30;frequence*3);
+    score_anc;MIN(30;anciennete*3);
+    score_ca+score_freq+score_anc
+  )
+)
+```
+
+### Remise client
+
+```excel
+Nom: VENTES_REMISE
+Formule: =LAMBDA(montant;type_client;
+  LET(
+    taux;SI(type_client="VIP";0,15;SI(type_client="Premium";0,1;SI(type_client="Standard";0,05;0)));
+    montant*taux
+  )
+)
+```
+
+## Fonctions Logistique
+
+### Delai de livraison
+
+```excel
+Nom: LOG_DELAI_LIVRAISON
+Formule: =LAMBDA(date_commande;jours_ouvres;
+  SERIE.JOUR.OUVRE(date_commande;jours_ouvres)
+)
+```
+
+### Stock de securite
+
+```excel
+Nom: LOG_STOCK_SECURITE
+Formule: =LAMBDA(demande_moy;delai_appro;coef_securite;
+  demande_moy*delai_appro*coef_securite
+)
+```
+
+## Fonctions de texte metier
+
+### Formatage reference produit
+
+```excel
+Nom: TXT_REF_PRODUIT
+Formule: =LAMBDA(categorie;id;
+  MAJUSCULE(GAUCHE(categorie;3))&"-"&TEXTE(id;"0000")
+)
+```
+
+Usage : `=TXT_REF_PRODUIT("Electronique";42)` retourne "ELE-0042"
+
+### Extraction code postal
+
+```excel
+Nom: TXT_CODE_POSTAL
+Formule: =LAMBDA(adresse;
+  LET(
+    pos;EQUIV(1;ESTERREUR(CNUM(STXT(adresse;SEQUENCE(NBCAR(adresse));5)))*1;0);
+    STXT(adresse;pos;5)
+  )
+)
+```
+
+## Deployer les fonctions
+
+### Classeur de reference
+
+1. Creez un classeur "Fonctions_Entreprise.xlsx"
+2. Definissez toutes les fonctions LAMBDA
+3. Partagez sur le reseau ou SharePoint
+
+### Documentation
+
+| Fonction | Description | Parametres | Exemple |
+|----------|-------------|------------|---------|
+| FIN_TVA | Calcule TTC | HT, taux | =FIN_TVA(100;0,2) |
+| ... | ... | ... | ... |
+
+### Formation
+
+Creez un guide d'utilisation pour les equipes.
+
+## Bonnes pratiques business
+
+| Pratique | Description |
+|----------|-------------|
+| Prefixes | FIN_, RH_, VENTES_ |
+| Documentation | Commentaire dans le nom |
+| Tests | Scenarios de test |
+| Version | Suivi des modifications |
+| Validation | Test par un pair |
+
+## Gouvernance
+
+### Qui peut creer des fonctions ?
+
+Definissez un processus de validation.
+
+### Mise a jour
+
+Communiquez les changements aux utilisateurs.
+
+[Decouvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,125 @@
+---
+title: "Erreur #PROPAGATION dans Excel : Que Faire"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Resolvez l'erreur #PROPAGATION dans vos formules Excel 365."
+description: "Guide pour resoudre l'erreur #PROPAGATION dans Excel. Tableaux dynamiques."
+category: "Gestion d'erreurs"
+categories: ["Gestion d'erreurs", "Excel 365"]
+tags: ["#PROPAGATION", "Erreurs", "Tableaux dynamiques", "Depannage"]
+---
+
+# Erreur #PROPAGATION dans Excel
+
+L'erreur #PROPAGATION (ou #SPILL en anglais) est specifique aux tableaux dynamiques Excel 365.
+
+## Qu'est-ce que #PROPAGATION ?
+
+### Definition
+
+Cette erreur apparait quand une formule qui doit retourner plusieurs valeurs ne peut pas s'etendre dans les cellules voisines.
+
+### Cause principale
+
+Les cellules de destination ne sont pas vides.
+
+## Exemple
+
+### La situation
+
+```excel
+=FILTRE(A:A;B:B="Paris")
+```
+
+Cette formule doit afficher plusieurs resultats, mais une cellule en dessous contient deja une valeur.
+
+## Solutions
+
+### Solution 1 : Liberer l'espace
+
+1. Identifiez les cellules bloquantes
+   - Cliquez sur la cellule avec #PROPAGATION
+   - Une bordure bleue montre la zone de propagation
+2. Supprimez ou deplacez le contenu des cellules de la zone
+
+### Solution 2 : Deplacer la formule
+
+Placez votre formule dans une zone avec suffisamment d'espace libre.
+
+### Solution 3 : Limiter les resultats
+
+Utilisez PRENDRE pour limiter le nombre de resultats :
+
+```excel
+=PRENDRE(FILTRE(A:A;B:B="Paris");10)
+```
+
+Retourne uniquement les 10 premiers resultats.
+
+## Identifier les cellules bloquantes
+
+### Methode visuelle
+
+1. Cliquez sur la cellule avec l'erreur
+2. Regardez la bordure bleue pointillee
+3. Les cellules non vides dans cette zone causent l'erreur
+
+### Cellules "invisibles"
+
+Attention aux :
+- Espaces
+- Formules retournant ""
+- Mises en forme sans contenu visible
+
+## Verification
+
+### Formule pour detecter
+
+```excel
+=ESTVIDE(C1)    ' FAUX si la cellule bloque
+```
+
+## Fonctions concernees
+
+Les fonctions de tableaux dynamiques :
+- FILTRE
+- UNIQUE
+- TRIER / TRIERPAR
+- SEQUENCE
+- RECHERCHEX (retour multi-colonnes)
+
+## Prevention
+
+### Bonnes pratiques
+
+1. **Reservez** une zone pour les resultats dynamiques
+2. **Evitez** de placer des donnees sous les formules dynamiques
+3. **Utilisez** des feuilles separees pour les resultats
+4. **Limitez** les resultats avec PRENDRE si necessaire
+
+### Organisation recommandee
+
+| Zone | Usage |
+|------|-------|
+| A:C | Donnees sources |
+| E:G | Resultats dynamiques |
+| I:K | Autres calculs |
+
+## Cas particuliers
+
+### Formule imbriquee
+
+Si une formule imbrique plusieurs fonctions dynamiques, chaque niveau peut causer l'erreur.
+
+### Taille variable
+
+Les resultats dynamiques changent de taille selon les donnees. Prevoyez suffisamment d'espace.
+
+## Bonnes pratiques
+
+1. **Anticipez** la taille maximale des resultats
+2. **Isolez** les zones de tableaux dynamiques
+3. **Utilisez** PRENDRE pour controler la taille
+4. **Nettoyez** les espaces et formules vides
+
+[Decouvrir nos formations Excel](/formations-excel)

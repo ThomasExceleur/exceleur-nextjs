@@ -1,0 +1,216 @@
+---
+title: "Excel Planning de Production : Guide Complet"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Creez un planning de production efficace dans Excel pour optimiser vos operations."
+description: "Guide pour creer un planning de production dans Excel. Gantt, capacite et ordonnancement."
+category: "Productivite"
+categories: ["Productivite", "Modeles"]
+tags: ["Production", "Planning", "Gantt", "Operations"]
+---
+
+# Planning de Production dans Excel
+
+Un planning de production bien concu optimise vos ressources et respecte les delais.
+
+## Elements du planning
+
+### Informations essentielles
+
+| Element | Description |
+|---------|-------------|
+| Ordre de fabrication | Reference OF |
+| Produit | Article a fabriquer |
+| Quantite | Nombre a produire |
+| Date debut | Lancement production |
+| Date fin | Livraison prevue |
+| Statut | Etat de l'OF |
+
+## Structure du tableau
+
+### Tableau des OF
+
+| OF | Produit | Qte | Debut | Fin | Poste | Statut |
+|----|---------|-----|-------|-----|-------|--------|
+| OF001 | Produit A | 100 | 01/01 | 05/01 | Ligne 1 | En cours |
+| OF002 | Produit B | 50 | 02/01 | 04/01 | Ligne 2 | Planifie |
+
+## Calcul des delais
+
+### Duree de production
+
+```excel
+=Quantite / Cadence_horaire / Heures_jour
+```
+
+### Date de fin
+
+```excel
+=Date_debut + Duree_jours - 1
+=JOURS.OUVRES(Date_debut;Duree_jours)    ' Jours ouvres
+```
+
+## Diagramme de Gantt
+
+### Creer la grille
+
+1. Creez des colonnes pour chaque jour
+2. Les lignes representent les OF
+
+### Formule de mise en forme
+
+```excel
+=ET(F$1>=[@Debut];F$1<=[@Fin])
+```
+
+### Mise en forme conditionnelle
+
+1. Selectionnez la grille
+2. **Mise en forme conditionnelle** > **Nouvelle regle**
+3. Utilisez la formule ci-dessus
+4. Appliquez un remplissage colore
+
+## Capacite de production
+
+### Tableau de capacite
+
+| Poste | Capacite/jour | Charge | Dispo |
+|-------|---------------|--------|-------|
+| Ligne 1 | 100 | 80 | 20 |
+| Ligne 2 | 150 | 150 | 0 |
+
+### Calcul de charge
+
+```excel
+=SOMME.SI(Planning[Poste];A2;Planning[Qte])
+```
+
+### Taux d'utilisation
+
+```excel
+=Charge / Capacite
+```
+
+## Ordonnancement
+
+### Regles de priorite
+
+| Regle | Description |
+|-------|-------------|
+| FIFO | Premier arrive, premier servi |
+| Date livraison | Plus proche d'abord |
+| Priorite client | Clients importants d'abord |
+
+### Tri automatique
+
+```excel
+Trier par : Date livraison (croissant)
+Puis par : Priorite (decroissant)
+```
+
+## Suivi de production
+
+### Etats de production
+
+- Planifie
+- Lance
+- En cours
+- Termine
+- En retard
+
+### Mise a jour du statut
+
+```excel
+=SI([@Fin]<AUJOURDHUI();"En retard";
+  SI([@Debut]<=AUJOURDHUI();"En cours";"Planifie"))
+```
+
+## Indicateurs de production
+
+### KPI essentiels
+
+| KPI | Formule |
+|-----|---------|
+| OTD (On Time Delivery) | OF a l'heure / Total OF |
+| TRS | Temps prod / Temps dispo |
+| Taux de rebut | Rebuts / Production totale |
+
+### Calcul OTD
+
+```excel
+=NB.SI.ENS(Planning[Statut];"Termine";Planning[Fin];"<="&Planning[Date livraison]) / NB.SI(Planning[Statut];"Termine")
+```
+
+## Gestion des ressources
+
+### Tableau des ressources
+
+| Ressource | Dispo | Affecte | Reste |
+|-----------|-------|---------|-------|
+| Operateur A | 8h | 6h | 2h |
+| Machine 1 | 8h | 8h | 0h |
+
+### Alerte surcharge
+
+```excel
+=SI(Affecte>Dispo;"SURCHARGE";"OK")
+```
+
+## Matrice de competences
+
+### Structure
+
+| Operateur | Poste 1 | Poste 2 | Poste 3 |
+|-----------|---------|---------|---------|
+| Jean | X | X | |
+| Marie | X | | X |
+
+## Gestion des aleas
+
+### Types d'aleas
+
+| Alea | Impact | Action |
+|------|--------|--------|
+| Panne machine | Retard | Replanifier |
+| Absence | Capacite reduite | Remplacement |
+| Rupture stock | Arret | Commande urgente |
+
+### Journal des aleas
+
+| Date | Type | Description | Impact | Resolution |
+|------|------|-------------|--------|------------|
+| 05/01 | Panne | Machine 1 en panne | 2h arret | Reparation |
+
+## Reporting production
+
+### Rapport journalier
+
+| Element | Prevu | Realise | Ecart |
+|---------|-------|---------|-------|
+| Production | 500 | 480 | -20 |
+| Heures | 8h | 8.5h | +0.5h |
+| Rebuts | 10 | 15 | +5 |
+
+### Graphique de suivi
+
+1. Courbe production prevue vs realisee
+2. Histogramme des ecarts
+
+## Planning glissant
+
+### Structure
+
+Mettez a jour quotidiennement :
+- J : Realise
+- J+1 a J+5 : Planifie ferme
+- J+6 a J+10 : Previsionnel
+
+## Bonnes pratiques
+
+1. **Actualisez** quotidiennement
+2. **Anticipez** les goulots d'etranglement
+3. **Communiquez** les changements
+4. **Analysez** les ecarts
+5. **Optimisez** en continu
+
+[Decouvrir nos formations Excel](/formations-excel)

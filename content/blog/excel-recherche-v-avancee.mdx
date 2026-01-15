@@ -1,0 +1,153 @@
+---
+title: "RECHERCHEV Avancee : Techniques Professionnelles"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maitrisez les techniques avancees de RECHERCHEV dans Excel."
+description: "Guide avance de RECHERCHEV. Recherche multi-criteres, 2D et astuces."
+category: "Formules Excel"
+categories: ["Formules Excel", "Recherche"]
+tags: ["RECHERCHEV", "Avance", "Recherche", "Formules"]
+---
+
+# RECHERCHEV Avancee
+
+Techniques professionnelles pour aller au-dela de la recherche simple.
+
+## Rappel de la syntaxe
+
+```excel
+=RECHERCHEV(valeur;tableau;index;[correspondance])
+```
+
+## Recherche multi-criteres
+
+### Probleme
+
+Rechercher avec plusieurs conditions (ex: Produit ET Region).
+
+### Solution : Colonne auxiliaire
+
+1. Creez une colonne concatenant les criteres :
+```excel
+=A2&B2
+```
+
+2. Utilisez RECHERCHEV sur cette colonne :
+```excel
+=RECHERCHEV(Produit&Region;ColonneAux:D;3;FAUX)
+```
+
+### Solution Excel 365 : FILTRE
+
+```excel
+=FILTRE(D:D;(A:A=Produit)*(B:B=Region))
+```
+
+## Recherche a gauche
+
+### Probleme
+
+RECHERCHEV ne peut pas retourner une valeur a gauche de la cle.
+
+### Solution : INDEX + EQUIV
+
+```excel
+=INDEX(A:A;EQUIV(E1;C:C;0))
+```
+
+Recherche dans C, retourne la valeur dans A.
+
+### Solution : RECHERCHEX
+
+```excel
+=RECHERCHEX(E1;C:C;A:A)
+```
+
+Plus simple et plus lisible.
+
+## Recherche avec valeur approchante
+
+### Tranches de prix
+
+Pour trouver une remise selon un montant :
+
+| Montant | Remise |
+|---------|--------|
+| 0 | 0% |
+| 100 | 5% |
+| 500 | 10% |
+| 1000 | 15% |
+
+```excel
+=RECHERCHEV(Montant;A:B;2;VRAI)
+```
+
+Le dernier argument VRAI permet la correspondance approchante.
+
+## Recherche avec caracteres joker
+
+### Recherche partielle
+
+```excel
+=RECHERCHEV("*Paris*";A:B;2;FAUX)
+```
+
+Trouve toute cellule contenant "Paris".
+
+### Caracteres disponibles
+
+| Caractere | Signification |
+|-----------|---------------|
+| * | N'importe quels caracteres |
+| ? | Un seul caractere |
+| ~ | Caractere d'echappement |
+
+## Gestion des erreurs
+
+### SIERREUR obligatoire
+
+```excel
+=SIERREUR(RECHERCHEV(A1;B:C;2;FAUX);"Non trouve")
+```
+
+### Verification prealable
+
+```excel
+=SI(ESTNA(EQUIV(A1;B:B;0));"N/A";RECHERCHEV(A1;B:C;2;FAUX))
+```
+
+## Recherche bidimensionnelle
+
+### Avec INDEX + EQUIV
+
+```excel
+=INDEX(B2:E10;EQUIV(Ligne;A2:A10;0);EQUIV(Colonne;B1:E1;0))
+```
+
+Trouve la valeur a l'intersection d'une ligne et d'une colonne.
+
+## Optimisation des performances
+
+### Plages exactes
+
+```excel
+' Moins performant
+=RECHERCHEV(A1;B:C;2;FAUX)
+
+' Plus performant
+=RECHERCHEV(A1;B2:C1000;2;FAUX)
+```
+
+### Tri pour VRAI
+
+Si vous utilisez VRAI, triez les donnees par ordre croissant.
+
+## Migration vers RECHERCHEX
+
+| RECHERCHEV | RECHERCHEX |
+|------------|------------|
+| `=RECHERCHEV(A1;B:C;2;FAUX)` | `=RECHERCHEX(A1;B:B;C:C)` |
+| Recherche a droite seulement | Recherche dans toutes les directions |
+| Erreur si non trouve | Valeur par defaut possible |
+
+[Decouvrir nos formations Excel](/formations-excel)

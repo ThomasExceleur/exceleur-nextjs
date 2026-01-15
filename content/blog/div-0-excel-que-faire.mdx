@@ -1,0 +1,129 @@
+---
+title: "Erreur #DIV/0! dans Excel : Que Faire"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Comprenez et corrigez l'erreur #DIV/0! dans vos formules Excel."
+description: "Guide pour resoudre l'erreur #DIV/0! dans Excel. Division par zero."
+category: "Gestion d'erreurs"
+categories: ["Gestion d'erreurs", "Formules Excel"]
+tags: ["#DIV/0!", "Erreurs", "Division", "Depannage"]
+---
+
+# Erreur #DIV/0! dans Excel
+
+L'erreur #DIV/0! se produit lors d'une division par zero ou une cellule vide.
+
+## Cause principale
+
+### Division par zero
+
+```excel
+=10/0           ' Erreur #DIV/0!
+=A1/B1          ' Erreur si B1 = 0 ou vide
+```
+
+### Cellule vide au denominateur
+
+Excel traite les cellules vides comme zero dans les divisions.
+
+## Solutions
+
+### Solution 1 : Condition SI
+
+```excel
+=SI(B1=0;0;A1/B1)
+```
+
+Retourne 0 si le denominateur est zero.
+
+### Solution 2 : SIERREUR
+
+```excel
+=SIERREUR(A1/B1;0)
+```
+
+Gere toutes les erreurs, pas seulement #DIV/0!.
+
+### Solution 3 : SI avec message
+
+```excel
+=SI(B1=0;"Division impossible";A1/B1)
+```
+
+### Solution 4 : Cellule vide
+
+```excel
+=SI(B1=0;"";A1/B1)
+```
+
+Laisse la cellule vide au lieu d'afficher une erreur.
+
+## Cas avec MOYENNE
+
+### Probleme
+
+```excel
+=MOYENNE(A1:A10)    ' Erreur si toutes les cellules sont vides
+```
+
+### Solution
+
+```excel
+=SIERREUR(MOYENNE(A1:A10);0)
+```
+
+## Cas avec pourcentages
+
+### Calcul de taux de variation
+
+```excel
+' Probleme si ancienne valeur = 0
+=(Nouveau-Ancien)/Ancien
+
+' Solution
+=SI(Ancien=0;0;(Nouveau-Ancien)/Ancien)
+```
+
+## Formules robustes
+
+### Division securisee
+
+```excel
+=SI(OU(B1=0;ESTVIDE(B1));0;A1/B1)
+```
+
+### Avec valeur alternative
+
+```excel
+=SIERREUR(A1/B1;"N/A")
+```
+
+## Prevention
+
+### Validation des donnees
+
+1. Selectionnez la colonne des denominateurs
+2. **Donnees** > **Validation des donnees**
+3. Critere : Nombre superieur a 0
+
+### Mise en forme conditionnelle
+
+Colorez les cellules contenant zero pour les reperer.
+
+## Tableau des solutions
+
+| Situation | Formule |
+|-----------|---------|
+| Retourner 0 | `=SI(B1=0;0;A1/B1)` |
+| Retourner vide | `=SI(B1=0;"";A1/B1)` |
+| Message | `=SI(B1=0;"Erreur";A1/B1)` |
+| Universel | `=SIERREUR(A1/B1;0)` |
+
+## Bonnes pratiques
+
+1. **Anticipez** les divisions par zero
+2. **Utilisez** SIERREUR systematiquement
+3. **Validez** les donnees d'entree
+4. **Documentez** le comportement attendu
+
+[Decouvrir nos formations Excel](/formations-excel)

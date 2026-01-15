@@ -1,0 +1,81 @@
+---
+title: "Propagation Excel : Que Faire"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Resolvez l'erreur de propagation dans Excel."
+description: "Guide pour resoudre l'erreur de propagation dans Excel 365."
+category: "Gestion d'erreurs"
+categories: ["Gestion d'erreurs", "Excel 365"]
+tags: ["Propagation", "Erreur", "Spill", "Excel"]
+---
+
+# Erreur de Propagation (Spill)
+
+Comprendre et resoudre #PROPAGATION!
+
+## Qu'est-ce que c'est ?
+
+### Definition
+
+L'erreur #PROPAGATION! (ou #SPILL!) apparait quand une formule de tableau dynamique ne peut pas s'etendre.
+
+## Cause principale
+
+### Zone bloquee
+
+Des cellules non vides bloquent l'expansion du resultat.
+
+## Solution
+
+### Liberez l'espace
+
+1. Identifiez les cellules bloquantes
+2. Supprimez ou deplacez leur contenu
+3. La formule se propage
+
+## Identifier le blocage
+
+### Methode
+
+1. Cliquez sur la cellule d'erreur
+2. La zone de propagation s'affiche en bleu
+3. Les cellules bloquantes sont visibles
+
+## Formules concernees
+
+### Tableaux dynamiques
+
+| Fonction | Propagation |
+|----------|-------------|
+| FILTRE | Oui |
+| UNIQUE | Oui |
+| TRIER | Oui |
+| SEQUENCE | Oui |
+
+## Prevention
+
+### Planifiez l'espace
+
+Laissez de l'espace sous/a droite des formules dynamiques.
+
+### Feuille dediee
+
+Mettez les formules dynamiques sur une feuille separee.
+
+## Controler la propagation
+
+### SIERREUR
+
+```excel
+=SIERREUR(FILTRE(...);"Pas de resultat")
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Espace | Prevoyez la zone |
+| Organisation | Feuilles dediees |
+| Verification | Testez l'expansion |
+
+[Decouvrir nos formations Excel](/formations-excel)

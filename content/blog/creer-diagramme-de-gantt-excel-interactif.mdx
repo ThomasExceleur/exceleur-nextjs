@@ -1,0 +1,194 @@
+---
+title: "Creer un Diagramme de Gantt Interactif dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Creez un diagramme de Gantt interactif avec filtres et mise a jour dynamique."
+description: "Guide pour creer un diagramme de Gantt interactif dans Excel."
+category: "Graphiques"
+categories: ["Graphiques", "Visualisation"]
+tags: ["Gantt", "Interactif", "Dynamique", "Graphique"]
+---
+
+# Diagramme de Gantt Interactif
+
+Ajoutez de l'interactivite a votre diagramme de Gantt Excel.
+
+## Elements interactifs
+
+### Ce que nous allons creer
+
+- Filtres par responsable
+- Selection de periode
+- Mise en evidence automatique
+- Indicateurs de progression
+
+## Preparer les donnees
+
+### Structure du tableau
+
+| Tache | Responsable | Debut | Fin | Progression | Statut |
+|-------|-------------|-------|-----|-------------|--------|
+| Tache 1 | Alice | 01/01 | 10/01 | 100% | Termine |
+| Tache 2 | Bob | 05/01 | 20/01 | 60% | En cours |
+| Tache 3 | Alice | 15/01 | 25/01 | 0% | A faire |
+
+### Convertir en tableau
+
+**Ctrl+T** pour beneficier des fonctionnalites de tableau.
+
+## Ajouter des segments
+
+### Etapes
+
+1. Cliquez dans le tableau
+2. **Insertion** > **Segment**
+3. Selectionnez : Responsable, Statut
+
+### Positionnement
+
+Placez les segments a cote du graphique pour un acces facile.
+
+## Creer le Gantt dynamique
+
+### Base du graphique
+
+1. Selectionnez Taches, Debut, Duree
+2. **Insertion** > **Barres empilees**
+3. Masquez la serie de debut
+
+### Liaison avec le tableau
+
+Le graphique se met a jour automatiquement quand les segments filtrent.
+
+## Barre de progression
+
+### Ajouter la progression visuelle
+
+1. Creez une colonne "Progression_affichee"
+2. Formule : `=[@Duree]*[@Progression]`
+3. Ajoutez cette serie au graphique
+4. Superposez sur la barre principale
+
+### Style
+
+- Barre totale : gris clair
+- Progression : couleur vive
+
+## Indicateurs visuels
+
+### Mise en forme conditionnelle
+
+Pour le tableau source :
+
+| Condition | Format |
+|-----------|--------|
+| Statut = "Termine" | Fond vert |
+| Statut = "En retard" | Fond rouge |
+| Progression > 75% | Icone check |
+
+### Barre de donnees
+
+Ajoutez une barre de donnees sur la colonne Progression.
+
+## Ligne de date actuelle
+
+### Creer la ligne
+
+1. Ajoutez une serie avec une seule valeur
+2. Valeur = `AUJOURDHUI() - Date_debut_projet`
+3. Formatez en ligne verticale
+
+### Style recommande
+
+- Ligne rouge pointillee
+- Epaisseur : 2 pt
+- Etiquette : "Aujourd'hui"
+
+## Selection de periode
+
+### Liste deroulante pour la vue
+
+1. Creez une liste : "Tout", "Ce mois", "Cette semaine"
+2. Validation de donnees sur une cellule
+3. Filtrez les donnees selon la selection
+
+### Formule de filtre
+
+```excel
+=FILTRE(Donnees;
+  SI(Selection="Tout";1;
+    SI(Selection="Ce mois";MOIS(Donnees[Debut])=MOIS(AUJOURDHUI());
+      Donnees[Debut]>=AUJOURDHUI()-7
+    )
+  )
+)
+```
+
+## Tableau de bord associe
+
+### KPI a afficher
+
+| KPI | Formule |
+|-----|---------|
+| Taches totales | `=LIGNES(Tableau)` |
+| Terminees | `=NB.SI(Statut;"Termine")` |
+| En retard | `=NB.SI(Statut;"En retard")` |
+| Avancement global | `=MOYENNE(Progression)` |
+
+### Indicateurs visuels
+
+Utilisez des jauge ou des icones pour les KPI.
+
+## Navigation clavier
+
+### Activer les segments
+
+Cliquez sur un segment puis utilisez les fleches pour naviguer.
+
+### Raccourcis utiles
+
+| Raccourci | Action |
+|-----------|--------|
+| Alt+F5 | Actualiser |
+| Ctrl+Shift+L | Filtres |
+
+## Responsivite
+
+### Ajuster pour l'ecran
+
+1. Utilisez des cellules fusionnees pour le titre
+2. Dimensionnez le graphique proportionnellement
+3. Testez sur differentes resolutions
+
+## Export interactif
+
+### PDF avec segments
+
+Le PDF capture l'etat filtre actuel.
+
+### Partage Excel
+
+Les segments fonctionnent a l'ouverture du fichier.
+
+## Ameliorations possibles
+
+### Avec VBA
+
+- Bouton "Aujourd'hui" pour recentrer
+- Animation de progression
+- Rappels automatiques
+
+### Avec Power BI
+
+Pour des interactions plus avancees, considerez Power BI.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Segments clairs | Labels explicites |
+| Couleurs coherentes | Meme code couleur |
+| Actualisation | Date visible |
+| Documentation | Mode d'emploi |
+
+[Decouvrir nos formations Excel](/formations-excel)

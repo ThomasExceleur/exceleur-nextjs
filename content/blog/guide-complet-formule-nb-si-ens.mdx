@@ -1,0 +1,89 @@
+---
+title: "Guide Complet : Formule NB.SI.ENS Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maitrisez NB.SI.ENS pour compter avec plusieurs criteres."
+description: "Guide complet sur la fonction NB.SI.ENS pour compter selon plusieurs conditions dans Excel."
+category: "Fonctions"
+categories: ["Fonctions", "Statistiques"]
+tags: ["NB.SI.ENS", "Compter", "Multi-criteres", "Excel"]
+---
+
+# Guide Complet NB.SI.ENS
+
+Comptez avec plusieurs criteres simultanement.
+
+## Syntaxe
+
+```excel
+=NB.SI.ENS(plage_critere1;critere1;[plage_critere2;critere2];...)
+```
+
+## Exemples pratiques
+
+### Deux criteres
+
+```excel
+=NB.SI.ENS(A:A;"Paris";B:B;">1000")
+```
+
+Compte les lignes ou A = "Paris" ET B > 1000.
+
+### Trois criteres et plus
+
+```excel
+=NB.SI.ENS(A:A;"France";B:B;"2024";C:C;"Valide")
+```
+
+## Operateurs supportes
+
+| Operateur | Exemple | Signification |
+|-----------|---------|---------------|
+| `=` | `"=Paris"` | Egal a |
+| `>` | `">100"` | Superieur a |
+| `<` | `"<50"` | Inferieur a |
+| `<>` | `"<>0"` | Different de |
+| `>=` | `">=2024"` | Superieur ou egal |
+
+## Avec references
+
+### Reference cellule
+
+```excel
+=NB.SI.ENS(A:A;E1;B:B;">"&F1)
+```
+
+### Jokers
+
+| Joker | Signification |
+|-------|---------------|
+| `*` | N'importe quelle sequence |
+| `?` | Un caractere quelconque |
+
+```excel
+=NB.SI.ENS(A:A;"Paris*")
+```
+
+## Cas d'usage
+
+### RH
+
+Compter les employes par departement et statut.
+
+### Ventes
+
+Compter les transactions par region et periode.
+
+### Inventaire
+
+Compter les produits par categorie et stock.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Plages entieres | Utilisez A:A pour auto-expansion |
+| Coherence | Memes tailles de plages |
+| Performance | Limitez les plages si fichier lourd |
+
+[Decouvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,121 @@
+---
+title: "Erreur #N/A dans Excel : Comment la Resoudre"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Comprenez et corrigez l'erreur #N/A dans vos formules Excel."
+description: "Guide pour resoudre l'erreur #N/A dans Excel. Causes et solutions."
+category: "Gestion d'erreurs"
+categories: ["Gestion d'erreurs", "Formules Excel"]
+tags: ["#N/A", "Erreurs", "RECHERCHEV", "Depannage"]
+---
+
+# Erreur #N/A dans Excel
+
+L'erreur #N/A signifie "Non Disponible" - la valeur recherchee n'a pas ete trouvee.
+
+## Causes principales
+
+### 1. Valeur absente dans RECHERCHEV
+
+```excel
+=RECHERCHEV("ABC";A:B;2;FAUX)
+```
+
+Si "ABC" n'existe pas dans la colonne A, vous obtenez #N/A.
+
+### 2. Espaces ou caracteres invisibles
+
+"Paris" et "Paris " (avec espace) sont differents.
+
+### 3. Format de donnees different
+
+Le nombre 100 et le texte "100" ne correspondent pas.
+
+### 4. Plage incorrecte
+
+La valeur cherchee est hors de la plage specifiee.
+
+## Solutions
+
+### Solution 1 : SIERREUR
+
+```excel
+=SIERREUR(RECHERCHEV(A1;B:C;2;FAUX);"Non trouve")
+```
+
+Affiche "Non trouve" au lieu de #N/A.
+
+### Solution 2 : SI.NON.DISP
+
+```excel
+=SI.NON.DISP(RECHERCHEV(A1;B:C;2;FAUX);0)
+```
+
+Specifique aux erreurs #N/A.
+
+### Solution 3 : Nettoyer les donnees
+
+```excel
+=RECHERCHEV(SUPPRESPACE(A1);B:C;2;FAUX)
+```
+
+Supprime les espaces avant la recherche.
+
+### Solution 4 : Uniformiser le format
+
+```excel
+=RECHERCHEV(TEXTE(A1;"0");B:C;2;FAUX)
+```
+
+Convertit en texte avant recherche.
+
+## Verification pre-recherche
+
+### Verifier si la valeur existe
+
+```excel
+=SI(ESTNA(EQUIV(A1;B:B;0));"Non existe";"Existe")
+```
+
+## RECHERCHEX : Meilleure alternative
+
+### Gestion native des erreurs
+
+```excel
+=RECHERCHEX(A1;B:B;C:C;"Non trouve")
+```
+
+Le 4e argument definit la valeur si non trouve.
+
+## Diagnostic
+
+### Identifier la cause
+
+1. **Verifiez** la valeur recherchee existe
+2. **Comparez** les formats (texte vs nombre)
+3. **Supprimez** les espaces avec SUPPRESPACE
+4. **Verifiez** la plage de recherche
+
+### Formule de diagnostic
+
+```excel
+=SI(ESTERREUR(EQUIV(A1;B:B;0));"Pas trouve";EQUIV(A1;B:B;0))
+```
+
+## Tableau recapitulatif
+
+| Cause | Solution |
+|-------|----------|
+| Valeur absente | SIERREUR ou SI.NON.DISP |
+| Espaces | SUPPRESPACE |
+| Format different | TEXTE ou CNUM |
+| Plage incorrecte | Etendre la plage |
+
+## Bonnes pratiques
+
+1. **Toujours** encadrer RECHERCHEV avec SIERREUR
+2. **Nettoyer** les donnees avant recherche
+3. **Preferer** RECHERCHEX a RECHERCHEV
+4. **Tester** avec des valeurs connues
+
+[Decouvrir nos formations Excel](/formations-excel)

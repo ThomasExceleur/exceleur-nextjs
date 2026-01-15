@@ -1,0 +1,75 @@
+---
+title: "Excel : Additionner les Heures et les Minutes"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Calculez des totaux d'heures dans Excel."
+description: "Guide pour additionner heures et minutes dans Excel."
+category: "Dates"
+categories: ["Dates", "Calculs"]
+tags: ["Heures", "Minutes", "Addition", "Excel"]
+---
+
+# Additionner Heures et Minutes
+
+Calculez vos totaux de temps.
+
+## Formule simple
+
+```excel
+=SOMME(A1:A10)
+```
+
+## Format important
+
+### Depasser 24 heures
+
+Format personnalise : `[hh]:mm`
+
+Les crochets sont essentiels.
+
+## Exemple
+
+| Jour | Duree |
+|------|-------|
+| Lundi | 08:30 |
+| Mardi | 09:45 |
+| Total | 18:15 |
+
+## Convertir en decimal
+
+```excel
+=A1*24
+```
+
+8h30 = 8,5 heures
+
+## Calcul de paie
+
+```excel
+=SOMME(A:A)*24*TauxHoraire
+```
+
+## Problemes courants
+
+| Probleme | Solution |
+|----------|----------|
+| 00:00 au lieu de 24+ | Format [hh]:mm |
+| Resultat faux | Verifiez les formats |
+
+## Format des heures
+
+| Format | Exemple |
+|--------|---------|
+| hh:mm | 08:30 |
+| [hh]:mm | 48:30 |
+| h "h" mm | 8 h 30 |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| [hh]:mm | Pour totaux |
+| Coherence | Meme format |
+| Verification | Testez les calculs |
+
+[Decouvrir nos formations Excel](/formations-excel)

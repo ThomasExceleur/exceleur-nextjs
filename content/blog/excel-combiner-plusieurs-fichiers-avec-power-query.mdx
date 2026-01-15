@@ -1,0 +1,126 @@
+---
+title: "Combiner Plusieurs Fichiers avec Power Query"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez a fusionner plusieurs fichiers Excel ou CSV avec Power Query."
+description: "Guide Power Query pour combiner des fichiers. Consolidation automatique."
+category: "Analyse de donnees Excel"
+categories: ["Analyse de donnees Excel", "Automatisation"]
+tags: ["Power Query", "Consolidation", "Fichiers", "ETL"]
+---
+
+# Combiner Plusieurs Fichiers avec Power Query
+
+Power Query peut fusionner automatiquement plusieurs fichiers.
+
+## Preparation
+
+### Organiser les fichiers
+
+1. Placez tous les fichiers dans un meme dossier
+2. Assurez-vous qu'ils ont la meme structure
+3. Utilisez des noms coherents
+
+## Methode : Combiner un dossier
+
+### Etapes
+
+1. **Donnees** > **Obtenir des donnees** > **A partir d'un fichier** > **A partir d'un dossier**
+2. Selectionnez le dossier contenant vos fichiers
+3. Cliquez sur **Combiner** > **Combiner et transformer les donnees**
+4. Selectionnez l'onglet ou la table a combiner
+5. **OK**
+
+### Resultat
+
+Tous les fichiers sont fusionnes en une seule table avec une colonne indiquant le fichier source.
+
+## Types de fichiers supportes
+
+| Type | Extension |
+|------|-----------|
+| Excel | .xlsx, .xls, .xlsm |
+| CSV | .csv |
+| Texte | .txt |
+| JSON | .json |
+
+## Personnaliser la combinaison
+
+### Dans l'editeur Power Query
+
+1. Developpez la colonne **Source.Name** si besoin
+2. Filtrez les lignes d'en-tete en double
+3. Changez les types de donnees
+4. Renommez les colonnes
+
+### Ajouter une colonne source
+
+```m
+= Table.AddColumn(Source, "Fichier", each [Source.Name])
+```
+
+## Gestion des structures differentes
+
+### Si les colonnes varient
+
+1. Combinez les fichiers
+2. Dans Power Query, utilisez **Accueil** > **Ajouter des requetes**
+3. Gerez les colonnes manquantes avec des valeurs null
+
+## Actualisation automatique
+
+### Configuration
+
+1. Clic droit sur la requete
+2. **Proprietes**
+3. Cochez **Actualiser toutes les X minutes**
+
+### Lors de l'ouverture
+
+Cochez **Actualiser les donnees lors de l'ouverture du fichier**.
+
+## Exemple pratique : Ventes mensuelles
+
+### Structure des fichiers
+
+- Ventes_Janvier.xlsx
+- Ventes_Fevrier.xlsx
+- Ventes_Mars.xlsx
+
+### Resultat
+
+| Fichier | Date | Produit | Montant |
+|---------|------|---------|---------|
+| Ventes_Janvier.xlsx | 15/01 | A | 100 |
+| Ventes_Fevrier.xlsx | 20/02 | B | 200 |
+
+## Filtrer les fichiers
+
+### Par extension
+
+Dans l'editeur :
+```m
+= Table.SelectRows(Source, each Text.EndsWith([Name], ".xlsx"))
+```
+
+### Par nom
+
+```m
+= Table.SelectRows(Source, each Text.Contains([Name], "Ventes"))
+```
+
+## Bonnes pratiques
+
+1. **Uniformisez** la structure des fichiers
+2. **Nommez** les fichiers de maniere coherente
+3. **Testez** avec quelques fichiers d'abord
+4. **Actualisez** regulierement
+
+## Avantages
+
+- Automatisation complete
+- Nouveau fichier = automatiquement inclus
+- Transformations reproductibles
+- Pas de formules complexes
+
+[Decouvrir nos formations Excel](/formations-excel)

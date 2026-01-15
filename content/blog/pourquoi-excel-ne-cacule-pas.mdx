@@ -1,0 +1,127 @@
+---
+title: "Pourquoi Excel ne Calcule Pas"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Resolvez le probleme quand Excel n'effectue pas les calculs."
+description: "Solutions quand Excel ne calcule pas les formules automatiquement."
+category: "Depannage"
+categories: ["Depannage", "Formules Excel"]
+tags: ["Calcul", "Automatique", "Formules", "Depannage"]
+---
+
+# Pourquoi Excel ne Calcule Pas
+
+Quand Excel affiche les formules au lieu des resultats ou ne met pas a jour les calculs.
+
+## Cause 1 : Mode de calcul manuel
+
+### Verification
+
+Regardez dans la barre d'etat si "CALCUL" apparait.
+
+### Solution
+
+1. **Formules** > **Options de calcul** > **Automatique**
+
+Ou raccourci : **Ctrl + Shift + F9** (recalculer tout)
+
+### Pourquoi en manuel ?
+
+Parfois active pour les gros fichiers ou defini dans un fichier ouvert precedemment.
+
+## Cause 2 : Affichage des formules active
+
+### Symptome
+
+Les cellules affichent `=SOMME(A1:A10)` au lieu du resultat.
+
+### Solution
+
+Appuyez sur **Ctrl + `** (touche sous Echap)
+
+Ou : **Formules** > **Afficher les formules**
+
+## Cause 3 : Format texte
+
+### Symptome
+
+La formule est affichee comme du texte.
+
+### Verification
+
+Si la cellule est alignee a gauche, elle est probablement en format texte.
+
+### Solution
+
+1. Changez le format en "Nombre general"
+2. Retapez la formule ou appuyez sur F2 puis Entree
+
+## Cause 4 : Espace avant le signe =
+
+### Symptome
+
+` =SOMME(A1:A10)` (espace avant =)
+
+### Solution
+
+Supprimez l'espace et retapez la formule.
+
+## Cause 5 : Reference circulaire
+
+### Symptome
+
+Message d'avertissement sur les references circulaires.
+
+### Solution
+
+1. **Formules** > **Verification des erreurs** > **References circulaires**
+2. Corrigez la formule qui se reference elle-meme
+
+## Forcer le recalcul
+
+### Raccourcis
+
+| Raccourci | Action |
+|-----------|--------|
+| F9 | Recalculer les formules modifiees |
+| Shift + F9 | Recalculer la feuille active |
+| Ctrl + Shift + F9 | Recalculer tout le classeur |
+
+## Verifier le mode de calcul
+
+### Via les options
+
+1. **Fichier** > **Options** > **Formules**
+2. **Mode de calcul du classeur** : Automatique
+
+### Options disponibles
+
+| Mode | Description |
+|------|-------------|
+| Automatique | Calcul a chaque modification |
+| Automatique sauf tables | Tableaux non recalcules auto |
+| Manuel | Calcul uniquement sur demande |
+
+## Formules volatiles
+
+### Probleme
+
+Certaines formules ralentissent les calculs :
+- INDIRECT
+- DECALER
+- ALEA
+- MAINTENANT
+- AUJOURDHUI
+
+### Solution
+
+Limitez leur usage ou passez en calcul manuel.
+
+## Bonnes pratiques
+
+1. **Gardez** le mode automatique par defaut
+2. **Verifiez** le format des cellules
+3. **Evitez** les espaces avant =
+4. **Surveillez** les references circulaires
+
+[Decouvrir nos formations Excel](/formations-excel)

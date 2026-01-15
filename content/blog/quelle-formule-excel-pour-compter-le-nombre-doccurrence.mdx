@@ -1,0 +1,160 @@
+---
+title: "Quelle Formule Excel pour Compter le Nombre d'Occurrences"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Decouvrez les formules Excel pour compter le nombre d'occurrences d'une valeur."
+description: "Guide des formules pour compter les occurrences dans Excel. NB.SI, SOMMEPROD et autres methodes."
+category: "Formules Excel"
+categories: ["Formules Excel", "Fonctions"]
+tags: ["NB.SI", "Compter", "Occurrences", "Formules"]
+---
+
+# Compter les Occurrences dans Excel
+
+Plusieurs formules permettent de compter combien de fois une valeur apparait.
+
+## Methode 1 : NB.SI
+
+### La formule de base
+
+```excel
+=NB.SI(plage;critere)
+```
+
+### Exemples
+
+```excel
+=NB.SI(A:A;"Paris")           ' Combien de fois "Paris"
+=NB.SI(A1:A100;B1)            ' Combien de fois la valeur de B1
+=NB.SI(A:A;"*")               ' Compter les cellules non vides (texte)
+```
+
+### Criteres avec jokers
+
+| Critere | Signification |
+|---------|---------------|
+| `"Paris"` | Exactement "Paris" |
+| `"Paris*"` | Commence par "Paris" |
+| `"*Paris"` | Finit par "Paris" |
+| `"*Paris*"` | Contient "Paris" |
+
+## Methode 2 : NB.SI.ENS
+
+### Pour plusieurs criteres
+
+```excel
+=NB.SI.ENS(plage1;critere1;plage2;critere2)
+```
+
+### Exemples
+
+```excel
+=NB.SI.ENS(A:A;"Paris";B:B;"Client")
+=NB.SI.ENS(A:A;"Paris";B:B;">100")
+```
+
+## Methode 3 : SOMMEPROD
+
+### Pour cas complexes
+
+```excel
+=SOMMEPROD((A1:A100="Paris")*1)
+```
+
+### Avec plusieurs conditions
+
+```excel
+=SOMMEPROD((A1:A100="Paris")*(B1:B100>100))
+```
+
+## Compter les valeurs uniques
+
+### Nombre de valeurs distinctes
+
+```excel
+=SOMME(1/NB.SI(A1:A100;A1:A100))
+```
+
+Note : Validez avec **Ctrl + Maj + Entree** (formule matricielle).
+
+### Avec UNIQUE (Excel 365)
+
+```excel
+=NBVAL(UNIQUE(A1:A100))
+```
+
+## Compter les doublons
+
+### Nombre de doublons
+
+```excel
+=NB.SI(A:A;A1)>1              ' VRAI si doublon
+=SOMMEPROD((NB.SI(A1:A100;A1:A100)>1)*1)  ' Total doublons
+```
+
+## Compter par condition numerique
+
+### Exemples
+
+```excel
+=NB.SI(B:B;">100")            ' Superieur a 100
+=NB.SI(B:B;"<50")             ' Inferieur a 50
+=NB.SI(B:B;">=100")           ' Superieur ou egal a 100
+=NB.SI(B:B;"<>0")             ' Different de zero
+```
+
+## Compter les dates
+
+### Par periode
+
+```excel
+=NB.SI(A:A;">="&DATE(2024;1;1))        ' Apres le 1er janvier
+=NB.SI.ENS(A:A;">="&DATE(2024;1;1);A:A;"<="&DATE(2024;12;31))
+```
+
+## Compter avec reference variable
+
+### Formule dynamique
+
+```excel
+=NB.SI(A:A;E1)                ' E1 contient le critere
+```
+
+### Concatenation
+
+```excel
+=NB.SI(A:A;">"&E1)            ' E1 contient la valeur numerique
+```
+
+## Tableau recapitulatif
+
+### Structure
+
+| Valeur | Occurrences |
+|--------|-------------|
+| Paris | =NB.SI(A:A;D2) |
+| Lyon | =NB.SI(A:A;D3) |
+
+## Comparaison des methodes
+
+| Methode | Avantage | Limite |
+|---------|----------|--------|
+| NB.SI | Simple | 1 critere |
+| NB.SI.ENS | Multi-criteres | Pas de OU |
+| SOMMEPROD | Flexible | Plus complexe |
+
+## Astuces
+
+### Insensible a la casse
+
+NB.SI est insensible a la casse par defaut.
+
+### Espaces
+
+Attention aux espaces invisibles. Utilisez SUPPRESPACE si besoin.
+
+### Performance
+
+Pour les grandes plages, limitez la zone de recherche.
+
+[Decouvrir nos formations Excel](/formations-excel)

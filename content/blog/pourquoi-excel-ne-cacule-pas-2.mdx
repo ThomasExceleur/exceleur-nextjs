@@ -1,0 +1,91 @@
+---
+title: "Pourquoi Excel ne Calcule Pas"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Solutions quand Excel n'effectue pas les calculs."
+description: "Guide pour resoudre les problemes de calcul Excel."
+category: "Depannage"
+categories: ["Depannage", "Calculs"]
+tags: ["Calcul", "Probleme", "Depannage", "Excel"]
+---
+
+# Pourquoi Excel ne Calcule Pas
+
+Raisons et solutions.
+
+## Causes principales
+
+### Calcul manuel active
+
+Excel est en mode calcul manuel.
+
+### Solution
+
+**Formules** > **Options de calcul** > **Automatique**
+
+Ou **Ctrl+Maj+=** pour forcer le calcul.
+
+## Texte au lieu de nombre
+
+### Probleme
+
+"123" (texte) ne calcule pas.
+
+### Detection
+
+Triangle vert dans la cellule.
+
+### Solution
+
+```excel
+=CNUM(A1)
+```
+
+Ou : Selectionnez > Icone d'erreur > Convertir en nombre
+
+## Format texte
+
+### Probleme
+
+La cellule est formatee en texte.
+
+### Solution
+
+1. Changez le format en Nombre
+2. Re-entrez la valeur ou F2 + Entree
+
+## Formule affichee
+
+### Probleme
+
+La formule s'affiche au lieu du resultat.
+
+### Causes
+
+- Mode affichage formules (**Ctrl+`**)
+- Apostrophe devant la formule
+
+### Solution
+
+- **Ctrl+`** pour basculer
+- Supprimez l'apostrophe
+
+## References circulaires
+
+### Probleme
+
+La formule se reference elle-meme.
+
+### Detection
+
+**Formules** > **Verification des erreurs** > **References circulaires**
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Calcul auto | Verifiez le mode |
+| Formats | Coherence des types |
+| Verification | Testez les formules |
+
+[Decouvrir nos formations Excel](/formations-excel)

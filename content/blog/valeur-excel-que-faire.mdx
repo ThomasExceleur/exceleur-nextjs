@@ -1,0 +1,137 @@
+---
+title: "Erreur #VALEUR! dans Excel : Que Faire"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Comprenez et corrigez l'erreur #VALEUR! dans vos formules Excel."
+description: "Guide pour resoudre l'erreur #VALEUR! dans Excel. Causes et solutions."
+category: "Gestion d'erreurs"
+categories: ["Gestion d'erreurs", "Formules Excel"]
+tags: ["#VALEUR!", "Erreurs", "Types", "Depannage"]
+---
+
+# Erreur #VALEUR! dans Excel
+
+L'erreur #VALEUR! survient quand Excel recoit un type de donnee inattendu.
+
+## Causes principales
+
+### 1. Operation texte/nombre
+
+```excel
+="abc"+10    ' Erreur #VALEUR!
+```
+
+### 2. Espaces dans les cellules
+
+Une cellule semble vide mais contient un espace.
+
+### 3. Caracteres invisibles
+
+Caracteres importes qui ne sont pas des chiffres.
+
+### 4. Plages de tailles differentes
+
+```excel
+=A1:A10*B1:B5    ' Tailles differentes
+```
+
+## Solutions
+
+### Solution 1 : Convertir en nombre
+
+```excel
+=CNUM(A1)+10
+```
+
+Force la conversion du texte en nombre.
+
+### Solution 2 : Nettoyer les espaces
+
+```excel
+=SUPPRESPACE(A1)
+```
+
+### Solution 3 : Multiplier par 1
+
+```excel
+=A1*1+10
+```
+
+Astuce pour forcer la conversion.
+
+### Solution 4 : EPURAGE
+
+```excel
+=EPURAGE(A1)
+```
+
+Supprime les caracteres non imprimables.
+
+## Diagnostic
+
+### Verifier le type de donnee
+
+```excel
+=ESTNUM(A1)        ' VRAI si nombre
+=ESTTEXTE(A1)      ' VRAI si texte
+=ESTVIDE(A1)       ' VRAI si vide
+```
+
+### Voir le code caractere
+
+```excel
+=CODE(GAUCHE(A1;1))
+```
+
+Si different de ce que vous attendez, il y a un caractere cache.
+
+## Formule robuste
+
+### Gerer texte et nombre
+
+```excel
+=SI(ESTNUM(A1);A1*2;0)
+```
+
+### Avec SIERREUR
+
+```excel
+=SIERREUR(A1*2;0)
+```
+
+## Cas frequents
+
+### Import de donnees
+
+Les donnees importees sont souvent au format texte.
+
+**Solution** : Convertir en nombre
+1. Selectionnez les cellules
+2. **Donnees** > **Convertir**
+3. **Terminer**
+
+### Dates en texte
+
+```excel
+=DATEVAL(A1)
+```
+
+Convertit une date texte en date Excel.
+
+## Tableau des solutions
+
+| Cause | Solution |
+|-------|----------|
+| Texte au lieu de nombre | CNUM(A1) |
+| Espaces | SUPPRESPACE(A1) |
+| Caracteres caches | EPURAGE(A1) |
+| Format date | DATEVAL(A1) |
+
+## Bonnes pratiques
+
+1. **Validez** les donnees a l'import
+2. **Nettoyez** avec SUPPRESPACE et EPURAGE
+3. **Verifiez** les types avec ESTNUM
+4. **Utilisez** SIERREUR pour la robustesse
+
+[Decouvrir nos formations Excel](/formations-excel)

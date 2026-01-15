@@ -1,0 +1,209 @@
+---
+title: "Creer un Diagramme de Gantt Excel - Methode Avancee"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Methode avancee pour creer un diagramme de Gantt dans Excel."
+description: "Guide avance pour creer un diagramme de Gantt dans Excel."
+category: "Graphiques"
+categories: ["Graphiques", "Productivite"]
+tags: ["Gantt", "Graphique", "Projet", "Avance"]
+---
+
+# Diagramme de Gantt Excel - Methode Avancee
+
+Techniques avancees pour un Gantt professionnel.
+
+## Structure de donnees avancee
+
+### Colonnes recommandees
+
+| Colonne | Description |
+|---------|-------------|
+| ID | Identifiant unique |
+| Tache | Nom de la tache |
+| Responsable | Personne assignee |
+| Date debut | Debut prevu |
+| Duree | En jours ouvrables |
+| Date fin | Calculee |
+| % Complete | Avancement |
+| Predecesseur | ID de la tache precedente |
+| Statut | Etat actuel |
+
+### Formules avancees
+
+```excel
+' Date de fin (jours ouvrables)
+=SERIE.JOUR.OUVRE(Date_debut;Duree)
+
+' Date debut avec predecesseur
+=SI(Predecesseur="";"";INDIRECT("E"&EQUIV(Predecesseur;ID;0)+1))
+```
+
+## Graphique avec progression
+
+### Double serie
+
+1. Serie 1 : Duree totale (gris)
+2. Serie 2 : Progression (bleu)
+
+### Calcul de la progression
+
+```excel
+=Duree*Pourcentage_complete
+```
+
+## Formatage conditionnel sur le graphique
+
+### Couleurs dynamiques
+
+Creez des colonnes auxiliaires pour les couleurs :
+
+```excel
+=SI(Statut="Termine";"Vert";SI(Date_fin<AUJOURDHUI();"Rouge";"Bleu"))
+```
+
+## Ligne de date actuelle
+
+### Methode
+
+1. Ajoutez une colonne "Aujourd'hui"
+2. Valeur : `=SI(LIGNE()=2;AUJOURDHUI()-Date_projet_debut;"")`
+3. Ajoutez comme serie
+4. Formatez en ligne verticale pointillee
+
+## Jalons
+
+### Representation
+
+Les jalons sont des taches de duree 0.
+
+```excel
+Duree = 0
+```
+
+### Style
+
+Utilisez un marqueur losange au lieu d'une barre.
+
+## Ressources visuelles
+
+### Afficher les responsables
+
+1. Ajoutez des etiquettes de donnees
+2. Liez aux cellules des responsables
+
+### Code couleur par equipe
+
+| Equipe | Couleur |
+|--------|---------|
+| Dev | Bleu |
+| Design | Violet |
+| QA | Orange |
+| Ops | Vert |
+
+## Interactions avec segments
+
+### Filtrer par critere
+
+1. Convertissez en tableau
+2. **Insertion** > **Segment**
+3. Choisissez : Responsable, Statut, etc.
+
+### Effet sur le graphique
+
+Le Gantt se met a jour automatiquement.
+
+## Formules de calcul projet
+
+### Date fin projet
+
+```excel
+=MAX(Dates_fin)
+```
+
+### Duree totale
+
+```excel
+=MAX(Date_fin)-MIN(Date_debut)
+```
+
+### Pourcentage global
+
+```excel
+=SOMMEPROD(Duree;Pourcentage)/SOMME(Duree)
+```
+
+### Taches en retard
+
+```excel
+=NB.SI.ENS(Date_fin;"<"&AUJOURDHUI();Statut;"<>"&"Termine")
+```
+
+## Automatisation VBA
+
+### Mise a jour automatique
+
+```vba
+Sub MettreAJourStatut()
+    Dim ws As Worksheet
+    Set ws = ActiveSheet
+
+    For Each cell In ws.Range("Status")
+        If cell.Offset(0, -2).Value < Date And cell.Value <> "Termine" Then
+            cell.Value = "En retard"
+        End If
+    Next cell
+End Sub
+```
+
+## Export et partage
+
+### Image haute qualite
+
+1. Selectionnez le graphique
+2. **Copier** > **Coller special** > **Image**
+3. Ou exportez en PNG
+
+### PDF
+
+1. Ajustez la mise en page
+2. **Fichier** > **Exporter** > **PDF**
+
+## Integration avec calendrier
+
+### Lier a Outlook
+
+Utilisez Power Automate pour synchroniser les taches.
+
+### Jours feries
+
+```excel
+=SERIE.JOUR.OUVRE(Date_debut;Duree;Jours_feries)
+```
+
+## Bonnes pratiques avancees
+
+| Pratique | Avantage |
+|----------|----------|
+| ID unique | Gestion des dependances |
+| Calculs automatiques | Coherence |
+| Couleurs significatives | Lisibilite |
+| Documentation | Maintenance |
+
+## Limites et alternatives
+
+### Quand passer a un outil specialise
+
+- Plus de 50 taches
+- Dependances complexes
+- Equipe nombreuse
+- Reporting avance
+
+### Outils recommandes
+
+- Microsoft Project
+- Smartsheet
+- Monday.com
+- Asana
+
+[Decouvrir nos formations Excel](/formations-excel)

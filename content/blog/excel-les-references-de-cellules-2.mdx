@@ -1,0 +1,100 @@
+---
+title: "Excel : Les References de Cellules"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Comprenez les references relatives, absolues et mixtes."
+description: "Guide complet sur les references de cellules dans Excel."
+category: "Formules Excel"
+categories: ["Formules Excel", "References"]
+tags: ["References", "Cellules", "Formules", "Excel"]
+---
+
+# Les References de Cellules Excel
+
+Maitrisez les references pour des formules efficaces.
+
+## Types de references
+
+### Reference relative
+
+```excel
+=A1
+```
+
+Change lors de la copie.
+
+### Reference absolue
+
+```excel
+=$A$1
+```
+
+Ne change jamais.
+
+### Reference mixte
+
+```excel
+=$A1  (colonne fixe)
+=A$1  (ligne fixe)
+```
+
+## Le raccourci F4
+
+### Basculer entre les types
+
+1. Selectionnez la reference dans la formule
+2. Appuyez sur **F4** pour cycler
+
+| Appui | Resultat |
+|-------|----------|
+| 1x | `$A$1` |
+| 2x | `A$1` |
+| 3x | `$A1` |
+| 4x | `A1` |
+
+## Exemples pratiques
+
+### Table de multiplication
+
+```excel
+=$A2*B$1
+```
+
+- Colonne A fixe pour les multiplicandes
+- Ligne 1 fixe pour les multiplicateurs
+
+### Appliquer un taux
+
+```excel
+=A2*$B$1
+```
+
+Le taux en B1 est fixe pour toutes les lignes.
+
+## References a d'autres feuilles
+
+### Syntaxe
+
+```excel
+=Feuil2!A1
+='Nom avec espaces'!A1
+```
+
+## References a d'autres classeurs
+
+### Syntaxe
+
+```excel
+=[Classeur.xlsx]Feuil1!A1
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Planifier | Reflechissez avant de copier |
+| F4 | Utilisez le raccourci |
+| Nommer | Utilisez des plages nommees |
+| Tester | Verifiez apres copie |
+
+[Decouvrir nos formations Excel](/formations-excel)

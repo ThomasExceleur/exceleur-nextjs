@@ -1,0 +1,243 @@
+---
+title: "Excel Analyse de Rentabilite : Guide Complet"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Realisez des analyses de rentabilite professionnelles dans Excel."
+description: "Guide pour analyser la rentabilite dans Excel. Marges, ROI, seuil de rentabilite et indicateurs."
+category: "Finance"
+categories: ["Finance", "Analyse de donnees Excel"]
+tags: ["Rentabilite", "ROI", "Marge", "Analyse financiere"]
+---
+
+# Analyse de Rentabilite dans Excel
+
+L'analyse de rentabilite permet d'evaluer la performance financiere de vos activites.
+
+## Indicateurs de rentabilite
+
+### Principaux ratios
+
+| Indicateur | Formule |
+|------------|---------|
+| Marge brute | (CA - Cout des ventes) / CA |
+| Marge operationnelle | EBIT / CA |
+| Marge nette | Resultat net / CA |
+| ROI | Resultat / Investissement |
+| ROE | Resultat net / Capitaux propres |
+
+## Marge brute
+
+### Calcul
+
+```excel
+=CA - Cout_des_ventes
+=Marge_brute / CA                ' Taux de marge
+```
+
+### Tableau de marge
+
+| Produit | Prix vente | Cout | Marge | Taux |
+|---------|------------|------|-------|------|
+| A | 100 | 60 | 40 | 40% |
+| B | 150 | 100 | 50 | 33% |
+
+### Formules
+
+```excel
+=C2-D2                           ' Marge unitaire
+=E2/C2                           ' Taux de marge
+```
+
+## Seuil de rentabilite
+
+### Definition
+
+Point ou le CA couvre exactement les charges.
+
+### Formule
+
+```excel
+=Charges_fixes / Taux_marge_sur_couts_variables
+```
+
+### Calcul detaille
+
+| Element | Montant |
+|---------|---------|
+| Charges fixes | 100 000 |
+| Prix de vente | 50 |
+| Cout variable unitaire | 30 |
+| Marge sur cout variable | 20 |
+| Taux MCV | 40% |
+| Seuil de rentabilite | 250 000 |
+
+### Formule Excel
+
+```excel
+=B1/(1-B4/B3)                    ' Seuil en CA
+=B1/B5                           ' Seuil en quantite
+```
+
+## Point mort
+
+### En jours
+
+```excel
+=Seuil_rentabilite / CA_annuel * 365
+```
+
+### Graphique du point mort
+
+1. Tracez la courbe des charges totales
+2. Tracez la courbe du CA
+3. L'intersection est le point mort
+
+## ROI (Return On Investment)
+
+### Formule de base
+
+```excel
+=(Gain - Cout) / Cout * 100
+```
+
+### ROI annualise
+
+```excel
+=((1+ROI)^(1/Annees))-1
+```
+
+### Exemple
+
+| Investissement | Gain | ROI |
+|----------------|------|-----|
+| 100 000 | 130 000 | 30% |
+
+## Analyse par produit
+
+### Matrice de rentabilite
+
+| Produit | CA | Marge | Part CA | Part Marge |
+|---------|-----|-------|---------|------------|
+| A | 500 000 | 200 000 | 50% | 57% |
+| B | 300 000 | 100 000 | 30% | 29% |
+| C | 200 000 | 50 000 | 20% | 14% |
+
+### Formules
+
+```excel
+=B2/SOMME(B:B)                   ' Part CA
+=C2/SOMME(C:C)                   ' Part Marge
+```
+
+## Analyse par client
+
+### Segmentation ABC
+
+| Segment | Clients | CA | Marge |
+|---------|---------|-----|-------|
+| A (top 20%) | 10 | 80% | 85% |
+| B (suivants 30%) | 15 | 15% | 12% |
+| C (reste 50%) | 25 | 5% | 3% |
+
+### Rentabilite client
+
+```excel
+=CA_client - Couts_client
+=Marge_client / CA_client
+```
+
+## Analyse des couts
+
+### Decomposition des couts
+
+| Type | Fixe | Variable | Total |
+|------|------|----------|-------|
+| Production | 50 000 | 150 000 | 200 000 |
+| Commercial | 30 000 | 20 000 | 50 000 |
+| Admin | 40 000 | 10 000 | 50 000 |
+
+### Cout de revient
+
+```excel
+=Matieres + MOD + Frais_generaux
+=Cout_total / Quantite           ' Cout unitaire
+```
+
+## Scenarios de rentabilite
+
+### Tableau de sensibilite
+
+| Prix | -10% | Base | +10% |
+|------|------|------|------|
+| Marge | 25% | 35% | 45% |
+| Resultat | 50 000 | 100 000 | 150 000 |
+
+### Tables de donnees Excel
+
+1. **Donnees** > **Analyse de scenarios** > **Table de donnees**
+2. Variez une ou deux variables
+3. Observez l'impact sur le resultat
+
+## VAN et TRI
+
+### Valeur Actuelle Nette
+
+```excel
+=VAN(Taux;Flux_annee1:Flux_anneeN) + Investissement_initial
+```
+
+### Taux de Rendement Interne
+
+```excel
+=TRI(Investissement;Flux_annee1:Flux_anneeN)
+```
+
+### Exemple
+
+| Annee | Flux |
+|-------|------|
+| 0 | -100 000 |
+| 1 | 30 000 |
+| 2 | 40 000 |
+| 3 | 50 000 |
+| TRI | 12% |
+
+## Tableau de bord rentabilite
+
+### KPI essentiels
+
+| Indicateur | Objectif | Reel | Ecart |
+|------------|----------|------|-------|
+| Marge brute | 35% | 32% | -3% |
+| ROI | 15% | 18% | +3% |
+| Point mort | 180j | 165j | -15j |
+
+### Mise en forme conditionnelle
+
+Vert si objectif atteint, rouge sinon.
+
+## Analyse de variance
+
+### Decomposition des ecarts
+
+| Element | Budget | Reel | Ecart |
+|---------|--------|------|-------|
+| Volume | 1000 | 950 | -50 |
+| Prix | 100 | 105 | +5 |
+| CA | 100 000 | 99 750 | -250 |
+
+### Ecart sur marge
+
+```excel
+=Ecart_volume * Marge_unitaire + Ecart_prix * Volume_reel
+```
+
+## Bonnes pratiques
+
+1. **Utilisez** des donnees fiables
+2. **Analysez** regulierement
+3. **Comparez** aux objectifs et historiques
+4. **Decomposez** par produit/client/zone
+5. **Documentez** vos hypotheses
+
+[Decouvrir nos formations Excel](/formations-excel)

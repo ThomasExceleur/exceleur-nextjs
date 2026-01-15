@@ -1,0 +1,83 @@
+---
+title: "Excel : Afficher le Jour de la Semaine"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Affichez le jour de la semaine a partir d'une date."
+description: "Guide pour afficher le jour de la semaine dans Excel."
+category: "Dates"
+categories: ["Dates", "Formatage"]
+tags: ["Jour", "Semaine", "Date", "Excel"]
+---
+
+# Afficher le Jour de la Semaine
+
+Convertissez une date en jour.
+
+## Fonction TEXTE
+
+### Syntaxe
+
+```excel
+=TEXTE(date;"jjjj")
+```
+
+### Resultats
+
+| Format | Resultat |
+|--------|----------|
+| jjjj | Lundi |
+| jjj | Lun |
+| jj | 01 |
+
+## Fonction JOURSEM
+
+### Syntaxe
+
+```excel
+=JOURSEM(date;[type])
+```
+
+### Types
+
+| Type | Debut semaine |
+|------|---------------|
+| 1 | Dimanche = 1 |
+| 2 | Lundi = 1 |
+| 3 | Lundi = 0 |
+
+## Obtenir le nom
+
+### Avec CHOISIR
+
+```excel
+=CHOISIR(JOURSEM(A1;2);"Lundi";"Mardi";"Mercredi";"Jeudi";"Vendredi";"Samedi";"Dimanche")
+```
+
+## Format personnalise
+
+### Sans formule
+
+1. Selectionnez la cellule
+2. Format personnalise : `jjjj`
+
+## Exemples
+
+| Date | TEXTE | JOURSEM |
+|------|-------|---------|
+| 15/01/2024 | Lundi | 1 (type 2) |
+
+## Cas d'usage
+
+- Plannings
+- Calendriers
+- Analyses hebdomadaires
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| TEXTE | Pour affichage |
+| JOURSEM | Pour calculs |
+| Format | Pour conserver la date |
+
+[Decouvrir nos formations Excel](/formations-excel)

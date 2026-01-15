@@ -1,0 +1,183 @@
+---
+title: "Guide Power Query : Consolidation de Fichiers CSV"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Consolidez plusieurs fichiers CSV automatiquement avec Power Query."
+description: "Guide Power Query pour la consolidation de fichiers CSV."
+category: "Power Query"
+categories: ["Power Query", "Analyse de donnees Excel"]
+tags: ["Power Query", "CSV", "Consolidation", "Import"]
+---
+
+# Power Query : Consolidation de Fichiers CSV
+
+Combinez automatiquement plusieurs fichiers CSV en un seul tableau.
+
+## Scenario
+
+### Situation typique
+
+- Plusieurs fichiers CSV dans un dossier
+- Meme structure (colonnes identiques)
+- Besoin de les combiner
+
+### Exemple
+
+```
+/Ventes/
+  ventes_jan.csv
+  ventes_fev.csv
+  ventes_mar.csv
+```
+
+## Etape 1 : Connexion au dossier
+
+### Methode
+
+1. **Donnees** > **Obtenir des donnees**
+2. **A partir d'un fichier** > **A partir d'un dossier**
+3. Selectionnez le dossier
+
+### Resultat
+
+Power Query liste tous les fichiers du dossier.
+
+## Etape 2 : Filtrer les CSV
+
+### Methode
+
+1. Cliquez sur la fleche de la colonne Extension
+2. Filtrez sur ".csv"
+
+### Ou par formule M
+
+```m
+= Table.SelectRows(Source, each [Extension] = ".csv")
+```
+
+## Etape 3 : Combiner les fichiers
+
+### Methode automatique
+
+1. Cliquez sur le bouton **Combiner les fichiers**
+2. Power Query detecte la structure
+3. Configurez les options (en-tetes, separateur)
+
+### Methode manuelle
+
+```m
+= Table.Combine(Table.TransformRows(Fichiers, each Csv.Document([Content])))
+```
+
+## Transformer les donnees
+
+### Promouvoir les en-tetes
+
+```m
+= Table.PromoteHeaders(Source)
+```
+
+### Supprimer les lignes d'en-tetes dupliquees
+
+```m
+= Table.SelectRows(Combined, each [Colonne1] <> "Colonne1")
+```
+
+## Ajouter le nom du fichier source
+
+### Utilite
+
+Savoir de quel fichier vient chaque ligne.
+
+### Methode
+
+Avant de combiner, ajoutez une colonne avec le nom :
+
+```m
+= Table.AddColumn(Source, "Fichier", each [Name])
+```
+
+## Gestion des encodages
+
+### UTF-8
+
+```m
+= Csv.Document([Content], [Encoding=65001])
+```
+
+### ANSI
+
+```m
+= Csv.Document([Content], [Encoding=1252])
+```
+
+## Separateurs differents
+
+### Virgule
+
+```m
+[Delimiter=","]
+```
+
+### Point-virgule
+
+```m
+[Delimiter=";"]
+```
+
+### Tabulation
+
+```m
+[Delimiter="#(tab)"]
+```
+
+## Exemple complet
+
+### Code M
+
+```m
+let
+    Source = Folder.Files("C:\Ventes"),
+    Filtrer = Table.SelectRows(Source, each [Extension] = ".csv"),
+    AjouterNom = Table.AddColumn(Filtrer, "Fichier", each [Name]),
+    Combiner = Table.Combine(
+        Table.TransformRows(AjouterNom,
+            each Table.AddColumn(
+                Csv.Document([Content], [Delimiter=";"]),
+                "Source", each [Fichier]
+            )
+        )
+    ),
+    EnTetes = Table.PromoteHeaders(Combiner)
+in
+    EnTetes
+```
+
+## Actualisation automatique
+
+### Nouveaux fichiers
+
+Ajoutez des fichiers au dossier, actualisez la requete.
+
+### Planification
+
+Configurez l'actualisation automatique.
+
+## Erreurs courantes
+
+| Erreur | Solution |
+|--------|----------|
+| Colonnes differentes | Homogeneisez les fichiers |
+| Encodage | Specifiez l'encodage correct |
+| Separateur | Verifiez le delimiteur |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Structure identique | Memes colonnes partout |
+| Nommage coherent | Convention de nommage |
+| Documentation | Notez les transformations |
+| Test | Verifiez avec quelques fichiers |
+
+[Decouvrir nos formations Excel](/formations-excel)

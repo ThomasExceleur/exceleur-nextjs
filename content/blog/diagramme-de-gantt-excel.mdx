@@ -1,0 +1,157 @@
+---
+title: "Le Diagramme de Gantt dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Tout savoir sur le diagramme de Gantt et comment le creer dans Excel."
+description: "Guide complet du diagramme de Gantt dans Excel pour la gestion de projet."
+category: "Graphiques"
+categories: ["Graphiques", "Productivite"]
+tags: ["Gantt", "Projet", "Graphique", "Planning"]
+---
+
+# Le Diagramme de Gantt dans Excel
+
+Un outil essentiel pour visualiser et gerer vos projets.
+
+## Qu'est-ce qu'un diagramme de Gantt ?
+
+### Origine
+
+Invente par Henry Gantt au debut du XXe siecle pour la planification industrielle.
+
+### Principe
+
+Represente les taches d'un projet sous forme de barres horizontales sur une echelle de temps.
+
+### Elements
+
+- Axe horizontal : temps
+- Axe vertical : taches
+- Barres : duree des taches
+
+## Pourquoi utiliser un Gantt ?
+
+### Avantages
+
+| Avantage | Description |
+|----------|-------------|
+| Visualisation | Vue d'ensemble du projet |
+| Planification | Identification des delais |
+| Communication | Partage avec l'equipe |
+| Suivi | Progression visible |
+
+### Cas d'usage
+
+- Gestion de projet
+- Planification d'evenements
+- Lancement de produit
+- Campagnes marketing
+
+## Creer un Gantt simple
+
+### Structure des donnees
+
+| Tache | Debut | Duree |
+|-------|-------|-------|
+| Etude | 1 | 5 |
+| Design | 6 | 8 |
+| Dev | 14 | 15 |
+| Tests | 29 | 5 |
+
+### Etapes
+
+1. Selectionnez vos donnees
+2. **Insertion** > **Barres empilees**
+3. Masquez la serie "Debut"
+4. Inversez l'ordre des taches
+
+## Elements d'un bon Gantt
+
+### Informations essentielles
+
+- Nom des taches
+- Dates de debut et fin
+- Durees
+- Responsables
+- Dependances (optionnel)
+
+### Indicateurs visuels
+
+- Progression (barres superposees)
+- Jalons (losanges)
+- Ligne de date actuelle
+
+## Limites d'Excel
+
+### Ce qu'Excel ne fait pas nativement
+
+- Dependances avec fleches
+- Gestion des ressources
+- Chemin critique automatique
+- Calendrier integre
+
+### Quand passer a un outil specialise
+
+- Plus de 50 taches
+- Equipe nombreuse
+- Dependances complexes
+- Reporting avance
+
+## Alternatives a Excel
+
+### Outils specialises
+
+| Outil | Avantage |
+|-------|----------|
+| Microsoft Project | Complet, integre Office |
+| Smartsheet | Collaboratif, cloud |
+| Monday.com | Interface moderne |
+| Asana | Gratuit pour petites equipes |
+
+## Bonnes pratiques
+
+### Planification
+
+1. **Definissez** clairement les taches
+2. **Estimez** realiste les durees
+3. **Identifiez** les dependances
+4. **Assignez** les responsables
+
+### Mise a jour
+
+1. **Actualisez** regulierement la progression
+2. **Communiquez** les changements
+3. **Documentez** les ecarts
+
+### Presentation
+
+1. **Utilisez** des couleurs significatives
+2. **Ajoutez** une legende claire
+3. **Incluez** la date de mise a jour
+
+## Modele de base
+
+### Structure recommandee
+
+| Colonne | Contenu |
+|---------|---------|
+| A | ID |
+| B | Tache |
+| C | Responsable |
+| D | Date debut |
+| E | Duree |
+| F | Date fin |
+| G | Progression |
+| H | Statut |
+
+### Formules utiles
+
+```excel
+' Date fin
+=[@Debut]+[@Duree]-1
+
+' Statut automatique
+=SI([@Progression]=1;"Termine";"En cours")
+```
+
+[Decouvrir nos formations Excel](/formations-excel)

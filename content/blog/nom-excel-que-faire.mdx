@@ -1,0 +1,118 @@
+---
+title: "Erreur #NOM? dans Excel : Que Faire"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Comprenez et corrigez l'erreur #NOM? dans vos formules Excel."
+description: "Guide pour resoudre l'erreur #NOM? dans Excel. Nom non reconnu."
+category: "Gestion d'erreurs"
+categories: ["Gestion d'erreurs", "Formules Excel"]
+tags: ["#NOM?", "Erreurs", "Formules", "Depannage"]
+---
+
+# Erreur #NOM? dans Excel
+
+L'erreur #NOM? signifie qu'Excel ne reconnait pas un element de la formule.
+
+## Causes principales
+
+### 1. Faute d'orthographe dans la fonction
+
+```excel
+=RECHCHEV(A1;B:C;2)      ' Incorrect
+=RECHERCHEV(A1;B:C;2;FAUX)   ' Correct
+```
+
+### 2. Texte sans guillemets
+
+```excel
+=SI(A1=Paris;"Oui";"Non")    ' Incorrect
+=SI(A1="Paris";"Oui";"Non")  ' Correct
+```
+
+### 3. Nom defini inexistant
+
+```excel
+=SOMME(MaPlage)    ' Erreur si MaPlage n'existe pas
+```
+
+### 4. Fonction non disponible
+
+Certaines fonctions ne sont disponibles que dans Excel 365.
+
+### 5. Oubli des deux-points
+
+```excel
+=SOMME(A1A10)      ' Incorrect
+=SOMME(A1:A10)     ' Correct
+```
+
+## Solutions
+
+### Solution 1 : Verifier l'orthographe
+
+Utilisez l'autocompletion Excel :
+1. Tapez les premieres lettres de la fonction
+2. Selectionnez dans la liste proposee
+
+### Solution 2 : Ajouter les guillemets
+
+```excel
+=SI(A1="Texte";"Oui";"Non")
+```
+
+Tout texte litteral doit etre entre guillemets.
+
+### Solution 3 : Creer le nom defini
+
+1. Selectionnez la plage
+2. Dans la zone Nom (a gauche de la barre de formule)
+3. Tapez le nom
+4. Appuyez sur Entree
+
+### Solution 4 : Verifier la version
+
+Certaines fonctions comme FILTRE, UNIQUE, RECHERCHEX ne sont disponibles que dans Excel 365/2021.
+
+## Diagnostic
+
+### Verifier les noms definis
+
+1. **Formules** > **Gestionnaire de noms**
+2. Verifiez que le nom existe et pointe vers la bonne plage
+
+### Verifier la syntaxe
+
+Double-cliquez sur la cellule et verifiez chaque element.
+
+## Erreurs courantes de syntaxe
+
+| Incorrect | Correct |
+|-----------|---------|
+| RECHCHEV | RECHERCHEV |
+| SOMME SI | SOMME.SI |
+| A1A10 | A1:A10 |
+| "Paris | "Paris" |
+
+## Fonctions avec noms similaires
+
+| Fonction | Description |
+|----------|-------------|
+| RECHERCHEV | Recherche verticale |
+| RECHERCHEH | Recherche horizontale |
+| RECHERCHEX | Nouvelle recherche (365) |
+
+## Cas special : Macros
+
+Si une fonction personnalisee (VBA) renvoie #NOM? :
+1. Verifiez que le classeur contenant la macro est ouvert
+2. Verifiez le nom de la fonction
+3. Activez les macros si necessaire
+
+## Bonnes pratiques
+
+1. **Utilisez** l'autocompletion
+2. **Verifiez** les guillemets pour le texte
+3. **Creez** les noms definis avant utilisation
+4. **Mettez a jour** Excel pour les nouvelles fonctions
+
+[Decouvrir nos formations Excel](/formations-excel)

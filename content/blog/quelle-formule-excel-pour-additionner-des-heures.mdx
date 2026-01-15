@@ -1,0 +1,163 @@
+---
+title: "Quelle Formule Excel pour Additionner des Heures"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez les formules pour additionner des heures correctement dans Excel."
+description: "Guide pour additionner des heures dans Excel. Formules, formats et astuces."
+category: "Formules Excel"
+categories: ["Formules Excel", "Dates"]
+tags: ["Heures", "Addition", "Temps", "Calculs"]
+---
+
+# Additionner des Heures dans Excel
+
+Le calcul des heures peut etre delicat. Voici comment faire correctement.
+
+## La formule de base
+
+### SOMME pour les heures
+
+```excel
+=SOMME(A1:A10)
+```
+
+Fonctionne si les cellules sont au format heure.
+
+## Le probleme des 24 heures
+
+### Symptome
+
+Le total depasse 24h mais affiche un resultat incorrect.
+
+### Solution : Format personnalise
+
+1. Selectionnez la cellule du total
+2. **Ctrl + 1** (Format de cellule)
+3. **Personnalisee**
+4. Tapez : `[h]:mm`
+
+### Formats disponibles
+
+| Format | Affichage | Exemple |
+|--------|-----------|---------|
+| h:mm | Heures 0-23 | 10:30 |
+| [h]:mm | Heures sans limite | 35:30 |
+| [h]:mm:ss | Avec secondes | 35:30:15 |
+
+## Convertir en heures decimales
+
+### Formule
+
+```excel
+=A1*24                        ' Heures en decimal
+```
+
+### Exemple
+
+| Heure | Decimal |
+|-------|---------|
+| 1:30 | 1.5 |
+| 2:15 | 2.25 |
+
+## Calculer des heures de travail
+
+### Structure
+
+| Entree | Sortie | Pause | Heures |
+|--------|--------|-------|--------|
+| 9:00 | 18:00 | 1:00 | 8:00 |
+
+### Formule
+
+```excel
+=(B2-A2)-C2
+```
+
+## Total hebdomadaire
+
+### Tableau
+
+| Jour | Heures |
+|------|--------|
+| Lundi | 8:00 |
+| Mardi | 7:30 |
+| ... | ... |
+| Total | =SOMME(B2:B6) |
+
+### Format du total
+
+Utilisez `[h]:mm` pour afficher plus de 24h.
+
+## Convertir du texte en heures
+
+### Si les heures sont en texte
+
+```excel
+=TEMPSVAL(A1)
+```
+
+### Depuis des chiffres separes
+
+```excel
+=TEMPS(A1;B1;0)               ' A1=heures, B1=minutes
+```
+
+## Calculer des heures supplementaires
+
+### Base 7 heures
+
+```excel
+=SI(A1>"7:00";A1-"7:00";0)
+```
+
+### Base 8 heures
+
+```excel
+=SI(A1>"8:00";A1-"8:00";0)
+```
+
+## Difference entre deux heures
+
+### Formule simple
+
+```excel
+=B1-A1
+```
+
+### Si passage minuit
+
+```excel
+=SI(B1<A1;B1-A1+1;B1-A1)
+```
+
+## Erreurs courantes
+
+### Format texte
+
+Les heures saisies comme texte ne se calculent pas.
+
+Solution : Utilisez TEMPSVAL ou ressaisissez.
+
+### Format incorrect
+
+Verifiez que le format est bien `[h]:mm` pour les totaux.
+
+### Cellules vides
+
+Utilisez SOMME qui ignore les cellules vides.
+
+## Convertir en minutes
+
+```excel
+=A1*24*60                     ' Total en minutes
+=A1*1440                      ' Equivalent
+```
+
+## Bonnes pratiques
+
+1. **Formatez** correctement avant de saisir
+2. **Utilisez** `[h]:mm` pour les totaux
+3. **Verifiez** que les valeurs ne sont pas du texte
+4. **Testez** avec des valeurs simples
+
+[Decouvrir nos formations Excel](/formations-excel)

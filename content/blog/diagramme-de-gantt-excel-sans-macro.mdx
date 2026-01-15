@@ -1,0 +1,192 @@
+---
+title: "Diagramme de Gantt Excel sans Macro"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Creez un diagramme de Gantt complet sans utiliser de macros VBA."
+description: "Tutoriel pour creer un diagramme de Gantt sans macro dans Excel."
+category: "Graphiques"
+categories: ["Graphiques", "Productivite"]
+tags: ["Gantt", "Sans macro", "Graphique", "Projet"]
+---
+
+# Diagramme de Gantt sans Macro
+
+Creez un Gantt fonctionnel uniquement avec les fonctionnalites natives d'Excel.
+
+## Avantages sans macro
+
+### Pourquoi eviter les macros ?
+
+- Compatibilite maximale
+- Pas de probleme de securite
+- Fonctionne sur Excel Online
+- Maintenance simplifiee
+
+## Methode 1 : Graphique barres empilees
+
+### Etape 1 : Preparer les donnees
+
+| Tache | Debut | Duree |
+|-------|-------|-------|
+| Phase 1 | 01/01/2024 | 5 |
+| Phase 2 | 06/01/2024 | 10 |
+| Phase 3 | 16/01/2024 | 8 |
+
+### Etape 2 : Colonne auxiliaire
+
+Ajoutez une colonne "Decalage" :
+
+```excel
+=A2-MIN($A$2:$A$10)
+```
+
+Convertit les dates en jours depuis le debut.
+
+### Etape 3 : Creer le graphique
+
+1. Selectionnez Tache, Decalage, Duree
+2. **Insertion** > **Graphiques** > **Barres empilees**
+3. Le graphique apparait
+
+### Etape 4 : Masquer la premiere serie
+
+1. Cliquez sur les barres "Decalage"
+2. **Remplissage** > **Aucun remplissage**
+3. Les barres deviennent invisibles
+
+### Etape 5 : Inverser l'axe
+
+1. Clic droit sur l'axe vertical
+2. **Format de l'axe**
+3. Cochez **Categories dans l'ordre inverse**
+
+## Methode 2 : Mise en forme conditionnelle
+
+### Principe
+
+Utiliser la mise en forme conditionnelle pour colorier les cellules.
+
+### Structure
+
+| Tache | J1 | J2 | J3 | J4 | J5 | ... |
+|-------|----|----|----|----|----|----|
+| Phase 1 | | | | | | |
+
+### Formule conditionnelle
+
+```excel
+=ET($B2<=C$1;C$1<$B2+$C2)
+```
+
+Colorie si la date de la colonne est dans la plage de la tache.
+
+### Avantages
+
+- Tres visuel
+- Clics sur cellules possibles
+- Personnalisation facile
+
+## Ajouter la progression
+
+### Sans macro
+
+1. Ajoutez une colonne "Progression %"
+2. Creez une serie supplementaire
+3. Formule : `=[@Duree]*[@Progression]`
+4. Superposez sur la barre principale
+
+### Mise en forme
+
+- Barre totale : gris
+- Progression : couleur vive
+
+## Ligne de date actuelle
+
+### Methode graphique
+
+1. Ajoutez une serie "Aujourd'hui"
+2. Valeur : `=AUJOURDHUI()-MIN(Dates_debut)`
+3. Changez en graphique ligne
+4. Formatez en ligne verticale
+
+### Methode cellules
+
+Avec la mise en forme conditionnelle, surlignez la colonne du jour.
+
+## Couleurs par statut
+
+### Avec mise en forme conditionnelle
+
+Regles selon le statut :
+- Vert si "Termine"
+- Rouge si en retard
+- Bleu si en cours
+
+### Formule
+
+```excel
+=[@Statut]="Termine"
+```
+
+## Jalons
+
+### Representation
+
+Jalons = taches de duree 0 ou 1 avec marqueur special.
+
+### Sans macro
+
+Utilisez un symbole dans une colonne :
+- ◆ pour jalon
+- Vide sinon
+
+## Filtrage sans macro
+
+### Segments
+
+1. Convertissez en tableau (Ctrl+T)
+2. **Insertion** > **Segment**
+3. Filtrez par responsable, statut...
+
+### Filtres automatiques
+
+Les filtres natifs d'Excel fonctionnent parfaitement.
+
+## Template reutilisable
+
+### Creation
+
+1. Creez votre structure complete
+2. Supprimez les donnees de test
+3. **Enregistrer sous** > **Modele Excel (.xltx)**
+
+### Utilisation
+
+Nouveau classeur base sur ce modele.
+
+## Limites de cette approche
+
+| Fonctionnalite | Possible sans macro |
+|----------------|---------------------|
+| Barres de taches | Oui |
+| Progression | Oui |
+| Date actuelle | Oui |
+| Filtres | Oui |
+| Dependances | Non (visuellement) |
+| Alertes auto | Non |
+
+## Comparaison des methodes
+
+| Methode | Avantage | Inconvenient |
+|---------|----------|--------------|
+| Barres empilees | Graphique reel | Configuration |
+| MFC cellules | Simple | Moins visuel |
+
+## Bonnes pratiques
+
+1. **Utilisez** des tableaux structures
+2. **Nommez** les plages
+3. **Documentez** les formules
+4. **Testez** avant deploiement
+
+[Decouvrir nos formations Excel](/formations-excel)

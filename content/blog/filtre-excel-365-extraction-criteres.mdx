@@ -1,0 +1,173 @@
+---
+title: "FILTRE Excel 365 : Extraction par Criteres"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maitrisez l'extraction de donnees par criteres avec FILTRE."
+description: "Guide FILTRE Excel 365. Extraction de donnees par criteres multiples."
+category: "Formules Excel"
+categories: ["Formules Excel", "Excel 365"]
+tags: ["FILTRE", "Criteres", "Extraction", "Excel 365"]
+---
+
+# FILTRE : Extraction par Criteres
+
+La fonction FILTRE extrait dynamiquement les donnees selon vos criteres.
+
+## Syntaxe
+
+```excel
+=FILTRE(tableau;inclure;[si_vide])
+```
+
+## Critere simple
+
+### Egal a
+
+```excel
+=FILTRE(A:D;B:B="Paris")
+```
+
+### Superieur a
+
+```excel
+=FILTRE(A:D;C:C>1000)
+```
+
+### Different de
+
+```excel
+=FILTRE(A:D;B:B<>"Inactif")
+```
+
+## Criteres multiples
+
+### ET (toutes les conditions)
+
+```excel
+=FILTRE(A:D;(B:B="Paris")*(C:C>1000))
+```
+
+Le `*` represente ET.
+
+### OU (au moins une condition)
+
+```excel
+=FILTRE(A:D;(B:B="Paris")+(B:B="Lyon"))
+```
+
+Le `+` represente OU.
+
+### Combinaison
+
+```excel
+=FILTRE(A:D;((B:B="Paris")+(B:B="Lyon"))*(C:C>500))
+```
+
+Paris OU Lyon, ET montant > 500.
+
+## Criteres sur texte
+
+### Contient
+
+```excel
+=FILTRE(A:D;ESTERREUR(CHERCHE("mot";B:B))=FAUX)
+```
+
+### Commence par
+
+```excel
+=FILTRE(A:D;GAUCHE(B:B;3)="ABC")
+```
+
+### Avec caracteres joker (non direct)
+
+```excel
+=FILTRE(A:D;NB.SI(B:B;"*Paris*")>0)
+```
+
+## Criteres sur dates
+
+### Date specifique
+
+```excel
+=FILTRE(A:D;C:C=DATE(2024;1;15))
+```
+
+### Plage de dates
+
+```excel
+=FILTRE(A:D;(C:C>=DATE(2024;1;1))*(C:C<=DATE(2024;12;31)))
+```
+
+### Mois en cours
+
+```excel
+=FILTRE(A:D;MOIS(C:C)=MOIS(AUJOURDHUI()))
+```
+
+## Critere dynamique
+
+### Reference a une cellule
+
+```excel
+=FILTRE(A:D;B:B=E1)
+```
+
+E1 contient la valeur a chercher.
+
+### Plusieurs valeurs
+
+```excel
+=FILTRE(A:D;NB.SI(ListeValeurs;B:B)>0)
+```
+
+Filtre si B est dans ListeValeurs.
+
+## Gestion des resultats vides
+
+### Message personnalise
+
+```excel
+=FILTRE(A:D;B:B="Inexistant";"Aucun resultat")
+```
+
+### Cellule vide
+
+```excel
+=FILTRE(A:D;B:B="Inexistant";"")
+```
+
+## Combinaison avec autres fonctions
+
+### FILTRE + TRIER
+
+```excel
+=TRIER(FILTRE(A:D;B:B="Paris");3;-1)
+```
+
+Filtre puis trie par 3e colonne decroissant.
+
+### FILTRE + UNIQUE
+
+```excel
+=UNIQUE(FILTRE(B:B;C:C>1000))
+```
+
+Valeurs uniques parmi les filtrees.
+
+### FILTRE + PRENDRE
+
+```excel
+=PRENDRE(FILTRE(A:D;B:B="Paris");5)
+```
+
+Les 5 premiers resultats.
+
+## Bonnes pratiques
+
+1. **Ajoutez** toujours si_vide pour eviter #CALC!
+2. **Utilisez** des plages delimitees pour la performance
+3. **Combinez** avec LET pour la lisibilite
+4. **Testez** avec peu de donnees d'abord
+
+[Decouvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,180 @@
+---
+title: "Optimisez vos Analyses Excel avec UNIQUE et TRIER"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Combinez UNIQUE et TRIER pour des analyses puissantes."
+description: "Guide pour optimiser vos analyses avec UNIQUE et TRIER."
+category: "Excel 365"
+categories: ["Excel 365", "Analyse de donnees Excel"]
+tags: ["UNIQUE", "TRIER", "Analyse", "Excel 365"]
+---
+
+# Optimisez vos Analyses avec UNIQUE et TRIER
+
+La combinaison UNIQUE + TRIER cree des analyses dynamiques puissantes.
+
+## Rappel des fonctions
+
+### UNIQUE
+
+```excel
+=UNIQUE(tableau;[par_col];[exactement_une_fois])
+```
+
+Extrait les valeurs distinctes.
+
+### TRIER
+
+```excel
+=TRIER(tableau;[index];[ordre];[par_col])
+```
+
+Trie les donnees.
+
+## Combinaison de base
+
+### Liste triee et unique
+
+```excel
+=TRIER(UNIQUE(A2:A100))
+```
+
+Valeurs distinctes triees par ordre alphabetique.
+
+### Tri decroissant
+
+```excel
+=TRIER(UNIQUE(A2:A100);1;-1)
+```
+
+## Analyses avancees
+
+### Categories triees par frequence
+
+```excel
+=LET(
+  valeurs;UNIQUE(A2:A100);
+  comptes;BYCOL(valeurs;LAMBDA(v;NB.SI(A2:A100;v)));
+  TRIER(HPILE(valeurs;comptes);2;-1)
+)
+```
+
+### Top 5 categories
+
+```excel
+=LET(
+  resultat;TRIER(UNIQUE(A2:A100));
+  INDEX(resultat;SEQUENCE(5);1)
+)
+```
+
+## Avec FILTRE
+
+### Valeurs uniques filtrees et triees
+
+```excel
+=TRIER(UNIQUE(FILTRE(A2:A100;B2:B100="Actif")))
+```
+
+### Double filtrage
+
+```excel
+=TRIER(UNIQUE(FILTRE(A2:B100;(C2:C100="Actif")*(D2:D100>100))))
+```
+
+## Applications pratiques
+
+### Liste deroulante dynamique
+
+Source de validation :
+```excel
+=TRIER(UNIQUE(Donnees[Categorie]))
+```
+
+Liste triee et sans doublons.
+
+### Clients distincts par region
+
+```excel
+=TRIER(UNIQUE(FILTRE(Clients[Nom];Clients[Region]=E1)))
+```
+
+### Produits les plus vendus
+
+```excel
+=LET(
+  produits;UNIQUE(Ventes[Produit]);
+  totaux;BYCOL(produits;LAMBDA(p;SOMME.SI(Ventes[Produit];p;Ventes[Montant])));
+  TRIER(HPILE(produits;totaux);2;-1)
+)
+```
+
+## TRIERPAR avec UNIQUE
+
+### Syntaxe
+
+```excel
+=TRIERPAR(tableau;plage_tri;[ordre];...)
+```
+
+### Exemple
+
+```excel
+=TRIERPAR(
+  UNIQUE(A2:B100);
+  UNIQUE(C2:C100);
+  -1
+)
+```
+
+## Analyses temporelles
+
+### Mois distincts tries
+
+```excel
+=TRIER(UNIQUE(MOIS(Dates)))
+```
+
+### Annees disponibles
+
+```excel
+=TRIER(UNIQUE(ANNEE(Dates)))
+```
+
+## Performance
+
+### Optimisation
+
+| Conseil | Impact |
+|---------|--------|
+| LET | Evite les calculs redondants |
+| Plages precises | Accelere l'execution |
+| Tableaux structures | Mise a jour automatique |
+
+## Gestion des erreurs
+
+### Si aucun resultat
+
+```excel
+=SIERREUR(TRIER(UNIQUE(FILTRE(...)));"Aucune donnee")
+```
+
+### Avec LET
+
+```excel
+=LET(
+  resultat;TRIER(UNIQUE(A2:A100));
+  SI(LIGNES(resultat)>0;resultat;"Vide")
+)
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| LET | Structurez les formules complexes |
+| Noms de plages | Clarifiez les references |
+| Test | Verifiez avec differentes donnees |
+| Documentation | Commentez la logique |
+
+[Decouvrir nos formations Excel](/formations-excel)

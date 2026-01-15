@@ -1,0 +1,159 @@
+---
+title: "Supprimer les Doublons dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Methodes pour identifier et supprimer les doublons dans Excel."
+description: "Guide complet pour supprimer les doublons dans Excel."
+category: "Manipulation de donnees"
+categories: ["Manipulation de donnees", "Astuces Excel"]
+tags: ["Doublons", "Nettoyage", "Donnees", "Excel"]
+---
+
+# Supprimer les Doublons dans Excel
+
+Nettoyez vos donnees en eliminant les enregistrements en double.
+
+## Methode standard
+
+### Etapes
+
+1. Selectionnez la plage de donnees
+2. **Donnees** > **Supprimer les doublons**
+3. Cochez les colonnes a comparer
+4. **OK**
+
+### Resultat
+
+Excel indique le nombre de doublons supprimes.
+
+## Identifier avant de supprimer
+
+### Mise en forme conditionnelle
+
+1. Selectionnez la colonne
+2. **Mise en forme conditionnelle**
+3. **Regles de surbrillance** > **Valeurs en double**
+
+### Formule manuelle
+
+```excel
+=NB.SI($A$2:$A$100;A2)>1
+```
+
+VRAI si la valeur apparait plus d'une fois.
+
+## Fonction UNIQUE (Excel 365)
+
+### Extraire sans doublons
+
+```excel
+=UNIQUE(A2:A100)
+```
+
+### Avantage
+
+Non destructif - conserve les donnees originales.
+
+### Plusieurs colonnes
+
+```excel
+=UNIQUE(A2:C100)
+```
+
+Combinaisons uniques de toutes les colonnes.
+
+## Doublons sur plusieurs colonnes
+
+### Comparer toutes les colonnes
+
+1. **Supprimer les doublons**
+2. Cochez toutes les colonnes
+
+### Comparer certaines colonnes
+
+Ne cochez que les colonnes pertinentes.
+
+## Garder la premiere occurrence
+
+### Comportement standard
+
+Excel garde la premiere occurrence, supprime les suivantes.
+
+### Garder la derniere
+
+1. Ajoutez un index
+2. Triez par decroissant
+3. Supprimez les doublons
+4. Retriez par index
+
+## Doublons approximatifs
+
+### Problemes courants
+
+| Doublon apparent | Cause |
+|------------------|-------|
+| "Paris" vs "paris" | Casse |
+| "Jean " vs "Jean" | Espaces |
+| "Café" vs "Cafe" | Accents |
+
+### Nettoyage prealable
+
+```excel
+=SUPPRESPACE(MAJUSCULE(A1))
+```
+
+## Power Query pour doublons
+
+### Methode
+
+1. **Donnees** > **Obtenir des donnees** > **A partir d'un tableau**
+2. Selectionnez les colonnes cles
+3. **Accueil** > **Supprimer les lignes** > **Supprimer les doublons**
+
+### Avantage
+
+Transformations reproductibles et non destructives.
+
+## VBA pour doublons
+
+### Macro simple
+
+```vba
+Sub SupprimerDoublons()
+    ActiveSheet.Range("A1").CurrentRegion.RemoveDuplicates _
+        Columns:=Array(1, 2), Header:=xlYes
+End Sub
+```
+
+## Compter les doublons
+
+### Nombre d'occurrences
+
+```excel
+=NB.SI($A$2:$A$100;A2)
+```
+
+### Nombre de doublons total
+
+```excel
+=LIGNES(A2:A100)-LIGNES(UNIQUE(A2:A100))
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Sauvegarde | Copiez avant de supprimer |
+| Identification | Colorez d'abord les doublons |
+| Verification | Examinez quelques doublons |
+| Criteres | Choisissez bien les colonnes cles |
+
+## Erreurs courantes
+
+| Erreur | Solution |
+|--------|----------|
+| Faux doublons | Nettoyez les espaces et la casse |
+| Doublons restants | Verifiez les caracteres invisibles |
+| Perte de donnees | Sauvegardez avant |
+
+[Decouvrir nos formations Excel](/formations-excel)

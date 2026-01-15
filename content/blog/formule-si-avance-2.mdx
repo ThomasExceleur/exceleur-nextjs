@@ -1,0 +1,104 @@
+---
+title: "Formule SI Avancee"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Techniques avancees pour la fonction SI Excel."
+description: "Guide avance de la fonction SI dans Excel."
+category: "Fonctions"
+categories: ["Fonctions", "Logique"]
+tags: ["SI", "Avance", "Logique", "Excel"]
+---
+
+# Formule SI Avancee
+
+Maitrisez les conditions complexes.
+
+## Rappel syntaxe
+
+```excel
+=SI(condition;si_vrai;si_faux)
+```
+
+## SI imbrique
+
+### Plusieurs conditions
+
+```excel
+=SI(A1>=90;"A";SI(A1>=80;"B";SI(A1>=70;"C";"D")))
+```
+
+### Limite
+
+7 niveaux maximum (avant Excel 365).
+
+## SI.CONDITIONS (Excel 365)
+
+### Syntaxe
+
+```excel
+=SI.CONDITIONS(cond1;val1;cond2;val2;...;VRAI;defaut)
+```
+
+### Exemple
+
+```excel
+=SI.CONDITIONS(A1>=90;"A";A1>=80;"B";A1>=70;"C";VRAI;"D")
+```
+
+Plus lisible que les SI imbriques.
+
+## Combinaison avec ET/OU
+
+### ET
+
+```excel
+=SI(ET(A1>0;B1>0);"Tous positifs";"Au moins un negatif")
+```
+
+### OU
+
+```excel
+=SI(OU(A1="Oui";B1="Oui");"Au moins un oui";"Aucun oui")
+```
+
+## SI avec calculs
+
+### Calcul conditionnel
+
+```excel
+=SI(A1>100;A1*0.9;A1)
+```
+
+Applique 10% de remise si > 100.
+
+## CHOISIR alternative
+
+### Syntaxe
+
+```excel
+=CHOISIR(index;val1;val2;val3;...)
+```
+
+### Exemple
+
+```excel
+=CHOISIR(A1;"Lundi";"Mardi";"Mercredi")
+```
+
+## Erreurs courantes
+
+| Erreur | Cause |
+|--------|-------|
+| Trop de parentheses | Compter les ouvertures/fermetures |
+| Texte sans guillemets | "Oui" pas Oui |
+| Ordre des conditions | Du plus specifique au general |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| SI.CONDITIONS | Preferez aux SI imbriques |
+| Tables | Utilisez des tables de correspondance |
+| Lisibilite | Decoupez les formules complexes |
+
+[Decouvrir nos formations Excel](/formations-excel)

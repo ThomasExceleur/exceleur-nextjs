@@ -1,0 +1,184 @@
+---
+title: "Regression Lineaire dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez a realiser une regression lineaire dans Excel."
+description: "Guide complet de la regression lineaire dans Excel."
+category: "Statistiques"
+categories: ["Statistiques", "Analyse de donnees Excel"]
+tags: ["Regression", "Statistiques", "Analyse", "Excel"]
+---
+
+# Regression Lineaire dans Excel
+
+La regression lineaire permet de modeliser la relation entre deux variables.
+
+## Qu'est-ce que la regression lineaire ?
+
+### Definition
+
+La regression lineaire trouve la meilleure droite pour representer la relation entre :
+- Variable independante (X)
+- Variable dependante (Y)
+
+### Equation
+
+```
+Y = a*X + b
+```
+
+| Element | Description |
+|---------|-------------|
+| a | Pente de la droite |
+| b | Ordonnee a l'origine |
+
+## Methode graphique
+
+### Creer un nuage de points
+
+1. Selectionnez vos donnees X et Y
+2. **Insertion** > **Graphiques** > **Nuage de points**
+
+### Ajouter une courbe de tendance
+
+1. Cliquez sur le nuage de points
+2. **+** > **Courbe de tendance**
+3. Selectionnez **Lineaire**
+
+### Afficher l'equation
+
+1. Clic droit sur la courbe de tendance
+2. **Format de la courbe de tendance**
+3. Cochez **Afficher l'equation sur le graphique**
+4. Cochez **Afficher le coefficient de determination (R²)**
+
+## Fonctions Excel
+
+### PENTE
+
+```excel
+=PENTE(Y;X)
+```
+
+Retourne la pente (a) de la regression.
+
+### ORDONNEE.ORIGINE
+
+```excel
+=ORDONNEE.ORIGINE(Y;X)
+```
+
+Retourne l'ordonnee a l'origine (b).
+
+### COEFFICIENT.DETERMINATION
+
+```excel
+=COEFFICIENT.DETERMINATION(Y;X)
+```
+
+Retourne le R² (qualite de l'ajustement).
+
+## Interpreter le R²
+
+| R² | Interpretation |
+|----|----------------|
+| 0.9 - 1.0 | Excellent ajustement |
+| 0.7 - 0.9 | Bon ajustement |
+| 0.5 - 0.7 | Ajustement moyen |
+| 0 - 0.5 | Faible ajustement |
+
+## Fonction DROITEREG
+
+### Syntaxe
+
+```excel
+=DROITEREG(Y;X;constante;stats)
+```
+
+### Resultat complet
+
+Avec stats=VRAI, retourne un tableau avec :
+- Coefficients
+- Erreurs standard
+- R²
+- Degres de liberte
+- Somme des carres
+
+## Prediction
+
+### PREVISION.LINEAIRE
+
+```excel
+=PREVISION.LINEAIRE(x_nouveau;Y;X)
+```
+
+Predit la valeur Y pour une nouvelle valeur X.
+
+### Exemple
+
+```excel
+=PREVISION.LINEAIRE(100;B2:B20;A2:A20)
+```
+
+## Utilitaire d'analyse
+
+### Activer l'utilitaire
+
+1. **Fichier** > **Options** > **Complements**
+2. Complements Excel > **Utilitaire d'analyse**
+
+### Regression complete
+
+1. **Donnees** > **Analyse de donnees**
+2. **Regression**
+3. Definissez les plages X et Y
+
+### Resultats detailles
+
+- Coefficients et erreurs standard
+- Statistique t et valeur p
+- Intervalle de confiance
+- ANOVA
+
+## Exemple pratique
+
+### Donnees
+
+| Publicite (X) | Ventes (Y) |
+|---------------|------------|
+| 10 | 100 |
+| 15 | 150 |
+| 20 | 180 |
+| 25 | 220 |
+| 30 | 250 |
+
+### Calculs
+
+```excel
+Pente : =PENTE(B2:B6;A2:A6) ' ~7.6
+Origine : =ORDONNEE.ORIGINE(B2:B6;A2:A6) ' ~22
+R² : =COEFFICIENT.DETERMINATION(B2:B6;A2:A6) ' ~0.99
+```
+
+### Interpretation
+
+Chaque unite de publicite supplementaire genere environ 7.6 unites de ventes.
+
+## Limites
+
+### A considerer
+
+- Correlation n'est pas causalite
+- Valable dans la plage des donnees
+- Hypotheses statistiques a verifier
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Visualiser | Toujours tracer le graphique |
+| Verifier R² | Evaluer la qualite |
+| Residus | Analyser les ecarts |
+| Contexte | Interpreter avec le domaine |
+
+[Decouvrir nos formations Excel](/formations-excel)

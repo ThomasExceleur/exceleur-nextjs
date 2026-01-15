@@ -1,0 +1,152 @@
+---
+title: "Tutoriel : Listes Deroulantes Excel sans VBA"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Creez des listes deroulantes avancees sans code VBA."
+description: "Tutoriel complet pour creer des listes deroulantes dans Excel sans VBA."
+category: "Astuces Excel"
+categories: ["Astuces Excel", "Validation"]
+tags: ["Liste deroulante", "Validation", "Sans VBA", "Tutoriel"]
+---
+
+# Listes Deroulantes sans VBA
+
+Creez des listes deroulantes sophistiquees avec les formules Excel.
+
+## Liste simple
+
+### Creation
+
+1. Selectionnez la cellule
+2. **Donnees** > **Validation des donnees**
+3. **Autoriser** : Liste
+4. **Source** : A1:A10 ou "Option1;Option2;Option3"
+5. **OK**
+
+## Liste depuis un tableau
+
+### Avantage
+
+La liste s'agrandit automatiquement avec les donnees.
+
+### Etapes
+
+1. Convertissez vos donnees en tableau (**Ctrl + T**)
+2. Nommez-le (ex: "Produits")
+3. Dans la validation : `=Produits[Nom]`
+
+## Liste dynamique avec UNIQUE
+
+### Pour valeurs uniques
+
+```excel
+=UNIQUE(Tableau[Categorie])
+```
+
+Nommez cette formule, puis utilisez le nom dans la validation.
+
+## Liste triee
+
+### Formule
+
+```excel
+=TRIER(UNIQUE(A:A))
+```
+
+## Liste dependante (cascade)
+
+### Principe
+
+La liste 2 depend du choix dans la liste 1.
+
+### Methode avec INDIRECT
+
+1. Nommez chaque liste avec le nom de la categorie :
+   - Plage "France" : Paris, Lyon, Marseille
+   - Plage "Belgique" : Bruxelles, Liege, Anvers
+
+2. Liste pays (A1) : validation normale
+
+3. Liste villes (B1) : `=INDIRECT(A1)`
+
+### Methode avec FILTRE (Excel 365)
+
+1. Tableau a deux colonnes : Pays | Ville
+2. Formule : `=FILTRE(Villes[Ville];Villes[Pays]=A1)`
+3. Nommez cette formule et utilisez-la
+
+## Liste avec recherche
+
+### Principe
+
+Filtrer la liste selon la saisie.
+
+### Formule
+
+```excel
+=FILTRE(Liste;ESTERREUR(CHERCHE(Recherche;Liste))=FAUX)
+```
+
+## Liste sans doublons ni vides
+
+### Formule
+
+```excel
+=FILTRE(UNIQUE(A:A);UNIQUE(A:A)<>"")
+```
+
+## Message d'aide
+
+### Configuration
+
+1. Dans la validation, onglet **Message de saisie**
+2. Titre : "Selection"
+3. Message : "Choisissez un element"
+
+## Message d'erreur
+
+### Configuration
+
+1. Onglet **Alerte d'erreur**
+2. Style : Arret (bloque) ou Avertissement (autorise)
+3. Message personnalise
+
+## Autoriser les valeurs libres
+
+### Style Avertissement
+
+Permet la saisie hors liste avec un avertissement.
+
+## Copier une validation
+
+### Methode
+
+1. Copiez la cellule avec validation
+2. Selectionnez les cellules cibles
+3. **Collage special** > **Validation**
+
+## Supprimer la validation
+
+### Methode
+
+1. Selectionnez les cellules
+2. **Validation des donnees** > **Effacer tout**
+
+## Tableau recapitulatif
+
+| Type | Methode |
+|------|---------|
+| Simple | Liste statique |
+| Dynamique | Tableau structure |
+| Unique | UNIQUE + nom |
+| Dependante | INDIRECT ou FILTRE |
+| Filtree | FILTRE + recherche |
+
+## Bonnes pratiques
+
+1. **Utilisez** des tableaux pour les listes dynamiques
+2. **Nommez** vos plages pour la lisibilite
+3. **Ajoutez** des messages d'aide
+4. **Testez** toutes les combinaisons
+
+[Decouvrir nos formations Excel](/formations-excel)

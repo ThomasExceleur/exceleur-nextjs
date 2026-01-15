@@ -1,0 +1,237 @@
+---
+title: "Excel Formule NB et NBVAL : Compter les Cellules"
+date: "2024-07-20"
+author: "Thomas L'Exceleur"
+excerpt: "Maitrisez les fonctions NB et NBVAL pour compter les cellules dans Excel."
+description: "Guide complet des fonctions NB, NBVAL et NB.VIDE dans Excel. Syntaxe, differences et exemples pratiques."
+category: "Formules Excel"
+categories: ["Formules Excel", "Calculs"]
+tags: ["NB", "NBVAL", "Formules", "Compter"]
+---
+
+# Excel NB et NBVAL : Compter les Cellules
+
+Excel propose plusieurs fonctions pour compter les cellules selon leur contenu.
+
+## NB : Compter les nombres
+
+### Syntaxe
+
+```excel
+=NB(valeur1; [valeur2]; ...)
+```
+
+### Ce que NB compte
+
+- Nombres
+- Dates (stockees comme nombres)
+- Formules retournant des nombres
+
+### Ce que NB ignore
+
+- Texte
+- Erreurs
+- Cellules vides
+- Valeurs logiques (VRAI/FAUX)
+
+### Exemples
+
+```excel
+=NB(A1:A100)
+=NB(A:A)
+=NB(A1:C10)
+```
+
+## NBVAL : Compter les non-vides
+
+### Syntaxe
+
+```excel
+=NBVAL(valeur1; [valeur2]; ...)
+```
+
+### Ce que NBVAL compte
+
+- Nombres
+- Texte
+- Erreurs
+- Valeurs logiques
+- Formules (meme si resultat vide "")
+
+### Ce que NBVAL ignore
+
+- Cellules vraiment vides (sans formule)
+
+### Exemples
+
+```excel
+=NBVAL(A1:A100)
+=NBVAL(A:A)
+```
+
+## NB.VIDE : Compter les vides
+
+### Syntaxe
+
+```excel
+=NB.VIDE(plage)
+```
+
+### Ce que NB.VIDE compte
+
+- Cellules vides
+- Cellules avec formules retournant ""
+
+### Exemple
+
+```excel
+=NB.VIDE(A1:A100)
+```
+
+## Comparaison des fonctions
+
+| Contenu | NB | NBVAL | NB.VIDE |
+|---------|-----|-------|---------|
+| 123 | 1 | 1 | 0 |
+| "Texte" | 0 | 1 | 0 |
+| (vide) | 0 | 0 | 1 |
+| ="" (formule) | 0 | 1 | 1 |
+| VRAI | 0 | 1 | 0 |
+| #N/A | 0 | 1 | 0 |
+
+## Cas pratiques
+
+### Taux de remplissage
+
+```excel
+=NBVAL(A1:A100)/100
+```
+
+Pourcentage de cellules remplies.
+
+### Donnees manquantes
+
+```excel
+=NB.VIDE(A1:A100)
+```
+
+Nombre de reponses manquantes.
+
+### Verifier la completude
+
+```excel
+=SI(NB.VIDE(A1:A10)=0; "Complet"; "Incomplet")
+```
+
+## Compter des types specifiques
+
+### Compter les textes
+
+```excel
+=SOMMEPROD((ESTTEXTE(A1:A100))*1)
+```
+
+### Compter les erreurs
+
+```excel
+=SOMMEPROD((ESTERREUR(A1:A100))*1)
+```
+
+### Compter les formules
+
+Non possible directement sans VBA.
+
+## Combiner avec d'autres fonctions
+
+### Moyenne des non-vides
+
+```excel
+=SOMME(A1:A100)/NBVAL(A1:A100)
+```
+
+Equivalent a MOYENNE mais explicite.
+
+### Pourcentage de reponses
+
+```excel
+=NBVAL(B:B)/NB.LIGNES(B:B)*100
+```
+
+### Verifier avant calcul
+
+```excel
+=SI(NB(A1:A10)>0; MOYENNE(A1:A10); "Pas de donnees")
+```
+
+## Tableaux structures
+
+Dans un tableau, utilisez des references structurees :
+
+```excel
+=NB(Tableau1[Ventes])
+=NBVAL(Tableau1[Nom])
+=NB.VIDE(Tableau1[Email])
+```
+
+## NB2 : Compter les valeurs logiques
+
+La fonction NB ne compte pas les VRAI/FAUX. Alternative :
+
+```excel
+=SOMMEPROD((ESTLOGIQUE(A1:A100))*1)
+```
+
+## Erreurs courantes
+
+### NB retourne 0 sur du texte
+
+C'est normal. Utilisez NBVAL pour compter tout.
+
+### NBVAL compte les erreurs
+
+Les erreurs (#N/A, #VALEUR!) sont comptees.
+
+### NB.VIDE ne compte pas les ""
+
+Les formules retournant "" sont comptees par NB.VIDE mais aussi par NBVAL.
+
+## Astuces
+
+### Compter les cellules uniques
+
+```excel
+=SOMMEPROD(1/NB.SI(A1:A100;A1:A100))
+```
+
+### Compter les doublons
+
+```excel
+=NBVAL(A1:A100)-SOMMEPROD(1/NB.SI(A1:A100;A1:A100&""))
+```
+
+### Derniere cellule non vide
+
+```excel
+=INDEX(A:A; NB(A:A))
+```
+
+Pour les nombres uniquement.
+
+## Resume
+
+| Fonction | Usage |
+|----------|-------|
+| NB | Nombres uniquement |
+| NBVAL | Tout sauf vraiment vide |
+| NB.VIDE | Cellules vides |
+| NB.SI | Avec condition |
+| NB.SI.ENS | Plusieurs conditions |
+
+## Bonnes pratiques
+
+1. **Choisissez la bonne fonction** selon le type de donnees
+2. **Testez** sur un petit echantillon
+3. **Attention aux formules vides** (="")
+4. **Utilisez NB.SI** pour plus de precision
+
+[Decouvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,228 @@
+---
+title: "Excel Figer une Cellule dans une Formule : Les References"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez a utiliser les references absolues et relatives pour figer des cellules."
+description: "Guide complet des references absolues et relatives dans Excel. Quand et comment utiliser le symbole $."
+category: "Formules Excel"
+categories: ["Formules Excel", "References"]
+tags: ["References", "Absolu", "Relatif", "Formules", "Dollar"]
+---
+
+# Figer une Cellule dans une Formule Excel
+
+Les references permettent de controler le comportement des formules lors de la copie.
+
+## Types de references
+
+### Reference relative (A1)
+
+Change quand vous copiez la formule.
+
+```excel
+=A1
+```
+
+Copiee vers le bas devient A2, A3, etc.
+
+### Reference absolue ($A$1)
+
+Ne change jamais lors de la copie.
+
+```excel
+=$A$1
+```
+
+Reste toujours $A$1.
+
+### Reference mixte ($A1 ou A$1)
+
+Une partie fixe, une partie variable.
+
+```excel
+=$A1   ' Colonne fixe, ligne variable
+=A$1   ' Colonne variable, ligne fixe
+```
+
+## Le symbole $
+
+### Signification
+
+Le $ fige l'element qui le suit :
+
+- **$A** : Fige la colonne A
+- **$1** : Fige la ligne 1
+- **$A$1** : Fige les deux
+
+### Raccourci clavier F4
+
+Appuyez sur **F4** pour basculer entre les modes :
+
+1. A1 (relatif)
+2. $A$1 (absolu)
+3. A$1 (ligne fixe)
+4. $A1 (colonne fixe)
+5. Retour a A1
+
+## Exemples pratiques
+
+### Calcul avec taux fixe
+
+Le taux est en E1, les valeurs en A1:A10.
+
+```excel
+=A1*$E$1
+```
+
+Copiez vers le bas : A2*$E$1, A3*$E$1, etc.
+
+### Tableau de multiplication
+
+Multiplicandes en colonne A, multiplicateurs en ligne 1.
+
+```excel
+=$A2*B$1
+```
+
+- $A2 : Colonne A fixe
+- B$1 : Ligne 1 fixe
+
+### Pourcentage d'un total
+
+Total en B11.
+
+```excel
+=B1/$B$11
+```
+
+Chaque ligne se divise par le meme total.
+
+## Quand utiliser chaque type
+
+### Reference relative
+
+- Formules qui doivent s'adapter
+- Calculs ligne par ligne
+- La plupart des formules
+
+### Reference absolue
+
+- Taux, pourcentages fixes
+- Cellules de parametres
+- Constantes dans les formules
+
+### Reference mixte colonne ($A1)
+
+- Tableaux avec en-tetes en colonne A
+- RECHERCHEV sur une table fixe
+
+### Reference mixte ligne (A$1)
+
+- Tableaux avec en-tetes en ligne 1
+- Formules horizontales avec en-tete fixe
+
+## Cas d'usage frequents
+
+### TVA avec taux variable
+
+```excel
+=A1*(1+$D$1)
+```
+
+D1 contient le taux de TVA.
+
+### Commission par vendeur
+
+```excel
+=SOMME.SI($A$2:$A$100;E$1;$B$2:$B$100)
+```
+
+- Plages fixes
+- Critere en ligne 1
+
+### Tableau croise simple
+
+| | Jan | Fev | Mar |
+|---|-----|-----|-----|
+| A | =$A2*B$1 | =$A2*C$1 | =$A2*D$1 |
+| B | =$A3*B$1 | =$A3*C$1 | =$A3*D$1 |
+
+## Erreurs courantes
+
+### Formule qui ne s'adapte pas
+
+**Cause** : Vous avez utilise une reference absolue
+
+**Solution** : Supprimez les $
+
+### Formule avec #REF!
+
+**Cause** : Reference relative qui sort du tableau
+
+**Solution** : Figez la partie necessaire
+
+### Resultat incorrect apres copie
+
+Verifiez vos references dans la barre de formule.
+
+## Visualiser les references
+
+### Mode Affichage formules
+
+**Ctrl + `** (accent grave)
+
+Affiche toutes les formules avec leurs references.
+
+### Audit des formules
+
+**Formules** > **Reperer les dependants/antecedents**
+
+## Nommer les cellules
+
+### Alternative au $
+
+Donnez un nom a votre cellule :
+
+1. Selectionnez la cellule
+2. Zone Nom (a gauche de la barre de formule)
+3. Tapez un nom (ex: TauxTVA)
+
+### Utilisation
+
+```excel
+=A1*(1+TauxTVA)
+```
+
+Plus lisible et automatiquement absolu.
+
+## Plages nommees
+
+### Creer une plage nommee
+
+1. Selectionnez la plage
+2. **Formules** > **Definir un nom**
+3. Entrez le nom
+
+### Avantages
+
+- Pas besoin de $
+- Plus lisible
+- Plus facile a maintenir
+
+## Resume
+
+| Reference | Exemple | Comportement |
+|-----------|---------|--------------|
+| Relative | A1 | S'adapte |
+| Absolue | $A$1 | Fixe |
+| Mixte colonne | $A1 | Colonne fixe |
+| Mixte ligne | A$1 | Ligne fixe |
+
+## Bonnes pratiques
+
+1. **Utilisez F4** pour basculer rapidement
+2. **Nommez les cellules** importantes
+3. **Testez** en copiant la formule
+4. **Documentez** les cellules de parametres
+
+[Decouvrir nos formations Excel](/formations-excel)

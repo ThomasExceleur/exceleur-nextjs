@@ -1,0 +1,152 @@
+---
+title: "RECHERCHEX Avancee : Guide Complet"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maitrisez toutes les possibilites de RECHERCHEX dans Excel 365."
+description: "Guide avance de RECHERCHEX. Modes de recherche, correspondance et astuces."
+category: "Formules Excel"
+categories: ["Formules Excel", "Excel 365"]
+tags: ["RECHERCHEX", "Avance", "Excel 365", "Recherche"]
+---
+
+# RECHERCHEX Avancee
+
+Exploitez tout le potentiel de cette fonction Excel 365.
+
+## Syntaxe complete
+
+```excel
+=RECHERCHEX(valeur;plage_recherche;plage_retour;[si_non_trouve];[mode_correspondance];[mode_recherche])
+```
+
+## Arguments avances
+
+### si_non_trouve
+
+Valeur retournee si la recherche echoue.
+
+```excel
+=RECHERCHEX(A1;B:B;C:C;"Non trouve")
+```
+
+### mode_correspondance
+
+| Valeur | Comportement |
+|--------|--------------|
+| 0 | Correspondance exacte (defaut) |
+| -1 | Correspondance exacte ou valeur inferieure |
+| 1 | Correspondance exacte ou valeur superieure |
+| 2 | Correspondance avec caracteres joker |
+
+### mode_recherche
+
+| Valeur | Comportement |
+|--------|--------------|
+| 1 | Du debut a la fin (defaut) |
+| -1 | De la fin au debut |
+| 2 | Recherche binaire croissante |
+| -2 | Recherche binaire decroissante |
+
+## Recherche inversee
+
+### Derniere occurrence
+
+```excel
+=RECHERCHEX(A1;B:B;C:C;;0;-1)
+```
+
+Le -1 en mode_recherche cherche depuis la fin.
+
+## Recherche avec jokers
+
+### Correspondance partielle
+
+```excel
+=RECHERCHEX("*Paris*";A:A;B:B;;2)
+```
+
+Le mode 2 active les caracteres joker.
+
+## Recherche approchante
+
+### Valeur inferieure la plus proche
+
+```excel
+=RECHERCHEX(150;A:A;B:B;"Hors limites";-1)
+```
+
+Utile pour les tranches (prix, remises, taxes).
+
+### Valeur superieure la plus proche
+
+```excel
+=RECHERCHEX(150;A:A;B:B;"Hors limites";1)
+```
+
+## Retour de plusieurs colonnes
+
+### Une seule formule
+
+```excel
+=RECHERCHEX(A1;Produits[ID];Produits[Nom]:Produits[Prix])
+```
+
+Retourne plusieurs colonnes d'un coup.
+
+## Combinaisons puissantes
+
+### RECHERCHEX + FILTRE
+
+```excel
+=RECHERCHEX(A1;FILTRE(B:B;C:C="Actif");FILTRE(D:D;C:C="Actif"))
+```
+
+Recherche uniquement parmi les elements actifs.
+
+### RECHERCHEX imbrique
+
+```excel
+=RECHERCHEX(
+  RECHERCHEX(A1;B:B;C:C);
+  D:D;
+  E:E
+)
+```
+
+## Recherche bidimensionnelle
+
+### Intersection ligne/colonne
+
+```excel
+=RECHERCHEX(Colonne;Entetes;
+  RECHERCHEX(Ligne;Lignes;Donnees))
+```
+
+## Performance
+
+### Recherche binaire
+
+Pour les grandes plages triees :
+
+```excel
+=RECHERCHEX(A1;B:B;C:C;;0;2)
+```
+
+Le mode 2 utilise la recherche binaire (plus rapide).
+
+## Migration depuis RECHERCHEV
+
+| Cas | RECHERCHEV | RECHERCHEX |
+|-----|------------|------------|
+| Base | `=RECHERCHEV(A1;B:C;2;FAUX)` | `=RECHERCHEX(A1;B:B;C:C)` |
+| Non trouve | `=SIERREUR(RECHERCHEV(...);0)` | `=RECHERCHEX(A1;B:B;C:C;0)` |
+| Gauche | Impossible | `=RECHERCHEX(A1;C:C;B:B)` |
+
+## Bonnes pratiques
+
+1. **Utilisez** si_non_trouve pour eviter #N/A
+2. **Preferez** la recherche binaire pour les grandes plages
+3. **Exploitez** le retour multi-colonnes
+4. **Combinez** avec FILTRE pour plus de flexibilite
+
+[Decouvrir nos formations Excel](/formations-excel)

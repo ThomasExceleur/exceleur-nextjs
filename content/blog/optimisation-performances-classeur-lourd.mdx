@@ -1,0 +1,102 @@
+---
+title: "Optimisation des Performances d'un Classeur Lourd"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Techniques pour accelerer les classeurs Excel volumineux."
+description: "Guide d'optimisation des classeurs Excel lourds."
+category: "Performance"
+categories: ["Performance", "Astuces Excel"]
+tags: ["Performance", "Optimisation", "Classeur lourd", "Vitesse"]
+---
+
+# Optimisation des Performances d'un Classeur Lourd
+
+Rendez vos gros fichiers Excel plus rapides.
+
+## Diagnostiquer
+
+### Symptomes
+
+- Ouverture lente
+- Recalcul long
+- Gel de l'interface
+
+### Causes courantes
+
+| Cause | Impact |
+|-------|--------|
+| Formules volatiles | Eleve |
+| Colonnes entieres | Eleve |
+| Images HD | Moyen |
+| Mise en forme excessive | Moyen |
+
+## Formules volatiles
+
+### A eviter
+
+- INDIRECT()
+- DECALER()
+- MAINTENANT()
+- ALEA()
+
+### Alternatives
+
+Remplacez INDIRECT par INDEX quand possible.
+
+## Plages de formules
+
+### Mauvais
+
+```excel
+=SOMME(A:A)
+```
+
+### Bon
+
+```excel
+=SOMME(Tableau[Colonne])
+```
+
+## Calcul manuel
+
+### Activer
+
+**Formules** > **Options de calcul** > **Manuel**
+
+### Recalculer
+
+Ctrl+Maj+F9
+
+## Compresser les images
+
+1. Selectionnez une image
+2. **Format** > **Compresser**
+3. Choisissez une resolution basse
+
+## Nettoyer la mise en forme
+
+### Effacer les cellules vides
+
+1. Selectionnez les cellules vides inutiles
+2. **Accueil** > **Effacer** > **Tout effacer**
+3. Supprimez les lignes/colonnes
+
+## Format XLSB
+
+### Conversion
+
+**Enregistrer sous** > Classeur binaire Excel
+
+### Avantage
+
+30-50% plus compact et plus rapide.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Prevention | Concevez bien des le depart |
+| Nettoyage | Regulierement |
+| Test | Mesurez avant/apres |
+
+[Decouvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,147 @@
+---
+title: "La Fonction ET et SI dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Combinez SI et ET pour des conditions multiples dans Excel."
+description: "Guide pour combiner SI et ET dans Excel. Conditions multiples."
+category: "Formules Excel"
+categories: ["Formules Excel", "Logique"]
+tags: ["SI", "ET", "Logique", "Conditions"]
+---
+
+# Combiner SI et ET dans Excel
+
+La fonction ET permet de tester plusieurs conditions simultanement.
+
+## La fonction ET
+
+### Syntaxe
+
+```excel
+=ET(condition1;condition2;...)
+```
+
+### Resultat
+
+- **VRAI** si toutes les conditions sont vraies
+- **FAUX** si au moins une condition est fausse
+
+### Exemple simple
+
+```excel
+=ET(A1>10;B1>10)
+```
+
+VRAI seulement si A1 ET B1 sont tous deux superieurs a 10.
+
+## Combiner SI et ET
+
+### Syntaxe
+
+```excel
+=SI(ET(condition1;condition2);valeur_si_vrai;valeur_si_faux)
+```
+
+### Exemple pratique
+
+```excel
+=SI(ET(Age>=18;Permis="Oui");"Peut conduire";"Ne peut pas conduire")
+```
+
+La personne doit avoir 18 ans ET un permis.
+
+## Exemples concrets
+
+### Validation de commande
+
+```excel
+=SI(ET(Stock>0;Paiement="OK");"Expedier";"En attente")
+```
+
+### Bonus conditionnel
+
+```excel
+=SI(ET(Ventes>=Objectif;Anciennete>=2);1000;0)
+```
+
+Bonus de 1000 si objectif atteint ET anciennete >= 2 ans.
+
+### Note scolaire
+
+```excel
+=SI(ET(Examen>=10;Controle>=10);"Admis";"Rattrapage")
+```
+
+## Plusieurs conditions ET
+
+### Jusqu'a 255 conditions
+
+```excel
+=SI(ET(A1>0;B1>0;C1>0;D1>0);"Tout positif";"Au moins un negatif")
+```
+
+## Combiner ET avec OU
+
+### Logique complexe
+
+```excel
+=SI(ET(A1>10;OU(B1="A";B1="B"));"Valide";"Invalide")
+```
+
+A1 doit etre > 10 ET B1 doit etre "A" ou "B".
+
+## Alternative : SI.CONDITIONS
+
+### Plus lisible pour plusieurs conditions
+
+```excel
+=SI.CONDITIONS(
+  ET(A1>=90;B1>=90);"Excellent";
+  ET(A1>=70;B1>=70);"Bien";
+  VRAI;"A ameliorer"
+)
+```
+
+## Comparaison ET vs OU
+
+| Fonction | Resultat |
+|----------|----------|
+| ET | VRAI si TOUTES vraies |
+| OU | VRAI si AU MOINS UNE vraie |
+
+### Exemple
+
+| A | B | ET(A;B) | OU(A;B) |
+|---|---|---------|---------|
+| VRAI | VRAI | VRAI | VRAI |
+| VRAI | FAUX | FAUX | VRAI |
+| FAUX | FAUX | FAUX | FAUX |
+
+## Cas pratiques courants
+
+### Remise conditionnelle
+
+```excel
+=SI(ET(Montant>1000;Client="VIP");Montant*0.9;Montant)
+```
+
+### Validation de formulaire
+
+```excel
+=SI(ET(Nom<>"";Email<>"";Tel<>"");"Complet";"Incomplet")
+```
+
+### Tranche d'age
+
+```excel
+=SI(ET(Age>=18;Age<=65);"Actif";"Inactif")
+```
+
+## Bonnes pratiques
+
+1. **Limitez** le nombre de conditions (lisibilite)
+2. **Utilisez** des cellules nommees
+3. **Testez** chaque condition separement
+4. **Preferez** SI.CONDITIONS pour les cas complexes
+
+[Decouvrir nos formations Excel](/formations-excel)
