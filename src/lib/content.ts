@@ -23,18 +23,26 @@ export const siteConfig = {
  */
 export const navConfig: NavConfig = {
   main: [
-    { label: 'Accueil', href: '/' },
     {
-      label: 'Formations',
-      href: '/formations-excel',
+      label: 'Nos solutions',
+      href: '#',
       children: [
-        { label: 'Excel avance', href: '/formations-excel/excel-avance' },
-        { label: 'Formation Entreprise', href: '/formations-excel/formation-excel-entreprise' },
+        { label: 'Le Décollage', href: '/formations-excel/le-decollage-liste-attente' },
+        { label: 'La Machine', href: '/formations-excel/la-machine-liste-attente' },
+        { label: 'La Slide', href: '/formations-excel/la-slide-liste-attente' },
+        { label: 'Power Query Secrets', href: '/formations-excel/power-query-secrets-liste-attente' },
+        { label: 'Livre', href: '/livre' },
       ],
     },
-    { label: 'Blog', href: '/blog-excel' },
-    { label: 'Livre', href: '/livre' },
-    { label: 'Contact', href: '/contact' },
+    {
+      label: 'Contenus gratuits',
+      href: '#',
+      children: [
+        { label: 'Blog Excel', href: '/blog-excel' },
+        { label: 'Guide TCD', href: '/guide-ultime-tcd' },
+        { label: 'Raccourcis Excel', href: '/raccourcis-indispensables-excel' },
+      ],
+    },
   ],
   footer: {
     legal: [

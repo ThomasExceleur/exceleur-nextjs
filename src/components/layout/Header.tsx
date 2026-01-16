@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { navConfig } from '@/lib/content';
 import { Container } from './Container';
-import { Button } from '@/components/ui/Button';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -20,14 +20,19 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm h-header">
+    <header className="sticky top-0 z-50 bg-white h-header">
       <Container className="h-full">
         <div className="flex items-center justify-between h-full">
           {/* Logo */}
           <Link href="/" className="flex items-center no-underline">
-            <span className="font-heading text-2xl font-extrabold text-text-dark">
-              L&apos;Exceleur
-            </span>
+            <Image
+              src="/images/logo.webp"
+              alt="exceleur-logo-2023"
+              width={85}
+              height={85}
+              className="w-[85px] h-[85px]"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -91,9 +96,13 @@ export function Header() {
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <Button variant="secondary" href="https://app.exceleur.fr" target="_blank">
+            <Link
+              href="https://exceleur.schoolmaker.co/"
+              target="_blank"
+              className="font-heading text-nav text-text-dark hover:text-primary no-underline transition-colors"
+            >
               Se connecter
-            </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -189,9 +198,14 @@ export function Header() {
                 )}
               </div>
             ))}
-            <Button variant="secondary" href="https://app.exceleur.fr" target="_blank" className="mt-4">
+            <Link
+              href="https://exceleur.schoolmaker.co/"
+              target="_blank"
+              className="block py-2 mt-4 font-heading text-nav text-text-dark hover:text-primary no-underline"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               Se connecter
-            </Button>
+            </Link>
           </nav>
         </Container>
       </div>

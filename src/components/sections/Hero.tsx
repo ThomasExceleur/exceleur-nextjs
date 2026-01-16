@@ -15,7 +15,7 @@ interface HeroProps {
     href: string;
   };
   className?: string;
-  variant?: 'default' | 'simple';
+  variant?: 'default' | 'simple' | 'homepage';
 }
 
 export function Hero({
@@ -26,10 +26,35 @@ export function Hero({
   className,
   variant = 'default',
 }: HeroProps) {
+  // Homepage variant with Thomas image
+  if (variant === 'homepage') {
+    return (
+      <section className={cn('bg-gradient-hero py-16 lg:py-20', className)}>
+        <Container>
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <h1 className="text-h1 text-white mb-6">{title}</h1>
+            </div>
+            <div className="flex justify-center lg:justify-end">
+              <Image
+                src="/images/thomas-hero.png"
+                alt="Thomas L'Exceleur, formateur Excel"
+                width={500}
+                height={285}
+                className="max-w-full h-auto"
+                priority
+              />
+            </div>
+          </div>
+        </Container>
+      </section>
+    );
+  }
+
   return (
     <section
       className={cn(
-        'gradient-hero py-16 lg:py-24',
+        'bg-gradient-hero py-16 lg:py-24',
         variant === 'simple' && 'py-12 lg:py-16',
         className
       )}
