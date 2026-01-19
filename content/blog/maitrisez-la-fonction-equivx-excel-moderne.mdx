@@ -1,17 +1,17 @@
 ---
-title: "Maitrisez EQUIVX : La Fonction de Recherche Moderne"
+title: "Maîtrisez EQUIVX : La Fonction de Recherche Moderne"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Decouvrez EQUIVX, la version moderne de la fonction EQUIV."
+excerpt: "Découvrez EQUIVX, la version moderne de la fonction EQUIV."
 description: "Guide de la fonction EQUIVX pour les recherches modernes Excel."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
+catégories: ["Excel 365", "Formules Excel"]
 tags: ["EQUIVX", "Recherche", "Excel 365", "Formules"]
 ---
 
 # EQUIVX : La Fonction de Recherche Moderne
 
-EQUIVX remplace EQUIV avec plus de fonctionnalites.
+EQUIVX remplace EQUIV avec plus de fonctionnalités.
 
 ## Syntaxe
 
@@ -19,9 +19,9 @@ EQUIVX remplace EQUIV avec plus de fonctionnalites.
 =EQUIVX(valeur_cherchee;plage;[mode_correspondance];[mode_recherche])
 ```
 
-## Parametres
+## Paramètrès
 
-| Parametre | Description |
+| Paramèêtre | Description |
 |-----------|-------------|
 | valeur_cherchee | Ce que vous recherchez |
 | plage | Ou chercher |
@@ -33,8 +33,8 @@ EQUIVX remplace EQUIV avec plus de fonctionnalites.
 | Valeur | Description |
 |--------|-------------|
 | 0 | Exacte (defaut) |
-| -1 | Exacte ou inferieur |
-| 1 | Exacte ou superieur |
+| -1 | Exacte où inférieur |
+| 1 | Exacte où supérieur |
 | 2 | Caracteres generiques |
 
 ## Modes de recherche
@@ -51,7 +51,7 @@ EQUIVX remplace EQUIV avec plus de fonctionnalites.
 | EQUIV | EQUIVX |
 |-------|--------|
 | Moins flexible | Plus d'options |
-| Ordre des arguments different | Syntaxe modernisee |
+| Ordre des arguments différent | Syntaxe modernisee |
 | Pas de recherche inverse | Recherche inverse possible |
 
 ## Exemples
@@ -62,7 +62,7 @@ EQUIVX remplace EQUIV avec plus de fonctionnalites.
 =EQUIVX("Paris";A:A;0)
 ```
 
-### Derniere occurrence
+### Dernière occurrence
 
 ```excel
 =EQUIVX("Paris";A:A;0;-1)
@@ -74,20 +74,20 @@ EQUIVX remplace EQUIV avec plus de fonctionnalites.
 =EQUIVX(150;B:B;-1)
 ```
 
-Trouve 150 ou la valeur juste inferieure.
+Trouve 150 où la valeur juste inférieure.
 
 ## Avec INDEX
 
 ### Combinaison classique
 
 ```excel
-=INDEX(B:B;EQUIVX(Critere;A:A;0))
+=INDEX(B:B;EQUIVX(Critère;A:A;0))
 ```
 
 ### Equivalent de RECHERCHEX
 
 ```excel
-=RECHERCHEX(Critere;A:A;B:B)
+=RECHERCHEX(Critère;A:A;B:B)
 ```
 
 Plus simple que INDEX/EQUIVX.
@@ -110,7 +110,7 @@ Plus simple que INDEX/EQUIVX.
 
 ### Quand l'utiliser
 
-Donnees triees et tres grandes plages.
+Données triees et très grandes plages.
 
 ### Performance
 
@@ -124,7 +124,7 @@ Plus rapide que la recherche lineaire.
 =EQUIVX(NomClient;ListeClients;0)
 ```
 
-### Derniere vente d'un produit
+### Dernière vente d'un produit
 
 ```excel
 =INDEX(Dates;EQUIVX(Produit;ListeProduits;0;-1))
@@ -144,7 +144,7 @@ Plus rapide que la recherche lineaire.
 =SIERREUR(EQUIVX(...);"Non trouve")
 ```
 
-### Verifier l'existence
+### Vérifier l'existence
 
 ```excel
 =ESTNUM(EQUIVX(Valeur;Plage;0))
@@ -154,8 +154,8 @@ Plus rapide que la recherche lineaire.
 
 | Pratique | Description |
 |----------|-------------|
-| RECHERCHEX | Preferez-la pour valeur + position |
+| RECHERCHEX | Préférez-la pour valeur + position |
 | Mode explicite | Specifiez toujours le mode |
 | Performance | Binaire pour grandes plages triees |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

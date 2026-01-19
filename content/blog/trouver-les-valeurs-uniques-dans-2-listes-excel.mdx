@@ -2,18 +2,18 @@
 title: "Trouver les Valeurs Uniques dans 2 Listes Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a identifier les valeurs presentes dans une liste mais pas dans l'autre."
+excerpt: "Apprenez à identifier les valeurs présentés dans une liste mais pas dans l'autre."
 description: "Techniques pour comparer deux listes et trouver les valeurs uniques dans Excel."
 category: "Formules Excel"
-categories: ["Formules Excel", "Analyse de donnees Excel"]
+catégories: ["Formules Excel", "Analyse de données Excel"]
 tags: ["Comparaison", "Listes", "UNIQUE", "Doublons"]
 ---
 
 # Trouver les Valeurs Uniques dans 2 Listes
 
-Comparez deux listes pour identifier les elements presents dans une seule.
+Comparez deux listes pour identifier les éléments presents dans une seule.
 
-## Methode 1 : FILTRE + ESTNA (Excel 365)
+## Méthode 1 : FILTRE + ESTNA (Excel 365)
 
 ### Valeurs de Liste1 absentes de Liste2
 
@@ -27,17 +27,17 @@ Comparez deux listes pour identifier les elements presents dans une seule.
 =FILTRE(B:B;ESTNA(EQUIV(B:B;A:A;0)))
 ```
 
-## Methode 2 : Mise en forme conditionnelle
+## Méthode 2 : Mise en forme conditionnelle
 
-### Etapes
+### Étapes
 
-1. Selectionnez la Liste1
-2. **Accueil** > **Mise en forme conditionnelle** > **Nouvelle regle**
+1. Sélectionnez la Liste1
+2. **Accueil** > **Mise en forme conditionnelle** > **Nouvelle règle**
 3. Choisissez "Utiliser une formule"
 4. Formule : `=ESTNA(EQUIV(A1;$B:$B;0))`
-5. Definissez un format (couleur de fond)
+5. Définissez un format (couleur de fond)
 
-## Methode 3 : NB.SI pour identifier
+## Méthode 3 : NB.SI pour identifier
 
 ### Formule auxiliaire
 
@@ -45,9 +45,9 @@ Comparez deux listes pour identifier les elements presents dans une seule.
 =SI(NB.SI($B:$B;A1)=0;"Unique";"Present")
 ```
 
-Affichez dans une colonne helper, puis filtrez sur "Unique".
+Affichez dans une colonne helper, puis filtrez sûr "Unique".
 
-## Methode 4 : RECHERCHEV
+## Méthode 4 : RECHERCHEV
 
 ### Identifier les absents
 
@@ -70,7 +70,7 @@ Affichez dans une colonne helper, puis filtrez sur "Unique".
 
 ## Comparaison bidirectionnelle
 
-### Elements exclusifs a chaque liste
+### Éléments exclusifs à chaque liste
 
 ```excel
 ' Uniquement dans Liste1
@@ -79,7 +79,7 @@ Affichez dans une colonne helper, puis filtrez sur "Unique".
 ' Uniquement dans Liste2
 =FILTRE(B:B;ESTNA(EQUIV(B:B;A:A;0)))
 
-' Toutes les differences
+' Toutes les différences
 =ASSEMB.V(
   FILTRE(A:A;ESTNA(EQUIV(A:A;B:B;0)));
   FILTRE(B:B;ESTNA(EQUIV(B:B;A:A;0)))
@@ -90,7 +90,7 @@ Affichez dans une colonne helper, puis filtrez sur "Unique".
 
 ### Clients perdus
 
-Comparer la liste clients de cette annee vs l'annee precedente.
+Comparer la liste clients de cette année vs l'année précédente.
 
 ### Produits manquants
 
@@ -98,7 +98,7 @@ Identifier les produits en catalogue mais pas en stock.
 
 ## Visualisation
 
-### Tableau de resultats
+### Tableau de résultats
 
 | Statut | Formule |
 |--------|---------|
@@ -108,9 +108,9 @@ Identifier les produits en catalogue mais pas en stock.
 
 ## Bonnes pratiques
 
-1. **Nettoyez** les donnees avant comparaison
+1. **Nettoyez** les données avant comparaison
 2. **Supprimez** les espaces superflus
 3. **Uniformisez** la casse (majuscules/minuscules)
-4. **Verifiez** les doublons dans chaque liste
+4. **Vérifiez** les doublons dans chaque liste
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

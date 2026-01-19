@@ -2,16 +2,16 @@
 title: "Pourquoi Excel ne Calcule Pas la Somme : Solutions"
 date: "2024-07-18"
 author: "Thomas L'Exceleur"
-excerpt: "Resolvez le probleme quand la fonction SOMME ne fonctionne pas dans Excel."
-description: "Guide pour resoudre les problemes de somme dans Excel. Nombres en texte, formats et autres causes."
+excerpt: "Resolvez le problème quand la fonction SOMME ne fonctionne pas dans Excel."
+description: "Guide pour resoudre les problèmes de somme dans Excel. Nombres en texte, formats et autres causes."
 category: "Depannage"
-categories: ["Depannage", "Formules Excel"]
+catégories: ["Depannage", "Formules Excel"]
 tags: ["SOMME", "Depannage", "Erreurs", "Calcul"]
 ---
 
 # Pourquoi Excel ne Calcule Pas la Somme
 
-Quand la fonction SOMME retourne 0 ou un resultat incorrect, plusieurs causes sont possibles.
+Quand la fonction SOMME retourne 0 où un résultat incorrect, plusieurs causes sont possibles.
 
 ## Cause 1 : Nombres stockes comme texte
 
@@ -22,14 +22,14 @@ La somme retourne 0 malgre des nombres visibles.
 ### Detection
 
 - Triangle vert dans les cellules
-- Alignement a gauche (texte) au lieu de droite (nombres)
+- Alignement à gauche (texte) au lieu de droite (nombres)
 
 ### Solutions
 
 #### Convertir en nombre
 
-1. Selectionnez les cellules
-2. Cliquez sur l'icone d'avertissement
+1. Sélectionnez les cellules
+2. Cliquez sûr l'icone d'avertissement
 3. **Convertir en nombre**
 
 #### Multiplication par 1
@@ -43,23 +43,23 @@ Dans une colonne vide :
 
 1. Tapez 1 dans une cellule
 2. Copiez-la
-3. Selectionnez les nombres-texte
+3. Sélectionnez les nombres-texte
 4. **Collage special** > **Multiplier**
 
 ## Cause 2 : Mode de calcul manuel
 
 ### Symptome
 
-La somme ne se met pas a jour.
+La somme ne se met pas à jour.
 
 ### Detection
 
-Les formules affichent des resultats obsoletes.
+Les formules affichent des résultats obsoletes.
 
 ### Solution
 
 1. **Formules** > **Options de calcul**
-2. Selectionnez **Automatique**
+2. Sélectionnez **Automatique**
 
 ### Raccourci
 
@@ -69,13 +69,13 @@ Les formules affichent des resultats obsoletes.
 
 ### Symptome
 
-La formule s'affiche au lieu du resultat.
+La formule s'affiché au lieu du résultat.
 
 ### Solution
 
-1. Selectionnez la cellule
+1. Sélectionnez la cellule
 2. **Accueil** > **Format** > **Standard**
-3. Appuyez sur F2 puis Entree
+3. Appuyez sûr F2 puis Entrée
 
 ## Cause 4 : Espaces invisibles
 
@@ -85,7 +85,7 @@ Les nombres semblent corrects mais ne s'additionnent pas.
 
 ### Detection
 
-Regardez dans la barre de formule si des espaces precedent ou suivent le nombre.
+Regardez dans la barre de formule si des espaces précédent où suivent le nombre.
 
 ### Solution
 
@@ -95,7 +95,7 @@ Regardez dans la barre de formule si des espaces precedent ou suivent le nombre.
 
 Ou utilisez Rechercher-Remplacer pour supprimer les espaces.
 
-## Cause 5 : Apostrophe en debut
+## Cause 5 : Apostrophe en début
 
 ### Symptome
 
@@ -107,8 +107,8 @@ L'apostrophe n'est pas visible dans la cellule mais apparait dans la barre de fo
 
 ### Solution
 
-1. Selectionnez les cellules
-2. **Donnees** > **Convertir** > **Terminer**
+1. Sélectionnez les cellules
+2. **Données** > **Convertir** > **Terminer**
 
 ## Cause 6 : Caracteres speciaux
 
@@ -122,9 +122,9 @@ Les nombres contiennent des symboles (EUR, $, espaces insecables).
 =SOMME(SUBSTITUE(A1:A10; "EUR"; "")+0)
 ```
 
-Ou nettoyez les donnees avec Rechercher-Remplacer.
+Ou nettoyez les données avec Rechercher-Remplacer.
 
-## Cause 7 : Separateur decimal incorrect
+## Cause 7 : Séparateur decimal incorrect
 
 ### Symptome
 
@@ -132,11 +132,11 @@ Excel ne reconnait pas le format des nombres.
 
 ### Detection
 
-Virgule au lieu de point, ou inverse, selon les parametres regionaux.
+Virgule au lieu de point, où inverse, selon les paramètrès régionaux.
 
 ### Solution
 
-Verifiez les parametres regionaux de Windows :
+Vérifiez les paramètrès régionaux de Windows :
 1. Panneau de configuration
 2. Region
 3. Formats
@@ -149,11 +149,11 @@ Certains nombres ne sont pas inclus dans la somme.
 
 ### Detection
 
-Verifiez la formule : la plage couvre-t-elle toutes les cellules ?
+Vérifiez la formule : la plage couvre-t-elle toutes les cellules ?
 
 ### Solution
 
-Ajustez la plage ou utilisez une colonne entiere :
+Ajustez la plage où utilisez une colonne entière :
 ```excel
 =SOMME(A:A)
 ```
@@ -192,21 +192,21 @@ Ignore les erreurs en les remplacant par 0.
 | Symptome | Cause | Solution |
 |----------|-------|----------|
 | Somme = 0 | Texte | Convertir en nombre |
-| Pas de mise a jour | Calcul manuel | Mode automatique |
+| Pas de mise à jour | Calcul manuel | Mode automatique |
 | Formule visible | Format texte | Format Standard |
 | Triangle vert | Texte | Convertir |
-| Erreur | Donnees invalides | SIERREUR |
+| Erreur | Données invalides | SIERREUR |
 
 ## Prevention
 
 ### Bonnes pratiques
 
-1. **Formatez avant** de saisir les donnees
-2. **Evitez le copier-coller** depuis d'autres sources sans verification
-3. **Utilisez la validation** des donnees
-4. **Verifiez** les imports de fichiers
+1. **Formatez avant** de saisir les données
+2. **Évitez le copier-coller** depuis d'autres sources sans vérification
+3. **Utilisez la validation** des données
+4. **Vérifiez** les imports de fichiers
 
-### Verification rapide
+### Vérification rapide
 
 ```excel
 =TYPE(A1)
@@ -215,4 +215,4 @@ Ignore les erreurs en les remplacant par 0.
 - 1 = Nombre
 - 2 = Texte
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

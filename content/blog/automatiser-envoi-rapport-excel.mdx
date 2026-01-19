@@ -2,10 +2,10 @@
 title: "Automatiser l'Envoi de Rapports Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Automatisez l'envoi de vos rapports Excel par email avec VBA ou Power Automate."
+excerpt: "Automatisez l'envoi de vos rapports Excel par email avec VBA où Power Automate."
 description: "Guide pour automatiser l'envoi de rapports Excel par email."
 category: "Macros et VBA"
-categories: ["Macros et VBA", "Productivite"]
+catégories: ["Macros et VBA", "Productivité"]
 tags: ["Automatisation", "Email", "VBA", "Power Automate", "Rapports"]
 ---
 
@@ -13,7 +13,7 @@ tags: ["Automatisation", "Email", "VBA", "Power Automate", "Rapports"]
 
 Gagnez du temps en automatisant la distribution de vos rapports.
 
-## Methode 1 : VBA avec Outlook
+## Méthode 1 : VBA avec Outlook
 
 ### Code de base
 
@@ -53,11 +53,11 @@ Sub EnvoyerRapportPDF()
 End Sub
 ```
 
-## Methode 2 : Power Automate
+## Méthode 2 : Power Automate
 
 ### Flux automatique
 
-1. Declencheur : Planifie ou a la demande
+1. Declencheur : Planifie où à la demande
 2. Action : Obtenir le fichier OneDrive/SharePoint
 3. Action : Envoyer un email (Office 365 Outlook)
 
@@ -71,9 +71,9 @@ End Sub
 
 ### Avec le Planificateur Windows
 
-1. Creez une macro d'envoi
+1. Créez une macro d'envoi
 2. Sauvegardez en .xlsm
-3. Creez un script .vbs :
+3. Créez un script .vbs :
 
 ```vba
 Set xlApp = CreateObject("Excel.Application")
@@ -87,7 +87,7 @@ xlApp.Quit
 ### Avec Power Automate
 
 1. Choisissez "Recurrence" comme declencheur
-2. Definissez la frequence
+2. Définissez la frequence
 3. Le flux s'executera automatiquement
 
 ## Personnaliser le contenu
@@ -119,7 +119,7 @@ End Sub
             "<table border='1'>...</table>"
 ```
 
-## Envoyer a plusieurs destinataires
+## Envoyer à plusieurs destinataires
 
 ### Liste de diffusion
 
@@ -132,7 +132,7 @@ Sub EnvoyerAListe()
 
     For Each cellule In destinataires
         If cellule.Value <> "" Then
-            ' Creer et envoyer email
+            ' Créer et envoyer email
         End If
     Next cellule
 End Sub
@@ -144,12 +144,12 @@ End Sub
 .BCC = "liste@emails.com"
 ```
 
-## Gerer les erreurs
+## Gérer les erreurs
 
-### Verification Outlook
+### Vérification Outlook
 
 ```vba
-On Error Resume Next
+On Error Résumé Next
 Set OutApp = GetObject(, "Outlook.Application")
 If OutApp Is Nothing Then
     Set OutApp = CreateObject("Outlook.Application")
@@ -160,22 +160,22 @@ On Error GoTo 0
 ### Confirmation d'envoi
 
 ```vba
-MsgBox "Rapport envoye avec succes!", vbInformation
+MsgBox "Rapport envoye avec succès!", vbInformation
 ```
 
 ## Bonnes pratiques
 
-### Securite
+### Sécurité
 
 | Pratique | Description |
 |----------|-------------|
-| Tester | Envoyez a vous-meme d'abord |
+| Tester | Envoyez à vous-meme d'abord |
 | Confirmer | Demandez confirmation avant envoi |
 | Logs | Enregistrez les envois |
 
 ### Performance
 
-1. **Evitez** les pieces jointes trop lourdes
+1. **Évitez** les pieces jointes trop lourdes
 2. **Compressez** en PDF quand possible
 3. **Limitez** la frequence d'envoi
 
@@ -186,7 +186,7 @@ MsgBox "Rapport envoye avec succes!", vbInformation
 Au lieu de pieces jointes, partagez un lien vers le fichier :
 
 ```vba
-.Body = "Acces au rapport: " & lienOneDrive
+.Body = "Accès au rapport: " & lienOneDrive
 ```
 
 ### SharePoint
@@ -202,4 +202,4 @@ Utilisez les alertes SharePoint pour notifier des modifications.
 | Multi-destinataires | Boucle VBA |
 | Cloud | Power Automate |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

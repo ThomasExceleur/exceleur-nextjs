@@ -2,10 +2,10 @@
 title: "Excel Formule NB et NBVAL : Compter les Cellules"
 date: "2024-07-20"
 author: "Thomas L'Exceleur"
-excerpt: "Maitrisez les fonctions NB et NBVAL pour compter les cellules dans Excel."
-description: "Guide complet des fonctions NB, NBVAL et NB.VIDE dans Excel. Syntaxe, differences et exemples pratiques."
+excerpt: "Maîtrisez les fonctions NB et NBVAL pour compter les cellules dans Excel."
+description: "Guide complet des fonctions NB, NBVAL et NB.VIDE dans Excel. Syntaxe, différences et exemples pratiques."
 category: "Formules Excel"
-categories: ["Formules Excel", "Calculs"]
+catégories: ["Formules Excel", "Calculs"]
 tags: ["NB", "NBVAL", "Formules", "Compter"]
 ---
 
@@ -56,7 +56,7 @@ Excel propose plusieurs fonctions pour compter les cellules selon leur contenu.
 - Texte
 - Erreurs
 - Valeurs logiques
-- Formules (meme si resultat vide "")
+- Formules (meme si résultat vide "")
 
 ### Ce que NBVAL ignore
 
@@ -109,21 +109,21 @@ Excel propose plusieurs fonctions pour compter les cellules selon leur contenu.
 
 Pourcentage de cellules remplies.
 
-### Donnees manquantes
+### Données manquantes
 
 ```excel
 =NB.VIDE(A1:A100)
 ```
 
-Nombre de reponses manquantes.
+Nombre de réponses manquantes.
 
-### Verifier la completude
+### Vérifier la completude
 
 ```excel
 =SI(NB.VIDE(A1:A10)=0; "Complet"; "Incomplet")
 ```
 
-## Compter des types specifiques
+## Compter des types spécifiques
 
 ### Compter les textes
 
@@ -149,23 +149,23 @@ Non possible directement sans VBA.
 =SOMME(A1:A100)/NBVAL(A1:A100)
 ```
 
-Equivalent a MOYENNE mais explicite.
+Equivalent à MOYENNE mais explicite.
 
-### Pourcentage de reponses
+### Pourcentage de réponses
 
 ```excel
 =NBVAL(B:B)/NB.LIGNES(B:B)*100
 ```
 
-### Verifier avant calcul
+### Vérifier avant calcul
 
 ```excel
-=SI(NB(A1:A10)>0; MOYENNE(A1:A10); "Pas de donnees")
+=SI(NB(A1:A10)>0; MOYENNE(A1:A10); "Pas de données")
 ```
 
-## Tableaux structures
+## Tableaux structurés
 
-Dans un tableau, utilisez des references structurees :
+Dans un tableau, utilisez des références structurées :
 
 ```excel
 =NB(Tableau1[Ventes])
@@ -183,7 +183,7 @@ La fonction NB ne compte pas les VRAI/FAUX. Alternative :
 
 ## Erreurs courantes
 
-### NB retourne 0 sur du texte
+### NB retourne 0 sûr du texte
 
 C'est normal. Utilisez NBVAL pour compter tout.
 
@@ -209,7 +209,7 @@ Les formules retournant "" sont comptees par NB.VIDE mais aussi par NBVAL.
 =NBVAL(A1:A100)-SOMMEPROD(1/NB.SI(A1:A100;A1:A100&""))
 ```
 
-### Derniere cellule non vide
+### Dernière cellule non vide
 
 ```excel
 =INDEX(A:A; NB(A:A))
@@ -217,7 +217,7 @@ Les formules retournant "" sont comptees par NB.VIDE mais aussi par NBVAL.
 
 Pour les nombres uniquement.
 
-## Resume
+## Résumé
 
 | Fonction | Usage |
 |----------|-------|
@@ -229,9 +229,9 @@ Pour les nombres uniquement.
 
 ## Bonnes pratiques
 
-1. **Choisissez la bonne fonction** selon le type de donnees
-2. **Testez** sur un petit echantillon
+1. **Choisissez la bonne fonction** selon le type de données
+2. **Testez** sûr un petit echantillon
 3. **Attention aux formules vides** (="")
 4. **Utilisez NB.SI** pour plus de precision
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

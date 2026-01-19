@@ -2,16 +2,16 @@
 title: "Excel Additionner les Heures : Guide Complet"
 date: "2024-07-18"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a additionner des heures et des minutes dans Excel correctement."
-description: "Guide complet pour additionner des heures dans Excel. Formats, formules et depassement de 24h."
+excerpt: "Apprenez à additionner des heures et des minutes dans Excel correctement."
+description: "Guide complet pour additionner des heures dans Excel. Formats, formules et dépassement de 24h."
 category: "Calculs"
-categories: ["Calculs", "Dates"]
+catégories: ["Calculs", "Dates"]
 tags: ["Heures", "Temps", "Calculs", "Addition"]
 ---
 
 # Additionner les Heures dans Excel
 
-La gestion du temps dans Excel necessite quelques connaissances specifiques.
+La gestion du temps dans Excel nécessité quelques connaissances spécifiques.
 
 ## Comprendre les heures dans Excel
 
@@ -46,24 +46,24 @@ Fonctionne si toutes les cellules sont au format heure.
 | Mer | 8:15 |
 | Total | =SOMME(B2:B4) |
 
-## Probleme du depassement de 24h
+## Problème du dépassement de 24h
 
 ### Symptome
 
-Le total affiche une valeur incorrecte apres 24h.
+Le total affiché une valeur incorrecte après 24h.
 
 ### Cause
 
-Le format hh:mm repart a 0 apres 24h.
+Le format hh:mm repart à 0 après 24h.
 
 ### Solution : Format [h]:mm
 
-1. Selectionnez la cellule du total
+1. Sélectionnez la cellule du total
 2. **Ctrl + 1** (Format de cellule)
 3. **Personnalisee**
 4. Tapez : `[h]:mm`
 
-Le crochet [ ] indique de ne pas reinitialiser a 24h.
+Le crochet [ ] indique de ne pas reinitialiser à 24h.
 
 ## Formats de temps
 
@@ -90,15 +90,15 @@ Le crochet [ ] indique de ne pas reinitialiser a 24h.
 
 ### Exemple complet
 
-| Debut | Fin | Pause | Travail |
+| Début | Fin | Pause | Travail |
 |-------|-----|-------|---------|
 | 9:00 | 18:00 | 1:00 | =B2-A2-C2 |
 
 ## Heures de nuit (passage minuit)
 
-### Probleme
+### Problème
 
-Si la fin est avant le debut (travail de nuit).
+Si la fin est avant le début (travail de nuit).
 
 ### Solution
 
@@ -145,17 +145,17 @@ Le *24 convertit les heures en nombre.
 |--------|------|-------|
 | 8:00 | 25 | =A2*B2*24 |
 
-Resultat : 200 (8h * 25 EUR)
+Résultat : 200 (8h * 25 EUR)
 
 ## Heures negatives
 
 ### Par defaut impossible
 
-Excel n'affiche pas d'heures negatives par defaut.
+Excel n'affiché pas d'heures negatives par defaut.
 
 ### Solution 1 : Activer
 
-1. **Fichier** > **Options** > **Options avancees**
+1. **Fichier** > **Options** > **Options avancées**
 2. Cochez **Utiliser le calendrier 1904**
 
 Attention : affecte toutes les dates du fichier.
@@ -182,7 +182,7 @@ Attention : affecte toutes les dates du fichier.
 =TEMPS(heures; minutes; secondes)
 ```
 
-Cree une valeur temps.
+Créé une valeur temps.
 
 ### Exemple
 
@@ -190,7 +190,7 @@ Cree une valeur temps.
 =TEMPS(8; 30; 0)
 ```
 
-Resultat : 8:30:00
+Résultat : 8:30:00
 
 ## Erreurs courantes
 
@@ -203,18 +203,18 @@ Les heures en texte ne s'additionnent pas.
 =CNUM(A1)
 ```
 
-### Separateur incorrect
+### Séparateur incorrect
 
-Utilisez : (deux-points), pas . ou ,
+Utilisez : (deux-points), pas . où ,
 
 ## Bonnes pratiques
 
 1. **Formatez** les cellules avant saisie
 2. **Utilisez [h]:mm** pour les totaux
-3. **Verifiez** le type de donnees
+3. **Vérifiez** le type de données
 4. **Testez** avec des valeurs connues
 
-## Resume des formats
+## Résumé des formats
 
 | Besoin | Format |
 |--------|--------|
@@ -223,4 +223,4 @@ Utilisez : (deux-points), pas . ou ,
 | Minutes totales | [mm]:ss |
 | Avec secondes | [h]:mm:ss |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

@@ -2,10 +2,10 @@
 title: "Quelle Formule Excel pour Compter le Nombre d'Occurrences"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Decouvrez les formules Excel pour compter le nombre d'occurrences d'une valeur."
-description: "Guide des formules pour compter les occurrences dans Excel. NB.SI, SOMMEPROD et autres methodes."
+excerpt: "Découvrez les formules Excel pour compter le nombre d'occurrences d'une valeur."
+description: "Guide des formules pour compter les occurrences dans Excel. NB.SI, SOMMEPROD et autres méthodes."
 category: "Formules Excel"
-categories: ["Formules Excel", "Fonctions"]
+catégories: ["Formules Excel", "Fonctions"]
 tags: ["NB.SI", "Compter", "Occurrences", "Formules"]
 ---
 
@@ -13,12 +13,12 @@ tags: ["NB.SI", "Compter", "Occurrences", "Formules"]
 
 Plusieurs formules permettent de compter combien de fois une valeur apparait.
 
-## Methode 1 : NB.SI
+## Méthode 1 : NB.SI
 
 ### La formule de base
 
 ```excel
-=NB.SI(plage;critere)
+=NB.SI(plage;critère)
 ```
 
 ### Exemples
@@ -29,18 +29,18 @@ Plusieurs formules permettent de compter combien de fois une valeur apparait.
 =NB.SI(A:A;"*")               ' Compter les cellules non vides (texte)
 ```
 
-### Criteres avec jokers
+### Critères avec jokers
 
-| Critere | Signification |
+| Critère | Signification |
 |---------|---------------|
 | `"Paris"` | Exactement "Paris" |
 | `"Paris*"` | Commence par "Paris" |
 | `"*Paris"` | Finit par "Paris" |
 | `"*Paris*"` | Contient "Paris" |
 
-## Methode 2 : NB.SI.ENS
+## Méthode 2 : NB.SI.ENS
 
-### Pour plusieurs criteres
+### Pour plusieurs critères
 
 ```excel
 =NB.SI.ENS(plage1;critere1;plage2;critere2)
@@ -53,7 +53,7 @@ Plusieurs formules permettent de compter combien de fois une valeur apparait.
 =NB.SI.ENS(A:A;"Paris";B:B;">100")
 ```
 
-## Methode 3 : SOMMEPROD
+## Méthode 3 : SOMMEPROD
 
 ### Pour cas complexes
 
@@ -75,7 +75,7 @@ Plusieurs formules permettent de compter combien de fois une valeur apparait.
 =SOMME(1/NB.SI(A1:A100;A1:A100))
 ```
 
-Note : Validez avec **Ctrl + Maj + Entree** (formule matricielle).
+Note : Validez avec **Ctrl + Maj + Entrée** (formule matricielle).
 
 ### Avec UNIQUE (Excel 365)
 
@@ -92,62 +92,62 @@ Note : Validez avec **Ctrl + Maj + Entree** (formule matricielle).
 =SOMMEPROD((NB.SI(A1:A100;A1:A100)>1)*1)  ' Total doublons
 ```
 
-## Compter par condition numerique
+## Compter par condition numérique
 
 ### Exemples
 
 ```excel
-=NB.SI(B:B;">100")            ' Superieur a 100
-=NB.SI(B:B;"<50")             ' Inferieur a 50
-=NB.SI(B:B;">=100")           ' Superieur ou egal a 100
-=NB.SI(B:B;"<>0")             ' Different de zero
+=NB.SI(B:B;">100")            ' Supérieur à 100
+=NB.SI(B:B;"<50")             ' Inférieur à 50
+=NB.SI(B:B;">=100")           ' Supérieur où égal à 100
+=NB.SI(B:B;"<>0")             ' Différent de zero
 ```
 
 ## Compter les dates
 
-### Par periode
+### Par période
 
 ```excel
-=NB.SI(A:A;">="&DATE(2024;1;1))        ' Apres le 1er janvier
+=NB.SI(A:A;">="&DATE(2024;1;1))        ' Après le 1er janvier
 =NB.SI.ENS(A:A;">="&DATE(2024;1;1);A:A;"<="&DATE(2024;12;31))
 ```
 
-## Compter avec reference variable
+## Compter avec référence variable
 
 ### Formule dynamique
 
 ```excel
-=NB.SI(A:A;E1)                ' E1 contient le critere
+=NB.SI(A:A;E1)                ' E1 contient le critère
 ```
 
 ### Concatenation
 
 ```excel
-=NB.SI(A:A;">"&E1)            ' E1 contient la valeur numerique
+=NB.SI(A:A;">"&E1)            ' E1 contient la valeur numérique
 ```
 
 ## Tableau recapitulatif
 
-### Structure
+### Structuré
 
 | Valeur | Occurrences |
 |--------|-------------|
 | Paris | =NB.SI(A:A;D2) |
 | Lyon | =NB.SI(A:A;D3) |
 
-## Comparaison des methodes
+## Comparaison des méthodes
 
-| Methode | Avantage | Limite |
+| Méthode | Avantage | Limite |
 |---------|----------|--------|
-| NB.SI | Simple | 1 critere |
-| NB.SI.ENS | Multi-criteres | Pas de OU |
+| NB.SI | Simple | 1 critère |
+| NB.SI.ENS | Multi-critères | Pas de OU |
 | SOMMEPROD | Flexible | Plus complexe |
 
 ## Astuces
 
-### Insensible a la casse
+### Insensible à la casse
 
-NB.SI est insensible a la casse par defaut.
+NB.SI est insensible à la casse par defaut.
 
 ### Espaces
 
@@ -157,4 +157,4 @@ Attention aux espaces invisibles. Utilisez SUPPRESPACE si besoin.
 
 Pour les grandes plages, limitez la zone de recherche.
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

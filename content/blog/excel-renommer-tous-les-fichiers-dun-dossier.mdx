@@ -3,17 +3,17 @@ title: "Excel Renommer Tous les Fichiers d'un Dossier"
 date: "2024-07-18"
 author: "Thomas L'Exceleur"
 excerpt: "Utilisez Excel et VBA pour renommer plusieurs fichiers d'un dossier automatiquement."
-description: "Guide pour renommer des fichiers en masse avec Excel. Methodes manuelles et automatisees avec VBA."
+description: "Guide pour renommer des fichiers en masse avec Excel. Méthodes manuelles et automatisees avec VBA."
 category: "Macros et VBA"
-categories: ["Macros et VBA", "Automatisation"]
+catégories: ["Macros et VBA", "Automatisation"]
 tags: ["VBA", "Fichiers", "Automatisation", "Renommer"]
 ---
 
 # Renommer des Fichiers avec Excel
 
-Excel peut vous aider a preparer et executer le renommage de fichiers en masse.
+Excel peut vous aider à préparer et executer le renommage de fichiers en masse.
 
-## Methode 1 : Preparation dans Excel
+## Méthode 1 : Préparation dans Excel
 
 ### Lister les fichiers
 
@@ -22,14 +22,14 @@ Excel peut vous aider a preparer et executer le renommage de fichiers en masse.
 3. Tapez : `dir /b > liste.txt`
 4. Importez liste.txt dans Excel
 
-### Structure du tableau
+### Structuré du tableau
 
 | Ancien nom | Nouveau nom |
 |------------|-------------|
 | fichier1.jpg | photo_001.jpg |
 | fichier2.jpg | photo_002.jpg |
 
-### Generer les commandes
+### Générer les commandes
 
 ```excel
 ="ren """&A1&""" """&B1&""""
@@ -37,11 +37,11 @@ Excel peut vous aider a preparer et executer le renommage de fichiers en masse.
 
 ### Executer
 
-1. Copiez les commandes generees
+1. Copiez les commandes générées
 2. Collez dans un fichier .bat
 3. Executez le fichier batch
 
-## Methode 2 : VBA automatise
+## Méthode 2 : VBA automatise
 
 ### Code complet
 
@@ -61,7 +61,7 @@ Sub RenommerFichiers()
         nouveau = Cells(ligne, 2).Value
 
         ' Renommer
-        On Error Resume Next
+        On Error Résumé Next
         Name dossier & ancien As dossier & nouveau
         On Error GoTo 0
     Next ligne
@@ -72,13 +72,13 @@ End Sub
 
 ### Utilisation
 
-1. Preparez le tableau (ancien nom, nouveau nom)
+1. Préparez le tableau (ancien nom, nouveau nom)
 2. Modifiez le chemin du dossier
 3. Executez la macro
 
-## Methode 3 : Avec FileSystemObject
+## Méthode 3 : Avec FileSystemObject
 
-### Code avance
+### Code avancé
 
 ```vba
 Sub RenommerAvecFSO()
@@ -101,7 +101,7 @@ Sub RenommerAvecFSO()
 End Sub
 ```
 
-## Generer les nouveaux noms
+## Générer les nouveaux noms
 
 ### Numerotation sequentielle
 
@@ -127,7 +127,7 @@ End Sub
 =SUBSTITUE(SUBSTITUE(A1;" ";"_");"'";"")
 ```
 
-## Verification avant renommage
+## Vérification avant renommage
 
 ### Detecter les doublons
 
@@ -135,7 +135,7 @@ End Sub
 =NB.SI(B:B;B1)>1
 ```
 
-### Verifier la longueur
+### Vérifier la longueur
 
 ```excel
 =SI(NBCAR(B1)>255;"Trop long";"OK")
@@ -143,28 +143,28 @@ End Sub
 
 ### Caracteres interdits
 
-Evitez : \ / : * ? " < > |
+Évitez : \ / : * ? " < > |
 
-## Securite
+## Sécurité
 
 ### Sauvegarde
 
 Faites une copie du dossier avant de renommer.
 
-### Test sur un echantillon
+### Test sûr un echantillon
 
-Testez d'abord sur quelques fichiers.
+Testez d'abord sûr quelques fichiers.
 
 ### Annulation
 
 Le renommage est reversible si vous gardez la correspondance ancien/nouveau.
 
-## Methode avec Power Query
+## Méthode avec Power Query
 
 ### Lister les fichiers
 
-1. **Donnees** > **Obtenir des donnees** > **A partir d'un dossier**
-2. Selectionnez le dossier
+1. **Données** > **Obtenir des données** > **A partir d'un dossier**
+2. Sélectionnez le dossier
 3. Transformez pour garder uniquement les noms
 
 ### Avantages
@@ -184,7 +184,7 @@ Le renommage est reversible si vous gardez la correspondance ancien/nouveau.
 
 - Standardiser les noms
 - Ajouter des versions
-- Organiser par categorie
+- Organiser par catégorie
 
 ## Erreurs courantes
 
@@ -194,7 +194,7 @@ Fermez tous les fichiers avant le renommage.
 
 ### Droits insuffisants
 
-Executez en tant qu'administrateur si necessaire.
+Executez en tant qu'administrateur si nécessaire.
 
 ### Caracteres speciaux
 
@@ -203,8 +203,8 @@ Certains caracteres sont interdits dans les noms de fichiers.
 ## Bonnes pratiques
 
 1. **Sauvegardez** avant de renommer
-2. **Testez** sur un petit echantillon
-3. **Verifiez** les nouveaux noms
+2. **Testez** sûr un petit echantillon
+3. **Vérifiez** les nouveaux noms
 4. **Conservez** la correspondance ancien/nouveau
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

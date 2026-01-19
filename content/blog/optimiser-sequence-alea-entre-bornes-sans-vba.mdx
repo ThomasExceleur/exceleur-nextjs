@@ -2,29 +2,29 @@
 title: "Optimiser SEQUENCE et ALEA.ENTRE.BORNES sans VBA"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Creez des donnees aleatoires structurees sans VBA."
+excerpt: "Créez des données aleatoires structurées sans VBA."
 description: "Guide pour utiliser SEQUENCE et ALEA.ENTRE.BORNES sans VBA."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
+catégories: ["Excel 365", "Formules Excel"]
 tags: ["SEQUENCE", "ALEA", "Aleatoire", "Sans VBA"]
 ---
 
 # SEQUENCE et ALEA.ENTRE.BORNES sans VBA
 
-Generez des donnees aleatoires structurees avec des formules.
+Générez des données aleatoires structurées avec des formules.
 
 ## SEQUENCE
 
 ### Syntaxe
 
 ```excel
-=SEQUENCE(lignes;[colonnes];[debut];[pas])
+=SEQUENCE(lignes;[colonnes];[début];[pas])
 ```
 
 ### Exemples
 
 ```excel
-=SEQUENCE(10)           ' 1 a 10
+=SEQUENCE(10)           ' 1 à 10
 =SEQUENCE(5;3)          ' Matrice 5x3
 =SEQUENCE(10;1;0;5)     ' 0, 5, 10, 15...
 =SEQUENCE(12;1;100;-10) ' 100, 90, 80...
@@ -53,7 +53,7 @@ Generez des donnees aleatoires structurees avec des formules.
 =ALEA.ENTRE.BORNES(1;100)*SEQUENCE(10;5;1;0)
 ```
 
-Attention : les valeurs changent a chaque recalcul.
+Attention : les valeurs changent à chaque recalcul.
 
 ### Dates aleatoires
 
@@ -69,16 +69,16 @@ Attention : les valeurs changent a chaque recalcul.
 
 ## Figer les valeurs aleatoires
 
-### Methode 1 : Copier-valeurs
+### Méthode 1 : Copier-valeurs
 
 1. Copiez les cellules
 2. Collage special > Valeurs
 
-### Methode 2 : Mode de calcul manuel
+### Méthode 2 : Mode de calcul manuel
 
 **Formules** > **Options de calcul** > **Manuel**
 
-## Donnees de test
+## Données de test
 
 ### IDs uniques
 
@@ -86,7 +86,7 @@ Attention : les valeurs changent a chaque recalcul.
 =SEQUENCE(100;1;1000;1)
 ```
 
-IDs de 1000 a 1099.
+IDs de 1000 à 1099.
 
 ### Montants aleatoires
 
@@ -123,10 +123,10 @@ Matrice 10x3 d'entiers entre 1 et 100.
 ### Echantillon aleatoire
 
 ```excel
-=INDEX(TRIER(HPILE(Donnees;TABLEAU.ALEA(LIGNES(Donnees)));2);SEQUENCE(10);1)
+=INDEX(TRIER(HPILE(Données;TABLEAU.ALEA(LIGNES(Données)));2);SEQUENCE(10);1)
 ```
 
-10 elements aleatoires d'une liste.
+10 éléments aleatoires d'une liste.
 
 ### Melanger une liste
 
@@ -134,7 +134,7 @@ Matrice 10x3 d'entiers entre 1 et 100.
 =TRIER(A:A;TABLEAU.ALEA(LIGNES(A:A)))
 ```
 
-### Generer des codes
+### Générer des codes
 
 ```excel
 =CONCAT("CODE-";SEQUENCE(100;1;1000))
@@ -144,7 +144,7 @@ Matrice 10x3 d'entiers entre 1 et 100.
 
 ### Volatilite
 
-ALEA et ALEA.ENTRE.BORNES sont volatiles (recalcul a chaque modification).
+ALEA et ALEA.ENTRE.BORNES sont volatiles (recalcul à chaque modification).
 
 ### Optimisation
 
@@ -157,6 +157,6 @@ ALEA et ALEA.ENTRE.BORNES sont volatiles (recalcul a chaque modification).
 |----------|-------------|
 | Figer si possible | Evite les recalculs |
 | Plage raisonnable | Pas trop de cellules |
-| Test | Verifiez la distribution |
+| Test | Vérifiez la distribution |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

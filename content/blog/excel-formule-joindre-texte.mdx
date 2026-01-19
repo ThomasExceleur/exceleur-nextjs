@@ -2,10 +2,10 @@
 title: "JOINDRE.TEXTE : Concatener avec Delimiteur"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Utilisez JOINDRE.TEXTE pour concatener du texte avec un separateur."
-description: "Guide de la fonction JOINDRE.TEXTE dans Excel. Concatenation avancee."
+excerpt: "Utilisez JOINDRE.TEXTE pour concatener du texte avec un séparateur."
+description: "Guide de la fonction JOINDRE.TEXTE dans Excel. Concatenation avancée."
 category: "Formules Excel"
-categories: ["Formules Excel", "Excel 365"]
+catégories: ["Formules Excel", "Excel 365"]
 tags: ["JOINDRE.TEXTE", "Concatenation", "Texte", "Excel 365"]
 ---
 
@@ -13,7 +13,7 @@ tags: ["JOINDRE.TEXTE", "Concatenation", "Texte", "Excel 365"]
 
 JOINDRE.TEXTE concatene plusieurs textes avec un delimiteur.
 
-## Disponibilite
+## Disponibilité
 
 - Excel 365
 - Excel 2021
@@ -29,9 +29,9 @@ JOINDRE.TEXTE concatene plusieurs textes avec un delimiteur.
 
 | Argument | Description |
 |----------|-------------|
-| delimiteur | Separateur entre les textes |
+| delimiteur | Séparateur entre les textes |
 | ignorer_vides | VRAI pour ignorer les cellules vides |
-| texte1, texte2... | Textes a concatener |
+| texte1, texte2... | Textes à concatener |
 
 ## Exemples de base
 
@@ -41,15 +41,15 @@ JOINDRE.TEXTE concatene plusieurs textes avec un delimiteur.
 =JOINDRE.TEXTE(", ";VRAI;A1:A5)
 ```
 
-Resultat : "Paris, Lyon, Marseille"
+Résultat : "Paris, Lyon, Marseille"
 
-### Avec retour a la ligne
+### Avec retour à la ligne
 
 ```excel
 =JOINDRE.TEXTE(CAR(10);VRAI;A1:A5)
 ```
 
-Chaque element sur une nouvelle ligne.
+Chaque élément sûr une nouvelle ligne.
 
 ## Ignorer les cellules vides
 
@@ -59,7 +59,7 @@ Chaque element sur une nouvelle ligne.
 =JOINDRE.TEXTE("; ";VRAI;"A";"";"B";"C")
 ```
 
-Resultat : "A; B; C" (vide ignore)
+Résultat : "A; B; C" (vide ignore)
 
 ### Avec FAUX
 
@@ -67,17 +67,17 @@ Resultat : "A; B; C" (vide ignore)
 =JOINDRE.TEXTE("; ";FAUX;"A";"";"B";"C")
 ```
 
-Resultat : "A; ; B; C" (vide conserve)
+Résultat : "A; ; B; C" (vide conserve)
 
 ## Cas pratiques
 
-### Creer une adresse
+### Créer une adresse
 
 ```excel
 =JOINDRE.TEXTE(", ";VRAI;Adresse;CodePostal;Ville)
 ```
 
-### Liste a puces
+### Liste à puces
 
 ```excel
 ="- "&JOINDRE.TEXTE(CAR(10)&"- ";VRAI;A1:A10)
@@ -123,7 +123,7 @@ Resultat : "A; ; B; C" (vide conserve)
 |------------|------|-------|
 | Retour ligne | CAR(10) | Liste verticale |
 | Tabulation | CAR(9) | Export |
-| Point-virgule | ";" | CSV francais |
+| Point-virgule | ";" | CSV français |
 | Virgule | "," | CSV anglais |
 
 ## Bonnes pratiques
@@ -131,6 +131,6 @@ Resultat : "A; ; B; C" (vide conserve)
 1. **Utilisez** VRAI pour ignorer les vides
 2. **Combinez** avec FILTRE pour filtrer avant concatenation
 3. **Choisissez** le bon delimiteur selon l'usage
-4. **Testez** sur quelques cellules d'abord
+4. **Testez** sûr quelques cellules d'abord
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

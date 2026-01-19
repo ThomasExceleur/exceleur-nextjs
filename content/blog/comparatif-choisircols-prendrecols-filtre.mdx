@@ -2,18 +2,18 @@
 title: "Comparatif CHOISIRCOLS, PRENDRECOLS et FILTRE Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Comparez CHOISIRCOLS, PRENDRECOLS et FILTRE pour manipuler vos donnees."
+excerpt: "Comparez CHOISIRCOLS, PRENDRECOLS et FILTRE pour manipuler vos données."
 description: "Comparatif des fonctions CHOISIRCOLS, PRENDRECOLS et FILTRE dans Excel."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
+catégories: ["Excel 365", "Formules Excel"]
 tags: ["CHOISIRCOLS", "PRENDRECOLS", "FILTRE", "Excel 365"]
 ---
 
 # Comparatif CHOISIRCOLS, PRENDRECOLS et FILTRE
 
-Trois fonctions pour manipuler les colonnes et filtrer les donnees.
+Trois fonctions pour manipuler les colonnes et filtrer les données.
 
-## CHOISIRCOLS : Selectionner des colonnes specifiques
+## CHOISIRCOLS : Sélectionner des colonnes spécifiques
 
 ### Syntaxe
 
@@ -26,12 +26,12 @@ Trois fonctions pour manipuler les colonnes et filtrer les donnees.
 ```excel
 =CHOISIRCOLS(A1:D10;1;3)      ' Colonnes 1 et 3
 =CHOISIRCOLS(A1:D10;4;2;1)    ' Ordre inverse
-=CHOISIRCOLS(A1:D10;-1)       ' Derniere colonne
+=CHOISIRCOLS(A1:D10;-1)       ' Dernière colonne
 ```
 
 ### Cas d'usage
 
-- Reorganiser les colonnes
+- Réorganiser les colonnes
 - Exclure des colonnes intermediaires
 - Inverser l'ordre des colonnes
 
@@ -46,16 +46,16 @@ Trois fonctions pour manipuler les colonnes et filtrer les donnees.
 ### Exemples
 
 ```excel
-=PRENDRECOLS(A1:D10;2)    ' 2 premieres colonnes
-=PRENDRECOLS(A1:D10;-2)   ' 2 dernieres colonnes
+=PRENDRECOLS(A1:D10;2)    ' 2 premières colonnes
+=PRENDRECOLS(A1:D10;-2)   ' 2 dernières colonnes
 ```
 
 ### Cas d'usage
 
-- Obtenir les N premieres colonnes
-- Obtenir les N dernieres colonnes
+- Obtenir les N premières colonnes
+- Obtenir les N dernières colonnes
 
-## FILTRE : Extraire selon des criteres
+## FILTRE : Extraire selon des critères
 
 ### Syntaxe
 
@@ -74,23 +74,23 @@ Trois fonctions pour manipuler les colonnes et filtrer les donnees.
 ### Cas d'usage
 
 - Filtrer les lignes selon conditions
-- Creer des sous-ensembles dynamiques
+- Créer des sous-ensembles dynamiques
 
 ## Tableau comparatif
 
 | Aspect | CHOISIRCOLS | PRENDRECOLS | FILTRE |
 |--------|-------------|-------------|--------|
-| Colonnes specifiques | Oui | Non | Non |
+| Colonnes spécifiques | Oui | Non | Non |
 | N colonnes | Non | Oui | Non |
 | Filtrer lignes | Non | Non | Oui |
-| Criteres | Non | Non | Oui |
+| Critères | Non | Non | Oui |
 | Ordre flexible | Oui | Non | Non |
 
 ## Combinaisons utiles
 
 ### CHOISIRCOLS + FILTRE
 
-Filtrer puis selectionner des colonnes :
+Filtrer puis sélectionner des colonnes :
 
 ```excel
 =CHOISIRCOLS(
@@ -101,7 +101,7 @@ Filtrer puis selectionner des colonnes :
 
 ### PRENDRECOLS + TRIER
 
-Prendre les colonnes apres tri :
+Prendre les colonnes après tri :
 
 ```excel
 =PRENDRECOLS(
@@ -140,7 +140,7 @@ Chaine complete :
 
 ## Exemples pratiques
 
-### 1. Rapport avec colonnes specifiques
+### 1. Rapport avec colonnes spécifiques
 
 ```excel
 =CHOISIRCOLS(Ventes;1;3;5)  ' Nom, Montant, Statut
@@ -168,22 +168,22 @@ Chaine complete :
 
 ```excel
 =CHOISIRCOLS(
-  FILTRE(Donnees;Donnees[Region]="Paris");
+  FILTRE(Données;Données[Region]="Paris");
   1;4;5;2
 )
 ```
 
 ## Gestion des erreurs
 
-### FILTRE sans resultat
+### FILTRE sans résultat
 
 ```excel
-=FILTRE(A:A;B:B="Inexistant";"Aucun resultat")
+=FILTRE(A:A;B:B="Inexistant";"Aucun résultat")
 ```
 
 ### CHOISIRCOLS avec colonne hors limites
 
-Verifiez que les numeros de colonnes existent.
+Vérifiez que les numéros de colonnes existent.
 
 ### PRENDRECOLS depassant le tableau
 
@@ -193,33 +193,33 @@ Retourne toutes les colonnes disponibles.
 
 | Fonction | Performance |
 |----------|-------------|
-| CHOISIRCOLS | Tres rapide |
-| PRENDRECOLS | Tres rapide |
-| FILTRE | Depend des criteres |
+| CHOISIRCOLS | Très rapide |
+| PRENDRECOLS | Très rapide |
+| FILTRE | Depend des critères |
 
 ### Optimisation
 
 1. Limitez les plages sources
-2. Evitez les criteres complexes dans FILTRE
+2. Évitez les critères complexes dans FILTRE
 3. Utilisez LET pour les calculs intermediaires
 
 ## Quand utiliser quoi ?
 
 ### CHOISIRCOLS
 
-- Selectionner colonnes specifiques
+- Sélectionner colonnes spécifiques
 - Reordonner les colonnes
 - Exclure des colonnes
 
 ### PRENDRECOLS
 
-- Premieres ou dernieres colonnes
+- Premières où dernières colonnes
 - Simplifier les extractions
 
 ### FILTRE
 
 - Extraire selon conditions
-- Creer des vues dynamiques
+- Créer des vues dynamiques
 - Tableaux de bord interactifs
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

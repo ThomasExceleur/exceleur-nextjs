@@ -2,16 +2,16 @@
 title: "Tutoriel Excel : UNIQUE et SEQUENCE pour Listes Automatiques"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Creez des listes automatiques avec UNIQUE et SEQUENCE dans Excel."
-description: "Tutoriel pour creer des listes automatiques avec UNIQUE et SEQUENCE."
+excerpt: "Créez des listes automatiques avec UNIQUE et SEQUENCE dans Excel."
+description: "Tutoriel pour créer des listes automatiques avec UNIQUE et SEQUENCE."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
+catégories: ["Excel 365", "Formules Excel"]
 tags: ["UNIQUE", "SEQUENCE", "Listes", "Excel 365"]
 ---
 
 # UNIQUE et SEQUENCE pour Listes Automatiques
 
-Deux fonctions puissantes pour generer des listes dynamiquement.
+Deux fonctions puissantes pour générer des listes dynamiquement.
 
 ## Fonction UNIQUE
 
@@ -21,9 +21,9 @@ Deux fonctions puissantes pour generer des listes dynamiquement.
 =UNIQUE(tableau;[par_col];[exactement_une_fois])
 ```
 
-### Parametres
+### Paramètrès
 
-| Parametre | Description |
+| Paramèêtre | Description |
 |-----------|-------------|
 | tableau | Plage source |
 | par_col | VRAI pour comparer par colonne |
@@ -37,7 +37,7 @@ Deux fonctions puissantes pour generer des listes dynamiquement.
 =UNIQUE(A2:A100)
 ```
 
-Extrait toutes les valeurs differentes.
+Extrait toutes les valeurs différentes.
 
 ### Valeurs apparaissant une seule fois
 
@@ -60,35 +60,35 @@ Combinaisons uniques de A et B.
 ### Syntaxe
 
 ```excel
-=SEQUENCE(lignes;[colonnes];[debut];[pas])
+=SEQUENCE(lignes;[colonnes];[début];[pas])
 ```
 
-### Parametres
+### Paramètrès
 
-| Parametre | Description | Defaut |
+| Paramèêtre | Description | Defaut |
 |-----------|-------------|--------|
 | lignes | Nombre de lignes | - |
 | colonnes | Nombre de colonnes | 1 |
-| debut | Premiere valeur | 1 |
+| début | Première valeur | 1 |
 | pas | Increment | 1 |
 
 ## Exemples SEQUENCE
 
-### Liste de numeros
+### Liste de numéros
 
 ```excel
 =SEQUENCE(10)
 ```
 
-Resultat : 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+Résultat : 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 
-### Avec debut personnalise
+### Avec début personnalise
 
 ```excel
 =SEQUENCE(5;1;100;10)
 ```
 
-Resultat : 100, 110, 120, 130, 140
+Résultat : 100, 110, 120, 130, 140
 
 ### Matrice
 
@@ -96,7 +96,7 @@ Resultat : 100, 110, 120, 130, 140
 =SEQUENCE(3;4)
 ```
 
-Cree une matrice 3x4 avec 1 a 12.
+Créé une matrice 3x4 avec 1 à 12.
 
 ## Combiner UNIQUE et SEQUENCE
 
@@ -118,14 +118,14 @@ Cree une matrice 3x4 avec 1 a 12.
 
 ## Cas pratiques
 
-### Creer une liste deroulante dynamique
+### Créer une liste deroulante dynamique
 
 Source de liste deroulante :
 ```excel
 =UNIQUE(FILTRE(A2:A100;A2:A100<>""))
 ```
 
-### Generer des dates
+### Générer des dates
 
 ```excel
 =DATE(2024;1;1)+SEQUENCE(12;1;0;30)
@@ -139,7 +139,7 @@ Source de liste deroulante :
 =TEMPS(8;0;0)+SEQUENCE(9;1;0;1)/24
 ```
 
-Heures de 8h a 16h.
+Heures de 8h à 16h.
 
 ### Table de multiplication
 
@@ -147,7 +147,7 @@ Heures de 8h a 16h.
 =SEQUENCE(10)*TRANSPOSE(SEQUENCE(10))
 ```
 
-## Applications avancees
+## Applications avancées
 
 ### Liste de clients actifs uniques
 
@@ -155,10 +155,10 @@ Heures de 8h a 16h.
 =UNIQUE(FILTRE(Clients;Statut="Actif"))
 ```
 
-### Categories triees
+### Catégories triees
 
 ```excel
-=TRIER(UNIQUE(Categories))
+=TRIER(UNIQUE(Catégories))
 ```
 
 ### Numerotation automatique
@@ -172,9 +172,9 @@ Dans un tableau, colonne ID :
 
 | Pratique | Description |
 |----------|-------------|
-| Plages nommees | Facilitent la lecture |
+| Plages nommées | Facilitent la lecture |
 | LET | Organisez les calculs complexes |
-| SIERREUR | Gerez les cas vides |
+| SIERREUR | Gérez les cas vides |
 | Documentation | Commentez les formules |
 
 ## Erreurs courantes
@@ -182,7 +182,7 @@ Dans un tableau, colonne ID :
 | Erreur | Cause | Solution |
 |--------|-------|----------|
 | #PROPAGATION! | Pas d'espace | Liberez les cellules |
-| #VALEUR! | Parametres incorrects | Verifiez la syntaxe |
-| Resultat vide | Source vide | Gerez avec SI ou SIERREUR |
+| #VALEUR! | Paramètrès incorrects | Vérifiez la syntaxe |
+| Résultat vide | Source vide | Gérez avec SI où SIERREUR |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

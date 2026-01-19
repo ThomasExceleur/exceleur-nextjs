@@ -2,10 +2,10 @@
 title: "Guide Pratique Power Pivot Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Guide pratique pour maitriser Power Pivot dans Excel."
-description: "Guide pratique de Power Pivot pour l'analyse de donnees Excel."
+excerpt: "Guide pratique pour maîtriser Power Pivot dans Excel."
+description: "Guide pratique de Power Pivot pour l'analyse de données Excel."
 category: "Power Pivot"
-categories: ["Power Pivot", "Analyse de donnees Excel"]
+catégories: ["Power Pivot", "Analyse de données Excel"]
 tags: ["Power Pivot", "DAX", "Pratique", "Excel"]
 ---
 
@@ -15,31 +15,31 @@ Mettez Power Pivot en pratique avec des exemples concrets.
 
 ## Cas d'usage : Analyse des ventes
 
-### Donnees
+### Données
 
 Tables :
 - Ventes (Date, ProduitID, ClientID, Montant)
-- Produits (ProduitID, Nom, Categorie)
+- Produits (ProduitID, Nom, Catégorie)
 - Clients (ClientID, Nom, Region)
-- Calendrier (Date, Annee, Mois, Trimestre)
+- Calendrier (Date, Année, Mois, Trimestre)
 
 ### Objectif
 
-Analyser les ventes par produit, client, region et periode.
+Analyser les ventes par produit, client, region et période.
 
-## Etape 1 : Importer les donnees
+## Étape 1 : Importer les données
 
 ### Depuis Excel
 
-1. **Power Pivot** > **Gerer**
-2. **Accueil** > **Obtenir des donnees externes** > **Excel**
+1. **Power Pivot** > **Gérer**
+2. **Accueil** > **Obtenir des données externes** > **Excel**
 3. Importez chaque table
 
 ### Conseil
 
-Importez des tableaux structures (Ctrl+T).
+Importez des tableaux structurés (Ctrl+T).
 
-## Etape 2 : Creer les relations
+## Étape 2 : Créer les relations
 
 ### Vue Diagramme
 
@@ -48,7 +48,7 @@ Importez des tableaux structures (Ctrl+T).
 3. Glissez ClientID vers ClientID
 4. Glissez Date vers Date
 
-### Schema
+### Schéma
 
 ```
 Ventes (fait) -> Produits (dimension)
@@ -56,7 +56,7 @@ Ventes (fait) -> Clients (dimension)
 Ventes (fait) -> Calendrier (dimension)
 ```
 
-## Etape 3 : Mesures de base
+## Étape 3 : Mesures de base
 
 ### Total des ventes
 
@@ -76,13 +76,13 @@ Nb Transactions := COUNT(Ventes[ID])
 Panier Moyen := DIVIDE([Total Ventes]; [Nb Transactions])
 ```
 
-## Etape 4 : Mesures temporelles
+## Étape 4 : Mesures temporelles
 
 ### Table calendrier
 
 Essentielle pour les calculs temporels.
 
-### Ventes annee precedente
+### Ventes année précédente
 
 ```dax
 Ventes N-1 := CALCULATE(
@@ -103,7 +103,7 @@ Variation := DIVIDE([Total Ventes] - [Ventes N-1]; [Ventes N-1])
 YTD := TOTALYTD([Total Ventes]; Calendrier[Date])
 ```
 
-## Etape 5 : Mesures analytiques
+## Étape 5 : Mesures analytiques
 
 ### Part du total
 
@@ -120,23 +120,23 @@ YTD := TOTALYTD([Total Ventes]; Calendrier[Date])
 Rang := RANKX(ALL(Produits); [Total Ventes]; ; DESC)
 ```
 
-## Etape 6 : Creer le TCD
+## Étape 6 : Créer le TCD
 
 ### Ajouter au classeur
 
-1. **Power Pivot** > **Tableau croise dynamique**
+1. **Power Pivot** > **Tableau croisé dynamique**
 2. Placez les champs
 3. Utilisez les mesures dans Valeurs
 
 ### Configuration
 
-- Lignes : Categorie, Produit
-- Colonnes : Annee, Trimestre
+- Lignes : Catégorie, Produit
+- Colonnes : Année, Trimestre
 - Valeurs : Total Ventes, Variation
 
-## Etape 7 : Visualiser
+## Étape 7 : Visualiser
 
-### Graphiques croises
+### Graphiques croisés
 
 Ajoutez des graphiques lies au TCD.
 
@@ -150,8 +150,8 @@ Ajoutez des filtres interactifs.
 
 | Colonnes calculees | Mesures |
 |-------------------|---------|
-| Categories fixes | Valeurs dynamiques |
-| Stockees | Calculees a la volee |
+| Catégories fixes | Valeurs dynamiques |
+| Stockees | Calculees à la volee |
 | Contexte de ligne | Contexte de filtre |
 
 ### Bonnes pratiques
@@ -161,6 +161,6 @@ Ajoutez des filtres interactifs.
 | Mesures preferees | Plus flexibles que colonnes |
 | Nommage | Prefixes par type (Mes_, Col_) |
 | Documentation | Commentez les formules DAX |
-| Test | Verifiez les resultats |
+| Test | Vérifiez les résultats |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

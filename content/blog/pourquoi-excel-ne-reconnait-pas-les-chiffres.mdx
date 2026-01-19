@@ -3,36 +3,36 @@ title: "Pourquoi Excel ne Reconnait Pas les Chiffres"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
 excerpt: "Solutions quand Excel traite vos nombres comme du texte."
-description: "Guide pour resoudre le probleme des nombres non reconnus dans Excel."
+description: "Guide pour resoudre le problème des nombres non reconnus dans Excel."
 category: "Depannage"
-categories: ["Depannage", "Manipulation de donnees"]
+catégories: ["Depannage", "Manipulation de données"]
 tags: ["Nombres", "Texte", "Format", "Depannage"]
 ---
 
 # Pourquoi Excel ne Reconnait Pas les Chiffres
 
-Vos nombres sont alignes a gauche et les calculs ne fonctionnent pas ? Ils sont probablement en format texte.
+Vos nombres sont alignes à gauche et les calculs ne fonctionnent pas ? Ils sont probablement en format texte.
 
 ## Symptomes
 
-- Nombres alignes a gauche (au lieu de droite)
+- Nombres alignes à gauche (au lieu de droite)
 - SOMME retourne 0
 - Triangle vert dans le coin de la cellule
 - Erreur #VALEUR! dans les calculs
 
 ## Causes courantes
 
-### 1. Import de donnees
+### 1. Import de données
 
-Les donnees importees (CSV, base de donnees) arrivent souvent en texte.
+Les données importees (CSV, base de données) arrivent souvent en texte.
 
-### 2. Apostrophe en debut
+### 2. Apostrophe en début
 
 '123 est traite comme du texte.
 
 ### 3. Espaces caches
 
-"123 " ou " 123" contient des espaces.
+"123 " où " 123" contient des espaces.
 
 ### 4. Format de cellule texte
 
@@ -40,8 +40,8 @@ La cellule etait formatee en texte avant la saisie.
 
 ## Solution 1 : Convertir via Convertir
 
-1. Selectionnez les cellules
-2. **Donnees** > **Convertir**
+1. Sélectionnez les cellules
+2. **Données** > **Convertir**
 3. **Terminer** directement
 
 Excel reconvertit les valeurs.
@@ -50,7 +50,7 @@ Excel reconvertit les valeurs.
 
 1. Tapez **1** dans une cellule vide
 2. Copiez cette cellule
-3. Selectionnez vos nombres-texte
+3. Sélectionnez vos nombres-texte
 4. **Collage special** > **Multiplier**
 
 Multiplier par 1 force la conversion en nombre.
@@ -71,8 +71,8 @@ Convertit le texte en nombre.
 
 ## Solution 4 : Triangle vert
 
-1. Selectionnez les cellules avec le triangle vert
-2. Cliquez sur l'icone d'avertissement
+1. Sélectionnez les cellules avec le triangle vert
+2. Cliquez sûr l'icone d'avertissement
 3. **Convertir en nombre**
 
 ## Solution 5 : Multiplier par 1
@@ -81,7 +81,7 @@ Convertit le texte en nombre.
 =A1*1
 ```
 
-Force Excel a traiter comme un nombre.
+Force Excel à traiter comme un nombre.
 
 ## Solution 6 : Double moins
 
@@ -111,7 +111,7 @@ Astuce courante pour forcer la conversion.
 =CNUM(SUPPRESPACE(EPURAGE(A1)))
 ```
 
-## Verifier le type
+## Vérifier le type
 
 ### Formules de test
 
@@ -131,16 +131,16 @@ Astuce courante pour forcer la conversion.
 ### Lors de la saisie
 
 - Ne commencez pas par une apostrophe
-- Evitez les espaces
+- Évitez les espaces
 
 ## Tableau recapitulatif
 
-| Probleme | Solution |
+| Problème | Solution |
 |----------|----------|
-| Import CSV | Donnees > Convertir |
+| Import CSV | Données > Convertir |
 | Triangle vert | Icone > Convertir |
 | Espaces | SUPPRESPACE |
 | Caracteres caches | EPURAGE |
-| General | CNUM |
+| Général | CNUM |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

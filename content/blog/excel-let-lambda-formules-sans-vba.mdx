@@ -2,10 +2,10 @@
 title: "Excel LET et LAMBDA : Formules Puissantes sans VBA"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Creez des formules avancees avec LET et LAMBDA sans programmer."
+excerpt: "Créez des formules avancées avec LET et LAMBDA sans programmer."
 description: "Guide LET et LAMBDA pour des formules puissantes sans VBA."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
+catégories: ["Excel 365", "Formules Excel"]
 tags: ["LET", "LAMBDA", "Formules", "Sans VBA"]
 ---
 
@@ -17,9 +17,9 @@ Atteignez la puissance du VBA avec de simples formules Excel.
 
 ### Avant
 
-Formules complexes, repetitives, difficiles a maintenir.
+Formules complexes, repetitives, difficiles à maintenir.
 
-### Apres
+### Après
 
 - Code reutilisable
 - Formules lisibles
@@ -36,7 +36,7 @@ Formules complexes, repetitives, difficiles a maintenir.
 
 ### Concept
 
-Definir des variables pour simplifier les calculs.
+Définir des variables pour simplifier les calculs.
 
 ### Exemple simple
 
@@ -50,7 +50,7 @@ Definir des variables pour simplifier les calculs.
 
 ## Avantages de LET
 
-### Lisibilite
+### Lisibilité
 
 ```excel
 ' Sans LET (illisible)
@@ -58,9 +58,9 @@ Definir des variables pour simplifier les calculs.
 
 ' Avec LET (clair)
 =LET(
-  critere;CONCAT(B1;"-";C1);
-  total;SOMME.SI(A:A;critere;D:D);
-  nombre;NB.SI(A:A;critere);
+  critère;CONCAT(B1;"-";C1);
+  total;SOMME.SI(A:A;critère;D:D);
+  nombre;NB.SI(A:A;critère);
   total/nombre
 )
 ```
@@ -79,7 +79,7 @@ Le calcul intermediaire n'est fait qu'une fois.
 
 ### Concept
 
-Creer une fonction personnalisee reutilisable.
+Créer une fonction personnalisee reutilisable.
 
 ### Exemple
 
@@ -91,12 +91,12 @@ Fonction qui multiplie par 1,2.
 
 ## Nommer une fonction LAMBDA
 
-### Etapes
+### Étapes
 
 1. **Formules** > **Gestionnaire de noms**
 2. **Nouveau**
 3. Nom : PrixTTC
-4. Fait reference a : =LAMBDA(prix;prix*1,2)
+4. Fait référence à : =LAMBDA(prix;prix*1,2)
 
 ### Utilisation
 
@@ -111,19 +111,19 @@ Fonction qui multiplie par 1,2.
 ```excel
 Nom: CATEGORIE_CLIENT
 Formule:
-=LAMBDA(ca;
+=LAMBDA(çà;
   LET(
     seuil_vip;10000;
     seuil_premium;5000;
-    SI(ca>=seuil_vip;"VIP";
-      SI(ca>=seuil_premium;"Premium";"Standard"))
+    SI(çà>=seuil_vip;"VIP";
+      SI(çà>=seuil_premium;"Premium";"Standard"))
   )
 )
 ```
 
-## Fonctions a plusieurs parametres
+## Fonctions à plusieurs paramètrès
 
-### Definition
+### Définition
 
 ```excel
 Nom: REMISE
@@ -166,7 +166,7 @@ Formule: =LAMBDA(naissance;
 )
 ```
 
-## LAMBDA recursif (avance)
+## LAMBDA recursif (avancé)
 
 ### Concept
 
@@ -185,7 +185,7 @@ Formule: =LAMBDA(n;
 
 ### MAP
 
-Applique une fonction a chaque element.
+Applique une fonction à chaque élément.
 
 ```excel
 =MAP(A1:A10;LAMBDA(x;x*2))
@@ -193,7 +193,7 @@ Applique une fonction a chaque element.
 
 ### REDUCE
 
-Reduit un tableau a une valeur.
+Réduit un tableau à une valeur.
 
 ```excel
 =REDUCE(0;A1:A10;LAMBDA(acc;val;acc+val))
@@ -205,7 +205,7 @@ Reduit un tableau a une valeur.
 |--------|-----|
 | Pas de code | Programmation |
 | Portable | Peut etre bloque |
-| Recalcul automatique | Execution manuelle |
+| Recalcul automatique | Exécution manuelle |
 | Securise | Risques macro |
 
 ## Bonnes pratiques
@@ -214,7 +214,7 @@ Reduit un tableau a une valeur.
 |----------|-------------|
 | Noms clairs | Fonctions explicites |
 | Documentation | Commentez dans le gestionnaire |
-| Test | Verifiez chaque fonction |
-| Partage | Classeur modele |
+| Test | Vérifiez chaque fonction |
+| Partage | Classeur modèle |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

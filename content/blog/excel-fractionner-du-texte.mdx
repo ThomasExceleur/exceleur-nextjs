@@ -2,25 +2,25 @@
 title: "Fractionner du Texte dans Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a separer du texte en plusieurs colonnes dans Excel."
+excerpt: "Apprenez à séparer du texte en plusieurs colonnes dans Excel."
 description: "Guide pour fractionner du texte dans Excel. Convertir et formules."
-category: "Manipulation de donnees"
-categories: ["Manipulation de donnees", "Formules Excel"]
-tags: ["Texte", "Fractionnement", "Donnees", "Formules"]
+category: "Manipulation de données"
+catégories: ["Manipulation de données", "Formules Excel"]
+tags: ["Texte", "Fractionnement", "Données", "Formules"]
 ---
 
 # Fractionner du Texte dans Excel
 
 Separisez du texte en plusieurs colonnes facilement.
 
-## Methode 1 : Convertir
+## Méthode 1 : Convertir
 
-### Etapes
+### Étapes
 
-1. Selectionnez les cellules a fractionner
-2. **Donnees** > **Convertir**
-3. Choisissez **Delimite** ou **Largeur fixe**
-4. Selectionnez le delimiteur (virgule, espace, etc.)
+1. Sélectionnez les cellules à fractionner
+2. **Données** > **Convertir**
+3. Choisissez **Delimite** où **Largeur fixe**
+4. Sélectionnez le delimiteur (virgule, espace, etc.)
 5. **Suivant** > **Terminer**
 
 ### Delimiteurs courants
@@ -28,11 +28,11 @@ Separisez du texte en plusieurs colonnes facilement.
 | Delimiteur | Utilisation |
 |------------|-------------|
 | Virgule | CSV, listes |
-| Point-virgule | Donnees francaises |
+| Point-virgule | Données francaises |
 | Espace | Noms, adresses |
-| Tabulation | Donnees tabulees |
+| Tabulation | Données tabulees |
 
-## Methode 2 : Formules texte
+## Méthode 2 : Formules texte
 
 ### GAUCHE
 
@@ -49,7 +49,7 @@ Separisez du texte en plusieurs colonnes facilement.
 ### STXT
 
 ```excel
-=STXT(A1;3;5)    ' 5 caracteres a partir du 3e
+=STXT(A1;3;5)    ' 5 caracteres à partir du 3e
 ```
 
 ### Trouver la position
@@ -58,25 +58,25 @@ Separisez du texte en plusieurs colonnes facilement.
 =CHERCHE(" ";A1)    ' Position du premier espace
 ```
 
-## Methode 3 : Remplissage instantane
+## Méthode 3 : Remplissage instantane
 
 ### Ctrl + E (Flash Fill)
 
-1. Dans la colonne adjacente, tapez le resultat souhaite
+1. Dans la colonne adjacente, tapez le résultat souhaité
 2. Descendez d'une cellule
 3. **Ctrl + E**
 4. Excel complete automatiquement
 
 ### Exemple
 
-| Original | Resultat |
+| Original | Résultat |
 |----------|----------|
 | Jean Dupont | Jean |
 | Marie Martin | (vide) |
 
-Apres Ctrl + E : Marie, etc.
+Après Ctrl + E : Marie, etc.
 
-## Methode 4 : FRACTIONNER.TEXTE (Excel 365)
+## Méthode 4 : FRACTIONNER.TEXTE (Excel 365)
 
 ### Syntaxe
 
@@ -90,9 +90,9 @@ Apres Ctrl + E : Marie, etc.
 =FRACTIONNER.TEXTE("A;B;C";";")
 ```
 
-Resultat : A | B | C (dans 3 colonnes)
+Résultat : A | B | C (dans 3 colonnes)
 
-## Formules avancees
+## Formules avancées
 
 ### Extraire le prenom
 
@@ -120,7 +120,7 @@ Resultat : A | B | C (dans 3 colonnes)
 =TEXTE.AVANT(A1;" ")
 ```
 
-### Apres le delimiteur
+### Après le delimiteur
 
 ```excel
 =TEXTE.APRES(A1;" ")
@@ -130,21 +130,21 @@ Resultat : A | B | C (dans 3 colonnes)
 
 ### Adresse complete
 
-Separer : numero, rue, code postal, ville
+Séparer : numéro, rue, code postal, ville
 
 ### Nom complet
 
-Separer : prenom, nom, (particule)
+Séparer : prenom, nom, (particule)
 
-### Reference produit
+### Référence produit
 
-Separer : categorie, sous-categorie, identifiant
+Séparer : catégorie, sous-catégorie, identifiant
 
 ## Bonnes pratiques
 
 1. **Sauvegardez** avant de convertir
 2. **Prevoyez** l'espace pour les colonnes
-3. **Testez** sur quelques lignes
+3. **Testez** sûr quelques lignes
 4. **Utilisez** Ctrl + E pour les cas simples
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

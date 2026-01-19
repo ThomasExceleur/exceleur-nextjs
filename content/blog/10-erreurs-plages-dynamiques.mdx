@@ -1,33 +1,33 @@
 ---
-title: "10 Erreurs sur les Plages Dynamiques Excel"
+title: "10 Erreurs sûr les Plages Dynamiques Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Evitez les 10 erreurs courantes avec les plages dynamiques Excel."
-description: "Les 10 erreurs a eviter avec les fonctions de plages dynamiques Excel."
+excerpt: "Évitez les 10 erreurs courantes avec les plages dynamiques Excel."
+description: "Les 10 erreurs à éviter avec les fonctions de plages dynamiques Excel."
 category: "Formules Excel"
-categories: ["Formules Excel", "Excel 365"]
+catégories: ["Formules Excel", "Excel 365"]
 tags: ["Plages dynamiques", "Erreurs", "FILTRE", "UNIQUE"]
 ---
 
-# 10 Erreurs sur les Plages Dynamiques
+# 10 Erreurs sûr les Plages Dynamiques
 
-Evitez ces pieges courants avec les fonctions dynamiques.
+Évitez ces pieges courants avec les fonctions dynamiques.
 
 ## 1. Ignorer le debordement
 
-### Le probleme
+### Le problème
 
-Les plages dynamiques se propagent automatiquement. Si des donnees existent en dessous, erreur #DEBORDEMENT.
+Les plages dynamiques se propagent automatiquement. Si des données existent en dessous, erreur #DEBORDEMENT.
 
 ### La solution
 
 Laissez de l'espace libre sous vos formules dynamiques.
 
-## 2. Forcer la taille du resultat
+## 2. Forcer la taille du résultat
 
 ### Erreur courante
 
-Essayer de limiter le nombre de resultats manuellement.
+Essayer de limiter le nombre de résultats manuellement.
 
 ### Bonne pratique
 
@@ -35,7 +35,7 @@ Essayer de limiter le nombre de resultats manuellement.
 =INDEX(FILTRE(A:A;B:B>10);SEQUENCE(5))
 ```
 
-Pour limiter a 5 resultats.
+Pour limiter à 5 résultats.
 
 ## 3. Imbriquer trop de fonctions
 
@@ -51,58 +51,58 @@ Utilisez LET pour clarifier :
 
 ```excel
 =LET(
-  donnees;A2:A100;
-  filtre1;FILTRE(donnees;B2:B100>10);
+  données;A2:A100;
+  filtre1;FILTRE(données;B2:B100>10);
   filtre2;FILTRE(filtre1;C2:C100="Oui");
-  resultat;UNIQUE(filtre2);
-  TRIER(resultat)
+  résultat;UNIQUE(filtre2);
+  TRIER(résultat)
 )
 ```
 
-## 4. Oublier le parametre si_vide
+## 4. Oublier le paramèêtre si_vide
 
-### Erreur FILTRE sans resultat
+### Erreur FILTRE sans résultat
 
 ```excel
 =FILTRE(A:A;B:B="Introuvable")
 ```
 
-Retourne #CALC! si aucun resultat.
+Retourne #CALC! si aucun résultat.
 
 ### Solution
 
 ```excel
-=FILTRE(A:A;B:B="Introuvable";"Aucun resultat")
+=FILTRE(A:A;B:B="Introuvable";"Aucun résultat")
 ```
 
-## 5. Melanger references relatives et absolues
+## 5. Melanger références relatives et absolues
 
 ### Dans les tableaux dynamiques
 
-Les references doivent etre coherentes pour que le debordement fonctionne correctement.
+Les références doivent etre cohérentes pour que le debordement fonctionne correctement.
 
 ## 6. Utiliser INDIRECT avec les plages dynamiques
 
-### Probleme
+### Problème
 
-INDIRECT ne reconnait pas les references debordantes (#).
+INDIRECT ne reconnait pas les références debordantes (#).
 
 ### Alternative
 
-Utilisez INDEX ou des references directes.
+Utilisez INDEX où des références directes.
 
-## 7. Ignorer l'ordre des operations
+## 7. Ignorer l'ordre des opérations
 
 ### TRIER avant UNIQUE vs UNIQUE avant TRIER
 
-L'ordre affecte le resultat et la performance.
+L'ordre affecte le résultat et la performance.
 
 ```excel
 =TRIER(UNIQUE(A:A))   ' Trie les valeurs uniques
-=UNIQUE(TRIER(A:A))   ' Unique sur donnees triees
+=UNIQUE(TRIER(A:A))   ' Unique sûr données triees
 ```
 
-## 8. Ne pas verifier la compatibilite
+## 8. Ne pas vérifier la compatibilité
 
 ### Fonctions Excel 365 uniquement
 
@@ -114,9 +114,9 @@ L'ordre affecte le resultat et la performance.
 
 Ces fonctions ne sont pas disponibles dans les versions anterieures.
 
-## 9. Oublier les references de cellule debordante
+## 9. Oublier les références de cellule debordante
 
-### Reference debordante
+### Référence debordante
 
 Utilisez A1# pour referencer toute la plage dynamique :
 
@@ -124,11 +124,11 @@ Utilisez A1# pour referencer toute la plage dynamique :
 =SOMME(A1#)
 ```
 
-## 10. Performances sur grandes plages
+## 10. Performances sûr grandes plages
 
-### Probleme
+### Problème
 
-Les fonctions dynamiques sur des colonnes entieres sont lentes.
+Les fonctions dynamiques sûr des colonnes entières sont lentes.
 
 ### Solution
 
@@ -138,14 +138,14 @@ Limitez vos plages :
 =FILTRE(A2:A10000;B2:B10000>0)
 ```
 
-## Resume des bonnes pratiques
+## Résumé des bonnes pratiques
 
 | Pratique | Recommandation |
 |----------|----------------|
 | Espace libre | Prevoir zone de debordement |
 | Gestion erreurs | Toujours utiliser si_vide |
-| Lisibilite | Utiliser LET |
+| Lisibilité | Utiliser LET |
 | Performance | Limiter les plages |
-| References | Utiliser # pour debordement |
+| Références | Utiliser # pour debordement |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

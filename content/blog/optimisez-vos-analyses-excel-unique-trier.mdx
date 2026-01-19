@@ -5,13 +5,13 @@ author: "Thomas L'Exceleur"
 excerpt: "Combinez UNIQUE et TRIER pour des analyses puissantes."
 description: "Guide pour optimiser vos analyses avec UNIQUE et TRIER."
 category: "Excel 365"
-categories: ["Excel 365", "Analyse de donnees Excel"]
+catégories: ["Excel 365", "Analyse de données Excel"]
 tags: ["UNIQUE", "TRIER", "Analyse", "Excel 365"]
 ---
 
 # Optimisez vos Analyses avec UNIQUE et TRIER
 
-La combinaison UNIQUE + TRIER cree des analyses dynamiques puissantes.
+La combinaison UNIQUE + TRIER créé des analyses dynamiques puissantes.
 
 ## Rappel des fonctions
 
@@ -29,7 +29,7 @@ Extrait les valeurs distinctes.
 =TRIER(tableau;[index];[ordre];[par_col])
 ```
 
-Trie les donnees.
+Trie les données.
 
 ## Combinaison de base
 
@@ -47,9 +47,9 @@ Valeurs distinctes triees par ordre alphabetique.
 =TRIER(UNIQUE(A2:A100);1;-1)
 ```
 
-## Analyses avancees
+## Analyses avancées
 
-### Categories triees par frequence
+### Catégories triees par frequence
 
 ```excel
 =LET(
@@ -59,12 +59,12 @@ Valeurs distinctes triees par ordre alphabetique.
 )
 ```
 
-### Top 5 categories
+### Top 5 catégories
 
 ```excel
 =LET(
-  resultat;TRIER(UNIQUE(A2:A100));
-  INDEX(resultat;SEQUENCE(5);1)
+  résultat;TRIER(UNIQUE(A2:A100));
+  INDEX(résultat;SEQUENCE(5);1)
 )
 ```
 
@@ -88,7 +88,7 @@ Valeurs distinctes triees par ordre alphabetique.
 
 Source de validation :
 ```excel
-=TRIER(UNIQUE(Donnees[Categorie]))
+=TRIER(UNIQUE(Données[Catégorie]))
 ```
 
 Liste triee et sans doublons.
@@ -135,7 +135,7 @@ Liste triee et sans doublons.
 =TRIER(UNIQUE(MOIS(Dates)))
 ```
 
-### Annees disponibles
+### Années disponibles
 
 ```excel
 =TRIER(UNIQUE(ANNEE(Dates)))
@@ -148,23 +148,23 @@ Liste triee et sans doublons.
 | Conseil | Impact |
 |---------|--------|
 | LET | Evite les calculs redondants |
-| Plages precises | Accelere l'execution |
-| Tableaux structures | Mise a jour automatique |
+| Plages precises | Accelere l'exécution |
+| Tableaux structurés | Mise à jour automatique |
 
 ## Gestion des erreurs
 
-### Si aucun resultat
+### Si aucun résultat
 
 ```excel
-=SIERREUR(TRIER(UNIQUE(FILTRE(...)));"Aucune donnee")
+=SIERREUR(TRIER(UNIQUE(FILTRE(...)));"Aucune donnée")
 ```
 
 ### Avec LET
 
 ```excel
 =LET(
-  resultat;TRIER(UNIQUE(A2:A100));
-  SI(LIGNES(resultat)>0;resultat;"Vide")
+  résultat;TRIER(UNIQUE(A2:A100));
+  SI(LIGNES(résultat)>0;résultat;"Vide")
 )
 ```
 
@@ -173,8 +173,8 @@ Liste triee et sans doublons.
 | Pratique | Description |
 |----------|-------------|
 | LET | Structurez les formules complexes |
-| Noms de plages | Clarifiez les references |
-| Test | Verifiez avec differentes donnees |
+| Noms de plages | Clarifiez les références |
+| Test | Vérifiez avec différentes données |
 | Documentation | Commentez la logique |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

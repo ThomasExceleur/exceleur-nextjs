@@ -2,10 +2,10 @@
 title: "Mettre en Evidence les Erreurs dans Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a identifier et mettre en evidence les erreurs dans vos feuilles Excel."
+excerpt: "Apprenez à identifier et mettre en evidence les erreurs dans vos feuilles Excel."
 description: "Techniques pour reperer visuellement les erreurs dans Excel. Mise en forme conditionnelle."
 category: "Gestion d'erreurs"
-categories: ["Gestion d'erreurs", "Astuces Excel"]
+catégories: ["Gestion d'erreurs", "Astuces Excel"]
 tags: ["Erreurs", "Mise en forme", "Validation", "Depannage"]
 ---
 
@@ -18,8 +18,8 @@ Identifiez rapidement les cellules contenant des erreurs dans vos feuilles de ca
 | Erreur | Signification |
 |--------|---------------|
 | #N/A | Valeur non disponible |
-| #VALEUR! | Type de donnee incorrect |
-| #REF! | Reference invalide |
+| #VALEUR! | Type de donnée incorrect |
+| #REF! | Référence invalide |
 | #DIV/0! | Division par zero |
 | #NOM? | Nom non reconnu |
 | #NOMBRE! | Nombre invalide |
@@ -29,14 +29,14 @@ Identifiez rapidement les cellules contenant des erreurs dans vos feuilles de ca
 
 ### Colorer les erreurs automatiquement
 
-1. Selectionnez votre plage de donnees
-2. **Accueil** > **Mise en forme conditionnelle** > **Nouvelle regle**
+1. Sélectionnez votre plage de données
+2. **Accueil** > **Mise en forme conditionnelle** > **Nouvelle règle**
 3. Choisissez "Utiliser une formule"
 4. Formule : `=ESTERREUR(A1)`
 5. Format : fond rouge, texte blanc
 6. **OK**
 
-### Formule pour erreurs specifiques
+### Formule pour erreurs spécifiques
 
 ```excel
 =OU(ESTNA(A1);ESTERREUR(A1))
@@ -44,7 +44,7 @@ Identifiez rapidement les cellules contenant des erreurs dans vos feuilles de ca
 
 ## Formule ESTERREUR
 
-### Verifier une erreur
+### Vérifier une erreur
 
 ```excel
 =ESTERREUR(A1)     ' VRAI si erreur
@@ -56,7 +56,7 @@ Identifiez rapidement les cellules contenant des erreurs dans vos feuilles de ca
 =SOMMEPROD(ESTERREUR(A1:A100)*1)
 ```
 
-## Gerer les erreurs dans les formules
+## Gérer les erreurs dans les formules
 
 ### SIERREUR
 
@@ -79,13 +79,13 @@ Identifiez rapidement les cellules contenant des erreurs dans vos feuilles de ca
 3. Cochez **Formules** > **Erreurs**
 4. **OK**
 
-Toutes les cellules avec erreurs sont selectionnees.
+Toutes les cellules avec erreurs sont sélectionnées.
 
 ## Audit de formules
 
 ### Reperer les dependances
 
-1. Selectionnez une cellule avec erreur
+1. Sélectionnez une cellule avec erreur
 2. **Formules** > **Reperer les antecedents**
 3. Suivez les fleches pour trouver la source
 
@@ -98,7 +98,7 @@ Toutes les cellules avec erreurs sont selectionnees.
 =NB.SI.ENS(A:A;"#VALEUR!")    ' Nombre de #VALEUR!
 ```
 
-### Resume
+### Résumé
 
 | Indicateur | Formule |
 |------------|---------|
@@ -110,7 +110,7 @@ Toutes les cellules avec erreurs sont selectionnees.
 
 1. **Utilisez** SIERREUR dans vos formules
 2. **Appliquez** une mise en forme conditionnelle
-3. **Verifiez** regulierement les erreurs
+3. **Vérifiez** régulièrement les erreurs
 4. **Documentez** les causes courantes
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

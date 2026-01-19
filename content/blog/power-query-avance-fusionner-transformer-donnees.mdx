@@ -1,17 +1,17 @@
 ---
-title: "Power Query Avance : Fusionner et Transformer vos Donnees"
+title: "Power Query Avancé : Fusionner et Transformer vos Données"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Techniques avancees de Power Query pour fusionner et transformer les donnees."
-description: "Guide avance Power Query pour la fusion et transformation de donnees."
+excerpt: "Techniques avancées de Power Query pour fusionner et transformer les données."
+description: "Guide avancé Power Query pour la fusion et transformation de données."
 category: "Power Query"
-categories: ["Power Query", "Analyse de donnees Excel"]
-tags: ["Power Query", "Fusion", "Transformation", "Avance"]
+catégories: ["Power Query", "Analyse de données Excel"]
+tags: ["Power Query", "Fusion", "Transformation", "Avancé"]
 ---
 
-# Power Query Avance : Fusionner et Transformer vos Donnees
+# Power Query Avancé : Fusionner et Transformer vos Données
 
-Maitrisez les techniques avancees de Power Query pour des analyses puissantes.
+Maîtrisez les techniques avancées de Power Query pour des analyses puissantes.
 
 ## Types de fusion
 
@@ -21,7 +21,7 @@ Ne garde que les correspondances dans les deux tables.
 
 ### Fusion externe gauche (Left Outer)
 
-Garde toutes les lignes de la premiere table.
+Garde toutes les lignes de la première table.
 
 ### Fusion externe droite (Right Outer)
 
@@ -33,38 +33,38 @@ Garde toutes les lignes des deux tables.
 
 ### Anti-jointure gauche
 
-Lignes de gauche sans correspondance a droite.
+Lignes de gauche sans correspondance à droite.
 
-## Fusionner des requetes
+## Fusionner des requêtes
 
-### Etapes
+### Étapes
 
-1. **Accueil** > **Combiner** > **Fusionner des requetes**
-2. Selectionnez la table secondaire
+1. **Accueil** > **Combiner** > **Fusionner des requêtes**
+2. Sélectionnez la table secondaire
 3. Choisissez les colonnes de correspondance
-4. Selectionnez le type de jointure
+4. Sélectionnez le type de jointure
 5. Developpez les colonnes resultantes
 
-## Ajouter des requetes (Union)
+## Ajouter des requêtes (Union)
 
 ### Quand utiliser
 
-Combiner des tables avec la meme structure.
+Combiner des tables avec la meme structuré.
 
-### Etapes
+### Étapes
 
-1. **Accueil** > **Combiner** > **Ajouter des requetes**
-2. Selectionnez les tables a combiner
-3. Choisissez entre deux ou plusieurs tables
+1. **Accueil** > **Combiner** > **Ajouter des requêtes**
+2. Sélectionnez les tables à combiner
+3. Choisissez entre deux où plusieurs tables
 
-## Transformations avancees
+## Transformations avancées
 
 ### Pivoter des colonnes
 
 Transformer des lignes en colonnes.
 
 ```m
-= Table.Pivot(Source, {"Valeur1", "Valeur2"}, "Categorie", "Montant")
+= Table.Pivot(Source, {"Valeur1", "Valeur2"}, "Catégorie", "Montant")
 ```
 
 ### Depivoter des colonnes
@@ -86,10 +86,10 @@ Transformer des colonnes en lignes.
 ### Conditions
 
 ```m
-= Table.AddColumn(Source, "Categorie", each if [Montant] > 1000 then "Grand" else "Petit")
+= Table.AddColumn(Source, "Catégorie", each if [Montant] > 1000 then "Grand" else "Petit")
 ```
 
-## Grouper les donnees
+## Grouper les données
 
 ### Agregations
 
@@ -121,15 +121,15 @@ Transformer des colonnes en lignes.
 = Table.RemoveRowsWithErrors(Source, {"Colonne"})
 ```
 
-## Parametres et fonctions
+## Paramètrès et fonctions
 
-### Creer un parametre
+### Créer un paramèêtre
 
-1. **Accueil** > **Gerer les parametres**
-2. **Nouveau parametre**
-3. Definissez nom, type, valeur
+1. **Accueil** > **Gérer les paramètrès**
+2. **Nouveau paramèêtre**
+3. Définissez nom, type, valeur
 
-### Utiliser dans une requete
+### Utiliser dans une requête
 
 ```m
 = Table.SelectRows(Source, each [Date] >= DateDebut)
@@ -137,7 +137,7 @@ Transformer des colonnes en lignes.
 
 ## Fonctions personnalisees
 
-### Definition
+### Définition
 
 ```m
 (x as number, y as number) as number =>
@@ -146,7 +146,7 @@ Transformer des colonnes en lignes.
 
 ### Invocation
 
-Utilisez la fonction sur chaque ligne d'une table.
+Utilisez la fonction sûr chaque ligne d'une table.
 
 ## Performance
 
@@ -154,18 +154,18 @@ Utilisez la fonction sur chaque ligne d'une table.
 
 | Technique | Impact |
 |-----------|--------|
-| Filtrer tot | Reduit les donnees |
-| Supprimer colonnes inutiles | Moins de memoire |
-| Desactiver le chargement | Requetes intermediaires |
-| Plier les requetes | Execution sur la source |
+| Filtrer tot | Réduit les données |
+| Supprimer colonnes inutiles | Moins de mémoire |
+| Desactiver le chargement | Requêtes intermediaires |
+| Plier les requêtes | Exécution sûr la source |
 
 ## Bonnes pratiques
 
 | Pratique | Description |
 |----------|-------------|
-| Nommage clair | Requetes et etapes explicites |
+| Nommage clair | Requêtes et étapes explicites |
 | Documentation | Commentez les transformations complexes |
 | Modularite | Separarez les transformations |
-| Tests | Verifiez les resultats intermediaires |
+| Tests | Vérifiez les résultats intermediaires |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

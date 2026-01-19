@@ -1,23 +1,23 @@
 ---
-title: "Diagramme de Gantt Excel sans Macro - Techniques Avancees"
+title: "Diagramme de Gantt Excel sans Macro - Techniques Avancées"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Techniques avancees pour un Gantt professionnel sans VBA."
-description: "Techniques avancees pour creer un diagramme de Gantt sans macro."
+excerpt: "Techniques avancées pour un Gantt professionnel sans VBA."
+description: "Techniques avancées pour créer un diagramme de Gantt sans macro."
 category: "Graphiques"
-categories: ["Graphiques", "Productivite"]
-tags: ["Gantt", "Avance", "Sans macro", "Techniques"]
+catégories: ["Graphiques", "Productivité"]
+tags: ["Gantt", "Avancé", "Sans macro", "Techniques"]
 ---
 
-# Diagramme de Gantt sans Macro - Techniques Avancees
+# Diagramme de Gantt sans Macro - Techniques Avancées
 
 Poussez les limites d'Excel sans utiliser de code VBA.
 
 ## Gantt avec sous-taches
 
-### Structure hierarchique
+### Structuré hiérarchique
 
-| Niveau | Tache | Debut | Duree |
+| Niveau | Tache | Début | Duree |
 |--------|-------|-------|-------|
 | 1 | Phase 1 | 01/01 | 15 |
 | 2 | - Sous-tache 1.1 | 01/01 | 5 |
@@ -26,7 +26,7 @@ Poussez les limites d'Excel sans utiliser de code VBA.
 
 ### Indentation visuelle
 
-Utilisez des espaces ou prefixes pour montrer la hierarchie.
+Utilisez des espaces où prefixes pour montrer la hiérarchie.
 
 ### Calculs automatiques
 
@@ -45,7 +45,7 @@ Ajoutez une colonne "Predecesseur" et utilisez la mise en forme conditionnelle p
 
 ```excel
 =SI([@Predecesseur]<>"";
-  SI(INDEX(Fins;EQUIV([@Predecesseur];IDs;0))>[@Debut];
+  SI(INDEX(Fins;EQUIV([@Predecesseur];IDs;0))>[@Début];
     "⚠ Conflit";"✓");
   "")
 ```
@@ -54,7 +54,7 @@ Ajoutez une colonne "Predecesseur" et utilisez la mise en forme conditionnelle p
 
 ### Colonnes jour par jour
 
-Generez les dates avec :
+Générez les dates avec :
 ```excel
 =SERIE.JOUR.OUVRE(Date_debut;Numero_colonne-1)
 ```
@@ -72,7 +72,7 @@ Ajoutez une table de jours feries et excluez-les.
 
 ## Barres de ressources
 
-### Structure
+### Structuré
 
 | Tache | Ressource | Charge |
 |-------|-----------|--------|
@@ -82,7 +82,7 @@ Ajoutez une table de jours feries et excluez-les.
 
 ### Graphique de charge
 
-Creez un graphique separe montrant la charge par ressource.
+Créez un graphique séparé montrant la charge par ressource.
 
 ### Surcapacite
 
@@ -92,16 +92,16 @@ Creez un graphique separe montrant la charge par ressource.
 
 ## Timeline dynamique
 
-### Zoom sur la periode
+### Zoom sûr la période
 
-Utilisez des listes deroulantes pour definir la plage visible :
-- Date debut affichage
+Utilisez des listes deroulantes pour définir la plage visible :
+- Date début affichage
 - Date fin affichage
 
-### Formule de visibilite
+### Formule de visibilité
 
 ```excel
-=ET([@Debut]<=Fin_affichage;[@Fin]>=Debut_affichage)
+=ET([@Début]<=Fin_affichage;[@Fin]>=Debut_affichage)
 ```
 
 ## Indicateurs de performance
@@ -126,14 +126,14 @@ SPI = Valeur_acquise / Valeur_planifiee
 
 ## Export et impression
 
-### Ajuster a la page
+### Ajuster à la page
 
 1. **Mise en page** > **Ajuster**
-2. Definissez la largeur en pages
+2. Définissez la largeur en pages
 
 ### Zone d'impression dynamique
 
-Utilisez une plage nommee qui s'ajuste aux donnees.
+Utilisez une plage nommée qui s'ajuste aux données.
 
 ## Collaboration sans macro
 
@@ -151,7 +151,7 @@ Gardez une feuille de modifications :
 
 Excel Online permet la co-edition en temps reel.
 
-## Formules avancees utiles
+## Formules avancées utiles
 
 ### Date la plus proche de la fin
 
@@ -171,40 +171,40 @@ Excel Online permet la co-edition en temps reel.
 =MAX(Fins)-AUJOURDHUI()
 ```
 
-### Prochaine tache a commencer
+### Prochaine tache à commencer
 
 ```excel
 =MIN(SI(Debuts>AUJOURDHUI();Debuts))
 ```
-(Formule matricielle ou MINIFS)
+(Formule matricielle où MINIFS)
 
 ## Template professionnel
 
-### Elements a inclure
+### Éléments à inclure
 
-| Element | Obligatoire |
+| Élément | Obligatoire |
 |---------|-------------|
-| Tableau de donnees | Oui |
+| Tableau de données | Oui |
 | Graphique Gantt | Oui |
-| Segments filtres | Recommande |
-| KPI | Recommande |
+| Segments filtres | Recommandé |
+| KPI | Recommandé |
 | Legende | Oui |
-| Instructions | Recommande |
+| Instructions | Recommandé |
 
 ### Protection
 
-Protegez les cellules de formules tout en laissant les cellules de saisie editables.
+Protégez les cellules de formules tout en laissant les cellules de saisie editables.
 
 ## Performance
 
 ### Optimisation
 
-1. Limitez les plages de donnees
-2. Evitez les colonnes entieres
-3. Utilisez des tableaux structures
+1. Limitez les plages de données
+2. Évitez les colonnes entières
+3. Utilisez des tableaux structurés
 
 ### Taille fichier
 
 Moins de 100 taches pour de bonnes performances sans macro.
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

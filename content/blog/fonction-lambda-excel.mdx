@@ -2,24 +2,24 @@
 title: "La Fonction LAMBDA dans Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Creez vos propres fonctions personnalisees avec LAMBDA."
-description: "Guide complet de la fonction LAMBDA pour creer des fonctions Excel."
+excerpt: "Créez vos propres fonctions personnalisees avec LAMBDA."
+description: "Guide complet de la fonction LAMBDA pour créer des fonctions Excel."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
+catégories: ["Excel 365", "Formules Excel"]
 tags: ["LAMBDA", "Fonctions", "Personnalise", "Excel 365"]
 ---
 
 # La Fonction LAMBDA dans Excel
 
-LAMBDA permet de creer des fonctions personnalisees sans VBA.
+LAMBDA permet de créer des fonctions personnalisees sans VBA.
 
 ## Qu'est-ce que LAMBDA ?
 
-### Definition
+### Définition
 
-LAMBDA cree une fonction reutilisable a partir d'une expression.
+LAMBDA créé une fonction reutilisable à partir d'une expression.
 
-### Disponibilite
+### Disponibilité
 
 Excel 365, Excel 2024
 
@@ -31,13 +31,13 @@ Excel 365, Excel 2024
 
 ## Premier exemple
 
-### Definition
+### Définition
 
 ```excel
 =LAMBDA(x;x*2)
 ```
 
-Cree une fonction qui double une valeur.
+Créé une fonction qui double une valeur.
 
 ### Utilisation directe
 
@@ -45,22 +45,22 @@ Cree une fonction qui double une valeur.
 =LAMBDA(x;x*2)(5)
 ```
 
-Resultat : 10
+Résultat : 10
 
-## Creer une fonction nommee
+## Créer une fonction nommée
 
-### Etapes
+### Étapes
 
 1. **Formules** > **Gestionnaire de noms**
 2. **Nouveau**
 3. Nom : DOUBLER
-4. Fait reference a : `=LAMBDA(x;x*2)`
+4. Fait référence à : `=LAMBDA(x;x*2)`
 5. **OK**
 
 ### Utilisation
 
 ```excel
-=DOUBLER(5)   ' Resultat : 10
+=DOUBLER(5)   ' Résultat : 10
 =DOUBLER(A1)  ' Double la valeur de A1
 ```
 
@@ -93,9 +93,9 @@ Formule: =LAMBDA(c;c*9/5+32)
 
 Usage : `=CELSIUS_FAHRENHEIT(0)` retourne 32
 
-## Plusieurs parametres
+## Plusieurs paramètrès
 
-### Exemple : Calcul d'interet
+### Exemple : Calcul d'intérêt
 
 ```excel
 Nom: INTERET_SIMPLE
@@ -149,11 +149,11 @@ Nom: FIB
 Formule: =LAMBDA(n;SI(n<=2;1;FIB(n-1)+FIB(n-2)))
 ```
 
-## LAMBDA avec fonctions d'ordre superieur
+## LAMBDA avec fonctions d'ordre supérieur
 
 ### MAP
 
-Applique LAMBDA a chaque element :
+Applique LAMBDA à chaque élément :
 
 ```excel
 =MAP(A1:A10;LAMBDA(x;x^2))
@@ -194,8 +194,8 @@ Utilisez le champ Commentaire du gestionnaire de noms.
 
 | Avantage | Description |
 |----------|-------------|
-| Reutilisabilite | Une definition, usages multiples |
-| Lisibilite | Nom explicite vs formule |
+| Reutilisabilite | Une définition, usages multiples |
+| Lisibilité | Nom explicite vs formule |
 | Maintenance | Modification centralisee |
 | Pas de VBA | Fonctions natives |
 
@@ -212,6 +212,6 @@ Utilisez le champ Commentaire du gestionnaire de noms.
 1. **Noms explicites** pour les fonctions
 2. **Documentation** dans les commentaires
 3. **Tests** avant deploiement
-4. **Partage** du classeur avec les definitions
+4. **Partage** du classeur avec les définitions
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

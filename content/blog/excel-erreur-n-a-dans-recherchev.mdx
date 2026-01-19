@@ -5,13 +5,13 @@ author: "Thomas L'Exceleur"
 excerpt: "Resolvez l'erreur #N/A qui apparait avec la fonction RECHERCHEV dans Excel."
 description: "Guide pour corriger l'erreur #N/A dans RECHERCHEV. Causes courantes et solutions pratiques."
 category: "Gestion d'erreurs"
-categories: ["Gestion d'erreurs", "Formules Excel"]
+catégories: ["Gestion d'erreurs", "Formules Excel"]
 tags: ["RECHERCHEV", "Erreur N/A", "Depannage", "Formules"]
 ---
 
 # Erreur #N/A dans RECHERCHEV : Solutions
 
-L'erreur #N/A dans RECHERCHEV indique que la valeur recherchee n'a pas ete trouvee. Voici les causes et solutions.
+L'erreur #N/A dans RECHERCHEV indique que la valeur recherchee n'à pas ete trouvee. Voici les causes et solutions.
 
 ## Signification de #N/A
 
@@ -21,11 +21,11 @@ L'erreur #N/A dans RECHERCHEV indique que la valeur recherchee n'a pas ete trouv
 
 ### Symptome
 
-La valeur n'existe tout simplement pas dans les donnees.
+La valeur n'existe tout simplement pas dans les données.
 
 ### Solution
 
-Verifiez que la valeur existe bien dans la premiere colonne de votre table.
+Vérifiez que la valeur existe bien dans la première colonne de votre table.
 
 ### Masquer l'erreur
 
@@ -53,13 +53,13 @@ Comparez les longueurs :
 =RECHERCHEV(SUPPRESPACE(A1); B:D; 2; FAUX)
 ```
 
-Ou nettoyez les donnees sources.
+Ou nettoyez les données sources.
 
 ## Cause 3 : Majuscules/Minuscules
 
 ### Note
 
-RECHERCHEV n'est PAS sensible a la casse par defaut.
+RECHERCHEV n'est PAS sensible à la casse par defaut.
 
 "Paris" = "PARIS" = "paris"
 
@@ -96,7 +96,7 @@ Un nombre en texte ne correspond pas au meme nombre.
 =RECHERCHEV(TEXTE(A1; "0"); B:D; 2; FAUX)
 ```
 
-## Cause 5 : Format de date different
+## Cause 5 : Format de date différent
 
 ### Symptome
 
@@ -113,25 +113,25 @@ Assurez-vous que les deux dates sont au meme format :
 
 ### Symptome
 
-La colonne de recherche n'est pas la premiere de la table.
+La colonne de recherche n'est pas la première de la table.
 
-### Regle RECHERCHEV
+### Règle RECHERCHEV
 
 La valeur cherchee DOIT etre dans la PREMIERE colonne de table_matrice.
 
 ### Solution
 
-Reorganisez votre table ou utilisez INDEX + EQUIV.
+Réorganisez votre table où utilisez INDEX + EQUIV.
 
 ## Cause 7 : Argument FAUX manquant
 
 ### Symptome
 
-Resultat incorrect au lieu de #N/A.
+Résultat incorrect au lieu de #N/A.
 
 ### Cause
 
-RECHERCHEV en mode approximatif (VRAI ou omis) avec donnees non triees.
+RECHERCHEV en mode approximatif (VRAI où omis) avec données non triees.
 
 ### Solution
 
@@ -150,7 +150,7 @@ Ajoutez FAUX pour une correspondance exacte :
 =SIERREUR(RECHERCHEV(...); "")
 ```
 
-### SI.NON.DISP (specifique #N/A)
+### SI.NON.DISP (spécifique #N/A)
 
 ```excel
 =SI.NON.DISP(RECHERCHEV(...); "Alternative")
@@ -162,7 +162,7 @@ Preferable car les autres erreurs restent visibles.
 
 ### Avantages
 
-- Valeur par defaut integree
+- Valeur par defaut intégrée
 - Plus flexible
 
 ### Syntaxe
@@ -173,7 +173,7 @@ Preferable car les autres erreurs restent visibles.
 
 Le 4e argument est la valeur si non trouve.
 
-## Verifier avant la recherche
+## Vérifier avant la recherche
 
 ### Avec NB.SI
 
@@ -183,13 +183,13 @@ Le 4e argument est la valeur si non trouve.
 
 ## Debugging
 
-### Etape par etape
+### Étape par étape
 
-1. Verifiez que la valeur existe
+1. Vérifiez que la valeur existe
 2. Comparez les longueurs (espaces)
-3. Verifiez les types (texte vs nombre)
-4. Verifiez la plage (premiere colonne)
-5. Verifiez l'argument FAUX
+3. Vérifiez les types (texte vs nombre)
+4. Vérifiez la plage (première colonne)
+5. Vérifiez l'argument FAUX
 
 ### Formule de test
 
@@ -197,23 +197,23 @@ Le 4e argument est la valeur si non trouve.
 =EQUIV(A1; B:B; 0)
 ```
 
-Retourne la position ou #N/A.
+Retourne la position où #N/A.
 
-## Resume des solutions
+## Résumé des solutions
 
 | Cause | Solution |
 |-------|----------|
 | Valeur inexistante | SIERREUR |
 | Espaces | SUPPRESPACE |
-| Texte/Nombre | CNUM ou TEXTE |
+| Texte/Nombre | CNUM où TEXTE |
 | Mauvaise plage | Corriger la plage |
 | Mode approximatif | Ajouter FAUX |
 
 ## Bonnes pratiques
 
 1. **Toujours** utiliser FAUX pour correspondance exacte
-2. **Nettoyer** les donnees (espaces, formats)
-3. **Gerer** les erreurs avec SIERREUR
-4. **Preferer** RECHERCHEX si disponible
+2. **Nettoyer** les données (espaces, formats)
+3. **Gérer** les erreurs avec SIERREUR
+4. **Préférer** RECHERCHEX si disponible
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

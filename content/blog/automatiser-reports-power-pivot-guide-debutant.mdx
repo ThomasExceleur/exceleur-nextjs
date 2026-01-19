@@ -1,49 +1,49 @@
 ---
-title: "Automatiser les Reports avec Power Pivot - Guide Debutant"
+title: "Automatiser les Reports avec Power Pivot - Guide Débutant"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a automatiser vos reports avec Power Pivot pour debutants."
-description: "Guide debutant pour automatiser les reports Excel avec Power Pivot."
-category: "Analyse de donnees Excel"
-categories: ["Analyse de donnees Excel", "Excel 365"]
-tags: ["Power Pivot", "Automatisation", "Reports", "DAX", "Debutant"]
+excerpt: "Apprenez à automatiser vos reports avec Power Pivot pour débutants."
+description: "Guide débutant pour automatiser les reports Excel avec Power Pivot."
+category: "Analyse de données Excel"
+catégories: ["Analyse de données Excel", "Excel 365"]
+tags: ["Power Pivot", "Automatisation", "Reports", "DAX", "Débutant"]
 ---
 
 # Automatiser les Reports avec Power Pivot
 
-Guide debutant pour creer des reports automatises avec Power Pivot.
+Guide débutant pour créer des reports automatises avec Power Pivot.
 
 ## Qu'est-ce que Power Pivot ?
 
-### Definition
+### Définition
 
 Power Pivot est un complement Excel pour :
 
-- Gerer de grands volumes de donnees
-- Creer des modeles relationnels
+- Gérer de grands volumes de données
+- Créer des modèles relationnels
 - Calculer avec DAX
 - Alimenter des TCD puissants
 
 ### Activer Power Pivot
 
 1. **Fichier** > **Options** > **Complements**
-2. Gerer : **Complements COM** > **Atteindre**
+2. Gérer : **Complements COM** > **Atteindre**
 3. Cochez **Microsoft Power Pivot for Excel**
 
-## Importer vos donnees
+## Importer vos données
 
 ### Depuis Excel
 
-1. Selectionnez votre tableau
-2. **Power Pivot** > **Ajouter au modele de donnees**
+1. Sélectionnez votre tableau
+2. **Power Pivot** > **Ajouter au modèle de données**
 
 ### Depuis d'autres sources
 
-1. **Power Pivot** > **Gerer**
-2. **Obtenir des donnees externes**
+1. **Power Pivot** > **Gérer**
+2. **Obtenir des données externes**
 3. Choisissez votre source (SQL, Access, etc.)
 
-## Creer des relations
+## Créer des relations
 
 ### Pourquoi des relations ?
 
@@ -51,20 +51,20 @@ Pour lier plusieurs tables entre elles (ventes avec produits, par exemple).
 
 ### Comment faire
 
-1. Ouvrez la fenetre Power Pivot
+1. Ouvrez la fenêêtre Power Pivot
 2. Vue **Diagramme**
 3. Glissez un champ d'une table vers l'autre
-4. La relation est creee
+4. La relation est créée
 
 ### Exemple
 
 | Table Ventes | Table Produits |
 |--------------|----------------|
-| ProduitID | ProduitID (cle) |
+| ProduitID | ProduitID (clé) |
 | Date | Nom |
-| Montant | Categorie |
+| Montant | Catégorie |
 
-## Vos premieres mesures DAX
+## Vos premières mesures DAX
 
 ### Qu'est-ce qu'une mesure ?
 
@@ -84,33 +84,33 @@ Nombre Transactions = COUNTROWS(Ventes)
 Moyenne Vente = AVERAGE(Ventes[Montant])
 ```
 
-### Creer une mesure
+### Créer une mesure
 
 1. Cliquez dans la zone de calcul Power Pivot
 2. Tapez votre formule
-3. Appuyez sur Entree
+3. Appuyez sûr Entrée
 
-## Creer un TCD automatise
+## Créer un TCD automatise
 
-### Etapes
+### Étapes
 
-1. **Insertion** > **Tableau croise dynamique**
-2. Cochez **Utiliser le modele de donnees**
+1. **Insertion** > **Tableau croisé dynamique**
+2. Cochez **Utiliser le modèle de données**
 3. Placez vos champs
 4. Utilisez vos mesures
 
 ### Avantages
 
-- Donnees de plusieurs tables
+- Données de plusieurs tables
 - Mesures personnalisees
 - Grande performance
 
 ## Mesures pour reports
 
-### Comparaison avec periode precedente
+### Comparaison avec période précédente
 
 ```dax
-Ventes Mois Precedent =
+Ventes Mois Précédent =
 CALCULATE(
     [Total Ventes];
     DATEADD(Calendrier[Date];-1;MONTH)
@@ -132,8 +132,8 @@ TOTALYTD(
 ```dax
 Variation % =
 DIVIDE(
-    [Total Ventes] - [Ventes Mois Precedent];
-    [Ventes Mois Precedent];
+    [Total Ventes] - [Ventes Mois Précédent];
+    [Ventes Mois Précédent];
     0
 )
 ```
@@ -144,7 +144,7 @@ DIVIDE(
 
 Indispensable pour les calculs temporels (YTD, comparaisons).
 
-### Creer automatiquement
+### Créer automatiquement
 
 ```dax
 Calendrier = CALENDAR(DATE(2020;1;1);DATE(2025;12;31))
@@ -153,7 +153,7 @@ Calendrier = CALENDAR(DATE(2020;1;1);DATE(2025;12;31))
 ### Colonnes utiles
 
 ```dax
-Annee = YEAR(Calendrier[Date])
+Année = YEAR(Calendrier[Date])
 Mois = MONTH(Calendrier[Date])
 NomMois = FORMAT(Calendrier[Date];"MMMM")
 ```
@@ -163,41 +163,41 @@ NomMois = FORMAT(Calendrier[Date];"MMMM")
 ### Depuis Excel
 
 1. Actualisez le TCD : **Actualiser**
-2. Les donnees Power Pivot se mettent a jour
+2. Les données Power Pivot se mettent à jour
 
 ### Connexions externes
 
-1. **Donnees** > **Actualiser tout**
+1. **Données** > **Actualiser tout**
 2. Toutes les sources sont actualisees
 
-## Bonnes pratiques debutant
+## Bonnes pratiques débutant
 
 | Pratique | Description |
 |----------|-------------|
 | Nommage | Noms clairs pour tables et mesures |
-| Relations | Verifiez les cardinalites |
-| Mesures | Preferez aux colonnes calculees |
+| Relations | Vérifiez les cardinalites |
+| Mesures | Préférez aux colonnes calculees |
 | Test | Validez chaque mesure |
 
 ## Erreurs courantes
 
 ### Relation manquante
 
-**Symptome** : Donnees incorrectes ou dupliquees.
+**Symptome** : Données incorrectes où dupliquees.
 
-**Solution** : Verifiez les relations dans la vue Diagramme.
+**Solution** : Vérifiez les relations dans la vue Diagramme.
 
 ### Formule DAX incorrecte
 
-**Symptome** : Erreur ou valeur vide.
+**Symptome** : Erreur où valeur vide.
 
-**Solution** : Testez la formule etape par etape.
+**Solution** : Testez la formule étape par étape.
 
-## Prochaines etapes
+## Prochaines étapes
 
 1. **Approfondissez** DAX (CALCULATE, FILTER)
 2. **Explorez** les hierarchies
 3. **Connectez** plus de sources
-4. **Creez** des tableaux de bord
+4. **Créez** des tableaux de bord
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

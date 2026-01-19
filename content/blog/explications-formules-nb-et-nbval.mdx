@@ -2,16 +2,16 @@
 title: "Explications des Formules NB et NBVAL dans Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Comprenez les differences entre NB, NBVAL et NB.VIDE dans Excel."
-description: "Guide des fonctions de comptage NB, NBVAL et NB.VIDE. Differences et exemples d'utilisation."
+excerpt: "Comprenez les différences entre NB, NBVAL et NB.VIDE dans Excel."
+description: "Guide des fonctions de comptage NB, NBVAL et NB.VIDE. Différences et exemples d'utilisation."
 category: "Formules Excel"
-categories: ["Formules Excel", "Fonctions"]
+catégories: ["Formules Excel", "Fonctions"]
 tags: ["NB", "NBVAL", "Compter", "Fonctions"]
 ---
 
 # Les Fonctions NB, NBVAL et NB.VIDE
 
-Ces fonctions de comptage ont des comportements differents.
+Ces fonctions de comptage ont des comportements différents.
 
 ## NB : Compter les nombres
 
@@ -44,7 +44,7 @@ Ces fonctions de comptage ont des comportements differents.
 | (vide) |
 
 ```excel
-=NB(A1:A4)   ' Resultat : 2
+=NB(A1:A4)   ' Résultat : 2
 ```
 
 ## NBVAL : Compter les cellules non vides
@@ -65,7 +65,7 @@ Ces fonctions de comptage ont des comportements differents.
 
 ### Ne compte pas
 
-- Les cellules completement vides
+- Les cellules complètement vides
 
 ### Exemple
 
@@ -77,7 +77,7 @@ Ces fonctions de comptage ont des comportements differents.
 | VRAI |
 
 ```excel
-=NBVAL(A1:A4)   ' Resultat : 3
+=NBVAL(A1:A4)   ' Résultat : 3
 ```
 
 ## NB.VIDE : Compter les cellules vides
@@ -103,7 +103,7 @@ Ces fonctions de comptage ont des comportements differents.
 | (vide) |
 
 ```excel
-=NB.VIDE(A1:A4)   ' Resultat : 3
+=NB.VIDE(A1:A4)   ' Résultat : 3
 ```
 
 ## Comparaison
@@ -116,13 +116,13 @@ Ces fonctions de comptage ont des comportements differents.
 
 ## Cas pratiques
 
-### Nombre de donnees saisies
+### Nombre de données saisies
 
 ```excel
-=NBVAL(A:A)-1                 ' Moins l'en-tete
+=NBVAL(A:A)-1                 ' Moins l'en-tête
 ```
 
-### Verifier la completude
+### Vérifier la completude
 
 ```excel
 =SI(NB.VIDE(A1:A100)=0;"Complet";"Incomplet")
@@ -138,7 +138,7 @@ Ces fonctions de comptage ont des comportements differents.
 
 ### NB.SI
 
-Compte selon un critere.
+Compte selon un critère.
 
 ```excel
 =NB.SI(A:A;">10")
@@ -146,7 +146,7 @@ Compte selon un critere.
 
 ### NB.SI.ENS
 
-Compte selon plusieurs criteres.
+Compte selon plusieurs critères.
 
 ```excel
 =NB.SI.ENS(A:A;">10";B:B;"Actif")
@@ -167,7 +167,7 @@ Compte selon plusieurs criteres.
 
 Une cellule avec un espace n'est pas vide.
 
-## Resume
+## Résumé
 
 | Pour compter | Utilisez |
 |--------------|----------|
@@ -176,4 +176,4 @@ Une cellule avec un espace n'est pas vide.
 | Cellules vides | NB.VIDE |
 | Avec condition | NB.SI |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

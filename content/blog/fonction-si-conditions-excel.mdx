@@ -2,16 +2,16 @@
 title: "Fonction SI et Conditions dans Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Maitrisez la fonction SI et toutes les conditions logiques Excel."
+excerpt: "Maîtrisez la fonction SI et toutes les conditions logiques Excel."
 description: "Guide complet de la fonction SI et des conditions dans Excel."
 category: "Formules Excel"
-categories: ["Formules Excel", "Logique"]
+catégories: ["Formules Excel", "Logique"]
 tags: ["SI", "Conditions", "Logique", "Formules"]
 ---
 
 # Fonction SI et Conditions dans Excel
 
-La fonction SI est fondamentale pour creer des formules conditionnelles.
+La fonction SI est fondamentale pour créer des formules conditionnelles.
 
 ## Syntaxe de base
 
@@ -25,20 +25,20 @@ La fonction SI est fondamentale pour creer des formules conditionnelles.
 =SI(A1>10;"Grand";"Petit")
 ```
 
-Si A1 est superieur a 10, retourne "Grand", sinon "Petit".
+Si A1 est supérieur à 10, retourne "Grand", sinon "Petit".
 
-## Operateurs de comparaison
+## Opérateurs de comparaison
 
-| Operateur | Signification |
+| Opérateur | Signification |
 |-----------|---------------|
-| `=` | Egal a |
-| `<>` | Different de |
-| `>` | Superieur a |
-| `<` | Inferieur a |
-| `>=` | Superieur ou egal |
-| `<=` | Inferieur ou egal |
+| `=` | Égal à |
+| `<>` | Différent de |
+| `>` | Supérieur à |
+| `<` | Inférieur à |
+| `>=` | Supérieur où égal |
+| `<=` | Inférieur où égal |
 
-## SI imbrique
+## SI imbriqué
 
 ### Syntaxe
 
@@ -86,7 +86,7 @@ Maximum 64 niveaux d'imbrication (pratiquement 7-8 restent lisibles).
 )
 ```
 
-Plus lisible que les SI imbriques.
+Plus lisible que les SI imbriqués.
 
 ## Combiner avec ET, OU
 
@@ -127,8 +127,8 @@ Plus lisible que les SI imbriques.
 ### Calcul de remise
 
 ```excel
-=SI(Quantite>=100;Prix*0,9;
-  SI(Quantite>=50;Prix*0,95;Prix))
+=SI(Quantité>=100;Prix*0,9;
+  SI(Quantité>=50;Prix*0,95;Prix))
 ```
 
 ### Classification client
@@ -138,7 +138,7 @@ Plus lisible que les SI imbriques.
   SI(CA>=5000;"Premium";"Standard"))
 ```
 
-### Validation de donnees
+### Validation de données
 
 ```excel
 =SI(ET(Age>=18;Age<=65);"Eligible";"Non eligible")
@@ -154,7 +154,7 @@ Plus lisible que les SI imbriques.
 
 ## SI avec texte
 
-### Verifier si vide
+### Vérifier si vide
 
 ```excel
 =SI(A1="";"Vide";"Rempli")
@@ -164,10 +164,10 @@ Plus lisible que les SI imbriques.
 ### Comparer du texte
 
 ```excel
-=SI(A1="oui";"Accepte";"Refuse")
+=SI(A1="oui";"Accepte";"Refusé")
 ```
 
-Note : La comparaison n'est pas sensible a la casse.
+Note : La comparaison n'est pas sensible à la casse.
 
 ## SI avec dates
 
@@ -201,17 +201,17 @@ Note : La comparaison n'est pas sensible a la casse.
 
 | Pratique | Description |
 |----------|-------------|
-| Lisibilite | Evitez plus de 3-4 imbrications |
-| SI.CONDITIONS | Preferez pour plusieurs conditions |
+| Lisibilité | Évitez plus de 3-4 imbrications |
+| SI.CONDITIONS | Préférez pour plusieurs conditions |
 | Documentation | Commentez les logiques complexes |
-| Tests | Verifiez tous les cas |
+| Tests | Vérifiez tous les cas |
 
 ## Erreurs courantes
 
 | Erreur | Cause | Solution |
 |--------|-------|----------|
-| #VALEUR! | Types incompatibles | Verifiez les donnees |
-| Resultat inattendu | Ordre des conditions | Condition stricte d'abord |
+| #VALEUR! | Types incompatibles | Vérifiez les données |
+| Résultat inattendu | Ordre des conditions | Condition stricte d'abord |
 | Parentheses | Mauvais appariement | Comptez les parentheses |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

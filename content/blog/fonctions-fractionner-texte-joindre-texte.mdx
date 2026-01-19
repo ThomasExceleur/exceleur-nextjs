@@ -2,10 +2,10 @@
 title: "FRACTIONNER.TEXTE et JOINDRE.TEXTE dans Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Maitrisez les fonctions de manipulation de texte dans Excel 365."
+excerpt: "Maîtrisez les fonctions de manipulation de texte dans Excel 365."
 description: "Guide FRACTIONNER.TEXTE et JOINDRE.TEXTE dans Excel 365."
 category: "Formules Excel"
-categories: ["Formules Excel", "Excel 365"]
+catégories: ["Formules Excel", "Excel 365"]
 tags: ["FRACTIONNER.TEXTE", "JOINDRE.TEXTE", "Texte", "Excel 365"]
 ---
 
@@ -25,8 +25,8 @@ Ces fonctions Excel 365 simplifient la manipulation de texte.
 
 | Argument | Description |
 |----------|-------------|
-| texte | Le texte a fractionner |
-| delimiteur | Le caractere separateur |
+| texte | Le texte à fractionner |
+| delimiteur | Le caractere séparateur |
 | lignes_ou_colonnes | FAUX = colonnes (defaut), VRAI = lignes |
 
 ### Exemple simple
@@ -35,7 +35,7 @@ Ces fonctions Excel 365 simplifient la manipulation de texte.
 =FRACTIONNER.TEXTE("A;B;C";";")
 ```
 
-Resultat : A | B | C (dans 3 colonnes)
+Résultat : A | B | C (dans 3 colonnes)
 
 ### En lignes
 
@@ -43,7 +43,7 @@ Resultat : A | B | C (dans 3 colonnes)
 =FRACTIONNER.TEXTE("A;B;C";";";VRAI)
 ```
 
-Resultat en 3 lignes.
+Résultat en 3 lignes.
 
 ## JOINDRE.TEXTE
 
@@ -57,9 +57,9 @@ Resultat en 3 lignes.
 
 | Argument | Description |
 |----------|-------------|
-| delimiteur | Le separateur |
+| delimiteur | Le séparateur |
 | ignorer_vides | VRAI pour ignorer les vides |
-| texte1... | Les textes a joindre |
+| texte1... | Les textes à joindre |
 
 ### Exemple simple
 
@@ -67,11 +67,11 @@ Resultat en 3 lignes.
 =JOINDRE.TEXTE("; ";VRAI;A1:A5)
 ```
 
-Resultat : "A; B; C; D; E"
+Résultat : "A; B; C; D; E"
 
 ## Cas pratiques
 
-### Separer nom complet
+### Séparer nom complet
 
 ```excel
 =FRACTIONNER.TEXTE(A1;" ")
@@ -79,13 +79,13 @@ Resultat : "A; B; C; D; E"
 
 "Jean Dupont" devient : Jean | Dupont
 
-### Creer une liste
+### Créer une liste
 
 ```excel
 =JOINDRE.TEXTE(", ";VRAI;B2:B10)
 ```
 
-### Adresse sur une ligne
+### Adresse sûr une ligne
 
 ```excel
 =JOINDRE.TEXTE(", ";VRAI;Adresse;Ville;CodePostal)
@@ -108,9 +108,9 @@ Resultat : "A; B; C; D; E"
 =JOINDRE.TEXTE("-";VRAI;SUPPRESPACE(FRACTIONNER.TEXTE(A1;" ")))
 ```
 
-## Comparaison avec anciennes methodes
+## Comparaison avec anciennes méthodes
 
-### Avant (pour separer)
+### Avant (pour séparer)
 
 ```excel
 =GAUCHE(A1;CHERCHE(" ";A1)-1)
@@ -149,7 +149,7 @@ Gere automatiquement les vides.
 
 Remplace les virgules par des espaces puis fractionne.
 
-### Retour a la ligne comme delimiteur
+### Retour à la ligne comme delimiteur
 
 ```excel
 =FRACTIONNER.TEXTE(A1;CAR(10))
@@ -157,9 +157,9 @@ Remplace les virgules par des espaces puis fractionne.
 
 ## Bonnes pratiques
 
-1. **Verifiez** le delimiteur correct
+1. **Vérifiez** le delimiteur correct
 2. **Utilisez** VRAI pour ignorer les vides
-3. **Combinez** avec LET pour la lisibilite
-4. **Testez** sur differents cas
+3. **Combinez** avec LET pour la lisibilité
+4. **Testez** sûr différents cas
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

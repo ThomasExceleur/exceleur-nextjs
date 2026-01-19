@@ -2,18 +2,18 @@
 title: "Excel Gestion des Taches : Guide Complet"
 date: "2024-07-18"
 author: "Thomas L'Exceleur"
-excerpt: "Organisez et suivez vos taches efficacement avec Excel grace a ce guide."
-description: "Guide pour creer un gestionnaire de taches dans Excel. To-do list, priorites et suivi."
-category: "Productivite"
-categories: ["Productivite", "Modeles"]
+excerpt: "Organisez et suivez vos taches efficacement avec Excel grace à ce guide."
+description: "Guide pour créer un gestionnaire de taches dans Excel. To-do list, priorités et suivi."
+category: "Productivité"
+catégories: ["Productivité", "Modèles"]
 tags: ["Taches", "To-do", "Gestion", "Organisation"]
 ---
 
 # Gestion des Taches dans Excel
 
-Excel permet de creer un systeme de gestion des taches simple et efficace.
+Excel permet de créer un système de gestion des taches simple et efficace.
 
-## Structure de base
+## Structuré de base
 
 ### Colonnes essentielles
 
@@ -21,38 +21,38 @@ Excel permet de creer un systeme de gestion des taches simple et efficace.
 |---------|-------------|
 | ID | Identifiant unique |
 | Tache | Description |
-| Priorite | Haute/Moyenne/Basse |
+| Priorité | Haute/Moyenne/Basse |
 | Statut | A faire/En cours/Termine |
-| Date echeance | Deadline |
+| Date échéance | Deadline |
 | Responsable | Personne assignee |
-| Date creation | Quand ajoutee |
+| Date création | Quand ajoutee |
 
-## Creer le tableau
+## Créer le tableau
 
-### Etape 1 : En-tetes
+### Étape 1 : En-têtes
 
 ```
 A1: ID
 B1: Tache
-C1: Priorite
+C1: Priorité
 D1: Statut
-E1: Date echeance
+E1: Date échéance
 F1: Responsable
-G1: Date creation
+G1: Date création
 ```
 
-### Etape 2 : Tableau structure
+### Étape 2 : Tableau structuré
 
-1. Selectionnez vos donnees
-2. **Ctrl + T** pour creer un tableau
+1. Sélectionnez vos données
+2. **Ctrl + T** pour créer un tableau
 3. Nommez le tableau "Taches"
 
 ## Listes deroulantes
 
-### Priorites
+### Priorités
 
-1. Creez une liste : Haute, Moyenne, Basse
-2. **Donnees** > **Validation** > **Liste**
+1. Créez une liste : Haute, Moyenne, Basse
+2. **Données** > **Validation** > **Liste**
 
 ### Statuts
 
@@ -64,13 +64,13 @@ G1: Date creation
 
 ## Mise en forme conditionnelle
 
-### Colorer par priorite
+### Colorer par priorité
 
-1. Selectionnez la colonne Priorite
-2. **Mise en forme conditionnelle** > **Regles de mise en surbrillance**
+1. Sélectionnez la colonne Priorité
+2. **Mise en forme conditionnelle** > **Règles de mise en surbrillance**
 3. Rouge = Haute, Orange = Moyenne, Vert = Basse
 
-### Alerter sur les retards
+### Alerter sûr les retards
 
 ```excel
 =ET(E2<AUJOURDHUI();D2<>"Termine")
@@ -86,12 +86,12 @@ Format : fond rouge
 
 Format : police barree, grise
 
-## Cases a cocher
+## Cases à cocher
 
 ### Ajouter des cases
 
-1. **Developpeur** > **Inserer** > **Case a cocher**
-2. Liez a une cellule
+1. **Developpeur** > **Insérer** > **Case à cocher**
+2. Liez à une cellule
 
 ### Formule conditionnelle
 
@@ -118,34 +118,34 @@ Format : police barree, grise
 ### Taches en retard
 
 ```excel
-=NB.SI.ENS(Taches[Date echeance];"<"&AUJOURDHUI();Taches[Statut];"<>Termine")
+=NB.SI.ENS(Taches[Date échéance];"<"&AUJOURDHUI();Taches[Statut];"<>Termine")
 ```
 
 ## Filtres et vues
 
 ### Filtrer les taches
 
-1. Cliquez sur la fleche du filtre
-2. Selectionnez les criteres
+1. Cliquez sûr la fleche du filtre
+2. Sélectionnez les critères
 
 ### Vues personnalisees
 
 - Mes taches (filtre par responsable)
-- Taches urgentes (priorite haute)
-- En retard (echeance passee)
-- Cette semaine (echeance dans 7 jours)
+- Taches urgentes (priorité haute)
+- En retard (échéance passee)
+- Cette semaine (échéance dans 7 jours)
 
 ## Tri automatique
 
-### Par priorite et echeance
+### Par priorité et échéance
 
-1. **Donnees** > **Trier**
-2. Premier niveau : Priorite
-3. Deuxieme niveau : Date echeance
+1. **Données** > **Trier**
+2. Premier niveau : Priorité
+3. Deuxieme niveau : Date échéance
 
 ## Tableau de bord
 
-### Resume des taches
+### Résumé des taches
 
 | Indicateur | Valeur |
 |------------|--------|
@@ -164,12 +164,12 @@ Format : police barree, grise
 
 ### Gestion manuelle
 
-Dupliquez la tache avec nouvelle echeance.
+Dupliquez la tache avec nouvelle échéance.
 
 ### Avec formule
 
 ```excel
-=SI([@Statut]="Termine";[@[Date echeance]]+7;[@[Date echeance]])
+=SI([@Statut]="Termine";[@[Date échéance]]+7;[@[Date échéance]])
 ```
 
 ## Notifications
@@ -178,7 +178,7 @@ Dupliquez la tache avec nouvelle echeance.
 
 | Condition | Format |
 |-----------|--------|
-| Echeance aujourd'hui | Fond jaune |
+| Échéance aujourd'hui | Fond jaune |
 | En retard | Fond rouge |
 | Termine | Fond vert |
 
@@ -192,7 +192,7 @@ Dupliquez la tache avec nouvelle echeance.
 
 ### Liste des responsables
 
-Creez une liste deroulante avec les noms d'equipe.
+Créez une liste deroulante avec les noms d'equipe.
 
 ### Charge par personne
 
@@ -205,11 +205,11 @@ Creez une liste deroulante avec les noms d'equipe.
 ### Export PDF
 
 1. **Fichier** > **Exporter** > **PDF**
-2. Selectionnez la plage
+2. Sélectionnez la plage
 
 ### Partage OneDrive
 
-1. Enregistrez sur OneDrive
+1. Enregistrez sûr OneDrive
 2. Partagez le lien
 3. Co-edition en temps reel
 
@@ -217,30 +217,30 @@ Creez une liste deroulante avec les noms d'equipe.
 
 ### Archiver les taches terminees
 
-1. Creez une feuille "Archive"
-2. Deplacez les taches terminees periodiquement
+1. Créez une feuille "Archive"
+2. Déplacez les taches terminees periodiquement
 
 ### Garder un historique
 
 Ajoutez une colonne "Date cloture".
 
-## Integration calendrier
+## Intégration calendrier
 
 ### Export vers calendrier
 
-1. Creez un fichier ICS
+1. Créez un fichier ICS
 2. Ou copiez vers Outlook
 
 ### Rappels
 
-Utilisez les rappels Outlook pour les echeances importantes.
+Utilisez les rappels Outlook pour les échéances importantes.
 
 ## Bonnes pratiques
 
 1. **Limitez** les taches en cours (max 3-5)
 2. **Decomposez** les grandes taches
-3. **Mettez a jour** quotidiennement
-4. **Revoyez** les priorites regulierement
+3. **Mettez à jour** quotidiennement
+4. **Revoyez** les priorités régulièrement
 5. **Archivez** les taches terminees
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

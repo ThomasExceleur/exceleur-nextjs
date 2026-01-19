@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { MDXContent, MDXFrontmatter, BlogPostMeta, FormationMeta } from '@/types';
-import { calculateReadingTime } from './utils';
+import { calculateReadingTime, slugify } from './utils';
 
 const contentDirectory = path.join(process.cwd(), 'content');
 
@@ -205,7 +205,7 @@ export function getAllCategories(): { slug: string; name: string; count: number 
   });
 
   return Array.from(categoryMap.entries()).map(([name, count]) => ({
-    slug: name.toLowerCase().replace(/\s+/g, '-'),
+    slug: slugify(name),
     name,
     count,
   }));

@@ -5,7 +5,7 @@ author: "Thomas L'Exceleur"
 excerpt: "Utilisez PREVISION.ETS pour predire vos ventes futures dans Excel."
 description: "Guide PREVISION.ETS pour les previsions de ventes dans Excel."
 category: "Statistiques"
-categories: ["Statistiques", "Analyse de donnees Excel"]
+catégories: ["Statistiques", "Analyse de données Excel"]
 tags: ["PREVISION.ETS", "Previsions", "Ventes", "Statistiques"]
 ---
 
@@ -15,9 +15,9 @@ Predisez vos ventes futures avec l'analyse de series temporelles.
 
 ## Qu'est-ce que PREVISION.ETS ?
 
-### Definition
+### Définition
 
-PREVISION.ETS utilise l'algorithme ETS (Error, Trend, Seasonality) pour predire des valeurs futures basees sur l'historique.
+PREVISION.ETS utilisé l'algorithme ETS (Error, Trend, Seasonality) pour predire des valeurs futures basees sûr l'historique.
 
 ### Avantages
 
@@ -31,20 +31,20 @@ PREVISION.ETS utilise l'algorithme ETS (Error, Trend, Seasonality) pour predire 
 =PREVISION.ETS(date_cible;valeurs;chronologie;[saisonnalite];[completion];[agregation])
 ```
 
-## Parametres
+## Paramètrès
 
-| Parametre | Description | Defaut |
+| Paramèêtre | Description | Defaut |
 |-----------|-------------|--------|
-| date_cible | Date a predire | - |
+| date_cible | Date à predire | - |
 | valeurs | Historique des valeurs | - |
 | chronologie | Dates correspondantes | - |
-| saisonnalite | Periode saisonniere | 1 (auto) |
+| saisonnalite | Période saisonniere | 1 (auto) |
 | completion | Gestion des manquants | 1 |
-| agregation | Methode d'agregation | 1 |
+| agregation | Méthode d'agregation | 1 |
 
 ## Exemple simple
 
-### Donnees historiques
+### Données historiques
 
 | Mois | Ventes |
 |------|--------|
@@ -84,7 +84,7 @@ Predit les 6 prochains mois.
 =PREVISION.ETS(Date_cible;Ventes;Dates;1)
 ```
 
-Le 4e parametre a 1 detecte automatiquement.
+Le 4e paramèêtre à 1 detecte automatiquement.
 
 ### Saisonnalite mensuelle
 
@@ -92,7 +92,7 @@ Le 4e parametre a 1 detecte automatiquement.
 =PREVISION.ETS(Date_cible;Ventes;Dates;12)
 ```
 
-Pour des donnees avec cycle annuel (12 mois).
+Pour des données avec cycle annuel (12 mois).
 
 ### Saisonnalite hebdomadaire
 
@@ -100,7 +100,7 @@ Pour des donnees avec cycle annuel (12 mois).
 =PREVISION.ETS(Date_cible;Ventes;Dates;52)
 ```
 
-Pour des donnees avec cycle annuel (52 semaines).
+Pour des données avec cycle annuel (52 semaines).
 
 ## Intervalle de confiance
 
@@ -110,15 +110,15 @@ Pour des donnees avec cycle annuel (52 semaines).
 =PREVISION.ETS.CONFINT(Date_cible;Ventes;Dates;;0,95)
 ```
 
-Retourne la marge d'erreur a 95% de confiance.
+Retourne la marge d'erreur à 95% de confiance.
 
 ### Bornes de prediction
 
 ```excel
-' Borne superieure
+' Borne supérieure
 =PREVISION.ETS(...)+PREVISION.ETS.CONFINT(...)
 
-' Borne inferieure
+' Borne inférieure
 =PREVISION.ETS(...)-PREVISION.ETS.CONFINT(...)
 ```
 
@@ -135,7 +135,7 @@ Retourne la marge d'erreur a 95% de confiance.
 
 ## Cas pratique : Plan de ventes
 
-### Structure
+### Structuré
 
 | Mois | Reel | Prevision | Ecart |
 |------|------|-----------|-------|
@@ -155,27 +155,27 @@ Retourne la marge d'erreur a 95% de confiance.
 
 ### Graphique de prevision
 
-1. Selectionnez vos donnees historiques
-2. **Insertion** > **Graphiques recommandes**
+1. Sélectionnez vos données historiques
+2. **Insertion** > **Graphiques recommandés**
 3. Ou utilisez **Feuille de prevision**
 
 ### Feuille de prevision automatique
 
-1. **Donnees** > **Feuille de prevision**
+1. **Données** > **Feuille de prevision**
 2. Configurez les options
-3. Excel genere previsions et graphique
+3. Excel généré previsions et graphique
 
 ## Limites
 
 ### A considerer
 
-- Necessite suffisamment de donnees historiques
+- Nécessité suffisamment de données historiques
 - Suppose que les patterns continuent
-- Evenements exceptionnels non predits
+- Événements exceptionnels non predits
 
-### Minimum de donnees
+### Minimum de données
 
-Au moins 2 periodes completes de saisonnalite.
+Au moins 2 périodes completes de saisonnalite.
 
 ## Comparaison avec PREVISION
 
@@ -189,9 +189,9 @@ Au moins 2 periodes completes de saisonnalite.
 
 | Pratique | Description |
 |----------|-------------|
-| Donnees propres | Pas de valeurs manquantes |
+| Données propres | Pas de valeurs manquantes |
 | Historique suffisant | 2+ cycles saisonniers |
 | Validation | Comparez aux valeurs reelles |
 | Marge | Utilisez l'intervalle de confiance |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

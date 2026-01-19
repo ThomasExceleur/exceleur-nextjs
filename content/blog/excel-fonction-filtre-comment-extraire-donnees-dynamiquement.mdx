@@ -1,19 +1,19 @@
 ---
-title: "Fonction FILTRE Excel : Comment Extraire des Donnees Dynamiquement"
+title: "Fonction FILTRE Excel : Comment Extraire des Données Dynamiquement"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Maitrisez la fonction FILTRE pour extraire des donnees de maniere dynamique."
+excerpt: "Maîtrisez la fonction FILTRE pour extraire des données de manière dynamique."
 description: "Guide complet de la fonction FILTRE Excel pour l'extraction dynamique."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
+catégories: ["Excel 365", "Formules Excel"]
 tags: ["FILTRE", "Extraction", "Dynamique", "Excel 365"]
 ---
 
-# Fonction FILTRE : Extraire des Donnees Dynamiquement
+# Fonction FILTRE : Extraire des Données Dynamiquement
 
 FILTRE est l'une des fonctions les plus puissantes d'Excel 365.
 
-## Presentation de FILTRE
+## Présentation de FILTRE
 
 ### Syntaxe
 
@@ -21,15 +21,15 @@ FILTRE est l'une des fonctions les plus puissantes d'Excel 365.
 =FILTRE(tableau;inclure;[si_vide])
 ```
 
-### Parametres
+### Paramètrès
 
-| Parametre | Description | Obligatoire |
+| Paramèêtre | Description | Obligatoire |
 |-----------|-------------|-------------|
-| tableau | Donnees a filtrer | Oui |
+| tableau | Données à filtrer | Oui |
 | inclure | Condition booleenne | Oui |
-| si_vide | Valeur si aucun resultat | Non |
+| si_vide | Valeur si aucun résultat | Non |
 
-### Resultat
+### Résultat
 
 Un tableau dynamique qui s'etend automatiquement.
 
@@ -53,7 +53,7 @@ Un tableau dynamique qui s'etend automatiquement.
 =FILTRE(A2:C10;C2:C10>=DATE(2024;1;1))
 ```
 
-## Criteres multiples
+## Critères multiples
 
 ### ET logique (toutes les conditions)
 
@@ -77,38 +77,38 @@ L'addition (+) agit comme OU.
 =FILTRE(A2:D10;((B2:B10="Paris")+(B2:B10="Lyon"))*(C2:C10>100))
 ```
 
-## Gestion du resultat vide
+## Gestion du résultat vide
 
-### Probleme
+### Problème
 
-Sans le parametre si_vide, FILTRE retourne #CALC! si aucune ligne ne correspond.
+Sans le paramèêtre si_vide, FILTRE retourne #CALC! si aucune ligne ne correspond.
 
 ### Solutions
 
 ```excel
 ' Message texte
-=FILTRE(A2:C10;B2:B10="Inexistant";"Aucun resultat")
+=FILTRE(A2:C10;B2:B10="Inexistant";"Aucun résultat")
 
 ' Cellule vide
 =FILTRE(A2:C10;B2:B10="Inexistant";"")
 
-' Valeur specifique
+' Valeur spécifique
 =FILTRE(A2:C10;B2:B10="Inexistant";0)
 ```
 
 ## Filtrage dynamique
 
-### Avec reference cellule
+### Avec référence cellule
 
 ```excel
-=FILTRE(Donnees;Donnees[Ville]=E1)
+=FILTRE(Données;Données[Ville]=E1)
 ```
 
 E1 contient la ville choisie par l'utilisateur.
 
 ### Avec liste deroulante
 
-1. Creez une validation de donnees en E1
+1. Créez une validation de données en E1
 2. La formule FILTRE s'adapte automatiquement
 
 ## Combinaisons puissantes
@@ -127,7 +127,7 @@ Filtre puis trie par la 2e colonne decroissante.
 =UNIQUE(FILTRE(A2:A10;B2:B10>100))
 ```
 
-Valeurs uniques parmi les resultats filtres.
+Valeurs uniques parmi les résultats filtres.
 
 ### FILTRE + INDEX
 
@@ -135,7 +135,7 @@ Valeurs uniques parmi les resultats filtres.
 =INDEX(FILTRE(A2:C10;B2:B10>100);1;2)
 ```
 
-Premiere valeur de la 2e colonne du resultat.
+Première valeur de la 2e colonne du résultat.
 
 ### FILTRE + LIGNES
 
@@ -143,9 +143,9 @@ Premiere valeur de la 2e colonne du resultat.
 =LIGNES(FILTRE(A2:A10;B2:B10>100))
 ```
 
-Nombre de resultats.
+Nombre de résultats.
 
-## Reference debordante
+## Référence debordante
 
 ### Syntaxe #
 
@@ -153,18 +153,18 @@ Nombre de resultats.
 =SOMME(D1#)
 ```
 
-Reference tout le resultat de la formule en D1.
+Référence tout le résultat de la formule en D1.
 
 ### Utilisation
 
-Utile pour calculer des statistiques sur le resultat filtre.
+Utile pour calculer des statistiques sûr le résultat filtre.
 
 ## Filtrage de colonnes
 
-### Selectionner des colonnes
+### Sélectionner des colonnes
 
 ```excel
-=FILTRE(CHOISIRCOLS(Donnees;1;3;5);Donnees[Statut]="Actif")
+=FILTRE(CHOISIRCOLS(Données;1;3;5);Données[Statut]="Actif")
 ```
 
 ## Cas pratiques
@@ -197,8 +197,8 @@ Utile pour calculer des statistiques sur le resultat filtre.
 
 | Erreur | Cause | Solution |
 |--------|-------|----------|
-| #CALC! | Aucun resultat | Ajouter si_vide |
-| #VALEUR! | Tailles differentes | Verifier les plages |
+| #CALC! | Aucun résultat | Ajouter si_vide |
+| #VALEUR! | Tailles différentes | Vérifier les plages |
 | #DEBORDEMENT | Cellules occupees | Liberer l'espace |
 
 ## Performance
@@ -206,20 +206,20 @@ Utile pour calculer des statistiques sur le resultat filtre.
 ### Optimisation
 
 1. Limitez la taille du tableau source
-2. Evitez les colonnes entieres (A:A)
-3. Utilisez des tableaux structures
+2. Évitez les colonnes entières (A:A)
+3. Utilisez des tableaux structurés
 
-### Grandes donnees
+### Grandes données
 
-Pour des millions de lignes, preferez Power Query.
+Pour des millions de lignes, préférez Power Query.
 
 ## Bonnes pratiques
 
 | Pratique | Description |
 |----------|-------------|
-| si_vide | Toujours le definir |
-| Noms | Utilisez des plages nommees |
+| si_vide | Toujours le définir |
+| Noms | Utilisez des plages nommées |
 | Espace | Prevoyez le debordement |
-| Tests | Validez les criteres |
+| Tests | Validez les critères |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

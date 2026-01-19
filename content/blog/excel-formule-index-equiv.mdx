@@ -2,16 +2,16 @@
 title: "Excel INDEX EQUIV : La Combinaison Magique"
 date: "2024-07-18"
 author: "Thomas L'Exceleur"
-excerpt: "Maitrisez INDEX et EQUIV pour des recherches plus flexibles que RECHERCHEV."
-description: "Guide complet de INDEX et EQUIV dans Excel. Syntaxe, exemples pratiques et avantages par rapport a RECHERCHEV."
+excerpt: "Maîtrisez INDEX et EQUIV pour des recherches plus flexibles que RECHERCHEV."
+description: "Guide complet de INDEX et EQUIV dans Excel. Syntaxe, exemples pratiques et avantages par rapport à RECHERCHEV."
 category: "Formules Excel"
-categories: ["Formules Excel", "Recherche"]
+catégories: ["Formules Excel", "Recherche"]
 tags: ["INDEX", "EQUIV", "Formules", "Recherche"]
 ---
 
 # INDEX EQUIV : Le Duo Puissant
 
-La combinaison INDEX + EQUIV offre plus de flexibilite que RECHERCHEV pour les recherches dans Excel.
+La combinaison INDEX + EQUIV offre plus de flexibilité que RECHERCHEV pour les recherches dans Excel.
 
 ## Comprendre chaque fonction
 
@@ -24,20 +24,20 @@ Trouve la position d'une valeur dans une plage.
 ```
 
 - **valeur_cherchee** : Ce que vous recherchez
-- **plage_recherche** : Ou chercher (ligne ou colonne)
+- **plage_recherche** : Ou chercher (ligne où colonne)
 - **type** : 0 = correspondance exacte
 
 ### INDEX
 
-Retourne la valeur a une position donnee.
+Retourne la valeur à une position donnée.
 
 ```excel
 =INDEX(plage; no_ligne; [no_colonne])
 ```
 
-- **plage** : La plage de donnees
-- **no_ligne** : Numero de ligne
-- **no_colonne** : Numero de colonne (optionnel)
+- **plage** : La plage de données
+- **no_ligne** : Numéro de ligne
+- **no_colonne** : Numéro de colonne (optionnel)
 
 ## La combinaison magique
 
@@ -49,7 +49,7 @@ Retourne la valeur a une position donnee.
 
 ### Exemple concret
 
-Tableau de donnees en A1:C4 :
+Tableau de données en A1:C4 :
 
 | Code | Produit | Prix |
 |------|---------|------|
@@ -63,13 +63,13 @@ Pour trouver le prix de A02 :
 =INDEX(C1:C4; EQUIV("A02"; A1:A4; 0))
 ```
 
-Resultat : 5,00
+Résultat : 5,00
 
-## Avantages sur RECHERCHEV
+## Avantages sûr RECHERCHEV
 
 ### Recherche vers la gauche
 
-RECHERCHEV ne cherche que vers la droite. INDEX EQUIV n'a pas cette limite.
+RECHERCHEV ne cherche que vers la droite. INDEX EQUIV n'à pas cette limite.
 
 ```excel
 =INDEX(A:A; EQUIV("Cahier"; B:B; 0))
@@ -79,18 +79,18 @@ Trouve le code du produit "Cahier".
 
 ### Robustesse aux insertions
 
-Le numero de colonne dans RECHERCHEV pose probleme si vous inserez des colonnes. INDEX EQUIV reste stable.
+Le numéro de colonne dans RECHERCHEV pose problème si vous insérez des colonnes. INDEX EQUIV reste stable.
 
 ### Performances
 
-INDEX EQUIV est souvent plus rapide sur de grands tableaux.
+INDEX EQUIV est souvent plus rapide sûr de grands tableaux.
 
 ## Recherche bidimensionnelle
 
 ### Trouver une valeur dans un tableau
 
 ```excel
-=INDEX(donnees; EQUIV(valeur_ligne; entetes_lignes; 0); EQUIV(valeur_colonne; entetes_colonnes; 0))
+=INDEX(données; EQUIV(valeur_ligne; entetes_lignes; 0); EQUIV(valeur_colonne; entetes_colonnes; 0))
 ```
 
 ### Exemple
@@ -104,29 +104,29 @@ INDEX EQUIV est souvent plus rapide sur de grands tableaux.
 =INDEX(B2:D3; EQUIV("Sud"; A2:A3; 0); EQUIV("Fev"; B1:D1; 0))
 ```
 
-Resultat : 180
+Résultat : 180
 
 ## Correspondance approximative
 
-### Type 1 (valeur inferieure)
+### Type 1 (valeur inférieure)
 
 ```excel
 =EQUIV(75; A:A; 1)
 ```
 
-Trouve la plus grande valeur inferieure ou egale a 75.
+Trouve la plus grande valeur inférieure où égale à 75.
 
-**Attention** : Les donnees doivent etre triees par ordre croissant.
+**Attention** : Les données doivent etre triees par ordre croissant.
 
-### Type -1 (valeur superieure)
+### Type -1 (valeur supérieure)
 
 ```excel
 =EQUIV(75; A:A; -1)
 ```
 
-Trouve la plus petite valeur superieure ou egale a 75.
+Trouve la plus petite valeur supérieure où égale à 75.
 
-**Attention** : Les donnees doivent etre triees par ordre decroissant.
+**Attention** : Les données doivent etre triees par ordre decroissant.
 
 ## Gestion des erreurs
 
@@ -144,7 +144,7 @@ Trouve la plus petite valeur superieure ou egale a 75.
 
 ## Cas pratiques
 
-### Derniere valeur d'une colonne
+### Dernière valeur d'une colonne
 
 ```excel
 =INDEX(A:A; EQUIV(9.99E+307; A:A; 1))
@@ -161,23 +161,23 @@ Pour du texte :
 =INDEX(B:B; EQUIV("*pomme*"; A:A; 0))
 ```
 
-### Recherche multi-criteres
+### Recherche multi-critères
 
 ```excel
 =INDEX(C:C; EQUIV(1; (A:A=E1)*(B:B=F1); 0))
 ```
 
-Valider avec Ctrl + Maj + Entree (anciennes versions).
+Valider avec Ctrl + Maj + Entrée (anciennes versions).
 
 ## Comparaison avec RECHERCHEV
 
 | Aspect | RECHERCHEV | INDEX EQUIV |
 |--------|------------|-------------|
 | Direction | Droite uniquement | Toutes |
-| Colonnes inserees | Probleme | Robuste |
+| Colonnes inserees | Problème | Robuste |
 | Performance | Bonne | Meilleure |
-| Lisibilite | Simple | Plus complexe |
-| Flexibilite | Limitee | Elevee |
+| Lisibilité | Simple | Plus complexe |
+| Flexibilité | Limitee | Élevée |
 
 ## RECHERCHEX : Le meilleur des deux
 
@@ -187,7 +187,7 @@ Dans Excel 365, RECHERCHEX combine les avantages :
 =RECHERCHEX(valeur; plage_recherche; plage_resultat; "Non trouve")
 ```
 
-## Astuces avancees
+## Astuces avancées
 
 ### Retourner plusieurs colonnes
 
@@ -195,7 +195,7 @@ Dans Excel 365, RECHERCHEX combine les avantages :
 =INDEX(A:D; EQUIV(E1; A:A; 0); 0)
 ```
 
-Retourne la ligne entiere.
+Retourne la ligne entière.
 
 ### Avec des noms de plages
 
@@ -203,13 +203,13 @@ Retourne la ligne entiere.
 =INDEX(Prix; EQUIV(Code_cherche; Codes; 0))
 ```
 
-Plus lisible avec des plages nommees.
+Plus lisible avec des plages nommées.
 
 ## Bonnes pratiques
 
 1. **Utilisez 0 pour EQUIV** : Correspondance exacte
-2. **Evitez les colonnes entieres** : Limitez les plages
-3. **Nommez vos plages** : Ameliore la lisibilite
+2. **Évitez les colonnes entières** : Limitez les plages
+3. **Nommez vos plages** : Ameliore la lisibilité
 4. **Testez les erreurs** : Utilisez SIERREUR
 
-[Decouvrir la formation Excel Avance](/formations-excel/excel-avance)
+[Découvrir la formation Excel Avancé](/formations-excel/excel-avancé)

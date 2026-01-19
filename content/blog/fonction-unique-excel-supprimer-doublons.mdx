@@ -5,13 +5,13 @@ author: "Thomas L'Exceleur"
 excerpt: "Utilisez UNIQUE pour extraire les valeurs sans doublons dans Excel."
 description: "Guide de la fonction UNIQUE pour supprimer les doublons dans Excel."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
+catégories: ["Excel 365", "Formules Excel"]
 tags: ["UNIQUE", "Doublons", "Extraction", "Excel 365"]
 ---
 
 # Fonction UNIQUE : Supprimer les Doublons Automatiquement
 
-UNIQUE extrait les valeurs distinctes d'une plage de maniere dynamique.
+UNIQUE extrait les valeurs distinctes d'une plage de manière dynamique.
 
 ## Syntaxe
 
@@ -19,9 +19,9 @@ UNIQUE extrait les valeurs distinctes d'une plage de maniere dynamique.
 =UNIQUE(tableau;[par_col];[exactement_une_fois])
 ```
 
-## Parametres
+## Paramètrès
 
-| Parametre | Description | Defaut |
+| Paramèêtre | Description | Defaut |
 |-----------|-------------|--------|
 | tableau | Plage source | - |
 | par_col | VRAI = comparer par colonne | FAUX |
@@ -29,7 +29,7 @@ UNIQUE extrait les valeurs distinctes d'une plage de maniere dynamique.
 
 ## Exemple de base
 
-### Donnees
+### Données
 
 | Produit |
 |---------|
@@ -45,9 +45,9 @@ UNIQUE extrait les valeurs distinctes d'une plage de maniere dynamique.
 =UNIQUE(A2:A6)
 ```
 
-### Resultat
+### Résultat
 
-| Resultat |
+| Résultat |
 |----------|
 | Pomme |
 | Banane |
@@ -65,7 +65,7 @@ Retourne uniquement les valeurs apparaissant une seule fois (Orange dans l'exemp
 
 ## Plusieurs colonnes
 
-### Donnees
+### Données
 
 | Nom | Ville |
 |-----|-------|
@@ -80,7 +80,7 @@ Retourne uniquement les valeurs apparaissant une seule fois (Orange dans l'exemp
 =UNIQUE(A2:B5)
 ```
 
-### Resultat
+### Résultat
 
 Combinaisons uniques de Nom + Ville.
 
@@ -100,7 +100,7 @@ Combinaisons uniques de Nom + Ville.
 =UNIQUE(FILTRE(A2:A100;B2:B100="Actif"))
 ```
 
-Valeurs uniques parmi les elements actifs.
+Valeurs uniques parmi les éléments actifs.
 
 ## Combiner avec NB.SI
 
@@ -118,9 +118,9 @@ Valeurs uniques parmi les elements actifs.
 
 ### Liste deroulante dynamique
 
-Source de validation : `=UNIQUE(Donnees[Categorie])`
+Source de validation : `=UNIQUE(Données[Catégorie])`
 
-La liste se met a jour automatiquement.
+La liste se met à jour automatiquement.
 
 ### Clients distincts
 
@@ -128,7 +128,7 @@ La liste se met a jour automatiquement.
 =LIGNES(UNIQUE(Commandes[Client]))
 ```
 
-Nombre de clients differents.
+Nombre de clients différents.
 
 ### Produits vendus par region
 
@@ -141,15 +141,15 @@ Nombre de clients differents.
 ### Plage vide
 
 ```excel
-=SIERREUR(UNIQUE(A2:A100);"Aucune donnee")
+=SIERREUR(UNIQUE(A2:A100);"Aucune donnée")
 ```
 
 ### Avec LET
 
 ```excel
 =LET(
-  resultat;UNIQUE(A2:A100);
-  SI(ESTERREUR(resultat);"Vide";resultat)
+  résultat;UNIQUE(A2:A100);
+  SI(ESTERREUR(résultat);"Vide";résultat)
 )
 ```
 
@@ -158,36 +158,36 @@ Nombre de clients differents.
 | UNIQUE | Supprimer les doublons |
 |--------|------------------------|
 | Formule dynamique | Action ponctuelle |
-| Non destructif | Supprime les donnees |
-| Se met a jour | A refaire si donnees changent |
-| Resultat separe | Modifie la source |
+| Non destructif | Supprime les données |
+| Se met à jour | A refaire si données changent |
+| Résultat séparé | Modifié la source |
 
 ## Performance
 
 ### Plages volumineuses
 
-UNIQUE peut etre lent sur de tres grandes plages.
+UNIQUE peut etre lent sûr de très grandes plages.
 
 ### Optimisation
 
-- Limitez la plage au strict necessaire
-- Utilisez des tableaux structures
+- Limitez la plage au strict nécessaire
+- Utilisez des tableaux structurés
 
 ## Erreurs courantes
 
 | Erreur | Cause | Solution |
 |--------|-------|----------|
 | #PROPAGATION! | Pas d'espace | Liberez les cellules |
-| #CALC! | Plage vide | Gerez avec SIERREUR |
-| #VALEUR! | Syntaxe incorrecte | Verifiez les parametres |
+| #CALC! | Plage vide | Gérez avec SIERREUR |
+| #VALEUR! | Syntaxe incorrecte | Vérifiez les paramètrès |
 
 ## Bonnes pratiques
 
 | Pratique | Description |
 |----------|-------------|
-| Plages nommees | Facilitent la lecture |
-| Tableaux structures | References dynamiques |
+| Plages nommées | Facilitent la lecture |
+| Tableaux structurés | Références dynamiques |
 | LET | Organisez les calculs complexes |
-| Test | Verifiez le resultat |
+| Test | Vérifiez le résultat |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

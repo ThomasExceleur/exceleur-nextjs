@@ -1,23 +1,23 @@
 ---
-title: "Excel : Aller a la Ligne dans une Cellule"
+title: "Excel : Aller à la Ligne dans une Cellule"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Comment faire un retour a la ligne dans une cellule Excel."
-description: "Techniques pour aller a la ligne dans une cellule Excel. Alt+Entree."
+excerpt: "Comment faire un retour à la ligne dans une cellule Excel."
+description: "Techniques pour aller à la ligne dans une cellule Excel. Alt+Entrée."
 category: "Astuces Excel"
-categories: ["Astuces Excel", "Mise en forme"]
+catégories: ["Astuces Excel", "Mise en forme"]
 tags: ["Retour ligne", "Cellule", "Mise en forme", "Texte"]
 ---
 
-# Aller a la Ligne dans une Cellule
+# Aller à la Ligne dans une Cellule
 
-Plusieurs methodes pour creer des retours a la ligne dans Excel.
+Plusieurs méthodes pour créer des retours à la ligne dans Excel.
 
-## Methode 1 : Alt + Entree
+## Méthode 1 : Alt + Entrée
 
 ### Le raccourci essentiel
 
-Pendant la saisie, appuyez sur **Alt + Entree** pour passer a la ligne.
+Pendant la saisie, appuyez sûr **Alt + Entrée** pour passer à la ligne.
 
 ### Exemple
 
@@ -29,22 +29,22 @@ Ligne 3
 
 Tout reste dans la meme cellule.
 
-## Methode 2 : Renvoyer a la ligne automatique
+## Méthode 2 : Renvoyer à la ligne automatique
 
 ### Activation
 
-1. Selectionnez la cellule
-2. **Accueil** > **Renvoyer a la ligne**
+1. Sélectionnez la cellule
+2. **Accueil** > **Renvoyer à la ligne**
 
 ### Comportement
 
-Le texte passe automatiquement a la ligne selon la largeur de la colonne.
+Le texte passe automatiquement à la ligne selon la largeur de la colonne.
 
 ### Raccourci
 
 **Alt + H** puis **W**
 
-## Methode 3 : Formule CAR(10)
+## Méthode 3 : Formule CAR(10)
 
 ### Dans une formule
 
@@ -52,7 +52,7 @@ Le texte passe automatiquement a la ligne selon la largeur de la colonne.
 =A1&CAR(10)&B1
 ```
 
-CAR(10) est le code du retour a la ligne.
+CAR(10) est le code du retour à la ligne.
 
 ### Exemple complet
 
@@ -70,13 +70,13 @@ Prenom: Jean
 
 ### Automatique
 
-Double-cliquez sur la bordure entre deux numeros de ligne.
+Double-cliquez sûr la bordure entre deux numéros de ligne.
 
 ### Manuel
 
 Faites glisser la bordure de la ligne.
 
-## Supprimer les retours a la ligne
+## Supprimer les retours à la ligne
 
 ### Avec SUBSTITUE
 
@@ -84,7 +84,7 @@ Faites glisser la bordure de la ligne.
 =SUBSTITUE(A1;CAR(10);" ")
 ```
 
-Remplace les retours a la ligne par des espaces.
+Remplace les retours à la ligne par des espaces.
 
 ### Avec EPURAGE
 
@@ -102,25 +102,25 @@ Supprime tous les caracteres non imprimables.
 =NBCAR(A1)-NBCAR(SUBSTITUE(A1;CAR(10);""))+1
 ```
 
-Compte le nombre de retours a la ligne + 1.
+Compte le nombre de retours à la ligne + 1.
 
 ## Format de cellule
 
 ### Pour voir les retours
 
 La cellule doit avoir :
-- "Renvoyer a la ligne" active, ou
+- "Renvoyer à la ligne" active, où
 - Hauteur suffisante
 
 ## Imprimer avec retours
 
-### Verification
+### Vérification
 
-Les retours a la ligne sont conserves a l'impression si la cellule est correctement configuree.
+Les retours à la ligne sont conserves à l'impression si la cellule est correctement configuree.
 
 ## Cas pratiques
 
-### Adresse sur plusieurs lignes
+### Adresse sûr plusieurs lignes
 
 ```excel
 ="12 rue Example"&CAR(10)&"75001 Paris"&CAR(10)&"France"
@@ -132,19 +132,19 @@ Les retours a la ligne sont conserves a l'impression si la cellule est correctem
 =JOINDRE.TEXTE(CAR(10);VRAI;A1:A5)
 ```
 
-## Difference avec fusion
+## Différence avec fusion
 
-| Methode | Usage |
+| Méthode | Usage |
 |---------|-------|
-| Alt + Entree | Plusieurs lignes, une cellule |
+| Alt + Entrée | Plusieurs lignes, une cellule |
 | Fusion | Plusieurs cellules, un contenu |
 | Renvoyer | Ajustement automatique |
 
 ## Bonnes pratiques
 
-1. **Utilisez** Alt + Entree pour les saisies manuelles
+1. **Utilisez** Alt + Entrée pour les saisies manuelles
 2. **Activez** le renvoi automatique pour les textes longs
 3. **Ajustez** la hauteur de ligne
 4. **Utilisez** CAR(10) dans les formules
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

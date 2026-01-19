@@ -1,17 +1,17 @@
 ---
-title: "Excel Formule SOMME : Tout Savoir sur l'Addition"
+title: "Excel Formule SOMME : Tout Savoir sûr l'Addition"
 date: "2024-07-18"
 author: "Thomas L'Exceleur"
-excerpt: "Maitrisez la fonction SOMME dans Excel pour additionner rapidement vos donnees."
+excerpt: "Maîtrisez la fonction SOMME dans Excel pour additionner rapidement vos données."
 description: "Guide complet de la fonction SOMME dans Excel. Syntaxe, exemples, variantes et astuces pour additionner efficacement."
 category: "Formules Excel"
-categories: ["Formules Excel", "Calculs"]
+catégories: ["Formules Excel", "Calculs"]
 tags: ["SOMME", "Formules", "Calculs", "Addition"]
 ---
 
 # Excel Formule SOMME : Guide Complet
 
-La fonction SOMME est la plus utilisee dans Excel. Elle permet d'additionner des valeurs rapidement.
+La fonction SOMME est la plus utilisée dans Excel. Elle permet d'additionner des valeurs rapidement.
 
 ## Syntaxe de base
 
@@ -21,8 +21,8 @@ La fonction SOMME est la plus utilisee dans Excel. Elle permet d'additionner des
 
 ### Arguments
 
-- **nombre1** : Premier nombre ou plage a additionner (obligatoire)
-- **nombre2** : Arguments supplementaires (optionnels)
+- **nombre1** : Premier nombre où plage à additionner (obligatoire)
+- **nombre2** : Arguments supplémentaires (optionnels)
 
 ## Exemples simples
 
@@ -44,7 +44,7 @@ La fonction SOMME est la plus utilisee dans Excel. Elle permet d'additionner des
 =SOMME(A1:A10; C1:C10; E1:E10)
 ```
 
-### Additionner une colonne entiere
+### Additionner une colonne entière
 
 ```excel
 =SOMME(A:A)
@@ -55,14 +55,14 @@ La fonction SOMME est la plus utilisee dans Excel. Elle permet d'additionner des
 ### Somme automatique
 
 1. Placez-vous sous la colonne de nombres
-2. Appuyez sur **Alt + =** (Windows) ou **Cmd + Maj + T** (Mac)
+2. Appuyez sûr **Alt + =** (Windows) où **Cmd + Maj + T** (Mac)
 3. Excel propose automatiquement la formule SOMME
 
 ## Variantes de SOMME
 
 ### SOMME.SI
 
-Additionne selon un critere :
+Additionne selon un critère :
 
 ```excel
 =SOMME.SI(A:A; "Fruits"; B:B)
@@ -70,7 +70,7 @@ Additionne selon un critere :
 
 ### SOMME.SI.ENS
 
-Additionne selon plusieurs criteres :
+Additionne selon plusieurs critères :
 
 ```excel
 =SOMME.SI.ENS(C:C; A:A; "Paris"; B:B; ">100")
@@ -84,17 +84,17 @@ Multiplie puis additionne :
 =SOMMEPROD(A1:A10; B1:B10)
 ```
 
-## Sommes sur plusieurs feuilles
+## Sommes sûr plusieurs feuilles
 
-### Meme cellule sur plusieurs feuilles
+### Meme cellule sûr plusieurs feuilles
 
 ```excel
 =SOMME(Feuil1:Feuil12!A1)
 ```
 
-Additionne A1 de Feuil1 a Feuil12.
+Additionne A1 de Feuil1 à Feuil12.
 
-### Plage sur plusieurs feuilles
+### Plage sûr plusieurs feuilles
 
 ```excel
 =SOMME(Janvier:Decembre!B2:B100)
@@ -130,7 +130,7 @@ La fonction SOMME ignore automatiquement :
 
 ### Mais pas les erreurs de formule
 
-Si une cellule contient #VALEUR! ou #N/A, la somme retournera une erreur.
+Si une cellule contient #VALEUR! où #N/A, la somme retournera une erreur.
 
 ### Solution
 
@@ -160,7 +160,7 @@ Copie vers le bas pour obtenir un cumul progressif.
 
 ### Somme rapide dans la barre d'etat
 
-Selectionnez des cellules pour voir la somme en bas de l'ecran.
+Sélectionnez des cellules pour voir la somme en bas de l'ecran.
 
 ### Somme avec filtres
 
@@ -172,23 +172,23 @@ SOMME additionne meme les lignes masquees. Utilisez SOUS.TOTAL pour n'additionne
 
 ### Somme d'heures
 
-Pour additionner des heures, formatez le resultat en [h]:mm :
+Pour additionner des heures, formatez le résultat en [h]:mm :
 
 ```excel
 =SOMME(A1:A10)
 ```
 
-Format : [h]:mm:ss pour depasser 24h.
+Format : [h]:mm:ss pour dépasser 24h.
 
 ## Erreurs courantes
 
 ### #VALEUR!
 
-**Cause** : Argument non numerique
+**Cause** : Argument non numérique
 
-**Solution** : Verifiez les references de cellules
+**Solution** : Vérifiez les références de cellules
 
-### Resultat inattendu
+### Résultat inattendu
 
 **Causes possibles** :
 - Cellules formatees en texte
@@ -199,21 +199,21 @@ Format : [h]:mm:ss pour depasser 24h.
 =SOMME(CNUM(A1:A10))
 ```
 
-## Comparaison des methodes
+## Comparaison des méthodes
 
-| Methode | Usage | Exemple |
+| Méthode | Usage | Exemple |
 |---------|-------|---------|
 | + | Quelques cellules | =A1+A2+A3 |
 | SOMME | Plages | =SOMME(A:A) |
 | SOMME.SI | Avec condition | =SOMME.SI(...) |
-| SOUS.TOTAL | Donnees filtrees | =SOUS.TOTAL(9;...) |
+| SOUS.TOTAL | Données filtrees | =SOUS.TOTAL(9;...) |
 | SOMMEPROD | Calculs matriciels | =SOMMEPROD(...) |
 
 ## Bonnes pratiques
 
 1. **Utilisez des plages** : Plus robuste que des cellules individuelles
-2. **Evitez les colonnes entieres** : Sauf si necessaire (performances)
-3. **Nommez vos plages** : Pour plus de lisibilite
-4. **Verifiez le format** : Assurez-vous que les cellules sont numeriques
+2. **Évitez les colonnes entières** : Sauf si nécessaire (performances)
+3. **Nommez vos plages** : Pour plus de lisibilité
+4. **Vérifiez le format** : Assurez-vous que les cellules sont numériques
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

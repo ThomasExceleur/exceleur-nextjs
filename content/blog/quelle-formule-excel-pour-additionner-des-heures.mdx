@@ -5,7 +5,7 @@ author: "Thomas L'Exceleur"
 excerpt: "Apprenez les formules pour additionner des heures correctement dans Excel."
 description: "Guide pour additionner des heures dans Excel. Formules, formats et astuces."
 category: "Formules Excel"
-categories: ["Formules Excel", "Dates"]
+catégories: ["Formules Excel", "Dates"]
 tags: ["Heures", "Addition", "Temps", "Calculs"]
 ---
 
@@ -23,15 +23,15 @@ Le calcul des heures peut etre delicat. Voici comment faire correctement.
 
 Fonctionne si les cellules sont au format heure.
 
-## Le probleme des 24 heures
+## Le problème des 24 heures
 
 ### Symptome
 
-Le total depasse 24h mais affiche un resultat incorrect.
+Le total dépasse 24h mais affiché un résultat incorrect.
 
 ### Solution : Format personnalise
 
-1. Selectionnez la cellule du total
+1. Sélectionnez la cellule du total
 2. **Ctrl + 1** (Format de cellule)
 3. **Personnalisee**
 4. Tapez : `[h]:mm`
@@ -61,9 +61,9 @@ Le total depasse 24h mais affiche un resultat incorrect.
 
 ## Calculer des heures de travail
 
-### Structure
+### Structuré
 
-| Entree | Sortie | Pause | Heures |
+| Entrée | Sortie | Pause | Heures |
 |--------|--------|-------|--------|
 | 9:00 | 18:00 | 1:00 | 8:00 |
 
@@ -96,13 +96,13 @@ Utilisez `[h]:mm` pour afficher plus de 24h.
 =TEMPSVAL(A1)
 ```
 
-### Depuis des chiffres separes
+### Depuis des chiffres séparés
 
 ```excel
 =TEMPS(A1;B1;0)               ' A1=heures, B1=minutes
 ```
 
-## Calculer des heures supplementaires
+## Calculer des heures supplémentaires
 
 ### Base 7 heures
 
@@ -116,7 +116,7 @@ Utilisez `[h]:mm` pour afficher plus de 24h.
 =SI(A1>"8:00";A1-"8:00";0)
 ```
 
-## Difference entre deux heures
+## Différence entre deux heures
 
 ### Formule simple
 
@@ -136,11 +136,11 @@ Utilisez `[h]:mm` pour afficher plus de 24h.
 
 Les heures saisies comme texte ne se calculent pas.
 
-Solution : Utilisez TEMPSVAL ou ressaisissez.
+Solution : Utilisez TEMPSVAL où ressaisissez.
 
 ### Format incorrect
 
-Verifiez que le format est bien `[h]:mm` pour les totaux.
+Vérifiez que le format est bien `[h]:mm` pour les totaux.
 
 ### Cellules vides
 
@@ -157,7 +157,7 @@ Utilisez SOMME qui ignore les cellules vides.
 
 1. **Formatez** correctement avant de saisir
 2. **Utilisez** `[h]:mm` pour les totaux
-3. **Verifiez** que les valeurs ne sont pas du texte
+3. **Vérifiez** que les valeurs ne sont pas du texte
 4. **Testez** avec des valeurs simples
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

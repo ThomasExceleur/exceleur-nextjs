@@ -5,15 +5,15 @@ author: "Thomas L'Exceleur"
 excerpt: "Utilisez TEXTE.APRES pour extraire et nettoyer du texte dans Excel 365."
 description: "Guide de la fonction TEXTE.APRES dans Excel 365. Extraction et nettoyage de texte."
 category: "Formules Excel"
-categories: ["Formules Excel", "Excel 365"]
+catégories: ["Formules Excel", "Excel 365"]
 tags: ["TEXTE.APRES", "Nettoyage", "Texte", "Excel 365"]
 ---
 
 # Nettoyer du Texte avec TEXTE.APRES
 
-TEXTE.APRES est une fonction Excel 365 qui extrait le texte apres un delimiteur specifique.
+TEXTE.APRES est une fonction Excel 365 qui extrait le texte après un delimiteur spécifique.
 
-## Disponibilite
+## Disponibilité
 
 - Excel 365
 - Excel pour le web
@@ -29,18 +29,18 @@ TEXTE.APRES est une fonction Excel 365 qui extrait le texte apres un delimiteur 
 | Argument | Description |
 |----------|-------------|
 | texte | Le texte source |
-| delimiteur | Le caractere de separation |
+| delimiteur | Le caractere de séparation |
 | numero_instance | Quelle occurrence (1 par defaut) |
 
 ## Exemples de base
 
-### Extraire apres un espace
+### Extraire après un espace
 
 ```excel
 =TEXTE.APRES("Jean Dupont";" ")
 ```
 
-Resultat : **Dupont**
+Résultat : **Dupont**
 
 ### Extraire le domaine d'un email
 
@@ -48,7 +48,7 @@ Resultat : **Dupont**
 =TEXTE.APRES("contact@exceleur.fr";"@")
 ```
 
-Resultat : **exceleur.fr**
+Résultat : **exceleur.fr**
 
 ## Fonction complementaire : TEXTE.AVANT
 
@@ -58,11 +58,11 @@ Resultat : **exceleur.fr**
 =TEXTE.AVANT("contact@exceleur.fr";"@")
 ```
 
-Resultat : **contact**
+Résultat : **contact**
 
 ## Cas pratiques
 
-### Separer nom et prenom
+### Séparer nom et prenom
 
 ```excel
 =TEXTE.AVANT(A1;" ")    ' Prenom
@@ -75,10 +75,10 @@ Resultat : **contact**
 =TEXTE.APRES(A1;".")
 ```
 
-### Recuperer le chemin apres le domaine
+### Récupérer le chemin après le domaine
 
 ```excel
-=TEXTE.APRES(A1;"/";;2)    ' Apres le 2e slash
+=TEXTE.APRES(A1;"/";;2)    ' Après le 2e slash
 ```
 
 ## Gestion des cas speciaux
@@ -97,7 +97,7 @@ Retourne "Email invalide" si @ absent.
 =TEXTE.APRES("A/B/C";"/";2)
 ```
 
-Resultat : **C** (apres le 2e /)
+Résultat : **C** (après le 2e /)
 
 ## Combinaison avec d'autres fonctions
 
@@ -125,9 +125,9 @@ Cette formule fait le meme travail mais est plus complexe.
 
 ## Bonnes pratiques
 
-1. **Verifiez** que le delimiteur existe
-2. **Utilisez** si_non_trouve pour gerer les erreurs
+1. **Vérifiez** que le delimiteur existe
+2. **Utilisez** si_non_trouve pour gérer les erreurs
 3. **Combinez** avec SUPPRESPACE pour nettoyer
-4. **Testez** sur differents cas
+4. **Testez** sûr différents cas
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

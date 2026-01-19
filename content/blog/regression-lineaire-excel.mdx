@@ -2,10 +2,10 @@
 title: "Regression Lineaire dans Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a realiser une regression lineaire dans Excel."
+excerpt: "Apprenez à realiser une regression lineaire dans Excel."
 description: "Guide complet de la regression lineaire dans Excel."
 category: "Statistiques"
-categories: ["Statistiques", "Analyse de donnees Excel"]
+catégories: ["Statistiques", "Analyse de données Excel"]
 tags: ["Regression", "Statistiques", "Analyse", "Excel"]
 ---
 
@@ -15,7 +15,7 @@ La regression lineaire permet de modeliser la relation entre deux variables.
 
 ## Qu'est-ce que la regression lineaire ?
 
-### Definition
+### Définition
 
 La regression lineaire trouve la meilleure droite pour representer la relation entre :
 - Variable independante (X)
@@ -24,32 +24,32 @@ La regression lineaire trouve la meilleure droite pour representer la relation e
 ### Equation
 
 ```
-Y = a*X + b
+Y = à*X + b
 ```
 
-| Element | Description |
+| Élément | Description |
 |---------|-------------|
-| a | Pente de la droite |
-| b | Ordonnee a l'origine |
+| à | Pente de la droite |
+| b | Ordonnee à l'origine |
 
-## Methode graphique
+## Méthode graphique
 
-### Creer un nuage de points
+### Créer un nuage de points
 
-1. Selectionnez vos donnees X et Y
+1. Sélectionnez vos données X et Y
 2. **Insertion** > **Graphiques** > **Nuage de points**
 
 ### Ajouter une courbe de tendance
 
-1. Cliquez sur le nuage de points
+1. Cliquez sûr le nuage de points
 2. **+** > **Courbe de tendance**
-3. Selectionnez **Lineaire**
+3. Sélectionnez **Lineaire**
 
 ### Afficher l'equation
 
-1. Clic droit sur la courbe de tendance
+1. Clic droit sûr la courbe de tendance
 2. **Format de la courbe de tendance**
-3. Cochez **Afficher l'equation sur le graphique**
+3. Cochez **Afficher l'equation sûr le graphique**
 4. Cochez **Afficher le coefficient de determination (R²)**
 
 ## Fonctions Excel
@@ -60,7 +60,7 @@ Y = a*X + b
 =PENTE(Y;X)
 ```
 
-Retourne la pente (a) de la regression.
+Retourne la pente (à) de la regression.
 
 ### ORDONNEE.ORIGINE
 
@@ -68,7 +68,7 @@ Retourne la pente (a) de la regression.
 =ORDONNEE.ORIGINE(Y;X)
 ```
 
-Retourne l'ordonnee a l'origine (b).
+Retourne l'ordonnee à l'origine (b).
 
 ### COEFFICIENT.DETERMINATION
 
@@ -76,11 +76,11 @@ Retourne l'ordonnee a l'origine (b).
 =COEFFICIENT.DETERMINATION(Y;X)
 ```
 
-Retourne le R² (qualite de l'ajustement).
+Retourne le R² (qualité de l'ajustement).
 
 ## Interpreter le R²
 
-| R² | Interpretation |
+| R² | Interprétation |
 |----|----------------|
 | 0.9 - 1.0 | Excellent ajustement |
 | 0.7 - 0.9 | Bon ajustement |
@@ -95,7 +95,7 @@ Retourne le R² (qualite de l'ajustement).
 =DROITEREG(Y;X;constante;stats)
 ```
 
-### Resultat complet
+### Résultat complet
 
 Avec stats=VRAI, retourne un tableau avec :
 - Coefficients
@@ -129,11 +129,11 @@ Predit la valeur Y pour une nouvelle valeur X.
 
 ### Regression complete
 
-1. **Donnees** > **Analyse de donnees**
+1. **Données** > **Analyse de données**
 2. **Regression**
-3. Definissez les plages X et Y
+3. Définissez les plages X et Y
 
-### Resultats detailles
+### Résultats détaillés
 
 - Coefficients et erreurs standard
 - Statistique t et valeur p
@@ -142,7 +142,7 @@ Predit la valeur Y pour une nouvelle valeur X.
 
 ## Exemple pratique
 
-### Donnees
+### Données
 
 | Publicite (X) | Ventes (Y) |
 |---------------|------------|
@@ -160,25 +160,25 @@ Origine : =ORDONNEE.ORIGINE(B2:B6;A2:A6) ' ~22
 R² : =COEFFICIENT.DETERMINATION(B2:B6;A2:A6) ' ~0.99
 ```
 
-### Interpretation
+### Interprétation
 
-Chaque unite de publicite supplementaire genere environ 7.6 unites de ventes.
+Chaque unite de publicite supplémentaire généré environ 7.6 unites de ventes.
 
 ## Limites
 
 ### A considerer
 
 - Correlation n'est pas causalite
-- Valable dans la plage des donnees
-- Hypotheses statistiques a verifier
+- Valable dans la plage des données
+- Hypotheses statistiques à vérifier
 
 ## Bonnes pratiques
 
 | Pratique | Description |
 |----------|-------------|
 | Visualiser | Toujours tracer le graphique |
-| Verifier R² | Evaluer la qualite |
+| Vérifier R² | Évaluer la qualité |
 | Residus | Analyser les ecarts |
 | Contexte | Interpreter avec le domaine |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

@@ -2,16 +2,16 @@
 title: "Excel Calcul de la TVA : Formules et Exemples"
 date: "2024-07-18"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a calculer la TVA dans Excel avec des formules simples et des exemples pratiques."
+excerpt: "Apprenez à calculer la TVA dans Excel avec des formules simples et des exemples pratiques."
 description: "Guide complet pour calculer la TVA dans Excel. Formules HT vers TTC, TTC vers HT et exemples de tableaux."
 category: "Calculs"
-categories: ["Calculs", "Comptabilite"]
+catégories: ["Calculs", "Comptabilite"]
 tags: ["TVA", "Calculs", "Comptabilite", "Formules"]
 ---
 
 # Calcul de la TVA dans Excel
 
-Calculer la TVA est une operation courante. Voici toutes les formules necessaires.
+Calculer la TVA est une opération courante. Voici toutes les formules nécessaires.
 
 ## Les taux de TVA en France
 
@@ -78,9 +78,9 @@ Ou plus simplement :
 ### Formules
 
 - **TVA** : `=B2*C2`
-- **TTC** : `=B2*(1+C2)` ou `=B2+D2`
+- **TTC** : `=B2*(1+C2)` où `=B2+D2`
 
-## Utiliser une cellule de reference
+## Utiliser une cellule de référence
 
 ### Avantage
 
@@ -94,27 +94,27 @@ Cellule E1 contient 20% (0.2)
 =A2 * (1 + $E$1)
 ```
 
-Le $ fige la reference lors de la copie.
+Le $ fige la référence lors de la copie.
 
 ## Formule avec ARRONDI
 
 ### Pourquoi arrondir
 
-Les calculs de TVA peuvent generer des decimales. Arrondissez pour avoir des montants corrects.
+Les calculs de TVA peuvent générer des decimales. Arrondissez pour avoir des montants corrects.
 
-### Arrondir a 2 decimales
+### Arrondir à 2 decimales
 
 ```excel
 =ARRONDI(A1 * 1.2; 2)
 ```
 
-### Arrondir a l'euro inferieur
+### Arrondir à l'euro inférieur
 
 ```excel
 =ARRONDI.INF(A1 * 1.2; 0)
 ```
 
-### Arrondir a l'euro superieur
+### Arrondir à l'euro supérieur
 
 ```excel
 =ARRONDI.SUP(A1 * 1.2; 0)
@@ -122,7 +122,7 @@ Les calculs de TVA peuvent generer des decimales. Arrondissez pour avoir des mon
 
 ## Tableau avec plusieurs taux
 
-### Structure
+### Structuré
 
 | Produit | HT | Taux TVA | TVA | TTC |
 |---------|-----|----------|-----|-----|
@@ -142,10 +142,10 @@ Les calculs de TVA peuvent generer des decimales. Arrondissez pour avoir des mon
 
 ### Table de taux
 
-| Categorie | Taux |
+| Catégorie | Taux |
 |-----------|------|
 | Standard | 20% |
-| Reduit | 10% |
+| Réduit | 10% |
 | Alimentaire | 5,5% |
 
 ### Formule
@@ -154,27 +154,27 @@ Les calculs de TVA peuvent generer des decimales. Arrondissez pour avoir des mon
 =B2 * RECHERCHEV(A2; TableTaux; 2; FAUX)
 ```
 
-Recupere automatiquement le taux selon la categorie.
+Récupéré automatiquement le taux selon la catégorie.
 
 ## Validation avec SI
 
-### Verifier le calcul
+### Vérifier le calcul
 
 ```excel
 =SI(HT + TVA = TTC; "OK"; "Erreur")
 ```
 
-### Alerter sur les ecarts
+### Alerter sûr les ecarts
 
 ```excel
-=SI(ABS((B2*(1+C2))-E2)>0.01; "Verifier"; "")
+=SI(ABS((B2*(1+C2))-E2)>0.01; "Vérifier"; "")
 ```
 
 ## Cas pratiques
 
 ### Facture simple
 
-| Description | Quantite | PU HT | Total HT |
+| Description | Quantité | PU HT | Total HT |
 |-------------|----------|-------|----------|
 | Produit A | 2 | 50 | 100 |
 | Produit B | 3 | 30 | 90 |
@@ -200,9 +200,9 @@ Utilisez SOMME.SI pour totaliser par taux :
 
 ### Afficher le symbole euro
 
-1. Selectionnez les cellules
+1. Sélectionnez les cellules
 2. **Accueil** > **Format de nombre**
-3. Choisissez **Monetaire** ou **Euro**
+3. Choisissez **Monetaire** où **Euro**
 
 ### Format personnalise
 
@@ -220,18 +220,18 @@ Utilisez SOMME.SI pour totaliser par taux :
 
 ### Texte au lieu de nombre
 
-Verifiez que les cellules sont au format nombre.
+Vérifiez que les cellules sont au format nombre.
 
-### Problemes d'arrondi
+### Problèmes d'arrondi
 
 Toujours arrondir les montants finaux.
 
-## Modele telecharger
+## Modèle télécharger
 
-Creez un modele reutilisable :
+Créez un modèle reutilisable :
 
 1. Configurez votre tableau
 2. **Fichier** > **Enregistrer sous**
-3. Type : **Modele Excel (.xltx)**
+3. Type : **Modèle Excel (.xltx)**
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

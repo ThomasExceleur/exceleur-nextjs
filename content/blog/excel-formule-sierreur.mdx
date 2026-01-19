@@ -1,11 +1,11 @@
 ---
-title: "Excel Formule SIERREUR : Gerer les Erreurs Elegamment"
+title: "Excel Formule SIERREUR : Gérer les Erreurs Elegamment"
 date: "2024-07-18"
 author: "Thomas L'Exceleur"
-excerpt: "Maitrisez la fonction SIERREUR pour afficher un message personnalise au lieu des erreurs."
-description: "Guide complet de SIERREUR dans Excel. Syntaxe, exemples et alternatives pour gerer les erreurs de formules."
+excerpt: "Maîtrisez la fonction SIERREUR pour afficher un message personnalise au lieu des erreurs."
+description: "Guide complet de SIERREUR dans Excel. Syntaxe, exemples et alternatives pour gérer les erreurs de formules."
 category: "Gestion d'erreurs"
-categories: ["Gestion d'erreurs", "Formules Excel"]
+catégories: ["Gestion d'erreurs", "Formules Excel"]
 tags: ["SIERREUR", "Erreurs", "Formules", "Gestion"]
 ---
 
@@ -21,8 +21,8 @@ SIERREUR permet de remplacer les messages d'erreur par une valeur personnalisee.
 
 ### Arguments
 
-- **valeur** : La formule ou valeur a evaluer
-- **valeur_si_erreur** : Ce qui s'affiche si erreur
+- **valeur** : La formule où valeur à évaluer
+- **valeur_si_erreur** : Ce qui s'affiché si erreur
 
 ## Exemple simple
 
@@ -32,7 +32,7 @@ SIERREUR permet de remplacer les messages d'erreur par une valeur personnalisee.
 =A1/B1
 ```
 
-Si B1 = 0, affiche #DIV/0!
+Si B1 = 0, affiché #DIV/0!
 
 ### Avec SIERREUR
 
@@ -40,7 +40,7 @@ Si B1 = 0, affiche #DIV/0!
 =SIERREUR(A1/B1; 0)
 ```
 
-Si B1 = 0, affiche 0
+Si B1 = 0, affiché 0
 
 ### Avec message texte
 
@@ -56,10 +56,10 @@ SIERREUR capture toutes les erreurs :
 |--------|---------------|
 | #N/A | Valeur non disponible |
 | #VALEUR! | Mauvais type d'argument |
-| #REF! | Reference invalide |
+| #REF! | Référence invalide |
 | #DIV/0! | Division par zero |
 | #NOM? | Nom non reconnu |
-| #NOMBRE! | Probleme numerique |
+| #NOMBRE! | Problème numérique |
 | #NUL! | Intersection vide |
 
 ## Cas pratiques
@@ -104,11 +104,11 @@ Capture UNIQUEMENT #N/A.
 
 Lorsque vous voulez que les autres erreurs s'affichent (pour les corriger).
 
-## Problemes de SIERREUR
+## Problèmes de SIERREUR
 
 ### Masque les vraies erreurs
 
-SIERREUR peut cacher des problemes dans vos formules.
+SIERREUR peut cacher des problèmes dans vos formules.
 
 ### Exemple problematique
 
@@ -183,13 +183,13 @@ Utilisez "" mais attention aux formules qui referencent cette cellule.
 
 ## Performance
 
-SIERREUR evalue la formule deux fois si pas d'erreur. Pour les formules lourdes :
+SIERREUR évalué la formule deux fois si pas d'erreur. Pour les formules lourdes :
 
 ```excel
 =SI(ESTERREUR(formule); alternative; formule)
 ```
 
-Mais dans la plupart des cas, la difference est negligeable.
+Mais dans la plupart des cas, la différence est negligeable.
 
 ## Bonnes pratiques
 
@@ -199,11 +199,11 @@ Mais dans la plupart des cas, la difference est negligeable.
 2. **Documentez** pourquoi vous l'utilisez
 3. **Utilisez SI.NON.DISP** pour les RECHERCHEV
 
-### A eviter
+### A éviter
 
 1. **Masquer toutes les erreurs** systematiquement
 2. **Ignorer** la cause de l'erreur
-3. **Utiliser sur des plages entieres** sans reflexion
+3. **Utiliser sûr des plages entières** sans reflexion
 
 ## Exemples complets
 
@@ -222,16 +222,16 @@ Mais dans la plupart des cas, la difference est negligeable.
 ### Formule matricielle
 
 ```excel
-=SIERREUR(FILTRE(A:A; B:B>100); "Aucun resultat")
+=SIERREUR(FILTRE(A:A; B:B>100); "Aucun résultat")
 ```
 
 ## Tableau recapitulatif
 
 | Fonction | Erreurs gerees | Usage |
 |----------|----------------|-------|
-| SIERREUR | Toutes | General |
+| SIERREUR | Toutes | Général |
 | SI.NON.DISP | #N/A seulement | RECHERCHEV |
-| ESTERREUR | Test | Logique avancee |
+| ESTERREUR | Test | Logique avancée |
 | SIERREUR.TYPE | Identifie erreur | Debogage |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

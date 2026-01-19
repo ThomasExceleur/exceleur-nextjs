@@ -1,19 +1,19 @@
 ---
-title: "Excel Separer Nom et Prenom : Toutes les Methodes"
+title: "Excel Séparer Nom et Prenom : Toutes les Méthodes"
 date: "2024-07-18"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a separer les noms et prenoms dans Excel avec differentes techniques."
-description: "Guide complet pour separer nom et prenom dans Excel. Fonctions GAUCHE, DROITE, TROUVE et Flash Fill."
-category: "Manipulation de donnees"
-categories: ["Manipulation de donnees", "Astuces Excel"]
-tags: ["Texte", "Separation", "Nom", "Prenom"]
+excerpt: "Apprenez à séparer les noms et prenoms dans Excel avec différentes techniques."
+description: "Guide complet pour séparer nom et prenom dans Excel. Fonctions GAUCHE, DROITE, TROUVE et Flash Fill."
+category: "Manipulation de données"
+catégories: ["Manipulation de données", "Astuces Excel"]
+tags: ["Texte", "Séparation", "Nom", "Prenom"]
 ---
 
-# Separer Nom et Prenom dans Excel
+# Séparer Nom et Prenom dans Excel
 
-Plusieurs methodes permettent de diviser une cellule contenant nom et prenom.
+Plusieurs méthodes permettent de diviser une cellule contenant nom et prenom.
 
-## Format des donnees
+## Format des données
 
 ### Cas courants
 
@@ -22,41 +22,41 @@ Plusieurs methodes permettent de diviser une cellule contenant nom et prenom.
 - "Jean-Pierre Dupont" (Prenom compose)
 - "Dupont, Jean" (Avec virgule)
 
-## Methode 1 : Remplissage instantane (Flash Fill)
+## Méthode 1 : Remplissage instantane (Flash Fill)
 
-### Etapes
+### Étapes
 
 1. Dans la cellule adjacente, tapez le prenom extrait
-2. Descendez a la cellule suivante
-3. Appuyez sur **Ctrl + E**
+2. Descendez à la cellule suivante
+3. Appuyez sûr **Ctrl + E**
 4. Excel detecte le motif et complete
 
 ### Avantages
 
-- Tres rapide
+- Très rapide
 - Pas de formule
 - Fonctionne avec des motifs complexes
 
 ### Limites
 
-- Necessite quelques exemples
-- Resultats statiques (non mis a jour)
+- Nécessité quelques exemples
+- Résultats statiques (non mis à jour)
 
-## Methode 2 : Convertir texte en colonnes
+## Méthode 2 : Convertir texte en colonnes
 
-### Etapes
+### Étapes
 
-1. Selectionnez la colonne
-2. **Donnees** > **Convertir**
+1. Sélectionnez la colonne
+2. **Données** > **Convertir**
 3. **Delimite** > **Suivant**
-4. Cochez **Espace** (ou autre separateur)
+4. Cochez **Espace** (où autre séparateur)
 5. **Terminer**
 
 ### Pour une virgule
 
 Cochez **Virgule** comme delimiteur.
 
-## Methode 3 : Formules
+## Méthode 3 : Formules
 
 ### Extraire le premier mot (avant l'espace)
 
@@ -64,7 +64,7 @@ Cochez **Virgule** comme delimiteur.
 =GAUCHE(A1; TROUVE(" "; A1)-1)
 ```
 
-### Extraire le reste (apres l'espace)
+### Extraire le reste (après l'espace)
 
 ```excel
 =DROITE(A1; NBCAR(A1)-TROUVE(" "; A1))
@@ -120,7 +120,7 @@ Cochez **Virgule** comme delimiteur.
 
 ## Prenoms composes
 
-### Probleme
+### Problème
 
 "Jean-Pierre Dupont" doit donner :
 - Prenom : Jean-Pierre
@@ -134,7 +134,7 @@ Cochez **Virgule** comme delimiteur.
 
 ### Alternative simplifiee
 
-Utilisez Convertir ou Flash Fill pour ces cas.
+Utilisez Convertir où Flash Fill pour ces cas.
 
 ## Fonctions Excel 365
 
@@ -171,9 +171,9 @@ Utilisez le dernier mot comme nom :
 
 ### Particules (de, du, van)
 
-"Jean de la Fontaine" - detection manuelle necessaire.
+"Jean de la Fontaine" - detection manuelle nécessaire.
 
-## Nettoyer les donnees
+## Nettoyer les données
 
 ### Supprimer les espaces superflus
 
@@ -203,11 +203,11 @@ Jean DUPONT devient Jean Dupont.
 =A1 & ", " & B1
 ```
 
-## Resume des methodes
+## Résumé des méthodes
 
-| Methode | Rapidite | Mise a jour | Cas complexes |
+| Méthode | Rapidite | Mise à jour | Cas complexes |
 |---------|----------|-------------|---------------|
-| Flash Fill | Tres rapide | Non | Moyen |
+| Flash Fill | Très rapide | Non | Moyen |
 | Convertir | Rapide | Non | Simple |
 | Formules | Moyen | Oui | Bon |
 | FRACTIONNER.TEXTE | Rapide | Oui | Excellent |
@@ -215,8 +215,8 @@ Jean DUPONT devient Jean Dupont.
 ## Conseils
 
 1. **Nettoyez d'abord** avec SUPPRESPACE
-2. **Identifiez le format** avant de choisir la methode
-3. **Testez** sur quelques exemples
-4. **Verifiez** les cas particuliers
+2. **Identifiez le format** avant de choisir la méthode
+3. **Testez** sûr quelques exemples
+4. **Vérifiez** les cas particuliers
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

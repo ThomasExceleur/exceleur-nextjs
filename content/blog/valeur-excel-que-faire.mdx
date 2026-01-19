@@ -5,17 +5,17 @@ author: "Thomas L'Exceleur"
 excerpt: "Comprenez et corrigez l'erreur #VALEUR! dans vos formules Excel."
 description: "Guide pour resoudre l'erreur #VALEUR! dans Excel. Causes et solutions."
 category: "Gestion d'erreurs"
-categories: ["Gestion d'erreurs", "Formules Excel"]
+catégories: ["Gestion d'erreurs", "Formules Excel"]
 tags: ["#VALEUR!", "Erreurs", "Types", "Depannage"]
 ---
 
 # Erreur #VALEUR! dans Excel
 
-L'erreur #VALEUR! survient quand Excel recoit un type de donnee inattendu.
+L'erreur #VALEUR! survient quand Excel recoit un type de donnée inattendu.
 
 ## Causes principales
 
-### 1. Operation texte/nombre
+### 1. Opération texte/nombre
 
 ```excel
 ="abc"+10    ' Erreur #VALEUR!
@@ -29,10 +29,10 @@ Une cellule semble vide mais contient un espace.
 
 Caracteres importes qui ne sont pas des chiffres.
 
-### 4. Plages de tailles differentes
+### 4. Plages de tailles différentes
 
 ```excel
-=A1:A10*B1:B5    ' Tailles differentes
+=A1:A10*B1:B5    ' Tailles différentes
 ```
 
 ## Solutions
@@ -69,7 +69,7 @@ Supprime les caracteres non imprimables.
 
 ## Diagnostic
 
-### Verifier le type de donnee
+### Vérifier le type de donnée
 
 ```excel
 =ESTNUM(A1)        ' VRAI si nombre
@@ -83,11 +83,11 @@ Supprime les caracteres non imprimables.
 =CODE(GAUCHE(A1;1))
 ```
 
-Si different de ce que vous attendez, il y a un caractere cache.
+Si différent de ce que vous attendez, il y à un caractere cache.
 
 ## Formule robuste
 
-### Gerer texte et nombre
+### Gérer texte et nombre
 
 ```excel
 =SI(ESTNUM(A1);A1*2;0)
@@ -101,13 +101,13 @@ Si different de ce que vous attendez, il y a un caractere cache.
 
 ## Cas frequents
 
-### Import de donnees
+### Import de données
 
-Les donnees importees sont souvent au format texte.
+Les données importees sont souvent au format texte.
 
 **Solution** : Convertir en nombre
-1. Selectionnez les cellules
-2. **Donnees** > **Convertir**
+1. Sélectionnez les cellules
+2. **Données** > **Convertir**
 3. **Terminer**
 
 ### Dates en texte
@@ -129,9 +129,9 @@ Convertit une date texte en date Excel.
 
 ## Bonnes pratiques
 
-1. **Validez** les donnees a l'import
+1. **Validez** les données à l'import
 2. **Nettoyez** avec SUPPRESPACE et EPURAGE
-3. **Verifiez** les types avec ESTNUM
+3. **Vérifiez** les types avec ESTNUM
 4. **Utilisez** SIERREUR pour la robustesse
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

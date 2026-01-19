@@ -5,29 +5,29 @@ author: "Thomas L'Exceleur"
 excerpt: "Combinez les fonctions dynamiques pour des rapports en temps reel."
 description: "Guide d'imbrication des fonctions dynamiques Excel."
 category: "Excel 365"
-categories: ["Excel 365", "Analyse de donnees Excel"]
+catégories: ["Excel 365", "Analyse de données Excel"]
 tags: ["Fonctions dynamiques", "Reporting", "Temps reel", "Imbrication"]
 ---
 
 # Imbrication de Fonctions Dynamiques pour le Reporting
 
-Creez des rapports qui se mettent a jour automatiquement.
+Créez des rapports qui se mettent à jour automatiquement.
 
 ## Fonctions dynamiques principales
 
-| Fonction | Role |
+| Fonction | Rôle |
 |----------|------|
-| FILTRE | Extraire selon criteres |
-| TRIER | Ordonner les resultats |
+| FILTRE | Extraire selon critères |
+| TRIER | Ordonner les résultats |
 | UNIQUE | Eliminer les doublons |
-| SEQUENCE | Generer des series |
+| SEQUENCE | Générer des series |
 
 ## Combinaisons puissantes
 
 ### FILTRE + TRIER
 
 ```excel
-=TRIER(FILTRE(Donnees;Region=\"Nord\");3;-1)
+=TRIER(FILTRE(Données;Region=\"Nord\");3;-1)
 ```
 
 Filtre puis trie par la 3eme colonne.
@@ -35,7 +35,7 @@ Filtre puis trie par la 3eme colonne.
 ### UNIQUE + TRIER
 
 ```excel
-=TRIER(UNIQUE(Donnees))
+=TRIER(UNIQUE(Données))
 ```
 
 Liste unique et triee.
@@ -48,7 +48,7 @@ Liste unique et triee.
 
 Produits actifs uniques.
 
-## Avec LET pour la lisibilite
+## Avec LET pour la lisibilité
 
 ```excel
 =LET(
@@ -66,9 +66,9 @@ Produits actifs uniques.
 
 ```excel
 =LET(
-  donnees;FILTRE(Ventes;Mois=MoisActuel);
-  total;SOMME(INDEX(donnees;;3));
-  nb;LIGNES(donnees);
+  données;FILTRE(Ventes;Mois=MoisActuel);
+  total;SOMME(INDEX(données;;3));
+  nb;LIGNES(données);
   moyenne;total/nb;
   CONCAT(\"Total: \";total;\" | Moyenne: \";moyenne)
 )
@@ -77,7 +77,7 @@ Produits actifs uniques.
 ### Top performers
 
 ```excel
-=INDEX(TRIER(FILTRE(Donnees;Annee=2024);Montant;-1);SEQUENCE(5);SEQUENCE(1;4))
+=INDEX(TRIER(FILTRE(Données;Année=2024);Montant;-1);SEQUENCE(5);SEQUENCE(1;4))
 ```
 
 ## Bonnes pratiques
@@ -85,7 +85,7 @@ Produits actifs uniques.
 | Pratique | Description |
 |----------|-------------|
 | LET | Structurez les formules complexes |
-| Noms | Utilisez des plages nommees |
-| Test | Verifiez chaque etape |
+| Noms | Utilisez des plages nommées |
+| Test | Vérifiez chaque étape |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

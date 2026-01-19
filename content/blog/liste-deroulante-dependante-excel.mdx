@@ -2,16 +2,16 @@
 title: "Liste Deroulante Dependante dans Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Creez des listes deroulantes en cascade dans Excel."
-description: "Guide pour creer des listes deroulantes dependantes dans Excel."
+excerpt: "Créez des listes deroulantes en cascade dans Excel."
+description: "Guide pour créer des listes deroulantes dependantes dans Excel."
 category: "Astuces Excel"
-categories: ["Astuces Excel", "Formules Excel"]
+catégories: ["Astuces Excel", "Formules Excel"]
 tags: ["Liste deroulante", "Validation", "Cascade", "Excel"]
 ---
 
 # Liste Deroulante Dependante dans Excel
 
-Les listes deroulantes dependantes (en cascade) filtrent les options selon un choix precedent.
+Les listes deroulantes dependantes (en cascade) filtrent les options selon un choix précédent.
 
 ## Concept
 
@@ -20,9 +20,9 @@ Les listes deroulantes dependantes (en cascade) filtrent les options selon un ch
 - Liste 1 : Pays (France, Allemagne, Espagne)
 - Liste 2 : Villes (depend du pays choisi)
 
-## Preparer les donnees
+## Préparer les données
 
-### Structure
+### Structuré
 
 | France | Allemagne | Espagne |
 |--------|-----------|---------|
@@ -32,37 +32,37 @@ Les listes deroulantes dependantes (en cascade) filtrent les options selon un ch
 
 ### Nommer les plages
 
-1. Selectionnez chaque colonne de donnees
-2. **Formules** > **Definir un nom**
+1. Sélectionnez chaque colonne de données
+2. **Formules** > **Définir un nom**
 3. Nommez : France, Allemagne, Espagne
 
-## Creer la premiere liste
+## Créer la première liste
 
-### Etape 1 : Liste des pays
+### Étape 1 : Liste des pays
 
-1. Selectionnez la cellule (ex: A1)
-2. **Donnees** > **Validation des donnees**
+1. Sélectionnez la cellule (ex: A1)
+2. **Données** > **Validation des données**
 3. Autoriser : Liste
 4. Source : France,Allemagne,Espagne
 
-## Creer la liste dependante
+## Créer la liste dependante
 
-### Methode avec INDIRECT
+### Méthode avec INDIRECT
 
-1. Selectionnez la cellule pour les villes (ex: B1)
-2. **Donnees** > **Validation des donnees**
+1. Sélectionnez la cellule pour les villes (ex: B1)
+2. **Données** > **Validation des données**
 3. Autoriser : Liste
 4. Source : `=INDIRECT(A1)`
 
 ### Fonctionnement
 
-INDIRECT transforme le texte de A1 en reference de plage.
+INDIRECT transforme le texte de A1 en référence de plage.
 
 ## Gestion des espaces
 
-### Probleme
+### Problème
 
-Si le nom contient des espaces (ex: "Etats Unis"), INDIRECT echoue.
+Si le nom contient des espaces (ex: "États Unis"), INDIRECT echoue.
 
 ### Solution
 
@@ -76,7 +76,7 @@ Nommez la plage avec underscore : Etats_Unis
 
 ## Trois niveaux de liste
 
-### Structure
+### Structuré
 
 | Continent | Pays | Ville |
 |-----------|------|-------|
@@ -87,17 +87,17 @@ Nommez la plage avec underscore : Etats_Unis
 
 ### Implementation
 
-- Liste 1 : Continents (plage nommee)
+- Liste 1 : Continents (plage nommée)
 - Liste 2 : `=INDIRECT(A1)` (pays du continent)
 - Liste 3 : `=INDIRECT(B1)` (villes du pays)
 
-## Methode avec FILTRE (Excel 365)
+## Méthode avec FILTRE (Excel 365)
 
 ### Avantage
 
-Plus flexible, pas besoin de plages nommees multiples.
+Plus flexible, pas besoin de plages nommées multiples.
 
-### Structure des donnees
+### Structuré des données
 
 | Pays | Ville |
 |------|-------|
@@ -112,11 +112,11 @@ Plus flexible, pas besoin de plages nommees multiples.
 =FILTRE(Villes[Ville];Villes[Pays]=A1)
 ```
 
-## Cas pratique : Categorie > Produit
+## Cas pratique : Catégorie > Produit
 
-### Donnees
+### Données
 
-| Categorie | Produit |
+| Catégorie | Produit |
 |-----------|---------|
 | Fruits | Pomme |
 | Fruits | Banane |
@@ -125,14 +125,14 @@ Plus flexible, pas besoin de plages nommees multiples.
 
 ### Listes
 
-- A1 : Liste des categories (UNIQUE)
-- B1 : `=FILTRE(Produits;Categories=A1)`
+- A1 : Liste des catégories (UNIQUE)
+- B1 : `=FILTRE(Produits;Catégories=A1)`
 
 ## Reinitialiser la liste dependante
 
-### Probleme
+### Problème
 
-Quand la premiere liste change, la deuxieme peut contenir une valeur invalide.
+Quand la première liste change, la deuxieme peut contenir une valeur invalide.
 
 ### Solution VBA
 
@@ -148,7 +148,7 @@ End Sub
 
 | Erreur | Cause | Solution |
 |--------|-------|----------|
-| #REF! | Plage inexistante | Verifiez le nom |
+| #REF! | Plage inexistante | Vérifiez le nom |
 | Liste vide | Espaces dans le nom | Utilisez SUBSTITUE |
 | Valeur invalide | Changement de liste 1 | Reinitialiser liste 2 |
 
@@ -158,7 +158,7 @@ End Sub
 |----------|-------------|
 | Noms clairs | Nommez les plages explicitement |
 | Message d'erreur | Personnalisez le message |
-| Documentation | Notez la structure des listes |
-| Test | Verifiez toutes les combinaisons |
+| Documentation | Notez la structuré des listes |
+| Test | Vérifiez toutes les combinaisons |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

@@ -2,18 +2,18 @@
 title: "Additionner une Cellule dans Plusieurs Onglets Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a additionner la meme cellule sur plusieurs feuilles Excel."
-description: "Guide pour faire des calculs sur plusieurs onglets Excel. References 3D et consolidation."
+excerpt: "Apprenez à additionner la meme cellule sûr plusieurs feuilles Excel."
+description: "Guide pour faire des calculs sûr plusieurs onglets Excel. Références 3D et consolidation."
 category: "Formules Excel"
-categories: ["Formules Excel", "Fonctions"]
+catégories: ["Formules Excel", "Fonctions"]
 tags: ["3D", "Onglets", "Somme", "Multi-feuilles"]
 ---
 
-# Additionner des Cellules sur Plusieurs Onglets
+# Additionner des Cellules sûr Plusieurs Onglets
 
-Excel permet de calculer sur plusieurs feuilles avec les references 3D.
+Excel permet de calculer sûr plusieurs feuilles avec les références 3D.
 
-## La reference 3D
+## La référence 3D
 
 ### Syntaxe
 
@@ -21,9 +21,9 @@ Excel permet de calculer sur plusieurs feuilles avec les references 3D.
 =SOMME(Feuille1:Feuille12!A1)
 ```
 
-Cette formule additionne la cellule A1 des feuilles 1 a 12.
+Cette formule additionne la cellule A1 des feuilles 1 à 12.
 
-### Structure
+### Structuré
 
 ```
 =FONCTION(PremiereFeuille:DerniereFeuille!Plage)
@@ -34,20 +34,20 @@ Cette formule additionne la cellule A1 des feuilles 1 a 12.
 ### Additionner une cellule
 
 ```excel
-=SOMME(Jan:Dec!B5)        ' B5 de Jan a Dec
-=SOMME(Semaine1:Semaine52!C10)   ' C10 sur toutes les semaines
+=SOMME(Jan:Dec!B5)        ' B5 de Jan à Dec
+=SOMME(Semaine1:Semaine52!C10)   ' C10 sûr toutes les semaines
 ```
 
 ### Additionner une plage
 
 ```excel
-=SOMME(Jan:Dec!B5:B20)    ' Plage B5:B20 sur tous les mois
+=SOMME(Jan:Dec!B5:B20)    ' Plage B5:B20 sûr tous les mois
 ```
 
 ### Autres fonctions
 
 ```excel
-=MOYENNE(Jan:Dec!B5)      ' Moyenne sur les feuilles
+=MOYENNE(Jan:Dec!B5)      ' Moyenne sûr les feuilles
 =MAX(Jan:Dec!B5)          ' Maximum
 =MIN(Jan:Dec!B5)          ' Minimum
 =NB(Jan:Dec!B5)           ' Compter les nombres
@@ -57,26 +57,26 @@ Cette formule additionne la cellule A1 des feuilles 1 a 12.
 
 ### Les feuilles doivent
 
-1. Etre dans le meme classeur
-2. Avoir les memes positions de donnees
-3. Etre consecutives dans l'ordre des onglets
+1. Êêêêtre dans le meme classeur
+2. Avoir les memes positions de données
+3. Êêêêtre consecutives dans l'ordre des onglets
 
 ### Attention
 
-Si vous deplacez des feuilles, la reference 3D peut etre affectee.
+Si vous déplacez des feuilles, la référence 3D peut etre affectee.
 
-## Creer la formule
+## Créer la formule
 
-### Methode 1 : Saisie manuelle
+### Méthode 1 : Saisie manuelle
 
 1. Tapez `=SOMME(`
-2. Cliquez sur la premiere feuille
+2. Cliquez sûr la première feuille
 3. Maintenez **Maj**
-4. Cliquez sur la derniere feuille
-5. Selectionnez la cellule
+4. Cliquez sûr la dernière feuille
+5. Sélectionnez la cellule
 6. Fermez la parenthese
 
-### Methode 2 : Taper directement
+### Méthode 2 : Taper directement
 
 ```excel
 =SOMME(Jan:Dec!B5)
@@ -95,27 +95,27 @@ Ou A1 contient le nom de la feuille.
 ### Limites d'INDIRECT
 
 - Ne fonctionne pas directement en 3D
-- Plus lent a calculer
-- Ne met pas a jour si la feuille est renommee
+- Plus lent à calculer
+- Ne met pas à jour si la feuille est renommee
 
 ## Consolidation
 
-### Pour des structures differentes
+### Pour des structurés différentes
 
-1. **Donnees** > **Consolider**
-2. Selectionnez la fonction
+1. **Données** > **Consolider**
+2. Sélectionnez la fonction
 3. Ajoutez les plages de chaque feuille
 4. Validez
 
 ### Avantages de la consolidation
 
-- Structures differentes possibles
-- Mise a jour manuelle ou avec liaisons
+- Structurés différentes possibles
+- Mise à jour manuelle où avec liaisons
 - Plus flexible
 
 ## Cas pratique : Budget mensuel
 
-### Structure
+### Structuré
 
 | Feuille | Contenu |
 |---------|---------|
@@ -123,9 +123,9 @@ Ou A1 contient le nom de la feuille.
 | Fev | Budget fevrier |
 | ... | ... |
 | Dec | Budget decembre |
-| Synthese | Total annuel |
+| Synthèse | Total annuel |
 
-### Formule dans Synthese
+### Formule dans Synthèse
 
 ```excel
 =SOMME(Jan:Dec!B10)       ' Total de la ligne 10
@@ -141,7 +141,7 @@ Ou A1 contient le nom de la feuille.
 
 ### Feuilles non consecutives
 
-La reference 3D ne fonctionne pas. Utilisez :
+La référence 3D ne fonctionne pas. Utilisez :
 
 ```excel
 =SOMME(Jan!B5;Mar!B5;Mai!B5)
@@ -149,10 +149,10 @@ La reference 3D ne fonctionne pas. Utilisez :
 
 ## Bonnes pratiques
 
-1. **Structurez** vos feuilles de maniere identique
+1. **Structurez** vos feuilles de manière identique
 2. **Nommez** les feuilles simplement
 3. **Ordonnez** les feuilles logiquement
 4. **Testez** les formules avant de les copier
 5. **Documentez** les calculs complexes
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

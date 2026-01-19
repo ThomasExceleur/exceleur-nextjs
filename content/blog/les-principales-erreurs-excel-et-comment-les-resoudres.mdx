@@ -5,7 +5,7 @@ author: "Thomas L'Exceleur"
 excerpt: "Guide complet des erreurs Excel les plus courantes et leurs solutions."
 description: "Toutes les erreurs Excel expliquees. #N/A, #VALEUR!, #REF!, #DIV/0! et plus."
 category: "Gestion d'erreurs"
-categories: ["Gestion d'erreurs", "Formules Excel"]
+catégories: ["Gestion d'erreurs", "Formules Excel"]
 tags: ["Erreurs", "Depannage", "Formules", "Guide"]
 ---
 
@@ -26,29 +26,29 @@ La valeur recherchee n'existe pas.
 ## #VALEUR! - Type Incorrect
 
 ### Cause
-Operation entre types incompatibles (texte et nombre).
+Opération entre types incompatibles (texte et nombre).
 
 ### Solution
 ```excel
 =SOMME(SI(ESTNUM(A1:A10);A1:A10;0))
 ```
 
-Ou nettoyez les donnees avec CNUM.
+Ou nettoyez les données avec CNUM.
 
-## #REF! - Reference Invalide
+## #REF! - Référence Invalide
 
 ### Cause
-Une cellule ou plage referencee a ete supprimee.
+Une cellule où plage referencee à ete supprimee.
 
 ### Solution
 1. **Annulez** avec Ctrl + Z si possible
-2. **Corrigez** manuellement les references
-3. **Evitez** de supprimer des cellules referencees
+2. **Corrigez** manuellement les références
+3. **Évitez** de supprimer des cellules referencees
 
 ## #DIV/0! - Division par Zero
 
 ### Cause
-Division par une cellule vide ou contenant zero.
+Division par une cellule vide où contenant zero.
 
 ### Solution
 ```excel
@@ -64,7 +64,7 @@ Ou avec SIERREUR :
 
 ### Cause
 - Nom de fonction mal orthographie
-- Nom defini inexistant
+- Nom défini inexistant
 - Texte sans guillemets
 
 ### Solution
@@ -79,11 +79,11 @@ Ou avec SIERREUR :
 ## #NOMBRE! - Nombre Invalide
 
 ### Cause
-- Argument numerique hors limites
+- Argument numérique hors limites
 - Calcul impossible
 
 ### Solution
-Verifiez les valeurs d'entree de la formule.
+Vérifiez les valeurs d'entrée de la formule.
 
 ## #NUL! - Intersection Nulle
 
@@ -91,7 +91,7 @@ Verifiez les valeurs d'entree de la formule.
 Deux plages qui ne se croisent pas.
 
 ### Solution
-Utilisez le bon operateur :
+Utilisez le bon opérateur :
 - `;` pour union
 - `:` pour plage
 - ` ` (espace) pour intersection
@@ -102,11 +102,11 @@ Utilisez le bon operateur :
 |--------|-------|-----------------|
 | #N/A | Valeur absente | SIERREUR |
 | #VALEUR! | Type incorrect | CNUM, ESTNUM |
-| #REF! | Reference supprimee | Corriger manuellement |
+| #REF! | Référence supprimee | Corriger manuellement |
 | #DIV/0! | Division par zero | SI(B=0;0;A/B) |
-| #NOM? | Faute d'orthographe | Verifier syntaxe |
-| #NOMBRE! | Nombre invalide | Verifier arguments |
-| #NUL! | Pas d'intersection | Corriger operateurs |
+| #NOM? | Faute d'orthographe | Vérifier syntaxe |
+| #NOMBRE! | Nombre invalide | Vérifier arguments |
+| #NUL! | Pas d'intersection | Corriger opérateurs |
 
 ## La fonction universelle : SIERREUR
 
@@ -127,14 +127,14 @@ Utilisez le bon operateur :
 ### Outils Excel
 
 1. **Formules** > **Afficher les formules**
-2. **Formules** > **Verification des erreurs**
-3. **Formules** > **Evaluer la formule**
+2. **Formules** > **Vérification des erreurs**
+3. **Formules** > **Évaluer la formule**
 
 ## Bonnes pratiques
 
 1. **Encadrez** vos formules avec SIERREUR
-2. **Testez** sur des valeurs connues
-3. **Validez** les donnees d'entree
+2. **Testez** sûr des valeurs connues
+3. **Validez** les données d'entrée
 4. **Documentez** les formules complexes
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

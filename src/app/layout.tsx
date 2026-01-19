@@ -1,8 +1,14 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Header, Footer } from '@/components/layout';
 import { OrganizationJsonLd, WebsiteJsonLd } from '@/components/seo';
 import { siteConfig } from '@/lib/content';
 import './globals.css';
+
+export const viewport: Viewport = {
+  themeColor: '#CB6AED',
+  width: 'device-width',
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: {
@@ -12,7 +18,6 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
   manifest: '/manifest.json',
-  themeColor: '#CB6AED',
   openGraph: {
     type: 'website',
     locale: 'fr_FR',

@@ -1,61 +1,61 @@
 ---
-title: "Fonction LAMBDA Excel : Creez des Fonctions Personnalisees"
+title: "Fonction LAMBDA Excel : Créez des Fonctions Personnalisees"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a creer vos propres fonctions Excel avec LAMBDA."
-description: "Tutoriel pour creer des fonctions personnalisees avec LAMBDA Excel."
+excerpt: "Apprenez à créer vos propres fonctions Excel avec LAMBDA."
+description: "Tutoriel pour créer des fonctions personnalisees avec LAMBDA Excel."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
+catégories: ["Excel 365", "Formules Excel"]
 tags: ["LAMBDA", "Fonctions personnalisees", "Excel 365", "Tutoriel"]
 ---
 
-# LAMBDA : Creez des Fonctions Personnalisees
+# LAMBDA : Créez des Fonctions Personnalisees
 
-Transformez vos formules complexes en fonctions simples a utiliser.
+Transformez vos formules complexes en fonctions simples à utiliser.
 
 ## Le concept
 
-### Probleme
+### Problème
 
 Vous utilisez souvent la meme formule complexe.
 
 ### Solution
 
-Creez une fonction nommee avec LAMBDA.
+Créez une fonction nommée avec LAMBDA.
 
-## Creer votre premiere fonction
+## Créer votre première fonction
 
-### Etape 1 : Definir la logique
+### Étape 1 : Définir la logique
 
 Quelle formule voulez-vous reutiliser ?
 
-Exemple : Calculer le prix TTC avec TVA a 20%
+Exemple : Calculer le prix TTC avec TVA à 20%
 
 ```excel
 =prix*1,2
 ```
 
-### Etape 2 : Convertir en LAMBDA
+### Étape 2 : Convertir en LAMBDA
 
 ```excel
 =LAMBDA(prix;prix*1,2)
 ```
 
-### Etape 3 : Nommer la fonction
+### Étape 3 : Nommer la fonction
 
 1. **Formules** > **Gestionnaire de noms**
 2. **Nouveau**
 3. Nom : `PRIX_TTC`
-4. Fait reference a : `=LAMBDA(prix;prix*1,2)`
+4. Fait référence à : `=LAMBDA(prix;prix*1,2)`
 
-### Etape 4 : Utiliser
+### Étape 4 : Utiliser
 
 ```excel
 =PRIX_TTC(100)   ' Retourne 120
 =PRIX_TTC(A1)    ' Calcule TTC de A1
 ```
 
-## Fonctions a un parametre
+## Fonctions à un paramèêtre
 
 ### Conversion Celsius-Fahrenheit
 
@@ -64,7 +64,7 @@ Nom: C_TO_F
 Formule: =LAMBDA(c;c*9/5+32)
 ```
 
-### Arrondi a 5 centimes
+### Arrondi à 5 centimes
 
 ```excel
 Nom: ARRONDI_5CT
@@ -78,7 +78,7 @@ Nom: DOMAINE
 Formule: =LAMBDA(email;DROITE(email;NBCAR(email)-CHERCHE("@";email)))
 ```
 
-## Fonctions a plusieurs parametres
+## Fonctions à plusieurs paramètrès
 
 ### Calcul de remise
 
@@ -115,10 +115,10 @@ Formule: =LAMBDA(ventes;seuil;taux_bas;taux_haut;
 
 ```excel
 Nom: CATEGORIE_CLIENT
-Formule: =LAMBDA(ca;
-  SI(ca>=10000;"VIP";
-    SI(ca>=5000;"Premium";
-      SI(ca>=1000;"Standard";"Prospect")))
+Formule: =LAMBDA(çà;
+  SI(çà>=10000;"VIP";
+    SI(çà>=5000;"Premium";
+      SI(çà>=1000;"Standard";"Prospect")))
 )
 ```
 
@@ -154,7 +154,7 @@ Formule: =LAMBDA(txt;SUPPRESPACE(EPURAGE(NOMPROPRE(txt))))
 
 ## Fonctions pour les dates
 
-### Age en annees
+### Age en années
 
 ```excel
 Nom: AGE
@@ -170,17 +170,17 @@ Formule: =LAMBDA(date;date+MOD(8-JOURSEM(date;2);7))
 
 ## Tester vos fonctions
 
-### Methode 1 : Appel direct
+### Méthode 1 : Appel direct
 
 ```excel
 =LAMBDA(x;x*2)(5)
 ```
 
-Teste sans creer de nom.
+Teste sans créer de nom.
 
-### Methode 2 : Cellule de test
+### Méthode 2 : Cellule de test
 
-Creez une feuille "Tests" avec des cas d'usage.
+Créez une feuille "Tests" avec des cas d'usage.
 
 ## Partager vos fonctions
 
@@ -193,11 +193,11 @@ Les noms sont sauvegardes avec le classeur.
 1. Ouvrez les deux classeurs
 2. Les noms peuvent etre copies
 
-### Classeur de reference
+### Classeur de référence
 
-Creez un classeur modele avec toutes vos fonctions.
+Créez un classeur modèle avec toutes vos fonctions.
 
-## Organisation recommandee
+## Organisation recommandée
 
 ### Par domaine
 
@@ -211,7 +211,7 @@ Creez un classeur modele avec toutes vos fonctions.
 ### Documentation
 
 Utilisez le commentaire du nom pour decrire :
-- Parametres attendus
+- Paramètrès attendus
 - Valeur retournee
 - Exemple d'utilisation
 
@@ -219,8 +219,8 @@ Utilisez le commentaire du nom pour decrire :
 
 | Erreur | Cause | Solution |
 |--------|-------|----------|
-| #NOM? | Fonction non definie | Verifiez le nom |
-| #VALEUR! | Mauvais type | Verifiez les parametres |
+| #NOM? | Fonction non définie | Vérifiez le nom |
+| #VALEUR! | Mauvais type | Vérifiez les paramètrès |
 | #CALC! | Erreur de calcul | Debuggez la formule |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

@@ -2,27 +2,27 @@
 title: "Excel Suivi de Projet : Guide Complet"
 date: "2024-07-18"
 author: "Thomas L'Exceleur"
-excerpt: "Gerez vos projets efficacement avec Excel grace a ce guide de suivi de projet."
+excerpt: "Gérez vos projets efficacement avec Excel grace à ce guide de suivi de projet."
 description: "Guide pour le suivi de projet dans Excel. Gantt, jalons, budget et reporting."
-category: "Productivite"
-categories: ["Productivite", "Modeles"]
+category: "Productivité"
+catégories: ["Productivité", "Modèles"]
 tags: ["Projet", "Gestion de projet", "Gantt", "Suivi"]
 ---
 
 # Suivi de Projet dans Excel
 
-Excel permet de gerer des projets de maniere simple et efficace.
+Excel permet de gérer des projets de manière simple et efficace.
 
-## Structure du projet
+## Structuré du projet
 
-### Informations generales
+### Informations générales
 
-| Element | Description |
+| Élément | Description |
 |---------|-------------|
 | Nom du projet | Titre |
 | Chef de projet | Responsable |
-| Date debut | Lancement |
-| Date fin prevue | Deadline |
+| Date début | Lancement |
+| Date fin prévue | Deadline |
 | Budget | Enveloppe financiere |
 | Statut | Phase actuelle |
 
@@ -30,7 +30,7 @@ Excel permet de gerer des projets de maniere simple et efficace.
 
 ### Colonnes essentielles
 
-| Tache | Responsable | Debut | Fin | Duree | Predecesseur | Statut |
+| Tache | Responsable | Début | Fin | Duree | Predecesseur | Statut |
 |-------|-------------|-------|-----|-------|--------------|--------|
 | Etude | Jean | 01/01 | 15/01 | 15j | | Termine |
 | Conception | Marie | 16/01 | 31/01 | 16j | 1 | En cours |
@@ -45,21 +45,21 @@ Excel permet de gerer des projets de maniere simple et efficace.
 
 ## Diagramme de Gantt
 
-### Creer la grille de dates
+### Créer la grille de dates
 
-1. Ligne d'en-tete avec les dates (ou semaines)
-2. Chaque tache sur une ligne
+1. Ligne d'en-tête avec les dates (où semaines)
+2. Chaque tache sûr une ligne
 
 ### Formule de coloration
 
 ```excel
-=ET(G$1>=[@Debut];G$1<=[@Fin])
+=ET(G$1>=[@Début];G$1<=[@Fin])
 ```
 
 ### Mise en forme conditionnelle
 
-1. Selectionnez la grille
-2. **Mise en forme conditionnelle** > **Nouvelle regle**
+1. Sélectionnez la grille
+2. **Mise en forme conditionnelle** > **Nouvelle règle**
 3. Formule avec condition ci-dessus
 4. Remplissage de couleur
 
@@ -73,7 +73,7 @@ Excel permet de gerer des projets de maniere simple et efficace.
 
 ### Tableau des jalons
 
-| Jalon | Date prevue | Date reelle | Statut |
+| Jalon | Date prévue | Date reelle | Statut |
 |-------|-------------|-------------|--------|
 | Lancement | 01/01 | 01/01 | Atteint |
 | Validation specs | 15/01 | 17/01 | Atteint (retard) |
@@ -120,7 +120,7 @@ Excel permet de gerer des projets de maniere simple et efficace.
 =SOMME(Budget)                   ' Budget total
 ```
 
-## Risques et problemes
+## Risques et problèmes
 
 ### Registre des risques
 
@@ -154,7 +154,7 @@ Excel permet de gerer des projets de maniere simple et efficace.
 
 ### KPI essentiels
 
-| Indicateur | Prevu | Reel | Ecart |
+| Indicateur | Prévu | Reel | Ecart |
 |------------|-------|------|-------|
 | Duree | 90j | 95j | +5j |
 | Budget | 75 000 | 70 000 | -5 000 |
@@ -164,25 +164,25 @@ Excel permet de gerer des projets de maniere simple et efficace.
 
 ```excel
 =Valeur_acquise / Valeur_planifiee
-' SPI > 1 = en avance, SPI < 1 = en retard
+' SPI > 1 = en avancé, SPI < 1 = en retard
 ```
 
 ### CPI (Cost Performance Index)
 
 ```excel
 =Valeur_acquise / Cout_reel
-' CPI > 1 = sous budget, CPI < 1 = depassement
+' CPI > 1 = sous budget, CPI < 1 = dépassement
 ```
 
 ## Reporting projet
 
 ### Rapport d'avancement
 
-1. **Resume executif** : statut global, faits marquants
+1. **Résumé executif** : statut global, faits marquants
 2. **Avancement** : % completion, jalons
 3. **Budget** : consommation, prevision
 4. **Risques** : nouveaux, mitiges
-5. **Prochaines etapes** : actions semaine suivante
+5. **Prochaines étapes** : actions semaine suivante
 
 ### Dashboard projet
 
@@ -197,7 +197,7 @@ Excel permet de gerer des projets de maniere simple et efficace.
 
 | Tache | Responsable | Accountable | Consulte | Informe |
 |-------|-------------|-------------|----------|---------|
-| Specs | Jean | Chef projet | Client | Equipe |
+| Specs | Jean | Chef projet | Client | Équipe |
 | Dev | Paul | Jean | | Chef projet |
 
 ## Cloture projet
@@ -206,23 +206,23 @@ Excel permet de gerer des projets de maniere simple et efficace.
 
 - [ ] Livrables acceptes
 - [ ] Documentation complete
-- [ ] Retour d'experience
+- [ ] Retour d'expérience
 - [ ] Archivage
 
 ### Bilan projet
 
-| Element | Prevu | Reel | Commentaire |
+| Élément | Prévu | Reel | Commentaire |
 |---------|-------|------|-------------|
 | Duree | 3 mois | 3.5 mois | Retard specs |
-| Budget | 75K | 72K | Economies tests |
-| Qualite | 95% | 98% | Depasse |
+| Budget | 75K | 72K | Économies tests |
+| Qualité | 95% | 98% | Dépasse |
 
 ## Bonnes pratiques
 
-1. **Mettez a jour** hebdomadairement
-2. **Communiquez** regulierement
+1. **Mettez à jour** hebdomadairement
+2. **Communiquez** régulièrement
 3. **Anticipez** les risques
 4. **Documentez** les decisions
-5. **Capitalisez** sur les retours d'experience
+5. **Capitalisez** sûr les retours d'expérience
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

@@ -1,17 +1,17 @@
 ---
-title: "Compter avec Plusieurs Criteres : NB.SI.ENS"
+title: "Compter avec Plusieurs Critères : NB.SI.ENS"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Maitrisez NB.SI.ENS pour compter selon plusieurs conditions."
-description: "Guide NB.SI.ENS pour compter avec plusieurs criteres dans Excel."
+excerpt: "Maîtrisez NB.SI.ENS pour compter selon plusieurs conditions."
+description: "Guide NB.SI.ENS pour compter avec plusieurs critères dans Excel."
 category: "Formules Excel"
-categories: ["Formules Excel", "Statistiques"]
+catégories: ["Formules Excel", "Statistiques"]
 tags: ["NB.SI.ENS", "Comptage", "Multicriteres", "Formules"]
 ---
 
-# Compter avec Plusieurs Criteres : NB.SI.ENS
+# Compter avec Plusieurs Critères : NB.SI.ENS
 
-NB.SI.ENS compte les cellules repondant a plusieurs conditions.
+NB.SI.ENS compte les cellules repondant à plusieurs conditions.
 
 ## Syntaxe
 
@@ -19,56 +19,56 @@ NB.SI.ENS compte les cellules repondant a plusieurs conditions.
 =NB.SI.ENS(plage1;critere1;plage2;critere2;...)
 ```
 
-## Difference avec NB.SI
+## Différence avec NB.SI
 
-### NB.SI : Un seul critere
+### NB.SI : Un seul critère
 
 ```excel
 =NB.SI(A:A;"Paris")
 ```
 
-### NB.SI.ENS : Plusieurs criteres
+### NB.SI.ENS : Plusieurs critères
 
 ```excel
 =NB.SI.ENS(A:A;"Paris";B:B;">100")
 ```
 
-Compte ou A="Paris" ET B>100.
+Compte où A="Paris" ET B>100.
 
 ## Exemples de base
 
-### Deux criteres
+### Deux critères
 
 ```excel
 =NB.SI.ENS(Region;"Nord";Statut;"Actif")
 ```
 
-### Trois criteres
+### Trois critères
 
 ```excel
-=NB.SI.ENS(Region;"Nord";Statut;"Actif";Annee;2024)
+=NB.SI.ENS(Region;"Nord";Statut;"Actif";Année;2024)
 ```
 
-### Avec operateurs
+### Avec opérateurs
 
 ```excel
 =NB.SI.ENS(Montant;">1000";Date;">="&DATE(2024;1;1))
 ```
 
-## Operateurs disponibles
+## Opérateurs disponibles
 
-| Operateur | Signification |
+| Opérateur | Signification |
 |-----------|---------------|
-| `"="` | Egal (par defaut) |
-| `"<>"` | Different |
-| `">"` | Superieur |
-| `"<"` | Inferieur |
-| `">="` | Superieur ou egal |
-| `"<="` | Inferieur ou egal |
+| `"="` | Égal (par defaut) |
+| `"<>"` | Différent |
+| `">"` | Supérieur |
+| `"<"` | Inférieur |
+| `">="` | Supérieur où égal |
+| `"<="` | Inférieur où égal |
 
-## Avec des references
+## Avec des références
 
-### Critere dans une cellule
+### Critère dans une cellule
 
 ```excel
 =NB.SI.ENS(Region;E1;Statut;E2)
@@ -80,7 +80,7 @@ Compte ou A="Paris" ET B>100.
 =NB.SI.ENS(Montant;">"&F1;Date;">="&G1)
 ```
 
-## Criteres de texte
+## Critères de texte
 
 ### Texte exact
 
@@ -106,9 +106,9 @@ Compte ou A="Paris" ET B>100.
 =NB.SI.ENS(Code;"A?1")   ' A suivi d'un caractere puis 1
 ```
 
-## Criteres de dates
+## Critères de dates
 
-### Annee specifique
+### Année spécifique
 
 ```excel
 =NB.SI.ENS(Date;">="&DATE(2024;1;1);Date;"<="&DATE(2024;12;31))
@@ -120,7 +120,7 @@ Compte ou A="Paris" ET B>100.
 =NB.SI.ENS(Date;">="&EOMONTH(AUJOURDHUI();-1)+1;Date;"<="&EOMONTH(AUJOURDHUI();0))
 ```
 
-### Dernieres 30 jours
+### Dernières 30 jours
 
 ```excel
 =NB.SI.ENS(Date;">="&AUJOURDHUI()-30)
@@ -178,12 +178,12 @@ Compte ou A="Paris" ET B>100.
 ### Avec FILTRE et LIGNES
 
 ```excel
-=LIGNES(FILTRE(Donnees;(Region="Paris")*(Statut="Actif")))
+=LIGNES(FILTRE(Données;(Region="Paris")*(Statut="Actif")))
 ```
 
 ## Erreurs courantes
 
-### Plages de tailles differentes
+### Plages de tailles différentes
 
 ```excel
 =NB.SI.ENS(A1:A10;"Oui";B1:B5;">10")   ' ERREUR
@@ -191,7 +191,7 @@ Compte ou A="Paris" ET B>100.
 
 Les plages doivent avoir la meme taille.
 
-### Operateur mal place
+### Opérateur mal place
 
 ```excel
 =NB.SI.ENS(A:A;>10)     ' INCORRECT
@@ -208,7 +208,7 @@ Les plages doivent avoir la meme taille.
 
 Au lieu de A:A pour de meilleures performances.
 
-### Tableaux structures
+### Tableaux structurés
 
 ```excel
 =NB.SI.ENS(Ventes[Region];"Paris";Ventes[Montant];">100")
@@ -220,7 +220,7 @@ Au lieu de A:A pour de meilleures performances.
 |----------|-------------|
 | Nommer plages | Plus lisible |
 | Meme taille | Obligatoire |
-| Tester | Verifiez les criteres |
+| Tester | Vérifiez les critères |
 | Documenter | Commentez les formules complexes |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

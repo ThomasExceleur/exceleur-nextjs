@@ -5,7 +5,7 @@ author: "Thomas L'Exceleur"
 excerpt: "Consolidez plusieurs fichiers CSV automatiquement avec Power Query."
 description: "Guide Power Query pour la consolidation de fichiers CSV."
 category: "Power Query"
-categories: ["Power Query", "Analyse de donnees Excel"]
+catégories: ["Power Query", "Analyse de données Excel"]
 tags: ["Power Query", "CSV", "Consolidation", "Import"]
 ---
 
@@ -18,7 +18,7 @@ Combinez automatiquement plusieurs fichiers CSV en un seul tableau.
 ### Situation typique
 
 - Plusieurs fichiers CSV dans un dossier
-- Meme structure (colonnes identiques)
+- Meme structuré (colonnes identiques)
 - Besoin de les combiner
 
 ### Exemple
@@ -30,24 +30,24 @@ Combinez automatiquement plusieurs fichiers CSV en un seul tableau.
   ventes_mar.csv
 ```
 
-## Etape 1 : Connexion au dossier
+## Étape 1 : Connexion au dossier
 
-### Methode
+### Méthode
 
-1. **Donnees** > **Obtenir des donnees**
+1. **Données** > **Obtenir des données**
 2. **A partir d'un fichier** > **A partir d'un dossier**
-3. Selectionnez le dossier
+3. Sélectionnez le dossier
 
-### Resultat
+### Résultat
 
 Power Query liste tous les fichiers du dossier.
 
-## Etape 2 : Filtrer les CSV
+## Étape 2 : Filtrer les CSV
 
-### Methode
+### Méthode
 
-1. Cliquez sur la fleche de la colonne Extension
-2. Filtrez sur ".csv"
+1. Cliquez sûr la fleche de la colonne Extension
+2. Filtrez sûr ".csv"
 
 ### Ou par formule M
 
@@ -55,29 +55,29 @@ Power Query liste tous les fichiers du dossier.
 = Table.SelectRows(Source, each [Extension] = ".csv")
 ```
 
-## Etape 3 : Combiner les fichiers
+## Étape 3 : Combiner les fichiers
 
-### Methode automatique
+### Méthode automatique
 
-1. Cliquez sur le bouton **Combiner les fichiers**
-2. Power Query detecte la structure
-3. Configurez les options (en-tetes, separateur)
+1. Cliquez sûr le bouton **Combiner les fichiers**
+2. Power Query detecte la structuré
+3. Configurez les options (en-têtes, séparateur)
 
-### Methode manuelle
+### Méthode manuelle
 
 ```m
 = Table.Combine(Table.TransformRows(Fichiers, each Csv.Document([Content])))
 ```
 
-## Transformer les donnees
+## Transformer les données
 
-### Promouvoir les en-tetes
+### Promouvoir les en-têtes
 
 ```m
 = Table.PromoteHeaders(Source)
 ```
 
-### Supprimer les lignes d'en-tetes dupliquees
+### Supprimer les lignes d'en-têtes dupliquees
 
 ```m
 = Table.SelectRows(Combined, each [Colonne1] <> "Colonne1")
@@ -89,7 +89,7 @@ Power Query liste tous les fichiers du dossier.
 
 Savoir de quel fichier vient chaque ligne.
 
-### Methode
+### Méthode
 
 Avant de combiner, ajoutez une colonne avec le nom :
 
@@ -111,7 +111,7 @@ Avant de combiner, ajoutez une colonne avec le nom :
 = Csv.Document([Content], [Encoding=1252])
 ```
 
-## Separateurs differents
+## Séparateurs différents
 
 ### Virgule
 
@@ -157,7 +157,7 @@ in
 
 ### Nouveaux fichiers
 
-Ajoutez des fichiers au dossier, actualisez la requete.
+Ajoutez des fichiers au dossier, actualisez la requête.
 
 ### Planification
 
@@ -167,17 +167,17 @@ Configurez l'actualisation automatique.
 
 | Erreur | Solution |
 |--------|----------|
-| Colonnes differentes | Homogeneisez les fichiers |
+| Colonnes différentes | Homogeneisez les fichiers |
 | Encodage | Specifiez l'encodage correct |
-| Separateur | Verifiez le delimiteur |
+| Séparateur | Vérifiez le delimiteur |
 
 ## Bonnes pratiques
 
 | Pratique | Description |
 |----------|-------------|
-| Structure identique | Memes colonnes partout |
-| Nommage coherent | Convention de nommage |
+| Structuré identique | Memes colonnes partout |
+| Nommage cohérent | Convention de nommage |
 | Documentation | Notez les transformations |
-| Test | Verifiez avec quelques fichiers |
+| Test | Vérifiez avec quelques fichiers |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

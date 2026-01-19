@@ -1,28 +1,28 @@
 ---
-title: "Excel Previsions de Vente : Methodes et Formules"
+title: "Excel Previsions de Vente : Méthodes et Formules"
 date: "2024-07-18"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a realiser des previsions de vente fiables dans Excel avec ces methodes."
-description: "Guide pour creer des previsions de vente dans Excel. Methodes, formules et modeles."
-category: "Analyse de donnees Excel"
-categories: ["Analyse de donnees Excel", "Finance"]
+excerpt: "Apprenez à realiser des previsions de vente fiables dans Excel avec ces méthodes."
+description: "Guide pour créer des previsions de vente dans Excel. Méthodes, formules et modèles."
+category: "Analyse de données Excel"
+catégories: ["Analyse de données Excel", "Finance"]
 tags: ["Previsions", "Ventes", "Forecast", "Analyse"]
 ---
 
 # Previsions de Vente dans Excel
 
-Des previsions de vente fiables sont essentielles pour piloter votre activite.
+Des previsions de vente fiables sont essentielles pour piloter votre activité.
 
-## Methodes de prevision
+## Méthodes de prevision
 
 ### Vue d'ensemble
 
-| Methode | Utilisation | Precision |
+| Méthode | Utilisation | Precision |
 |---------|-------------|-----------|
-| Moyenne mobile | Donnees stables | Moyenne |
-| Tendance lineaire | Croissance reguliere | Bonne |
-| Saisonnalite | Cycles recurrents | Elevee |
-| PREVISION.ETS | Donnees complexes | Elevee |
+| Moyenne mobile | Données stables | Moyenne |
+| Tendance lineaire | Croissance régulière | Bonne |
+| Saisonnalite | Cycles recurrents | Élevée |
+| PREVISION.ETS | Données complexes | Élevée |
 
 ## Moyenne mobile
 
@@ -41,7 +41,7 @@ Des previsions de vente fiables sont essentielles pour piloter votre activite.
 ### Moyenne glissante
 
 ```excel
-=MOYENNE(DECALER(B5;-2;0;3;1))    ' 3 periodes avant la cellule
+=MOYENNE(DECALER(B5;-2;0;3;1))    ' 3 périodes avant la cellule
 ```
 
 ## Tendance lineaire
@@ -49,7 +49,7 @@ Des previsions de vente fiables sont essentielles pour piloter votre activite.
 ### Fonction TENDANCE
 
 ```excel
-=TENDANCE(Ventes;Periodes;Nouvelle_periode)
+=TENDANCE(Ventes;Périodes;Nouvelle_periode)
 ```
 
 ### Exemple pratique
@@ -61,7 +61,7 @@ Des previsions de vente fiables sont essentielles pour piloter votre activite.
 ### Fonction DROITEREG
 
 ```excel
-=DROITEREG(Ventes;Periodes)     ' Retourne pente et ordonnee
+=DROITEREG(Ventes;Périodes)     ' Retourne pente et ordonnee
 ```
 
 ## Regression lineaire
@@ -69,14 +69,14 @@ Des previsions de vente fiables sont essentielles pour piloter votre activite.
 ### Equation de la droite
 
 ```
-Y = a*X + b
+Y = à*X + b
 ```
 
 ### Calcul des coefficients
 
 ```excel
-=PENTE(Ventes;Periodes)         ' Coefficient a
-=ORDONNEE.ORIGINE(Ventes;Periodes)  ' Coefficient b
+=PENTE(Ventes;Périodes)         ' Coefficient à
+=ORDONNEE.ORIGINE(Ventes;Périodes)  ' Coefficient b
 ```
 
 ### Prevision
@@ -88,7 +88,7 @@ Y = a*X + b
 ## Coefficient de determination (R2)
 
 ```excel
-=COEFFICIENT.DETERMINATION(Ventes;Periodes)
+=COEFFICIENT.DETERMINATION(Ventes;Périodes)
 ```
 
 Plus R2 est proche de 1, meilleure est la prevision.
@@ -138,7 +138,7 @@ Plus R2 est proche de 1, meilleure est la prevision.
 
 ## Pipeline commercial
 
-### Structure du pipeline
+### Structuré du pipeline
 
 | Opportunite | Montant | Probabilite | Pondere |
 |-------------|---------|-------------|---------|
@@ -151,7 +151,7 @@ Plus R2 est proche de 1, meilleure est la prevision.
 
 ```excel
 =B2*C2                         ' Montant pondere
-=SOMME.SI(Pipeline[Etape];"Negotiation";Pipeline[Pondere])
+=SOMME.SI(Pipeline[Étape];"Negotiation";Pipeline[Pondere])
 ```
 
 ## Previsions par produit
@@ -171,11 +171,11 @@ Plus R2 est proche de 1, meilleure est la prevision.
 
 ## Graphique de prevision
 
-### Creer un graphique avec prevision
+### Créer un graphique avec prevision
 
-1. Selectionnez vos donnees historiques
+1. Sélectionnez vos données historiques
 2. **Insertion** > **Graphique** > **Courbes**
-3. **Conception** > **Ajouter un element** > **Courbe de tendance**
+3. **Conception** > **Ajouter un élément** > **Courbe de tendance**
 
 ### Options de courbe de tendance
 
@@ -186,7 +186,7 @@ Plus R2 est proche de 1, meilleure est la prevision.
 
 ## Tableau de bord des previsions
 
-### Structure recommandee
+### Structuré recommandée
 
 | KPI | Historique | Prevision | Ecart |
 |-----|------------|-----------|-------|
@@ -203,7 +203,7 @@ Plus R2 est proche de 1, meilleure est la prevision.
 | Nouveau produit | +X% |
 | Perte client majeur | -Y% |
 | Saisonnalite | Indice |
-| Economie | +/- Z% |
+| Économie | +/- Z% |
 
 ### Formule ajustee
 
@@ -228,10 +228,10 @@ Plus R2 est proche de 1, meilleure est la prevision.
 
 ## Bonnes pratiques
 
-1. **Utilisez** plusieurs methodes
+1. **Utilisez** plusieurs méthodes
 2. **Ajustez** avec le contexte metier
 3. **Suivez** la precision
-4. **Revisez** regulierement
+4. **Révisez** régulièrement
 5. **Documentez** vos hypotheses
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

@@ -2,37 +2,37 @@
 title: "10 Erreurs Courantes avec les Plages Dynamiques Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Evitez ces erreurs courantes avec les tableaux dynamiques Excel 365."
-description: "Les 10 erreurs frequentes avec les plages dynamiques et comment les eviter."
+excerpt: "Évitez ces erreurs courantes avec les tableaux dynamiques Excel 365."
+description: "Les 10 erreurs frequentes avec les plages dynamiques et comment les éviter."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
+catégories: ["Excel 365", "Formules Excel"]
 tags: ["Tableaux dynamiques", "Erreurs", "Excel 365", "Depannage"]
 ---
 
 # 10 Erreurs avec les Plages Dynamiques
 
-Evitez ces pieges courants avec les fonctions de tableaux dynamiques.
+Évitez ces pieges courants avec les fonctions de tableaux dynamiques.
 
 ## Erreur 1 : Espace insuffisant
 
-### Probleme
+### Problème
 
 #PROPAGATION apparait car des cellules ne sont pas vides.
 
 ### Solution
 
 - Liberez l'espace sous la formule
-- Ou utilisez PRENDRE pour limiter les resultats
+- Ou utilisez PRENDRE pour limiter les résultats
 
-## Erreur 2 : Reference a la plage entiere
+## Erreur 2 : Référence à la plage entière
 
-### Probleme
+### Problème
 
 ```excel
 =FILTRE(A:D;B:B="Paris")
 ```
 
-Peut etre lent ou retourner des erreurs.
+Peut etre lent où retourner des erreurs.
 
 ### Solution
 
@@ -44,23 +44,23 @@ Delimitez la plage :
 
 ## Erreur 3 : Oublier si_vide dans FILTRE
 
-### Probleme
+### Problème
 
 ```excel
 =FILTRE(A:D;B:B="Inexistant")
 ```
 
-Retourne #CALC! si aucun resultat.
+Retourne #CALC! si aucun résultat.
 
 ### Solution
 
 ```excel
-=FILTRE(A:D;B:B="Inexistant";"Aucun resultat")
+=FILTRE(A:D;B:B="Inexistant";"Aucun résultat")
 ```
 
-## Erreur 4 : Tailles de plages differentes
+## Erreur 4 : Tailles de plages différentes
 
-### Probleme
+### Problème
 
 ```excel
 =FILTRE(A1:A100;B1:B50="Oui")
@@ -74,13 +74,13 @@ Assurez-vous que les plages ont le meme nombre de lignes.
 
 ## Erreur 5 : Imbriquer sans precaution
 
-### Probleme
+### Problème
 
 ```excel
 =TRIER(FILTRE(UNIQUE(...)))
 ```
 
-Difficile a debuguer si erreur.
+Difficile à debuguer si erreur.
 
 ### Solution
 
@@ -94,11 +94,11 @@ Utilisez LET pour decomposer :
 )
 ```
 
-## Erreur 6 : Reference circulaire indirecte
+## Erreur 6 : Référence circulaire indirecte
 
-### Probleme
+### Problème
 
-Une formule dynamique reference sa propre zone de propagation.
+Une formule dynamique référence sa propre zone de propagation.
 
 ### Solution
 
@@ -108,7 +108,7 @@ Placez la formule dans une zone isolee.
 
 ### TRIER
 
-Trie sur une colonne du tableau lui-meme.
+Trie sûr une colonne du tableau lui-meme.
 
 ### TRIERPAR
 
@@ -120,21 +120,21 @@ Trie selon un tableau externe.
 
 ## Erreur 8 : Index incorrect dans PRENDRE
 
-### Probleme
+### Problème
 
 ```excel
 =PRENDRE(A1:D10;5;3)
 ```
 
-L'index depasse la taille du tableau.
+L'index dépasse la taille du tableau.
 
 ### Solution
 
-Verifiez les dimensions avec LIGNES et COLONNES.
+Vérifiez les dimensions avec LIGNES et COLONNES.
 
-## Erreur 9 : Attendre un resultat unique
+## Erreur 9 : Attendre un résultat unique
 
-### Probleme
+### Problème
 
 ```excel
 =RECHERCHEX(A1;B:B;C:D)
@@ -144,14 +144,14 @@ Retourne plusieurs colonnes alors qu'on n'en attendait qu'une.
 
 ### Solution
 
-Specifiez une seule colonne de retour ou utilisez INDEX pour extraire.
+Specifiez une seule colonne de retour où utilisez INDEX pour extraire.
 
 ## Erreur 10 : Ignorer l'ordre des arguments
 
 ### FILTRE
 
 ```excel
-=FILTRE(donnees;condition;si_vide)
+=FILTRE(données;condition;si_vide)
 ```
 
 ### UNIQUE
@@ -174,8 +174,8 @@ Les arguments optionnels ont un sens precis.
 ## Bonnes pratiques
 
 1. **Utilisez** LET pour decomposer
-2. **Prevoyez** l'espace necessaire
-3. **Testez** avec peu de donnees
+2. **Prevoyez** l'espace nécessaire
+3. **Testez** avec peu de données
 4. **Documentez** les formules complexes
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

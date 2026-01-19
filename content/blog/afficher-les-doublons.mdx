@@ -1,33 +1,33 @@
 ---
-title: "Afficher les Doublons Excel : Toutes les Methodes"
+title: "Afficher les Doublons Excel : Toutes les Méthodes"
 date: "2024-07-10"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a identifier et mettre en evidence les doublons dans Excel avec differentes techniques."
-description: "Guide complet pour afficher, identifier et gerer les doublons dans Excel. Mise en forme conditionnelle, formules et fonctionnalites integrees."
-category: "Manipulation de donnees"
-categories: ["Manipulation de donnees", "Astuces Excel"]
-tags: ["Doublons", "Mise en forme conditionnelle", "Donnees", "Nettoyage"]
+excerpt: "Apprenez à identifier et mettre en evidence les doublons dans Excel avec différentes techniques."
+description: "Guide complet pour afficher, identifier et gérer les doublons dans Excel. Mise en forme conditionnelle, formules et fonctionnalités intégrées."
+category: "Manipulation de données"
+catégories: ["Manipulation de données", "Astuces Excel"]
+tags: ["Doublons", "Mise en forme conditionnelle", "Données", "Nettoyage"]
 ---
 
 # Afficher les Doublons dans Excel
 
-Identifier les doublons est essentiel pour maintenir des donnees propres et fiables. Voici toutes les methodes pour les reperer.
+Identifier les doublons est essentiel pour maintenir des données propres et fiables. Voici toutes les méthodes pour les reperer.
 
-## Methode 1 : Mise en forme conditionnelle
+## Méthode 1 : Mise en forme conditionnelle
 
-### Etapes
+### Étapes
 
-1. Selectionnez votre plage de donnees
+1. Sélectionnez votre plage de données
 2. **Accueil** > **Mise en forme conditionnelle**
-3. **Regles de mise en surbrillance** > **Valeurs en double**
+3. **Règles de mise en surbrillance** > **Valeurs en double**
 4. Choisissez un format (couleur de remplissage)
 5. **OK**
 
-### Resultat
+### Résultat
 
 Les cellules contenant des doublons sont automatiquement colorees.
 
-## Methode 2 : Formule NB.SI
+## Méthode 2 : Formule NB.SI
 
 ### Compter les occurrences
 
@@ -45,56 +45,56 @@ Cette formule compte combien de fois la valeur de A1 apparait dans la colonne A.
 
 Affiche "Doublon" si la valeur apparait plus d'une fois.
 
-### Marquer la premiere occurrence
+### Marquer la première occurrence
 
 ```excel
 =SI(NB.SI($A$1:A1; A1)>1; "Doublon"; "")
 ```
 
-Laisse la premiere occurrence vide, marque les suivantes.
+Laisse la première occurrence vide, marque les suivantes.
 
-## Methode 3 : Mise en forme conditionnelle avancee
+## Méthode 3 : Mise en forme conditionnelle avancée
 
-### Regle personnalisee
+### Règle personnalisee
 
-1. Selectionnez la plage
-2. **Mise en forme conditionnelle** > **Nouvelle regle**
+1. Sélectionnez la plage
+2. **Mise en forme conditionnelle** > **Nouvelle règle**
 3. **Utiliser une formule**
 4. Entrez : `=NB.SI($A$1:$A$100;A1)>1`
-5. Definissez le format
+5. Définissez le format
 6. **OK**
 
 ### Avantage
 
-Permet de personnaliser completement le format des doublons.
+Permet de personnaliser complètement le format des doublons.
 
-## Methode 4 : Filtre avance
+## Méthode 4 : Filtre avancé
 
 ### Afficher uniquement les doublons
 
-1. Copiez vos donnees dans une zone de criteres
-2. **Donnees** > **Avance** (dans Trier et filtrer)
-3. Selectionnez **Copier vers un autre emplacement**
+1. Copiez vos données dans une zone de critères
+2. **Données** > **Avancé** (dans Trier et filtrer)
+3. Sélectionnez **Copier vers un autre emplacement**
 4. Cochez **Uniquement des enregistrements uniques**
 
 ### Comparer les listes
 
 La liste filtree ne contient que les valeurs uniques. Comparez avec l'original pour identifier les doublons.
 
-## Methode 5 : Tableau croise dynamique
+## Méthode 5 : Tableau croisé dynamique
 
-### Etapes
+### Étapes
 
-1. Inserez un tableau croise dynamique
-2. Placez le champ a analyser en **Lignes**
+1. Insérez un tableau croisé dynamique
+2. Placez le champ à analyser en **Lignes**
 3. Placez le meme champ en **Valeurs** (Nombre)
 4. Filtrez les valeurs > 1
 
-### Resultat
+### Résultat
 
 Vous obtenez la liste des valeurs qui apparaissent plusieurs fois et leur frequence.
 
-## Doublons sur plusieurs colonnes
+## Doublons sûr plusieurs colonnes
 
 ### Concatener pour comparer
 
@@ -102,7 +102,7 @@ Vous obtenez la liste des valeurs qui apparaissent plusieurs fois et leur freque
 =A1&B1&C1
 ```
 
-Cree une valeur unique basee sur plusieurs colonnes.
+Créé une valeur unique basee sûr plusieurs colonnes.
 
 ### Formule complete
 
@@ -124,7 +124,7 @@ Identifier les clients enregistres plusieurs fois.
 
 ### Factures
 
-Reperer les numeros de factures en double.
+Reperer les numéros de factures en double.
 
 ### Emails
 
@@ -132,20 +132,20 @@ Trouver les adresses email dupliquees.
 
 ## Supprimer les doublons
 
-### Fonctionnalite integree
+### Fonctionnalité intégrée
 
-1. Selectionnez vos donnees
-2. **Donnees** > **Supprimer les doublons**
-3. Cochez les colonnes a considerer
+1. Sélectionnez vos données
+2. **Données** > **Supprimer les doublons**
+3. Cochez les colonnes à considerer
 4. **OK**
 
 ### Attention
 
 Cette action est irreversible. Faites une copie avant.
 
-## Couleurs differentes par type
+## Couleurs différentes par type
 
-### Premiere occurrence en vert
+### Première occurrence en vert
 
 Formule : `=NB.SI($A$1:A1;A1)=1`
 
@@ -161,7 +161,7 @@ Formule : `=NB.SI($A$1:A1;A1)>1`
 =SOMME(SI(NB.SI(A1:A100;A1:A100)>1;1/NB.SI(A1:A100;A1:A100)))
 ```
 
-(Valider avec Ctrl + Maj + Entree dans les anciennes versions)
+(Valider avec Ctrl + Maj + Entrée dans les anciennes versions)
 
 ### Nombre de valeurs uniques
 
@@ -172,8 +172,8 @@ Formule : `=NB.SI($A$1:A1;A1)>1`
 ## Bonnes pratiques
 
 1. **Sauvegardez** avant toute modification
-2. **Verifiez** les espaces invisibles (utilisez SUPPRESPACE)
-3. **Uniformisez** la casse si necessaire (MAJUSCULE/MINUSCULE)
+2. **Vérifiez** les espaces invisibles (utilisez SUPPRESPACE)
+3. **Uniformisez** la casse si nécessaire (MAJUSCULE/MINUSCULE)
 4. **Attention** aux formats (texte vs nombre)
 
 ## Erreurs courantes
@@ -184,13 +184,13 @@ Formule : `=NB.SI($A$1:A1;A1)>1`
 =SUPPRESPACE(A1)
 ```
 
-### Problemes de casse
+### Problèmes de casse
 
 ```excel
 =EXACT(A1; B1)
 ```
 
-Comparaison sensible a la casse.
+Comparaison sensible à la casse.
 
 ### Format texte vs nombre
 
@@ -199,4 +199,4 @@ Convertissez avec :
 =CNUM(A1)
 ```
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

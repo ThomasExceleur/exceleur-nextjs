@@ -1,79 +1,79 @@
 ---
-title: "Introduction a Power Pivot : Modeliser vos Donnees avec DAX"
+title: "Introduction à Power Pivot : Modeliser vos Données avec DAX"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Decouvrez Power Pivot et le langage DAX pour modeliser vos donnees."
-description: "Introduction a Power Pivot et DAX pour la modelisation de donnees."
+excerpt: "Découvrez Power Pivot et le langage DAX pour modeliser vos données."
+description: "Introduction à Power Pivot et DAX pour la modelisation de données."
 category: "Power Pivot"
-categories: ["Power Pivot", "Analyse de donnees Excel"]
+catégories: ["Power Pivot", "Analyse de données Excel"]
 tags: ["Power Pivot", "DAX", "Modelisation", "Analyse"]
 ---
 
-# Introduction a Power Pivot : Modeliser vos Donnees avec DAX
+# Introduction à Power Pivot : Modeliser vos Données avec DAX
 
-Power Pivot transforme Excel en outil d'analyse de donnees puissant.
+Power Pivot transforme Excel en outil d'analyse de données puissant.
 
 ## Qu'est-ce que Power Pivot ?
 
-### Definition
+### Définition
 
 Power Pivot est un complement Excel pour :
-- Gerer des millions de lignes
-- Creer des modeles de donnees
-- Ecrire des formules DAX
+- Gérer des millions de lignes
+- Créer des modèles de données
+- Écrire des formules DAX
 
 ### Activer Power Pivot
 
 1. **Fichier** > **Options** > **Complements**
-2. Gerer : Complements COM
+2. Gérer : Complements COM
 3. Cochez Microsoft Power Pivot for Excel
 
-## Le modele de donnees
+## Le modèle de données
 
 ### Concept
 
-Un modele de donnees relie plusieurs tables entre elles.
+Un modèle de données relie plusieurs tables entre elles.
 
 ### Composants
 
-| Element | Description |
+| Élément | Description |
 |---------|-------------|
-| Tables | Ensembles de donnees |
+| Tables | Ensembles de données |
 | Relations | Liens entre tables |
 | Mesures | Calculs DAX |
 | Colonnes calculees | Valeurs derivees |
 
-## Importer des donnees
+## Importer des données
 
 ### Sources
 
 - Fichiers Excel
-- Bases de donnees SQL
+- Bases de données SQL
 - Fichiers CSV
 - Sources web
 
-### Methode
+### Méthode
 
-1. **Power Pivot** > **Gerer**
-2. **Accueil** > **Obtenir des donnees externes**
-3. Selectionnez la source
+1. **Power Pivot** > **Gérer**
+2. **Accueil** > **Obtenir des données externes**
+3. Sélectionnez la source
 
-## Creer des relations
+## Créer des relations
 
 ### Types de relations
 
 | Type | Description |
 |------|-------------|
-| Un a plusieurs | Le plus courant |
-| Un a un | Cas particuliers |
+| Un à plusieurs | Le plus courant |
+| Un à un | Cas particuliers |
 
 ### Etablir une relation
 
 1. **Diagramme** dans Power Pivot
-2. Glissez un champ sur l'autre
-3. Ou **Conception** > **Creer une relation**
+2. Glissez un champ sûr l'autre
+3. Ou **Conception** > **Créer une relation**
 
-## Introduction a DAX
+## Introduction à DAX
 
 ### Qu'est-ce que DAX ?
 
@@ -108,8 +108,8 @@ Ventes France = CALCULATE(
 
 ### Colonnes calculees
 
-- Calculees a l'import
-- Stockees dans le modele
+- Calculees à l'import
+- Stockees dans le modèle
 - Utilisent le contexte de ligne
 
 ```dax
@@ -118,7 +118,7 @@ Marge = [PrixVente] - [Cout]
 
 ### Mesures
 
-- Calculees a la volee
+- Calculees à la volee
 - Non stockees
 - Utilisent le contexte de filtre
 
@@ -151,7 +151,7 @@ DIVIDE(
 ### Variation annuelle
 
 ```dax
-Ventes Annee Precedente =
+Ventes Année Précédente =
 CALCULATE(
     SUM(Ventes[Montant]);
     SAMEPERIODLASTYEAR(Calendrier[Date])
@@ -169,7 +169,7 @@ TOTALYTD(SUM(Ventes[Montant]); Calendrier[Date])
 
 ### Ajouter une mesure
 
-1. Creez la mesure dans Power Pivot
+1. Créez la mesure dans Power Pivot
 2. Elle apparait dans les champs du TCD
 3. Glissez dans les valeurs
 
@@ -179,15 +179,15 @@ TOTALYTD(SUM(Ventes[Montant]); Calendrier[Date])
 |----------|-------------|
 | Nommage | Noms clairs pour les mesures |
 | Documentation | Commentez les calculs complexes |
-| Performance | Evitez les colonnes calculees inutiles |
-| Test | Verifiez avec des valeurs connues |
+| Performance | Évitez les colonnes calculees inutiles |
+| Test | Vérifiez avec des valeurs connues |
 
 ## Erreurs courantes
 
 | Erreur | Cause | Solution |
 |--------|-------|----------|
 | Valeur vide | Division par zero | Utilisez DIVIDE() |
-| Contexte incorrect | Mauvaise comprehension | Etudiez le contexte |
+| Contexte incorrect | Mauvaise compréhension | Etudiez le contexte |
 | Performance | Calculs lourds | Optimisez les mesures |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

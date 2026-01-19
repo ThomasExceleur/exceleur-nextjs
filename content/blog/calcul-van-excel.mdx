@@ -2,24 +2,24 @@
 title: "Calculer la VAN dans Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Maitrisez le calcul de la Valeur Actuelle Nette (VAN) dans Excel."
+excerpt: "Maîtrisez le calcul de la Valeur Actuelle Nette (VAN) dans Excel."
 description: "Guide pour calculer la VAN (Valeur Actuelle Nette) dans Excel."
 category: "Finance"
-categories: ["Finance", "Calculs"]
+catégories: ["Finance", "Calculs"]
 tags: ["VAN", "NPV", "Finance", "Investissement", "Calculs"]
 ---
 
 # Calculer la VAN dans Excel
 
-La Valeur Actuelle Nette est essentielle pour evaluer la rentabilite d'un projet.
+La Valeur Actuelle Nette est essentielle pour évaluer la rentabilite d'un projet.
 
 ## Qu'est-ce que la VAN ?
 
-### Definition
+### Définition
 
 La VAN mesure la valeur actuelle des flux de tresorerie futurs, moins l'investissement initial.
 
-### Interpretation
+### Interprétation
 
 | VAN | Decision |
 |-----|----------|
@@ -37,7 +37,7 @@ La VAN mesure la valeur actuelle des flux de tresorerie futurs, moins l'investis
 
 ### Attention
 
-VAN dans Excel commence a la periode 1. L'investissement initial doit etre ajoute separement.
+VAN dans Excel commence à la période 1. L'investissement initial doit etre ajoute separement.
 
 ### Formule correcte
 
@@ -49,9 +49,9 @@ L'investissement initial est negatif.
 
 ## Exemple pratique
 
-### Donnees du projet
+### Données du projet
 
-| Periode | Flux |
+| Période | Flux |
 |---------|------|
 | 0 (Initial) | -100000 |
 | 1 | 30000 |
@@ -69,7 +69,7 @@ Taux d'actualisation : 10%
 
 Ou B2 contient -100000 et B3:B6 les flux futurs.
 
-### Resultat
+### Résultat
 
 VAN = 13 421 € (projet rentable)
 
@@ -96,7 +96,7 @@ VAN = 13 421 € (projet rentable)
 
 ## Taux de Rendement Interne (TRI)
 
-### Definition
+### Définition
 
 Le TRI est le taux qui annule la VAN.
 
@@ -116,7 +116,7 @@ Inclut l'investissement initial dans les valeurs.
 
 ### TRI.PAIEMENTS
 
-Pour des flux a dates irregulieres :
+Pour des flux à dates irregulieres :
 
 ```excel
 =TRI.PAIEMENTS(valeurs;dates;[estimation])
@@ -126,7 +126,7 @@ Pour des flux a dates irregulieres :
 
 ### Tableau comparatif
 
-| Critere | Projet A | Projet B |
+| Critère | Projet A | Projet B |
 |---------|----------|----------|
 | Investissement | -100000 | -150000 |
 | VAN (10%) | 15000 | 22000 |
@@ -135,24 +135,24 @@ Pour des flux a dates irregulieres :
 ### Quelle decision ?
 
 - Si budget limite : Projet A (meilleur TRI)
-- Si maximisation valeur : Projet B (VAN plus elevee)
+- Si maximisation valeur : Projet B (VAN plus élevée)
 
 ## Analyse de sensibilite
 
 ### Impact du taux
 
-Testez differents taux d'actualisation :
+Testez différents taux d'actualisation :
 
 ```excel
 =VAN($A$2;$B$3:$B$6)+$B$2
 ```
 
-Puis copiez avec differents taux en A2.
+Puis copiez avec différents taux en A2.
 
-### Table de donnees
+### Table de données
 
-1. **Donnees** > **Analyse de scenarios** > **Table de donnees**
-2. Variez le taux pour voir l'impact sur la VAN
+1. **Données** > **Analyse de scenarios** > **Table de données**
+2. Variez le taux pour voir l'impact sûr la VAN
 
 ## Formule de calcul manuel
 
@@ -178,7 +178,7 @@ Puis copiez avec differents taux en A2.
 
 ### 2. Mauvaise periodicite
 
-Le taux doit correspondre a la periode des flux :
+Le taux doit correspondre à la période des flux :
 - Flux annuels → taux annuel
 - Flux mensuels → taux mensuel
 
@@ -193,15 +193,15 @@ Le taux doit correspondre a la periode des flux :
 |----------|-------------|
 | Documentation | Notez les hypotheses |
 | Sensibilite | Testez plusieurs taux |
-| Comparaison | Evaluez plusieurs projets |
-| Risque | Integrez une prime de risque |
+| Comparaison | Évaluez plusieurs projets |
+| Risque | Intégrez une prime de risque |
 
-## Modele complet
+## Modèle complet
 
-Creez un tableau avec :
+Créez un tableau avec :
 - Hypotheses (taux, duree)
 - Flux de tresorerie
 - Calcul VAN et TRI
 - Graphique des flux actualises
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

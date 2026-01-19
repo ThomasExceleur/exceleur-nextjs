@@ -2,18 +2,18 @@
 title: "Les Fonctions TRIER et TRIERPAR dans Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a utiliser TRIER et TRIERPAR pour ordonner vos donnees dynamiquement."
-description: "Guide des fonctions TRIER et TRIERPAR dans Excel 365. Tri dynamique des donnees."
+excerpt: "Apprenez à utiliser TRIER et TRIERPAR pour ordonner vos données dynamiquement."
+description: "Guide des fonctions TRIER et TRIERPAR dans Excel 365. Tri dynamique des données."
 category: "Formules Excel"
-categories: ["Formules Excel", "Excel 365"]
+catégories: ["Formules Excel", "Excel 365"]
 tags: ["TRIER", "TRIERPAR", "Tri", "Excel 365"]
 ---
 
 # Les Fonctions TRIER et TRIERPAR
 
-Ces fonctions permettent de trier des donnees dynamiquement avec des formules.
+Ces fonctions permettent de trier des données dynamiquement avec des formules.
 
-## Disponibilite
+## Disponibilité
 
 - Excel 365
 - Excel 2021
@@ -31,7 +31,7 @@ Ces fonctions permettent de trier des donnees dynamiquement avec des formules.
 
 | Argument | Description | Par defaut |
 |----------|-------------|------------|
-| tableau | Donnees a trier | Requis |
+| tableau | Données à trier | Requis |
 | index_tri | Colonne de tri | 1 |
 | ordre_tri | 1=croissant, -1=decroissant | 1 |
 | par_col | VRAI=colonnes, FAUX=lignes | FAUX |
@@ -39,8 +39,8 @@ Ces fonctions permettent de trier des donnees dynamiquement avec des formules.
 ### Exemples
 
 ```excel
-=TRIER(A2:D100)                ' Tri sur 1ere colonne
-=TRIER(A2:D100;3)              ' Tri sur 3e colonne
+=TRIER(A2:D100)                ' Tri sûr 1ere colonne
+=TRIER(A2:D100;3)              ' Tri sûr 3e colonne
 =TRIER(A2:D100;2;-1)           ' 2e colonne, decroissant
 ```
 
@@ -63,11 +63,11 @@ Trier un tableau selon les valeurs d'un autre tableau.
 =TRIERPAR(A2:A100;B2:B100;-1)  ' Decroissant
 ```
 
-## Tri sur plusieurs criteres
+## Tri sûr plusieurs critères
 
 ### Avec TRIER (non possible directement)
 
-Utilisez TRIERPAR pour plusieurs criteres.
+Utilisez TRIERPAR pour plusieurs critères.
 
 ### Avec TRIERPAR
 
@@ -105,7 +105,7 @@ Trie d'abord par C (croissant), puis par B (decroissant).
 =TRIER(FILTRE(A2:D100;C2:C100>1000);4;-1)
 ```
 
-Filtre puis trie les resultats.
+Filtre puis trie les résultats.
 
 ### TRIER + UNIQUE
 
@@ -131,8 +131,8 @@ Le dernier argument VRAI indique un tri par colonnes.
 |-----------------|---------------|
 | Dynamique | Statique |
 | Formule | Manuel |
-| Resultat separe | Sur place |
-| Auto-actualisation | Re-tri necessaire |
+| Résultat séparé | Sur place |
+| Auto-actualisation | Re-tri nécessaire |
 
 ## Erreurs courantes
 
@@ -148,18 +148,18 @@ Liberez l'espace de sortie.
 
 ## Bonnes pratiques
 
-1. **Verifiez** l'index de colonne
-2. **Prevoyez** l'espace pour les resultats
+1. **Vérifiez** l'index de colonne
+2. **Prevoyez** l'espace pour les résultats
 3. **Combinez** avec PRENDRE pour limiter
 4. **Utilisez** TRIERPAR pour les tris complexes
 
-## Resume
+## Résumé
 
 | Objectif | Formule |
 |----------|---------|
 | Tri simple | `=TRIER(A:D)` |
 | Tri decroissant | `=TRIER(A:D;1;-1)` |
 | Tri par autre colonne | `=TRIERPAR(A:B;C:C)` |
-| Multi-criteres | `=TRIERPAR(A:D;B:B;1;C:C;-1)` |
+| Multi-critères | `=TRIERPAR(A:D;B:B;1;C:C;-1)` |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

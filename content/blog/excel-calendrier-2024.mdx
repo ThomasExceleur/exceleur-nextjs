@@ -1,35 +1,35 @@
 ---
-title: "Excel Calendrier 2024 : Creez votre Propre Calendrier"
+title: "Excel Calendrier 2024 : Créez votre Propre Calendrier"
 date: "2024-07-18"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a creer un calendrier personnalise dans Excel ou telechargez nos modeles gratuits."
-description: "Guide pour creer un calendrier Excel 2024. Modeles gratuits, formules automatiques et personnalisation complete."
-category: "Modeles"
-categories: ["Modeles", "Productivite"]
-tags: ["Calendrier", "2024", "Modele", "Planning"]
+excerpt: "Apprenez à créer un calendrier personnalise dans Excel où téléchargez nos modèles gratuits."
+description: "Guide pour créer un calendrier Excel 2024. Modèles gratuits, formules automatiques et personnalisation complete."
+category: "Modèles"
+catégories: ["Modèles", "Productivité"]
+tags: ["Calendrier", "2024", "Modèle", "Planning"]
 ---
 
 # Excel Calendrier 2024 : Guide Complet
 
-Creez votre propre calendrier Excel ou utilisez nos modeles pour organiser votre annee.
+Créez votre propre calendrier Excel où utilisez nos modèles pour organiser votre année.
 
-## Telecharger un modele
+## Télécharger un modèle
 
-### Modeles integres a Excel
+### Modèles intégrés à Excel
 
 1. **Fichier** > **Nouveau**
 2. Recherchez "calendrier"
-3. Choisissez parmi les modeles proposes
+3. Choisissez parmi les modèles proposes
 
-### Notre modele gratuit
+### Notre modèle gratuit
 
-Inscrivez-vous a notre newsletter pour recevoir notre modele de calendrier Excel personnalisable.
+Inscrivez-vous à notre newsletter pour recevoir notre modèle de calendrier Excel personnalisable.
 
-## Creer un calendrier de zero
+## Créer un calendrier de zero
 
-### Structure de base
+### Structuré de base
 
-Creez une grille avec :
+Créez une grille avec :
 - 7 colonnes (Lun-Dim)
 - 5-6 lignes par mois
 
@@ -56,18 +56,18 @@ Retourne 1 pour lundi, 7 pour dimanche.
 
 ## Calendrier mensuel automatique
 
-### Etape 1 : Configuration
+### Étape 1 : Configuration
 
-1. Creez une cellule pour le mois (ex: A1 = janvier 2024)
-2. Creez les en-tetes Lun-Dim en ligne 3
+1. Créez une cellule pour le mois (ex: A1 = janvier 2024)
+2. Créez les en-têtes Lun-Dim en ligne 3
 
-### Etape 2 : Premier jour du mois
+### Étape 2 : Premier jour du mois
 
 ```excel
 =DATE(ANNEE($A$1);MOIS($A$1);1)
 ```
 
-### Etape 3 : Remplir le calendrier
+### Étape 3 : Remplir le calendrier
 
 ```excel
 =SI(MOIS(B4+1)=MOIS($A$1);B4+1;"")
@@ -77,8 +77,8 @@ Retourne 1 pour lundi, 7 pour dimanche.
 
 ### Surligner les week-ends
 
-1. Selectionnez les dates
-2. **Mise en forme conditionnelle** > **Nouvelle regle**
+1. Sélectionnez les dates
+2. **Mise en forme conditionnelle** > **Nouvelle règle**
 3. Formule : `=OU(JOURSEM(A1;2)=6;JOURSEM(A1;2)=7)`
 4. Choisissez une couleur de fond
 
@@ -88,7 +88,7 @@ Formule : `=A1=AUJOURDHUI()`
 
 ### Surligner les jours feries
 
-Creez une liste de jours feries et utilisez :
+Créez une liste de jours feries et utilisez :
 ```excel
 =NB.SI(JoursFeries;A1)>0
 ```
@@ -97,7 +97,7 @@ Creez une liste de jours feries et utilisez :
 
 ### Vue d'ensemble
 
-Creez 12 petits calendriers sur une seule page pour une vue annuelle.
+Créez 12 petits calendriers sûr une seule page pour une vue annuelle.
 
 ### Formule pour chaque mois
 
@@ -105,15 +105,15 @@ Creez 12 petits calendriers sur une seule page pour une vue annuelle.
 =MOIS.DECALER(DATE(2024;1;1);NumeroMois-1;0)
 ```
 
-## Fonctionnalites avancees
+## Fonctionnalités avancées
 
 ### Ajouter des evenements
 
-1. Creez une feuille "Evenements" avec dates et descriptions
+1. Créez une feuille "Événements" avec dates et descriptions
 2. Utilisez RECHERCHEV pour afficher les evenements
 
 ```excel
-=SIERREUR(RECHERCHEV(A1;Evenements!A:B;2;FAUX);"")
+=SIERREUR(RECHERCHEV(A1;Événements!A:B;2;FAUX);"")
 ```
 
 ### Compteur de jours
@@ -121,7 +121,7 @@ Creez 12 petits calendriers sur une seule page pour une vue annuelle.
 ```excel
 =AUJOURDHUI()-DATE(2024;1;1)+1
 ```
-Affiche le numero du jour dans l'annee.
+Affiche le numéro du jour dans l'année.
 
 ## Imprimer le calendrier
 
@@ -129,13 +129,13 @@ Affiche le numero du jour dans l'annee.
 
 1. **Mise en page** > **Orientation** : Paysage
 2. Ajustez les marges
-3. Verifiez l'apercu
+3. Vérifiez l'apercu
 
 ### Conseils
 
 - Utilisez des bordures claires
 - Augmentez la taille des cellules
-- Ajoutez un en-tete avec l'annee
+- Ajoutez un en-tête avec l'année
 
 ## Synchronisation avec Outlook
 
@@ -145,11 +145,11 @@ Pour synchroniser avec votre calendrier Outlook :
 2. Importez dans Outlook
 3. Ou utilisez Power Automate pour l'automatisation
 
-## Modeles pour cas specifiques
+## Modèles pour cas spécifiques
 
 - **Calendrier scolaire** : Avec vacances et rentrees
 - **Calendrier editorial** : Pour planifier les publications
-- **Calendrier de projet** : Avec jalons et echeances
+- **Calendrier de projet** : Avec jalons et échéances
 - **Calendrier d'equipe** : Pour les conges et presences
 
-[Decouvrir la formation Excel Avance](/formations-excel/excel-avance)
+[Découvrir la formation Excel Avancé](/formations-excel/excel-avancé)

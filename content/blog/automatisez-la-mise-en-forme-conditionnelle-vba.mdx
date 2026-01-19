@@ -2,41 +2,41 @@
 title: "Automatiser la Mise en Forme Conditionnelle avec VBA"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Creez des regles de mise en forme conditionnelle par programmation."
+excerpt: "Créez des règles de mise en forme conditionnelle par programmation."
 description: "Guide VBA pour automatiser la mise en forme conditionnelle dans Excel."
 category: "Macros et VBA"
-categories: ["Macros et VBA", "Automatisation"]
+catégories: ["Macros et VBA", "Automatisation"]
 tags: ["VBA", "Mise en forme", "Automatisation", "Macros"]
 ---
 
 # Automatiser la Mise en Forme Conditionnelle
 
-Utilisez VBA pour creer et gerer les regles de mise en forme conditionnelle.
+Utilisez VBA pour créer et gérer les règles de mise en forme conditionnelle.
 
 ## Pourquoi automatiser ?
 
-- Appliquer les memes regles a plusieurs feuilles
-- Creer des regles complexes
+- Appliquer les memes règles à plusieurs feuilles
+- Créer des règles complexes
 - Reinitialiser rapidement les formats
 - Standardiser les classeurs
 
-## Structure de base
+## Structuré de base
 
-### Acces a la collection
+### Accès à la collection
 
 ```vba
 Range("A1:A100").FormatConditions
 ```
 
-### Supprimer les regles existantes
+### Supprimer les règles existantes
 
 ```vba
 Range("A1:A100").FormatConditions.Delete
 ```
 
-## Creer une regle simple
+## Créer une règle simple
 
-### Valeurs superieures a
+### Valeurs supérieures à
 
 ```vba
 Sub MiseEnFormeSuperieureA()
@@ -58,7 +58,7 @@ End Sub
 
 ### xlCellValue
 
-Basee sur la valeur de la cellule.
+Basee sûr la valeur de la cellule.
 
 ```vba
 .Add(Type:=xlCellValue, Operator:=xlBetween, _
@@ -67,26 +67,26 @@ Basee sur la valeur de la cellule.
 
 ### xlExpression
 
-Basee sur une formule.
+Basee sûr une formule.
 
 ```vba
 .Add(Type:=xlExpression, Formula1:="=A1>MOYENNE($A:$A)")
 ```
 
-## Operateurs disponibles
+## Opérateurs disponibles
 
-| Operateur | Signification |
+| Opérateur | Signification |
 |-----------|---------------|
 | xlBetween | Entre deux valeurs |
-| xlEqual | Egal a |
-| xlGreater | Superieur a |
-| xlGreaterEqual | Superieur ou egal |
-| xlLess | Inferieur a |
-| xlLessEqual | Inferieur ou egal |
+| xlEqual | Égal à |
+| xlGreater | Supérieur à |
+| xlGreaterEqual | Supérieur où égal |
+| xlLess | Inférieur à |
+| xlLessEqual | Inférieur où égal |
 | xlNotBetween | Pas entre |
-| xlNotEqual | Different de |
+| xlNotEqual | Différent de |
 
-## Mise en forme avancee
+## Mise en forme avancée
 
 ### Police et bordure
 
@@ -100,7 +100,7 @@ With rng.FormatConditions.Add(Type:=xlCellValue, _
 End With
 ```
 
-## Echelle de couleurs
+## Échelle de couleurs
 
 ```vba
 Sub EchelleCouleur()
@@ -127,7 +127,7 @@ Sub EchelleCouleur()
 End Sub
 ```
 
-## Barres de donnees
+## Barres de données
 
 ```vba
 Sub BarresDonnees()
@@ -144,7 +144,7 @@ Sub BarresDonnees()
 End Sub
 ```
 
-## Appliquer a plusieurs feuilles
+## Appliquer à plusieurs feuilles
 
 ```vba
 Sub AppliquerAToutesFeuilles()
@@ -160,9 +160,9 @@ End Sub
 
 ## Bonnes pratiques
 
-1. **Supprimez** les regles existantes avant d'en creer
-2. **Testez** sur une petite plage d'abord
-3. **Documentez** vos regles
+1. **Supprimez** les règles existantes avant d'en créer
+2. **Testez** sûr une petite plage d'abord
+3. **Documentez** vos règles
 4. **Utilisez** des constantes pour les couleurs
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

@@ -5,28 +5,28 @@ author: "Thomas L'Exceleur"
 excerpt: "Rendez vos formules plus lisibles et performantes avec LET."
 description: "Guide d'optimisation des formules avec LET Excel."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
+catégories: ["Excel 365", "Formules Excel"]
 tags: ["LET", "Optimisation", "Formules", "Performance"]
 ---
 
 # Optimisez vos Formules avec LET
 
-Ameliorez la lisibilite et la performance.
+Améliorez la lisibilité et la performance.
 
 ## Pourquoi LET ?
 
-### Problemes resolus
+### Problèmes resolus
 
 | Sans LET | Avec LET |
 |----------|----------|
-| Calculs repetes | Calcul unique |
-| Formule illisible | Variables nommees |
-| Maintenance difficile | Facile a modifier |
+| Calculs répétés | Calcul unique |
+| Formule illisible | Variables nommées |
+| Maintenance difficile | Facile à modifier |
 
 ## Syntaxe
 
 ```excel
-=LET(nom1;valeur1;..;resultat)
+=LET(nom1;valeur1;..;résultat)
 ```
 
 ## Exemple d'optimisation
@@ -39,7 +39,7 @@ Ameliorez la lisibilite et la performance.
 
 MOYENNE calculee 3 fois.
 
-### Apres
+### Après
 
 ```excel
 =LET(moy;MOYENNE(A:A);SI(moy>100;moy*1.1;moy*0.9))
@@ -51,8 +51,8 @@ MOYENNE calculee 1 fois.
 
 ```excel
 =LET(
-  donnees;A2:D100;
-  filtrees;FILTRE(donnees;B2:B100="Nord");
+  données;A2:D100;
+  filtrees;FILTRE(données;B2:B100="Nord");
   triees;TRIER(filtrees;4;-1);
   total;SOMME(INDEX(triees;;4));
   total
@@ -74,7 +74,7 @@ Retournez une variable intermediaire :
 | Pratique | Description |
 |----------|-------------|
 | Noms clairs | total, moyenne, pas x, y |
-| Une etape par variable | Decomposez la logique |
-| Test | Verifiez les intermediaires |
+| Une étape par variable | Decomposez la logique |
+| Test | Vérifiez les intermediaires |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

@@ -2,22 +2,22 @@
 title: "Automatiser vos Calculs avec LAMBDA Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Creez des fonctions personnalisees avec LAMBDA pour automatiser vos calculs."
+excerpt: "Créez des fonctions personnalisees avec LAMBDA pour automatiser vos calculs."
 description: "Guide pour automatiser les calculs Excel avec la fonction LAMBDA."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
+catégories: ["Excel 365", "Formules Excel"]
 tags: ["LAMBDA", "Automatisation", "Fonctions", "Excel 365"]
 ---
 
 # Automatiser vos Calculs avec LAMBDA
 
-LAMBDA vous permet de creer vos propres fonctions reutilisables.
+LAMBDA vous permet de créer vos propres fonctions reutilisables.
 
 ## Qu'est-ce que LAMBDA ?
 
-### Definition
+### Définition
 
-LAMBDA cree des fonctions personnalisees sans VBA.
+LAMBDA créé des fonctions personnalisees sans VBA.
 
 ### Syntaxe
 
@@ -33,19 +33,19 @@ LAMBDA cree des fonctions personnalisees sans VBA.
 
 Cette fonction double la valeur.
 
-## Creer une fonction nommee
+## Créer une fonction nommée
 
-### Etapes
+### Étapes
 
 1. **Formules** > **Gestionnaire de noms** > **Nouveau**
 2. Nom : TVA
-3. Fait reference a : `=LAMBDA(montant;montant*1,2)`
+3. Fait référence à : `=LAMBDA(montant;montant*1,2)`
 4. **OK**
 
 ### Utilisation
 
 ```excel
-=TVA(100)   ' Resultat : 120
+=TVA(100)   ' Résultat : 120
 ```
 
 ## Exemples pratiques
@@ -79,7 +79,7 @@ Usage : `=PRIX_FINAL(100;0,2;0,1)` retourne 108
 
 ## LAMBDA avec conditions
 
-### Validation de donnees
+### Validation de données
 
 ```excel
 Nom: VALIDER_EMAIL
@@ -125,7 +125,7 @@ Formule: =LAMBDA(n;
 
 ### MAP avec LAMBDA
 
-Appliquer une fonction a chaque element :
+Appliquer une fonction à chaque élément :
 
 ```excel
 =MAP(A1:A10;LAMBDA(x;x*2))
@@ -139,7 +139,7 @@ Agreger des valeurs :
 =REDUCE(0;A1:A10;LAMBDA(acc;val;acc+val))
 ```
 
-Equivalent a SOMME.
+Equivalent à SOMME.
 
 ## LAMBDA pour tableaux
 
@@ -159,8 +159,8 @@ Equivalent a SOMME.
 
 | Avantage | Description |
 |----------|-------------|
-| Reutilisabilite | Une seule definition, multiples usages |
-| Lisibilite | Nom explicite au lieu de formule |
+| Reutilisabilite | Une seule définition, multiples usages |
+| Lisibilité | Nom explicite au lieu de formule |
 | Maintenance | Modification centralisee |
 | Pas de VBA | Fonctionne sans macros |
 
@@ -169,25 +169,25 @@ Equivalent a SOMME.
 ### Nommage
 
 1. **Utilisez** des noms explicites
-2. **Prefixez** par categorie (FIN_, RH_, etc.)
+2. **Prefixez** par catégorie (FIN_, RH_, etc.)
 3. **Documentez** dans le commentaire du nom
 
 ### Organisation
 
 1. **Groupez** les fonctions liees
 2. **Testez** avant deploiement
-3. **Partagez** le classeur avec les definitions
+3. **Partagez** le classeur avec les définitions
 
 ## Limites
 
 ### A considerer
 
 - Disponible uniquement Excel 365
-- Peut etre complexe a deboguer
+- Peut etre complexe à deboguer
 - Recursion limitee
 
 ### Debug
 
 Testez d'abord la formule directement dans une cellule.
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

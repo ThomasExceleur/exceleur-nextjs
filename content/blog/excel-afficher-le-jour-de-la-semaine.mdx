@@ -2,32 +2,32 @@
 title: "Excel Afficher le Jour de la Semaine"
 date: "2024-07-18"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a afficher le jour de la semaine a partir d'une date dans Excel."
+excerpt: "Apprenez à afficher le jour de la semaine à partir d'une date dans Excel."
 description: "Guide pour afficher le jour de la semaine dans Excel. Fonctions JOURSEM, TEXTE et formats personnalises."
 category: "Dates"
-categories: ["Dates", "Formules Excel"]
+catégories: ["Dates", "Formules Excel"]
 tags: ["Jour", "Date", "Semaine", "Format"]
 ---
 
 # Afficher le Jour de la Semaine dans Excel
 
-Plusieurs methodes permettent d'obtenir le jour de la semaine a partir d'une date.
+Plusieurs méthodes permettent d'obtenir le jour de la semaine à partir d'une date.
 
-## Methode 1 : Format personnalise
+## Méthode 1 : Format personnalise
 
 ### Afficher le jour complet
 
-1. Selectionnez la cellule avec la date
+1. Sélectionnez la cellule avec la date
 2. **Ctrl + 1** (Format de cellule)
 3. **Personnalisee**
 4. Tapez : `jjjj`
 
 ### Formats disponibles
 
-| Format | Resultat |
+| Format | Résultat |
 |--------|----------|
 | `j` | Jour (1-31) |
-| `jj` | Jour sur 2 chiffres (01-31) |
+| `jj` | Jour sûr 2 chiffres (01-31) |
 | `jjj` | Jour abrege (lun, mar...) |
 | `jjjj` | Jour complet (lundi, mardi...) |
 
@@ -39,7 +39,7 @@ jjjj jj/mm/aaaa
 
 Affiche : lundi 15/01/2024
 
-## Methode 2 : Fonction TEXTE
+## Méthode 2 : Fonction TEXTE
 
 ### Syntaxe
 
@@ -57,13 +57,13 @@ Affiche : lundi 15/01/2024
 
 ### Avantage
 
-Le resultat est du texte utilisable dans des concatenations.
+Le résultat est du texte utilisable dans des concatenations.
 
 ```excel
 ="Nous sommes "&TEXTE(AUJOURDHUI();"jjjj")
 ```
 
-## Methode 3 : Fonction JOURSEM
+## Méthode 3 : Fonction JOURSEM
 
 ### Syntaxe
 
@@ -86,7 +86,7 @@ Le resultat est du texte utilisable dans des concatenations.
 =JOURSEM(A1; 2)    ' 1=Lun, 2=Mar... 7=Dim
 ```
 
-## Convertir le numero en nom
+## Convertir le numéro en nom
 
 ### Avec CHOISIR
 
@@ -117,8 +117,8 @@ Le resultat est du texte utilisable dans des concatenations.
 ### Mise en forme conditionnelle
 
 Colorez les week-ends en gris :
-1. Selectionnez la plage de dates
-2. **Mise en forme conditionnelle** > **Nouvelle regle**
+1. Sélectionnez la plage de dates
+2. **Mise en forme conditionnelle** > **Nouvelle règle**
 3. Formule : `=OU(JOURSEM(A1)=1;JOURSEM(A1)=7)`
 4. Format : fond gris
 
@@ -136,7 +136,7 @@ Colorez les week-ends en gris :
 =A1-JOURSEM(A1;2)+7
 ```
 
-## Numero de semaine
+## Numéro de semaine
 
 ### Fonction NO.SEMAINE
 
@@ -152,17 +152,17 @@ Colorez les week-ends en gris :
 
 ## Langues
 
-### Francais par defaut
+### Français par defaut
 
-Le jour s'affiche dans la langue de votre Excel.
+Le jour s'affiché dans la langue de votre Excel.
 
 ### Forcer une langue
 
-Modifiez les parametres regionaux de Windows.
+Modifiez les paramètrès régionaux de Windows.
 
-## Comparaison des methodes
+## Comparaison des méthodes
 
-| Methode | Resultat | Type |
+| Méthode | Résultat | Type |
 |---------|----------|------|
 | Format jjjj | lundi | Affichage |
 | TEXTE | "lundi" | Texte |
@@ -180,7 +180,7 @@ Si la date est stockee comme texte, convertissez-la d'abord :
 
 ### Mauvais type JOURSEM
 
-Verifiez le parametre type selon vos besoins.
+Vérifiez le paramèêtre type selon vos besoins.
 
 ## Bonnes pratiques
 
@@ -188,4 +188,4 @@ Verifiez le parametre type selon vos besoins.
 2. **TEXTE** pour les concatenations
 3. **JOURSEM** pour les calculs et conditions
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

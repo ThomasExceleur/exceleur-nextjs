@@ -5,23 +5,23 @@ author: "Thomas L'Exceleur"
 excerpt: "Comprendre la fonction RECHERCHEV dans Excel simplement."
 description: "Explication simple de RECHERCHEV dans Excel. Syntaxe et exemples."
 category: "Formules Excel"
-categories: ["Formules Excel", "Recherche"]
-tags: ["RECHERCHEV", "Definition", "Debutant", "Recherche"]
+catégories: ["Formules Excel", "Recherche"]
+tags: ["RECHERCHEV", "Définition", "Débutant", "Recherche"]
 ---
 
 # C'est Quoi RECHERCHEV
 
 RECHERCHEV est une fonction Excel pour trouver une valeur dans un tableau.
 
-## Definition simple
+## Définition simple
 
 RECHERCHEV signifie "Recherche Verticale". Elle :
-1. Cherche une valeur dans la premiere colonne d'un tableau
+1. Cherche une valeur dans la première colonne d'un tableau
 2. Retourne une valeur de la meme ligne, dans une autre colonne
 
 ## Exemple concret
 
-### Tableau de reference
+### Tableau de référence
 
 | ID | Produit | Prix |
 |----|---------|------|
@@ -37,7 +37,7 @@ Pour trouver le prix du produit "A2" :
 =RECHERCHEV("A2";A:C;3;FAUX)
 ```
 
-Resultat : **3** (le prix de la Banane)
+Résultat : **3** (le prix de la Banane)
 
 ## Syntaxe
 
@@ -51,10 +51,10 @@ Resultat : **3** (le prix de la Banane)
 |----------|-------------|
 | valeur | Ce que vous cherchez |
 | tableau | Ou chercher |
-| index | Numero de colonne du resultat |
+| index | Numéro de colonne du résultat |
 | correspondance | FAUX pour exact, VRAI pour approche |
 
-## Etape par etape
+## Étape par étape
 
 1. **valeur** : Quelle valeur chercher ? (ex: "A2")
 2. **tableau** : Dans quel tableau ? (ex: A:C)
@@ -84,13 +84,13 @@ La valeur n'existe pas dans le tableau.
 =SIERREUR(RECHERCHEV(A1;B:C;2;FAUX);"Non trouve")
 ```
 
-### Mauvais resultat
+### Mauvais résultat
 
 L'index de colonne est incorrect.
 
 ## Limites de RECHERCHEV
 
-- Cherche uniquement dans la premiere colonne
+- Cherche uniquement dans la première colonne
 - Retourne uniquement vers la droite
 - Index de colonne peu intuitif
 
@@ -109,15 +109,15 @@ Disponible dans Excel 365 et 2021.
 | Situation | Utiliser |
 |-----------|----------|
 | Trouver un prix | Oui |
-| Associer des donnees | Oui |
-| Recherche a gauche | Non (utiliser RECHERCHEX) |
-| Grandes donnees | Oui avec INDEX/EQUIV |
+| Associer des données | Oui |
+| Recherche à gauche | Non (utiliser RECHERCHEX) |
+| Grandes données | Oui avec INDEX/EQUIV |
 
-## Resume
+## Résumé
 
 RECHERCHEV est comme chercher dans un annuaire :
 1. Vous cherchez un nom (valeur)
-2. Dans la liste (premiere colonne)
-3. Et vous lisez son numero de telephone (autre colonne)
+2. Dans la liste (première colonne)
+3. Et vous lisez son numéro de telephone (autre colonne)
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

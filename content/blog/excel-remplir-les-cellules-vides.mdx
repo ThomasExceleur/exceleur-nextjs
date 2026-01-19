@@ -4,28 +4,28 @@ date: "2024-07-02"
 author: "Thomas L'Exceleur"
 excerpt: "Techniques pour remplir automatiquement les cellules vides dans Excel."
 description: "Guide pour remplir les cellules vides dans Excel. Atteindre et remplir."
-category: "Manipulation de donnees"
-categories: ["Manipulation de donnees", "Astuces Excel"]
-tags: ["Cellules vides", "Remplissage", "Nettoyage", "Donnees"]
+category: "Manipulation de données"
+catégories: ["Manipulation de données", "Astuces Excel"]
+tags: ["Cellules vides", "Remplissage", "Nettoyage", "Données"]
 ---
 
 # Remplir les Cellules Vides
 
-Plusieurs methodes pour combler les cellules vides dans vos donnees.
+Plusieurs méthodes pour combler les cellules vides dans vos données.
 
-## Methode 1 : Atteindre + Formule
+## Méthode 1 : Atteindre + Formule
 
-### Etapes
+### Étapes
 
-1. Selectionnez la plage contenant les vides
+1. Sélectionnez la plage contenant les vides
 2. **Ctrl + G** (Atteindre)
 3. **Special...**
 4. Cochez **Cellules vides**
-5. **OK** (toutes les cellules vides sont selectionnees)
+5. **OK** (toutes les cellules vides sont sélectionnées)
 6. Tapez `=` puis la cellule au-dessus (ex: `=A1`)
-7. **Ctrl + Entree** (valide pour toutes les cellules)
+7. **Ctrl + Entrée** (valide pour toutes les cellules)
 
-### Resultat
+### Résultat
 
 Chaque cellule vide contient maintenant une formule copiant la valeur au-dessus.
 
@@ -34,38 +34,38 @@ Chaque cellule vide contient maintenant une formule copiant la valeur au-dessus.
 1. Copiez les cellules
 2. Collez en valeurs (**Ctrl + Alt + V** > **Valeurs**)
 
-## Methode 2 : Rechercher et remplacer
+## Méthode 2 : Rechercher et remplacer
 
 ### Pour remplir avec une valeur fixe
 
-1. Selectionnez la plage
+1. Sélectionnez la plage
 2. **Ctrl + H**
 3. **Rechercher** : laissez vide
 4. **Remplacer par** : votre valeur (ex: "N/A")
 5. **Options** > Cochez **Totalite du contenu de la cellule**
 6. **Remplacer tout**
 
-## Methode 3 : Formule SI
+## Méthode 3 : Formule SI
 
-### Eviter les vides dans les calculs
+### Éviter les vides dans les calculs
 
 ```excel
 =SI(A1="";"Valeur par defaut";A1)
 ```
 
-### Copier la valeur precedente
+### Copier la valeur précédente
 
 ```excel
 =SI(A2="";A1;A2)
 ```
 
-## Methode 4 : Power Query
+## Méthode 4 : Power Query
 
-### Etapes
+### Étapes
 
-1. Selectionnez vos donnees
-2. **Donnees** > **A partir d'un tableau**
-3. Dans Power Query, selectionnez la colonne
+1. Sélectionnez vos données
+2. **Données** > **A partir d'un tableau**
+3. Dans Power Query, sélectionnez la colonne
 4. **Transformer** > **Remplir** > **Vers le bas**
 5. **Fermer et charger**
 
@@ -73,14 +73,14 @@ Chaque cellule vide contient maintenant une formule copiant la valeur au-dessus.
 
 Le remplissage se fait automatiquement lors des actualisations.
 
-## Methode 5 : VBA
+## Méthode 5 : VBA
 
 ### Macro de remplissage
 
 ```vba
 Sub RemplirVides()
     Dim rng As Range
-    For Each rng In Selection
+    For Each rng In Sélection
         If rng.Value = "" Then
             rng.Value = rng.Offset(-1, 0).Value
         End If
@@ -90,21 +90,21 @@ End Sub
 
 ## Cas pratiques
 
-### Donnees importees
+### Données importees
 
-Les exports de bases de donnees ont souvent des cellules vides a remplir.
+Les exports de bases de données ont souvent des cellules vides à remplir.
 
-### Tableaux croises depivotes
+### Tableaux croisés depivotes
 
-Apres depivotement, les categories sont souvent vides.
+Après depivotement, les catégories sont souvent vides.
 
-### Donnees hierarchiques
+### Données hiérarchiques
 
-Les sous-categories peuvent avoir des cellules de categorie vides.
+Les sous-catégories peuvent avoir des cellules de catégorie vides.
 
-## Comparaison des methodes
+## Comparaison des méthodes
 
-| Methode | Rapidite | Automatique | Sans formule |
+| Méthode | Rapidite | Automatique | Sans formule |
 |---------|----------|-------------|--------------|
 | Atteindre | Rapide | Non | Non |
 | Remplacer | Rapide | Non | Oui |
@@ -115,8 +115,8 @@ Les sous-categories peuvent avoir des cellules de categorie vides.
 ## Bonnes pratiques
 
 1. **Sauvegardez** avant de modifier
-2. **Testez** sur une copie
-3. **Preferez** Power Query pour les donnees recurrentes
+2. **Testez** sûr une copie
+3. **Préférez** Power Query pour les données recurrentes
 4. **Documentez** les modifications effectuees
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

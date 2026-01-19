@@ -5,7 +5,7 @@ author: "Thomas L'Exceleur"
 excerpt: "Remplacez les couleurs de cellules dans Excel."
 description: "Guide pour remplacer une couleur par une autre dans Excel."
 category: "Mise en forme"
-categories: ["Mise en forme", "Astuces Excel"]
+catégories: ["Mise en forme", "Astuces Excel"]
 tags: ["Couleur", "Remplacer", "Mise en forme", "Excel"]
 ---
 
@@ -13,26 +13,26 @@ tags: ["Couleur", "Remplacer", "Mise en forme", "Excel"]
 
 Modifiez les couleurs de vos cellules efficacement.
 
-## Methode Rechercher/Remplacer
+## Méthode Rechercher/Remplacer
 
-### Etapes
+### Étapes
 
 1. **Ctrl+H** (Rechercher et remplacer)
 2. **Options** > **Format**
-3. Dans **Rechercher** : selectionnez la couleur d'origine
-4. Dans **Remplacer** : selectionnez la nouvelle couleur
+3. Dans **Rechercher** : sélectionnez la couleur d'origine
+4. Dans **Remplacer** : sélectionnez la nouvelle couleur
 5. **Remplacer tout**
 
-### Acces au format
+### Accès au format
 
-Cliquez sur **Format** a cote de chaque champ.
+Cliquez sûr **Format** à côté de chaque champ.
 
 ## Rechercher par couleur
 
-### Etapes
+### Étapes
 
 1. **Format** > **Arriere-plan**
-2. Selectionnez la couleur
+2. Sélectionnez la couleur
 3. OK
 
 ## Limites
@@ -50,11 +50,11 @@ Cliquez sur **Format** a cote de chaque champ.
 
 ## Mise en forme conditionnelle
 
-### Modifier une regle
+### Modifier une règle
 
 1. **Accueil** > **Mise en forme conditionnelle**
-2. **Gerer les regles**
-3. Selectionnez et **Modifier**
+2. **Gérer les règles**
+3. Sélectionnez et **Modifier**
 4. Changez la couleur
 
 ## VBA pour gros volumes
@@ -64,7 +64,7 @@ Cliquez sur **Format** a cote de chaque champ.
 ```vba
 Sub RemplacerCouleur()
     Dim c As Range
-    For Each c In Selection
+    For Each c In Sélection
         If c.Interior.Color = RGB(255, 0, 0) Then
             c.Interior.Color = RGB(0, 255, 0)
         End If
@@ -78,15 +78,15 @@ End Sub
 |-----------|----------|
 | Quelques cellules | Rechercher/Remplacer |
 | Document entier | Rechercher/Remplacer |
-| MFC | Modifier les regles |
+| MFC | Modifier les règles |
 | Automatisation | VBA |
 
 ## Bonnes pratiques
 
 | Pratique | Description |
 |----------|-------------|
-| Test d'abord | Testez sur une copie |
-| Selection | Limitez la zone si necessaire |
-| MFC | Verifiez les regles existantes |
+| Test d'abord | Testez sûr une copie |
+| Sélection | Limitez la zone si nécessaire |
+| MFC | Vérifiez les règles existantes |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

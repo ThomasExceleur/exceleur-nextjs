@@ -5,21 +5,21 @@ author: "Thomas L'Exceleur"
 excerpt: "Comprenez et resolvez l'erreur #VALEUR! qui apparait dans vos formules Excel."
 description: "Guide pour corriger l'erreur #VALEUR! dans Excel. Causes courantes et solutions pratiques."
 category: "Gestion d'erreurs"
-categories: ["Gestion d'erreurs", "Formules Excel"]
+catégories: ["Gestion d'erreurs", "Formules Excel"]
 tags: ["Erreur VALEUR", "Depannage", "Erreurs", "Formules"]
 ---
 
 # Erreur #VALEUR! dans Excel : Solutions
 
-L'erreur #VALEUR! indique que quelque chose ne va pas avec les types de donnees dans votre formule.
+L'erreur #VALEUR! indique que quelque chose ne va pas avec les types de données dans votre formule.
 
 ## Signification
 
-#VALEUR! signifie qu'Excel a trouve un type de donnees inattendu.
+#VALEUR! signifie qu'Excel à trouve un type de données inattendu.
 
 ## Causes courantes
 
-### Cause 1 : Operation sur du texte
+### Cause 1 : Opération sûr du texte
 
 ```excel
 ="abc" + 5    ' Erreur #VALEUR!
@@ -29,7 +29,7 @@ On ne peut pas additionner du texte et un nombre.
 
 ### Solution
 
-Verifiez que vos cellules contiennent bien des nombres.
+Vérifiez que vos cellules contiennent bien des nombres.
 
 ### Cause 2 : Espace dans une cellule "vide"
 
@@ -43,7 +43,7 @@ La cellule semble vide mais contient un espace.
 =NBCAR(A1)
 ```
 
-Retourne 1 ou plus si la cellule contient des espaces.
+Retourne 1 où plus si la cellule contient des espaces.
 
 ### Solution
 
@@ -55,7 +55,7 @@ Retourne 1 ou plus si la cellule contient des espaces.
 
 ### Symptome
 
-Les nombres sont alignes a gauche.
+Les nombres sont alignes à gauche.
 
 ### Detection
 
@@ -81,12 +81,12 @@ Retourne 2 si c'est du texte.
 
 ### Solution
 
-Verifiez que chaque argument a le bon type.
+Vérifiez que chaque argument à le bon type.
 
-### Cause 5 : Plages de tailles differentes
+### Cause 5 : Plages de tailles différentes
 
 ```excel
-=A1:A5 + B1:B3    ' Erreur car tailles differentes
+=A1:A5 + B1:B3    ' Erreur car tailles différentes
 ```
 
 ### Solution
@@ -117,7 +117,7 @@ Des caracteres non imprimables peuvent causer des erreurs.
 =DATEVAL(A1) - DATEVAL(B1)
 ```
 
-## Gerer l'erreur
+## Gérer l'erreur
 
 ### SIERREUR
 
@@ -127,20 +127,20 @@ Des caracteres non imprimables peuvent causer des erreurs.
 =SIERREUR(formule; "")
 ```
 
-### Verification prealable
+### Vérification prealable
 
 ```excel
-=SI(ESTNUM(A1); A1+B1; "Verifier A1")
+=SI(ESTNUM(A1); A1+B1; "Vérifier A1")
 ```
 
 ## Diagnostic
 
-### Etape par etape
+### Étape par étape
 
 1. Identifiez quelle cellule cause l'erreur
-2. Verifiez le contenu reel (barre de formule)
-3. Verifiez le type avec TYPE()
-4. Nettoyez les donnees
+2. Vérifiez le contenu reel (barre de formule)
+3. Vérifiez le type avec TYPE()
+4. Nettoyez les données
 
 ### Formule de test
 
@@ -157,7 +157,7 @@ Des caracteres non imprimables peuvent causer des erreurs.
 =A1 + B1
 ```
 
-**Apres** :
+**Après** :
 ```excel
 =CNUM(A1) + CNUM(B1)
 ```
@@ -169,7 +169,7 @@ Des caracteres non imprimables peuvent causer des erreurs.
 =RECHERCHEV(A1; B:D; 2; FAUX)
 ```
 
-**Apres** :
+**Après** :
 ```excel
 =SIERREUR(RECHERCHEV(SUPPRESPACE(A1); B:D; 2; FAUX); "")
 ```
@@ -178,9 +178,9 @@ Des caracteres non imprimables peuvent causer des erreurs.
 
 ### Formules matricielles
 
-Les anciennes formules matricielles peuvent generer #VALEUR! si mal validees.
+Les anciennes formules matricielles peuvent générer #VALEUR! si mal validees.
 
-**Solution** : Validez avec Ctrl + Maj + Entree (anciennes versions).
+**Solution** : Validez avec Ctrl + Maj + Entrée (anciennes versions).
 
 ### Fonctions de date
 
@@ -188,23 +188,23 @@ Les anciennes formules matricielles peuvent generer #VALEUR! si mal validees.
 =JOUR("abc")    ' Erreur #VALEUR!
 ```
 
-**Solution** : Verifiez que la cellule contient une vraie date.
+**Solution** : Vérifiez que la cellule contient une vraie date.
 
 ## Prevention
 
-### Validation des donnees
+### Validation des données
 
-1. **Donnees** > **Validation des donnees**
+1. **Données** > **Validation des données**
 2. Limitez les saisies aux types corrects
 
 ### Mise en forme conditionnelle
 
 Colorez les cellules qui pourraient causer des erreurs.
 
-### Verification automatique
+### Vérification automatique
 
 ```excel
-=SI(ESTNUM(A1); "OK"; "Verifier")
+=SI(ESTNUM(A1); "OK"; "Vérifier")
 ```
 
 ## Tableau recapitulatif
@@ -218,9 +218,9 @@ Colorez les cellules qui pourraient causer des erreurs.
 
 ## Bonnes pratiques
 
-1. **Nettoyez** les donnees importees
-2. **Verifiez** les types avant calcul
-3. **Utilisez** SIERREUR pour gerer les erreurs
+1. **Nettoyez** les données importees
+2. **Vérifiez** les types avant calcul
+3. **Utilisez** SIERREUR pour gérer les erreurs
 4. **Validez** les saisies utilisateur
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

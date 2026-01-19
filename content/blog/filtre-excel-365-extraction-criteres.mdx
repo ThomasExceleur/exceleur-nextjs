@@ -1,17 +1,17 @@
 ---
-title: "FILTRE Excel 365 : Extraction par Criteres"
+title: "FILTRE Excel 365 : Extraction par Critères"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Maitrisez l'extraction de donnees par criteres avec FILTRE."
-description: "Guide FILTRE Excel 365. Extraction de donnees par criteres multiples."
+excerpt: "Maîtrisez l'extraction de données par critères avec FILTRE."
+description: "Guide FILTRE Excel 365. Extraction de données par critères multiples."
 category: "Formules Excel"
-categories: ["Formules Excel", "Excel 365"]
-tags: ["FILTRE", "Criteres", "Extraction", "Excel 365"]
+catégories: ["Formules Excel", "Excel 365"]
+tags: ["FILTRE", "Critères", "Extraction", "Excel 365"]
 ---
 
-# FILTRE : Extraction par Criteres
+# FILTRE : Extraction par Critères
 
-La fonction FILTRE extrait dynamiquement les donnees selon vos criteres.
+La fonction FILTRE extrait dynamiquement les données selon vos critères.
 
 ## Syntaxe
 
@@ -19,27 +19,27 @@ La fonction FILTRE extrait dynamiquement les donnees selon vos criteres.
 =FILTRE(tableau;inclure;[si_vide])
 ```
 
-## Critere simple
+## Critère simple
 
-### Egal a
+### Égal à
 
 ```excel
 =FILTRE(A:D;B:B="Paris")
 ```
 
-### Superieur a
+### Supérieur à
 
 ```excel
 =FILTRE(A:D;C:C>1000)
 ```
 
-### Different de
+### Différent de
 
 ```excel
 =FILTRE(A:D;B:B<>"Inactif")
 ```
 
-## Criteres multiples
+## Critères multiples
 
 ### ET (toutes les conditions)
 
@@ -65,7 +65,7 @@ Le `+` represente OU.
 
 Paris OU Lyon, ET montant > 500.
 
-## Criteres sur texte
+## Critères sûr texte
 
 ### Contient
 
@@ -85,9 +85,9 @@ Paris OU Lyon, ET montant > 500.
 =FILTRE(A:D;NB.SI(B:B;"*Paris*")>0)
 ```
 
-## Criteres sur dates
+## Critères sûr dates
 
-### Date specifique
+### Date spécifique
 
 ```excel
 =FILTRE(A:D;C:C=DATE(2024;1;15))
@@ -105,15 +105,15 @@ Paris OU Lyon, ET montant > 500.
 =FILTRE(A:D;MOIS(C:C)=MOIS(AUJOURDHUI()))
 ```
 
-## Critere dynamique
+## Critère dynamique
 
-### Reference a une cellule
+### Référence à une cellule
 
 ```excel
 =FILTRE(A:D;B:B=E1)
 ```
 
-E1 contient la valeur a chercher.
+E1 contient la valeur à chercher.
 
 ### Plusieurs valeurs
 
@@ -123,12 +123,12 @@ E1 contient la valeur a chercher.
 
 Filtre si B est dans ListeValeurs.
 
-## Gestion des resultats vides
+## Gestion des résultats vides
 
 ### Message personnalise
 
 ```excel
-=FILTRE(A:D;B:B="Inexistant";"Aucun resultat")
+=FILTRE(A:D;B:B="Inexistant";"Aucun résultat")
 ```
 
 ### Cellule vide
@@ -161,13 +161,13 @@ Valeurs uniques parmi les filtrees.
 =PRENDRE(FILTRE(A:D;B:B="Paris");5)
 ```
 
-Les 5 premiers resultats.
+Les 5 premiers résultats.
 
 ## Bonnes pratiques
 
-1. **Ajoutez** toujours si_vide pour eviter #CALC!
+1. **Ajoutez** toujours si_vide pour éviter #CALC!
 2. **Utilisez** des plages delimitees pour la performance
-3. **Combinez** avec LET pour la lisibilite
-4. **Testez** avec peu de donnees d'abord
+3. **Combinez** avec LET pour la lisibilité
+4. **Testez** avec peu de données d'abord
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

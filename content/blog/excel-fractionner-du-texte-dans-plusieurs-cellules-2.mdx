@@ -4,36 +4,36 @@ date: "2024-07-02"
 author: "Thomas L'Exceleur"
 excerpt: "Divisez du texte en plusieurs colonnes dans Excel."
 description: "Guide pour fractionner du texte dans plusieurs cellules Excel."
-category: "Manipulation de donnees"
-categories: ["Manipulation de donnees", "Astuces Excel"]
+category: "Manipulation de données"
+catégories: ["Manipulation de données", "Astuces Excel"]
 tags: ["Fractionner", "Texte", "Colonnes", "Excel"]
 ---
 
 # Fractionner du Texte en Plusieurs Cellules
 
-Divisez vos donnees textuelles en colonnes.
+Divisez vos données textuelles en colonnes.
 
-## Methode 1 : Convertir
+## Méthode 1 : Convertir
 
 ### Assistant
 
-1. Selectionnez les cellules
-2. **Donnees** > **Convertir**
-3. Choisissez le type de separation
+1. Sélectionnez les cellules
+2. **Données** > **Convertir**
+3. Choisissez le type de séparation
 
-### Types de separation
+### Types de séparation
 
 | Type | Exemple |
 |------|---------|
 | Delimiteur | Virgule, espace, point-virgule |
 | Largeur fixe | Position precise |
 
-## Methode 2 : STXT et autres
+## Méthode 2 : STXT et autres
 
 ### STXT (Extraire)
 
 ```excel
-=STXT(A1;debut;nb_caracteres)
+=STXT(A1;début;nb_caracteres)
 ```
 
 ### GAUCHE / DROITE
@@ -43,7 +43,7 @@ Divisez vos donnees textuelles en colonnes.
 =DROITE(A1;3)
 ```
 
-## Methode 3 : TEXTE.SEPARER (Excel 365)
+## Méthode 3 : TEXTE.SEPARER (Excel 365)
 
 ### Syntaxe
 
@@ -55,24 +55,24 @@ Divisez vos donnees textuelles en colonnes.
 
 Retourne un tableau dynamique.
 
-## Methode 4 : Ctrl+E (Flash Fill)
+## Méthode 4 : Ctrl+E (Flash Fill)
 
-### Etapes
+### Étapes
 
-1. Tapez le resultat souhaite
+1. Tapez le résultat souhaité
 2. Descendez d'une cellule
 3. **Ctrl+E**
 
 ## Exemples pratiques
 
-### Separer prenom et nom
+### Séparer prenom et nom
 
-| Avant | Formule | Resultat |
+| Avant | Formule | Résultat |
 |-------|---------|----------|
 | Jean Dupont | `=GAUCHE(A1;TROUVE(" ";A1)-1)` | Jean |
 | Jean Dupont | `=DROITE(A1;NBCAR(A1)-TROUVE(" ";A1))` | Dupont |
 
-### Separer par virgule
+### Séparer par virgule
 
 ```excel
 =TEXTE.SEPARER(A1;",")
@@ -83,7 +83,7 @@ Retourne un tableau dynamique.
 | Pratique | Description |
 |----------|-------------|
 | Sauvegarde | Gardez l'original |
-| Delimiteur constant | Verifiez la coherence |
-| Test | Testez sur un echantillon |
+| Delimiteur constant | Vérifiez la cohérence |
+| Test | Testez sûr un echantillon |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

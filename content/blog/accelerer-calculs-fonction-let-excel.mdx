@@ -5,7 +5,7 @@ author: "Thomas L'Exceleur"
 excerpt: "Optimisez les performances de vos formules avec LET."
 description: "Comment LET ameliore les performances des calculs Excel."
 category: "Formules Excel"
-categories: ["Formules Excel", "Excel 365"]
+catégories: ["Formules Excel", "Excel 365"]
 tags: ["LET", "Performance", "Optimisation", "Excel 365"]
 ---
 
@@ -13,7 +13,7 @@ tags: ["LET", "Performance", "Optimisation", "Excel 365"]
 
 LET ne rend pas seulement les formules lisibles, mais aussi plus rapides.
 
-## Le probleme : Calculs repetes
+## Le problème : Calculs répétés
 
 ### Exemple sans LET
 
@@ -29,8 +29,8 @@ RECHERCHEX est execute 3 fois.
 
 ```excel
 =LET(
-  resultat;RECHERCHEX(A1;B:B;C:C);
-  SI(resultat>100;resultat*1.1;resultat*0.9)
+  résultat;RECHERCHEX(A1;B:B;C:C);
+  SI(résultat>100;résultat*1.1;résultat*0.9)
 )
 ```
 
@@ -41,7 +41,7 @@ RECHERCHEX n'est execute qu'une fois.
 ### Fonctions couteuses
 
 Certaines fonctions sont lentes :
-- RECHERCHEX sur grandes plages
+- RECHERCHEX sûr grandes plages
 - FILTRE
 - TRIER
 - UNIQUE
@@ -49,7 +49,7 @@ Certaines fonctions sont lentes :
 
 ### Reduction des calculs
 
-Si une formule utilise 5 fois le meme calcul, LET divise le temps par 5.
+Si une formule utilisé 5 fois le meme calcul, LET divise le temps par 5.
 
 ## Exemple : Statistiques
 
@@ -95,17 +95,17 @@ Chaque calcul une seule fois.
 )
 ```
 
-## Mesurer l'amelioration
+## Mesurer l'amélioration
 
-### Methode simple
+### Méthode simple
 
 1. Desactivez le calcul automatique
 2. Mesurez le temps de recalcul (Ctrl+Shift+F9)
-3. Comparez avant/apres LET
+3. Comparez avant/après LET
 
 ### Formules volumineuses
 
-Sur des milliers de lignes, la difference devient significative.
+Sur des milliers de lignes, la différence devient significative.
 
 ## Combiner avec autres optimisations
 
@@ -113,9 +113,9 @@ Sur des milliers de lignes, la difference devient significative.
 
 ```excel
 =LET(
-  donnees;A2:A1000;  ' Pas A:A
-  somme;SOMME(donnees);
-  moyenne;MOYENNE(donnees);
+  données;A2:A1000;  ' Pas A:A
+  somme;SOMME(données);
+  moyenne;MOYENNE(données);
   ...
 )
 ```
@@ -130,7 +130,7 @@ Sur des milliers de lignes, la difference devient significative.
 )
 ```
 
-## Cas ou LET n'aide pas
+## Cas où LET n'aide pas
 
 ### Calculs uniques
 
@@ -146,9 +146,9 @@ Pas besoin de LET ici.
 
 ## Bonnes pratiques
 
-1. **Identifiez** les calculs repetes
+1. **Identifiez** les calculs répétés
 2. **Utilisez** LET pour les fonctions couteuses
 3. **Limitez** les plages
 4. **Mesurez** les gains
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

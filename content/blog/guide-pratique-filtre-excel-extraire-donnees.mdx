@@ -1,19 +1,19 @@
 ---
-title: "Guide Pratique : FILTRE Excel pour Extraire vos Donnees"
+title: "Guide Pratique : FILTRE Excel pour Extraire vos Données"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a extraire vos donnees efficacement avec la fonction FILTRE."
-description: "Guide pratique de la fonction FILTRE pour l'extraction de donnees Excel."
+excerpt: "Apprenez à extraire vos données efficacement avec la fonction FILTRE."
+description: "Guide pratique de la fonction FILTRE pour l'extraction de données Excel."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
-tags: ["FILTRE", "Extraction", "Donnees", "Excel 365"]
+catégories: ["Excel 365", "Formules Excel"]
+tags: ["FILTRE", "Extraction", "Données", "Excel 365"]
 ---
 
-# Guide Pratique : FILTRE Excel pour Extraire vos Donnees
+# Guide Pratique : FILTRE Excel pour Extraire vos Données
 
-La fonction FILTRE transforme la facon dont vous extrayez des donnees.
+La fonction FILTRE transforme la façon dont vous extrayez des données.
 
-## Introduction a FILTRE
+## Introduction à FILTRE
 
 ### Syntaxe
 
@@ -21,17 +21,17 @@ La fonction FILTRE transforme la facon dont vous extrayez des donnees.
 =FILTRE(tableau;inclure;[si_vide])
 ```
 
-### Parametres
+### Paramètrès
 
-| Parametre | Description |
+| Paramèêtre | Description |
 |-----------|-------------|
-| tableau | Plage de donnees a filtrer |
+| tableau | Plage de données à filtrer |
 | inclure | Condition logique (tableau de VRAI/FAUX) |
-| si_vide | Valeur si aucun resultat (optionnel) |
+| si_vide | Valeur si aucun résultat (optionnel) |
 
 ## Premier exemple
 
-### Donnees
+### Données
 
 | Produit | Region | Ventes |
 |---------|--------|--------|
@@ -46,9 +46,9 @@ La fonction FILTRE transforme la facon dont vous extrayez des donnees.
 =FILTRE(A2:C5;B2:B5="Nord")
 ```
 
-Resultat : Lignes ou Region = "Nord"
+Résultat : Lignes où Region = "Nord"
 
-## Criteres multiples
+## Critères multiples
 
 ### Avec ET
 
@@ -62,7 +62,7 @@ Resultat : Lignes ou Region = "Nord"
 =FILTRE(A2:C10;(B2:B10="Nord")+(B2:B10="Sud"))
 ```
 
-## Gestion des resultats vides
+## Gestion des résultats vides
 
 ### Sans gestion
 
@@ -75,7 +75,7 @@ Retourne #CALC! si aucune correspondance.
 ### Avec message
 
 ```excel
-=FILTRE(A2:C10;B2:B10="Est";"Aucune donnee")
+=FILTRE(A2:C10;B2:B10="Est";"Aucune donnée")
 ```
 
 ### Avec tableau vide
@@ -100,7 +100,7 @@ Filtre puis trie par la 3eme colonne decroissant.
 =UNIQUE(FILTRE(A2:A10;B2:B10="Actif"))
 ```
 
-Valeurs uniques parmi les elements actifs.
+Valeurs uniques parmi les éléments actifs.
 
 ### FILTRE + INDEX
 
@@ -108,17 +108,17 @@ Valeurs uniques parmi les elements actifs.
 =INDEX(FILTRE(A2:C10;B2:B10="Nord");1;3)
 ```
 
-Premiere valeur de la 3eme colonne du resultat filtre.
+Première valeur de la 3eme colonne du résultat filtre.
 
 ## Filtres dynamiques
 
-### Reference cellule
+### Référence cellule
 
 ```excel
 =FILTRE(A2:C10;B2:B10=E1)
 ```
 
-E1 contient le critere de filtrage.
+E1 contient le critère de filtrage.
 
 ### Recherche partielle
 
@@ -152,7 +152,7 @@ Tout sauf les lignes avec "Exclu".
 =FILTRE(A2:C10;(D2:D10>=DATE(2024;1;1))*(D2:D10<=DATE(2024;12;31)))
 ```
 
-Donnees de l'annee 2024.
+Données de l'année 2024.
 
 ## Performance
 
@@ -161,15 +161,15 @@ Donnees de l'annee 2024.
 | Conseil | Impact |
 |---------|--------|
 | Plages precises | Accelere le calcul |
-| Criteres simples | Evaluation plus rapide |
-| Eviter les boucles | Moins de recalculs |
+| Critères simples | Évaluation plus rapide |
+| Éviter les boucles | Moins de recalculs |
 
 ## Erreurs courantes
 
 | Erreur | Cause | Solution |
 |--------|-------|----------|
 | #CALC! | Aucune correspondance | Utilisez si_vide |
-| #VALEUR! | Tailles incompatibles | Verifiez les plages |
-| Resultats inattendus | Types differents | Verifiez les formats |
+| #VALEUR! | Tailles incompatibles | Vérifiez les plages |
+| Résultats inattendus | Types différents | Vérifiez les formats |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

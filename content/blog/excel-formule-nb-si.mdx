@@ -2,29 +2,29 @@
 title: "Excel Formule NB.SI : Compter avec Condition"
 date: "2024-07-20"
 author: "Thomas L'Exceleur"
-excerpt: "Maitrisez NB.SI et NB.SI.ENS pour compter les cellules selon des criteres."
+excerpt: "Maîtrisez NB.SI et NB.SI.ENS pour compter les cellules selon des critères."
 description: "Guide complet de NB.SI et NB.SI.ENS dans Excel. Syntaxe, exemples pratiques et cas d'utilisation."
 category: "Formules Excel"
-categories: ["Formules Excel", "Calculs"]
+catégories: ["Formules Excel", "Calculs"]
 tags: ["NB.SI", "NB.SI.ENS", "Formules", "Compter"]
 ---
 
 # Excel NB.SI : Compter avec Conditions
 
-NB.SI compte les cellules qui repondent a un critere specifique.
+NB.SI compte les cellules qui repondent à un critère spécifique.
 
-## NB.SI : Un seul critere
+## NB.SI : Un seul critère
 
 ### Syntaxe
 
 ```excel
-=NB.SI(plage; critere)
+=NB.SI(plage; critère)
 ```
 
 ### Arguments
 
-- **plage** : Les cellules a examiner
-- **critere** : La condition a remplir
+- **plage** : Les cellules à examiner
+- **critère** : La condition à remplir
 
 ### Exemples
 
@@ -36,7 +36,7 @@ NB.SI compte les cellules qui repondent a un critere specifique.
 
 Compte les cellules contenant exactement "Paris".
 
-#### Compter les nombres superieurs a
+#### Compter les nombres supérieurs à
 
 ```excel
 =NB.SI(B:B; ">100")
@@ -48,7 +48,7 @@ Compte les cellules contenant exactement "Paris".
 =NB.SI(A:A; "<>")
 ```
 
-#### Compter avec reference
+#### Compter avec référence
 
 ```excel
 =NB.SI(A:A; D1)
@@ -56,22 +56,22 @@ Compte les cellules contenant exactement "Paris".
 
 Compte selon la valeur de D1.
 
-## Criteres possibles
+## Critères possibles
 
-| Critere | Signification |
+| Critère | Signification |
 |---------|---------------|
-| `"Texte"` | Egal a Texte |
-| `">10"` | Superieur a 10 |
-| `"<5"` | Inferieur a 5 |
-| `">=20"` | Superieur ou egal a 20 |
-| `"<=50"` | Inferieur ou egal a 50 |
-| `"<>"` | Different de (non vide) |
-| `"<>0"` | Different de zero |
+| `"Texte"` | Égal à Texte |
+| `">10"` | Supérieur à 10 |
+| `"<5"` | Inférieur à 5 |
+| `">=20"` | Supérieur où égal à 20 |
+| `"<=50"` | Inférieur où égal à 50 |
+| `"<>"` | Différent de (non vide) |
+| `"<>0"` | Différent de zero |
 | `"A*"` | Commence par A |
 | `"*e"` | Finit par e |
 | `"???"` | Exactement 3 caracteres |
 
-## NB.SI.ENS : Plusieurs criteres
+## NB.SI.ENS : Plusieurs critères
 
 ### Syntaxe
 
@@ -81,15 +81,15 @@ Compte selon la valeur de D1.
 
 ### Exemples
 
-#### Deux criteres
+#### Deux critères
 
 ```excel
 =NB.SI.ENS(A:A; "Paris"; B:B; ">1000")
 ```
 
-Compte ou A = Paris ET B > 1000.
+Compte où A = Paris ET B > 1000.
 
-#### Trois criteres
+#### Trois critères
 
 ```excel
 =NB.SI.ENS(A:A; "Ventes"; B:B; "Nord"; C:C; ">=100")
@@ -105,7 +105,7 @@ Compte les valeurs entre D1 et E1.
 
 ## Caracteres joker
 
-### * (zero ou plusieurs caracteres)
+### * (zero où plusieurs caracteres)
 
 ```excel
 =NB.SI(A:A; "*Excel*")
@@ -131,15 +131,15 @@ Pour chercher un vrai asterisque :
 
 Le ~ escape le caractere suivant.
 
-## Criteres avec operateurs
+## Critères avec opérateurs
 
-### Superieur a une cellule
+### Supérieur à une cellule
 
 ```excel
 =NB.SI(B:B; ">"&D1)
 ```
 
-### Different d'une cellule
+### Différent d'une cellule
 
 ```excel
 =NB.SI(A:A; "<>"&E1)
@@ -181,9 +181,9 @@ Le ~ escape le caractere suivant.
 =NB.SI(DateLivraison-DatePrevue; ">0")
 ```
 
-## Difference NB.SI vs SOMME.SI
+## Différence NB.SI vs SOMME.SI
 
-| Fonction | Resultat |
+| Fonction | Résultat |
 |----------|----------|
 | NB.SI | Nombre de cellules |
 | SOMME.SI | Somme des valeurs |
@@ -208,20 +208,20 @@ Attention aux cellules vides.
 
 ### #VALEUR!
 
-**Cause** : Plages de tailles differentes dans NB.SI.ENS
+**Cause** : Plages de tailles différentes dans NB.SI.ENS
 
 **Solution** : Utilisez des plages de meme taille
 
-### Resultat zero inattendu
+### Résultat zero inattendu
 
 **Causes** :
-- Critere mal ecrit
+- Critère mal écrit
 - Espaces invisibles
 - Format texte vs nombre
 
 ## Comparaison des fonctions
 
-| Fonction | Criteres | Usage |
+| Fonction | Critères | Usage |
 |----------|----------|-------|
 | NB | 0 | Compte les nombres |
 | NBVAL | 0 | Compte les non-vides |
@@ -231,9 +231,9 @@ Attention aux cellules vides.
 
 ## Bonnes pratiques
 
-1. **Verifiez les plages** : Meme taille pour NB.SI.ENS
-2. **Utilisez des guillemets** : Pour les criteres texte
-3. **Concatenez avec &** : Pour les references
-4. **Testez vos criteres** : Sur quelques cellules d'abord
+1. **Vérifiez les plages** : Meme taille pour NB.SI.ENS
+2. **Utilisez des guillemets** : Pour les critères texte
+3. **Concatenez avec &** : Pour les références
+4. **Testez vos critères** : Sur quelques cellules d'abord
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

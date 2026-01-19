@@ -1,15 +1,15 @@
 ---
-title: "Guide FILTRE Excel : Automatisez vos Donnees"
+title: "Guide FILTRE Excel : Automatisez vos Données"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Automatisez l'extraction de donnees avec la fonction FILTRE."
-description: "Guide complet de la fonction FILTRE pour automatiser vos donnees."
+excerpt: "Automatisez l'extraction de données avec la fonction FILTRE."
+description: "Guide complet de la fonction FILTRE pour automatiser vos données."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
+catégories: ["Excel 365", "Formules Excel"]
 tags: ["FILTRE", "Automatisation", "Extraction", "Excel 365"]
 ---
 
-# FILTRE Excel : Automatisez vos Donnees
+# FILTRE Excel : Automatisez vos Données
 
 Transformez vos extractions manuelles en processus automatiques.
 
@@ -19,18 +19,18 @@ Transformez vos extractions manuelles en processus automatiques.
 =FILTRE(tableau;inclure;[si_vide])
 ```
 
-## Automatisation avec references
+## Automatisation avec références
 
-### Critere dynamique
+### Critère dynamique
 
 ```excel
-=FILTRE(Donnees;Region=CelluleCritere)
+=FILTRE(Données;Region=CelluleCritere)
 ```
 
-### Multiples criteres dynamiques
+### Multiples critères dynamiques
 
 ```excel
-=FILTRE(Donnees;(Region=E1)*(Mois=F1))
+=FILTRE(Données;(Region=E1)*(Mois=F1))
 ```
 
 ## Extraction automatique
@@ -40,21 +40,21 @@ Transformez vos extractions manuelles en processus automatiques.
 Cellule E1 : Liste deroulante des regions
 
 ```excel
-=FILTRE(A2:D100;B2:B100=E1;"Aucune donnee pour cette region")
+=FILTRE(A2:D100;B2:B100=E1;"Aucune donnée pour cette region")
 ```
 
-### Mise a jour instantanee
+### Mise à jour instantanee
 
-Changez la selection, le rapport se met a jour.
+Changez la sélection, le rapport se met à jour.
 
-## Tableaux de synthese automatiques
+## Tableaux de synthèse automatiques
 
 ### Top 10 clients
 
 ```excel
 =LET(
-  donnees;FILTRE(Clients;Ventes>0);
-  triees;TRIER(donnees;3;-1);
+  données;FILTRE(Clients;Ventes>0);
+  triees;TRIER(données;3;-1);
   INDEX(triees;SEQUENCE(MIN(10;LIGNES(triees)));SEQUENCE(1;COLONNES(triees)))
 )
 ```
@@ -65,7 +65,7 @@ Changez la selection, le rapport se met a jour.
 =FILTRE(Ventes;MOIS(Dates)=MOIS(AUJOURDHUI()))
 ```
 
-## Integration avec autres fonctions
+## Intégration avec autres fonctions
 
 ### FILTRE + SOMME
 
@@ -82,7 +82,7 @@ Changez la selection, le rapport se met a jour.
 ### FILTRE + NB
 
 ```excel
-=LIGNES(FILTRE(Donnees;Statut="Actif"))
+=LIGNES(FILTRE(Données;Statut="Actif"))
 ```
 
 ## Alertes automatiques
@@ -104,7 +104,7 @@ Changez la selection, le rapport se met a jour.
 ### Cette semaine
 
 ```excel
-=FILTRE(Donnees;
+=FILTRE(Données;
   (Dates>=AUJOURDHUI()-JOURSEM(AUJOURDHUI();2)+1)*
   (Dates<=AUJOURDHUI()-JOURSEM(AUJOURDHUI();2)+7)
 )
@@ -113,7 +113,7 @@ Changez la selection, le rapport se met a jour.
 ### Ce mois
 
 ```excel
-=FILTRE(Donnees;
+=FILTRE(Données;
   (MOIS(Dates)=MOIS(AUJOURDHUI()))*
   (ANNEE(Dates)=ANNEE(AUJOURDHUI()))
 )
@@ -121,7 +121,7 @@ Changez la selection, le rapport se met a jour.
 
 ## Extraction conditionnelle complexe
 
-### Avec LET pour lisibilite
+### Avec LET pour lisibilité
 
 ```excel
 =LET(
@@ -130,7 +130,7 @@ Changez la selection, le rapport se met a jour.
   mois_fin;G1;
   filtre_region;Region=region;
   filtre_date;(MOIS(Date)>=mois_debut)*(MOIS(Date)<=mois_fin);
-  FILTRE(Donnees;filtre_region*filtre_date;"Aucune donnee")
+  FILTRE(Données;filtre_region*filtre_date;"Aucune donnée")
 )
 ```
 
@@ -139,16 +139,16 @@ Changez la selection, le rapport se met a jour.
 | Pratique | Description |
 |----------|-------------|
 | LET | Structurez les formules complexes |
-| Noms | Utilisez des plages nommees |
-| si_vide | Toujours gerer les cas sans resultat |
-| Test | Verifiez avec differentes donnees |
+| Noms | Utilisez des plages nommées |
+| si_vide | Toujours gérer les cas sans résultat |
+| Test | Vérifiez avec différentes données |
 
 ## Erreurs courantes
 
 | Erreur | Cause | Solution |
 |--------|-------|----------|
-| #CALC! | Aucun resultat | Ajoutez si_vide |
+| #CALC! | Aucun résultat | Ajoutez si_vide |
 | #PROPAGATION! | Pas d'espace | Liberez les cellules |
 | #VALEUR! | Plages incompatibles | Alignez les tailles |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

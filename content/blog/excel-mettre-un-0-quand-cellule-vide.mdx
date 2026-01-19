@@ -2,18 +2,18 @@
 title: "Excel Mettre un 0 Quand Cellule Vide : Solutions"
 date: "2024-07-18"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a remplacer les cellules vides par 0 dans Excel avec differentes methodes."
+excerpt: "Apprenez à remplacer les cellules vides par 0 dans Excel avec différentes méthodes."
 description: "Guide pour remplacer les cellules vides par 0 dans Excel. Formules, Rechercher-Remplacer et mise en forme."
 category: "Astuces Excel"
-categories: ["Astuces Excel", "Formules Excel"]
+catégories: ["Astuces Excel", "Formules Excel"]
 tags: ["Cellule vide", "Zero", "Formules", "Remplacement"]
 ---
 
 # Mettre un 0 Quand la Cellule est Vide
 
-Plusieurs methodes permettent de remplacer les cellules vides par 0 dans Excel.
+Plusieurs méthodes permettent de remplacer les cellules vides par 0 dans Excel.
 
-## Methode 1 : Formule SI
+## Méthode 1 : Formule SI
 
 ### Syntaxe
 
@@ -23,8 +23,8 @@ Plusieurs methodes permettent de remplacer les cellules vides par 0 dans Excel.
 
 ### Explication
 
-- Si A1 est vide, affiche 0
-- Sinon, affiche la valeur de A1
+- Si A1 est vide, affiché 0
+- Sinon, affiché la valeur de A1
 
 ### Variante avec ESTVIDE
 
@@ -32,11 +32,11 @@ Plusieurs methodes permettent de remplacer les cellules vides par 0 dans Excel.
 =SI(ESTVIDE(A1); 0; A1)
 ```
 
-## Methode 2 : Rechercher-Remplacer
+## Méthode 2 : Rechercher-Remplacer
 
-### Etapes
+### Étapes
 
-1. Selectionnez la plage
+1. Sélectionnez la plage
 2. **Ctrl + H** (Rechercher et remplacer)
 3. Laissez "Rechercher" vide
 4. Dans "Remplacer par" : 0
@@ -45,26 +45,26 @@ Plusieurs methodes permettent de remplacer les cellules vides par 0 dans Excel.
 
 ### Attention
 
-Cette methode modifie definitivement les cellules.
+Cette méthode modifié definitivement les cellules.
 
-## Methode 3 : Collage special
+## Méthode 3 : Collage special
 
-### Etapes
+### Étapes
 
 1. Tapez 0 dans une cellule
 2. Copiez cette cellule
-3. Selectionnez les cellules vides
+3. Sélectionnez les cellules vides
 4. **Accueil** > **Rechercher** > **Atteindre** > **Cellules** > **Cellules vides**
 5. **Collage special** > **Valeurs**
 6. **OK**
 
-## Methode 4 : Format personnalise
+## Méthode 4 : Format personnalise
 
-### Cette methode n'affiche que le 0
+### Cette méthode n'affiché que le 0
 
 Les cellules restent vides mais affichent 0.
 
-1. Selectionnez les cellules
+1. Sélectionnez les cellules
 2. **Ctrl + 1** (Format de cellule)
 3. **Personnalisee**
 4. Tapez : `0;-0;0;@`
@@ -74,7 +74,7 @@ Les cellules restent vides mais affichent 0.
 
 Les cellules restent vides pour les calculs.
 
-## Methode 5 : Formule matricielle
+## Méthode 5 : Formule matricielle
 
 ### Remplacer toute une colonne
 
@@ -82,28 +82,28 @@ Les cellules restent vides pour les calculs.
 =SI(A1:A100=""; 0; A1:A100)
 ```
 
-Validez avec **Ctrl + Maj + Entree** (versions anciennes).
+Validez avec **Ctrl + Maj + Entrée** (versions anciennes).
 
 ### Excel 365
 
 Les formules sont automatiquement dynamiques.
 
-## Methode 6 : Power Query
+## Méthode 6 : Power Query
 
-### Etapes
+### Étapes
 
-1. **Donnees** > **Obtenir des donnees** > **A partir d'une table**
+1. **Données** > **Obtenir des données** > **A partir d'une table**
 2. **Transformer** > **Remplacer les valeurs**
-3. "Valeur a rechercher" : laisser vide
+3. "Valeur à rechercher" : laisser vide
 4. "Remplacer par" : 0
 
 ### Avantage
 
-Transformation automatique a chaque actualisation.
+Transformation automatique à chaque actualisation.
 
 ## Formule avec calcul
 
-### Si le resultat d'un calcul est vide
+### Si le résultat d'un calcul est vide
 
 ```excel
 =SI(B1-C1=""; 0; B1-C1)
@@ -115,7 +115,7 @@ Transformation automatique a chaque actualisation.
 =B1-C1+0
 ```
 
-L'ajout de 0 force un resultat numerique.
+L'ajout de 0 force un résultat numérique.
 
 ### Avec SIERREUR
 
@@ -144,7 +144,7 @@ Retourne 0 en cas d'erreur.
 ### Si vous voulez l'inverse
 
 1. **Fichier** > **Options**
-2. **Options avancees**
+2. **Options avancées**
 3. Decochez **Afficher un zero dans les cellules ayant une valeur nulle**
 
 ### Par mise en forme
@@ -155,7 +155,7 @@ Les zeros ne s'affichent pas.
 
 ## Cas pratiques
 
-### Tableau de donnees
+### Tableau de données
 
 Avant :
 | A | B | C |
@@ -163,7 +163,7 @@ Avant :
 | 1 |   | 3 |
 |   | 2 |   |
 
-Apres :
+Après :
 | A | B | C |
 |---|---|---|
 | 1 | 0 | 3 |
@@ -171,14 +171,14 @@ Apres :
 
 ### Somme avec cellules vides
 
-Les cellules vides sont ignorees par SOMME. Si vous voulez les compter comme 0, c'est deja le cas.
+Les cellules vides sont ignorees par SOMME. Si vous voulez les compter comme 0, c'est déjà le cas.
 
-## Choisir la bonne methode
+## Choisir la bonne méthode
 
-| Methode | Modification | Dynamique | Complexite |
+| Méthode | Modification | Dynamique | Complexité |
 |---------|--------------|-----------|------------|
 | Formule SI | Non | Oui | Simple |
-| Rechercher-Remplacer | Oui | Non | Tres simple |
+| Rechercher-Remplacer | Oui | Non | Très simple |
 | Collage special | Oui | Non | Simple |
 | Format personnalise | Non | Visuel seulement | Moyen |
 | Power Query | Non | Oui | Moyen |
@@ -187,6 +187,6 @@ Les cellules vides sont ignorees par SOMME. Si vous voulez les compter comme 0, 
 
 - **Pour un affichage** : Format personnalise
 - **Pour les calculs** : Formule SI
-- **Pour une modification definitive** : Rechercher-Remplacer
+- **Pour une modification définitive** : Rechercher-Remplacer
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

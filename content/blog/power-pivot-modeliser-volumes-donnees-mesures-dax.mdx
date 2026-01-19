@@ -1,24 +1,24 @@
 ---
-title: "Power Pivot : Modeliser des Volumes de Donnees avec DAX"
+title: "Power Pivot : Modeliser des Volumes de Données avec DAX"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Gerez de grands volumes de donnees avec Power Pivot et DAX."
+excerpt: "Gérez de grands volumes de données avec Power Pivot et DAX."
 description: "Guide Power Pivot pour modeliser des volumes importants."
 category: "Power Pivot"
-categories: ["Power Pivot", "DAX"]
+catégories: ["Power Pivot", "DAX"]
 tags: ["Power Pivot", "DAX", "Volumes", "Modelisation"]
 ---
 
 # Power Pivot : Modeliser des Volumes avec DAX
 
-Gerez des millions de lignes efficacement.
+Gérez des millions de lignes efficacement.
 
 ## Avantages Power Pivot
 
-### Capacite
+### Capacité
 
 - Millions de lignes
-- Compression des donnees
+- Compression des données
 - Moteur de calcul optimise
 
 ### Comparaison
@@ -31,10 +31,10 @@ Gerez des millions de lignes efficacement.
 
 ## Architecture optimale
 
-### Schema en etoile
+### Schéma en etoile
 
 - Table de faits (transactions)
-- Tables de dimensions (reference)
+- Tables de dimensions (référence)
 - Relations one-to-many
 
 ## Mesures performantes
@@ -45,7 +45,7 @@ Gerez des millions de lignes efficacement.
 // Bon : mesure simple
 Total := SUM(Ventes[Montant])
 
-// A eviter : colonne calculee non necessaire
+// A éviter : colonne calculee non nécessaire
 ```
 
 ### CALCULATE efficace
@@ -60,16 +60,16 @@ VentesNord := CALCULATE([Total]; Region[Nom]=\"Nord\")
 
 Les mesures DAX sont calculees dans un contexte de filtre.
 
-### Eviter les calculs ligne par ligne
+### Éviter les calculs ligne par ligne
 
-Preferez les agregations DAX aux colonnes calculees.
+Préférez les agregations DAX aux colonnes calculees.
 
 ## Bonnes pratiques
 
 | Pratique | Impact |
 |----------|--------|
-| Mesures vs colonnes | Memoire |
+| Mesures vs colonnes | Mémoire |
 | Relations | Performance |
-| Types de donnees | Compression |
+| Types de données | Compression |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

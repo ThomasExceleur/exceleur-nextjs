@@ -2,16 +2,16 @@
 title: "Quelle Formule Excel pour Additionner les Heures"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a additionner des heures dans Excel correctement."
-description: "Formules pour additionner des heures dans Excel. Depassement de 24h."
+excerpt: "Apprenez à additionner des heures dans Excel correctement."
+description: "Formules pour additionner des heures dans Excel. Dépassement de 24h."
 category: "Calculs"
-categories: ["Calculs", "Dates"]
+catégories: ["Calculs", "Dates"]
 tags: ["Heures", "Addition", "Temps", "Format"]
 ---
 
 # Additionner les Heures dans Excel
 
-L'addition des heures necessite quelques precautions.
+L'addition des heures nécessité quelques precautions.
 
 ## Addition simple
 
@@ -23,18 +23,18 @@ L'addition des heures necessite quelques precautions.
 
 Fonctionne si les heures sont bien formatees.
 
-## Probleme du depassement de 24h
+## Problème du dépassement de 24h
 
-### Le probleme
+### Le problème
 
-Si le total depasse 24 heures, Excel affiche :
+Si le total dépasse 24 heures, Excel affiché :
 - 25:00 → 01:00 (incorrect)
 
 ### La solution
 
 Changez le format de cellule :
 
-1. Selectionnez la cellule du total
+1. Sélectionnez la cellule du total
 2. **Ctrl + 1** (Format de cellule)
 3. Onglet **Nombre** > **Personnalise**
 4. Tapez : `[h]:mm`
@@ -44,7 +44,7 @@ Changez le format de cellule :
 | Format | Affichage |
 |--------|-----------|
 | h:mm | 1:30 (max 24h) |
-| [h]:mm | 25:30 (depasse 24h) |
+| [h]:mm | 25:30 (dépasse 24h) |
 | [h]:mm:ss | 25:30:45 |
 
 ## Convertir en heures decimales
@@ -74,7 +74,7 @@ Utile pour les calculs de salaire :
 
 ### Saisie rapide
 
-Utilisez les deux-points (`:`) pour separer heures et minutes.
+Utilisez les deux-points (`:`) pour séparer heures et minutes.
 
 ## Exemples pratiques
 
@@ -93,13 +93,13 @@ Utilisez les deux-points (`:`) pour separer heures et minutes.
 =SOMME(B2:B6)    ' Format [h]:mm
 ```
 
-### Heures supplementaires
+### Heures supplémentaires
 
 ```excel
 =SI(Total>TEMPS(35;0;0);Total-TEMPS(35;0;0);0)
 ```
 
-## Additionner heures et minutes separees
+## Additionner heures et minutes séparées
 
 ### Avec TEMPS
 
@@ -121,7 +121,7 @@ Utilisez les deux-points (`:`) pour separer heures et minutes.
 =TEMPS(heures;minutes;secondes)
 ```
 
-### Creer une duree
+### Créer une duree
 
 ```excel
 =TEMPS(8;30;0)    ' 8 heures 30
@@ -135,13 +135,13 @@ Si la cellule contient "8h30" (texte), la SOMME ne fonctionne pas.
 
 ### Mauvais format
 
-Verifiez que les cellules sont formatees en heure.
+Vérifiez que les cellules sont formatees en heure.
 
 ## Bonnes pratiques
 
 1. **Utilisez** le format [h]:mm pour les totaux
 2. **Saisissez** avec deux-points (8:30)
-3. **Verifiez** le format des cellules
+3. **Vérifiez** le format des cellules
 4. **Convertissez** en decimal pour les calculs financiers
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

@@ -1,44 +1,44 @@
 ---
-title: "Importer des Donnees API REST dans Excel"
+title: "Importer des Données API REST dans Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Connectez Excel a des API REST pour importer des donnees en direct."
-description: "Guide pour importer des donnees depuis une API REST dans Excel."
-category: "Analyse de donnees Excel"
-categories: ["Analyse de donnees Excel", "Excel 365"]
+excerpt: "Connectez Excel à des API REST pour importer des données en direct."
+description: "Guide pour importer des données depuis une API REST dans Excel."
+category: "Analyse de données Excel"
+catégories: ["Analyse de données Excel", "Excel 365"]
 tags: ["API", "REST", "Power Query", "JSON", "Import"]
 ---
 
-# Importer des Donnees API REST
+# Importer des Données API REST
 
-Connectez Excel a des sources de donnees en ligne via API.
+Connectez Excel à des sources de données en ligne via API.
 
 ## Qu'est-ce qu'une API REST ?
 
-### Definition
+### Définition
 
-Une API REST permet d'acceder a des donnees via des requetes HTTP (GET, POST, etc.).
+Une API REST permet d'acceder à des données via des requêtes HTTP (GET, POST, etc.).
 
 ### Exemples d'API
 
-- Donnees meteo
+- Données meteo
 - Taux de change
 - Statistiques publiques
-- Donnees d'entreprise
+- Données d'entreprise
 
-## Methode 1 : Power Query
+## Méthode 1 : Power Query
 
-### Etapes de connexion
+### Étapes de connexion
 
-1. **Donnees** > **Obtenir des donnees** > **A partir du web**
+1. **Données** > **Obtenir des données** > **A partir du web**
 2. Collez l'URL de l'API
-3. Power Query s'ouvre avec les donnees JSON
+3. Power Query s'ouvre avec les données JSON
 
 ### Transformer le JSON
 
-1. Convertissez en table si necessaire
-2. Developpez les colonnes imbriquees
-3. Selectionnez les champs utiles
+1. Convertissez en table si nécessaire
+2. Developpez les colonnes imbriquées
+3. Sélectionnez les champs utiles
 4. **Fermer et charger**
 
 ### Exemple : API de taux de change
@@ -47,7 +47,7 @@ Une API REST permet d'acceder a des donnees via des requetes HTTP (GET, POST, et
 https://api.exchangerate-api.com/v4/latest/EUR
 ```
 
-## Methode 2 : Fonction WEBSERVICE
+## Méthode 2 : Fonction WEBSERVICE
 
 ### Syntaxe
 
@@ -59,7 +59,7 @@ https://api.exchangerate-api.com/v4/latest/EUR
 
 - Retourne du texte brut
 - Maximum 32767 caracteres
-- Pas de parsing JSON integre
+- Pas de parsing JSON intégré
 
 ### Parser le JSON manuellement
 
@@ -75,15 +75,15 @@ Utilisez des fonctions texte pour extraire les valeurs :
 
 | Type | Description |
 |------|-------------|
-| API Key | Cle dans l'URL ou l'en-tete |
-| OAuth | Token d'acces |
+| API Key | Clé dans l'URL où l'en-tête |
+| OAuth | Token d'accès |
 | Basic Auth | Utilisateur/mot de passe |
 
 ### Dans Power Query
 
-1. **Modifier les requetes**
-2. **Editeur avance**
-3. Ajoutez les en-tetes d'authentification
+1. **Modifier les requêtes**
+2. **Éditeur avancé**
+3. Ajoutez les en-têtes d'authentification
 
 ### Exemple avec API Key
 
@@ -91,62 +91,62 @@ Utilisez des fonctions texte pour extraire les valeurs :
 https://api.example.com/data?api_key=VOTRE_CLE
 ```
 
-## Actualisation des donnees
+## Actualisation des données
 
 ### Actualisation manuelle
 
-**Donnees** > **Actualiser tout**
+**Données** > **Actualiser tout**
 
 ### Actualisation automatique
 
-1. Proprietes de la requete
+1. Propriétés de la requête
 2. **Actualiser toutes les X minutes**
-3. Ou **Actualiser a l'ouverture du fichier**
+3. Ou **Actualiser à l'ouverture du fichier**
 
 ## Gestion des erreurs
 
-### Problemes courants
+### Problèmes courants
 
 | Erreur | Cause | Solution |
 |--------|-------|----------|
-| 401 | Authentification | Verifiez les identifiants |
-| 404 | URL invalide | Verifiez l'endpoint |
+| 401 | Authentification | Vérifiez les identifiants |
+| 404 | URL invalide | Vérifiez l'endpoint |
 | 429 | Limite atteinte | Reduisez la frequence |
-| Timeout | Serveur lent | Augmentez le delai |
+| Timeout | Serveur lent | Augmentez le délai |
 
 ### Dans Power Query
 
-Utilisez try...otherwise pour gerer les erreurs :
+Utilisez try...otherwise pour gérer les erreurs :
 
 ```
 = try Web.Contents(url) otherwise null
 ```
 
-## Exemple complet : Donnees meteo
+## Exemple complet : Données meteo
 
-### Etape 1 : URL de l'API
+### Étape 1 : URL de l'API
 
 ```
 https://api.open-meteo.com/v1/forecast?latitude=48.85&longitude=2.35&current_weather=true
 ```
 
-### Etape 2 : Import Power Query
+### Étape 2 : Import Power Query
 
-1. Obtenir des donnees depuis le web
+1. Obtenir des données depuis le web
 2. Convertir en table
-3. Developper current_weather
+3. Développer current_weather
 4. Charger dans Excel
 
-### Etape 3 : Mise en forme
+### Étape 3 : Mise en forme
 
-Renommez les colonnes et formatez les donnees.
+Renommez les colonnes et formatez les données.
 
 ## Bonnes pratiques
 
-1. **Cachez** les cles API (ne les exposez pas)
+1. **Cachez** les clés API (ne les exposez pas)
 2. **Limitez** les appels pour respecter les quotas
-3. **Documentez** les sources de donnees
-4. **Testez** les URL avant l'integration
+3. **Documentez** les sources de données
+4. **Testez** les URL avant l'intégration
 
 ## Alternatives
 
@@ -158,4 +158,4 @@ Pour des scenarios plus complexes avec des workflows.
 
 Pour des automatisations programmables dans Excel Online.
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

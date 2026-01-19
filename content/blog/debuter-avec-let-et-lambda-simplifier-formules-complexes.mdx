@@ -1,21 +1,21 @@
 ---
-title: "Debuter avec LET et LAMBDA : Simplifier les Formules Complexes"
+title: "Débuter avec LET et LAMBDA : Simplifier les Formules Complexes"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Guide pour debutants sur LET et LAMBDA pour simplifier vos formules."
-description: "Apprenez a simplifier vos formules complexes avec LET et LAMBDA."
+excerpt: "Guide pour débutants sûr LET et LAMBDA pour simplifier vos formules."
+description: "Apprenez à simplifier vos formules complexes avec LET et LAMBDA."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
-tags: ["LET", "LAMBDA", "Debutant", "Formules"]
+catégories: ["Excel 365", "Formules Excel"]
+tags: ["LET", "LAMBDA", "Débutant", "Formules"]
 ---
 
-# Debuter avec LET et LAMBDA
+# Débuter avec LET et LAMBDA
 
-Simplifiez vos formules complexes grace a ces deux fonctions revolutionnaires.
+Simplifiez vos formules complexes grace à ces deux fonctions revolutionnaires.
 
 ## Pourquoi LET et LAMBDA ?
 
-### Le probleme des formules complexes
+### Le problème des formules complexes
 
 ```excel
 =SI(RECHERCHEX(A1;B:B;C:C)>100;
@@ -23,24 +23,24 @@ Simplifiez vos formules complexes grace a ces deux fonctions revolutionnaires.
   RECHERCHEX(A1;B:B;C:C)*0.9)
 ```
 
-Problemes :
+Problèmes :
 - RECHERCHEX execute 3 fois
-- Difficile a lire
+- Difficile à lire
 - Erreurs de modification
 
 ### La solution : LET
 
 ```excel
 =LET(
-  resultat;RECHERCHEX(A1;B:B;C:C);
-  SI(resultat>100;resultat*1.1;resultat*0.9)
+  résultat;RECHERCHEX(A1;B:B;C:C);
+  SI(résultat>100;résultat*1.1;résultat*0.9)
 )
 ```
 
 Avantages :
 - Un seul calcul
 - Plus lisible
-- Facile a modifier
+- Facile à modifier
 
 ## La fonction LET
 
@@ -50,11 +50,11 @@ Avantages :
 =LET(nom1;valeur1;nom2;valeur2;...;calcul_final)
 ```
 
-### Regles
+### Règles
 
-- Definissez d'abord les variables
-- Le dernier argument est le resultat
-- Les noms ne doivent pas etre des references (pas "A1")
+- Définissez d'abord les variables
+- Le dernier argument est le résultat
+- Les noms ne doivent pas etre des références (pas "A1")
 
 ### Exemple simple
 
@@ -66,11 +66,11 @@ Avantages :
 )
 ```
 
-Resultat : 15
+Résultat : 15
 
 ## LET en pratique
 
-### Calcul avec etapes
+### Calcul avec étapes
 
 ```excel
 =LET(
@@ -82,14 +82,14 @@ Resultat : 15
 )
 ```
 
-### Eviter les repetitions
+### Éviter les repetitions
 
 **Avant :**
 ```excel
 =SI(ESTNA(RECHERCHEX(A1;B:B;C:C));0;RECHERCHEX(A1;B:B;C:C))
 ```
 
-**Apres :**
+**Après :**
 ```excel
 =LET(
   val;RECHERCHEX(A1;B:B;C:C;"Non trouve");
@@ -102,9 +102,9 @@ Resultat : 15
 ```excel
 =LET(
   prix_ht;B1;
-  quantite;C1;
+  quantité;C1;
   tva;0,2;
-  total_ht;prix_ht*quantite;
+  total_ht;prix_ht*quantité;
   total_ttc;total_ht*(1+tva);
   total_ttc
 )
@@ -120,7 +120,7 @@ Resultat : 15
 
 ### Concept
 
-LAMBDA cree une fonction personnalisee que vous pouvez reutiliser.
+LAMBDA créé une fonction personnalisee que vous pouvez reutiliser.
 
 ### Exemple simple
 
@@ -128,20 +128,20 @@ LAMBDA cree une fonction personnalisee que vous pouvez reutiliser.
 =LAMBDA(x;x*2)
 ```
 
-Cree une fonction qui double une valeur.
+Créé une fonction qui double une valeur.
 
 ## Utiliser LAMBDA avec des noms
 
-### Etape 1 : Creer la fonction
+### Étape 1 : Créer la fonction
 
 Dans le Gestionnaire de noms :
 - Nom : DOUBLER
-- Fait reference a : `=LAMBDA(x;x*2)`
+- Fait référence à : `=LAMBDA(x;x*2)`
 
-### Etape 2 : Utiliser
+### Étape 2 : Utiliser
 
 ```excel
-=DOUBLER(5)   ' Resultat : 10
+=DOUBLER(5)   ' Résultat : 10
 ```
 
 ## LAMBDA en pratique
@@ -190,22 +190,22 @@ Formule: =LAMBDA(ventes;anciennete;
 )
 ```
 
-## Exercices pour debuter
+## Exercices pour débuter
 
 ### Exercice 1 : LET basique
 
-Creez une formule qui calcule :
+Créez une formule qui calcule :
 - La somme de A1:A10
 - La moyenne
 - Affiche "Somme: X | Moyenne: Y"
 
 ### Exercice 2 : LAMBDA simple
 
-Creez une fonction CARRE qui retourne le carre d'un nombre.
+Créez une fonction CARRE qui retourne le carre d'un nombre.
 
 ### Exercice 3 : Combinaison
 
-Creez une fonction REMISE qui :
+Créez une fonction REMISE qui :
 - Prend un prix et un pourcentage
 - Calcule la remise
 - Retourne le prix final
@@ -216,23 +216,23 @@ Creez une fonction REMISE qui :
 
 | Erreur | Cause | Solution |
 |--------|-------|----------|
-| #NOM? | Nom invalide | Evitez les noms de cellules |
-| #VALEUR! | Types incompatibles | Verifiez les donnees |
+| #NOM? | Nom invalide | Évitez les noms de cellules |
+| #VALEUR! | Types incompatibles | Vérifiez les données |
 
 ### LAMBDA
 
 | Erreur | Cause | Solution |
 |--------|-------|----------|
-| #CALC! | Parametres manquants | Verifiez le nombre de params |
-| Non defini | Pas de nom | Creez un nom defini |
+| #CALC! | Paramètrès manquants | Vérifiez le nombre de params |
+| Non défini | Pas de nom | Créez un nom défini |
 
-## Bonnes pratiques debutant
+## Bonnes pratiques débutant
 
 | Pratique | Description |
 |----------|-------------|
 | Noms explicites | Variables claires |
-| Etapes simples | Un calcul par variable |
-| Tests | Verifiez chaque etape |
+| Étapes simples | Un calcul par variable |
+| Tests | Vérifiez chaque étape |
 | Documentation | Commentez les noms |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

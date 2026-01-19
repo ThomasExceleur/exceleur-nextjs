@@ -1,27 +1,27 @@
 ---
-title: "Excel Mettre en Forme un Numero de Telephone"
+title: "Excel Mettre en Forme un Numéro de Telephone"
 date: "2024-07-18"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a formater correctement les numeros de telephone dans Excel."
-description: "Guide pour formater les numeros de telephone dans Excel. Formats personnalises et formules."
+excerpt: "Apprenez à formater correctement les numéros de telephone dans Excel."
+description: "Guide pour formater les numéros de telephone dans Excel. Formats personnalises et formules."
 category: "Formatage"
-categories: ["Formatage", "Astuces Excel"]
+catégories: ["Formatage", "Astuces Excel"]
 tags: ["Telephone", "Format", "Mise en forme", "Texte"]
 ---
 
-# Formater un Numero de Telephone dans Excel
+# Formater un Numéro de Telephone dans Excel
 
-Les numeros de telephone necessitent un formatage special pour etre lisibles.
+Les numéros de telephone necessitent un formatage special pour etre lisibles.
 
-## Problemes courants
+## Problèmes courants
 
 ### Le zero initial disparait
 
-Si vous tapez 0612345678, Excel affiche 612345678.
+Si vous tapez 0612345678, Excel affiché 612345678.
 
 ### Cause
 
-Excel traite les numeros comme des nombres mathematiques.
+Excel traite les numéros comme des nombres mathematiques.
 
 ### Solution
 
@@ -29,15 +29,15 @@ Formatez la cellule en texte AVANT de saisir.
 
 ## Format texte
 
-### Methode 1 : Avant saisie
+### Méthode 1 : Avant saisie
 
-1. Selectionnez les cellules
+1. Sélectionnez les cellules
 2. **Accueil** > **Format** > **Texte**
-3. Saisissez le numero
+3. Saisissez le numéro
 
-### Methode 2 : Apostrophe
+### Méthode 2 : Apostrophe
 
-Tapez une apostrophe avant le numero :
+Tapez une apostrophe avant le numéro :
 ```
 '0612345678
 ```
@@ -46,14 +46,14 @@ L'apostrophe n'apparait pas mais force le format texte.
 
 ## Format personnalise
 
-### Creer un format
+### Créer un format
 
-1. Selectionnez les cellules
+1. Sélectionnez les cellules
 2. **Ctrl + 1** (Format de cellule)
 3. **Personnalisee**
 4. Entrez le format
 
-### Formats francais
+### Formats français
 
 | Format | Affichage |
 |--------|-----------|
@@ -89,7 +89,7 @@ Affiche : +33 6 12 34 56 78
 ="+33 "&DROITE(TEXTE(A1;"0000000000");9)
 ```
 
-## Nettoyer les numeros
+## Nettoyer les numéros
 
 ### Supprimer les espaces
 
@@ -97,7 +97,7 @@ Affiche : +33 6 12 34 56 78
 =SUBSTITUE(A1;" ";"")
 ```
 
-### Supprimer tous les caracteres non numeriques
+### Supprimer tous les caracteres non numériques
 
 ```excel
 =SUBSTITUE(SUBSTITUE(SUBSTITUE(A1;" ";"");"-";"");".";"")
@@ -116,12 +116,12 @@ Function NettoyerTel(tel As String) As String
 End Function
 ```
 
-## Validation des numeros
+## Validation des numéros
 
 ### Longueur correcte
 
 ```excel
-=SI(NBCAR(A1)=10;"OK";"Verifier")
+=SI(NBCAR(A1)=10;"OK";"Vérifier")
 ```
 
 ### Commence par 0
@@ -130,7 +130,7 @@ End Function
 =SI(GAUCHE(A1;1)="0";"OK";"Ajouter 0")
 ```
 
-### Verification complete
+### Vérification complete
 
 ```excel
 =SI(ET(NBCAR(A1)=10;GAUCHE(A1;1)="0");"Valide";"Invalide")
@@ -153,14 +153,14 @@ Standard international sans espaces :
 | Belgique | +32 X XX XX XX XX |
 | Suisse | +41 XX XXX XX XX |
 
-## Import de donnees
+## Import de données
 
-### Numeros qui perdent le zero
+### Numéros qui perdent le zero
 
 1. Importez en format texte
 2. Ou utilisez Power Query avec type Texte
 
-### Convertir apres import
+### Convertir après import
 
 ```excel
 =TEXTE(A1;"0000000000")
@@ -168,7 +168,7 @@ Standard international sans espaces :
 
 ## Liens cliquables
 
-### Creer un lien telephone
+### Créer un lien telephone
 
 ```excel
 =LIEN_HYPERTEXTE("tel:"&A1;A1)
@@ -193,9 +193,9 @@ Standard international sans espaces :
 1. **Formatez** les colonnes en texte avant saisie
 2. **Standardisez** le format dans toute la base
 3. **Validez** la longueur et le format
-4. **Stockez** sans formatage, formatez a l'affichage
+4. **Stockez** sans formatage, formatez à l'affichage
 
-## Resume des formats
+## Résumé des formats
 
 | Besoin | Format personnalise |
 |--------|---------------------|
@@ -204,4 +204,4 @@ Standard international sans espaces :
 | Tirets | `00"-"00"-"00"-"00"-"00` |
 | International | `"+33 "0" "00" "00" "00" "00` |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

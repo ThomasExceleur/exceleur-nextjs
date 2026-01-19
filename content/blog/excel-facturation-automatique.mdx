@@ -3,55 +3,55 @@ title: "Excel Facturation Automatique : Guide Complet"
 date: "2024-07-18"
 author: "Thomas L'Exceleur"
 excerpt: "Automatisez votre facturation dans Excel avec ce guide complet."
-description: "Guide pour creer un systeme de facturation automatique dans Excel. Modeles et formules."
+description: "Guide pour créer un système de facturation automatique dans Excel. Modèles et formules."
 category: "Comptabilite"
-categories: ["Comptabilite", "Automatisation"]
+catégories: ["Comptabilite", "Automatisation"]
 tags: ["Facturation", "Facture", "Automatisation", "Comptabilite"]
 ---
 
 # Facturation Automatique dans Excel
 
-Automatisez votre facturation pour gagner du temps et eviter les erreurs.
+Automatisez votre facturation pour gagner du temps et éviter les erreurs.
 
-## Structure de la facture
+## Structuré de la facture
 
-### En-tete entreprise
+### En-tête entreprise
 
-| Element | Description |
+| Élément | Description |
 |---------|-------------|
 | Logo | Image de l'entreprise |
 | Raison sociale | Nom de l'entreprise |
 | Adresse | Coordonnees completes |
-| SIRET | Numero d'identification |
-| TVA intracommunautaire | Numero TVA |
+| SIRET | Numéro d'identification |
+| TVA intracommunautaire | Numéro TVA |
 
 ### Informations facture
 
-| Element | Exemple |
+| Élément | Exemple |
 |---------|---------|
-| Numero facture | FAC-2024-0001 |
+| Numéro facture | FAC-2024-0001 |
 | Date emission | 15/01/2024 |
-| Date echeance | 15/02/2024 |
-| Reference client | CLI-001 |
+| Date échéance | 15/02/2024 |
+| Référence client | CLI-001 |
 
-## Base de donnees clients
+## Base de données clients
 
-### Structure
+### Structuré
 
-| ID | Societe | Adresse | CP | Ville | Email |
+| ID | Société | Adresse | CP | Ville | Email |
 |----|---------|---------|----|----|-------|
-| CLI-001 | Societe A | 10 rue X | 75001 | Paris | contact@a.fr |
+| CLI-001 | Société A | 10 rue X | 75001 | Paris | contact@à.fr |
 
-### Recuperation automatique
+### Récupération automatique
 
 ```excel
-=RECHERCHEX(Ref_client;Clients[ID];Clients[Societe])
+=RECHERCHEX(Ref_client;Clients[ID];Clients[Société])
 =RECHERCHEX(Ref_client;Clients[ID];Clients[Adresse])
 ```
 
 ## Catalogue produits
 
-### Structure
+### Structuré
 
 | Ref | Designation | Prix HT | TVA |
 |-----|-------------|---------|-----|
@@ -82,9 +82,9 @@ Automatisez votre facturation pour gagner du temps et eviter les erreurs.
 
 ## Calcul des totaux
 
-### Structure
+### Structuré
 
-| Element | Montant |
+| Élément | Montant |
 |---------|---------|
 | Total HT | 450.00 |
 | TVA 20% | 90.00 |
@@ -116,7 +116,7 @@ Automatisez votre facturation pour gagner du temps et eviter les erreurs.
 
 ## Numerotation automatique
 
-### Format recommande
+### Format recommandé
 
 ```excel
 ="FAC-"&ANNEE(AUJOURDHUI())&"-"&TEXTE(Numero_seq;"0000")
@@ -125,12 +125,12 @@ Automatisez votre facturation pour gagner du temps et eviter les erreurs.
 ### Increment automatique
 
 ```excel
-=MAX(Factures[Numero])+1
+=MAX(Factures[Numéro])+1
 ```
 
 ## Conditions de paiement
 
-### Echeance automatique
+### Échéance automatique
 
 ```excel
 =Date_facture + 30               ' 30 jours
@@ -141,17 +141,17 @@ Automatisez votre facturation pour gagner du temps et eviter les erreurs.
 ### Texte conditions
 
 ```excel
-="Paiement a 30 jours. Date d'echeance : "&TEXTE(Echeance;"JJ/MM/AAAA")
+="Paiement à 30 jours. Date d'échéance : "&TEXTE(Échéance;"JJ/MM/AAAA")
 ```
 
 ## Mentions legales
 
 ### Obligatoires
 
-- Numero SIRET
+- Numéro SIRET
 - Forme juridique et capital
 - RCS
-- Numero TVA intracommunautaire
+- Numéro TVA intracommunautaire
 - Penalites de retard
 
 ### Conditionnelles
@@ -164,7 +164,7 @@ Automatisez votre facturation pour gagner du temps et eviter les erreurs.
 
 ### Tableau de suivi
 
-| Numero | Client | Date | HT | TTC | Paye |
+| Numéro | Client | Date | HT | TTC | Paye |
 |--------|--------|------|----|----|------|
 | FAC-001 | Client A | 15/01 | 450 | 540 | Oui |
 | FAC-002 | Client B | 20/01 | 300 | 360 | Non |
@@ -181,51 +181,51 @@ Automatisez votre facturation pour gagner du temps et eviter les erreurs.
 ### Liste des impayes
 
 ```excel
-=FILTRE(Factures;(Factures[Paye]="Non")*(Factures[Echeance]<AUJOURDHUI()))
+=FILTRE(Factures;(Factures[Paye]="Non")*(Factures[Échéance]<AUJOURDHUI()))
 ```
 
 ### Nombre de jours de retard
 
 ```excel
-=AUJOURDHUI()-Echeance
+=AUJOURDHUI()-Échéance
 ```
 
 ## Export et impression
 
-### Preparation PDF
+### Préparation PDF
 
-1. Definissez la zone d'impression
+1. Définissez la zone d'impression
 2. **Mise en page** > **Ajuster**
 3. **Fichier** > **Exporter** > **PDF**
 
 ### Envoi par email
 
 1. Exportez en PDF
-2. Joignez a un email
+2. Joignez à un email
 3. Ou utilisez VBA pour automatiser
 
 ## VBA pour automatisation
 
-### Generer une facture
+### Générer une facture
 
 ```vba
 Sub GenererFacture()
-    ' Copier le modele
-    Sheets("Modele").Copy After:=Sheets(Sheets.Count)
-    ' Renommer avec le numero
+    ' Copier le modèle
+    Sheets("Modèle").Copy After:=Sheets(Sheets.Count)
+    ' Renommer avec le numéro
     ActiveSheet.Name = "FAC-" & Format(Date, "YYYYMMDD")
     ' Incrementer le compteur
-    Sheets("Parametres").Range("Numero") = _
-        Sheets("Parametres").Range("Numero") + 1
+    Sheets("Paramètrès").Range("Numéro") = _
+        Sheets("Paramètrès").Range("Numéro") + 1
 End Sub
 ```
 
 ## Bonnes pratiques
 
 1. **Sauvegardez** chaque facture
-2. **Archivez** par annee
-3. **Verifiez** les calculs
+2. **Archivez** par année
+3. **Vérifiez** les calculs
 4. **Numerotez** sans rupture
 5. **Respectez** les mentions legales
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

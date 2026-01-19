@@ -1,23 +1,23 @@
 ---
-title: "Guide API REST avec Power Query : Importer des Donnees"
+title: "Guide API REST avec Power Query : Importer des Données"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Connectez Power Query aux API REST pour importer des donnees."
-description: "Guide pour importer des donnees API REST avec Power Query."
+excerpt: "Connectez Power Query aux API REST pour importer des données."
+description: "Guide pour importer des données API REST avec Power Query."
 category: "Power Query"
-categories: ["Power Query", "API"]
-tags: ["API REST", "Power Query", "Import", "Donnees"]
+catégories: ["Power Query", "API"]
+tags: ["API REST", "Power Query", "Import", "Données"]
 ---
 
 # API REST avec Power Query
 
-Importez des donnees depuis des API web dans Excel.
+Importez des données depuis des API web dans Excel.
 
 ## Qu'est-ce qu'une API REST ?
 
-### Definition
+### Définition
 
-Interface permettant d'acceder a des donnees via HTTP.
+Interface permettant d'acceder à des données via HTTP.
 
 ### Formats courants
 
@@ -37,7 +37,7 @@ in
     JSON
 ```
 
-## Avec parametres
+## Avec paramètrès
 
 ### Query parameters
 
@@ -45,7 +45,7 @@ in
 let
     Source = Web.Contents(
         \"https://api.exemple.com/data\",
-        [Query = [region = \"France\", annee = \"2024\"]]
+        [Query = [region = \"France\", année = \"2024\"]]
     )
 in
     Json.Document(Source)
@@ -67,7 +67,7 @@ in
 
 ## Pagination
 
-### Boucle sur les pages
+### Boucle sûr les pages
 
 ```m
 let
@@ -106,7 +106,7 @@ in
 | Pratique | Description |
 |----------|-------------|
 | Cache | Limitez les appels |
-| Erreurs | Gerez les timeout |
+| Erreurs | Gérez les timeout |
 | Documentation | Notez les endpoints |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

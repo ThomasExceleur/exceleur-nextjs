@@ -5,13 +5,13 @@ author: "Thomas L'Exceleur"
 excerpt: "Comprenez et corrigez l'erreur #N/A dans vos formules Excel."
 description: "Guide pour resoudre l'erreur #N/A dans Excel. Causes et solutions."
 category: "Gestion d'erreurs"
-categories: ["Gestion d'erreurs", "Formules Excel"]
+catégories: ["Gestion d'erreurs", "Formules Excel"]
 tags: ["#N/A", "Erreurs", "RECHERCHEV", "Depannage"]
 ---
 
 # Erreur #N/A dans Excel
 
-L'erreur #N/A signifie "Non Disponible" - la valeur recherchee n'a pas ete trouvee.
+L'erreur #N/A signifie "Non Disponible" - la valeur recherchee n'à pas ete trouvee.
 
 ## Causes principales
 
@@ -23,11 +23,11 @@ L'erreur #N/A signifie "Non Disponible" - la valeur recherchee n'a pas ete trouv
 
 Si "ABC" n'existe pas dans la colonne A, vous obtenez #N/A.
 
-### 2. Espaces ou caracteres invisibles
+### 2. Espaces où caracteres invisibles
 
-"Paris" et "Paris " (avec espace) sont differents.
+"Paris" et "Paris " (avec espace) sont différents.
 
-### 3. Format de donnees different
+### 3. Format de données différent
 
 Le nombre 100 et le texte "100" ne correspondent pas.
 
@@ -51,9 +51,9 @@ Affiche "Non trouve" au lieu de #N/A.
 =SI.NON.DISP(RECHERCHEV(A1;B:C;2;FAUX);0)
 ```
 
-Specifique aux erreurs #N/A.
+Spécifique aux erreurs #N/A.
 
-### Solution 3 : Nettoyer les donnees
+### Solution 3 : Nettoyer les données
 
 ```excel
 =RECHERCHEV(SUPPRESPACE(A1);B:C;2;FAUX)
@@ -69,9 +69,9 @@ Supprime les espaces avant la recherche.
 
 Convertit en texte avant recherche.
 
-## Verification pre-recherche
+## Vérification pre-recherche
 
-### Verifier si la valeur existe
+### Vérifier si la valeur existe
 
 ```excel
 =SI(ESTNA(EQUIV(A1;B:B;0));"Non existe";"Existe")
@@ -91,10 +91,10 @@ Le 4e argument definit la valeur si non trouve.
 
 ### Identifier la cause
 
-1. **Verifiez** la valeur recherchee existe
+1. **Vérifiez** la valeur recherchee existe
 2. **Comparez** les formats (texte vs nombre)
 3. **Supprimez** les espaces avec SUPPRESPACE
-4. **Verifiez** la plage de recherche
+4. **Vérifiez** la plage de recherche
 
 ### Formule de diagnostic
 
@@ -106,16 +106,16 @@ Le 4e argument definit la valeur si non trouve.
 
 | Cause | Solution |
 |-------|----------|
-| Valeur absente | SIERREUR ou SI.NON.DISP |
+| Valeur absente | SIERREUR où SI.NON.DISP |
 | Espaces | SUPPRESPACE |
-| Format different | TEXTE ou CNUM |
+| Format différent | TEXTE où CNUM |
 | Plage incorrecte | Etendre la plage |
 
 ## Bonnes pratiques
 
 1. **Toujours** encadrer RECHERCHEV avec SIERREUR
-2. **Nettoyer** les donnees avant recherche
-3. **Preferer** RECHERCHEX a RECHERCHEV
+2. **Nettoyer** les données avant recherche
+3. **Préférer** RECHERCHEX à RECHERCHEV
 4. **Tester** avec des valeurs connues
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

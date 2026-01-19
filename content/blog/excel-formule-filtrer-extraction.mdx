@@ -1,17 +1,17 @@
 ---
-title: "Excel : Formule FILTRE pour l'Extraction de Donnees"
+title: "Excel : Formule FILTRE pour l'Extraction de Données"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Maitrisez la formule FILTRE pour extraire vos donnees Excel."
-description: "Guide de la formule FILTRE pour l'extraction de donnees."
+excerpt: "Maîtrisez la formule FILTRE pour extraire vos données Excel."
+description: "Guide de la formule FILTRE pour l'extraction de données."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
+catégories: ["Excel 365", "Formules Excel"]
 tags: ["FILTRE", "Extraction", "Formules", "Excel 365"]
 ---
 
-# Formule FILTRE pour l'Extraction de Donnees
+# Formule FILTRE pour l'Extraction de Données
 
-FILTRE extrait automatiquement les donnees repondant a vos criteres.
+FILTRE extrait automatiquement les données repondant à vos critères.
 
 ## Syntaxe
 
@@ -19,13 +19,13 @@ FILTRE extrait automatiquement les donnees repondant a vos criteres.
 =FILTRE(tableau;inclure;[si_vide])
 ```
 
-## Parametres
+## Paramètrès
 
-| Parametre | Description |
+| Paramèêtre | Description |
 |-----------|-------------|
-| tableau | Plage de donnees source |
+| tableau | Plage de données source |
 | inclure | Condition (tableau de VRAI/FAUX) |
-| si_vide | Valeur si aucun resultat |
+| si_vide | Valeur si aucun résultat |
 
 ## Exemples fondamentaux
 
@@ -35,17 +35,17 @@ FILTRE extrait automatiquement les donnees repondant a vos criteres.
 =FILTRE(A2:C10;B2:B10="Paris")
 ```
 
-Extrait les lignes ou la colonne B = "Paris".
+Extrait les lignes où la colonne B = "Paris".
 
-### Filtre numerique
+### Filtre numérique
 
 ```excel
 =FILTRE(A2:C10;C2:C10>100)
 ```
 
-Extrait les lignes ou la colonne C > 100.
+Extrait les lignes où la colonne C > 100.
 
-## Criteres multiples
+## Critères multiples
 
 ### Avec ET (multiplication)
 
@@ -63,16 +63,16 @@ Paris ET montant > 100.
 
 Paris OU Lyon.
 
-## Gestion des resultats vides
+## Gestion des résultats vides
 
-### Probleme
+### Problème
 
 Sans correspondance, FILTRE retourne #CALC!
 
 ### Solution
 
 ```excel
-=FILTRE(A2:C10;B2:B10="Berlin";"Aucun resultat")
+=FILTRE(A2:C10;B2:B10="Berlin";"Aucun résultat")
 ```
 
 ### Retourner une cellule vide
@@ -89,7 +89,7 @@ Sans correspondance, FILTRE retourne #CALC!
 =FILTRE(A2:D10;B2:B10="Paris")
 ```
 
-### Une colonne specifique
+### Une colonne spécifique
 
 ```excel
 =FILTRE(A2:A10;B2:B10="Paris")
@@ -117,7 +117,7 @@ Filtre Paris, trie par colonne 3 decroissant.
 
 ## Combiner avec INDEX
 
-### Premiere valeur du filtre
+### Première valeur du filtre
 
 ```excel
 =INDEX(FILTRE(A2:C10;B2:B10="Paris");1;1)
@@ -129,17 +129,17 @@ Filtre Paris, trie par colonne 3 decroissant.
 =INDEX(FILTRE(A2:C10;B2:B10="Paris");3;2)
 ```
 
-3eme ligne, 2eme colonne du resultat.
+3eme ligne, 2eme colonne du résultat.
 
 ## Filtres dynamiques
 
-### Reference cellule
+### Référence cellule
 
 ```excel
 =FILTRE(A2:C10;B2:B10=E1)
 ```
 
-E1 contient le critere.
+E1 contient le critère.
 
 ### Recherche partielle
 
@@ -159,7 +159,7 @@ Filtre si A contient le texte de E1.
 
 ## Exclure des valeurs
 
-### Different de
+### Différent de
 
 ```excel
 =FILTRE(A2:C10;A2:A10<>"Exclu")
@@ -176,16 +176,16 @@ Filtre si A contient le texte de E1.
 | Erreur | Cause | Solution |
 |--------|-------|----------|
 | #CALC! | Aucune correspondance | Ajoutez si_vide |
-| #VALEUR! | Tailles de plages differentes | Alignez les plages |
-| #PROPAGATION! | Pas d'espace pour le resultat | Liberez les cellules |
+| #VALEUR! | Tailles de plages différentes | Alignez les plages |
+| #PROPAGATION! | Pas d'espace pour le résultat | Liberez les cellules |
 
 ## Bonnes pratiques
 
 | Pratique | Description |
 |----------|-------------|
-| Tableaux structures | References dynamiques |
+| Tableaux structurés | Références dynamiques |
 | LET | Organisez les formules complexes |
-| Test | Verifiez les resultats |
-| Documentation | Commentez les criteres |
+| Test | Vérifiez les résultats |
+| Documentation | Commentez les critères |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

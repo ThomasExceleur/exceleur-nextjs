@@ -1,17 +1,17 @@
 ---
-title: "Formule SI Avancee dans Excel"
+title: "Formule SI Avancée dans Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Maitrisez les techniques avancees de la fonction SI dans Excel."
-description: "Guide avance de la fonction SI. SI imbriques, SI.CONDITIONS et astuces."
+excerpt: "Maîtrisez les techniques avancées de la fonction SI dans Excel."
+description: "Guide avancé de la fonction SI. SI imbriqués, SI.CONDITIONS et astuces."
 category: "Formules Excel"
-categories: ["Formules Excel", "Logique"]
-tags: ["SI", "Avance", "Logique", "Formules"]
+catégories: ["Formules Excel", "Logique"]
+tags: ["SI", "Avancé", "Logique", "Formules"]
 ---
 
-# Formule SI Avancee
+# Formule SI Avancée
 
-Au-dela du SI simple, decouvrez les techniques avancees.
+Au-dela du SI simple, découvrez les techniques avancées.
 
 ## Rappel de la syntaxe
 
@@ -19,13 +19,13 @@ Au-dela du SI simple, decouvrez les techniques avancees.
 =SI(condition;valeur_si_vrai;valeur_si_faux)
 ```
 
-## SI imbriques
+## SI imbriqués
 
 ### Plusieurs conditions
 
 ```excel
 =SI(A1>=90;"Excellent";
-  SI(A1>=80;"Tres bien";
+  SI(A1>=80;"Très bien";
     SI(A1>=70;"Bien";
       SI(A1>=60;"Passable";"Insuffisant"))))
 ```
@@ -41,7 +41,7 @@ Maximum 64 niveaux d'imbrication (mais evitez d'en avoir autant).
 ```excel
 =SI.CONDITIONS(
   A1>=90;"Excellent";
-  A1>=80;"Tres bien";
+  A1>=80;"Très bien";
   A1>=70;"Bien";
   A1>=60;"Passable";
   VRAI;"Insuffisant"
@@ -89,13 +89,13 @@ Le dernier `VRAI` sert de cas par defaut.
 
 ## SI avec dates
 
-### Verifier si date passee
+### Vérifier si date passee
 
 ```excel
 =SI(A1<AUJOURDHUI();"Expire";"Valide")
 ```
 
-### Echeance proche
+### Échéance proche
 
 ```excel
 =SI(A1-AUJOURDHUI()<7;"Urgent";
@@ -116,7 +116,7 @@ Le dernier `VRAI` sert de cas par defaut.
 =SIERREUR(SI(CHERCHE("urgent";A1)>0;"Prioritaire";"Normal");"Normal")
 ```
 
-## Eviter les SI multiples
+## Éviter les SI multiples
 
 ### Utiliser CHOISIR
 
@@ -126,7 +126,7 @@ Le dernier `VRAI` sert de cas par defaut.
 
 ### Utiliser RECHERCHEV
 
-Creez une table de correspondance plutot que des SI imbriques.
+Créez une table de correspondance plutôt que des SI imbriqués.
 
 ## Cas pratiques
 
@@ -145,14 +145,14 @@ Creez une table de correspondance plutot que des SI imbriques.
 
 ```excel
 =SI(ET(Paye="Oui";Expedie="Oui");"Termine";
-  SI(Paye="Oui";"En preparation";"En attente"))
+  SI(Paye="Oui";"En préparation";"En attente"))
 ```
 
 ## Bonnes pratiques
 
 1. **Utilisez** SI.CONDITIONS pour plus de 3 conditions
-2. **Combinez** avec LET pour eviter les calculs repetes
-3. **Preferez** une table de correspondance aux SI multiples
-4. **Simplifiez** avec ET/OU plutot que SI imbriques
+2. **Combinez** avec LET pour éviter les calculs répétés
+3. **Préférez** une table de correspondance aux SI multiples
+4. **Simplifiez** avec ET/OU plutôt que SI imbriqués
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

@@ -1,15 +1,15 @@
 ---
-title: "RECHERCHEV Avancee : Techniques Professionnelles"
+title: "RECHERCHEV Avancée : Techniques Professionnelles"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Maitrisez les techniques avancees de RECHERCHEV dans Excel."
-description: "Guide avance de RECHERCHEV. Recherche multi-criteres, 2D et astuces."
+excerpt: "Maîtrisez les techniques avancées de RECHERCHEV dans Excel."
+description: "Guide avancé de RECHERCHEV. Recherche multi-critères, 2D et astuces."
 category: "Formules Excel"
-categories: ["Formules Excel", "Recherche"]
-tags: ["RECHERCHEV", "Avance", "Recherche", "Formules"]
+catégories: ["Formules Excel", "Recherche"]
+tags: ["RECHERCHEV", "Avancé", "Recherche", "Formules"]
 ---
 
-# RECHERCHEV Avancee
+# RECHERCHEV Avancée
 
 Techniques professionnelles pour aller au-dela de la recherche simple.
 
@@ -19,20 +19,20 @@ Techniques professionnelles pour aller au-dela de la recherche simple.
 =RECHERCHEV(valeur;tableau;index;[correspondance])
 ```
 
-## Recherche multi-criteres
+## Recherche multi-critères
 
-### Probleme
+### Problème
 
 Rechercher avec plusieurs conditions (ex: Produit ET Region).
 
 ### Solution : Colonne auxiliaire
 
-1. Creez une colonne concatenant les criteres :
+1. Créez une colonne concatenant les critères :
 ```excel
 =A2&B2
 ```
 
-2. Utilisez RECHERCHEV sur cette colonne :
+2. Utilisez RECHERCHEV sûr cette colonne :
 ```excel
 =RECHERCHEV(Produit&Region;ColonneAux:D;3;FAUX)
 ```
@@ -43,11 +43,11 @@ Rechercher avec plusieurs conditions (ex: Produit ET Region).
 =FILTRE(D:D;(A:A=Produit)*(B:B=Region))
 ```
 
-## Recherche a gauche
+## Recherche à gauche
 
-### Probleme
+### Problème
 
-RECHERCHEV ne peut pas retourner une valeur a gauche de la cle.
+RECHERCHEV ne peut pas retourner une valeur à gauche de la clé.
 
 ### Solution : INDEX + EQUIV
 
@@ -110,7 +110,7 @@ Trouve toute cellule contenant "Paris".
 =SIERREUR(RECHERCHEV(A1;B:C;2;FAUX);"Non trouve")
 ```
 
-### Verification prealable
+### Vérification prealable
 
 ```excel
 =SI(ESTNA(EQUIV(A1;B:B;0));"N/A";RECHERCHEV(A1;B:C;2;FAUX))
@@ -124,7 +124,7 @@ Trouve toute cellule contenant "Paris".
 =INDEX(B2:E10;EQUIV(Ligne;A2:A10;0);EQUIV(Colonne;B1:E1;0))
 ```
 
-Trouve la valeur a l'intersection d'une ligne et d'une colonne.
+Trouve la valeur à l'intersection d'une ligne et d'une colonne.
 
 ## Optimisation des performances
 
@@ -140,14 +140,14 @@ Trouve la valeur a l'intersection d'une ligne et d'une colonne.
 
 ### Tri pour VRAI
 
-Si vous utilisez VRAI, triez les donnees par ordre croissant.
+Si vous utilisez VRAI, triez les données par ordre croissant.
 
 ## Migration vers RECHERCHEX
 
 | RECHERCHEV | RECHERCHEX |
 |------------|------------|
 | `=RECHERCHEV(A1;B:C;2;FAUX)` | `=RECHERCHEX(A1;B:B;C:C)` |
-| Recherche a droite seulement | Recherche dans toutes les directions |
+| Recherche à droite seulement | Recherche dans toutes les directions |
 | Erreur si non trouve | Valeur par defaut possible |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

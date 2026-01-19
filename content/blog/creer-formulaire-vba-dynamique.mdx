@@ -1,38 +1,38 @@
 ---
-title: "Creer un Formulaire VBA Dynamique dans Excel"
+title: "Créer un Formulaire VBA Dynamique dans Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a creer des formulaires VBA dynamiques pour la saisie de donnees."
-description: "Guide pour creer des formulaires VBA dynamiques dans Excel."
+excerpt: "Apprenez à créer des formulaires VBA dynamiques pour la saisie de données."
+description: "Guide pour créer des formulaires VBA dynamiques dans Excel."
 category: "Macros et VBA"
-categories: ["Macros et VBA", "Productivite"]
+catégories: ["Macros et VBA", "Productivité"]
 tags: ["VBA", "Formulaire", "UserForm", "Dynamique"]
 ---
 
-# Creer un Formulaire VBA Dynamique
+# Créer un Formulaire VBA Dynamique
 
-Les UserForms permettent une saisie de donnees professionnelle.
+Les UserForms permettent une saisie de données professionnelle.
 
-## Creer un UserForm
+## Créer un UserForm
 
-### Acceder a VBA
+### Acceder à VBA
 
-1. **Alt+F11** pour ouvrir l'editeur VBA
+1. **Alt+F11** pour ouvrir l'éditeur VBA
 2. **Insertion** > **UserForm**
 3. Un formulaire vide apparait
 
-### Boite a outils
+### Boite à outils
 
-| Controle | Usage |
+| Contrôle | Usage |
 |----------|-------|
 | Label | Texte informatif |
 | TextBox | Saisie de texte |
 | ComboBox | Liste deroulante |
-| ListBox | Liste de selection |
-| CheckBox | Case a cocher |
+| ListBox | Liste de sélection |
+| CheckBox | Case à cocher |
 | OptionButton | Bouton radio |
 | CommandButton | Bouton d'action |
-| Frame | Groupe de controles |
+| Frame | Groupe de contrôles |
 
 ## Concevoir le formulaire
 
@@ -43,7 +43,7 @@ Les UserForms permettent une saisie de donnees professionnelle.
 3. Ajoutez un bouton "Enregistrer"
 4. Ajoutez un bouton "Annuler"
 
-### Nommer les controles
+### Nommer les contrôles
 
 - txtNom, txtEmail, txtTel
 - cmbCategorie
@@ -105,7 +105,7 @@ End Sub
 ```vba
 Private Sub UserForm_Initialize()
     Dim cell As Range
-    For Each cell In Sheets("Parametres").Range("A2:A10")
+    For Each cell In Sheets("Paramètrès").Range("A2:A10")
         If cell.Value <> "" Then
             cmbCategorie.AddItem cell.Value
         End If
@@ -113,9 +113,9 @@ Private Sub UserForm_Initialize()
 End Sub
 ```
 
-## Validation des donnees
+## Validation des données
 
-### Verifier avant enregistrement
+### Vérifier avant enregistrement
 
 ```vba
 Private Sub btnEnregistrer_Click()
@@ -146,7 +146,7 @@ End Function
 
 ## Formulaire de modification
 
-### Charger des donnees existantes
+### Charger des données existantes
 
 ```vba
 Sub ModifierClient(ligne As Long)
@@ -177,9 +177,9 @@ Private Sub btnEnregistrer_Click()
 End Sub
 ```
 
-## Controles dynamiques
+## Contrôles dynamiques
 
-### Ajouter des controles au runtime
+### Ajouter des contrôles au runtime
 
 ```vba
 Private Sub AjouterChamp()
@@ -221,14 +221,14 @@ End Sub
 
 ### Personnaliser le formulaire
 
-| Propriete | Effet |
+| Propriété | Effet |
 |-----------|-------|
 | BackColor | Couleur de fond |
 | Caption | Titre du formulaire |
-| Font | Police des controles |
+| Font | Police des contrôles |
 | BorderStyle | Style de bordure |
 
-### Coherence visuelle
+### Cohérence visuelle
 
 Utilisez les memes couleurs que votre charte graphique.
 
@@ -236,8 +236,8 @@ Utilisez les memes couleurs que votre charte graphique.
 
 Pour des besoins simples :
 
-1. Selectionnez votre tableau
+1. Sélectionnez votre tableau
 2. **Alt+D+O** (Data Form)
 3. Formulaire automatique
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

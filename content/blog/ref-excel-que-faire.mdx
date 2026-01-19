@@ -5,23 +5,23 @@ author: "Thomas L'Exceleur"
 excerpt: "Comprenez et corrigez l'erreur #REF! dans vos formules Excel."
 description: "Guide pour resoudre l'erreur #REF! dans Excel. Causes et solutions."
 category: "Gestion d'erreurs"
-categories: ["Gestion d'erreurs", "Formules Excel"]
-tags: ["#REF!", "Erreurs", "References", "Depannage"]
+catégories: ["Gestion d'erreurs", "Formules Excel"]
+tags: ["#REF!", "Erreurs", "Références", "Depannage"]
 ---
 
 # Erreur #REF! dans Excel
 
-L'erreur #REF! indique une reference de cellule invalide.
+L'erreur #REF! indique une référence de cellule invalide.
 
 ## Causes principales
 
 ### 1. Suppression de cellules referencees
 
-Vous avez supprime une ligne ou colonne utilisee dans une formule.
+Vous avez supprime une ligne où colonne utilisée dans une formule.
 
 ### 2. Copie de formule hors limites
 
-La formule copiee reference des cellules qui n'existent pas.
+La formule copiee référence des cellules qui n'existent pas.
 
 ### 3. RECHERCHEV avec index trop grand
 
@@ -31,29 +31,29 @@ La formule copiee reference des cellules qui n'existent pas.
 
 ### 4. Lien vers un classeur ferme invalide
 
-Le fichier source a ete deplace ou supprime.
+Le fichier source à ete déplacé où supprime.
 
 ## Solutions
 
-### Solution 1 : Annuler immediatement
+### Solution 1 : Annuler immédiatement
 
 **Ctrl + Z** pour annuler la suppression.
 
 ### Solution 2 : Corriger manuellement
 
 1. Identifiez les cellules avec #REF!
-2. Editez chaque formule (F2)
-3. Remplacez #REF! par la bonne reference
+2. Éditez chaque formule (F2)
+3. Remplacez #REF! par la bonne référence
 
 ### Solution 3 : Rechercher et remplacer
 
 1. **Ctrl + H**
 2. Rechercher : `#REF!`
-3. Remplacer par : la reference correcte
+3. Remplacer par : la référence correcte
 
 ## Prevention
 
-### Utiliser des noms definis
+### Utiliser des noms définis
 
 ```excel
 =SOMME(Ventes)
@@ -64,9 +64,9 @@ Au lieu de :
 =SOMME($A$1:$A$100)
 ```
 
-### Verifier avant suppression
+### Vérifier avant suppression
 
-1. Selectionnez les cellules a supprimer
+1. Sélectionnez les cellules à supprimer
 2. **Formules** > **Reperer les dependants**
 3. Si des fleches apparaissent, attention aux formules
 
@@ -78,7 +78,7 @@ Au lieu de :
 
 Moins sensible aux deplacements (mais attention aux performances).
 
-## Cas specifique : RECHERCHEV
+## Cas spécifique : RECHERCHEV
 
 ### Erreur courante
 
@@ -86,7 +86,7 @@ Moins sensible aux deplacements (mais attention aux performances).
 =RECHERCHEV(A1;B:D;5;FAUX)
 ```
 
-L'index 5 depasse le nombre de colonnes (3).
+L'index 5 dépasse le nombre de colonnes (3).
 
 ### Correction
 
@@ -96,7 +96,7 @@ L'index 5 depasse le nombre de colonnes (3).
 
 ## Localiser les erreurs #REF!
 
-### Methode
+### Méthode
 
 1. **Ctrl + G** (Atteindre)
 2. **Special...**
@@ -106,8 +106,8 @@ L'index 5 depasse le nombre de colonnes (3).
 ## Bonnes pratiques
 
 1. **Sauvegardez** avant de supprimer
-2. **Utilisez** des noms definis
-3. **Verifiez** les dependances
-4. **Annulez** immediatement si erreur
+2. **Utilisez** des noms définis
+3. **Vérifiez** les dependances
+4. **Annulez** immédiatement si erreur
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

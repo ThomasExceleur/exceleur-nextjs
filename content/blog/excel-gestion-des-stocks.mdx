@@ -2,10 +2,10 @@
 title: "Excel Gestion des Stocks : Guide Complet"
 date: "2024-07-18"
 author: "Thomas L'Exceleur"
-excerpt: "Gerez efficacement vos stocks dans Excel avec ce guide complet."
+excerpt: "Gérez efficacement vos stocks dans Excel avec ce guide complet."
 description: "Guide pour la gestion des stocks dans Excel. Inventaire, mouvements et alertes."
-category: "Modeles"
-categories: ["Modeles", "Comptabilite"]
+category: "Modèles"
+catégories: ["Modèles", "Comptabilite"]
 tags: ["Stocks", "Inventaire", "Gestion", "Logistique"]
 ---
 
@@ -13,23 +13,23 @@ tags: ["Stocks", "Inventaire", "Gestion", "Logistique"]
 
 Une bonne gestion des stocks optimise votre tresorerie et votre service client.
 
-## Structure de base
+## Structuré de base
 
 ### Fiche article
 
 | Champ | Description |
 |-------|-------------|
-| Reference | Code unique |
+| Référence | Code unique |
 | Designation | Nom du produit |
-| Categorie | Type de produit |
-| Stock actuel | Quantite disponible |
+| Catégorie | Type de produit |
+| Stock actuel | Quantité disponible |
 | Stock mini | Seuil de reappro |
 | Prix achat | Cout unitaire |
 | Prix vente | Prix de vente |
 
 ## Tableau d'inventaire
 
-### Structure
+### Structuré
 
 | Ref | Designation | Stock | Mini | Maxi | Valeur |
 |-----|-------------|-------|------|------|--------|
@@ -46,14 +46,14 @@ Une bonne gestion des stocks optimise votre tresorerie et votre service client.
 
 ### Journal des mouvements
 
-| Date | Ref | Type | Qte | Stock apres |
+| Date | Ref | Type | Qte | Stock après |
 |------|-----|------|-----|-------------|
-| 01/01 | A001 | Entree | +100 | 100 |
+| 01/01 | A001 | Entrée | +100 | 100 |
 | 05/01 | A001 | Sortie | -50 | 50 |
 
 ### Types de mouvements
 
-- Entree (achat, retour client)
+- Entrée (achat, retour client)
 - Sortie (vente, rebut)
 - Transfert
 - Inventaire (ajustement)
@@ -63,7 +63,7 @@ Une bonne gestion des stocks optimise votre tresorerie et votre service client.
 ### Formule
 
 ```excel
-=SOMME.SI.ENS(Mouvements[Qte];Mouvements[Ref];[@Ref];Mouvements[Type];"Entree") - SOMME.SI.ENS(Mouvements[Qte];Mouvements[Ref];[@Ref];Mouvements[Type];"Sortie")
+=SOMME.SI.ENS(Mouvements[Qte];Mouvements[Ref];[@Ref];Mouvements[Type];"Entrée") - SOMME.SI.ENS(Mouvements[Qte];Mouvements[Ref];[@Ref];Mouvements[Type];"Sortie")
 ```
 
 ### Plus simple avec colonne signee
@@ -82,8 +82,8 @@ Une bonne gestion des stocks optimise votre tresorerie et votre service client.
 
 ### Mise en forme conditionnelle
 
-1. Selectionnez la colonne Stock
-2. **Mise en forme conditionnelle** > **Nouvelle regle**
+1. Sélectionnez la colonne Stock
+2. **Mise en forme conditionnelle** > **Nouvelle règle**
 3. Formule : `=C2<D2`
 4. Format : fond rouge
 
@@ -95,9 +95,9 @@ Une bonne gestion des stocks optimise votre tresorerie et votre service client.
 
 ## Valorisation du stock
 
-### Methodes de valorisation
+### Méthodes de valorisation
 
-| Methode | Description |
+| Méthode | Description |
 |---------|-------------|
 | FIFO | Premier entre, premier sorti |
 | LIFO | Dernier entre, premier sorti |
@@ -183,13 +183,13 @@ Une bonne gestion des stocks optimise votre tresorerie et votre service client.
 
 ## Bon de commande
 
-### Structure
+### Structuré
 
 | Ref | Designation | A commander | Prix | Total |
 |-----|-------------|-------------|------|-------|
 | A001 | Produit A | 50 | 10 | 500 |
 
-### Quantite a commander
+### Quantité à commander
 
 ```excel
 =MAX(0;Stock_cible - Stock_actuel)
@@ -214,14 +214,14 @@ Une bonne gestion des stocks optimise votre tresorerie et votre service client.
 1. Courbe du stock par article
 2. Ligne du seuil minimum
 
-### Repartition par categorie
+### Répartition par catégorie
 
-1. Camembert de la valeur par categorie
-2. Histogramme des quantites
+1. Camembert de la valeur par catégorie
+2. Histogramme des quantités
 
 ## Multi-entrepots
 
-### Structure
+### Structuré
 
 | Ref | Entrepot 1 | Entrepot 2 | Total |
 |-----|------------|------------|-------|
@@ -235,10 +235,10 @@ Une bonne gestion des stocks optimise votre tresorerie et votre service client.
 
 ## Bonnes pratiques
 
-1. **Mettez a jour** les mouvements en temps reel
-2. **Inventoriez** regulierement
+1. **Mettez à jour** les mouvements en temps reel
+2. **Inventoriez** régulièrement
 3. **Analysez** les ecarts
 4. **Optimisez** les niveaux de stock
-5. **Securisez** les donnees
+5. **Securisez** les données
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

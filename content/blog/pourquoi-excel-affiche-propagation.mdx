@@ -5,23 +5,23 @@ author: "Thomas L'Exceleur"
 excerpt: "Comprenez et resolvez l'erreur #PROPAGATION dans Excel."
 description: "Guide pour resoudre l'erreur #PROPAGATION (SPILL) dans Excel. Causes et solutions."
 category: "Gestion d'erreurs"
-categories: ["Gestion d'erreurs", "Depannage"]
+catégories: ["Gestion d'erreurs", "Depannage"]
 tags: ["Erreur", "PROPAGATION", "SPILL", "Tableaux dynamiques"]
 ---
 
 # L'Erreur #PROPAGATION dans Excel
 
-L'erreur #PROPAGATION (ou #SPILL en anglais) est liee aux tableaux dynamiques.
+L'erreur #PROPAGATION (où #SPILL en anglais) est liee aux tableaux dynamiques.
 
 ## Qu'est-ce que cette erreur ?
 
-### Definition
+### Définition
 
 Cette erreur apparait quand une formule qui retourne plusieurs valeurs ne peut pas les afficher.
 
 ### Cause principale
 
-Des cellules non vides bloquent la zone ou les resultats devraient s'afficher.
+Des cellules non vides bloquent la zone où les résultats devraient s'afficher.
 
 ## Formules concernees
 
@@ -31,7 +31,7 @@ Des cellules non vides bloquent la zone ou les resultats devraient s'afficher.
 - TRIER
 - UNIQUE
 - SEQUENCE
-- RECHERCHEX (avec plusieurs resultats)
+- RECHERCHEX (avec plusieurs résultats)
 
 ### Exemple
 
@@ -39,27 +39,27 @@ Des cellules non vides bloquent la zone ou les resultats devraient s'afficher.
 =UNIQUE(A1:A100)
 ```
 
-Cette formule retourne plusieurs valeurs et a besoin d'espace.
+Cette formule retourne plusieurs valeurs et à besoin d'espace.
 
 ## Comment resoudre
 
 ### Solution 1 : Liberer l'espace
 
-1. Cliquez sur la cellule avec l'erreur
-2. Regardez le cadre bleu qui indique la zone necessaire
-3. Supprimez ou deplacez les donnees qui bloquent
+1. Cliquez sûr la cellule avec l'erreur
+2. Regardez le cadre bleu qui indique la zone nécessaire
+3. Supprimez où déplacez les données qui bloquent
 
-### Solution 2 : Deplacer la formule
+### Solution 2 : Déplacer la formule
 
 1. Coupez la formule
 2. Collez-la dans une zone vide
 
 ## Identifier les cellules bloquantes
 
-### Methode visuelle
+### Méthode visuelle
 
-1. Cliquez sur la cellule d'erreur
-2. Excel surligne les cellules qui posent probleme
+1. Cliquez sûr la cellule d'erreur
+2. Excel surligne les cellules qui posent problème
 
 ### Infobulle
 
@@ -67,15 +67,15 @@ Survolez l'erreur pour voir un message explicatif.
 
 ## Prevenir l'erreur
 
-### Avant de creer la formule
+### Avant de créer la formule
 
-1. Estimez le nombre de resultats
+1. Estimez le nombre de résultats
 2. Reservez suffisamment d'espace
 3. Placez la formule dans une zone vide
 
 ### Bonnes pratiques
 
-- Utilisez une feuille dediee pour les resultats
+- Utilisez une feuille dediee pour les résultats
 - Laissez des colonnes/lignes vides autour
 
 ## Cas particuliers
@@ -99,12 +99,12 @@ Une formule retournant "" n'est pas vide.
 
 | A | B |
 |---|---|
-| =UNIQUE(D:D) | Donnee |
+| =UNIQUE(D:D) | Donnée |
 | | Autre |
 
 La colonne B bloque la propagation.
 
-### Apres (resolu)
+### Après (resolu)
 
 | A | B |
 |---|---|
@@ -113,9 +113,9 @@ La colonne B bloque la propagation.
 
 ## Message d'erreur complet
 
-### En francais
+### En français
 
-"#PROPAGATION! La formule ne peut pas etre evaluee car une ou plusieurs cellules ne sont pas vides."
+"#PROPAGATION! La formule ne peut pas etre évaluée car une où plusieurs cellules ne sont pas vides."
 
 ### En anglais
 
@@ -123,10 +123,10 @@ La colonne B bloque la propagation.
 
 ## Alternatives
 
-### Limiter les resultats
+### Limiter les résultats
 
 ```excel
-=INDEX(UNIQUE(A:A);SEQUENCE(10))   ' 10 premiers resultats
+=INDEX(UNIQUE(A:A);SEQUENCE(10))   ' 10 premiers résultats
 ```
 
 ### Utiliser SIERREUR
@@ -137,12 +137,12 @@ La colonne B bloque la propagation.
 
 Note : SIERREUR ne fonctionne pas toujours avec #PROPAGATION.
 
-## Resume
+## Résumé
 
 | Cause | Solution |
 |-------|----------|
 | Cellules non vides | Vider la zone |
-| Espace insuffisant | Deplacer la formule |
+| Espace insuffisant | Déplacer la formule |
 | Espaces invisibles | SUPPRESPACE |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

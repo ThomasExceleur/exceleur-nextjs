@@ -1,39 +1,39 @@
 ---
-title: "Excel Power Pivot : Modelisation de Donnees et DAX"
+title: "Excel Power Pivot : Modelisation de Données et DAX"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Maitrisez Power Pivot pour la modelisation de donnees et le DAX."
+excerpt: "Maîtrisez Power Pivot pour la modelisation de données et le DAX."
 description: "Guide complet Power Pivot pour la modelisation et les formules DAX."
 category: "Power Pivot"
-categories: ["Power Pivot", "Analyse de donnees Excel"]
+catégories: ["Power Pivot", "Analyse de données Excel"]
 tags: ["Power Pivot", "DAX", "Modelisation", "Excel"]
 ---
 
-# Power Pivot : Modelisation de Donnees et DAX
+# Power Pivot : Modelisation de Données et DAX
 
-Power Pivot transforme Excel en outil d'analyse de donnees avance.
+Power Pivot transforme Excel en outil d'analyse de données avancé.
 
 ## Activer Power Pivot
 
-### Etapes
+### Étapes
 
 1. **Fichier** > **Options** > **Complements**
-2. Gerer : Complements COM > **OK**
+2. Gérer : Complements COM > **OK**
 3. Cochez **Microsoft Power Pivot for Excel**
 
 ### Acceder
 
 Onglet **Power Pivot** dans le ruban.
 
-## Le modele de donnees
+## Le modèle de données
 
 ### Concept
 
-Un modele de donnees est un ensemble de tables reliees entre elles.
+Un modèle de données est un ensemble de tables reliees entre elles.
 
 ### Avantages
 
-- Gerer des millions de lignes
+- Gérer des millions de lignes
 - Relations entre tables
 - Formules DAX puissantes
 
@@ -41,27 +41,27 @@ Un modele de donnees est un ensemble de tables reliees entre elles.
 
 ### Depuis Excel
 
-1. Selectionnez les donnees
-2. **Power Pivot** > **Ajouter au modele de donnees**
+1. Sélectionnez les données
+2. **Power Pivot** > **Ajouter au modèle de données**
 
 ### Depuis Power Query
 
-Chargez vers le modele de donnees.
+Chargez vers le modèle de données.
 
-## Creer des relations
+## Créer des relations
 
 ### Vue Diagramme
 
-1. **Power Pivot** > **Gerer**
+1. **Power Pivot** > **Gérer**
 2. **Affichage** > **Vue Diagramme**
-3. Glissez les champs pour creer des relations
+3. Glissez les champs pour créer des relations
 
 ### Types de relations
 
 | Type | Description |
 |------|-------------|
-| Un a plusieurs (*) | Le plus courant |
-| Un a un | Cas specifiques |
+| Un à plusieurs (*) | Le plus courant |
+| Un à un | Cas spécifiques |
 
 ## Introduction au DAX
 
@@ -73,15 +73,15 @@ Data Analysis Expressions - langage de formules pour Power Pivot.
 
 | Mesures | Colonnes calculees |
 |---------|-------------------|
-| Calculees a la volee | Calculees a l'import |
+| Calculees à la volee | Calculees à l'import |
 | Contexte de filtre | Contexte de ligne |
-| Non stockees | Stockees dans le modele |
+| Non stockees | Stockees dans le modèle |
 
-## Creer une mesure
+## Créer une mesure
 
-### Etapes
+### Étapes
 
-1. Dans Power Pivot, selectionnez une table
+1. Dans Power Pivot, sélectionnez une table
 2. Zone de mesure (bas de l'ecran)
 3. Entrez la formule
 
@@ -104,7 +104,7 @@ Distinct := DISTINCTCOUNT(Ventes[Client])
 
 ### CALCULATE
 
-Modifie le contexte de filtre.
+Modifié le contexte de filtre.
 
 ```dax
 Ventes France := CALCULATE(
@@ -119,17 +119,17 @@ Ventes France := CALCULATE(
 
 | Fonction | Description |
 |----------|-------------|
-| TOTALYTD | Cumul depuis debut d'annee |
-| SAMEPERIODLASTYEAR | Meme periode annee precedente |
-| DATEADD | Decaler une periode |
-| DATESYTD | Dates depuis debut d'annee |
+| TOTALYTD | Cumul depuis début d'année |
+| SAMEPERIODLASTYEAR | Meme période année précédente |
+| DATEADD | Decaler une période |
+| DATESYTD | Dates depuis début d'année |
 
 ### Exemples
 
 ```dax
 YTD := TOTALYTD(SUM(Ventes[Montant]); Calendrier[Date])
 
-Annee Precedente := CALCULATE(
+Année Précédente := CALCULATE(
     SUM(Ventes[Montant]);
     SAMEPERIODLASTYEAR(Calendrier[Date])
 )
@@ -139,9 +139,9 @@ Annee Precedente := CALCULATE(
 
 ### Pourquoi ?
 
-Necessaire pour les calculs temporels.
+Nécessaire pour les calculs temporels.
 
-### Creer une table calendrier
+### Créer une table calendrier
 
 ```dax
 Calendrier = CALENDAR(DATE(2020;1;1); DATE(2025;12;31))
@@ -150,7 +150,7 @@ Calendrier = CALENDAR(DATE(2020;1;1); DATE(2025;12;31))
 ### Ajouter des colonnes
 
 ```dax
-Annee = YEAR(Calendrier[Date])
+Année = YEAR(Calendrier[Date])
 Mois = FORMAT(Calendrier[Date]; "MMMM")
 Trimestre = "T" & QUARTER(Calendrier[Date])
 ```
@@ -169,17 +169,17 @@ Les mesures sont calculees selon le contexte du TCD.
 
 | Pratique | Description |
 |----------|-------------|
-| Nommage | Noms clairs et coherents |
+| Nommage | Noms clairs et cohérents |
 | Documentation | Commentez les mesures complexes |
-| Performance | Evitez les colonnes calculees inutiles |
-| Test | Verifiez avec des valeurs connues |
+| Performance | Évitez les colonnes calculees inutiles |
+| Test | Vérifiez avec des valeurs connues |
 
 ## Erreurs courantes
 
 | Erreur | Cause | Solution |
 |--------|-------|----------|
 | Valeur vide | Division par zero | Utilisez DIVIDE() |
-| #ERROR | Syntaxe incorrecte | Verifiez la formule |
-| Resultat faux | Contexte mal compris | Analysez le contexte |
+| #ERROR | Syntaxe incorrecte | Vérifiez la formule |
+| Résultat faux | Contexte mal compris | Analysez le contexte |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

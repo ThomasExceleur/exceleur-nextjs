@@ -2,18 +2,18 @@
 title: "Guide de la Fonction LAMBDA dans Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Creez vos propres fonctions personnalisees avec LAMBDA dans Excel."
-description: "Guide LAMBDA dans Excel 365. Creer des fonctions personnalisees sans VBA."
+excerpt: "Créez vos propres fonctions personnalisees avec LAMBDA dans Excel."
+description: "Guide LAMBDA dans Excel 365. Créer des fonctions personnalisees sans VBA."
 category: "Formules Excel"
-categories: ["Formules Excel", "Excel 365"]
-tags: ["LAMBDA", "Fonctions", "Excel 365", "Avance"]
+catégories: ["Formules Excel", "Excel 365"]
+tags: ["LAMBDA", "Fonctions", "Excel 365", "Avancé"]
 ---
 
 # Guide de la Fonction LAMBDA
 
-LAMBDA permet de creer des fonctions personnalisees sans VBA.
+LAMBDA permet de créer des fonctions personnalisees sans VBA.
 
-## Disponibilite
+## Disponibilité
 
 - Excel 365
 - Excel pour le web
@@ -24,7 +24,7 @@ LAMBDA permet de creer des fonctions personnalisees sans VBA.
 =LAMBDA(parametre1;[parametre2];...;calcul)
 ```
 
-## Creer une fonction simple
+## Créer une fonction simple
 
 ### Exemple : Calcul de TVA
 
@@ -38,16 +38,16 @@ LAMBDA permet de creer des fonctions personnalisees sans VBA.
 =LAMBDA(montant;montant*1.20)(100)
 ```
 
-Resultat : 120
+Résultat : 120
 
 ## Nommer une fonction LAMBDA
 
-### Etapes
+### Étapes
 
 1. **Formules** > **Gestionnaire de noms**
 2. **Nouveau**
 3. Nom : `CalculTVA`
-4. Fait reference a : `=LAMBDA(montant;montant*1.20)`
+4. Fait référence à : `=LAMBDA(montant;montant*1.20)`
 5. **OK**
 
 ### Utilisation
@@ -56,13 +56,13 @@ Resultat : 120
 =CalculTVA(100)    ' Retourne 120
 ```
 
-## Fonctions avec plusieurs parametres
+## Fonctions avec plusieurs paramètrès
 
 ### Exemple : Remise
 
 ```excel
-=LAMBDA(prix;quantite;taux;
-  prix*quantite*(1-taux)
+=LAMBDA(prix;quantité;taux;
+  prix*quantité*(1-taux)
 )
 ```
 
@@ -90,7 +90,7 @@ LAMBDA peut s'appeler elle-meme pour des calculs iteratifs.
 
 ### MAP
 
-Applique LAMBDA a chaque element :
+Applique LAMBDA à chaque élément :
 
 ```excel
 =MAP(A1:A10;LAMBDA(x;x*2))
@@ -98,7 +98,7 @@ Applique LAMBDA a chaque element :
 
 ### REDUCE
 
-Reduit une plage a une valeur :
+Réduit une plage à une valeur :
 
 ```excel
 =REDUCE(0;A1:A10;LAMBDA(acc;val;acc+val))
@@ -145,8 +145,8 @@ Nommez-la `CelsiusVersFahrenheit`.
 
 | Avantage | Description |
 |----------|-------------|
-| Reutilisabilite | Definir une fois, utiliser partout |
-| Lisibilite | Formules simples a lire |
+| Reutilisabilite | Définir une fois, utiliser partout |
+| Lisibilité | Formules simples à lire |
 | Pas de VBA | Fonctionne dans le cloud |
 | Portable | Se copie avec le classeur |
 
@@ -154,13 +154,13 @@ Nommez-la `CelsiusVersFahrenheit`.
 
 - Disponible uniquement dans Excel 365
 - Pas de debogage comme VBA
-- Limite de complexite
+- Limite de complexité
 
 ## Bonnes pratiques
 
 1. **Nommez** vos fonctions clairement
-2. **Documentez** les parametres
-3. **Testez** avec differentes valeurs
-4. **Preferez** la simplicite
+2. **Documentez** les paramètrès
+3. **Testez** avec différentes valeurs
+4. **Préférez** la simplicité
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

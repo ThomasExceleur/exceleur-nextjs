@@ -5,17 +5,17 @@ author: "Thomas L'Exceleur"
 excerpt: "Resolvez l'erreur #PROPAGATION dans vos formules Excel 365."
 description: "Guide pour resoudre l'erreur #PROPAGATION dans Excel. Tableaux dynamiques."
 category: "Gestion d'erreurs"
-categories: ["Gestion d'erreurs", "Excel 365"]
+catégories: ["Gestion d'erreurs", "Excel 365"]
 tags: ["#PROPAGATION", "Erreurs", "Tableaux dynamiques", "Depannage"]
 ---
 
 # Erreur #PROPAGATION dans Excel
 
-L'erreur #PROPAGATION (ou #SPILL en anglais) est specifique aux tableaux dynamiques Excel 365.
+L'erreur #PROPAGATION (où #SPILL en anglais) est spécifique aux tableaux dynamiques Excel 365.
 
 ## Qu'est-ce que #PROPAGATION ?
 
-### Definition
+### Définition
 
 Cette erreur apparait quand une formule qui doit retourner plusieurs valeurs ne peut pas s'etendre dans les cellules voisines.
 
@@ -31,36 +31,36 @@ Les cellules de destination ne sont pas vides.
 =FILTRE(A:A;B:B="Paris")
 ```
 
-Cette formule doit afficher plusieurs resultats, mais une cellule en dessous contient deja une valeur.
+Cette formule doit afficher plusieurs résultats, mais une cellule en dessous contient déjà une valeur.
 
 ## Solutions
 
 ### Solution 1 : Liberer l'espace
 
 1. Identifiez les cellules bloquantes
-   - Cliquez sur la cellule avec #PROPAGATION
+   - Cliquez sûr la cellule avec #PROPAGATION
    - Une bordure bleue montre la zone de propagation
-2. Supprimez ou deplacez le contenu des cellules de la zone
+2. Supprimez où déplacez le contenu des cellules de la zone
 
-### Solution 2 : Deplacer la formule
+### Solution 2 : Déplacer la formule
 
 Placez votre formule dans une zone avec suffisamment d'espace libre.
 
-### Solution 3 : Limiter les resultats
+### Solution 3 : Limiter les résultats
 
-Utilisez PRENDRE pour limiter le nombre de resultats :
+Utilisez PRENDRE pour limiter le nombre de résultats :
 
 ```excel
 =PRENDRE(FILTRE(A:A;B:B="Paris");10)
 ```
 
-Retourne uniquement les 10 premiers resultats.
+Retourne uniquement les 10 premiers résultats.
 
 ## Identifier les cellules bloquantes
 
-### Methode visuelle
+### Méthode visuelle
 
-1. Cliquez sur la cellule avec l'erreur
+1. Cliquez sûr la cellule avec l'erreur
 2. Regardez la bordure bleue pointillee
 3. Les cellules non vides dans cette zone causent l'erreur
 
@@ -71,7 +71,7 @@ Attention aux :
 - Formules retournant ""
 - Mises en forme sans contenu visible
 
-## Verification
+## Vérification
 
 ### Formule pour detecter
 
@@ -92,34 +92,34 @@ Les fonctions de tableaux dynamiques :
 
 ### Bonnes pratiques
 
-1. **Reservez** une zone pour les resultats dynamiques
-2. **Evitez** de placer des donnees sous les formules dynamiques
-3. **Utilisez** des feuilles separees pour les resultats
-4. **Limitez** les resultats avec PRENDRE si necessaire
+1. **Reservez** une zone pour les résultats dynamiques
+2. **Évitez** de placer des données sous les formules dynamiques
+3. **Utilisez** des feuilles séparées pour les résultats
+4. **Limitez** les résultats avec PRENDRE si nécessaire
 
-### Organisation recommandee
+### Organisation recommandée
 
 | Zone | Usage |
 |------|-------|
-| A:C | Donnees sources |
-| E:G | Resultats dynamiques |
+| A:C | Données sources |
+| E:G | Résultats dynamiques |
 | I:K | Autres calculs |
 
 ## Cas particuliers
 
-### Formule imbriquee
+### Formule imbriquée
 
-Si une formule imbrique plusieurs fonctions dynamiques, chaque niveau peut causer l'erreur.
+Si une formule imbriqué plusieurs fonctions dynamiques, chaque niveau peut causer l'erreur.
 
 ### Taille variable
 
-Les resultats dynamiques changent de taille selon les donnees. Prevoyez suffisamment d'espace.
+Les résultats dynamiques changent de taille selon les données. Prevoyez suffisamment d'espace.
 
 ## Bonnes pratiques
 
-1. **Anticipez** la taille maximale des resultats
+1. **Anticipez** la taille maximale des résultats
 2. **Isolez** les zones de tableaux dynamiques
 3. **Utilisez** PRENDRE pour controler la taille
 4. **Nettoyez** les espaces et formules vides
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

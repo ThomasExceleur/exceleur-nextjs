@@ -1,41 +1,41 @@
 ---
-title: "Debuter avec Power Pivot : Guide de Modelisation"
+title: "Débuter avec Power Pivot : Guide de Modelisation"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Guide pour debuter avec Power Pivot et la modelisation de donnees."
-description: "Guide debutant Power Pivot dans Excel. Modelisation et relations."
-category: "Analyse de donnees Excel"
-categories: ["Analyse de donnees Excel", "Excel 365"]
-tags: ["Power Pivot", "Debutant", "Modelisation", "Guide"]
+excerpt: "Guide pour débuter avec Power Pivot et la modelisation de données."
+description: "Guide débutant Power Pivot dans Excel. Modelisation et relations."
+category: "Analyse de données Excel"
+catégories: ["Analyse de données Excel", "Excel 365"]
+tags: ["Power Pivot", "Débutant", "Modelisation", "Guide"]
 ---
 
-# Debuter avec Power Pivot
+# Débuter avec Power Pivot
 
-Guide pour creer votre premier modele de donnees Power Pivot.
+Guide pour créer votre premier modèle de données Power Pivot.
 
 ## Qu'est-ce que Power Pivot ?
 
 Power Pivot permet de :
 - Analyser des millions de lignes
 - Relier plusieurs tables
-- Creer des calculs avances (DAX)
+- Créer des calculs avancés (DAX)
 - Alimenter des TCD puissants
 
 ## Activer Power Pivot
 
-### Etapes
+### Étapes
 
 1. **Fichier** > **Options** > **Complements**
-2. En bas : **Gerer** > **Complements COM**
+2. En bas : **Gérer** > **Complements COM**
 3. **Atteindre**
 4. Cochez **Microsoft Power Pivot for Excel**
 5. **OK**
 
-## Votre premier modele
+## Votre premier modèle
 
-### Etape 1 : Preparer les donnees
+### Étape 1 : Préparer les données
 
-Creez deux tables :
+Créez deux tables :
 
 **Table Ventes**
 | ID | Date | ProduitID | Montant |
@@ -44,32 +44,32 @@ Creez deux tables :
 | 2 | 02/01 | P002 | 200 |
 
 **Table Produits**
-| ProduitID | Nom | Categorie |
+| ProduitID | Nom | Catégorie |
 |-----------|-----|-----------|
 | P001 | Widget | A |
 | P002 | Gadget | B |
 
-### Etape 2 : Ajouter au modele
+### Étape 2 : Ajouter au modèle
 
-1. Selectionnez chaque table
-2. **Power Pivot** > **Ajouter au modele de donnees**
+1. Sélectionnez chaque table
+2. **Power Pivot** > **Ajouter au modèle de données**
 
-### Etape 3 : Creer la relation
+### Étape 3 : Créer la relation
 
-1. **Power Pivot** > **Gerer**
+1. **Power Pivot** > **Gérer**
 2. Vue **Diagramme**
 3. Faites glisser ProduitID de Ventes vers Produits
 
-## Creer un TCD avec le modele
+## Créer un TCD avec le modèle
 
-### Etapes
+### Étapes
 
-1. **Insertion** > **Tableau croise dynamique**
-2. Cochez **Utiliser le modele de donnees de ce classeur**
+1. **Insertion** > **Tableau croisé dynamique**
+2. Cochez **Utiliser le modèle de données de ce classeur**
 3. **OK**
 4. Choisissez des champs des deux tables
 
-## Premiere mesure DAX
+## Première mesure DAX
 
 ### Dans Power Pivot
 
@@ -80,7 +80,7 @@ Creez deux tables :
 Total Ventes = SUM(Ventes[Montant])
 ```
 
-3. Appuyez sur Entree
+3. Appuyez sûr Entrée
 
 ### Utiliser la mesure
 
@@ -88,17 +88,17 @@ Elle apparait dans les champs du TCD.
 
 ## Types de relations
 
-### Un-a-plusieurs
+### Un-à-plusieurs
 
 La plus courante. Un produit peut avoir plusieurs ventes.
 
-### Plusieurs-a-plusieurs
+### Plusieurs-à-plusieurs
 
 Via une table intermediaire.
 
 ## Colonnes calculees vs Mesures
 
-| Element | Quand utiliser |
+| Élément | Quand utiliser |
 |---------|----------------|
 | Colonne calculee | Valeur pour chaque ligne |
 | Mesure | Agregation (somme, moyenne...) |
@@ -132,18 +132,18 @@ Via une table intermediaire.
 ## Bonnes pratiques
 
 1. **Nommez** clairement vos tables
-2. **Creez** une table Dates
-3. **Preferez** les mesures aux colonnes
+2. **Créez** une table Dates
+3. **Préférez** les mesures aux colonnes
 4. **Documentez** vos formules
 
 ## Erreurs courantes
 
 ### Relation manquante
 
-Si les donnees ne correspondent pas, verifiez les relations.
+Si les données ne correspondent pas, vérifiez les relations.
 
 ### Types incompatibles
 
 Les colonnes liees doivent avoir le meme type.
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

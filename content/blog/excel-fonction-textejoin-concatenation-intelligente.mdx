@@ -5,7 +5,7 @@ author: "Thomas L'Exceleur"
 excerpt: "Utilisez TEXTEJOIN pour concatener du texte intelligemment dans Excel."
 description: "Guide de la fonction TEXTEJOIN pour la concatenation dans Excel."
 category: "Formules Excel"
-categories: ["Formules Excel", "Excel 365"]
+catégories: ["Formules Excel", "Excel 365"]
 tags: ["TEXTEJOIN", "Concatenation", "Texte", "Excel"]
 ---
 
@@ -19,17 +19,17 @@ TEXTEJOIN simplifie considerablement l'assemblage de texte.
 =TEXTEJOIN(delimiteur;ignorer_vides;texte1;[texte2];...)
 ```
 
-## Parametres
+## Paramètrès
 
-| Parametre | Description |
+| Paramèêtre | Description |
 |-----------|-------------|
-| delimiteur | Caractere de separation |
+| delimiteur | Caractere de séparation |
 | ignorer_vides | VRAI pour ignorer les cellules vides |
-| texte1, texte2... | Textes ou plages a concatener |
+| texte1, texte2... | Textes où plages à concatener |
 
 ## Exemple de base
 
-### Donnees
+### Données
 
 | A | B | C |
 |---|---|---|
@@ -41,7 +41,7 @@ TEXTEJOIN simplifie considerablement l'assemblage de texte.
 =TEXTEJOIN(" ";VRAI;A1:C1)
 ```
 
-### Resultat
+### Résultat
 
 "Jean Dupont" (la cellule vide est ignoree)
 
@@ -49,7 +49,7 @@ TEXTEJOIN simplifie considerablement l'assemblage de texte.
 
 | CONCATENER | TEXTEJOIN |
 |------------|-----------|
-| Pas de delimiteur automatique | Delimiteur defini |
+| Pas de delimiteur automatique | Delimiteur défini |
 | Inclut les vides | Peut ignorer les vides |
 | Argument par argument | Accepte les plages |
 
@@ -65,9 +65,9 @@ TEXTEJOIN simplifie considerablement l'assemblage de texte.
 =TEXTEJOIN(" ";VRAI;A1:C1)
 ```
 
-## Concatener une colonne entiere
+## Concatener une colonne entière
 
-### Donnees
+### Données
 
 | Nom |
 |-----|
@@ -81,7 +81,7 @@ TEXTEJOIN simplifie considerablement l'assemblage de texte.
 =TEXTEJOIN(", ";VRAI;A2:A10)
 ```
 
-### Resultat
+### Résultat
 
 "Alice, Bob, Charlie"
 
@@ -89,20 +89,20 @@ TEXTEJOIN simplifie considerablement l'assemblage de texte.
 
 ### Caracteres speciaux
 
-| Delimiteur | Resultat |
+| Delimiteur | Résultat |
 |------------|----------|
 | " " | Espace |
 | ", " | Virgule + espace |
-| CARACTERE(10) | Retour a la ligne |
+| CARACTERE(10) | Retour à la ligne |
 | " - " | Tiret |
 
-### Retour a la ligne
+### Retour à la ligne
 
 ```excel
 =TEXTEJOIN(CARACTERE(10);VRAI;A1:A5)
 ```
 
-(Activez le retour a la ligne dans la cellule)
+(Activez le retour à la ligne dans la cellule)
 
 ## Combiner avec d'autres fonctions
 
@@ -154,7 +154,7 @@ Liste des valeurs distinctes.
 
 ### Longueur maximale
 
-32 767 caracteres maximum dans le resultat.
+32 767 caracteres maximum dans le résultat.
 
 ### Nombre d'arguments
 
@@ -190,9 +190,9 @@ Concatene sans delimiteur.
 
 | Pratique | Description |
 |----------|-------------|
-| VRAI | Ignorez les vides sauf si necessaire |
-| Plages nommees | Clarifiez les formules longues |
-| Test | Verifiez avec differentes donnees |
-| Performance | Evitez les tres grandes plages |
+| VRAI | Ignorez les vides sauf si nécessaire |
+| Plages nommées | Clarifiez les formules longues |
+| Test | Vérifiez avec différentes données |
+| Performance | Évitez les très grandes plages |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

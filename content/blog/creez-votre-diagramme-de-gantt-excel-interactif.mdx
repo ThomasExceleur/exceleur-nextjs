@@ -1,17 +1,17 @@
 ---
-title: "Creez votre Diagramme de Gantt Excel Interactif"
+title: "Créez votre Diagramme de Gantt Excel Interactif"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Tutoriel pas a pas pour creer un Gantt interactif dans Excel."
-description: "Creez votre propre diagramme de Gantt interactif dans Excel."
+excerpt: "Tutoriel pas à pas pour créer un Gantt interactif dans Excel."
+description: "Créez votre propre diagramme de Gantt interactif dans Excel."
 category: "Graphiques"
-categories: ["Graphiques", "Productivite"]
+catégories: ["Graphiques", "Productivité"]
 tags: ["Gantt", "Interactif", "Projet", "Tutoriel"]
 ---
 
-# Creez votre Diagramme de Gantt Interactif
+# Créez votre Diagramme de Gantt Interactif
 
-Suivez ce tutoriel pour creer un Gantt professionnel et interactif.
+Suivez ce tutoriel pour créer un Gantt professionnel et interactif.
 
 ## Objectif final
 
@@ -19,13 +19,13 @@ Un diagramme de Gantt avec :
 - Barres de progression
 - Filtres par responsable
 - Ligne de date actuelle
-- Mise a jour automatique
+- Mise à jour automatique
 
-## Etape 1 : Structurer les donnees
+## Étape 1 : Structurer les données
 
-### Creer le tableau
+### Créer le tableau
 
-| Tache | Responsable | Debut | Duree | Fin | Progression | Statut |
+| Tache | Responsable | Début | Duree | Fin | Progression | Statut |
 |-------|-------------|-------|-------|-----|-------------|--------|
 | | | | | | | |
 
@@ -33,31 +33,31 @@ Un diagramme de Gantt avec :
 
 **Date de fin :**
 ```excel
-=[@Debut]+[@Duree]-1
+=[@Début]+[@Duree]-1
 ```
 
 **Statut automatique :**
 ```excel
 =SI([@Progression]=100%;"Termine";
   SI([@Fin]<AUJOURDHUI();"En retard";
-    SI([@Debut]<=AUJOURDHUI();"En cours";"A faire")))
+    SI([@Début]<=AUJOURDHUI();"En cours";"A faire")))
 ```
 
 ### Convertir en tableau
 
-1. Selectionnez les donnees
+1. Sélectionnez les données
 2. **Ctrl+T**
 3. Nommez le tableau : "Projet"
 
-## Etape 2 : Creer le graphique de base
+## Étape 2 : Créer le graphique de base
 
-### Preparer les donnees pour le graphique
+### Préparer les données pour le graphique
 
 Ajoutez des colonnes auxiliaires :
 
-**Decalage depuis debut projet :**
+**Decalage depuis début projet :**
 ```excel
-=[@Debut]-MIN(Projet[Debut])
+=[@Début]-MIN(Projet[Début])
 ```
 
 **Duree progression :**
@@ -65,24 +65,24 @@ Ajoutez des colonnes auxiliaires :
 =[@Duree]*[@Progression]
 ```
 
-### Inserer le graphique
+### Insérer le graphique
 
-1. Selectionnez Taches, Decalage et Duree
+1. Sélectionnez Taches, Decalage et Duree
 2. **Insertion** > **Barres empilees**
 3. Ajoutez la serie "Duree progression"
 
-### Masquer la premiere serie
+### Masquer la première serie
 
-1. Cliquez sur les barres de decalage
+1. Cliquez sûr les barres de decalage
 2. **Remplissage** > **Aucun remplissage**
 
-## Etape 3 : Personnaliser le graphique
+## Étape 3 : Personnaliser le graphique
 
 ### Inverser l'ordre des taches
 
-1. Clic droit sur l'axe vertical
+1. Clic droit sûr l'axe vertical
 2. **Format de l'axe**
-3. Cochez **Categories dans l'ordre inverse**
+3. Cochez **Catégories dans l'ordre inverse**
 
 ### Couleurs
 
@@ -93,29 +93,29 @@ Ajoutez des colonnes auxiliaires :
 
 ### Etiquettes
 
-Ajoutez les noms des taches sur les barres.
+Ajoutez les noms des taches sûr les barres.
 
-## Etape 4 : Ajouter la ligne de date actuelle
+## Étape 4 : Ajouter la ligne de date actuelle
 
-### Creer une serie
+### Créer une serie
 
 1. Ajoutez une colonne "Aujourd'hui"
-2. Formule pour la premiere ligne : `=AUJOURDHUI()-MIN(Projet[Debut])`
+2. Formule pour la première ligne : `=AUJOURDHUI()-MIN(Projet[Début])`
 3. Ajoutez cette serie au graphique
 
 ### Formater en ligne
 
-1. Selectionnez la serie
+1. Sélectionnez la serie
 2. **Changer le type** > **Ligne avec marqueur**
 3. Style : ligne verticale rouge pointillee
 
-## Etape 5 : Ajouter l'interactivite
+## Étape 5 : Ajouter l'interactivite
 
-### Inserer des segments
+### Insérer des segments
 
 1. Cliquez dans le tableau
 2. **Insertion** > **Segment**
-3. Selectionnez : Responsable, Statut
+3. Sélectionnez : Responsable, Statut
 
 ### Connecter au graphique
 
@@ -123,11 +123,11 @@ Les segments filtrent automatiquement le tableau lie au graphique.
 
 ### Style des segments
 
-Personnalisez les couleurs pour correspondre a votre charte.
+Personnalisez les couleurs pour correspondre à votre charte.
 
-## Etape 6 : Ajouter des KPI
+## Étape 6 : Ajouter des KPI
 
-### Zone de resume
+### Zone de résumé
 
 | KPI | Formule |
 |-----|---------|
@@ -138,33 +138,33 @@ Personnalisez les couleurs pour correspondre a votre charte.
 
 ### Format conditionnel
 
-Utilisez des barres de donnees ou des icones.
+Utilisez des barres de données où des icones.
 
-## Etape 7 : Mise en forme finale
+## Étape 7 : Mise en forme finale
 
-### Masquer les elements inutiles
+### Masquer les éléments inutiles
 
 - Quadrillage
 - Lignes de construction
-- En-tetes de colonnes auxiliaires
+- En-têtes de colonnes auxiliaires
 
 ### Proteger la feuille
 
 1. Debloquebz les cellules de saisie
-2. **Revision** > **Proteger la feuille**
+2. **Révision** > **Proteger la feuille**
 
 ### Ajouter un titre
 
-Incluez la date de derniere mise a jour.
+Incluez la date de dernière mise à jour.
 
 ## Utilisation quotidienne
 
 ### Ajouter une tache
 
 1. Ajoutez une ligne au tableau
-2. Le graphique se met a jour
+2. Le graphique se met à jour
 
-### Mettre a jour la progression
+### Mettre à jour la progression
 
 1. Modifiez le pourcentage
 2. Le statut et le graphique s'actualisent
@@ -173,7 +173,7 @@ Incluez la date de derniere mise a jour.
 
 Utilisez les segments pour voir les taches d'un responsable.
 
-## Ameliorations possibles
+## Améliorations possibles
 
 ### Avec VBA
 
@@ -185,20 +185,20 @@ Utilisez les segments pour voir les taches d'un responsable.
 
 Pour des projets plus complexes avec plus de 50 taches.
 
-## Fichier modele
+## Fichier modèle
 
-Sauvegardez votre Gantt vide comme modele :
+Sauvegardez votre Gantt vide comme modèle :
 
-1. Supprimez les donnees de test
-2. **Fichier** > **Enregistrer sous** > **Modele Excel (.xltx)**
+1. Supprimez les données de test
+2. **Fichier** > **Enregistrer sous** > **Modèle Excel (.xltx)**
 
 ## Bonnes pratiques
 
 | Pratique | Avantage |
 |----------|----------|
-| Tableau structure | Mise a jour auto |
-| Formules | Coherence |
+| Tableau structuré | Mise à jour auto |
+| Formules | Cohérence |
 | Segments | Filtrage facile |
 | Protection | Evite les erreurs |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

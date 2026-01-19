@@ -2,16 +2,16 @@
 title: "NB.SI.ENS Excel : Compter et Additionner avec Conditions"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Maitrisez NB.SI.ENS pour compter avec plusieurs criteres dans Excel."
-description: "Guide complet de NB.SI.ENS pour le comptage multi-criteres Excel."
+excerpt: "Maîtrisez NB.SI.ENS pour compter avec plusieurs critères dans Excel."
+description: "Guide complet de NB.SI.ENS pour le comptage multi-critères Excel."
 category: "Formules Excel"
-categories: ["Formules Excel", "Statistiques"]
+catégories: ["Formules Excel", "Statistiques"]
 tags: ["NB.SI.ENS", "Comptage", "Conditions", "Formules"]
 ---
 
-# NB.SI.ENS : Compter avec Plusieurs Criteres
+# NB.SI.ENS : Compter avec Plusieurs Critères
 
-NB.SI.ENS compte les cellules repondant a plusieurs conditions simultanement.
+NB.SI.ENS compte les cellules repondant à plusieurs conditions simultanement.
 
 ## Syntaxe
 
@@ -19,62 +19,62 @@ NB.SI.ENS compte les cellules repondant a plusieurs conditions simultanement.
 =NB.SI.ENS(plage_critere1;critere1;[plage_critere2;critere2];...)
 ```
 
-## Parametres
+## Paramètrès
 
-| Parametre | Description |
+| Paramèêtre | Description |
 |-----------|-------------|
-| plage_critere1 | Premiere plage a evaluer |
-| critere1 | Condition pour la premiere plage |
+| plage_critere1 | Première plage à évaluer |
+| critere1 | Condition pour la première plage |
 | plage_critere2 | Deuxieme plage (optionnel) |
 | critere2 | Condition pour la deuxieme plage |
 
-## Difference avec NB.SI
+## Différence avec NB.SI
 
 | NB.SI | NB.SI.ENS |
 |-------|-----------|
-| Un seul critere | Plusieurs criteres |
+| Un seul critère | Plusieurs critères |
 | Une seule plage | Plusieurs plages |
 
 ## Exemples de base
 
-### Deux criteres
+### Deux critères
 
 ```excel
 =NB.SI.ENS(A:A;"Paris";B:B;"Actif")
 ```
 
-Compte les lignes ou A="Paris" ET B="Actif".
+Compte les lignes où A="Paris" ET B="Actif".
 
-### Criteres numeriques
+### Critères numériques
 
 ```excel
 =NB.SI.ENS(C:C;">100";D:D;"<50")
 ```
 
-Compte les lignes ou `C>100` ET `D<50`.
+Compte les lignes où `C>100` ET `D<50`.
 
-## Operateurs de comparaison
+## Opérateurs de comparaison
 
-| Operateur | Exemple | Description |
+| Opérateur | Exemple | Description |
 |-----------|---------|-------------|
-| `=` | `"=Paris"` | Egal a |
-| `<>` | `"<>Paris"` | Different de |
-| `>` | `">100"` | Superieur a |
-| `<` | `"<100"` | Inferieur a |
-| `>=` | `">=100"` | Superieur ou egal |
-| `<=` | `"<=100"` | Inferieur ou egal |
+| `=` | `"=Paris"` | Égal à |
+| `<>` | `"<>Paris"` | Différent de |
+| `>` | `">100"` | Supérieur à |
+| `<` | `"<100"` | Inférieur à |
+| `>=` | `">=100"` | Supérieur où égal |
+| `<=` | `"<=100"` | Inférieur où égal |
 
-## Criteres avec references
+## Critères avec références
 
-### Cellule reference
+### Cellule référence
 
 ```excel
 =NB.SI.ENS(A:A;E1;B:B;F1)
 ```
 
-E1 et F1 contiennent les criteres.
+E1 et F1 contiennent les critères.
 
-### Avec operateur
+### Avec opérateur
 
 ```excel
 =NB.SI.ENS(A:A;">="&E1)
@@ -86,7 +86,7 @@ E1 et F1 contiennent les criteres.
 |-----------|---------------|
 | * | N'importe quels caracteres |
 | ? | Un seul caractere |
-| ~ | Echapper * ou ? |
+| ~ | Echapper * où ? |
 
 ### Exemple
 
@@ -96,7 +96,7 @@ E1 et F1 contiennent les criteres.
 
 ## Cas pratiques
 
-### Ventes par region et periode
+### Ventes par region et période
 
 ```excel
 =NB.SI.ENS(
@@ -152,7 +152,7 @@ Somme des ventes du Nord en Janvier.
 ### Exemple
 
 ```excel
-=MOYENNE.SI.ENS(Notes;Classe;"A";Matiere;"Maths")
+=MOYENNE.SI.ENS(Notes;Classe;"A";Matière;"Maths")
 ```
 
 ## Combiner avec autres fonctions
@@ -175,16 +175,16 @@ Pourcentage d'actifs parmi les Parisiens.
 
 | Erreur | Cause | Solution |
 |--------|-------|----------|
-| 0 inattendu | Plages de tailles differentes | Alignez les plages |
-| #VALEUR! | Critere mal forme | Verifiez les guillemets |
-| Resultat faux | Type de donnees | Verifiez texte vs nombre |
+| 0 inattendu | Plages de tailles différentes | Alignez les plages |
+| #VALEUR! | Critère mal forme | Vérifiez les guillemets |
+| Résultat faux | Type de données | Vérifiez texte vs nombre |
 
 ## Bonnes pratiques
 
 | Pratique | Description |
 |----------|-------------|
-| Plages entieres | Utilisez A:A pour tableaux evolutifs |
-| References nommees | Clarifiez les formules |
-| Test | Verifiez avec des filtres |
+| Plages entières | Utilisez A:A pour tableaux evolutifs |
+| Références nommées | Clarifiez les formules |
+| Test | Vérifiez avec des filtres |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

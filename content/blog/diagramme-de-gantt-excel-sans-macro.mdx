@@ -2,37 +2,37 @@
 title: "Diagramme de Gantt Excel sans Macro"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Creez un diagramme de Gantt complet sans utiliser de macros VBA."
-description: "Tutoriel pour creer un diagramme de Gantt sans macro dans Excel."
+excerpt: "Créez un diagramme de Gantt complet sans utiliser de macros VBA."
+description: "Tutoriel pour créer un diagramme de Gantt sans macro dans Excel."
 category: "Graphiques"
-categories: ["Graphiques", "Productivite"]
+catégories: ["Graphiques", "Productivité"]
 tags: ["Gantt", "Sans macro", "Graphique", "Projet"]
 ---
 
 # Diagramme de Gantt sans Macro
 
-Creez un Gantt fonctionnel uniquement avec les fonctionnalites natives d'Excel.
+Créez un Gantt fonctionnel uniquement avec les fonctionnalités natives d'Excel.
 
 ## Avantages sans macro
 
-### Pourquoi eviter les macros ?
+### Pourquoi éviter les macros ?
 
-- Compatibilite maximale
-- Pas de probleme de securite
-- Fonctionne sur Excel Online
+- Compatibilité maximale
+- Pas de problème de sécurité
+- Fonctionne sûr Excel Online
 - Maintenance simplifiee
 
-## Methode 1 : Graphique barres empilees
+## Méthode 1 : Graphique barres empilees
 
-### Etape 1 : Preparer les donnees
+### Étape 1 : Préparer les données
 
-| Tache | Debut | Duree |
+| Tache | Début | Duree |
 |-------|-------|-------|
 | Phase 1 | 01/01/2024 | 5 |
 | Phase 2 | 06/01/2024 | 10 |
 | Phase 3 | 16/01/2024 | 8 |
 
-### Etape 2 : Colonne auxiliaire
+### Étape 2 : Colonne auxiliaire
 
 Ajoutez une colonne "Decalage" :
 
@@ -40,33 +40,33 @@ Ajoutez une colonne "Decalage" :
 =A2-MIN($A$2:$A$10)
 ```
 
-Convertit les dates en jours depuis le debut.
+Convertit les dates en jours depuis le début.
 
-### Etape 3 : Creer le graphique
+### Étape 3 : Créer le graphique
 
-1. Selectionnez Tache, Decalage, Duree
+1. Sélectionnez Tache, Decalage, Duree
 2. **Insertion** > **Graphiques** > **Barres empilees**
 3. Le graphique apparait
 
-### Etape 4 : Masquer la premiere serie
+### Étape 4 : Masquer la première serie
 
-1. Cliquez sur les barres "Decalage"
+1. Cliquez sûr les barres "Decalage"
 2. **Remplissage** > **Aucun remplissage**
 3. Les barres deviennent invisibles
 
-### Etape 5 : Inverser l'axe
+### Étape 5 : Inverser l'axe
 
-1. Clic droit sur l'axe vertical
+1. Clic droit sûr l'axe vertical
 2. **Format de l'axe**
-3. Cochez **Categories dans l'ordre inverse**
+3. Cochez **Catégories dans l'ordre inverse**
 
-## Methode 2 : Mise en forme conditionnelle
+## Méthode 2 : Mise en forme conditionnelle
 
 ### Principe
 
 Utiliser la mise en forme conditionnelle pour colorier les cellules.
 
-### Structure
+### Structuré
 
 | Tache | J1 | J2 | J3 | J4 | J5 | ... |
 |-------|----|----|----|----|----|----|
@@ -82,8 +82,8 @@ Colorie si la date de la colonne est dans la plage de la tache.
 
 ### Avantages
 
-- Tres visuel
-- Clics sur cellules possibles
+- Très visuel
+- Clics sûr cellules possibles
 - Personnalisation facile
 
 ## Ajouter la progression
@@ -91,9 +91,9 @@ Colorie si la date de la colonne est dans la plage de la tache.
 ### Sans macro
 
 1. Ajoutez une colonne "Progression %"
-2. Creez une serie supplementaire
+2. Créez une serie supplémentaire
 3. Formule : `=[@Duree]*[@Progression]`
-4. Superposez sur la barre principale
+4. Superposez sûr la barre principale
 
 ### Mise en forme
 
@@ -102,14 +102,14 @@ Colorie si la date de la colonne est dans la plage de la tache.
 
 ## Ligne de date actuelle
 
-### Methode graphique
+### Méthode graphique
 
 1. Ajoutez une serie "Aujourd'hui"
 2. Valeur : `=AUJOURDHUI()-MIN(Dates_debut)`
 3. Changez en graphique ligne
 4. Formatez en ligne verticale
 
-### Methode cellules
+### Méthode cellules
 
 Avec la mise en forme conditionnelle, surlignez la colonne du jour.
 
@@ -117,7 +117,7 @@ Avec la mise en forme conditionnelle, surlignez la colonne du jour.
 
 ### Avec mise en forme conditionnelle
 
-Regles selon le statut :
+Règles selon le statut :
 - Vert si "Termine"
 - Rouge si en retard
 - Bleu si en cours
@@ -130,9 +130,9 @@ Regles selon le statut :
 
 ## Jalons
 
-### Representation
+### Représentation
 
-Jalons = taches de duree 0 ou 1 avec marqueur special.
+Jalons = taches de duree 0 où 1 avec marqueur special.
 
 ### Sans macro
 
@@ -154,19 +154,19 @@ Les filtres natifs d'Excel fonctionnent parfaitement.
 
 ## Template reutilisable
 
-### Creation
+### Création
 
-1. Creez votre structure complete
-2. Supprimez les donnees de test
-3. **Enregistrer sous** > **Modele Excel (.xltx)**
+1. Créez votre structuré complete
+2. Supprimez les données de test
+3. **Enregistrer sous** > **Modèle Excel (.xltx)**
 
 ### Utilisation
 
-Nouveau classeur base sur ce modele.
+Nouveau classeur base sûr ce modèle.
 
 ## Limites de cette approche
 
-| Fonctionnalite | Possible sans macro |
+| Fonctionnalité | Possible sans macro |
 |----------------|---------------------|
 | Barres de taches | Oui |
 | Progression | Oui |
@@ -175,18 +175,18 @@ Nouveau classeur base sur ce modele.
 | Dependances | Non (visuellement) |
 | Alertes auto | Non |
 
-## Comparaison des methodes
+## Comparaison des méthodes
 
-| Methode | Avantage | Inconvenient |
+| Méthode | Avantage | Inconvenient |
 |---------|----------|--------------|
 | Barres empilees | Graphique reel | Configuration |
 | MFC cellules | Simple | Moins visuel |
 
 ## Bonnes pratiques
 
-1. **Utilisez** des tableaux structures
+1. **Utilisez** des tableaux structurés
 2. **Nommez** les plages
 3. **Documentez** les formules
 4. **Testez** avant deploiement
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

@@ -1,25 +1,25 @@
 ---
-title: "Tableau de Bord Interactif Excel : Techniques Avancees"
+title: "Tableau de Bord Interactif Excel : Techniques Avancées"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Techniques avancees pour creer des tableaux de bord interactifs."
-description: "Guide avance pour les tableaux de bord interactifs Excel."
+excerpt: "Techniques avancées pour créer des tableaux de bord interactifs."
+description: "Guide avancé pour les tableaux de bord interactifs Excel."
 category: "Visualisation"
-categories: ["Visualisation", "Analyse de donnees Excel"]
-tags: ["Tableau de bord", "Interactif", "Avance", "Excel"]
+catégories: ["Visualisation", "Analyse de données Excel"]
+tags: ["Tableau de bord", "Interactif", "Avancé", "Excel"]
 ---
 
-# Tableau de Bord Interactif : Techniques Avancees
+# Tableau de Bord Interactif : Techniques Avancées
 
 Elevez vos dashboards au niveau professionnel.
 
 ## Architecture d'un dashboard pro
 
-### Structure recommandee
+### Structuré recommandée
 
-| Onglet | Role |
+| Onglet | Rôle |
 |--------|------|
-| DATA | Donnees brutes |
+| DATA | Données brutes |
 | CALCULS | Formules intermediaires |
 | PARAMETRES | Variables de configuration |
 | DASHBOARD | Affichage uniquement |
@@ -30,9 +30,9 @@ Elevez vos dashboards au niveau professionnel.
 
 ```excel
 =LET(
-  periode;$E$1;
-  valeur;SOMME.SI(Dates;">="&periode;Montants);
-  objectif;RECHERCHEV(periode;Objectifs;2;FAUX);
+  période;$E$1;
+  valeur;SOMME.SI(Dates;">="&période;Montants);
+  objectif;RECHERCHEV(période;Objectifs;2;FAUX);
   ecart;(valeur-objectif)/objectif;
   CONCAT(TEXTE(valeur;"# ##0 €");" (";TEXTE(ecart;"+0%;-0%");")")
 )
@@ -46,9 +46,9 @@ Coloration automatique selon la performance.
 
 ### Plages dynamiques
 
-Utilisez des tableaux structures ou DECALER().
+Utilisez des tableaux structurés où DECALER().
 
-### Source de donnees
+### Source de données
 
 ```excel
 =DECALER($A$1;0;0;NB.SI.ENS($A:$A;"<>""");1)
@@ -69,38 +69,38 @@ Listes deroulantes controlant les graphiques.
 
 ### Connecter plusieurs TCD
 
-1. Clic droit sur le segment
+1. Clic droit sûr le segment
 2. **Connexions de rapport**
-3. Cochez les TCD a connecter
+3. Cochez les TCD à connecter
 
 ## Graphiques sparklines
 
 ### Insertion
 
-1. Selectionnez les cellules cibles
+1. Sélectionnez les cellules cibles
 2. **Insertion** > **Sparklines**
 3. Choisissez le type
 
 ### Configuration
 
 - Couleur des points hauts/bas
-- Axe et echelle
+- Axe et échelle
 
 ## Interactivite avec RECHERCHEX
 
-### KPI qui change selon selection
+### KPI qui change selon sélection
 
 ```excel
-=RECHERCHEX($E$1;Periodes;Ventes)
+=RECHERCHEX($E$1;Périodes;Ventes)
 ```
 
-E1 contient la periode selectionnee.
+E1 contient la période sélectionnée.
 
 ## Jauges personnalisees
 
 ### Avec graphique en anneau
 
-1. Creez un graphique en anneau
+1. Créez un graphique en anneau
 2. 3 valeurs : performance, reste, invisible
 3. Colorez la portion "invisible" en blanc
 
@@ -114,19 +114,19 @@ Invisible : =100
 
 ## Design professionnel
 
-### Regles
+### Règles
 
-| Element | Recommandation |
+| Élément | Recommandation |
 |---------|----------------|
-| Couleurs | 3-4 max, coherentes |
+| Couleurs | 3-4 max, cohérentes |
 | Polices | 1-2 familles |
 | Espacement | Genereux et equilibre |
 | Alignement | Sur une grille invisible |
 
-### Masquer les elements
+### Masquer les éléments
 
 - Masquez le quadrillage
-- Masquez les en-tetes
+- Masquez les en-têtes
 - Figez les volets
 
 ## Performance
@@ -134,16 +134,16 @@ Invisible : =100
 ### Optimisation
 
 - Limitez les formules volatiles
-- Utilisez des tableaux structures
+- Utilisez des tableaux structurés
 - Calculez une fois, affichez plusieurs fois
 
 ## Bonnes pratiques
 
 | Pratique | Description |
 |----------|-------------|
-| Simplicite | Un message par vue |
-| Coherence | Conventions identiques |
-| Test | Verifiez tous les scenarios |
+| Simplicité | Un message par vue |
+| Cohérence | Conventions identiques |
+| Test | Vérifiez tous les scenarios |
 | Documentation | Guide utilisateur |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

@@ -1,27 +1,27 @@
 ---
-title: "Liste Deroulante Dependante Excel : Methodes Avancees"
+title: "Liste Deroulante Dependante Excel : Méthodes Avancées"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Techniques avancees pour les listes deroulantes dependantes."
-description: "Guide avance des listes deroulantes dependantes Excel."
+excerpt: "Techniques avancées pour les listes deroulantes dependantes."
+description: "Guide avancé des listes deroulantes dependantes Excel."
 category: "Astuces Excel"
-categories: ["Astuces Excel", "Validation"]
-tags: ["Liste deroulante", "Dependante", "Avance", "Validation"]
+catégories: ["Astuces Excel", "Validation"]
+tags: ["Liste deroulante", "Dependante", "Avancé", "Validation"]
 ---
 
-# Liste Deroulante Dependante : Methodes Avancees
+# Liste Deroulante Dependante : Méthodes Avancées
 
 Allez plus loin avec les listes deroulantes en cascade.
 
-## Methode FILTRE (Excel 365)
+## Méthode FILTRE (Excel 365)
 
 ### Avantages
 
-- Pas de plages nommees multiples
+- Pas de plages nommées multiples
 - Plus flexible
-- Mise a jour dynamique
+- Mise à jour dynamique
 
-### Structure des donnees
+### Structuré des données
 
 | Niveau1 | Niveau2 | Niveau3 |
 |---------|---------|---------|
@@ -38,13 +38,13 @@ Source : `=UNIQUE(A2:A100)`
 
 Source : `=UNIQUE(FILTRE(B2:B100;A2:A100=D1))`
 
-D1 contient la selection niveau 1.
+D1 contient la sélection niveau 1.
 
 ### Liste niveau 3
 
 Source : `=UNIQUE(FILTRE(C2:C100;B2:B100=D2))`
 
-## Methode INDIRECT amelioree
+## Méthode INDIRECT amelioree
 
 ### Gestion des espaces et caracteres speciaux
 
@@ -68,7 +68,7 @@ Remplacez espaces et tirets par underscores.
 
 ### Configuration
 
-1. **Donnees** > **Validation**
+1. **Données** > **Validation**
 2. Onglet **Message de saisie**
 3. Personnalisez titre et message
 4. Onglet **Alerte d'erreur**
@@ -96,7 +96,7 @@ End Sub
 ### Contient un mot
 
 ```excel
-=UNIQUE(FILTRE(Donnees;ESTNUM(CHERCHE(CriterePartiel;Donnees))))
+=UNIQUE(FILTRE(Données;ESTNUM(CHERCHE(CriterePartiel;Données))))
 ```
 
 ## Performance
@@ -105,11 +105,11 @@ End Sub
 
 | Conseil | Impact |
 |---------|--------|
-| Tableaux structures | Mise a jour auto |
+| Tableaux structurés | Mise à jour auto |
 | Plages limitees | Plus rapide |
-| Eviter colonnes entieres | Moins de calculs |
+| Éviter colonnes entières | Moins de calculs |
 
-## Cas pratiques avances
+## Cas pratiques avancés
 
 ### Formulaire de saisie
 
@@ -118,15 +118,15 @@ End Sub
 
 ### Catalogue produits
 
-- Famille > Sous-famille > Produit > Reference
+- Famille > Sous-famille > Produit > Référence
 
 ## Bonnes pratiques
 
 | Pratique | Description |
 |----------|-------------|
-| FILTRE preferee | Plus moderne et flexible |
-| Test complet | Verifiez toutes les combinaisons |
+| FILTRE préférée | Plus moderne et flexible |
+| Test complet | Vérifiez toutes les combinaisons |
 | Documentation | Notez la logique |
-| Gestion erreurs | Gerez les cas vides |
+| Gestion erreurs | Gérez les cas vides |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

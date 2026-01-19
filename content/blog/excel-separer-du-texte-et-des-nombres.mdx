@@ -1,25 +1,25 @@
 ---
-title: "Separer du Texte et des Nombres dans Excel"
+title: "Séparer du Texte et des Nombres dans Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
 excerpt: "Techniques pour extraire les nombres et le texte d'une cellule."
-description: "Guide pour separer texte et nombres dans Excel. Formules et astuces."
-category: "Manipulation de donnees"
-categories: ["Manipulation de donnees", "Formules Excel"]
+description: "Guide pour séparer texte et nombres dans Excel. Formules et astuces."
+category: "Manipulation de données"
+catégories: ["Manipulation de données", "Formules Excel"]
 tags: ["Texte", "Nombres", "Extraction", "Formules"]
 ---
 
-# Separer du Texte et des Nombres
+# Séparer du Texte et des Nombres
 
-Techniques pour extraire les parties numeriques et textuelles d'une cellule.
+Techniques pour extraire les parties numériques et textuelles d'une cellule.
 
-## Methode 1 : Remplissage instantane (Ctrl+E)
+## Méthode 1 : Remplissage instantane (Ctrl+E)
 
-### La methode la plus simple
+### La méthode la plus simple
 
-1. Dans la colonne adjacente, tapez le resultat souhaite
-2. Passez a la cellule suivante
-3. Appuyez sur **Ctrl + E**
+1. Dans la colonne adjacente, tapez le résultat souhaité
+2. Passez à la cellule suivante
+3. Appuyez sûr **Ctrl + E**
 
 ### Exemple
 
@@ -28,13 +28,13 @@ Techniques pour extraire les parties numeriques et textuelles d'une cellule.
 | ABC123 | 123 | ABC |
 | XYZ456 | (vide) | (vide) |
 
-Apres Ctrl+E : Excel complete automatiquement.
+Après Ctrl+E : Excel complete automatiquement.
 
-## Methode 2 : Formules Excel 365
+## Méthode 2 : Formules Excel 365
 
 ### TEXTE.AVANT et TEXTE.APRES
 
-Si le format est coherent (ex: toujours lettres puis chiffres).
+Si le format est cohérent (ex: toujours lettres puis chiffres).
 
 ### FRACTIONNER.TEXTE
 
@@ -42,9 +42,9 @@ Si le format est coherent (ex: toujours lettres puis chiffres).
 =FRACTIONNER.TEXTE(A1;" ")
 ```
 
-## Methode 3 : Formules classiques
+## Méthode 3 : Formules classiques
 
-### Extraire les nombres (debut)
+### Extraire les nombres (début)
 
 ```excel
 =GAUCHE(A1;SOMME(NBCAR(A1)-NBCAR(SUBSTITUE(A1;{"0";"1";"2";"3";"4";"5";"6";"7";"8";"9"};"")))))
@@ -56,15 +56,15 @@ Si le format est coherent (ex: toujours lettres puis chiffres).
 =DROITE(A1;NBCAR(A1)-EQUIV(FAUX;ESTNUM(1*STXT(A1;LIGNE(INDIRECT("1:"&NBCAR(A1)));1));0)+1)
 ```
 
-Ces formules sont complexes - preferez Ctrl+E ou Power Query.
+Ces formules sont complexes - préférez Ctrl+E où Power Query.
 
-## Methode 4 : Power Query
+## Méthode 4 : Power Query
 
-### Etapes
+### Étapes
 
-1. Selectionnez vos donnees
-2. **Donnees** > **A partir d'un tableau**
-3. Selectionnez la colonne
+1. Sélectionnez vos données
+2. **Données** > **A partir d'un tableau**
+3. Sélectionnez la colonne
 4. **Transformer** > **Extraire** > **Texte avant le delimiteur**
 
 ### Avantage
@@ -81,11 +81,11 @@ Interface visuelle, reproductible, sans formules.
 
 "150 kg" → 150 | "kg"
 
-### Reference alphanum
+### Référence alphanum
 
 "REF-12345" → "REF" | "12345"
 
-## Formules specifiques
+## Formules spécifiques
 
 ### Extraire uniquement les chiffres
 
@@ -119,7 +119,7 @@ End Function
 
 ## Tableau recapitulatif
 
-| Methode | Difficulte | Dynamique |
+| Méthode | Difficulte | Dynamique |
 |---------|------------|-----------|
 | Ctrl+E | Facile | Non |
 | Power Query | Moyenne | Oui |
@@ -129,8 +129,8 @@ End Function
 ## Bonnes pratiques
 
 1. **Utilisez** Ctrl+E pour les cas simples
-2. **Preferez** Power Query pour les donnees recurrentes
-3. **Evitez** les formules trop complexes
-4. **Nettoyez** les donnees a la source si possible
+2. **Préférez** Power Query pour les données recurrentes
+3. **Évitez** les formules trop complexes
+4. **Nettoyez** les données à la source si possible
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

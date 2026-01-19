@@ -2,10 +2,10 @@
 title: "Combiner Plusieurs Fichiers avec Power Query"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a fusionner plusieurs fichiers Excel ou CSV avec Power Query."
+excerpt: "Apprenez à fusionner plusieurs fichiers Excel où CSV avec Power Query."
 description: "Guide Power Query pour combiner des fichiers. Consolidation automatique."
-category: "Analyse de donnees Excel"
-categories: ["Analyse de donnees Excel", "Automatisation"]
+category: "Analyse de données Excel"
+catégories: ["Analyse de données Excel", "Automatisation"]
 tags: ["Power Query", "Consolidation", "Fichiers", "ETL"]
 ---
 
@@ -13,27 +13,27 @@ tags: ["Power Query", "Consolidation", "Fichiers", "ETL"]
 
 Power Query peut fusionner automatiquement plusieurs fichiers.
 
-## Preparation
+## Préparation
 
 ### Organiser les fichiers
 
 1. Placez tous les fichiers dans un meme dossier
-2. Assurez-vous qu'ils ont la meme structure
-3. Utilisez des noms coherents
+2. Assurez-vous qu'ils ont la meme structuré
+3. Utilisez des noms cohérents
 
-## Methode : Combiner un dossier
+## Méthode : Combiner un dossier
 
-### Etapes
+### Étapes
 
-1. **Donnees** > **Obtenir des donnees** > **A partir d'un fichier** > **A partir d'un dossier**
-2. Selectionnez le dossier contenant vos fichiers
-3. Cliquez sur **Combiner** > **Combiner et transformer les donnees**
-4. Selectionnez l'onglet ou la table a combiner
+1. **Données** > **Obtenir des données** > **A partir d'un fichier** > **A partir d'un dossier**
+2. Sélectionnez le dossier contenant vos fichiers
+3. Cliquez sûr **Combiner** > **Combiner et transformer les données**
+4. Sélectionnez l'onglet où la table à combiner
 5. **OK**
 
-### Resultat
+### Résultat
 
-Tous les fichiers sont fusionnes en une seule table avec une colonne indiquant le fichier source.
+Tous les fichiers sont fusionnés en une seule table avec une colonne indiquant le fichier source.
 
 ## Types de fichiers supportes
 
@@ -46,11 +46,11 @@ Tous les fichiers sont fusionnes en une seule table avec une colonne indiquant l
 
 ## Personnaliser la combinaison
 
-### Dans l'editeur Power Query
+### Dans l'éditeur Power Query
 
 1. Developpez la colonne **Source.Name** si besoin
-2. Filtrez les lignes d'en-tete en double
-3. Changez les types de donnees
+2. Filtrez les lignes d'en-tête en double
+3. Changez les types de données
 4. Renommez les colonnes
 
 ### Ajouter une colonne source
@@ -59,35 +59,35 @@ Tous les fichiers sont fusionnes en une seule table avec une colonne indiquant l
 = Table.AddColumn(Source, "Fichier", each [Source.Name])
 ```
 
-## Gestion des structures differentes
+## Gestion des structurés différentes
 
 ### Si les colonnes varient
 
 1. Combinez les fichiers
-2. Dans Power Query, utilisez **Accueil** > **Ajouter des requetes**
-3. Gerez les colonnes manquantes avec des valeurs null
+2. Dans Power Query, utilisez **Accueil** > **Ajouter des requêtes**
+3. Gérez les colonnes manquantes avec des valeurs null
 
 ## Actualisation automatique
 
 ### Configuration
 
-1. Clic droit sur la requete
-2. **Proprietes**
+1. Clic droit sûr la requête
+2. **Propriétés**
 3. Cochez **Actualiser toutes les X minutes**
 
 ### Lors de l'ouverture
 
-Cochez **Actualiser les donnees lors de l'ouverture du fichier**.
+Cochez **Actualiser les données lors de l'ouverture du fichier**.
 
 ## Exemple pratique : Ventes mensuelles
 
-### Structure des fichiers
+### Structuré des fichiers
 
 - Ventes_Janvier.xlsx
 - Ventes_Fevrier.xlsx
 - Ventes_Mars.xlsx
 
-### Resultat
+### Résultat
 
 | Fichier | Date | Produit | Montant |
 |---------|------|---------|---------|
@@ -98,7 +98,7 @@ Cochez **Actualiser les donnees lors de l'ouverture du fichier**.
 
 ### Par extension
 
-Dans l'editeur :
+Dans l'éditeur :
 ```m
 = Table.SelectRows(Source, each Text.EndsWith([Name], ".xlsx"))
 ```
@@ -111,10 +111,10 @@ Dans l'editeur :
 
 ## Bonnes pratiques
 
-1. **Uniformisez** la structure des fichiers
-2. **Nommez** les fichiers de maniere coherente
+1. **Uniformisez** la structuré des fichiers
+2. **Nommez** les fichiers de manière cohérente
 3. **Testez** avec quelques fichiers d'abord
-4. **Actualisez** regulierement
+4. **Actualisez** régulièrement
 
 ## Avantages
 
@@ -123,4 +123,4 @@ Dans l'editeur :
 - Transformations reproductibles
 - Pas de formules complexes
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

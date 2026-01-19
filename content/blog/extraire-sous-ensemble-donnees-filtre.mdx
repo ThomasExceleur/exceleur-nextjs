@@ -1,17 +1,17 @@
 ---
-title: "Extraire un Sous-ensemble de Donnees avec FILTRE"
+title: "Extraire un Sous-ensemble de Données avec FILTRE"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Extrayez des sous-ensembles de donnees avec la fonction FILTRE."
+excerpt: "Extrayez des sous-ensembles de données avec la fonction FILTRE."
 description: "Guide pour extraire des sous-ensembles avec FILTRE Excel."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
+catégories: ["Excel 365", "Formules Excel"]
 tags: ["FILTRE", "Extraction", "Sous-ensemble", "Excel 365"]
 ---
 
 # Extraire un Sous-ensemble avec FILTRE
 
-Creez des extractions ciblees de vos donnees.
+Créez des extractions ciblees de vos données.
 
 ## Syntaxe
 
@@ -21,13 +21,13 @@ Creez des extractions ciblees de vos donnees.
 
 ## Extraction simple
 
-### Par critere
+### Par critère
 
 ```excel
 =FILTRE(A2:D100;B2:B100="Paris")
 ```
 
-### Par valeur numerique
+### Par valeur numérique
 
 ```excel
 =FILTRE(A2:D100;C2:C100>1000)
@@ -38,13 +38,13 @@ Creez des extractions ciblees de vos donnees.
 ### ET logique
 
 ```excel
-=FILTRE(Donnees;(Region="Nord")*(Montant>100))
+=FILTRE(Données;(Region="Nord")*(Montant>100))
 ```
 
 ### OU logique
 
 ```excel
-=FILTRE(Donnees;(Statut="A")+(Statut="B"))
+=FILTRE(Données;(Statut="A")+(Statut="B"))
 ```
 
 ## Top N valeurs
@@ -52,7 +52,7 @@ Creez des extractions ciblees de vos donnees.
 ### Les 10 plus grands
 
 ```excel
-=FILTRE(Donnees;Montant>=GRANDE.VALEUR(Montant;10))
+=FILTRE(Données;Montant>=GRANDE.VALEUR(Montant;10))
 ```
 
 ## Plage de dates
@@ -60,29 +60,29 @@ Creez des extractions ciblees de vos donnees.
 ### Ce mois
 
 ```excel
-=FILTRE(Donnees;(MOIS(Dates)=MOIS(AUJOURDHUI()))*(ANNEE(Dates)=ANNEE(AUJOURDHUI())))
+=FILTRE(Données;(MOIS(Dates)=MOIS(AUJOURDHUI()))*(ANNEE(Dates)=ANNEE(AUJOURDHUI())))
 ```
 
 ## Exclure des valeurs
 
-### Different de
+### Différent de
 
 ```excel
-=FILTRE(Donnees;Statut<>"Exclu")
+=FILTRE(Données;Statut<>"Exclu")
 ```
 
 ## Gestion des vides
 
 ```excel
-=FILTRE(Donnees;Critere;"Aucun resultat")
+=FILTRE(Données;Critère;"Aucun résultat")
 ```
 
 ## Bonnes pratiques
 
 | Pratique | Description |
 |----------|-------------|
-| si_vide | Toujours definir |
+| si_vide | Toujours définir |
 | Plages alignees | Meme taille |
-| Test | Verifiez les resultats |
+| Test | Vérifiez les résultats |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

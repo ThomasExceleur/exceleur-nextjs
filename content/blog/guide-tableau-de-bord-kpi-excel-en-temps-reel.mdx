@@ -2,22 +2,22 @@
 title: "Guide : Tableau de Bord KPI Excel en Temps Reel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Creez un tableau de bord KPI qui se met a jour en temps reel."
-description: "Guide pour creer un tableau de bord KPI temps reel Excel."
+excerpt: "Créez un tableau de bord KPI qui se met à jour en temps reel."
+description: "Guide pour créer un tableau de bord KPI temps reel Excel."
 category: "Visualisation"
-categories: ["Visualisation", "Analyse de donnees Excel"]
+catégories: ["Visualisation", "Analyse de données Excel"]
 tags: ["KPI", "Tableau de bord", "Temps reel", "Excel"]
 ---
 
 # Tableau de Bord KPI en Temps Reel
 
-Dashboard qui se met a jour automatiquement.
+Dashboard qui se met à jour automatiquement.
 
-## Sources de donnees
+## Sources de données
 
 ### Connexions temps reel
 
-- Power Query vers base de donnees
+- Power Query vers base de données
 - API REST
 - SharePoint/OneDrive
 
@@ -27,30 +27,30 @@ Configurez l'actualisation automatique.
 
 ## KPIs essentiels
 
-### Structure
+### Structuré
 
 | KPI | Formule |
 |-----|---------|
 | Total | SOMME |
 | Moyenne | MOYENNE |
-| Variation | (Actuel-Precedent)/Precedent |
+| Variation | (Actuel-Précédent)/Précédent |
 | Objectif | Reel vs Cible |
 
 ## Formules dynamiques
 
-### KPI avec periode actuelle
+### KPI avec période actuelle
 
 ```excel
 =SOMME.SI(Dates;">="&DEBUT.MOIS(AUJOURDHUI();0);Valeurs)
 ```
 
-### Comparaison vs mois precedent
+### Comparaison vs mois précédent
 
 ```excel
 =LET(
   actuel;SOMME.SI(Dates;">="&DEBUT.MOIS(AUJOURDHUI();0);Valeurs);
-  precedent;SOMME.SI.ENS(Dates;">="&DEBUT.MOIS(AUJOURDHUI();-1);Dates;"<"&DEBUT.MOIS(AUJOURDHUI();0);Valeurs);
-  variation;(actuel-precedent)/precedent;
+  précédent;SOMME.SI.ENS(Dates;">="&DEBUT.MOIS(AUJOURDHUI();-1);Dates;"<"&DEBUT.MOIS(AUJOURDHUI();0);Valeurs);
+  variation;(actuel-précédent)/précédent;
   variation
 )
 ```
@@ -71,8 +71,8 @@ Fleches pour tendances.
 
 ### Power Query
 
-1. Clic droit sur connexion
-2. Proprietes
+1. Clic droit sûr connexion
+2. Propriétés
 3. Actualiser toutes les X minutes
 
 ## Bonnes pratiques
@@ -81,6 +81,6 @@ Fleches pour tendances.
 |----------|-------------|
 | Frequence | Adaptez aux besoins |
 | Performance | Limitez les calculs |
-| Cache | Evitez les recalculs inutiles |
+| Cache | Évitez les recalculs inutiles |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

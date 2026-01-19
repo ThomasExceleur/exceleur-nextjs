@@ -2,27 +2,27 @@
 title: "Optimiser vos Formules avec la Fonction LET"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a optimiser vos formules Excel avec la fonction LET."
+excerpt: "Apprenez à optimiser vos formules Excel avec la fonction LET."
 description: "Guide pour optimiser les formules Excel avec LET. Variables et performance."
 category: "Formules Excel"
-categories: ["Formules Excel", "Excel 365"]
+catégories: ["Formules Excel", "Excel 365"]
 tags: ["LET", "Optimisation", "Performance", "Formules"]
 ---
 
 # Optimiser vos Formules avec LET
 
-La fonction LET permet de creer des variables dans vos formules pour plus de performance et de lisibilite.
+La fonction LET permet de créer des variables dans vos formules pour plus de performance et de lisibilité.
 
-## Disponibilite
+## Disponibilité
 
 - Excel 365
 - Excel 2021
 
 ## Pourquoi utiliser LET ?
 
-### Probleme classique
+### Problème classique
 
-Sans LET, vous repetez les memes calculs :
+Sans LET, vous répétez les memes calculs :
 
 ```excel
 =SI(SOMME(A1:A100)>1000;SOMME(A1:A100)*0.1;SOMME(A1:A100)*0.05)
@@ -53,7 +53,7 @@ Le calcul n'est fait qu'une seule fois.
 
 Les calculs complexes ne sont executes qu'une fois.
 
-### Lisibilite
+### Lisibilité
 
 Les formules deviennent auto-documentees.
 
@@ -78,9 +78,9 @@ Plus facile de modifier une variable que plusieurs occurrences.
 
 ```excel
 =LET(
-  donnees;A1:A100;
-  moy;MOYENNE(donnees);
-  ecart;ECARTYPE.STANDARD(donnees);
+  données;A1:A100;
+  moy;MOYENNE(données);
+  ecart;ECARTYPE.STANDARD(données);
   "Moyenne: "&moy&" | Ecart-type: "&ecart
 )
 ```
@@ -89,26 +89,26 @@ Plus facile de modifier une variable que plusieurs occurrences.
 
 ```excel
 =LET(
-  resultat;RECHERCHEX(E1;A:A;B:B);
-  SI(ESTERREUR(resultat);"Non trouve";resultat*1.2)
+  résultat;RECHERCHEX(E1;A:A;B:B);
+  SI(ESTERREUR(résultat);"Non trouve";résultat*1.2)
 )
 ```
 
 ## Variables en cascade
 
-### Reutiliser les variables precedentes
+### Reutiliser les variables précédentes
 
 ```excel
 =LET(
   x;A1;
   y;x*2;
   z;y+10;
-  resultat;z/5;
-  resultat
+  résultat;z/5;
+  résultat
 )
 ```
 
-Chaque variable peut utiliser les precedentes.
+Chaque variable peut utiliser les précédentes.
 
 ## Combinaison avec autres fonctions
 
@@ -132,7 +132,7 @@ Chaque variable peut utiliser les precedentes.
 )
 ```
 
-## Regles de nommage
+## Règles de nommage
 
 ### Noms valides
 
@@ -156,4 +156,4 @@ Chaque variable peut utiliser les precedentes.
 3. **Groupez** les calculs logiquement
 4. **Testez** chaque variable separement
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

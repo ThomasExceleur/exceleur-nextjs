@@ -1,19 +1,46 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from './Container';
 
 const legalLinks = [
-  { label: 'Mentions legales', href: '/mentions-legales' },
-  { label: 'Declaration de confidentialite', href: '/declaration-de-confidentialite-ue' },
+  { label: 'Mentions légales', href: '/mentions-legales' },
+  { label: 'Déclaration de confidentialité', href: '/declaration-de-confidentialite-ue' },
   { label: 'Politique de cookies', href: '/politique-de-cookies-ue' },
   { label: 'CGV', href: '/cgv' },
+  { label: 'Certificat Qualiopi', href: 'https://www.exceleur.fr/wp-content/uploads/2023/10/Certificat-Qualiopi-2023-EXCELEUR.pdf', external: true },
+  { label: 'Règlement intérieur', href: 'https://www.exceleur.fr/wp-content/uploads/2024/12/Reglement-interieur-Exceleur.pdf', external: true },
 ];
 
 const socialLinks = [
-  { label: 'Instagram', href: 'https://www.instagram.com/lexceleur/', icon: 'instagram' },
-  { label: 'Tiktok', href: 'https://www.tiktok.com/@exceleur', icon: 'tiktok' },
-  { label: 'Youtube', href: 'https://www.youtube.com/@lexceleur', icon: 'youtube' },
-  { label: 'Linkedin', href: 'https://www.linkedin.com/in/thomas-lexceleur/', icon: 'linkedin' },
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/lexceleur/',
+    icon: 'instagram',
+    followers: '175K',
+    color: 'hover:bg-gradient-to-br hover:from-[#833AB4] hover:via-[#E1306C] hover:to-[#F77737]',
+  },
+  {
+    label: 'TikTok',
+    href: 'https://www.tiktok.com/@exceleur',
+    icon: 'tiktok',
+    followers: '50K',
+    color: 'hover:bg-[#000000]',
+  },
+  {
+    label: 'YouTube',
+    href: 'https://www.youtube.com/@lexceleur',
+    icon: 'youtube',
+    followers: '10K',
+    color: 'hover:bg-[#FF0000]',
+  },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/thomas-lexceleur/',
+    icon: 'linkedin',
+    color: 'hover:bg-[#0A66C2]',
+  },
 ];
 
 function SocialIcon({ icon }: { icon: string }) {
@@ -51,87 +78,208 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-b from-[#7CC3EE] to-white pt-16 pb-8">
-      <Container>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-          {/* Column 1: Logo & Copyright */}
-          <div>
-            <Link href="/" className="inline-block mb-4">
-              <Image
-                src="/images/logo.webp"
-                alt="exceleur-logo-2023"
-                width={60}
-                height={60}
-                className="w-[60px] h-[60px]"
-              />
+    <footer className="relative overflow-hidden">
+      {/* Gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-accent" />
+
+      {/* Decorative elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Large orb */}
+        <div
+          className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full opacity-20 animate-float-slow"
+          style={{
+            background: 'radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 60%)',
+          }}
+        />
+        {/* Secondary orb */}
+        <div
+          className="absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full opacity-15 animate-float-medium"
+          style={{
+            background: 'radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%)',
+          }}
+        />
+        {/* Grid pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0z' fill='none' stroke='white' stroke-width='1'/%3E%3C/svg%3E")`,
+          }}
+        />
+      </div>
+
+      <Container className="relative z-10 py-16 lg:py-20">
+        {/* Main footer grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+          {/* Column 1: Logo & Branding */}
+          <div className="lg:col-span-1">
+            <Link href="/" className="inline-block mb-6 group">
+              <div className="relative">
+                <Image
+                  src="/images/logo.webp"
+                  alt="Exceleur"
+                  width={70}
+                  height={70}
+                  className="w-[70px] h-[70px] transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-white/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
             </Link>
-            <div className="text-sm text-text space-y-1">
-              <p>Tous droits reserves</p>
-              <p>Exceleur {currentYear}</p>
-              <p>
-                Realisation{' '}
-                <Link
-                  href="https://charlenezybala.com/"
-                  target="_blank"
-                  className="text-primary hover:underline no-underline"
-                >
-                  Charlene Zybala
-                </Link>
-              </p>
+            <p className="text-white/80 text-sm mb-6 max-w-xs">
+              Faites d&apos;Excel la compétence la plus rentable de votre carrière grâce à nos formations certifiées.
+            </p>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/images/illustrations/qualiopi.webp"
+                alt="Certification Qualiopi"
+                width={80}
+                height={40}
+                className="h-10 w-auto opacity-90 hover:opacity-100 transition-opacity"
+              />
             </div>
           </div>
 
-          {/* Column 2: Pages legales */}
+          {/* Column 2: Legal Links */}
           <div>
-            <h3 className="font-heading font-bold text-text-dark mb-4">
-              Pages legales
+            <h3 className="font-heading font-bold text-white text-sm uppercase tracking-wider mb-6">
+              Pages légales
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               {legalLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-text hover:text-primary no-underline transition-colors"
+                    target={'external' in link && link.external ? '_blank' : undefined}
+                    className="text-white/70 hover:text-white text-sm no-underline transition-colors duration-200 inline-flex items-center gap-1 group"
                   >
-                    {link.label}
+                    <span className="group-hover:translate-x-1 transition-transform duration-200">{link.label}</span>
+                    {link.external && (
+                      <svg className="w-3 h-3 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    )}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 3: Social & Newsletter */}
+          {/* Column 3: Social Media */}
           <div>
-            <h3 className="font-heading font-bold text-text-dark mb-4">
-              Me suivre sur les reseaux
+            <h3 className="font-heading font-bold text-white text-sm uppercase tracking-wider mb-6">
+              Réseaux sociaux
             </h3>
-            <ul className="space-y-2 mb-6">
+            <div className="space-y-3">
               {socialLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    target="_blank"
-                    className="inline-flex items-center gap-2 text-sm text-text hover:text-primary no-underline transition-colors"
-                  >
-                    {link.label}
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  className={`flex items-center gap-3 p-3 -ml-3 rounded-xl no-underline group transition-all duration-300 ${link.color} hover:text-white`}
+                >
+                  <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white group-hover:bg-white/20 transition-colors">
                     <SocialIcon icon={link.icon} />
-                  </Link>
-                </li>
+                  </div>
+                  <div>
+                    <span className="text-white font-medium text-sm block">{link.label}</span>
+                    {link.followers && (
+                      <span className="text-white/60 text-xs">{link.followers} abonnés</span>
+                    )}
+                  </div>
+                </Link>
               ))}
-            </ul>
+            </div>
+          </div>
 
-            <h3 className="font-heading font-bold text-text-dark mb-3">
+          {/* Column 4: Newsletter CTA */}
+          <div>
+            <h3 className="font-heading font-bold text-white text-sm uppercase tracking-wider mb-6">
               Newsletter
             </h3>
+            <p className="text-white/70 text-sm mb-4">
+              Rejoignez +50 000 lecteurs et recevez mes conseils Excel en exclusivité.
+            </p>
             <Link
               href="#newsletter"
-              className="inline-block px-4 py-2 rounded-button bg-primary text-white font-heading font-bold text-sm hover:bg-primary-hover transition-colors no-underline"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary font-heading font-bold text-sm rounded-full no-underline shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group"
             >
-              S&apos;inscrire
+              <span>S&apos;inscrire</span>
+              <svg
+                className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
             </Link>
+
+            {/* Trust badges */}
+            <div className="mt-6 flex items-center gap-3">
+              <div className="flex items-center gap-1 text-white/60 text-xs">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Gratuit</span>
+              </div>
+              <div className="flex items-center gap-1 text-white/60 text-xs">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <span>Sans spam</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="mt-16 pt-8 border-t border-white/10">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="text-white/60 text-sm text-center md:text-left">
+              <p>&copy; {currentYear} Exceleur. Tous droits réservés.</p>
+              <p className="mt-1">
+                Réalisation{' '}
+                <Link
+                  href="https://charlenezybala.com/"
+                  target="_blank"
+                  className="text-white/80 hover:text-white no-underline transition-colors"
+                >
+                  Charlène Zybala
+                </Link>
+              </p>
+            </div>
+
+            {/* Back to top button */}
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full text-white text-sm transition-all duration-300 group"
+            >
+              <span>Retour en haut</span>
+              <svg
+                className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+              </svg>
+            </button>
           </div>
         </div>
       </Container>
+
+      {/* Top wave decoration */}
+      <div className="absolute top-0 left-0 right-0 h-8 overflow-hidden">
+        <svg
+          viewBox="0 0 1440 48"
+          preserveAspectRatio="none"
+          className="absolute top-0 w-full h-full rotate-180"
+        >
+          <path
+            d="M0,24 C480,48 960,0 1440,24 L1440,48 L0,48 Z"
+            fill="white"
+          />
+        </svg>
+      </div>
     </footer>
   );
 }

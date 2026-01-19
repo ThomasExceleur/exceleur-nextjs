@@ -2,10 +2,10 @@
 title: "Excel Gestion des Ressources Humaines : Guide Complet"
 date: "2024-07-18"
 author: "Thomas L'Exceleur"
-excerpt: "Gerez efficacement vos ressources humaines avec Excel grace a ce guide pratique."
+excerpt: "Gérez efficacement vos ressources humaines avec Excel grace à ce guide pratique."
 description: "Guide pour la gestion RH dans Excel. Effectifs, conges, formation et reporting."
 category: "RH"
-categories: ["RH", "Modeles"]
+catégories: ["RH", "Modèles"]
 tags: ["RH", "Ressources humaines", "Gestion", "Personnel"]
 ---
 
@@ -13,9 +13,9 @@ tags: ["RH", "Ressources humaines", "Gestion", "Personnel"]
 
 Excel est un outil precieux pour les fonctions RH, de la gestion des effectifs au reporting.
 
-## Base de donnees salaries
+## Base de données salaries
 
-### Structure
+### Structuré
 
 | Champ | Description |
 |-------|-------------|
@@ -23,7 +23,7 @@ Excel est un outil precieux pour les fonctions RH, de la gestion des effectifs a
 | Nom | Nom de famille |
 | Prenom | Prenom |
 | Date naissance | Pour calcul age |
-| Date entree | Pour anciennete |
+| Date entrée | Pour anciennete |
 | Poste | Fonction |
 | Service | Departement |
 | Contrat | CDI/CDD/Interim |
@@ -67,7 +67,7 @@ Legende : CP = Conge paye, M = Maladie, F = Formation
 
 | Formation | Salarie | Date | Duree | Cout |
 |-----------|---------|------|-------|------|
-| Excel avance | Dupont | 15/03 | 2j | 800 |
+| Excel avancé | Dupont | 15/03 | 2j | 800 |
 | Management | Martin | 20/04 | 3j | 1500 |
 
 ### Budget formation
@@ -86,7 +86,7 @@ Legende : CP = Conge paye, M = Maladie, F = Formation
 | Dupont | 15/01/24 | B | Atteints | 15/01/25 |
 | Martin | 20/01/24 | A | Depasses | 20/01/25 |
 
-### Alerte echeance
+### Alerte échéance
 
 ```excel
 =SI(E2-AUJOURDHUI()<30;"A planifier";"OK")
@@ -96,7 +96,7 @@ Legende : CP = Conge paye, M = Maladie, F = Formation
 
 ### Suivi des candidatures
 
-| Poste | Candidat | Date | Etape | Statut |
+| Poste | Candidat | Date | Étape | Statut |
 |-------|----------|------|-------|--------|
 | Commercial | Durand | 01/02 | Entretien 2 | En cours |
 | Technicien | Petit | 05/02 | Test | En attente |
@@ -104,14 +104,14 @@ Legende : CP = Conge paye, M = Maladie, F = Formation
 ### Pipeline recrutement
 
 ```excel
-=NB.SI(Recrutement[Etape];"CV recu")
-=NB.SI(Recrutement[Etape];"Entretien 1")
+=NB.SI(Recrutement[Étape];"CV reçu")
+=NB.SI(Recrutement[Étape];"Entretien 1")
 =NB.SI(Recrutement[Statut];"Embauche")
 ```
 
 ## Organigramme
 
-### Tableau hierarchique
+### Tableau hiérarchique
 
 | Salarie | Manager | Service | Niveau |
 |---------|---------|---------|--------|
@@ -196,7 +196,7 @@ Legende : CP = Conge paye, M = Maladie, F = Formation
 
 ### Bilan social
 
-| Element | N-1 | N | Evolution |
+| Élément | N-1 | N | Evolution |
 |---------|-----|---|-----------|
 | Effectif | 115 | 120 | +4.3% |
 | Masse salariale | 2.5M | 2.7M | +8% |
@@ -205,29 +205,29 @@ Legende : CP = Conge paye, M = Maladie, F = Formation
 ### Graphiques
 
 1. Evolution effectifs (courbe)
-2. Repartition H/F (camembert)
+2. Répartition H/F (camembert)
 3. Pyramide des ages (histogramme)
 
-## Protection des donnees
+## Protection des données
 
-### Securite
+### Sécurité
 
-1. **Revision** > **Proteger la feuille**
+1. **Révision** > **Proteger la feuille**
 2. Masquez les colonnes sensibles (salaires)
-3. Limitez l'acces aux fichiers
+3. Limitez l'accès aux fichiers
 
 ### RGPD
 
 - Registre des traitements
 - Conservation limitee
-- Droit d'acces des salaries
+- Droit d'accès des salaries
 
 ## Bonnes pratiques
 
-1. **Centralisez** les donnees RH
-2. **Actualisez** regulierement
+1. **Centralisez** les données RH
+2. **Actualisez** régulièrement
 3. **Securisez** les informations
 4. **Automatisez** les calculs
 5. **Documentez** les processus
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

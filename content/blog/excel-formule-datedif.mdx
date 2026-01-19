@@ -2,16 +2,16 @@
 title: "Excel Formule DATEDIF : Calculer les Ecarts de Dates"
 date: "2024-07-18"
 author: "Thomas L'Exceleur"
-excerpt: "Maitrisez la fonction DATEDIF pour calculer la difference entre deux dates."
+excerpt: "Maîtrisez la fonction DATEDIF pour calculer la différence entre deux dates."
 description: "Guide complet de DATEDIF dans Excel. Calculer l'age, l'anciennete et les ecarts de dates."
 category: "Formules Excel"
-categories: ["Formules Excel", "Dates"]
+catégories: ["Formules Excel", "Dates"]
 tags: ["DATEDIF", "Dates", "Formules", "Calculs"]
 ---
 
 # Excel DATEDIF : Calculer les Ecarts de Dates
 
-DATEDIF calcule la difference entre deux dates en annees, mois ou jours.
+DATEDIF calcule la différence entre deux dates en années, mois où jours.
 
 ## Particularite
 
@@ -25,24 +25,24 @@ DATEDIF est une fonction "cachee" d'Excel. Elle n'apparait pas dans l'auto-compl
 
 ### Arguments
 
-- **date_debut** : Premiere date (la plus ancienne)
+- **date_debut** : Première date (la plus ancienne)
 - **date_fin** : Deuxieme date (la plus recente)
-- **unite** : Type de resultat souhaite
+- **unite** : Type de résultat souhaité
 
 ## Unites disponibles
 
 | Unite | Description |
 |-------|-------------|
-| "Y" | Annees completes |
+| "Y" | Années completes |
 | "M" | Mois complets |
 | "D" | Jours |
-| "MD" | Jours (apres soustraction mois) |
-| "YM" | Mois (apres soustraction annees) |
-| "YD" | Jours (apres soustraction annees) |
+| "MD" | Jours (après soustraction mois) |
+| "YM" | Mois (après soustraction années) |
+| "YD" | Jours (après soustraction années) |
 
 ## Exemples de base
 
-### Annees entre deux dates
+### Années entre deux dates
 
 ```excel
 =DATEDIF(A1; B1; "Y")
@@ -62,7 +62,7 @@ DATEDIF est une fonction "cachee" d'Excel. Elle n'apparait pas dans l'auto-compl
 
 ## Calculer l'age
 
-### Age en annees
+### Age en années
 
 ```excel
 =DATEDIF(DateNaissance; AUJOURDHUI(); "Y")
@@ -74,36 +74,36 @@ DATEDIF est une fonction "cachee" d'Excel. Elle n'apparait pas dans l'auto-compl
 =DATEDIF(A1;AUJOURDHUI();"Y")&" ans, "&DATEDIF(A1;AUJOURDHUI();"YM")&" mois, "&DATEDIF(A1;AUJOURDHUI();"MD")&" jours"
 ```
 
-Resultat : "35 ans, 6 mois, 15 jours"
+Résultat : "35 ans, 6 mois, 15 jours"
 
 ## Calculer l'anciennete
 
-### En annees
+### En années
 
 ```excel
 =DATEDIF(DateEmbauche; AUJOURDHUI(); "Y")
 ```
 
-### Detaillee
+### Détaillée
 
 ```excel
 =DATEDIF(A1;AUJOURDHUI();"Y")&" an(s) et "&DATEDIF(A1;AUJOURDHUI();"YM")&" mois"
 ```
 
-## Difference entre unites
+## Différence entre unites
 
 ### Y vs M vs D
 
 Dates : 15/01/2020 au 20/06/2024
 
-- "Y" = 4 (annees completes)
+- "Y" = 4 (années completes)
 - "M" = 53 (mois complets)
 - "D" = 1618 (jours)
 
 ### MD, YM, YD
 
-- "MD" = 5 (jours restants apres les mois)
-- "YM" = 5 (mois restants apres les annees)
+- "MD" = 5 (jours restants après les mois)
+- "YM" = 5 (mois restants après les années)
 - "YD" = 157 (jours depuis l'anniversaire)
 
 ## Cas pratiques
@@ -114,13 +114,13 @@ Dates : 15/01/2020 au 20/06/2024
 =DATEDIF(DateDebut; DateFin; "D")&" jours"
 ```
 
-### Echeance de contrat
+### Échéance de contrat
 
 ```excel
-=SI(DATEDIF(AUJOURDHUI(); DateFin; "M")<3; "Renouveler bientot"; "OK")
+=SI(DATEDIF(AUJOURDHUI(); DateFin; "M")<3; "Renouveler bientôt"; "OK")
 ```
 
-### Periode de garantie
+### Période de garantie
 
 ```excel
 =SI(DATEDIF(DateAchat; AUJOURDHUI(); "Y")<2; "Sous garantie"; "Garantie expiree")
@@ -128,9 +128,9 @@ Dates : 15/01/2020 au 20/06/2024
 
 ## Gestion des erreurs
 
-### Date debut > Date fin
+### Date début > Date fin
 
-DATEDIF retourne #NOMBRE! si la date de debut est posterieure.
+DATEDIF retourne #NOMBRE! si la date de début est posterieure.
 
 ### Solution
 
@@ -138,13 +138,13 @@ DATEDIF retourne #NOMBRE! si la date de debut est posterieure.
 =SIERREUR(DATEDIF(A1; B1; "Y"); "Dates inversees")
 ```
 
-### Verification prealable
+### Vérification prealable
 
 ```excel
 =SI(A1>B1; "Erreur"; DATEDIF(A1; B1; "Y"))
 ```
 
-## Alternatives a DATEDIF
+## Alternatives à DATEDIF
 
 ### Jours simples
 
@@ -158,15 +158,15 @@ DATEDIF retourne #NOMBRE! si la date de debut est posterieure.
 =MOIS.DECALER(B1;-A1)
 ```
 
-Non recommande car imprecis.
+Non recommandé car imprecis.
 
-### Annees approximatives
+### Années approximatives
 
 ```excel
 =(B1-A1)/365.25
 ```
 
-Approximation avec annees bissextiles.
+Approximation avec années bissextiles.
 
 ## Combiner avec d'autres fonctions
 
@@ -188,11 +188,11 @@ Approximation avec annees bissextiles.
 =SI(DATEDIF(A1; AUJOURDHUI(); "Y")>=18; "Majeur"; "Mineur")
 ```
 
-## Problemes connus
+## Problèmes connus
 
 ### Bug avec "MD"
 
-Dans certaines versions, "MD" peut donner des resultats incorrects. Alternative :
+Dans certaines versions, "MD" peut donner des résultats incorrects. Alternative :
 
 ```excel
 =JOUR(B1)-JOUR(A1)+SI(JOUR(B1)<JOUR(A1);JOUR(FIN.MOIS(A1;0));0)
@@ -210,16 +210,16 @@ Convertissez d'abord :
 
 | Besoin | Formule |
 |--------|---------|
-| Age en annees | =DATEDIF(naissance;AUJOURDHUI();"Y") |
+| Age en années | =DATEDIF(naissance;AUJOURDHUI();"Y") |
 | Mois d'anciennete | =DATEDIF(embauche;AUJOURDHUI();"M") |
-| Jours restants | =DATEDIF(AUJOURDHUI();echeance;"D") |
+| Jours restants | =DATEDIF(AUJOURDHUI();échéance;"D") |
 | Age complet | Combinaison Y, YM, MD |
 
 ## Bonnes pratiques
 
-1. **Verifiez l'ordre** des dates (debut avant fin)
-2. **Utilisez SIERREUR** pour gerer les anomalies
+1. **Vérifiez l'ordre** des dates (début avant fin)
+2. **Utilisez SIERREUR** pour gérer les anomalies
 3. **Testez** avec des dates connues
-4. **Evitez "MD"** si possible (bug potentiel)
+4. **Évitez "MD"** si possible (bug potentiel)
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

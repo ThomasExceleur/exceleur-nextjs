@@ -1,31 +1,31 @@
 ---
-title: "Decouvrir FILTRE Excel pour les Tableaux Dynamiques"
+title: "Découvrir FILTRE Excel pour les Tableaux Dynamiques"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a utiliser la fonction FILTRE pour creer des tableaux dynamiques."
-description: "Guide pour decouvrir la fonction FILTRE et les tableaux dynamiques Excel."
+excerpt: "Apprenez à utiliser la fonction FILTRE pour créer des tableaux dynamiques."
+description: "Guide pour découvrir la fonction FILTRE et les tableaux dynamiques Excel."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
+catégories: ["Excel 365", "Formules Excel"]
 tags: ["FILTRE", "Tableaux dynamiques", "Excel 365", "Formules"]
 ---
 
-# Decouvrir FILTRE pour les Tableaux Dynamiques
+# Découvrir FILTRE pour les Tableaux Dynamiques
 
-La fonction FILTRE revolutionne l'extraction de donnees dans Excel 365.
+La fonction FILTRE revolutionne l'extraction de données dans Excel 365.
 
 ## Qu'est-ce que la fonction FILTRE ?
 
-### Definition
+### Définition
 
-FILTRE extrait les donnees correspondant a un ou plusieurs criteres, de maniere dynamique.
+FILTRE extrait les données correspondant à un où plusieurs critères, de manière dynamique.
 
 ### Avantages
 
 - Pas de formules copiees
-- Mise a jour automatique
+- Mise à jour automatique
 - Syntaxe simple
 
-### Disponibilite
+### Disponibilité
 
 Excel 365, Excel 2021
 
@@ -35,15 +35,15 @@ Excel 365, Excel 2021
 =FILTRE(tableau;inclure;[si_vide])
 ```
 
-| Parametre | Description |
+| Paramèêtre | Description |
 |-----------|-------------|
-| tableau | Plage a filtrer |
+| tableau | Plage à filtrer |
 | inclure | Condition (VRAI/FAUX) |
-| si_vide | Message si aucun resultat |
+| si_vide | Message si aucun résultat |
 
 ## Premier exemple
 
-### Donnees
+### Données
 
 | Ville | Ventes |
 |-------|--------|
@@ -58,12 +58,12 @@ Excel 365, Excel 2021
 =FILTRE(A2:B5;A2:A5="Paris")
 ```
 
-### Resultat
+### Résultat
 
 | Paris | 100 |
 | Paris | 120 |
 
-## Critere numerique
+## Critère numérique
 
 ### Plus grand que
 
@@ -77,7 +77,7 @@ Excel 365, Excel 2021
 =FILTRE(A2:B5;(B2:B5>=80)*(B2:B5<=100))
 ```
 
-## Criteres multiples
+## Critères multiples
 
 ### ET logique
 
@@ -95,16 +95,16 @@ Ville = Paris ET Ventes > 100
 
 Ville = Paris OU Ville = Lyon
 
-## Gerer les resultats vides
+## Gérer les résultats vides
 
-### Probleme
+### Problème
 
 Si aucune ligne ne correspond, FILTRE retourne #CALC!
 
 ### Solution
 
 ```excel
-=FILTRE(A2:B5;A2:A5="Inexistant";"Aucun resultat")
+=FILTRE(A2:B5;A2:A5="Inexistant";"Aucun résultat")
 ```
 
 ### Message personnalise
@@ -141,11 +141,11 @@ Somme des ventes de Paris.
 
 ### Debordement
 
-Le resultat s'etend automatiquement sur plusieurs cellules.
+Le résultat s'etend automatiquement sûr plusieurs cellules.
 
-### Reference debordante
+### Référence debordante
 
-Utilisez # pour referencer tout le resultat :
+Utilisez # pour referencer tout le résultat :
 
 ```excel
 =SOMME(D1#)
@@ -153,19 +153,19 @@ Utilisez # pour referencer tout le resultat :
 
 Ou D1 contient une formule FILTRE.
 
-## Filtre avec critere variable
+## Filtre avec critère variable
 
-### Reference a une cellule
+### Référence à une cellule
 
 ```excel
 =FILTRE(A2:B5;A2:A5=E1)
 ```
 
-E1 contient le critere (ex: "Paris")
+E1 contient le critère (ex: "Paris")
 
 ### Liste deroulante
 
-1. Creez une validation de donnees en E1
+1. Créez une validation de données en E1
 2. La formule FILTRE s'adapte automatiquement
 
 ## Exemples pratiques
@@ -190,7 +190,7 @@ E1 contient le critere (ex: "Paris")
 
 ## Comparaison avec alternatives
 
-| Methode | Avantage | Inconvenient |
+| Méthode | Avantage | Inconvenient |
 |---------|----------|--------------|
 | FILTRE | Dynamique | Excel 365 requis |
 | Filtre auto | Simple | Pas de formule |
@@ -201,8 +201,8 @@ E1 contient le critere (ex: "Paris")
 ### A savoir
 
 - Plage contigue uniquement
-- Pas de formatage du resultat
-- Espace necessaire pour le debordement
+- Pas de formatage du résultat
+- Espace nécessaire pour le debordement
 
 ### Solutions
 
@@ -212,9 +212,9 @@ Combinez avec d'autres fonctions pour contourner les limites.
 
 | Pratique | Description |
 |----------|-------------|
-| si_vide | Toujours le definir |
-| Plages nommees | Plus lisible |
+| si_vide | Toujours le définir |
+| Plages nommées | Plus lisible |
 | Espace libre | Prevoir le debordement |
-| Tests | Verifier les criteres |
+| Tests | Vérifier les critères |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

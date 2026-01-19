@@ -2,10 +2,10 @@
 title: "Excel Comment Compter les Cellules Contenant un Mot"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a compter les cellules contenant un mot ou texte specifique dans Excel."
+excerpt: "Apprenez à compter les cellules contenant un mot où texte spécifique dans Excel."
 description: "Guide pour compter les cellules contenant un mot dans Excel. Formules NB.SI et astuces."
 category: "Formules Excel"
-categories: ["Formules Excel", "Fonctions"]
+catégories: ["Formules Excel", "Fonctions"]
 tags: ["NB.SI", "Compter", "Texte", "Recherche"]
 ---
 
@@ -31,7 +31,7 @@ Compte les cellules contenant exactement "Paris".
 =NB.SI(A:A;"*Paris*")
 ```
 
-Compte les cellules contenant "Paris" n'importe ou.
+Compte les cellules contenant "Paris" n'importe où.
 
 ### Jokers disponibles
 
@@ -60,7 +60,7 @@ Compte les cellules contenant "Paris" n'importe ou.
 =NB.SI(A:A;"???")             ' Exactement 3 caracteres
 ```
 
-## Avec une reference
+## Avec une référence
 
 ### Mot dans une cellule
 
@@ -68,7 +68,7 @@ Compte les cellules contenant "Paris" n'importe ou.
 =NB.SI(A:A;"*"&C1&"*")
 ```
 
-C1 contient le mot a rechercher.
+C1 contient le mot à rechercher.
 
 ## Compter plusieurs mots
 
@@ -84,15 +84,15 @@ C1 contient le mot a rechercher.
 =SOMMEPROD((ESTNUM(CHERCHE("Paris";A1:A100)))*1)
 ```
 
-## Insensible a la casse
+## Insensible à la casse
 
-### NB.SI est deja insensible
+### NB.SI est déjà insensible
 
-"Paris", "PARIS" et "paris" sont comptes de la meme facon.
+"Paris", "PARIS" et "paris" sont comptes de la meme façon.
 
 ## Comptage conditionnel
 
-### NB.SI.ENS pour plusieurs criteres
+### NB.SI.ENS pour plusieurs critères
 
 ```excel
 =NB.SI.ENS(A:A;"*Paris*";B:B;"Client")
@@ -124,7 +124,7 @@ C1 contient le mot a rechercher.
 
 ### Supprimer les doublons dans le comptage
 
-Utilisez UNIQUE puis NB.SI sur le resultat.
+Utilisez UNIQUE puis NB.SI sûr le résultat.
 
 ### Ignorer les espaces
 
@@ -157,4 +157,4 @@ Utilisez UNIQUE puis NB.SI sur le resultat.
 | Commence par | `=NB.SI(A:A;"Paris*")` |
 | Se termine par | `=NB.SI(A:A;"*Paris")` |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

@@ -2,18 +2,18 @@
 title: "La Fonction SEQUENCE dans Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Creez des sequences de nombres automatiquement avec SEQUENCE."
-description: "Guide de la fonction SEQUENCE dans Excel 365. Generer des series."
+excerpt: "Créez des sequences de nombres automatiquement avec SEQUENCE."
+description: "Guide de la fonction SEQUENCE dans Excel 365. Générer des series."
 category: "Formules Excel"
-categories: ["Formules Excel", "Excel 365"]
+catégories: ["Formules Excel", "Excel 365"]
 tags: ["SEQUENCE", "Nombres", "Series", "Excel 365"]
 ---
 
 # La Fonction SEQUENCE dans Excel
 
-SEQUENCE genere automatiquement des sequences de nombres.
+SEQUENCE généré automatiquement des sequences de nombres.
 
-## Disponibilite
+## Disponibilité
 
 - Excel 365
 - Excel 2021
@@ -22,7 +22,7 @@ SEQUENCE genere automatiquement des sequences de nombres.
 ## Syntaxe
 
 ```excel
-=SEQUENCE(lignes;[colonnes];[debut];[pas])
+=SEQUENCE(lignes;[colonnes];[début];[pas])
 ```
 
 ### Arguments
@@ -31,7 +31,7 @@ SEQUENCE genere automatiquement des sequences de nombres.
 |----------|-------------|------------|
 | lignes | Nombre de lignes | Requis |
 | colonnes | Nombre de colonnes | 1 |
-| debut | Premiere valeur | 1 |
+| début | Première valeur | 1 |
 | pas | Increment | 1 |
 
 ## Exemples de base
@@ -42,15 +42,15 @@ SEQUENCE genere automatiquement des sequences de nombres.
 =SEQUENCE(10)
 ```
 
-Resultat : 1, 2, 3... 10
+Résultat : 1, 2, 3... 10
 
-### Serie avec debut
+### Serie avec début
 
 ```excel
 =SEQUENCE(5;;10)
 ```
 
-Resultat : 10, 11, 12, 13, 14
+Résultat : 10, 11, 12, 13, 14
 
 ### Serie avec pas
 
@@ -58,7 +58,7 @@ Resultat : 10, 11, 12, 13, 14
 =SEQUENCE(5;;0;5)
 ```
 
-Resultat : 0, 5, 10, 15, 20
+Résultat : 0, 5, 10, 15, 20
 
 ### Decroissante
 
@@ -66,7 +66,7 @@ Resultat : 0, 5, 10, 15, 20
 =SEQUENCE(5;;10;-1)
 ```
 
-Resultat : 10, 9, 8, 7, 6
+Résultat : 10, 9, 8, 7, 6
 
 ## Matrice 2D
 
@@ -76,7 +76,7 @@ Resultat : 10, 9, 8, 7, 6
 =SEQUENCE(3;4)
 ```
 
-Resultat :
+Résultat :
 ```
 1  2  3  4
 5  6  7  8
@@ -97,7 +97,7 @@ Resultat :
 =SEQUENCE(31;;DATE(2024;1;1))
 ```
 
-Genere les 31 jours de janvier 2024.
+Généré les 31 jours de janvier 2024.
 
 ### Heures de la journee
 
@@ -105,20 +105,20 @@ Genere les 31 jours de janvier 2024.
 =SEQUENCE(24;;TEMPS(0;0;0);TEMPS(1;0;0))
 ```
 
-### Annees
+### Années
 
 ```excel
 =SEQUENCE(10;;2020)
 ```
 
-Resultat : 2020, 2021... 2029
+Résultat : 2020, 2021... 2029
 
 ## Combinaisons
 
 ### SEQUENCE + FILTRE
 
 ```excel
-=FILTRE(Donnees;LIGNE(Donnees)<=SEQUENCE(10))
+=FILTRE(Données;LIGNE(Données)<=SEQUENCE(10))
 ```
 
 ### SEQUENCE + INDEX
@@ -149,7 +149,7 @@ Premier jour de chaque mois 2024.
 =RESTE(SEQUENCE(10);2)
 ```
 
-Resultat : 1, 0, 1, 0...
+Résultat : 1, 0, 1, 0...
 
 ### Alterner deux valeurs
 
@@ -159,15 +159,15 @@ Resultat : 1, 0, 1, 0...
 
 ## Performance
 
-SEQUENCE est tres efficace pour generer de grandes series sans formules repetitives.
+SEQUENCE est très efficace pour générer de grandes series sans formules repetitives.
 
-## Comparaison avec anciennes methodes
+## Comparaison avec anciennes méthodes
 
 ### Avant
 
 1. Taper 1 dans une cellule
 2. Taper 2 en dessous
-3. Selectionner et faire glisser
+3. Sélectionner et faire glisser
 
 ### Avec SEQUENCE
 
@@ -181,7 +181,7 @@ Une seule formule.
 
 1. **Utilisez** des plages dynamiques avec SEQUENCE
 2. **Combinez** avec d'autres fonctions pour plus de puissance
-3. **Preferez** SEQUENCE aux series manuelles
-4. **Attention** a l'espace disponible
+3. **Préférez** SEQUENCE aux series manuelles
+4. **Attention** à l'espace disponible
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

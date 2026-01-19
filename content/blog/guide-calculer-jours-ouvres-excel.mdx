@@ -2,16 +2,16 @@
 title: "Guide : Calculer les Jours Ouvres dans Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Calculez les jours ouvres et gerez les conges dans Excel."
+excerpt: "Calculez les jours ouvres et gérez les conges dans Excel."
 description: "Guide pour calculer les jours ouvres et feries dans Excel."
 category: "Dates"
-categories: ["Dates", "Formules Excel"]
+catégories: ["Dates", "Formules Excel"]
 tags: ["Jours ouvres", "Dates", "Conges", "Calculs"]
 ---
 
 # Calculer les Jours Ouvres dans Excel
 
-Maitrisez le calcul des jours travailles pour la gestion de projets et RH.
+Maîtrisez le calcul des jours travailles pour la gestion de projets et RH.
 
 ## Fonctions principales
 
@@ -25,7 +25,7 @@ Compte les jours ouvres entre deux dates.
 
 ### SERIE.JOUR.OUVRE
 
-Trouve la date apres N jours ouvres.
+Trouve la date après N jours ouvres.
 
 ```excel
 =SERIE.JOUR.OUVRE(date_debut;jours;[jours_feries])
@@ -33,9 +33,9 @@ Trouve la date apres N jours ouvres.
 
 ## NB.JOURS.OUVRES en detail
 
-### Parametres
+### Paramètrès
 
-| Parametre | Description |
+| Paramèêtre | Description |
 |-----------|-------------|
 | date_debut | Date de depart |
 | date_fin | Date d'arrivee |
@@ -49,7 +49,7 @@ Trouve la date apres N jours ouvres.
 
 Compte les jours ouvrables de janvier 2024.
 
-## Gerer les jours feries
+## Gérer les jours feries
 
 ### Liste des jours feries
 
@@ -103,11 +103,11 @@ Trouver la date de fin d'un projet.
 =SERIE.JOUR.OUVRE("01/01/2024";20;Feries)
 ```
 
-Date apres 20 jours ouvres.
+Date après 20 jours ouvres.
 
 ## Cas pratiques
 
-### Calculer une echeance projet
+### Calculer une échéance projet
 
 ```excel
 =SERIE.JOUR.OUVRE(Date_debut;Duree_jours;Feries)
@@ -125,7 +125,7 @@ Date apres 20 jours ouvres.
 =MAX(0;NB.JOURS.OUVRES(Date_prevue;AUJOURDHUI();Feries))*Montant_journalier
 ```
 
-## Table des jours feries francais
+## Table des jours feries français
 
 ### Feries fixes
 
@@ -142,23 +142,23 @@ Date apres 20 jours ouvres.
 
 ### Feries mobiles
 
-Paques, Ascension, Pentecote varient chaque annee.
+Paques, Ascension, Pentecote varient chaque année.
 
 ## Calculer Paques
 
 ### Formule approximative
 
 ```excel
-=PLANCHER.MATH(DATE(Annee;4;1)+MOD(19*MOD(Annee;19)+15;30)-MOD(Annee+QUOTIENT(Annee;4)+MOD(19*MOD(Annee;19)+15;30);7)+25;7)
+=PLANCHER.MATH(DATE(Année;4;1)+MOD(19*MOD(Année;19)+15;30)-MOD(Année+QUOTIENT(Année;4)+MOD(19*MOD(Année;19)+15;30);7)+25;7)
 ```
 
 ## Bonnes pratiques
 
 | Pratique | Description |
 |----------|-------------|
-| Plage nommee | Nommez la liste des feries |
-| Mise a jour | Actualisez les feries chaque annee |
-| Validation | Verifiez avec un calendrier |
-| Documentation | Notez les regles appliquees |
+| Plage nommée | Nommez la liste des feries |
+| Mise à jour | Actualisez les feries chaque année |
+| Validation | Vérifiez avec un calendrier |
+| Documentation | Notez les règles appliquees |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

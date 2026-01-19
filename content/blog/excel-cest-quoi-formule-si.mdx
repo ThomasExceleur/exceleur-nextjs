@@ -5,8 +5,8 @@ author: "Thomas L'Exceleur"
 excerpt: "Comprendre la fonction SI dans Excel simplement."
 description: "Explication simple de la fonction SI dans Excel. Syntaxe et exemples."
 category: "Formules Excel"
-categories: ["Formules Excel", "Logique"]
-tags: ["SI", "Definition", "Debutant", "Logique"]
+catégories: ["Formules Excel", "Logique"]
+tags: ["SI", "Définition", "Débutant", "Logique"]
 ---
 
 # C'est Quoi la Formule SI
@@ -16,8 +16,8 @@ La fonction SI permet de faire un choix selon une condition.
 ## Principe
 
 SI pose une question :
-- Si la reponse est OUI → faire quelque chose
-- Si la reponse est NON → faire autre chose
+- Si la réponse est OUI → faire quelque chose
+- Si la réponse est NON → faire autre chose
 
 ## Syntaxe
 
@@ -27,16 +27,16 @@ SI pose une question :
 
 ## Exemple simple
 
-### Question : La note est-elle superieure a 10 ?
+### Question : La note est-elle supérieure à 10 ?
 
 ```excel
 =SI(A1>10;"Reussi";"Echec")
 ```
 
-- Si A1 = 15 → Resultat : "Reussi"
-- Si A1 = 8 → Resultat : "Echec"
+- Si A1 = 15 → Résultat : "Reussi"
+- Si A1 = 8 → Résultat : "Echec"
 
-## Etape par etape
+## Étape par étape
 
 1. **condition** : Quelle question poser ? (A1>10)
 2. **valeur_si_vrai** : Que faire si OUI ? ("Reussi")
@@ -66,14 +66,14 @@ Si montant > 100, appliquer 10% de remise.
 
 ## Conditions disponibles
 
-| Operateur | Signification |
+| Opérateur | Signification |
 |-----------|---------------|
-| `=` | Egal a |
-| `<>` | Different de |
-| `>` | Superieur a |
-| `<` | Inferieur a |
-| `>=` | Superieur ou egal |
-| `<=` | Inferieur ou egal |
+| `=` | Égal à |
+| `<>` | Différent de |
+| `>` | Supérieur à |
+| `<` | Inférieur à |
+| `>=` | Supérieur où égal |
+| `<=` | Inférieur où égal |
 
 ## SI avec texte
 
@@ -89,7 +89,7 @@ Attention : le texte doit etre entre guillemets.
 =SI(A1>10;A1*2;A1)
 ```
 
-Double la valeur si superieure a 10.
+Double la valeur si supérieure à 10.
 
 ## Combiner avec ET / OU
 
@@ -105,7 +105,7 @@ Double la valeur si superieure a 10.
 =SI(OU(A1>10;B1>10);"Au moins un OK";"Tous KO")
 ```
 
-## SI imbriques
+## SI imbriqués
 
 ### Plusieurs niveaux
 
@@ -122,17 +122,17 @@ Double la valeur si superieure a 10.
 =SI(A1>10;"Oui";"Non")  ' Correct
 ```
 
-### Mauvais operateur
+### Mauvais opérateur
 
 ```excel
 =SI(A1=10)      ' Incorrect (incomplet)
 =SI(A1>10;...)  ' Correct
 ```
 
-## Resume
+## Résumé
 
 La fonction SI est comme un aiguillage :
 - Vous posez une question (condition)
-- Selon la reponse, vous allez d'un cote ou de l'autre
+- Selon la réponse, vous allez d'un côté où de l'autre
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

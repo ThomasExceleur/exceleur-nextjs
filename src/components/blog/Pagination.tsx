@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
@@ -58,52 +60,98 @@ export function Pagination({
   };
 
   return (
-    <nav className={cn('flex items-center justify-center gap-2 mt-12', className)}>
+    <nav className={cn('flex items-center justify-center gap-3 mt-16', className)} aria-label="Pagination">
       {/* Previous */}
-      {currentPage > 1 && (
-        <Link
-          href={getPageUrl(currentPage - 1)}
-          className="px-4 py-2 rounded-button border border-background-muted text-text hover:bg-background-muted no-underline transition-colors"
+      <Link
+        href={currentPage > 1 ? getPageUrl(currentPage - 1) : '#'}
+        className={cn(
+          'group relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full no-underline font-heading font-bold text-sm transition-all duration-300',
+          currentPage > 1
+            ? 'bg-white border border-gray-200 text-text-dark hover:border-primary hover:text-primary hover:shadow-md'
+            : 'bg-gray-50 border border-gray-100 text-gray-300 cursor-not-allowed pointer-events-none'
+        )}
+        aria-disabled={currentPage <= 1}
+      >
+        <svg
+          className={cn(
+            'w-4 h-4 transition-transform duration-300',
+            currentPage > 1 && 'group-hover:-translate-x-1'
+          )}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
         >
-          Precedent
-        </Link>
-      )}
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+        <span className="hidden sm:inline">Précédent</span>
+      </Link>
 
-      {/* Page numbers */}
-      {getPageNumbers().map((page, index) => {
-        if (page === 'ellipsis') {
+      {/* Page numbers container */}
+      <div className="flex items-center gap-1 px-2 py-1 bg-gray-50/80 rounded-full border border-gray-100">
+        {getPageNumbers().map((page, index) => {
+          if (page === 'ellipsis') {
+            return (
+              <span
+                key={`ellipsis-${index}`}
+                className="w-10 h-10 flex items-center justify-center text-text-light"
+              >
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <circle cx="6" cy="12" r="1.5" />
+                  <circle cx="12" cy="12" r="1.5" />
+                  <circle cx="18" cy="12" r="1.5" />
+                </svg>
+              </span>
+            );
+          }
+
+          const isActive = page === currentPage;
+
           return (
-            <span key={`ellipsis-${index}`} className="px-2 text-text-light">
-              ...
-            </span>
+            <Link
+              key={page}
+              href={getPageUrl(page)}
+              className={cn(
+                'relative w-10 h-10 flex items-center justify-center rounded-full no-underline font-heading font-bold text-sm transition-all duration-300',
+                isActive
+                  ? 'bg-gradient-to-br from-primary to-secondary text-white shadow-lg shadow-primary/30'
+                  : 'text-text-dark hover:bg-white hover:text-primary hover:shadow-md'
+              )}
+              aria-current={isActive ? 'page' : undefined}
+            >
+              {/* Glow effect for active page */}
+              {isActive && (
+                <span className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-secondary blur-md opacity-40 -z-10" />
+              )}
+              <span className="relative">{page}</span>
+            </Link>
           );
-        }
-
-        return (
-          <Link
-            key={page}
-            href={getPageUrl(page)}
-            className={cn(
-              'w-10 h-10 flex items-center justify-center rounded-full no-underline transition-colors',
-              page === currentPage
-                ? 'bg-primary text-white'
-                : 'text-text hover:bg-background-muted'
-            )}
-          >
-            {page}
-          </Link>
-        );
-      })}
+        })}
+      </div>
 
       {/* Next */}
-      {currentPage < totalPages && (
-        <Link
-          href={getPageUrl(currentPage + 1)}
-          className="px-4 py-2 rounded-button border border-background-muted text-text hover:bg-background-muted no-underline transition-colors"
+      <Link
+        href={currentPage < totalPages ? getPageUrl(currentPage + 1) : '#'}
+        className={cn(
+          'group relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full no-underline font-heading font-bold text-sm transition-all duration-300',
+          currentPage < totalPages
+            ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-md hover:shadow-lg hover:shadow-primary/30 hover:scale-[1.02]'
+            : 'bg-gray-50 border border-gray-100 text-gray-300 cursor-not-allowed pointer-events-none'
+        )}
+        aria-disabled={currentPage >= totalPages}
+      >
+        <span className="hidden sm:inline">Suivant</span>
+        <svg
+          className={cn(
+            'w-4 h-4 transition-transform duration-300',
+            currentPage < totalPages && 'group-hover:translate-x-1'
+          )}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
         >
-          Suivant
-        </Link>
-      )}
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </Link>
     </nav>
   );
 }

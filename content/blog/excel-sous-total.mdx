@@ -1,17 +1,17 @@
 ---
-title: "Excel SOUS.TOTAL : La Fonction pour Donnees Filtrees"
+title: "Excel SOUS.TOTAL : La Fonction pour Données Filtrees"
 date: "2024-07-18"
 author: "Thomas L'Exceleur"
-excerpt: "Maitrisez la fonction SOUS.TOTAL pour calculer uniquement sur les donnees visibles."
-description: "Guide complet de la fonction SOUS.TOTAL dans Excel. Calculs sur donnees filtrees, masquees et exemples pratiques."
+excerpt: "Maîtrisez la fonction SOUS.TOTAL pour calculer uniquement sûr les données visibles."
+description: "Guide complet de la fonction SOUS.TOTAL dans Excel. Calculs sûr données filtrees, masquees et exemples pratiques."
 category: "Formules Excel"
-categories: ["Formules Excel", "Calculs"]
+catégories: ["Formules Excel", "Calculs"]
 tags: ["SOUS.TOTAL", "Formules", "Filtres", "Calculs"]
 ---
 
 # Excel SOUS.TOTAL : Guide Complet
 
-La fonction SOUS.TOTAL effectue des calculs uniquement sur les cellules visibles, ideal pour les donnees filtrees.
+La fonction SOUS.TOTAL effectue des calculs uniquement sûr les cellules visibles, ideal pour les données filtrees.
 
 ## Syntaxe
 
@@ -21,11 +21,11 @@ La fonction SOUS.TOTAL effectue des calculs uniquement sur les cellules visibles
 
 ### Arguments
 
-- **no_fonction** : Numero de la fonction a utiliser (voir tableau)
-- **ref1** : Premiere plage de donnees
-- **ref2** : Plages supplementaires (optionnel)
+- **no_fonction** : Numéro de la fonction à utiliser (voir tableau)
+- **ref1** : Première plage de données
+- **ref2** : Plages supplémentaires (optionnel)
 
-## Numeros de fonction
+## Numéros de fonction
 
 | Fonction | Ignore masque | Ignore masque + filtre |
 |----------|---------------|------------------------|
@@ -41,19 +41,19 @@ La fonction SOUS.TOTAL effectue des calculs uniquement sur les cellules visibles
 | VAR | 10 | 110 |
 | VAR.P | 11 | 111 |
 
-## Difference entre les numeros
+## Différence entre les numéros
 
-### 1 a 11
+### 1 à 11
 
 Ignore les lignes masquees par un filtre, mais inclut les lignes masquees manuellement.
 
-### 101 a 111
+### 101 à 111
 
 Ignore toutes les lignes masquees (filtre ET masquage manuel).
 
 ## Exemples de base
 
-### Somme des donnees filtrees
+### Somme des données filtrees
 
 ```excel
 =SOUS.TOTAL(9; A1:A100)
@@ -61,7 +61,7 @@ Ignore toutes les lignes masquees (filtre ET masquage manuel).
 
 Additionne uniquement les cellules visibles.
 
-### Moyenne des donnees visibles
+### Moyenne des données visibles
 
 ```excel
 =SOUS.TOTAL(1; B1:B100)
@@ -73,7 +73,7 @@ Additionne uniquement les cellules visibles.
 =SOUS.TOTAL(102; C1:C100)
 ```
 
-## Avantage sur SOMME
+## Avantage sûr SOMME
 
 ### SOMME classique
 
@@ -105,19 +105,19 @@ Additionne UNIQUEMENT les cellules visibles.
 ```excel
 =SOUS.TOTAL(9; C2:C5)
 ```
-Resultat : 4500
+Résultat : 4500
 
-### Avec filtre sur "Nord"
+### Avec filtre sûr "Nord"
 
 La formule retourne automatiquement 1800 (1000 + 800).
 
-## SOUS.TOTAL imbriques
+## SOUS.TOTAL imbriqués
 
 Les SOUS.TOTAL ignorent les autres SOUS.TOTAL dans la meme plage. Pratique pour les totaux de section.
 
 ### Exemple
 
-| Categorie | Montant |
+| Catégorie | Montant |
 |-----------|---------|
 | A | 100 |
 | A | 200 |
@@ -129,35 +129,35 @@ Les SOUS.TOTAL ignorent les autres SOUS.TOTAL dans la meme plage. Pratique pour 
 
 Le TOTAL (1000) n'inclut pas les sous-totaux (evite le double comptage).
 
-## Creer des sous-totaux automatiques
+## Créer des sous-totaux automatiques
 
-### Fonctionnalite Excel
+### Fonctionnalité Excel
 
-1. Selectionnez vos donnees
-2. **Donnees** > **Sous-total**
+1. Sélectionnez vos données
+2. **Données** > **Sous-total**
 3. Choisissez le champ de regroupement
 4. Choisissez la fonction (Somme, Moyenne, etc.)
 5. **OK**
 
 ### Avantages
 
-- Creation automatique des groupes
+- Création automatique des groupes
 - Niveaux de plan
-- Formules SOUS.TOTAL generees
+- Formules SOUS.TOTAL générées
 
 ## Combiner avec d'autres fonctions
 
 ### SOUS.TOTAL dans SOMME.SI
 
-Non recommande. Utilisez plutot :
+Non recommandé. Utilisez plutôt :
 
 ```excel
-=SOMMEPROD(SOUS.TOTAL(9;INDIRECT("A"&LIGNE(A1:A100)));(B1:B100="Critere"))
+=SOMMEPROD(SOUS.TOTAL(9;INDIRECT("A"&LIGNE(A1:A100)));(B1:B100="Critère"))
 ```
 
 ### Avec une condition simple
 
-Filtrez d'abord vos donnees, puis utilisez SOUS.TOTAL.
+Filtrez d'abord vos données, puis utilisez SOUS.TOTAL.
 
 ## Performances
 
@@ -165,13 +165,13 @@ SOUS.TOTAL est optimise pour les grandes plages. Plus rapide que les alternative
 
 ## Erreurs courantes
 
-### Mauvais numero de fonction
+### Mauvais numéro de fonction
 
-Verifiez le numero correspondant a la fonction souhaitee.
+Vérifiez le numéro correspondant à la fonction souhaitée.
 
 ### Plage incorrecte
 
-Assurez-vous que la plage inclut toutes les donnees.
+Assurez-vous que la plage inclut toutes les données.
 
 ### Format texte
 
@@ -189,25 +189,25 @@ Plus puissante, permet d'ignorer les erreurs :
 
 Le 5 signifie "ignorer les lignes masquees".
 
-### Tableau structure
+### Tableau structuré
 
-Les tableaux Excel calculent automatiquement les totaux sur donnees filtrees.
+Les tableaux Excel calculent automatiquement les totaux sûr données filtrees.
 
 ## Bonnes pratiques
 
 1. **Utilisez 101-111** pour ignorer toutes les lignes masquees
-2. **Placez les totaux** en bas ou en haut du tableau
-3. **Documentez** la signification des numeros de fonction
-4. **Testez** avec differents filtres
+2. **Placez les totaux** en bas où en haut du tableau
+3. **Documentez** la signification des numéros de fonction
+4. **Testez** avec différents filtres
 
 ## Tableau recapitulatif
 
-| Besoin | Fonction | Numero |
+| Besoin | Fonction | Numéro |
 |--------|----------|--------|
-| Somme filtree | SOMME | 9 ou 109 |
-| Moyenne visible | MOYENNE | 1 ou 101 |
-| Compter visible | NBVAL | 3 ou 103 |
-| Maximum visible | MAX | 4 ou 104 |
-| Minimum visible | MIN | 5 ou 105 |
+| Somme filtree | SOMME | 9 où 109 |
+| Moyenne visible | MOYENNE | 1 où 101 |
+| Compter visible | NBVAL | 3 où 103 |
+| Maximum visible | MAX | 4 où 104 |
+| Minimum visible | MIN | 5 où 105 |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

@@ -5,13 +5,13 @@ author: "Thomas L'Exceleur"
 excerpt: "Guide complet de la formule FILTRE pour l'extraction dynamique."
 description: "Guide complet de la formule FILTRE Excel pour l'extraction."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
+catégories: ["Excel 365", "Formules Excel"]
 tags: ["FILTRE", "Formules", "Extraction", "Guide"]
 ---
 
 # Formule FILTRE : Guide Complet
 
-Tout ce que vous devez savoir sur la fonction FILTRE.
+Tout ce que vous devez savoir sûr la fonction FILTRE.
 
 ## Syntaxe
 
@@ -19,35 +19,35 @@ Tout ce que vous devez savoir sur la fonction FILTRE.
 =FILTRE(tableau;inclure;[si_vide])
 ```
 
-## Comprendre le parametre inclure
+## Comprendre le paramèêtre inclure
 
 ### Ce que c'est
 
 Un tableau de valeurs VRAI/FAUX de meme dimension que le tableau source.
 
-### Creation automatique
+### Création automatique
 
 ```excel
 B2:B100="Paris"
 ```
 
-Cree un tableau de VRAI/FAUX pour chaque cellule de B2:B100.
+Créé un tableau de VRAI/FAUX pour chaque cellule de B2:B100.
 
-## Tous les types de criteres
+## Tous les types de critères
 
-### Egal a
+### Égal à
 
 ```excel
 =FILTRE(A:C;B:B="Valeur")
 ```
 
-### Different de
+### Différent de
 
 ```excel
 =FILTRE(A:C;B:B<>"Exclu")
 ```
 
-### Superieur
+### Supérieur
 
 ```excel
 =FILTRE(A:C;C:C>100)
@@ -65,16 +65,16 @@ Cree un tableau de VRAI/FAUX pour chaque cellule de B2:B100.
 =FILTRE(A:C;ESTNUM(CHERCHE("mot";A:A)))
 ```
 
-## Criteres multiples
+## Critères multiples
 
-### ET logique (tous les criteres)
+### ET logique (tous les critères)
 
 Multiplication :
 ```excel
 =FILTRE(A:C;(B:B="Paris")*(C:C>100))
 ```
 
-### OU logique (au moins un critere)
+### OU logique (au moins un critère)
 
 Addition :
 ```excel
@@ -121,7 +121,7 @@ Addition :
 =FILTRE(C:C;B:B="Paris")
 ```
 
-## Combinaisons avancees
+## Combinaisons avancées
 
 ### FILTRE + TRIER
 
@@ -141,7 +141,7 @@ Addition :
 =INDEX(FILTRE(A:C;B:B="Paris");1;3)
 ```
 
-Premiere ligne, troisieme colonne du resultat.
+Première ligne, troisieme colonne du résultat.
 
 ### FILTRE + SOMME
 
@@ -153,12 +153,12 @@ Premiere ligne, troisieme colonne du resultat.
 
 ```excel
 =LET(
-  donnees;A2:D100;
+  données;A2:D100;
   region;B2:B100;
   montant;D2:D100;
   critere_region;"Paris";
   critere_montant;100;
-  FILTRE(donnees;(region=critere_region)*(montant>critere_montant))
+  FILTRE(données;(region=critere_region)*(montant>critere_montant))
 )
 ```
 
@@ -166,17 +166,17 @@ Premiere ligne, troisieme colonne du resultat.
 
 | Erreur | Cause | Solution |
 |--------|-------|----------|
-| #CALC! | Aucun resultat | Ajoutez si_vide |
-| #VALEUR! | Plages differentes | Alignez les tailles |
+| #CALC! | Aucun résultat | Ajoutez si_vide |
+| #VALEUR! | Plages différentes | Alignez les tailles |
 | #PROPAGATION! | Pas d'espace | Liberez les cellules |
 
 ## Bonnes pratiques
 
 | Pratique | Description |
 |----------|-------------|
-| Tableaux structures | References dynamiques |
+| Tableaux structurés | Références dynamiques |
 | LET | Clarifiez les formules |
-| si_vide | Toujours le definir |
-| Test | Verifiez les resultats |
+| si_vide | Toujours le définir |
+| Test | Vérifiez les résultats |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

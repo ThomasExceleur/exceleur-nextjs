@@ -5,13 +5,13 @@ author: "Thomas L'Exceleur"
 excerpt: "Combinez LET et LAMBDA pour des automatisations puissantes sans VBA."
 description: "Guide pour automatiser Excel avec les fonctions LET et LAMBDA."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
+catégories: ["Excel 365", "Formules Excel"]
 tags: ["LET", "LAMBDA", "Automatisation", "Formules"]
 ---
 
 # Automatiser avec LET et LAMBDA
 
-Ces deux fonctions revolutionnent les possibilites sans VBA.
+Ces deux fonctions revolutionnent les possibilités sans VBA.
 
 ## LET : Variables dans les formules
 
@@ -45,10 +45,10 @@ Ces deux fonctions revolutionnent les possibilites sans VBA.
 =LAMBDA(param1;param2;...;expression)
 ```
 
-### Creation d'une fonction nommee
+### Création d'une fonction nommée
 
 1. Gestionnaire de noms
-2. Definir la formule LAMBDA
+2. Définir la formule LAMBDA
 3. Utiliser comme fonction native
 
 ## Combiner LET et LAMBDA
@@ -125,10 +125,10 @@ Formule: =LAMBDA(email;
 
 ```excel
 =LET(
-  donnees;A2:D100;
+  données;A2:D100;
   filtre_region;B2:B100="Paris";
   filtre_montant;C2:C100>1000;
-  filtrees;FILTRE(donnees;filtre_region*filtre_montant);
+  filtrees;FILTRE(données;filtre_region*filtre_montant);
   TRIER(filtrees;3;-1)
 )
 ```
@@ -138,8 +138,8 @@ Formule: =LAMBDA(email;
 ```excel
 =LET(
   n;5;
-  donnees;A2:B100;
-  triees;TRIER(donnees;2;-1);
+  données;A2:B100;
+  triees;TRIER(données;2;-1);
   INDEX(triees;SEQUENCE(n);SEQUENCE(1;2))
 )
 ```
@@ -159,14 +159,14 @@ Formule: =LAMBDA(n;
 
 ```excel
 Nom: PGCD_CALC
-Formule: =LAMBDA(a;b;
-  SI(b=0;a;PGCD_CALC(b;MOD(a;b)))
+Formule: =LAMBDA(à;b;
+  SI(b=0;à;PGCD_CALC(b;MOD(à;b)))
 )
 ```
 
-## Fonctions d'ordre superieur
+## Fonctions d'ordre supérieur
 
-### MAP : Appliquer a chaque element
+### MAP : Appliquer à chaque élément
 
 ```excel
 =MAP(A1:A10;LAMBDA(x;x^2))
@@ -196,23 +196,23 @@ Retourne les sommes cumulatives.
 |----------|----------------|
 | Nommage | Prefixe par domaine (FIN_, RH_) |
 | Documentation | Commentaire dans le nom |
-| Test | Verifier avant deploiement |
+| Test | Vérifier avant deploiement |
 | Modularite | Petites fonctions reutilisables |
 
 ### Debug
 
 1. Testez chaque variable LET separement
-2. Verifiez les types de donnees
-3. Utilisez SIERREUR pour gerer les exceptions
+2. Vérifiez les types de données
+3. Utilisez SIERREUR pour gérer les exceptions
 
 ## Comparaison avec VBA
 
 | Aspect | LET/LAMBDA | VBA |
 |--------|------------|-----|
 | Installation | Aucune | Activer macros |
-| Securite | Native | Avertissements |
+| Sécurité | Native | Avertissements |
 | Performance | Excellente | Variable |
-| Complexite | Moyenne | Elevee |
+| Complexité | Moyenne | Élevée |
 | Reutilisation | Via noms | Modules |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

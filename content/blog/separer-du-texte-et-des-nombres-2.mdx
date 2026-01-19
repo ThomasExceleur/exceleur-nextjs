@@ -1,23 +1,23 @@
 ---
-title: "Excel : Separer du Texte et des Nombres"
+title: "Excel : Séparer du Texte et des Nombres"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Techniques pour separer texte et nombres dans Excel."
-description: "Guide pour separer le texte des nombres dans Excel."
-category: "Manipulation de donnees"
-categories: ["Manipulation de donnees", "Astuces Excel"]
-tags: ["Texte", "Nombres", "Separation", "Excel"]
+excerpt: "Techniques pour séparer texte et nombres dans Excel."
+description: "Guide pour séparer le texte des nombres dans Excel."
+category: "Manipulation de données"
+catégories: ["Manipulation de données", "Astuces Excel"]
+tags: ["Texte", "Nombres", "Séparation", "Excel"]
 ---
 
-# Separer Texte et Nombres
+# Séparer Texte et Nombres
 
 Extrayez le texte et les nombres de vos cellules.
 
-## Methode Ctrl+E
+## Méthode Ctrl+E
 
-### Etapes
+### Étapes
 
-1. Tapez le resultat souhaite (texte seul)
+1. Tapez le résultat souhaité (texte seul)
 2. Descendez d'une cellule
 3. **Ctrl+E**
 
@@ -57,9 +57,9 @@ Utilisez Ctrl+E pour les cas simples.
 
 ## Power Query
 
-### Methode
+### Méthode
 
-1. Selectionnez la colonne
+1. Sélectionnez la colonne
 2. **Transformer** > **Extraire**
 3. Choisissez le type d'extraction
 
@@ -68,7 +68,7 @@ Utilisez Ctrl+E pour les cas simples.
 - Premiers caracteres
 - Derniers caracteres
 - Plage de caracteres
-- Texte avant/apres delimiteur
+- Texte avant/après delimiteur
 
 ## VBA
 
@@ -76,13 +76,13 @@ Utilisez Ctrl+E pour les cas simples.
 
 ```vba
 Function ExtraireNombre(texte As String) As Double
-    Dim i As Integer, resultat As String
+    Dim i As Integer, résultat As String
     For i = 1 To Len(texte)
         If IsNumeric(Mid(texte, i, 1)) Then
-            resultat = resultat & Mid(texte, i, 1)
+            résultat = résultat & Mid(texte, i, 1)
         End If
     Next i
-    ExtraireNombre = Val(resultat)
+    ExtraireNombre = Val(résultat)
 End Function
 ```
 
@@ -92,6 +92,6 @@ End Function
 |----------|-------------|
 | Ctrl+E d'abord | Le plus rapide |
 | Power Query | Pour les volumes |
-| Formules | Si besoin de mise a jour |
+| Formules | Si besoin de mise à jour |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

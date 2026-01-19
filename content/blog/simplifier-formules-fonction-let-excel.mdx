@@ -5,7 +5,7 @@ author: "Thomas L'Exceleur"
 excerpt: "Utilisez LET pour rendre vos formules plus lisibles et performantes."
 description: "Guide pour simplifier vos formules Excel avec la fonction LET."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
+catégories: ["Excel 365", "Formules Excel"]
 tags: ["LET", "Formules", "Simplification", "Excel 365"]
 ---
 
@@ -21,7 +21,7 @@ LET transforme les formules complexes en expressions lisibles.
 
 ## Concept
 
-### Le probleme
+### Le problème
 
 Formules repetitives et illisibles :
 
@@ -33,18 +33,18 @@ Formules repetitives et illisibles :
 
 ```excel
 =LET(
-  donnees;A1:A100;
-  moy;MOYENNE(donnees);
-  sup;FILTRE(donnees;donnees>moy);
+  données;A1:A100;
+  moy;MOYENNE(données);
+  sup;FILTRE(données;données>moy);
   MOYENNE(sup)
 )
 ```
 
 ## Avantages
 
-### Lisibilite
+### Lisibilité
 
-Variables nommees explicitement.
+Variables nommées explicitement.
 
 ### Performance
 
@@ -52,7 +52,7 @@ Calculs intermediaires executes une seule fois.
 
 ### Maintenance
 
-Facile a modifier et deboguer.
+Facile à modifier et deboguer.
 
 ## Exemples pratiques
 
@@ -60,11 +60,11 @@ Facile a modifier et deboguer.
 
 ```excel
 =LET(
-  ca;B2;
+  çà;B2;
   couts;C2;
-  marge;ca-couts;
-  taux;marge/ca;
-  SI(taux>0.2;"Bon";"A ameliorer")
+  marge;çà-couts;
+  taux;marge/çà;
+  SI(taux>0.2;"Bon";"A améliorer")
 )
 ```
 
@@ -72,9 +72,9 @@ Facile a modifier et deboguer.
 
 ```excel
 =LET(
-  critere;E1;
-  resultat;RECHERCHEV(critere;A:D;4;FAUX);
-  SI(ESTERREUR(resultat);"Non trouve";resultat)
+  critère;E1;
+  résultat;RECHERCHEV(critère;A:D;4;FAUX);
+  SI(ESTERREUR(résultat);"Non trouve";résultat)
 )
 ```
 
@@ -99,12 +99,12 @@ Facile a modifier et deboguer.
   x;10;
   y;20;
   z;x+y;
-  resultat;z*2;
-  resultat
+  résultat;z*2;
+  résultat
 )
 ```
 
-Chaque variable peut utiliser les precedentes.
+Chaque variable peut utiliser les précédentes.
 
 ## LET avec tableaux
 
@@ -112,8 +112,8 @@ Chaque variable peut utiliser les precedentes.
 
 ```excel
 =LET(
-  donnees;A2:C100;
-  filtrees;FILTRE(donnees;B2:B100="Actif");
+  données;A2:C100;
+  filtrees;FILTRE(données;B2:B100="Actif");
   triees;TRIER(filtrees;3;-1);
   INDEX(triees;1;3)
 )
@@ -130,7 +130,7 @@ Retournez une variable intermediaire :
   x;CalculComplexe1;
   y;CalculComplexe2;
   z;x+y;
-  x  ' Retourne x pour verifier
+  x  ' Retourne x pour vérifier
 )
 ```
 
@@ -153,16 +153,16 @@ Retournez une variable intermediaire :
 | Pratique | Description |
 |----------|-------------|
 | Noms explicites | x, y sont moins clairs que total, moyenne |
-| Decomposition | Une etape par variable |
+| Decomposition | Une étape par variable |
 | Commentaires | Documentez la logique |
-| Test | Verifiez chaque variable |
+| Test | Vérifiez chaque variable |
 
 ## Erreurs courantes
 
 | Erreur | Cause | Solution |
 |--------|-------|----------|
-| #NOM? | Variable mal definie | Verifiez l'ordre |
-| #VALEUR! | Type incompatible | Verifiez les donnees |
-| Resultat faux | Mauvais calcul | Debuggez etape par etape |
+| #NOM? | Variable mal définie | Vérifiez l'ordre |
+| #VALEUR! | Type incompatible | Vérifiez les données |
+| Résultat faux | Mauvais calcul | Debuggez étape par étape |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

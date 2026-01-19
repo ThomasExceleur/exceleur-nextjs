@@ -2,10 +2,10 @@
 title: "Fonction LET Excel : Simplifier et Optimiser"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Decouvrez comment LET simplifie et optimise vos formules Excel."
+excerpt: "Découvrez comment LET simplifie et optimise vos formules Excel."
 description: "Guide pour simplifier et optimiser vos formules avec LET Excel."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
+catégories: ["Excel 365", "Formules Excel"]
 tags: ["LET", "Simplification", "Optimisation", "Formules"]
 ---
 
@@ -13,7 +13,7 @@ tags: ["LET", "Simplification", "Optimisation", "Formules"]
 
 LET transforme des formules illisibles en code clair et performant.
 
-## Avant/Apres LET
+## Avant/Après LET
 
 ### Formule complexe sans LET
 
@@ -27,11 +27,11 @@ LET transforme des formules illisibles en code clair et performant.
 
 ```excel
 =LET(
-  ca;RECHERCHEX(A1;B:B;C:C;0);
+  çà;RECHERCHEX(A1;B:B;C:C;0);
   freq;RECHERCHEX(A1;B:B;D:D;0);
   moy_freq;MOYENNE(D:D);
-  SI(ET(ca>0;freq>moy_freq);"Premium";
-    SI(ca>0;"Standard";"Nouveau"))
+  SI(ET(çà>0;freq>moy_freq);"Premium";
+    SI(çà>0;"Standard";"Nouveau"))
 )
 ```
 
@@ -39,13 +39,13 @@ LET transforme des formules illisibles en code clair et performant.
 
 ### 1. Identifier les repetitions
 
-Cherchez les memes calculs utilises plusieurs fois.
+Cherchez les memes calculs utilisés plusieurs fois.
 
 ### 2. Nommer clairement
 
 Utilisez des noms explicites, pas x, y, z.
 
-### 3. Decomposer par etapes
+### 3. Decomposer par étapes
 
 Un calcul par variable.
 
@@ -58,14 +58,14 @@ Un calcul par variable.
 =B1*C1*(1-D1)*(1+E1)
 ```
 
-**Apres :**
+**Après :**
 ```excel
 =LET(
   prix_unitaire;B1;
-  quantite;C1;
+  quantité;C1;
   remise;D1;
   tva;E1;
-  sous_total;prix_unitaire*quantite;
+  sous_total;prix_unitaire*quantité;
   apres_remise;sous_total*(1-remise);
   total_ttc;apres_remise*(1+tva);
   total_ttc
@@ -79,7 +79,7 @@ Un calcul par variable.
 =GAUCHE(A1;CHERCHE(" ";A1)-1)&" - "&DROITE(A1;NBCAR(A1)-CHERCHE(" ";A1;CHERCHE(" ";A1)+1))
 ```
 
-**Apres :**
+**Après :**
 ```excel
 =LET(
   texte;A1;
@@ -97,24 +97,24 @@ Un calcul par variable.
 
 ```excel
 =LET(
-  ' Donnees sources
-  donnees;A2:D100;
+  ' Données sources
+  données;A2:D100;
 
   ' Filtrage
-  filtre;FILTRE(donnees;donnees[Col1]>0);
+  filtre;FILTRE(données;données[Col1]>0);
 
   ' Calculs
   total;SOMME(filtre);
   moyenne;MOYENNE(filtre);
 
-  ' Resultat
+  ' Résultat
   "Total: "&total&" | Moy: "&moyenne
 )
 ```
 
 ### Par dependance
 
-Les variables qui dependent d'autres doivent etre definies apres.
+Les variables qui dependent d'autres doivent etre définies après.
 
 ## Debug avec LET
 
@@ -122,9 +122,9 @@ Les variables qui dependent d'autres doivent etre definies apres.
 
 ```excel
 =LET(
-  a;SOMME(A:A);
+  à;SOMME(A:A);
   b;MOYENNE(A:A);
-  c;a/b;
+  c;à/b;
   b  ' Retourne b pour debug
 )
 ```
@@ -133,19 +133,19 @@ Les variables qui dependent d'autres doivent etre definies apres.
 
 ```excel
 =LET(
-  a;SOMME(A:A);
+  à;SOMME(A:A);
   b;MOYENNE(A:A);
-  c;a/b;
-  "a="&a&" | b="&b&" | c="&c
+  c;à/b;
+  "à="&à&" | b="&b&" | c="&c
 )
 ```
 
-## Erreurs a eviter
+## Erreurs à éviter
 
 ### Noms invalides
 
 ```excel
-' ERREUR : A1 est une reference
+' ERREUR : A1 est une référence
 =LET(A1;10;A1*2)
 
 ' CORRECT
@@ -154,36 +154,36 @@ Les variables qui dependent d'autres doivent etre definies apres.
 
 ### Noms reserves
 
-Evitez les noms de fonctions (SOMME, SI, etc.).
+Évitez les noms de fonctions (SOMME, SI, etc.).
 
 ### Ordre incorrect
 
 ```excel
-' ERREUR : b utilise avant definition
-=LET(a;b+1;b;10;a)
+' ERREUR : b utilisé avant définition
+=LET(à;b+1;b;10;à)
 
 ' CORRECT
-=LET(b;10;a;b+1;a)
+=LET(b;10;à;b+1;à)
 ```
 
-## LET imbriques
+## LET imbriqués
 
-### Possible mais a eviter
+### Possible mais à éviter
 
 ```excel
 =LET(
-  x;LET(a;1;b;2;a+b);
+  x;LET(à;1;b;2;à+b);
   x*2
 )
 ```
 
-### Preferez une seule LET
+### Préférez une seule LET
 
 ```excel
 =LET(
-  a;1;
+  à;1;
   b;2;
-  x;a+b;
+  x;à+b;
   x*2
 )
 ```
@@ -213,10 +213,10 @@ Evitez les noms de fonctions (SOMME, SI, etc.).
 
 ```excel
 =LET(
-  ca;C1;
+  çà;C1;
   freq;D1;
   anc;E1;
-  score_ca;MIN(40;ca/500);
+  score_ca;MIN(40;çà/500);
   score_freq;MIN(30;freq*5);
   score_anc;MIN(30;anc*3);
   total;score_ca+score_freq+score_anc;
@@ -229,8 +229,8 @@ Evitez les noms de fonctions (SOMME, SI, etc.).
 | Pratique | Description |
 |----------|-------------|
 | Noms clairs | prix_ht pas p |
-| Une ligne par variable | Lisibilite |
+| Une ligne par variable | Lisibilité |
 | Commentaires | Dans les noms si besoin |
-| Tests | Verifiez chaque etape |
+| Tests | Vérifiez chaque étape |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

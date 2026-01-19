@@ -1,17 +1,17 @@
 ---
-title: "Creer des Formules Personnalisees LAMBDA - Tutoriel Business"
+title: "Créer des Formules Personnalisees LAMBDA - Tutoriel Business"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Tutoriel pour creer des fonctions LAMBDA adaptees aux besoins business."
-description: "Tutoriel business pour creer des formules personnalisees avec LAMBDA."
+excerpt: "Tutoriel pour créer des fonctions LAMBDA adaptees aux besoins business."
+description: "Tutoriel business pour créer des formules personnalisees avec LAMBDA."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
+catégories: ["Excel 365", "Formules Excel"]
 tags: ["LAMBDA", "Business", "Formules", "Tutoriel"]
 ---
 
 # Formules Personnalisees LAMBDA pour le Business
 
-Creez des fonctions metier reutilisables dans toute votre organisation.
+Créez des fonctions metier reutilisables dans toute votre organisation.
 
 ## Pourquoi des fonctions metier ?
 
@@ -24,7 +24,7 @@ Creez des fonctions metier reutilisables dans toute votre organisation.
 
 ### Solution LAMBDA
 
-Une fonction nommee, testee, documentee et partagee.
+Une fonction nommée, testee, documentee et partagee.
 
 ## Fonctions Finance
 
@@ -32,8 +32,8 @@ Une fonction nommee, testee, documentee et partagee.
 
 ```excel
 Nom: FIN_MARGE_BRUTE
-Formule: =LAMBDA(ca;cout_direct;
-  (ca-cout_direct)/ca
+Formule: =LAMBDA(çà;cout_direct;
+  (çà-cout_direct)/çà
 )
 ```
 
@@ -56,8 +56,8 @@ Formule: =LAMBDA(montant_ht;taux;
 
 ```excel
 Nom: FIN_AMORT_LINEAIRE
-Formule: =LAMBDA(valeur;duree;annee;
-  SI(annee<=duree;valeur/duree;0)
+Formule: =LAMBDA(valeur;duree;année;
+  SI(année<=duree;valeur/duree;0)
 )
 ```
 
@@ -111,13 +111,13 @@ Formule: =LAMBDA(salaire;anciennete;
 
 ```excel
 Nom: VENTES_COMMISSION
-Formule: =LAMBDA(ca;
+Formule: =LAMBDA(çà;
   LET(
     seuil1;10000;
     seuil2;50000;
-    SI(ca<=seuil1;ca*0,05;
-      SI(ca<=seuil2;seuil1*0,05+(ca-seuil1)*0,08;
-        seuil1*0,05+(seuil2-seuil1)*0,08+(ca-seuil2)*0,12
+    SI(çà<=seuil1;çà*0,05;
+      SI(çà<=seuil2;seuil1*0,05+(çà-seuil1)*0,08;
+        seuil1*0,05+(seuil2-seuil1)*0,08+(çà-seuil2)*0,12
       )
     )
   )
@@ -152,7 +152,7 @@ Formule: =LAMBDA(montant;type_client;
 
 ## Fonctions Logistique
 
-### Delai de livraison
+### Délai de livraison
 
 ```excel
 Nom: LOG_DELAI_LIVRAISON
@@ -161,7 +161,7 @@ Formule: =LAMBDA(date_commande;jours_ouvres;
 )
 ```
 
-### Stock de securite
+### Stock de sécurité
 
 ```excel
 Nom: LOG_STOCK_SECURITE
@@ -172,12 +172,12 @@ Formule: =LAMBDA(demande_moy;delai_appro;coef_securite;
 
 ## Fonctions de texte metier
 
-### Formatage reference produit
+### Formatage référence produit
 
 ```excel
 Nom: TXT_REF_PRODUIT
-Formule: =LAMBDA(categorie;id;
-  MAJUSCULE(GAUCHE(categorie;3))&"-"&TEXTE(id;"0000")
+Formule: =LAMBDA(catégorie;id;
+  MAJUSCULE(GAUCHE(catégorie;3))&"-"&TEXTE(id;"0000")
 )
 ```
 
@@ -197,22 +197,22 @@ Formule: =LAMBDA(adresse;
 
 ## Deployer les fonctions
 
-### Classeur de reference
+### Classeur de référence
 
-1. Creez un classeur "Fonctions_Entreprise.xlsx"
-2. Definissez toutes les fonctions LAMBDA
-3. Partagez sur le reseau ou SharePoint
+1. Créez un classeur "Fonctions_Entreprise.xlsx"
+2. Définissez toutes les fonctions LAMBDA
+3. Partagez sûr le reseau où SharePoint
 
 ### Documentation
 
-| Fonction | Description | Parametres | Exemple |
+| Fonction | Description | Paramètrès | Exemple |
 |----------|-------------|------------|---------|
 | FIN_TVA | Calcule TTC | HT, taux | =FIN_TVA(100;0,2) |
 | ... | ... | ... | ... |
 
 ### Formation
 
-Creez un guide d'utilisation pour les equipes.
+Créez un guide d'utilisation pour les equipes.
 
 ## Bonnes pratiques business
 
@@ -226,12 +226,12 @@ Creez un guide d'utilisation pour les equipes.
 
 ## Gouvernance
 
-### Qui peut creer des fonctions ?
+### Qui peut créer des fonctions ?
 
-Definissez un processus de validation.
+Définissez un processus de validation.
 
-### Mise a jour
+### Mise à jour
 
 Communiquez les changements aux utilisateurs.
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

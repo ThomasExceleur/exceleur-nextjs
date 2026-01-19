@@ -1,41 +1,41 @@
 ---
-title: "Creer un Diagramme de Gantt Excel - Methode Avancee"
+title: "Créer un Diagramme de Gantt Excel - Méthode Avancée"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Methode avancee pour creer un diagramme de Gantt dans Excel."
-description: "Guide avance pour creer un diagramme de Gantt dans Excel."
+excerpt: "Méthode avancée pour créer un diagramme de Gantt dans Excel."
+description: "Guide avancé pour créer un diagramme de Gantt dans Excel."
 category: "Graphiques"
-categories: ["Graphiques", "Productivite"]
-tags: ["Gantt", "Graphique", "Projet", "Avance"]
+catégories: ["Graphiques", "Productivité"]
+tags: ["Gantt", "Graphique", "Projet", "Avancé"]
 ---
 
-# Diagramme de Gantt Excel - Methode Avancee
+# Diagramme de Gantt Excel - Méthode Avancée
 
-Techniques avancees pour un Gantt professionnel.
+Techniques avancées pour un Gantt professionnel.
 
-## Structure de donnees avancee
+## Structuré de données avancée
 
-### Colonnes recommandees
+### Colonnes recommandées
 
 | Colonne | Description |
 |---------|-------------|
 | ID | Identifiant unique |
 | Tache | Nom de la tache |
 | Responsable | Personne assignee |
-| Date debut | Debut prevu |
+| Date début | Début prévu |
 | Duree | En jours ouvrables |
 | Date fin | Calculee |
 | % Complete | Avancement |
-| Predecesseur | ID de la tache precedente |
-| Statut | Etat actuel |
+| Predecesseur | ID de la tache précédente |
+| Statut | État actuel |
 
-### Formules avancees
+### Formules avancées
 
 ```excel
 ' Date de fin (jours ouvrables)
 =SERIE.JOUR.OUVRE(Date_debut;Duree)
 
-' Date debut avec predecesseur
+' Date début avec predecesseur
 =SI(Predecesseur="";"";INDIRECT("E"&EQUIV(Predecesseur;ID;0)+1))
 ```
 
@@ -52,11 +52,11 @@ Techniques avancees pour un Gantt professionnel.
 =Duree*Pourcentage_complete
 ```
 
-## Formatage conditionnel sur le graphique
+## Formatage conditionnel sûr le graphique
 
 ### Couleurs dynamiques
 
-Creez des colonnes auxiliaires pour les couleurs :
+Créez des colonnes auxiliaires pour les couleurs :
 
 ```excel
 =SI(Statut="Termine";"Vert";SI(Date_fin<AUJOURDHUI();"Rouge";"Bleu"))
@@ -64,7 +64,7 @@ Creez des colonnes auxiliaires pour les couleurs :
 
 ## Ligne de date actuelle
 
-### Methode
+### Méthode
 
 1. Ajoutez une colonne "Aujourd'hui"
 2. Valeur : `=SI(LIGNE()=2;AUJOURDHUI()-Date_projet_debut;"")`
@@ -73,7 +73,7 @@ Creez des colonnes auxiliaires pour les couleurs :
 
 ## Jalons
 
-### Representation
+### Représentation
 
 Les jalons sont des taches de duree 0.
 
@@ -89,12 +89,12 @@ Utilisez un marqueur losange au lieu d'une barre.
 
 ### Afficher les responsables
 
-1. Ajoutez des etiquettes de donnees
+1. Ajoutez des etiquettes de données
 2. Liez aux cellules des responsables
 
 ### Code couleur par equipe
 
-| Equipe | Couleur |
+| Équipe | Couleur |
 |--------|---------|
 | Dev | Bleu |
 | Design | Violet |
@@ -103,15 +103,15 @@ Utilisez un marqueur losange au lieu d'une barre.
 
 ## Interactions avec segments
 
-### Filtrer par critere
+### Filtrer par critère
 
 1. Convertissez en tableau
 2. **Insertion** > **Segment**
 3. Choisissez : Responsable, Statut, etc.
 
-### Effet sur le graphique
+### Effet sûr le graphique
 
-Le Gantt se met a jour automatiquement.
+Le Gantt se met à jour automatiquement.
 
 ## Formules de calcul projet
 
@@ -141,7 +141,7 @@ Le Gantt se met a jour automatiquement.
 
 ## Automatisation VBA
 
-### Mise a jour automatique
+### Mise à jour automatique
 
 ```vba
 Sub MettreAJourStatut()
@@ -158,9 +158,9 @@ End Sub
 
 ## Export et partage
 
-### Image haute qualite
+### Image haute qualité
 
-1. Selectionnez le graphique
+1. Sélectionnez le graphique
 2. **Copier** > **Coller special** > **Image**
 3. Ou exportez en PNG
 
@@ -169,9 +169,9 @@ End Sub
 1. Ajustez la mise en page
 2. **Fichier** > **Exporter** > **PDF**
 
-## Integration avec calendrier
+## Intégration avec calendrier
 
-### Lier a Outlook
+### Lier à Outlook
 
 Utilisez Power Automate pour synchroniser les taches.
 
@@ -181,29 +181,29 @@ Utilisez Power Automate pour synchroniser les taches.
 =SERIE.JOUR.OUVRE(Date_debut;Duree;Jours_feries)
 ```
 
-## Bonnes pratiques avancees
+## Bonnes pratiques avancées
 
 | Pratique | Avantage |
 |----------|----------|
 | ID unique | Gestion des dependances |
-| Calculs automatiques | Coherence |
-| Couleurs significatives | Lisibilite |
+| Calculs automatiques | Cohérence |
+| Couleurs significatives | Lisibilité |
 | Documentation | Maintenance |
 
 ## Limites et alternatives
 
-### Quand passer a un outil specialise
+### Quand passer à un outil specialise
 
 - Plus de 50 taches
 - Dependances complexes
-- Equipe nombreuse
-- Reporting avance
+- Équipe nombreuse
+- Reporting avancé
 
-### Outils recommandes
+### Outils recommandés
 
 - Microsoft Project
 - Smartsheet
 - Monday.com
 - Asana
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

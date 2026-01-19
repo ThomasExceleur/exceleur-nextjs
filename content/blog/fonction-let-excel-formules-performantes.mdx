@@ -3,19 +3,19 @@ title: "Fonction LET Excel : Des Formules Performantes"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
 excerpt: "Optimisez les performances de vos formules avec la fonction LET."
-description: "Guide pour creer des formules performantes avec LET dans Excel."
+description: "Guide pour créer des formules performantes avec LET dans Excel."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
+catégories: ["Excel 365", "Formules Excel"]
 tags: ["LET", "Performance", "Formules", "Optimisation"]
 ---
 
 # Fonction LET : Des Formules Performantes
 
-LET ameliore a la fois la lisibilite et les performances de vos formules.
+LET ameliore à la fois la lisibilité et les performances de vos formules.
 
-## Impact sur les performances
+## Impact sûr les performances
 
-### Le probleme des calculs repetes
+### Le problème des calculs répétés
 
 ```excel
 =SI(RECHERCHEX(A1;B:B;C:C)>100;
@@ -36,14 +36,14 @@ RECHERCHEX est execute **3 fois**.
 
 RECHERCHEX est execute **1 seule fois**.
 
-## Mesurer l'amelioration
+## Mesurer l'amélioration
 
-### Methode
+### Méthode
 
 1. Desactivez le calcul automatique
 2. **Formules** > **Options de calcul** > **Manuel**
 3. Mesurez le temps de recalcul (Ctrl+Shift+F9)
-4. Comparez avant/apres LET
+4. Comparez avant/après LET
 
 ### Gains typiques
 
@@ -53,7 +53,7 @@ RECHERCHEX est execute **1 seule fois**.
 | 3 fois | ~66% |
 | 5 fois | ~80% |
 
-## Fonctions couteuses a optimiser
+## Fonctions couteuses à optimiser
 
 ### Recherches
 
@@ -61,7 +61,7 @@ RECHERCHEX est execute **1 seule fois**.
 ' Avant
 =SI(ESTNA(RECHERCHEX(...));0;RECHERCHEX(...)+RECHERCHEX(...)*0,1)
 
-' Apres
+' Après
 =LET(v;RECHERCHEX(...;"N/A");SI(v="N/A";0;v+v*0,1))
 ```
 
@@ -71,7 +71,7 @@ RECHERCHEX est execute **1 seule fois**.
 ' Avant
 =SOMME(FILTRE(A:A;B:B>100))+MOYENNE(FILTRE(A:A;B:B>100))
 
-' Apres
+' Après
 =LET(
   filtrees;FILTRE(A:A;B:B>100);
   SOMME(filtrees)+MOYENNE(filtrees)
@@ -84,7 +84,7 @@ RECHERCHEX est execute **1 seule fois**.
 ' Avant
 =MOYENNE(A:A)&" ± "&ECARTYPE(A:A)&" (n="&NB(A:A)&")"
 
-' Apres
+' Après
 =LET(
   moy;MOYENNE(A:A);
   et;ECARTYPE(A:A);
@@ -99,9 +99,9 @@ RECHERCHEX est execute **1 seule fois**.
 
 ```excel
 =LET(
-  donnees;A2:A1000;  ' Pas A:A
-  resultat;SOMME(donnees);
-  resultat
+  données;A2:A1000;  ' Pas A:A
+  résultat;SOMME(données);
+  résultat
 )
 ```
 
@@ -118,13 +118,13 @@ RECHERCHEX est execute **1 seule fois**.
 )
 ```
 
-### 3. Evitez les recalculs dans les conditions
+### 3. Évitez les recalculs dans les conditions
 
 ```excel
 ' Avant
 =SI(SOMME(A:A)>1000;SOMME(A:A)*0,1;SOMME(A:A)*0,05)
 
-' Apres
+' Après
 =LET(
   total;SOMME(A:A);
   taux;SI(total>1000;0,1;0,05);
@@ -132,7 +132,7 @@ RECHERCHEX est execute **1 seule fois**.
 )
 ```
 
-## Cas ou LET n'aide pas
+## Cas où LET n'aide pas
 
 ### Calculs uniques
 
@@ -144,13 +144,13 @@ Pas besoin de LET pour un calcul simple.
 
 ### Fonctions rapides
 
-Les fonctions basiques (SOMME simple, references) sont deja optimisees.
+Les fonctions basiques (SOMME simple, références) sont déjà optimisees.
 
 ## LET et recalcul automatique
 
-### Impact sur le classeur
+### Impact sûr le classeur
 
-LET n'affecte pas le declenchement du recalcul, mais accelere son execution.
+LET n'affecte pas le declenchement du recalcul, mais accelere son exécution.
 
 ### Volatilite
 
@@ -158,14 +158,14 @@ Les fonctions volatiles restent volatiles dans LET :
 
 ```excel
 =LET(
-  ajd;AUJOURDHUI();  ' Recalcule a chaque ouverture
+  ajd;AUJOURDHUI();  ' Recalcule à chaque ouverture
   ajd+30
 )
 ```
 
 ## Combiner avec d'autres optimisations
 
-### LET + Tableaux structures
+### LET + Tableaux structurés
 
 ```excel
 =LET(
@@ -175,12 +175,12 @@ Les fonctions volatiles restent volatiles dans LET :
 )
 ```
 
-### LET + Plages nommees
+### LET + Plages nommées
 
 ```excel
 =LET(
-  donnees;PlageVentes;
-  filtrees;FILTRE(donnees;donnees>100);
+  données;PlageVentes;
+  filtrees;FILTRE(données;données>100);
   SOMME(filtrees)
 )
 ```
@@ -191,14 +191,14 @@ Les fonctions volatiles restent volatiles dans LET :
 
 ```excel
 =LET(
-  donnees;A2:A1000;
-  n;NB(donnees);
-  somme;SOMME(donnees);
+  données;A2:A1000;
+  n;NB(données);
+  somme;SOMME(données);
   moyenne;somme/n;
-  variance;SOMMEPROD((donnees-moyenne)^2)/n;
+  variance;SOMMEPROD((données-moyenne)^2)/n;
   ecart;RACINE(variance);
-  min;MIN(donnees);
-  max;MAX(donnees);
+  min;MIN(données);
+  max;MAX(données);
   "n="&n&" | μ="&ARRONDI(moyenne;2)&" | σ="&ARRONDI(ecart;2)&" | ["&min&";"&max&"]"
 )
 ```
@@ -207,10 +207,10 @@ Les fonctions volatiles restent volatiles dans LET :
 
 ```excel
 =LET(
-  ca;RECHERCHEX(A1;Clients[ID];Clients[CA];0);
+  çà;RECHERCHEX(A1;Clients[ID];Clients[CA];0);
   anciennete;RECHERCHEX(A1;Clients[ID];Clients[Anciennete];0);
   retours;RECHERCHEX(A1;Clients[ID];Clients[Retours];0);
-  score_ca;MIN(40;ca/250);
+  score_ca;MIN(40;çà/250);
   score_anc;MIN(30;anciennete*3);
   score_ret;MAX(0;30-retours*5);
   score_ca+score_anc+score_ret
@@ -221,9 +221,9 @@ Les fonctions volatiles restent volatiles dans LET :
 
 | Pratique | Impact |
 |----------|--------|
-| Noms explicites | Lisibilite |
+| Noms explicites | Lisibilité |
 | Plages limitees | Performance |
 | Calculs stockes | Optimisation |
 | Tests | Validation |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

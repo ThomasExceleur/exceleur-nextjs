@@ -2,18 +2,18 @@
 title: "Excel Moyenne Ponderee : Calcul et Formules"
 date: "2024-07-18"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a calculer une moyenne ponderee dans Excel avec SOMMEPROD."
+excerpt: "Apprenez à calculer une moyenne ponderee dans Excel avec SOMMEPROD."
 description: "Guide complet pour calculer une moyenne ponderee dans Excel. Formules, exemples pratiques et cas d'utilisation."
 category: "Calculs"
-categories: ["Calculs", "Formules Excel"]
+catégories: ["Calculs", "Formules Excel"]
 tags: ["Moyenne", "Ponderee", "SOMMEPROD", "Calculs"]
 ---
 
 # Moyenne Ponderee dans Excel
 
-La moyenne ponderee attribue un poids different a chaque valeur, contrairement a la moyenne simple.
+La moyenne ponderee attribue un poids différent à chaque valeur, contrairement à la moyenne simple.
 
-## Difference avec la moyenne simple
+## Différence avec la moyenne simple
 
 ### Moyenne simple
 
@@ -27,7 +27,7 @@ Exemple : (10 + 15 + 20) / 3 = 15
 
 ### Moyenne ponderee
 
-Chaque valeur a un coefficient (poids).
+Chaque valeur à un coefficient (poids).
 
 Exemple : Notes avec coefficients
 - Note 10, coefficient 1
@@ -54,16 +54,16 @@ Moyenne ponderee = (10*1 + 15*2 + 20*3) / (1+2+3) = 16.67
 =SOMMEPROD(A2:A4; B2:B4) / SOMME(B2:B4)
 ```
 
-Resultat : 16.67
+Résultat : 16.67
 
 ## Cas pratiques
 
 ### Notes scolaires
 
-| Matiere | Note | Coefficient |
+| Matière | Note | Coefficient |
 |---------|------|-------------|
 | Maths | 14 | 4 |
-| Francais | 12 | 3 |
+| Français | 12 | 3 |
 | Histoire | 16 | 2 |
 | Sport | 18 | 1 |
 
@@ -75,7 +75,7 @@ Moyenne ponderee : 14.2
 
 ### Prix moyen pondere
 
-| Produit | Prix | Quantite |
+| Produit | Prix | Quantité |
 |---------|------|----------|
 | A | 10 | 100 |
 | B | 15 | 50 |
@@ -86,11 +86,11 @@ Prix moyen pondere :
 =SOMMEPROD(B2:B4; C2:C4) / SOMME(C2:C4)
 ```
 
-Resultat : 12.86 (et non 15 comme la moyenne simple)
+Résultat : 12.86 (et non 15 comme la moyenne simple)
 
 ### Performance ponderee
 
-| Periode | Rendement | Investissement |
+| Période | Rendement | Investissement |
 |---------|-----------|----------------|
 | Jan | 5% | 1000 |
 | Fev | -2% | 2000 |
@@ -110,9 +110,9 @@ Rendement moyen pondere : 4.17%
 =(A1*B1 + A2*B2 + A3*B3) / (B1+B2+B3)
 ```
 
-Moins elegant mais comprehensible.
+Moins elegant mais compréhensible.
 
-### Avec plages nommees
+### Avec plages nommées
 
 ```excel
 =SOMMEPROD(Notes; Coefficients) / SOMME(Coefficients)
@@ -128,15 +128,15 @@ Plus lisible avec des noms de plages.
 
 ## Moyenne ponderee conditionnelle
 
-### Par categorie
+### Par catégorie
 
 ```excel
 =SOMMEPROD((A1:A10=D1)*(B1:B10)*(C1:C10)) / SOMMEPROD((A1:A10=D1)*(C1:C10))
 ```
 
-Ou D1 contient la categorie recherchee.
+Ou D1 contient la catégorie recherchee.
 
-### Avec plusieurs criteres
+### Avec plusieurs critères
 
 ```excel
 =SOMMEPROD((A:A=Critere1)*(B:B=Critere2)*(C:C)*(D:D)) / SOMMEPROD((A:A=Critere1)*(B:B=Critere2)*(D:D))
@@ -146,7 +146,7 @@ Ou D1 contient la categorie recherchee.
 
 ### Formule
 
-Pour les 3 dernieres periodes avec poids 1, 2, 3 :
+Pour les 3 dernières périodes avec poids 1, 2, 3 :
 
 ```excel
 =SOMMEPROD(A1:A3; {1;2;3}) / SOMME({1;2;3})
@@ -154,9 +154,9 @@ Pour les 3 dernieres periodes avec poids 1, 2, 3 :
 
 ### Glissante
 
-Copiez la formule vers le bas en ajustant les references.
+Copiez la formule vers le bas en ajustant les références.
 
-## Verifier votre calcul
+## Vérifier votre calcul
 
 ### Decomposition
 
@@ -164,17 +164,17 @@ Copiez la formule vers le bas en ajustant les references.
 2. Additionnez les produits
 3. Divisez par la somme des poids
 
-### Formule de verification
+### Formule de vérification
 
 ```excel
 =SOMME(A:A*B:B) / SOMME(B:B)
 ```
 
-Doit donner le meme resultat.
+Doit donner le meme résultat.
 
 ## Erreurs courantes
 
-### Poids a zero
+### Poids à zero
 
 Si la somme des poids est zero, vous obtenez une erreur #DIV/0!
 
@@ -182,7 +182,7 @@ Si la somme des poids est zero, vous obtenez une erreur #DIV/0!
 =SIERREUR(SOMMEPROD(...)/SOMME(...); 0)
 ```
 
-### Plages de tailles differentes
+### Plages de tailles différentes
 
 Les plages valeurs et poids doivent avoir la meme taille.
 
@@ -195,22 +195,22 @@ Assurez-vous que les cellules sont au format nombre.
 | Type | Formule | Quand utiliser |
 |------|---------|----------------|
 | Simple | MOYENNE | Valeurs equivalentes |
-| Ponderee | SOMMEPROD/SOMME | Valeurs avec importance differente |
+| Ponderee | SOMMEPROD/SOMME | Valeurs avec importance différente |
 | Geometrique | SOMMEPROD(LOG(...)) | Pourcentages composes |
 
 ## Applications courantes
 
 - Notes scolaires avec coefficients
 - Prix moyen d'achat d'actions
-- Evaluation de fournisseurs
+- Évaluation de fournisseurs
 - Calcul d'indices boursiers
 - Moyenne de scores d'evaluation
 
 ## Bonnes pratiques
 
-1. **Verifiez les poids** : Somme non nulle
+1. **Vérifiez les poids** : Somme non nulle
 2. **Documentez** : Expliquez la logique des poids
-3. **Utilisez des noms** : Pour plus de lisibilite
-4. **Arrondir** : Si necessaire pour l'affichage
+3. **Utilisez des noms** : Pour plus de lisibilité
+4. **Arrondir** : Si nécessaire pour l'affichage
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

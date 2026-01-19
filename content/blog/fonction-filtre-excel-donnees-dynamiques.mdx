@@ -1,17 +1,17 @@
 ---
-title: "Fonction FILTRE Excel pour des Donnees Dynamiques"
+title: "Fonction FILTRE Excel pour des Données Dynamiques"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Creez des extractions dynamiques avec la fonction FILTRE."
-description: "Guide de la fonction FILTRE pour donnees dynamiques Excel."
+excerpt: "Créez des extractions dynamiques avec la fonction FILTRE."
+description: "Guide de la fonction FILTRE pour données dynamiques Excel."
 category: "Excel 365"
-categories: ["Excel 365", "Formules Excel"]
+catégories: ["Excel 365", "Formules Excel"]
 tags: ["FILTRE", "Dynamique", "Extraction", "Excel 365"]
 ---
 
-# Fonction FILTRE pour des Donnees Dynamiques
+# Fonction FILTRE pour des Données Dynamiques
 
-Extractions qui se mettent a jour automatiquement.
+Extractions qui se mettent à jour automatiquement.
 
 ## Avantage du dynamisme
 
@@ -21,31 +21,31 @@ Extractions qui se mettent a jour automatiquement.
 |-------------|-----------------|
 | Manuel | Automatique |
 | Statique | Dynamique |
-| Sur place | Resultat separe |
+| Sur place | Résultat séparé |
 
-## Criteres dynamiques
+## Critères dynamiques
 
-### Reference cellule
+### Référence cellule
 
 ```excel
-=FILTRE(Donnees;Region=E1)
+=FILTRE(Données;Region=E1)
 ```
 
-E1 contient le critere selectionne.
+E1 contient le critère sélectionné.
 
 ### Liste deroulante + FILTRE
 
-1. Creez une liste deroulante en E1
-2. FILTRE utilise E1 comme critere
-3. Le resultat change selon la selection
+1. Créez une liste deroulante en E1
+2. FILTRE utilisé E1 comme critère
+3. Le résultat change selon la sélection
 
-## Mise a jour automatique
+## Mise à jour automatique
 
-### Ajout de donnees
+### Ajout de données
 
-Le resultat de FILTRE s'etend automatiquement.
+Le résultat de FILTRE s'etend automatiquement.
 
-### Avec tableaux structures
+### Avec tableaux structurés
 
 ```excel
 =FILTRE(Tableau[#All];Tableau[Region]=E1)
@@ -57,7 +57,7 @@ Le resultat de FILTRE s'etend automatiquement.
 
 ```excel
 =LET(
-  filtre1;FILTRE(Donnees;Annee=E1);
+  filtre1;FILTRE(Données;Année=E1);
   filtre2;FILTRE(filtre1;Region=E2);
   TRIER(filtre2;Montant;-1)
 )
@@ -67,18 +67,18 @@ Le resultat de FILTRE s'etend automatiquement.
 
 ### Dashboard
 
-Graphiques lies aux resultats filtres.
+Graphiques lies aux résultats filtres.
 
 ### Rapports
 
-Extraction selon selection utilisateur.
+Extraction selon sélection utilisateur.
 
 ## Bonnes pratiques
 
 | Pratique | Description |
 |----------|-------------|
-| Tableaux | References dynamiques |
+| Tableaux | Références dynamiques |
 | Validation | Listes deroulantes controlees |
-| Test | Verifiez tous les cas |
+| Test | Vérifiez tous les cas |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

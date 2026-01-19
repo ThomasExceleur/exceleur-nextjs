@@ -2,16 +2,16 @@
 title: "Listes Deroulantes Dependantes dans Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Creez des listes deroulantes en cascade dans Excel."
-description: "Guide pour creer des listes deroulantes dependantes."
+excerpt: "Créez des listes deroulantes en cascade dans Excel."
+description: "Guide pour créer des listes deroulantes dependantes."
 category: "Astuces Excel"
-categories: ["Astuces Excel", "Validation"]
+catégories: ["Astuces Excel", "Validation"]
 tags: ["Liste deroulante", "Dependante", "Cascade", "Validation"]
 ---
 
 # Listes Deroulantes Dependantes
 
-Les listes dependantes filtrent les options selon un choix precedent.
+Les listes dependantes filtrent les options selon un choix précédent.
 
 ## Principe
 
@@ -20,9 +20,9 @@ Les listes dependantes filtrent les options selon un choix precedent.
 1. Liste 1 : Choisir un continent
 2. Liste 2 : Affiche les pays de ce continent
 
-## Methode classique avec INDIRECT
+## Méthode classique avec INDIRECT
 
-### Etape 1 : Preparer les donnees
+### Étape 1 : Préparer les données
 
 | Europe | Asie | Amerique |
 |--------|------|----------|
@@ -30,29 +30,29 @@ Les listes dependantes filtrent les options selon un choix precedent.
 | Allemagne | Chine | Canada |
 | Italie | Inde | Bresil |
 
-### Etape 2 : Nommer les plages
+### Étape 2 : Nommer les plages
 
-1. Selectionnez chaque colonne
-2. **Formules** > **Definir un nom**
+1. Sélectionnez chaque colonne
+2. **Formules** > **Définir un nom**
 3. Nommez : Europe, Asie, Amerique
 
-### Etape 3 : Premiere liste
+### Étape 3 : Première liste
 
-1. Cellule A1 : **Donnees** > **Validation**
+1. Cellule A1 : **Données** > **Validation**
 2. Autoriser : Liste
 3. Source : Europe,Asie,Amerique
 
-### Etape 4 : Liste dependante
+### Étape 4 : Liste dependante
 
-1. Cellule B1 : **Donnees** > **Validation**
+1. Cellule B1 : **Données** > **Validation**
 2. Autoriser : Liste
 3. Source : `=INDIRECT(A1)`
 
 ## Gestion des espaces
 
-### Probleme
+### Problème
 
-"Etats Unis" ne peut pas etre un nom de plage.
+"États Unis" ne peut pas etre un nom de plage.
 
 ### Solution
 
@@ -64,9 +64,9 @@ Utilisez SUBSTITUE :
 
 Nommez la plage "Etats_Unis".
 
-## Methode moderne avec FILTRE
+## Méthode moderne avec FILTRE
 
-### Structure des donnees
+### Structuré des données
 
 | Continent | Pays |
 |-----------|------|
@@ -87,7 +87,7 @@ E1 contient le continent choisi.
 
 ## Trois niveaux
 
-### Donnees
+### Données
 
 | Continent | Pays | Ville |
 |-----------|------|-------|
@@ -103,7 +103,7 @@ E1 contient le continent choisi.
 
 ## Reinitialiser automatiquement
 
-### Probleme
+### Problème
 
 Si on change Liste 1, Liste 2 peut garder une valeur invalide.
 
@@ -122,7 +122,7 @@ End Sub
 
 ### Configuration
 
-1. **Donnees** > **Validation**
+1. **Données** > **Validation**
 2. Onglet **Alerte d'erreur**
 3. Personnalisez le message
 
@@ -130,17 +130,17 @@ End Sub
 
 | Pratique | Description |
 |----------|-------------|
-| Noms clairs | Plages bien nommees |
-| Test | Verifiez toutes les combinaisons |
-| Documentation | Expliquez la structure |
-| Erreurs | Gerez les cas limites |
+| Noms clairs | Plages bien nommées |
+| Test | Vérifiez toutes les combinaisons |
+| Documentation | Expliquez la structuré |
+| Erreurs | Gérez les cas limites |
 
 ## Erreurs courantes
 
 | Erreur | Cause | Solution |
 |--------|-------|----------|
-| #REF! | Nom inexistant | Verifiez les noms de plages |
+| #REF! | Nom inexistant | Vérifiez les noms de plages |
 | Liste vide | Espaces dans le nom | Utilisez SUBSTITUE |
 | Valeur invalide | Liste 1 changee | Reinitialisation |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

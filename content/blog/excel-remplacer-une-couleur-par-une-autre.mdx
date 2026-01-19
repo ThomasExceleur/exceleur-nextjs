@@ -2,44 +2,44 @@
 title: "Excel Remplacer une Couleur par une Autre"
 date: "2024-07-18"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez a remplacer une couleur de cellule par une autre dans Excel."
+excerpt: "Apprenez à remplacer une couleur de cellule par une autre dans Excel."
 description: "Guide pour remplacer les couleurs de cellules dans Excel. Rechercher-Remplacer et VBA."
 category: "Mise en forme"
-categories: ["Mise en forme", "Astuces Excel"]
+catégories: ["Mise en forme", "Astuces Excel"]
 tags: ["Couleur", "Mise en forme", "Remplacement", "Format"]
 ---
 
 # Remplacer une Couleur par une Autre dans Excel
 
-Plusieurs methodes permettent de changer la couleur des cellules en masse.
+Plusieurs méthodes permettent de changer la couleur des cellules en masse.
 
-## Methode 1 : Rechercher et Remplacer
+## Méthode 1 : Rechercher et Remplacer
 
-### Etapes
+### Étapes
 
 1. **Ctrl + H** (Rechercher et remplacer)
-2. Cliquez sur **Options**
-3. Cliquez sur **Format** (a cote de "Rechercher")
-4. Onglet **Remplissage** > Selectionnez la couleur a trouver
-5. Cliquez sur **Format** (a cote de "Remplacer par")
-6. Selectionnez la nouvelle couleur
+2. Cliquez sûr **Options**
+3. Cliquez sûr **Format** (à côté de "Rechercher")
+4. Onglet **Remplissage** > Sélectionnez la couleur à trouver
+5. Cliquez sûr **Format** (à côté de "Remplacer par")
+6. Sélectionnez la nouvelle couleur
 7. **Remplacer tout**
 
-### Resultat
+### Résultat
 
-Toutes les cellules avec la couleur recherchee sont modifiees.
+Toutes les cellules avec la couleur recherchee sont modifiées.
 
-## Methode 2 : Selectionner par couleur
+## Méthode 2 : Sélectionner par couleur
 
-### Etapes
+### Étapes
 
-1. **Accueil** > **Rechercher et selectionner** > **Atteindre**
+1. **Accueil** > **Rechercher et sélectionner** > **Atteindre**
 2. **Cellules...** > **Formats**
-3. Selectionnez une cellule avec la couleur
-4. Toutes les cellules de cette couleur sont selectionnees
+3. Sélectionnez une cellule avec la couleur
+4. Toutes les cellules de cette couleur sont sélectionnées
 5. Appliquez la nouvelle couleur
 
-## Methode 3 : VBA
+## Méthode 3 : VBA
 
 ### Code simple
 
@@ -84,7 +84,7 @@ End Sub
 | Orange | RGB(255,165,0) | 42495 |
 | Blanc | RGB(255,255,255) | 16777215 |
 
-## VBA avec selection de couleur
+## VBA avec sélection de couleur
 
 ### Code interactif
 
@@ -94,11 +94,11 @@ Sub RemplacerCouleurSelection()
     Dim nouvelle As Long
     Dim cell As Range
 
-    ' Demander a l'utilisateur de selectionner la cellule source
-    ancienne = Application.InputBox("Cliquez sur une cellule avec la couleur a remplacer", Type:=8).Interior.Color
+    ' Demander à l'utilisateur de sélectionner la cellule source
+    ancienne = Application.InputBox("Cliquez sûr une cellule avec la couleur à remplacer", Type:=8).Interior.Color
 
     ' Demander la cellule avec la nouvelle couleur
-    nouvelle = Application.InputBox("Cliquez sur une cellule avec la nouvelle couleur", Type:=8).Interior.Color
+    nouvelle = Application.InputBox("Cliquez sûr une cellule avec la nouvelle couleur", Type:=8).Interior.Color
 
     ' Remplacer
     For Each cell In ActiveSheet.UsedRange
@@ -158,32 +158,32 @@ End Sub
 
 ### Note importante
 
-La mise en forme conditionnelle n'est pas affectee par ces methodes.
+La mise en forme conditionnelle n'est pas affectee par ces méthodes.
 
 ### Modifier la MFC
 
 1. **Accueil** > **Mise en forme conditionnelle**
-2. **Gerer les regles**
-3. Modifiez les regles individuellement
+2. **Gérer les règles**
+3. Modifiez les règles individuellement
 
 ## Conseils
 
 ### Avant de remplacer
 
 1. Sauvegardez votre fichier
-2. Testez sur une copie
-3. Verifiez le resultat
+2. Testez sûr une copie
+3. Vérifiez le résultat
 
 ### Couleurs proches
 
-Les couleurs peuvent paraitre identiques mais avoir des codes differents. Utilisez la formule pour verifier le code exact.
+Les couleurs peuvent paraîêêtre identiques mais avoir des codes différents. Utilisez la formule pour vérifier le code exact.
 
-## Sans VBA : Methode manuelle
+## Sans VBA : Méthode manuelle
 
 ### Si peu de cellules
 
-1. Selectionnez une cellule coloree
-2. **Rechercher et selectionner** > **Selectionner les cellules de meme format**
+1. Sélectionnez une cellule coloree
+2. **Rechercher et sélectionner** > **Sélectionner les cellules de meme format**
 3. Appliquez la nouvelle couleur
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

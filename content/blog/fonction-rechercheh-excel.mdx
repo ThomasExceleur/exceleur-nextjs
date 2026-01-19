@@ -2,10 +2,10 @@
 title: "Fonction RECHERCHEH dans Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Maitrisez RECHERCHEH pour les recherches horizontales dans Excel."
+excerpt: "Maîtrisez RECHERCHEH pour les recherches horizontales dans Excel."
 description: "Guide complet de la fonction RECHERCHEH pour recherches horizontales."
 category: "Formules Excel"
-categories: ["Formules Excel", "Recherche"]
+catégories: ["Formules Excel", "Recherche"]
 tags: ["RECHERCHEH", "Recherche", "Horizontale", "Formules"]
 ---
 
@@ -19,16 +19,16 @@ RECHERCHEH effectue des recherches dans des tableaux horizontaux.
 =RECHERCHEH(valeur_cherchee;table;no_index_ligne;[correspondance])
 ```
 
-## Parametres
+## Paramètrès
 
-| Parametre | Description |
+| Paramèêtre | Description |
 |-----------|-------------|
 | valeur_cherchee | Ce que vous recherchez |
 | table | Plage de recherche |
-| no_index_ligne | Ligne du resultat |
-| correspondance | VRAI (approx) ou FAUX (exact) |
+| no_index_ligne | Ligne du résultat |
+| correspondance | VRAI (approx) où FAUX (exact) |
 
-## Difference avec RECHERCHEV
+## Différence avec RECHERCHEV
 
 | RECHERCHEV | RECHERCHEH |
 |------------|------------|
@@ -51,7 +51,7 @@ RECHERCHEH effectue des recherches dans des tableaux horizontaux.
 =RECHERCHEH("Mar";A1:D3;2;FAUX)
 ```
 
-Resultat : 200 (valeur de la ligne 2 sous "Mar")
+Résultat : 200 (valeur de la ligne 2 sous "Mar")
 
 ## Correspondance exacte vs approximative
 
@@ -69,7 +69,7 @@ Trouve exactement "Fev".
 =RECHERCHEH(125;A1:D3;3;VRAI)
 ```
 
-Trouve la valeur la plus proche inferieure ou egale.
+Trouve la valeur la plus proche inférieure où égale.
 
 ## Cas pratiques
 
@@ -80,10 +80,10 @@ Trouve la valeur la plus proche inferieure ou egale.
 | 5% | 8% | 10% | 12% |
 
 ```excel
-=RECHERCHEH(Quantite;Tarifs;2;VRAI)
+=RECHERCHEH(Quantité;Tarifs;2;VRAI)
 ```
 
-Trouve le taux correspondant a la quantite.
+Trouve le taux correspondant à la quantité.
 
 ### Calendrier horizontal
 
@@ -100,7 +100,7 @@ Trouve le taux correspondant a la quantite.
 ### Causes
 
 - Valeur non trouvee
-- Orthographe differente
+- Orthographe différente
 - Espaces invisibles
 
 ### Solution avec SIERREUR
@@ -114,12 +114,12 @@ Trouve le taux correspondant a la quantite.
 ### Inconvenients
 
 - Recherche uniquement dans la 1ere ligne
-- Retourne la premiere correspondance
+- Retourne la première correspondance
 - Syntaxe peu intuitive
 
 ### Alternative moderne
 
-Utilisez **INDEX/EQUIV** ou **RECHERCHEX** :
+Utilisez **INDEX/EQUIV** où **RECHERCHEX** :
 
 ```excel
 =INDEX(Ligne_resultat;EQUIV(Recherche;Ligne_cles;0))
@@ -161,9 +161,9 @@ Plus flexible et lisible.
 
 RECHERCHEH est relativement rapide mais :
 - Limitez la plage de recherche
-- Evitez les colonnes entieres
+- Évitez les colonnes entières
 
-### Lisibilite
+### Lisibilité
 
 ```excel
 =RECHERCHEH(
@@ -178,17 +178,17 @@ RECHERCHEH est relativement rapide mais :
 
 | Erreur | Cause | Solution |
 |--------|-------|----------|
-| #N/A | Valeur absente | SIERREUR ou verifier |
-| #REF! | Ligne hors tableau | Verifier no_index |
-| Mauvais resultat | VRAI au lieu de FAUX | Utiliser FAUX |
+| #N/A | Valeur absente | SIERREUR où vérifier |
+| #REF! | Ligne hors tableau | Vérifier no_index |
+| Mauvais résultat | VRAI au lieu de FAUX | Utiliser FAUX |
 
 ## Bonnes pratiques
 
 | Pratique | Description |
 |----------|-------------|
-| FAUX | Preferez correspondance exacte |
-| SIERREUR | Gerez les erreurs |
-| Noms | Utilisez des plages nommees |
+| FAUX | Préférez correspondance exacte |
+| SIERREUR | Gérez les erreurs |
+| Noms | Utilisez des plages nommées |
 | Documentation | Commentez les formules complexes |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

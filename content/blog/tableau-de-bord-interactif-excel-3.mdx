@@ -5,36 +5,36 @@ author: "Thomas L'Exceleur"
 excerpt: "Techniques expertes pour des tableaux de bord exceptionnels."
 description: "Guide expert pour les tableaux de bord interactifs Excel."
 category: "Visualisation"
-categories: ["Visualisation", "Analyse de donnees Excel"]
+catégories: ["Visualisation", "Analyse de données Excel"]
 tags: ["Tableau de bord", "Expert", "Interactif", "Excel"]
 ---
 
 # Tableau de Bord Interactif : Niveau Expert
 
-Techniques avancees pour des dashboards professionnels.
+Techniques avancées pour des dashboards professionnels.
 
 ## Architecture experte
 
-### Separation des couches
+### Séparation des couches
 
-| Couche | Role |
+| Couche | Rôle |
 |--------|------|
-| Donnees | Sources brutes |
+| Données | Sources brutes |
 | Transformation | Power Query |
-| Modele | Power Pivot |
-| Presentation | Dashboard |
+| Modèle | Power Pivot |
+| Présentation | Dashboard |
 
 ## KPIs conditionnels
 
-### Formule avancee
+### Formule avancée
 
 ```excel
 =LET(
-  periode;CellulePeriode;
-  actuel;SOMME.SI(Periodes;periode;Valeurs);
-  precedent;SOMME.SI(Periodes;periode-1;Valeurs);
-  variation;(actuel-precedent)/precedent;
-  objectif;RECHERCHEV(periode;Objectifs;2;FAUX);
+  période;CellulePeriode;
+  actuel;SOMME.SI(Périodes;période;Valeurs);
+  précédent;SOMME.SI(Périodes;période-1;Valeurs);
+  variation;(actuel-précédent)/précédent;
+  objectif;RECHERCHEV(période;Objectifs;2;FAUX);
   ecart;(actuel-objectif)/objectif;
   CONCAT(TEXTE(actuel;\"# ##0\");\" (\";TEXTE(variation;\"+0%;-0%\");\") vs obj: \";TEXTE(ecart;\"+0%;-0%\"))
 )
@@ -45,14 +45,14 @@ Techniques avancees pour des dashboards professionnels.
 ### Source FILTRE
 
 ```excel
-=FILTRE(TRIER(Donnees;3;-1);Region=Selection)
+=FILTRE(TRIER(Données;3;-1);Region=Sélection)
 ```
 
-### Mise a jour automatique
+### Mise à jour automatique
 
-Le graphique suit les donnees filtrees.
+Le graphique suit les données filtrees.
 
-## Interactivite avancee
+## Interactivite avancée
 
 ### Menus derives
 
@@ -66,7 +66,7 @@ Formes avec macros simples pour reinitialiser.
 
 ### Mise en forme conditionnelle dynamique
 
-Couleurs qui changent selon les selections.
+Couleurs qui changent selon les sélections.
 
 ## Bonnes pratiques expertes
 
@@ -77,4 +77,4 @@ Couleurs qui changent selon les selections.
 | Test | Tous les scenarios |
 | Performance | Mesures et optimisation |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

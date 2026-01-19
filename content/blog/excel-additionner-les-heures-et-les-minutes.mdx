@@ -5,13 +5,13 @@ author: "Thomas L'Exceleur"
 excerpt: "Calculez correctement les totaux d'heures et de minutes dans Excel."
 description: "Guide pour additionner heures et minutes dans Excel. Formats et formules."
 category: "Calculs"
-categories: ["Calculs", "Dates"]
+catégories: ["Calculs", "Dates"]
 tags: ["Heures", "Minutes", "Addition", "Temps"]
 ---
 
 # Additionner les Heures et les Minutes
 
-Le calcul des heures dans Excel necessite quelques connaissances specifiques.
+Le calcul des heures dans Excel nécessité quelques connaissances spécifiques.
 
 ## Format d'heure
 
@@ -39,18 +39,18 @@ Utilisez le format HH:MM :
 | 1:15 |
 | **7:30** |
 
-## Probleme des 24 heures
+## Problème des 24 heures
 
-### Le probleme
+### Le problème
 
-Si le total depasse 24 heures :
-- 25:30 s'affiche 01:30 (incorrect)
+Si le total dépasse 24 heures :
+- 25:30 s'affiché 01:30 (incorrect)
 
 ### La solution
 
 Format personnalise : `[h]:mm`
 
-1. Selectionnez la cellule du total
+1. Sélectionnez la cellule du total
 2. **Ctrl + 1**
 3. **Personnalise**
 4. Tapez `[h]:mm`
@@ -80,19 +80,19 @@ Format personnalise : `[h]:mm`
 =HeuresDecimales*TauxHoraire
 ```
 
-## Additionner heures et minutes separees
+## Additionner heures et minutes séparées
 
-### Si heures et minutes dans colonnes differentes
+### Si heures et minutes dans colonnes différentes
 
 ```excel
 =TEMPS(A1;B1;0)
 ```
 
-Puis additionnez les resultats.
+Puis additionnez les résultats.
 
 ### Exemple
 
-| Heures | Minutes | Resultat |
+| Heures | Minutes | Résultat |
 |--------|---------|----------|
 | 2 | 30 | =TEMPS(A2;B2;0) |
 | 3 | 45 | =TEMPS(A3;B3;0) |
@@ -105,11 +105,11 @@ Puis additionnez les resultats.
 =B1-A1
 ```
 
-Ou B1 est l'heure de fin, A1 l'heure de debut.
+Ou B1 est l'heure de fin, A1 l'heure de début.
 
 ### Attention aux heures negatives
 
-Si fin < debut (travail de nuit) :
+Si fin < début (travail de nuit) :
 ```excel
 =SI(B1<A1;B1+1-A1;B1-A1)
 ```
@@ -122,7 +122,7 @@ Si fin < debut (travail de nuit) :
 =TEMPS(heures;minutes;secondes)
 ```
 
-### Creer une duree
+### Créer une duree
 
 ```excel
 =TEMPS(8;30;0)    ' 8 heures 30 minutes
@@ -150,7 +150,7 @@ Si fin < debut (travail de nuit) :
 
 ## Cas pratique : Feuille de temps
 
-| Jour | Debut | Fin | Pause | Travail |
+| Jour | Début | Fin | Pause | Travail |
 |------|-------|-----|-------|---------|
 | Lun | 8:00 | 17:00 | 1:00 | =C2-B2-D2 |
 | Mar | 9:00 | 18:00 | 1:00 | =C3-B3-D3 |
@@ -164,4 +164,4 @@ Format de la colonne Travail : `[h]:mm`
 3. **Utilisez** TEMPS() pour les calculs
 4. **Convertissez** en decimal pour la paie
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

@@ -2,20 +2,20 @@
 title: "Guide Pratique : Modelisation DCF dans Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Construisez un modele DCF professionnel dans Excel."
+excerpt: "Construisez un modèle DCF professionnel dans Excel."
 description: "Guide pratique de modelisation DCF (Discounted Cash Flow) Excel."
 category: "Finance"
-categories: ["Finance", "Analyse de donnees Excel"]
+catégories: ["Finance", "Analyse de données Excel"]
 tags: ["DCF", "Valorisation", "Finance", "Modelisation"]
 ---
 
 # Modelisation DCF dans Excel
 
-Construisez un modele de valorisation par actualisation des flux.
+Construisez un modèle de valorisation par actualisation des flux.
 
 ## Qu'est-ce que le DCF ?
 
-### Definition
+### Définition
 
 Le DCF (Discounted Cash Flow) valorise une entreprise en actualisant ses flux de tresorerie futurs.
 
@@ -25,26 +25,26 @@ Le DCF (Discounted Cash Flow) valorise une entreprise en actualisant ses flux de
 Valeur = Σ (CFt / (1+r)^t) + VT / (1+r)^n
 ```
 
-| Element | Description |
+| Élément | Description |
 |---------|-------------|
-| CFt | Cash flow de la periode t |
+| CFt | Cash flow de la période t |
 | r | Taux d'actualisation (WACC) |
 | VT | Valeur terminale |
 
-## Structure du modele
+## Structuré du modèle
 
-### Onglets recommandes
+### Onglets recommandés
 
 | Onglet | Contenu |
 |--------|---------|
-| Hypotheses | Variables d'entree |
-| P&L | Compte de resultat previsionnel |
+| Hypotheses | Variables d'entrée |
+| P&L | Compte de résultat previsionnel |
 | CF | Flux de tresorerie |
 | DCF | Calcul de valorisation |
 
-## Etape 1 : Hypotheses
+## Étape 1 : Hypotheses
 
-### Variables cles
+### Variables clés
 
 ```excel
 Croissance CA : 5%
@@ -55,18 +55,18 @@ WACC : 8%
 Croissance perpetuelle : 2%
 ```
 
-## Etape 2 : Projections P&L
+## Étape 2 : Projections P&L
 
-### Structure
+### Structuré
 
-| Element | N | N+1 | N+2 | N+3 | N+4 | N+5 |
+| Élément | N | N+1 | N+2 | N+3 | N+4 | N+5 |
 |---------|---|-----|-----|-----|-----|-----|
 | CA | 100 | 105 | 110 | 116 | 122 | 128 |
 | EBITDA | 20 | 21 | 22 | 23 | 24 | 26 |
 | D&A | 5 | 5 | 5 | 6 | 6 | 6 |
 | EBIT | 15 | 16 | 17 | 17 | 18 | 20 |
 
-## Etape 3 : Free Cash Flow
+## Étape 3 : Free Cash Flow
 
 ### Formule
 
@@ -83,12 +83,12 @@ FCF = EBIT * (1 - Taux IS)
 =B5*(1-$B$20)+B6-B7-B8
 ```
 
-## Etape 4 : Actualisation
+## Étape 4 : Actualisation
 
 ### Facteur d'actualisation
 
 ```excel
-=1/(1+WACC)^Annee
+=1/(1+WACC)^Année
 ```
 
 ### FCF actualise
@@ -97,9 +97,9 @@ FCF = EBIT * (1 - Taux IS)
 =FCF*Facteur_actualisation
 ```
 
-## Etape 5 : Valeur terminale
+## Étape 5 : Valeur terminale
 
-### Methode Gordon
+### Méthode Gordon
 
 ```excel
 =FCF_N5*(1+g)/(WACC-g)
@@ -113,7 +113,7 @@ g = taux de croissance perpetuelle
 =VT/(1+WACC)^5
 ```
 
-## Etape 6 : Valeur d'entreprise
+## Étape 6 : Valeur d'entreprise
 
 ### Calcul
 
@@ -121,7 +121,7 @@ g = taux de croissance perpetuelle
 EV = Somme FCF actualises + VT actualisee
 ```
 
-## Etape 7 : Valeur des fonds propres
+## Étape 7 : Valeur des fonds propres
 
 ### Formule
 
@@ -163,9 +163,9 @@ Prix/action = Equity Value / Nb actions
 
 | Pratique | Description |
 |----------|-------------|
-| Hypotheses separees | Facilitent les scenarios |
-| Verification | Comparez aux comparables |
+| Hypotheses séparées | Facilitent les scenarios |
+| Vérification | Comparez aux comparables |
 | Documentation | Notez les sources |
-| Sensibilite | Testez les variables cles |
+| Sensibilite | Testez les variables clés |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

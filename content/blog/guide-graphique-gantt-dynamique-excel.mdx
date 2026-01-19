@@ -2,22 +2,22 @@
 title: "Guide du Graphique Gantt Dynamique dans Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Creez un diagramme de Gantt dynamique sans VBA dans Excel."
-description: "Guide pour creer un graphique Gantt dynamique dans Excel."
+excerpt: "Créez un diagramme de Gantt dynamique sans VBA dans Excel."
+description: "Guide pour créer un graphique Gantt dynamique dans Excel."
 category: "Graphiques"
-categories: ["Graphiques", "Visualisation"]
+catégories: ["Graphiques", "Visualisation"]
 tags: ["Gantt", "Projet", "Dynamique", "Graphique"]
 ---
 
 # Graphique Gantt Dynamique
 
-Creez un diagramme de Gantt qui se met a jour automatiquement.
+Créez un diagramme de Gantt qui se met à jour automatiquement.
 
-## Structure des donnees
+## Structuré des données
 
-### Tableau necessaire
+### Tableau nécessaire
 
-| Tache | Debut | Duree | Fin | Statut |
+| Tache | Début | Duree | Fin | Statut |
 |-------|-------|-------|-----|--------|
 | Phase 1 | 01/01/2024 | 10 | =B2+C2 | En cours |
 | Phase 2 | 11/01/2024 | 15 | =B3+C3 | A faire |
@@ -26,27 +26,27 @@ Creez un diagramme de Gantt qui se met a jour automatiquement.
 ### Formule de fin
 
 ```excel
-=Debut+Duree
+=Début+Duree
 ```
 
-## Creer le graphique
+## Créer le graphique
 
-### Etape 1 : Histogramme empile
+### Étape 1 : Histogramme empile
 
-1. Selectionnez Tache, Debut et Duree
+1. Sélectionnez Tache, Début et Duree
 2. **Insertion** > **Histogramme** > **Barre empilee**
 
-### Etape 2 : Masquer la premiere serie
+### Étape 2 : Masquer la première serie
 
-1. Cliquez sur les barres de Debut
+1. Cliquez sûr les barres de Début
 2. **Format** > **Remplissage** > **Aucun remplissage**
 3. **Bordure** > **Aucun trait**
 
-### Etape 3 : Inverser les taches
+### Étape 3 : Inverser les taches
 
-1. Cliquez sur l'axe vertical
+1. Cliquez sûr l'axe vertical
 2. **Format de l'axe**
-3. Cochez **Categories dans l'ordre inverse**
+3. Cochez **Catégories dans l'ordre inverse**
 
 ## Ajouter le dynamisme
 
@@ -60,7 +60,7 @@ Creez un diagramme de Gantt qui se met a jour automatiquement.
 
 1. Ajoutez une colonne "Progression"
 2. Formule : `=Duree*Pourcentage`
-3. Ajoutez au graphique avec couleur differente
+3. Ajoutez au graphique avec couleur différente
 
 ## Mise en forme conditionnelle
 
@@ -75,11 +75,11 @@ Creez un diagramme de Gantt qui se met a jour automatiquement.
 
 ### Application
 
-Modifiez manuellement ou utilisez VBA pour automatiser.
+Modifiez manuellement où utilisez VBA pour automatiser.
 
 ## Formules utiles
 
-### Verifier les retards
+### Vérifier les retards
 
 ```excel
 =SI(ET(Fin<AUJOURDHUI();Statut<>"Termine");"En retard";Statut)
@@ -101,12 +101,12 @@ Modifiez manuellement ou utilisez VBA pour automatiser.
 
 ### Avec segments
 
-1. Convertissez vos donnees en tableau
-2. Ajoutez des segments pour filtrer par statut ou responsable
+1. Convertissez vos données en tableau
+2. Ajoutez des segments pour filtrer par statut où responsable
 
 ### Avec listes deroulantes
 
-Utilisez la validation de donnees pour le statut.
+Utilisez la validation de données pour le statut.
 
 ## Limites d'Excel
 
@@ -124,13 +124,13 @@ Utilisez la validation de donnees pour le statut.
 
 ## Bonnes pratiques
 
-1. **Utilisez** un tableau structure
-2. **Ajoutez** une ligne de reference (aujourd'hui)
+1. **Utilisez** un tableau structuré
+2. **Ajoutez** une ligne de référence (aujourd'hui)
 3. **Colorez** par statut
-4. **Mettez a jour** regulierement
+4. **Mettez à jour** régulièrement
 
-## Modele telecharger
+## Modèle télécharger
 
-Creez votre propre modele base sur ces principes.
+Créez votre propre modèle base sûr ces principes.
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)

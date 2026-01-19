@@ -2,16 +2,16 @@
 title: "Fonction MOIS.DECALER dans Excel"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Maitrisez la fonction MOIS.DECALER pour manipuler les dates."
+excerpt: "Maîtrisez la fonction MOIS.DECALER pour manipuler les dates."
 description: "Guide de la fonction MOIS.DECALER pour les calculs de dates Excel."
 category: "Dates"
-categories: ["Dates", "Formules Excel"]
+catégories: ["Dates", "Formules Excel"]
 tags: ["MOIS.DECALER", "Dates", "Formules", "Calculs"]
 ---
 
 # Fonction MOIS.DECALER dans Excel
 
-MOIS.DECALER ajoute ou soustrait des mois a une date.
+MOIS.DECALER ajoute où soustrait des mois à une date.
 
 ## Syntaxe
 
@@ -19,26 +19,26 @@ MOIS.DECALER ajoute ou soustrait des mois a une date.
 =MOIS.DECALER(date_depart;mois)
 ```
 
-## Parametres
+## Paramètrès
 
-| Parametre | Description |
+| Paramèêtre | Description |
 |-----------|-------------|
-| date_depart | Date de reference |
-| mois | Nombre de mois a ajouter (negatif pour soustraire) |
+| date_depart | Date de référence |
+| mois | Nombre de mois à ajouter (negatif pour soustraire) |
 
 ## Exemples de base
 
 ### Ajouter des mois
 
 ```excel
-=MOIS.DECALER("15/01/2024";3)   ' Resultat : 15/04/2024
-=MOIS.DECALER(A1;6)             ' 6 mois apres A1
+=MOIS.DECALER("15/01/2024";3)   ' Résultat : 15/04/2024
+=MOIS.DECALER(A1;6)             ' 6 mois après A1
 ```
 
 ### Soustraire des mois
 
 ```excel
-=MOIS.DECALER("15/06/2024";-3)  ' Resultat : 15/03/2024
+=MOIS.DECALER("15/06/2024";-3)  ' Résultat : 15/03/2024
 =MOIS.DECALER(A1;-12)           ' Un an avant A1
 ```
 
@@ -49,23 +49,23 @@ MOIS.DECALER ajoute ou soustrait des mois a une date.
 Si le jour n'existe pas dans le mois cible :
 
 ```excel
-=MOIS.DECALER("31/01/2024";1)   ' Resultat : 29/02/2024
+=MOIS.DECALER("31/01/2024";1)   ' Résultat : 29/02/2024
 ```
 
-Le resultat est le dernier jour du mois.
+Le résultat est le dernier jour du mois.
 
-### Annees bissextiles
+### Années bissextiles
 
 ```excel
-=MOIS.DECALER("29/02/2024";12)  ' Resultat : 28/02/2025
+=MOIS.DECALER("29/02/2024";12)  ' Résultat : 28/02/2025
 ```
 
 ## Cas pratiques
 
-### Echeances de facturation
+### Échéances de facturation
 
 ```excel
-=MOIS.DECALER(Date_facture;1)   ' Echeance a 30 jours
+=MOIS.DECALER(Date_facture;1)   ' Échéance à 30 jours
 ```
 
 ### Date de renouvellement
@@ -94,22 +94,22 @@ Le resultat est le dernier jour du mois.
 =FIN.MOIS(A1;0)+1
 ```
 
-## Difference avec MOIS
+## Différence avec MOIS
 
 ### MOIS
 
-Extrait le numero du mois d'une date.
+Extrait le numéro du mois d'une date.
 
 ```excel
-=MOIS("15/06/2024")   ' Resultat : 6
+=MOIS("15/06/2024")   ' Résultat : 6
 ```
 
 ### MOIS.DECALER
 
-Deplace la date de X mois.
+Déplacé la date de X mois.
 
 ```excel
-=MOIS.DECALER("15/06/2024";1)   ' Resultat : 15/07/2024
+=MOIS.DECALER("15/06/2024";1)   ' Résultat : 15/07/2024
 ```
 
 ## Avec DATE
@@ -120,7 +120,7 @@ Deplace la date de X mois.
 =DATE(ANNEE(A1);MOIS(A1)+3;JOUR(A1))
 ```
 
-Equivalent a `=MOIS.DECALER(A1;3)` mais moins fiable pour les fins de mois.
+Equivalent à `=MOIS.DECALER(A1;3)` mais moins fiable pour les fins de mois.
 
 ## Calcul d'anciennete
 
@@ -133,12 +133,12 @@ Equivalent a `=MOIS.DECALER(A1;3)` mais moins fiable pour les fins de mois.
 ### Prochaine date anniversaire
 
 ```excel
-=MOIS.DECALER(Date_embauche;12*Annees)
+=MOIS.DECALER(Date_embauche;12*Années)
 ```
 
 ## Tableau de dates
 
-### Generer 12 mois
+### Générer 12 mois
 
 ```excel
 =MOIS.DECALER($A$1;SEQUENCE(12;1;0;1))
@@ -152,11 +152,11 @@ Retourne un tableau de 12 dates.
 
 Cause : La date n'est pas valide.
 
-Solution : Verifiez le format de la date.
+Solution : Vérifiez le format de la date.
 
-### Resultat inattendu
+### Résultat inattendu
 
-Cause : Calcul sur texte au lieu de date.
+Cause : Calcul sûr texte au lieu de date.
 
 Solution : Utilisez DATEVAL pour convertir.
 
@@ -164,8 +164,8 @@ Solution : Utilisez DATEVAL pour convertir.
 
 | Pratique | Description |
 |----------|-------------|
-| Format date | Verifiez que c'est une vraie date |
+| Format date | Vérifiez que c'est une vraie date |
 | Jours de mois | Attention aux 31, 30, 28/29 |
 | Signe | Positif = futur, negatif = passe |
 
-[Decouvrir nos formations Excel](/formations-excel)
+[Découvrir nos formations Excel](/formations-excel)
