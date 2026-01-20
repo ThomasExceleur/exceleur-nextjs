@@ -3,7 +3,6 @@ import { Hero } from '@/components/sections/Hero';
 import { TrustLogos } from '@/components/sections/TrustLogos';
 import { AboutThomas } from '@/components/sections/AboutThomas';
 import { MethodSection } from '@/components/sections/MethodSection';
-import { FinancingSection } from '@/components/sections/FinancingSection';
 import { ProgramsSection } from '@/components/sections/ProgramsSection';
 import { StatsSection } from '@/components/sections/StatsSection';
 import { BookSection } from '@/components/sections/BookSection';
@@ -34,9 +33,6 @@ export default function HomePage() {
 
       {/* Method Section - "Plusieurs formations, une seule méthode" */}
       <MethodSection />
-
-      {/* Financing Section - "Faites financer votre formation" */}
-      <FinancingSection />
 
       {/* Programs Section - "Des programmes complémentaires" */}
       <ProgramsSection />
