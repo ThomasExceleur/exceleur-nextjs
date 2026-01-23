@@ -82,6 +82,21 @@ export const blogCategories: Category[] = [
   { slug: 'comptabilite', title: 'Comptabilité', postCount: 0 },
   { slug: 'rh', title: 'RH', postCount: 0 },
   { slug: 'statistiques', title: 'Statistiques', postCount: 0 },
+  // Categories from sitemap not originally included
+  { slug: 'cellules', title: 'Cellules', postCount: 0 },
+  { slug: 'formatage', title: 'Formatage', postCount: 0 },
+  { slug: 'gratuit', title: 'Gratuit', postCount: 0 },
+  { slug: 'logiciels-gratuits', title: 'Logiciels gratuits', postCount: 0 },
+  { slug: 'logique', title: 'Logique', postCount: 0 },
+  { slug: 'manipulation-de-donnees', title: 'Manipulation de données', postCount: 0 },
+  { slug: 'modeles', title: 'Modèles', postCount: 0 },
+  { slug: 'office-365', title: 'Office 365', postCount: 0 },
+  { slug: 'performance', title: 'Performance', postCount: 0 },
+  { slug: 'recherche', title: 'Recherche', postCount: 0 },
+  { slug: 'references', title: 'Références', postCount: 0 },
+  { slug: 'tva', title: 'TVA', postCount: 0 },
+  { slug: 'visualisation', title: 'Visualisation', postCount: 0 },
+  { slug: 'windows', title: 'Windows', postCount: 0 },
 ];
 
 /**

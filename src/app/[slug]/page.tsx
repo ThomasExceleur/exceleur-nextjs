@@ -296,6 +296,88 @@ Vous allez recevoir un email de confirmation.
     `,
     type: 'utility',
   },
+  'thank-you-guide-ultime-tcd': {
+    title: 'Merci pour votre téléchargement !',
+    description: 'Votre guide ultime des Tableaux Croisés Dynamiques arrive dans votre boîte mail.',
+    content: `
+## Merci pour votre téléchargement !
+
+Votre guide ultime des Tableaux Croisés Dynamiques est en route vers votre boîte mail.
+
+### Et maintenant ?
+
+1. **Vérifiez votre boîte mail** (et vos spams)
+2. **Téléchargez le guide** depuis le lien dans l'email
+3. **Appliquez les conseils** et devenez un pro des TCD !
+
+### Besoin d'aller plus loin ?
+
+Découvrez nos formations Excel pour maîtriser encore plus de fonctionnalités.
+    `,
+    type: 'utility',
+  },
+  'thank-you-guide-ultime-tcd-lk': {
+    title: 'Merci pour votre téléchargement !',
+    description: 'Votre guide ultime des Tableaux Croisés Dynamiques arrive dans votre boîte mail.',
+    content: `
+## Merci pour votre téléchargement !
+
+Votre guide ultime des Tableaux Croisés Dynamiques est en route vers votre boîte mail.
+
+### Et maintenant ?
+
+1. **Vérifiez votre boîte mail** (et vos spams)
+2. **Téléchargez le guide** depuis le lien dans l'email
+3. **Appliquez les conseils** et devenez un pro des TCD !
+
+### Besoin d'aller plus loin ?
+
+Découvrez nos formations Excel pour maîtriser encore plus de fonctionnalités.
+    `,
+    type: 'utility',
+  },
+  'newsletter-externe': {
+    title: 'Inscrivez-vous à la newsletter',
+    description: 'Rejoignez plus de 50 000 lecteurs et recevez mes conseils Excel en exclusivité.',
+    content: `
+## Rejoignez la newsletter Exceleur
+
+Comme plus de 50 000 lecteurs, recevez chaque semaine mes meilleurs conseils Excel directement dans votre boîte mail.
+
+### Ce que vous recevrez :
+
+- Des astuces Excel exclusives
+- Des raccourcis pour gagner du temps
+- Des tutoriels pas à pas
+- Des offres spéciales sur nos formations
+
+### C'est gratuit !
+
+Et vous pouvez vous désinscrire à tout moment.
+    `,
+    type: 'page',
+  },
+  'formations_bf2025-2': {
+    title: 'Offre Spéciale Formations Excel',
+    description: 'Profitez de nos offres exceptionnelles sur les formations Excel.',
+    content: `
+## Offre Spéciale Formations Excel
+
+Découvrez nos formations Excel avec des conditions exceptionnelles.
+
+### Nos formations
+
+- **Le Décollage** : Pour bien démarrer avec Excel
+- **La Machine** : Pour maîtriser Excel comme un pro
+- **La Slide** : Pour créer des présentations impactantes
+- **Power Query Secrets** : Pour automatiser vos traitements
+
+### Inscrivez-vous maintenant
+
+Profitez de cette offre limitée pour booster votre carrière avec Excel.
+    `,
+    type: 'page',
+  },
 };
 
 export async function generateStaticParams() {
