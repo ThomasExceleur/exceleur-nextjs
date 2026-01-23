@@ -11,7 +11,7 @@ interface FormationPageProps {
 const defaultFormations: Record<string, { title: string; description: string }> = {
   'excel-avance': {
     title: 'Excel Avancé',
-    description: 'Maîtrisez Excel pour optimiser vos compétences professionnelles. Formation créée par l\'Exceleur. Financement CPF possible.',
+    description: 'Maîtrisez Excel pour optimiser vos compétences professionnelles. Formation créée par Thomas L\'Exceleur.',
   },
   'formation-excel-entreprise': {
     title: 'Formation Excel Entreprise',

@@ -53,7 +53,7 @@ const faqItems = [
   {
     question: 'Pourquoi ne pas me former gratuitement avec internet ?',
     answer:
-      "Tu trouveras beaucoup de contenu gratuit sur mes réseaux sociaux. Mais La Machine offre un programme structuré, un accompagnement personnalisé et la certification TOSA VBA que tu ne trouveras pas ailleurs.",
+      "Tu trouveras beaucoup de contenu gratuit sur mes réseaux sociaux. Mais La Machine offre un programme structuré et un accompagnement personnalisé que tu ne trouveras pas ailleurs.",
   },
   {
     question: 'Et si je ne suis pas satisfait de mon achat ?',
@@ -216,7 +216,7 @@ const pricingFeaturesUltime = [
   { text: 'Les Cas Pratiques', included: true },
   { text: '1 accès à ma communauté privée', included: true },
   { text: '1 accès aux Consultations', included: true },
-  { text: 'La Certification TOSA VBA', included: true },
+  { text: 'Attestation de fin de formation', included: true },
   { text: 'Masterclass 1 : ChatGPT', included: true },
   { text: 'Masterclass 2 : Word, Outlook, PowerPoint', included: true },
   { text: "Masterclass 3 : Gestion d'erreurs", included: true },
@@ -230,7 +230,7 @@ const pricingFeaturesPremium = [
   { text: 'Les Cas Pratiques', included: true },
   { text: '1 accès à ma communauté privée', included: true },
   { text: '1 accès aux Consultations', included: true },
-  { text: 'La Certification TOSA VBA', included: true },
+  { text: 'Attestation de fin de formation', included: true },
   { text: 'Masterclass 1 : ChatGPT', included: false },
   { text: 'Masterclass 2 : Word, Outlook, PowerPoint', included: false },
   { text: "Masterclass 3 : Gestion d'erreurs", included: false },
@@ -244,7 +244,7 @@ const pricingFeaturesComplete = [
   { text: 'Les Cas Pratiques', included: true },
   { text: '1 accès à ma communauté privée', included: false },
   { text: '1 accès aux Consultations', included: false },
-  { text: 'La Certification TOSA VBA', included: false },
+  { text: 'Attestation de fin de formation', included: false },
   { text: 'Masterclass 1 : ChatGPT', included: false },
   { text: 'Masterclass 2 : Word, Outlook, PowerPoint', included: false },
   { text: "Masterclass 3 : Gestion d'erreurs", included: false },
@@ -344,7 +344,7 @@ export default function LaMachinePage() {
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                         </svg>
-                        Certification TOSA VBA
+                        Attestation de fin de formation
                       </div>
                     </div>
 
@@ -354,7 +354,7 @@ export default function LaMachinePage() {
                         '9 modules vidéo complets',
                         '3 Masterclass avancées',
                         'Fichiers Excel avec macros',
-                        'Certification TOSA VBA',
+                        'Attestation de fin de formation',
                         'Support communauté',
                       ].map((feature, index) => (
                         <li key={index} className="flex items-center gap-3 text-white">
@@ -374,20 +374,10 @@ export default function LaMachinePage() {
                         <span className="text-white/70 text-sm">À partir de</span>
                         <span className="text-3xl font-heading font-extrabold text-white">700€</span>
                       </div>
-                      <p className="text-white/60 text-sm mt-1">Finançable CPF</p>
+                      <p className="text-white/60 text-sm mt-1"></p>
                     </div>
                   </div>
 
-                  {/* Floating Qualiopi badge */}
-                  <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl p-3 shadow-xl">
-                    <Image
-                      src="/images/logos/qualiopi.webp"
-                      alt="Certification Qualiopi"
-                      width={80}
-                      height={40}
-                      className="object-contain"
-                    />
-                  </div>
                 </div>
               </FadeIn>
             </div>
@@ -689,7 +679,7 @@ export default function LaMachinePage() {
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/30 to-primary/30 rounded-full blur-3xl" />
                 <Image
                   src="/images/formations/la-machine/tampon-certification-tosa-vba.webp"
-                  alt="Certification TOSA VBA"
+                  alt="Attestation de fin de formation"
                   width={280}
                   height={280}
                   className="relative mx-auto drop-shadow-2xl"
@@ -706,11 +696,11 @@ export default function LaMachinePage() {
               </div>
 
               <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-text-dark mb-6">
-                Certification <span className="text-secondary">TOSA VBA</span>
+                Certification <span className="text-secondary">VBA</span>
               </h2>
 
               <p className="text-lg text-text-light mb-8">
-                À la fin de la formation, tu passeras la <strong className="text-text-dark">certification TOSA VBA</strong>.
+                À la fin de la formation, tu passeras la <strong className="text-text-dark">certification VBA</strong>.
                 Tu vas pouvoir justifier et mettre en avant tes nouvelles compétences{' '}
                 <strong className="text-text-dark">en toute confiance</strong>.
               </p>

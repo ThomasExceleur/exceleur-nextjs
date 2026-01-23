@@ -7,7 +7,7 @@ export const siteConfig = {
   name: 'Exceleur',
   title: 'Formations Excel | Par Thomas L\'Exceleur',
   description:
-    'Faites d\'Excel la compétence la plus rentable de votre carrière. Financement Qualiopi, CPF. Certification TOSA.',
+    'Faites d\'Excel la compétence la plus rentable de votre carrière. Formations par Thomas L\'Exceleur.',
   url: 'https://exceleur.fr',
   ogImage: '/images/og-image.png',
   author: 'Thomas L\'Exceleur',
@@ -106,7 +106,7 @@ export const footerContent = {
   column1: {
     title: 'L\'Exceleur',
     description:
-      'Formations Excel certifiées Qualiopi. Faites d\'Excel votre super-pouvoir.',
+      'Formations Excel de qualité. Faites d\'Excel votre super-pouvoir.',
   },
   column2: {
     title: 'Liens utiles',
@@ -125,28 +125,13 @@ export const homepageContent = {
   hero: {
     title: 'Faites d\'Excel la compétence la plus rentable de votre carrière',
     subtitle:
-      'Formations Excel certifiées Qualiopi, financement CPF possible. Certification TOSA.',
+      'Formations Excel par Thomas L\'Exceleur. Boostez votre productivité.',
     cta: {
       text: 'Découvrir mes formations',
       href: '/formations-excel',
     },
   },
   features: [
-    {
-      icon: 'certification',
-      title: 'Certification Qualiopi',
-      description: 'Formations certifiées pour garantir leur qualité.',
-    },
-    {
-      icon: 'cpf',
-      title: 'Financement CPF',
-      description: 'Utilisez votre Compte Personnel de Formation.',
-    },
-    {
-      icon: 'tosa',
-      title: 'Certification TOSA',
-      description: 'Validez vos compétences avec une certification reconnue.',
-    },
     {
       icon: 'expert',
       title: 'Expert Excel',

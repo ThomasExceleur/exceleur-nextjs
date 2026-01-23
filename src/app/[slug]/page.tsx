@@ -115,7 +115,7 @@ Fondateur et formateur principal, Thomas est passionné par Excel depuis plus de
 
 ### Notre mission
 
-Transformer Excel en votre super-pouvoir professionnel grâce à des formations de qualité, certifiées Qualiopi.
+Transformer Excel en votre super-pouvoir professionnel grâce à des formations de qualité.
     `,
     type: 'page',
   },

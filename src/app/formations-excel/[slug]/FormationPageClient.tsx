@@ -36,7 +36,7 @@ const defaultFormations: Record<
     title: 'Excel Avancé',
     subtitle: 'Optimisez vos compétences professionnelles',
     description:
-      'Maîtrisez Excel pour optimiser vos compétences professionnelles. Formation créée par l\'Exceleur. Financement CPF possible.',
+      'Maîtrisez Excel pour optimiser vos compétences professionnelles. Formation créée par Thomas L\'Exceleur.',
     level: 'avance',
     gradient: 'from-[#CB6AED] to-[#9333ea]',
     gradientFrom: '#CB6AED',
@@ -103,10 +103,6 @@ const defaultFormations: Record<
       {
         question: 'Quel niveau est requis pour suivre cette formation ?',
         answer: 'Un niveau intermédiaire en Excel est recommandé. Vous devez être à l\'aise avec les formules de base (SOMME, SI, RECHERCHEV) et les tableaux croisés dynamiques simples.',
-      },
-      {
-        question: 'La formation est-elle éligible au CPF ?',
-        answer: 'Oui, cette formation est éligible au Compte Personnel de Formation (CPF). Vous pouvez financer tout ou partie de votre formation grâce à vos droits CPF.',
       },
       {
         question: 'Comment se déroule la formation ?',
@@ -194,10 +190,6 @@ Cette formation Excel avancée est conçue pour les professionnels souhaitant ma
       {
         question: 'Combien de personnes peuvent suivre la formation ?',
         answer: 'Nous formons des groupes de 2 à 12 personnes pour garantir un accompagnement personnalisé et une efficacité optimale.',
-      },
-      {
-        question: 'Les formations sont-elles finançables ?',
-        answer: 'Oui, nos formations sont éligibles aux financements OPCO et plan de formation entreprise. Nous vous accompagnons dans les démarches administratives.',
       },
       {
         question: 'Proposez-vous un suivi après la formation ?',
@@ -401,17 +393,6 @@ export default function FormationPageClient({ slug }: FormationPageClientProps) 
                 {/* Trust badges */}
                 <div className="flex flex-wrap items-center gap-4 mb-8">
                   <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-gray-200/50 shadow-soft">
-                    <div className="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center">
-                      <svg className="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="text-xs text-text-light">Certifié</div>
-                      <div className="text-sm font-bold text-text-dark">Qualiopi</div>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-gray-200/50 shadow-soft">
                     <div className="flex -space-x-1">
                       {[1, 2, 3, 4, 5].map((star) => (
                         <svg key={star} className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
@@ -497,21 +478,6 @@ export default function FormationPageClient({ slug }: FormationPageClientProps) 
                   {/* Corner decoration */}
                   <div className="absolute top-0 right-0 w-32 h-32">
                     <div className="absolute top-0 right-0 w-full h-full bg-white/5 transform rotate-45 translate-x-1/2 -translate-y-1/2" />
-                  </div>
-                </div>
-
-                {/* Floating badge - CPF */}
-                <div className="absolute -bottom-4 -left-4 px-5 py-3 bg-white rounded-2xl shadow-xl border border-gray-100">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center">
-                      <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="text-xs text-text-light">Éligible</div>
-                      <div className="text-sm font-bold text-text-dark">Financement CPF</div>
-                    </div>
                   </div>
                 </div>
 
@@ -1060,18 +1026,6 @@ export default function FormationPageClient({ slug }: FormationPageClientProps) 
 
                 {/* Trust indicators */}
                 <div className="flex flex-wrap justify-center gap-6 mt-10 pt-8 border-t border-white/10">
-                  <div className="flex items-center gap-2 text-white/60 text-sm">
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
-                    Certifié Qualiopi
-                  </div>
-                  <div className="flex items-center gap-2 text-white/60 text-sm">
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    Éligible CPF
-                  </div>
                   <div className="flex items-center gap-2 text-white/60 text-sm">
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />

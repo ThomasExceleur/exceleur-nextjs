@@ -9,7 +9,6 @@ const legalLinks = [
   { label: 'Déclaration de confidentialité', href: '/declaration-de-confidentialite-ue' },
   { label: 'Politique de cookies', href: '/politique-de-cookies-ue' },
   { label: 'CGV', href: '/cgv' },
-  { label: 'Certificat Qualiopi', href: 'https://www.exceleur.fr/wp-content/uploads/2023/10/Certificat-Qualiopi-2023-EXCELEUR.pdf', external: true },
   { label: 'Règlement intérieur', href: 'https://www.exceleur.fr/wp-content/uploads/2024/12/Reglement-interieur-Exceleur.pdf', external: true },
 ];
 
@@ -125,17 +124,8 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-white/80 text-sm mb-6 max-w-xs">
-              Faites d&apos;Excel la compétence la plus rentable de votre carrière grâce à nos formations certifiées.
+              Faites d&apos;Excel la compétence la plus rentable de votre carrière grâce à nos formations.
             </p>
-            <div className="flex items-center gap-3">
-              <Image
-                src="/images/illustrations/qualiopi.webp"
-                alt="Certification Qualiopi"
-                width={80}
-                height={40}
-                className="h-10 w-auto opacity-90 hover:opacity-100 transition-opacity"
-              />
-            </div>
           </div>
 
           {/* Column 2: Legal Links */}

@@ -43,7 +43,7 @@ const faqItems = [
   {
     question: "Et si je ne suis pas satisfait de mon achat ?",
     answer:
-      "Tu disposes de 30 jours pour exercer ta garantie. Si tu n'es pas satisfait, je te rembourse à 100% sans justification. Attention, la garantie ne concerne pas l'achat via le CPF.",
+      "Tu disposes de 30 jours pour exercer ta garantie. Si tu n'es pas satisfait, je te rembourse à 100% sans justification.",
   },
 ];
 
@@ -162,7 +162,7 @@ const pricingFeatures = [
   { text: "Module 8 - Les 10 règles d'or", included: true },
   { text: 'Module 9 - Storytelling', included: true },
   { text: "Module 10 - L'oral", included: true },
-  { text: 'Certification TOSA PowerPoint', included: true },
+  { text: 'Attestation de fin de formation', included: true },
   { text: 'Questionnaires de validation', included: true },
   { text: 'Fiches récap PDF', included: true },
   { text: 'Accès communauté privée', included: true },
@@ -231,7 +231,7 @@ export default function LaSlidePage() {
                     <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                     </svg>
-                    <span className="text-sm font-medium text-white">TOSA inclus</span>
+                    <span className="text-sm font-medium text-white">Formation complète</span>
                   </div>
                 </div>
 
@@ -291,7 +291,7 @@ export default function LaSlidePage() {
 
                 {/* Floating badge */}
                 <div className="absolute -top-4 -right-4 bg-yellow-400 text-yellow-900 px-4 py-2 rounded-full font-bold text-sm shadow-lg transform rotate-6">
-                  + Certification TOSA
+                  + Attestation
                 </div>
               </div>
             </FadeIn>
@@ -535,7 +535,7 @@ export default function LaSlidePage() {
                   <svg className="w-5 h-5 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                   </svg>
-                  <span className="text-sm font-medium text-white">Certification TOSA</span>
+                  <span className="text-sm font-medium text-white">Attestation</span>
                 </div>
               </div>
             </div>
@@ -670,7 +670,7 @@ export default function LaSlidePage() {
                   <div className="aspect-square bg-gradient-to-br from-orange-100 to-rose-100 rounded-3xl p-8 flex items-center justify-center">
                     <Image
                       src="/images/formations/la-slide/tampon-certification-tosa-v2.webp"
-                      alt="Certification TOSA"
+                      alt="Attestation"
                       width={200}
                       height={200}
                       className="drop-shadow-2xl"
@@ -990,9 +990,6 @@ export default function LaSlidePage() {
                 <h3 className="font-heading text-xl font-bold text-text-dark mb-4">Pourquoi je te propose ça ?</h3>
                 <p className="text-text-light">
                   Tout simplement car je sais que c&apos;est un <strong className="text-text-dark">vrai investissement</strong> et que tu veux être sûr de faire le bon choix. J&apos;ai <strong className="text-text-dark">confiance en mon produit</strong> et je sais que tu en seras tellement satisfait que tu ne voudras pas te faire rembourser. Pour cette raison, je prends le risque à ta place en te permettant de <strong className="text-text-dark">changer d&apos;avis pendant 30 jours</strong> après ton achat.
-                </p>
-                <p className="text-sm text-text-light mt-4 italic">
-                  Attention, la garantie ne concerne pas l&apos;achat via le CPF.
                 </p>
               </div>
             </div>

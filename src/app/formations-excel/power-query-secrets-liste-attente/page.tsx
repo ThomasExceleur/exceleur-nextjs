@@ -184,10 +184,6 @@ const faqItems = [
     answer: "Malheureusement, Power Query n'est pas disponible sur Mac. Cette formation est destinée aux utilisateurs Windows."
   },
   {
-    question: "Est-ce que la formation est éligible au CPF ?",
-    answer: "Non, cette formation n'est pas éligible au CPF car elle ne prépare pas à une certification officielle."
-  },
-  {
     question: "Quelle est la différence entre les 3 formules ?",
     answer: "La Version Complète contient tous les modules de formation. La Version Premium ajoute l'accès à la communauté privée pour poser tes questions. La Version Ultime inclut en plus les 3 Masterclasses avancées et l'accès aux consultations."
   },

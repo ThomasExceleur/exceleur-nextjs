@@ -127,7 +127,7 @@ export function Hero({
                 className="text-lg md:text-xl text-white/80 max-w-lg animate-fade-in-up"
                 style={{ animationDelay: '0.55s', animationFillMode: 'both' }}
               >
-                Des formations certifiées pour maîtriser Excel et booster votre productivité.
+                Des formations pour maîtriser Excel et booster votre productivité.
               </p>
 
               {/* CTA buttons */}
@@ -202,20 +202,6 @@ export function Hero({
                     priority
                   />
 
-                  {/* Floating badge */}
-                  <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-card-elevated px-4 py-3 animate-bounce-subtle">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                        <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="text-xs text-text-light">Certifié</p>
-                        <p className="text-sm font-bold text-text-dark">Qualiopi</p>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

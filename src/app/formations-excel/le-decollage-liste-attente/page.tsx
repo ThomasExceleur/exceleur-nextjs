@@ -43,12 +43,7 @@ const faqItems = [
   {
     question: 'Pourquoi ne pas me former gratuitement ?',
     answer:
-      "Tu trouveras beaucoup de contenu gratuit sur mes réseaux sociaux. Mais Le Décollage offre un programme structuré, un accompagnement personnalisé et la certification TOSA que tu ne trouveras pas ailleurs.",
-  },
-  {
-    question: 'Est-ce éligible au CPF ?',
-    answer:
-      "Oui, les versions Premium et Ultime sont éligibles au CPF grâce à la certification TOSA incluse. Tu peux financer ta formation avec ton compte personnel de formation.",
+      "Tu trouveras beaucoup de contenu gratuit sur mes réseaux sociaux. Mais Le Décollage offre un programme structuré et un accompagnement personnalisé que tu ne trouveras pas ailleurs.",
   },
   {
     question: 'On peut avoir une facture ?',
@@ -142,7 +137,6 @@ const pricingFeatures = [
   'Les Cas Pratiques',
   '1 Accès à ma communauté privée',
   '1 Accès aux Consultations',
-  'Certification TOSA',
   'Masterclass 1 : TCD Expert',
   'Masterclass 2 : Nouvelles formules',
   'Masterclass 3 : LAMBDA et LET',
@@ -249,12 +243,6 @@ export default function LeDecollagePage() {
                         </svg>
                         9.4/10 satisfaction
                       </div>
-                      <div className="flex items-center gap-2 px-3 py-1.5 bg-accent/30 rounded-full text-white text-sm">
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                        </svg>
-                        Certification TOSA
-                      </div>
                     </div>
 
                     {/* Features list */}
@@ -283,19 +271,7 @@ export default function LeDecollagePage() {
                         <span className="text-white/70 text-sm">À partir de</span>
                         <span className="text-3xl font-heading font-extrabold text-white">800€</span>
                       </div>
-                      <p className="text-white/60 text-sm mt-1">Finançable CPF</p>
                     </div>
-                  </div>
-
-                  {/* Floating Qualiopi badge */}
-                  <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl p-3 shadow-xl">
-                    <Image
-                      src="/images/logos/qualiopi.webp"
-                      alt="Certification Qualiopi"
-                      width={80}
-                      height={40}
-                      className="object-contain"
-                    />
                   </div>
                 </div>
               </FadeIn>
@@ -598,61 +574,6 @@ export default function LeDecollagePage() {
                 </div>
               </FadeIn>
             ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* TOSA Section */}
-      <section className="py-20 lg:py-28 bg-gradient-to-br from-primary/5 via-white to-secondary/5 relative overflow-hidden">
-        <Container>
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
-            <FadeIn direction="right" className="lg:w-2/5 text-center">
-              <div className="relative inline-block">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-full blur-3xl" />
-                <Image
-                  src="/images/formations/le-decollage/tampon-certification-tosa-v2.webp"
-                  alt="Certification TOSA"
-                  width={280}
-                  height={280}
-                  className="relative mx-auto drop-shadow-2xl"
-                />
-              </div>
-            </FadeIn>
-
-            <FadeIn direction="left" className="lg:w-3/5">
-              <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-accent/10 rounded-full">
-                <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                </svg>
-                <span className="text-sm font-medium text-accent">Offert avec la formation</span>
-              </div>
-
-              <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-text-dark mb-6">
-                Certification <span className="text-primary">TOSA</span>
-              </h2>
-
-              <p className="text-lg text-text-light mb-8">
-                À la fin de la formation, tu passeras la <strong className="text-text-dark">certification TOSA Excel</strong>.
-                Tu vas pouvoir <strong className="text-text-dark">mettre en avant</strong> tes nouvelles compétences{' '}
-                <strong className="text-text-dark">en toute confiance</strong>.
-              </p>
-
-              <div className="grid sm:grid-cols-2 gap-6">
-                <div className="bg-white rounded-2xl p-6 shadow-soft border border-gray-100">
-                  <h3 className="font-heading text-lg font-bold text-text-dark mb-2">C&apos;est quoi le TOSA ?</h3>
-                  <p className="text-text-light text-sm">
-                    La <strong>référence</strong> en certification Excel, reconnue mondialement. La certification informatique{' '}
-                    <strong>la plus demandée</strong> par les entreprises françaises.
-                  </p>
-                </div>
-                <div className="bg-white rounded-2xl p-6 shadow-soft border border-gray-100">
-                  <h3 className="font-heading text-lg font-bold text-text-dark mb-2">Comment ça se passe ?</h3>
-                  <p className="text-text-light text-sm">
-                    Pendant 1 heure, tu passes une série de tests. Tu recevras une <strong>note sur 1000</strong> à intégrer à ton CV.
-                  </p>
-                </div>
-              </div>
-            </FadeIn>
           </div>
         </Container>
       </section>
