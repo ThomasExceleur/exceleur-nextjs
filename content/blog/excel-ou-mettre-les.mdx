@@ -1,198 +1,138 @@
 ---
-title: "Excel Ou Mettre Les Données : Bonnes Pratiques"
+title: "Excel : Où Mettre les $ dans les Formules"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez où placer vos données dans Excel pour une organisation optimale."
-description: "Guide des bonnes pratiques pour organiser vos données dans Excel. Structuré et conseils."
-category: "Astuces Excel"
-catégories: ["Astuces Excel", "Productivité"]
-tags: ["Organisation", "Données", "Structuré", "Bonnes pratiques"]
+excerpt: "Comprenez où placer les $ dans vos formules Excel pour maîtriser les références absolues et relatives."
+description: "Guide complet pour savoir où mettre les $ dans les formules Excel. Références absolues, relatives et mixtes expliquées avec des exemples pratiques."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Astuces Excel"]
+tags: ["Références", "Dollar", "Formules", "Références absolues", "F4"]
 ---
 
-# Ou Mettre les Données dans Excel
+# Où Mettre les $ dans les Formules Excel
 
-Une bonne organisation des données est essentielle pour un fichier Excel efficace.
+Le symbole **$** dans les formules Excel permet de **verrouiller** une référence de cellule. Sans lui, vos références changent automatiquement quand vous copiez une formule. Avec lui, vous contrôlez exactement ce qui bouge et ce qui reste fixe.
 
-## Structuré recommandée
+## Les 3 types de références
 
-### Une feuille = une fonction
+| Type | Syntaxe | Comportement |
+|------|---------|-------------|
+| **Relative** | `A1` | Ligne et colonne s'adaptent |
+| **Absolue** | `$A$1` | Rien ne bouge |
+| **Mixte** | `$A1` ou `A$1` | Un seul axe est verrouillé |
 
-| Feuille | Contenu |
-|---------|---------|
-| Données | Données brutes |
-| Paramètrès | Constantes et listes |
-| Calculs | Formules et analyses |
-| Rapport | Résultats et graphiques |
+## Référence relative : `A1`
 
-## Feuille de données
-
-### Structuré ideale
-
-1. **En-têtes en ligne 1** : noms de colonnes clairs
-2. **Données à partir de la ligne 2** : une ligne = un enregistrement
-3. **Pas de lignes vides** : données continues
-4. **Pas de cellules fusionnées** : structuré tabulaire
+C'est le comportement par défaut. Quand vous copiez la formule vers le bas ou la droite, la référence s'ajuste automatiquement.
 
 ### Exemple
 
-| Date | Client | Produit | Quantité | Montant |
-|------|--------|---------|----------|---------|
-| 01/01 | Client A | Produit 1 | 10 | 100 |
-| 02/01 | Client B | Produit 2 | 5 | 50 |
+En B1, vous écrivez `=A1*2`. Si vous copiez vers le bas :
 
-## Feuille de paramètrès
+| Cellule | Formule | Résultat |
+|---------|---------|----------|
+| B1 | `=A1*2` | A1 × 2 |
+| B2 | `=A2*2` | A2 × 2 |
+| B3 | `=A3*2` | A3 × 2 |
 
-### Contenu
+La référence **suit le déplacement**.
 
-- Constantes (taux TVA, seuils, etc.)
-- Listes pour menus deroulants
-- Tables de référence
+## Référence absolue : `$A$1`
 
-### Exemple
+Les deux **$** verrouillent la colonne ET la ligne. La référence ne change jamais, peu importe où vous copiez la formule.
 
-| Paramèêtre | Valeur |
-|-----------|--------|
-| Taux_TVA | 20% |
-| Seuil_alerte | 1000 |
-| Date_debut | 01/01/2024 |
+### Exemple : appliquer un taux de TVA
 
-### Nommer les cellules
-
-1. Sélectionnez la cellule
-2. **Formules** > **Définir un nom**
-3. Utilisez ce nom dans vos formules
-
-## Feuille de calculs
-
-### Placement des formules
-
-- Referez aux données avec des formules
-- Utilisez les plages nommées
-- Documentez les calculs complexes
-
-### Bonnes pratiques
+Le taux de TVA est en **B1**. Pour calculer le prix TTC :
 
 ```excel
-=SOMME(Données[Montant])           ' Référence au tableau
-=Total_ventes * Paramètrès!$B$2    ' Référence nommée
+=A2*(1+$B$1)
 ```
 
-## Tableaux structurés
+En copiant vers le bas, `$B$1` reste toujours fixe :
 
-### Avantages
+| Cellule | Formule |
+|---------|---------|
+| C2 | `=A2*(1+$B$1)` |
+| C3 | `=A3*(1+$B$1)` |
+| C4 | `=A4*(1+$B$1)` |
 
-- Expansion automatique
-- Références structurées
-- Filtres intégrés
+## Référence mixte : `$A1` ou `A$1`
 
-### Créer un tableau
+Vous ne verrouillez qu'un seul axe :
 
-1. Sélectionnez vos données
-2. **Ctrl + T**
-3. Nommez le tableau
+- **`$A1`** : la **colonne** A est verrouillée, la ligne s'adapte
+- **`A$1`** : la **ligne** 1 est verrouillée, la colonne s'adapte
 
-## Ou placer les formules
+### Exemple : table de multiplication
 
-### A côté des données
+Pour créer une table de multiplication avec les multiplicateurs en ligne 1 et en colonne A :
 
-```
-A : Données
-B : Calculs sûr A
-```
-
-### Dans une zone séparée
-
-```
-A1:E100 : Données
-G1:J20 : Résumé et calculs
+```excel
+=A$1*$A2
 ```
 
-### Dans une feuille dediee
+- `A$1` : quand on copie vers le bas, on reste en ligne 1 (les multiplicateurs)
+- `$A2` : quand on copie vers la droite, on reste en colonne A (les multiplicandes)
 
-```
-Feuille "Données" : données brutes
-Feuille "Analyse" : formules et TCD
-```
+## La touche F4 : ajouter les $ rapidement
 
-## Organisation par projet
+Pas besoin de taper les **$** manuellement. Placez le curseur sur une référence dans la barre de formule et appuyez sur **F4** :
 
-### Petit projet
+| Appui | Résultat | Type |
+|-------|----------|------|
+| 1er | `$A$1` | Absolue |
+| 2e | `A$1` | Mixte (ligne fixe) |
+| 3e | `$A1` | Mixte (colonne fixe) |
+| 4e | `A1` | Relative |
 
-Un seul fichier avec plusieurs feuilles.
+**Astuce** : sur Mac, utilisez **Cmd + T** ou **Fn + F4**.
 
-### Projet moyen
+## Quand utiliser chaque type
 
-```
-- Fichier principal (formules et analyses)
-- Fichier de données (données brutes)
-```
+### Référence relative `A1`
 
-### Grand projet
+- Calculs qui suivent la même logique ligne par ligne
+- Sommes, moyennes sur des données adjacentes
+- La majorité de vos formules
 
-```
-- Dossier projet/
-  - Données/
-  - Rapports/
-  - Archives/
-```
+### Référence absolue `$A$1`
 
-## Ce qu'il faut éviter
+- Référence à une **constante** (taux, seuil, date)
+- Cellule de paramètre utilisée dans plusieurs formules
+- Référence à un en-tête ou une valeur fixe
 
-### Mauvaises pratiques
+### Référence mixte `$A1` ou `A$1`
 
-1. **Données dispersees** : données eparpillees sûr plusieurs feuilles
-2. **Cellules fusionnées** : problèmes avec les formules
-3. **Lignes vides** : casse les plages et filtres
-4. **Melanger données et calculs** : difficile à maintenir
+- **Tables croisées** (multiplication, grilles tarifaires)
+- Formules copiées dans **deux directions** (bas + droite)
+- RECHERCHEV/INDEX avec plage fixe sur un axe
 
-### Exemples à éviter
+## Erreurs courantes
 
-```
-' MAL : données et calculs melanges
-A1: Janvier
-A2: 100
-A3: (vide)
-A4: Total: 100
-```
+### 1. Oublier les $ avant de copier
 
-## Bonnes pratiques de nommage
+Votre formule fonctionne en B2 mais donne n'importe quoi en B10 ? Vérifiez si vous avez oublié de verrouiller une référence.
 
-### Feuilles
+### 2. Mettre des $ partout
 
-- Noms courts et explicites
-- Pas de caracteres speciaux
-- Prefixes pour le tri (01_Donnees, 02_Calculs)
+Trop de verrouillage empêche vos formules de s'adapter. N'utilisez **$** que là où c'est nécessaire.
 
-### Plages nommées
+### 3. Confondre `$A1` et `A$1`
 
-- Noms en minuscules avec underscore
-- Explicites (total_ventes, taux_tva)
-- Pas d'espaces
+- `$A1` verrouille la **colonne**
+- `A$1` verrouille la **ligne**
 
-## Documentation
-
-### Commenter vos fichiers
-
-1. Ajoutez une feuille "Readme"
-2. Documentez la structuré
-3. Expliquez les formules complexes
-
-### Feuille Readme
-
-| Élément | Description |
-|---------|-------------|
-| Auteur | Votre nom |
-| Date création | Date |
-| Objectif | Description du fichier |
-| Sources | Origine des données |
+Souvenez-vous : le **$** verrouille ce qui est **juste après lui**.
 
 ## Résumé
 
-| Quoi | Ou |
-|------|-----|
-| Données brutes | Feuille dediee, format tableau |
-| Paramètrès | Feuille séparée, cellules nommées |
-| Calculs | A côté où feuille dediee |
-| Résultats | Feuille rapport |
+| Situation | Référence | Exemple |
+|-----------|-----------|---------|
+| Formule standard | `A1` | `=A1+B1` |
+| Taux fixe | `$A$1` | `=B2*$E$1` |
+| Table croisée | `$A1` / `A$1` | `=$A2*B$1` |
+
+**Règle d'or** : avant de copier une formule, demandez-vous "qu'est-ce qui doit rester fixe ?" et ajoutez les **$** en conséquence.
 
 [Découvrir nos formations Excel](/formations-excel)
