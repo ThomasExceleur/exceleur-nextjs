@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Header, Footer } from '@/components/layout';
+import { Analytics } from '@/components/analytics';
 import { OrganizationJsonLd, WebsiteJsonLd } from '@/components/seo';
 import { siteConfig } from '@/lib/content';
 import './globals.css';
@@ -55,6 +56,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

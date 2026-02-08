@@ -42,6 +42,33 @@ const formations = [
     icon: '⚡',
     image: '/images/formations/power-query-secrets/thumbnail.webp',
   },
+  {
+    title: 'ExcelGPT',
+    description: 'Libérez votre potentiel Excel grâce à l\'IA',
+    href: '/formations-excel/excelgpt',
+    gradient: 'from-[#a78bfa] to-[#7c3aed]',
+    shadowColor: 'rgba(124, 58, 237, 0.4)',
+    icon: '🤖',
+    image: '/images/formations/excelgpt/thumbnail.webp',
+  },
+  {
+    title: 'TCD Express',
+    description: 'Maîtrisez les tableaux croisés dynamiques en 7 jours',
+    href: '/formations-excel/tcd-express',
+    gradient: 'from-[#f472b6] to-[#ec4899]',
+    shadowColor: 'rgba(236, 72, 153, 0.4)',
+    icon: '📋',
+    image: '/images/formations/tcd-express/thumbnail.webp',
+  },
+  {
+    title: 'Excel Avancé',
+    description: 'Optimisez vos compétences professionnelles sur Excel',
+    href: '/formations-excel/excel-avance',
+    gradient: 'from-[#2dd4bf] to-[#14b8a6]',
+    shadowColor: 'rgba(20, 184, 166, 0.4)',
+    icon: '🎯',
+    image: '/images/formations/excel-avance/thumbnail.webp',
+  },
 ];
 
 export function ProgramsSection() {

@@ -9,6 +9,8 @@ import { BookSection } from '@/components/sections/BookSection';
 import { InstagramSection } from '@/components/sections/InstagramSection';
 import { Newsletter } from '@/components/sections/Newsletter';
 import { PressSection } from '@/components/sections/PressSection';
+import { FinancingSection } from '@/components/sections/FinancingSection';
+import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { siteConfig } from '@/lib/content';
 
 export const metadata: Metadata = {
@@ -37,11 +39,17 @@ export default function HomePage() {
       {/* Method Section - "Plusieurs formations, une seule méthode" */}
       <MethodSection />
 
+      {/* Financing Section - "Faites financer votre formation" (Qualiopi, OPCO, CPF, TOSA) */}
+      <FinancingSection />
+
       {/* Programs Section - "Des programmes complémentaires" */}
       <ProgramsSection />
 
       {/* Stats Section - "Plus de 2000 stagiaires accompagnés" */}
       <StatsSection />
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
 
       {/* Book Section - "Révèle l'exceleur qui est en toi !" */}
       <BookSection />
