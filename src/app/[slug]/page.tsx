@@ -7,6 +7,7 @@ import { Container } from '@/components/layout/Container';
 import { Newsletter } from '@/components/sections/Newsletter';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { getBlogPost, getAllBlogPosts, getPage, getAllPageSlugs } from '@/lib/mdx';
+import { BlogPostingJsonLd } from '@/components/seo';
 import { mdxComponents } from '@/lib/mdx-components';
 
 interface PageProps {
@@ -668,6 +669,14 @@ export default async function DynamicPage({ params }: PageProps) {
   if (blogPost) {
     return (
       <>
+        <BlogPostingJsonLd
+          title={blogPost.meta.title}
+          description={blogPost.meta.metaDescription || blogPost.meta.excerpt}
+          slug={blogPost.meta.slug}
+          datePublished={blogPost.meta.date}
+          author={blogPost.meta.author}
+          image={blogPost.meta.featuredImage}
+        />
         <BlogContent meta={blogPost.meta}>
           <MDXRemote source={blogPost.content} components={mdxComponents} />
         </BlogContent>

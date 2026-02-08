@@ -8,7 +8,7 @@ export const siteConfig = {
   title: 'Formations Excel | Par Thomas L\'Exceleur',
   description:
     'Faites d\'Excel la compétence la plus rentable de votre carrière. Formations par Thomas L\'Exceleur.',
-  url: 'https://exceleur.fr',
+  url: 'https://www.exceleur.fr',
   ogImage: '/images/og-image.png',
   author: 'Thomas L\'Exceleur',
   social: {
@@ -27,17 +27,17 @@ export const navConfig: NavConfig = {
       label: 'Nos solutions',
       href: '#',
       children: [
-        { label: 'Formations en ligne', href: '/formations-excel' },
-        { label: 'Révèle l\'Exceleur qui est en toi, le livre', href: '/livre' },
+        { label: 'Formations en ligne', href: '/formations-excel/' },
+        { label: 'Révèle l\'Exceleur qui est en toi, le livre', href: '/livre/' },
       ],
     },
     {
       label: 'Contenus gratuits',
       href: '#',
       children: [
-        { label: 'Le blog', href: '/blog-excel' },
-        { label: 'Le guide ultime des TCD', href: '/guide-ultime-tcd' },
-        { label: 'Les raccourcis indispensables d\'Excel', href: '/raccourcis-indispensables-excel' },
+        { label: 'Le blog', href: '/blog-excel/' },
+        { label: 'Le guide ultime des TCD', href: '/guide-ultime-tcd/' },
+        { label: 'Les raccourcis indispensables d\'Excel', href: '/raccourcis-indispensables-excel/' },
         { label: 'Instagram', href: 'https://www.instagram.com/lexceleur/' },
         { label: 'Youtube', href: 'https://www.youtube.com/channel/UC3SKr9_UQuRvRu4O2k7GImQ' },
       ],
@@ -45,15 +45,15 @@ export const navConfig: NavConfig = {
   ],
   footer: {
     legal: [
-      { label: 'Mentions légales', href: '/mentions-legales' },
-      { label: 'CGV', href: '/cgv' },
-      { label: 'Politique de cookies', href: '/politique-de-cookies-ue' },
-      { label: 'Confidentialité', href: '/declaration-de-confidentialite-ue' },
+      { label: 'Mentions légales', href: '/mentions-legales/' },
+      { label: 'CGV', href: '/cgv/' },
+      { label: 'Politique de cookies', href: '/politique-de-cookies-ue/' },
+      { label: 'Confidentialité', href: '/declaration-de-confidentialite-ue/' },
     ],
     resources: [
-      { label: 'Guide TCD', href: '/guide-ultime-tcd' },
-      { label: 'Raccourcis Excel', href: '/raccourcis-indispensables-excel' },
-      { label: 'Blog Excel', href: '/blog-excel' },
+      { label: 'Guide TCD', href: '/guide-ultime-tcd/' },
+      { label: 'Raccourcis Excel', href: '/raccourcis-indispensables-excel/' },
+      { label: 'Blog Excel', href: '/blog-excel/' },
     ],
   },
 };
@@ -128,7 +128,7 @@ export const homepageContent = {
       'Formations Excel par Thomas L\'Exceleur. Boostez votre productivité.',
     cta: {
       text: 'Découvrir mes formations',
-      href: '/formations-excel',
+      href: '/formations-excel/',
     },
   },
   features: [

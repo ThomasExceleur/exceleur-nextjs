@@ -332,7 +332,7 @@ export default function FormationPageClient({ slug }: FormationPageClientProps) 
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
               <Link
-                href="/formations-excel"
+                href="/formations-excel/"
                 className="text-text-light hover:text-primary transition-colors"
               >
                 Formations
@@ -420,7 +420,7 @@ export default function FormationPageClient({ slug }: FormationPageClientProps) 
                     </svg>
                   </a>
                   <a
-                    href="/contact"
+                    href="/contact/"
                     className="inline-flex items-center gap-2 px-8 py-4 bg-white border-2 border-gray-200 rounded-xl text-text-dark font-semibold hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
                   >
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1001,7 +1001,7 @@ export default function FormationPageClient({ slug }: FormationPageClientProps) 
 
                 <div className="flex flex-wrap justify-center gap-4">
                   <a
-                    href="/contact"
+                    href="/contact/"
                     className="group inline-flex items-center gap-3 px-8 py-4 rounded-xl text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                     style={{
                       background: `linear-gradient(135deg, ${gradientFrom} 0%, ${gradientTo} 100%)`,
@@ -1014,7 +1014,7 @@ export default function FormationPageClient({ slug }: FormationPageClientProps) 
                     </svg>
                   </a>
                   <Link
-                    href="/formations-excel"
+                    href="/formations-excel/"
                     className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white font-semibold hover:bg-white/20 transition-all duration-300"
                   >
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

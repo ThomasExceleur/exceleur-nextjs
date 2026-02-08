@@ -7,6 +7,20 @@ import { calculateReadingTime, slugify } from './utils';
 const contentDirectory = path.join(process.cwd(), 'content');
 
 /**
+ * WordPress-style slugify: apostrophes are removed (not replaced by hyphens)
+ * e.g. "Gestion d'erreurs" → "gestion-derreurs" (not "gestion-d-erreurs")
+ */
+function wpSlugify(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/['']/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+}
+
+/**
  * Get all MDX files from a directory
  */
 function getMDXFiles(directory: string): string[] {
@@ -180,10 +194,15 @@ export function getAllPageSlugs(): string[] {
  */
 export function getBlogPostsByCategory(categorySlug: string): BlogPostMeta[] {
   const allPosts = getAllBlogPosts();
+  const normalizedSlug = categorySlug.toLowerCase();
   return allPosts.filter(
-    (post) =>
-      post.category.toLowerCase() === categorySlug.toLowerCase() ||
-      post.categories.some((cat) => cat.toLowerCase() === categorySlug.toLowerCase())
+    (post) => {
+      const postCatSlug = slugify(post.category);
+      const wpSlug = wpSlugify(post.category);
+      return postCatSlug === normalizedSlug ||
+        wpSlug === normalizedSlug ||
+        post.categories.some((cat) => slugify(cat) === normalizedSlug || wpSlugify(cat) === normalizedSlug);
+    }
   );
 }
 
@@ -205,7 +224,7 @@ export function getAllCategories(): { slug: string; name: string; count: number 
   });
 
   return Array.from(categoryMap.entries()).map(([name, count]) => ({
-    slug: slugify(name),
+    slug: wpSlugify(name),
     name,
     count,
   }));

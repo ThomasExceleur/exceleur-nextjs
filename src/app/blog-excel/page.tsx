@@ -215,7 +215,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 </div>
 
                 <a
-                  href="/formations-excel"
+                  href="/formations-excel/"
                   className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-secondary rounded-xl text-white font-semibold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300 hover:-translate-y-1"
                 >
                   Voir les formations

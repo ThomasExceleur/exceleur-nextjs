@@ -237,7 +237,7 @@ export function HorizontalBlogList({
               )}
             </div>
             <a
-              href="/blog-excel"
+              href="/blog-excel/"
               className="hidden sm:flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-hover transition-colors group"
             >
               Voir tous les articles
@@ -276,7 +276,7 @@ export function HorizontalBlogList({
       {/* Mobile see all link */}
       <div className="sm:hidden text-center">
         <a
-          href="/blog-excel"
+          href="/blog-excel/"
           className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-hover transition-colors"
         >
           Voir tous les articles

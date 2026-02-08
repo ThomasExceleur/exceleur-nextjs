@@ -659,64 +659,6 @@ export default function LaSlidePage() {
         </Container>
       </section>
 
-      {/* TOSA Section */}
-      <section className="py-20 lg:py-28 bg-gradient-to-br from-gray-50 to-orange-50/30">
-        <Container>
-          <div className="max-w-5xl mx-auto">
-            <div className="grid lg:grid-cols-5 gap-12 items-center">
-              {/* Image */}
-              <FadeIn direction="right" className="lg:col-span-2">
-                <div className="relative">
-                  <div className="aspect-square bg-gradient-to-br from-orange-100 to-rose-100 rounded-3xl p-8 flex items-center justify-center">
-                    <Image
-                      src="/images/formations/la-slide/tampon-certification-tosa-v2.webp"
-                      alt="Attestation"
-                      width={200}
-                      height={200}
-                      className="drop-shadow-2xl"
-                    />
-                  </div>
-                  {/* Floating badge */}
-                  <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-orange-500 to-rose-500 text-white px-6 py-3 rounded-2xl font-bold shadow-lg">
-                    Offerte !
-                  </div>
-                </div>
-              </FadeIn>
-
-              {/* Content */}
-              <FadeIn direction="left" delay={200} className="lg:col-span-3">
-                <div>
-                  <p className="text-orange-600 font-semibold mb-2">À la fin de la formation, je t&apos;offre le passage de la</p>
-                  <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-text-dark mb-6">
-                    Certification <span className="text-orange-600">TOSA</span> PowerPoint
-                  </h2>
-
-                  <p className="text-text-light mb-6">
-                    À la fin de la formation, tu passeras la <strong className="text-text-dark">certification TOSA PowerPoint</strong>. Tu vas pouvoir <strong className="text-text-dark">mettre en avant</strong> tes nouvelles compétences <strong className="text-text-dark">en toute confiance</strong>.
-                  </p>
-
-                  <div className="space-y-6">
-                    <div className="bg-white rounded-2xl p-6 shadow-soft border border-gray-100">
-                      <h3 className="font-heading text-lg font-bold text-text-dark mb-3">C&apos;est quoi le TOSA ?</h3>
-                      <p className="text-text-light">
-                        C&apos;est <strong className="text-text-dark">la référence</strong> en termes de certification des logiciels de la suite Office, elle est reconnue dans le monde entier par des milliers d&apos;entreprises. En plus, c&apos;est la certification informatique <strong className="text-text-dark">la plus demandée</strong> par les entreprises françaises.
-                      </p>
-                    </div>
-
-                    <div className="bg-white rounded-2xl p-6 shadow-soft border border-gray-100">
-                      <h3 className="font-heading text-lg font-bold text-text-dark mb-3">Comment ça va se passer ?</h3>
-                      <p className="text-text-light">
-                        Pendant 1 heure, on te fait passer toute une série de tests. À la suite de ça, tu recevras une <strong className="text-text-dark">note sur 1000</strong> que tu pourras intégrer à ton CV. Grâce à ça, tu peux <strong className="text-text-dark">justifier de ton niveau</strong> très facilement.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </FadeIn>
-            </div>
-          </div>
-        </Container>
-      </section>
-
       {/* Statistics Section */}
       <section className="py-16 lg:py-20 bg-gradient-to-br from-orange-500 to-rose-500 text-white">
         <Container>

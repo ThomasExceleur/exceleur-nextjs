@@ -78,7 +78,7 @@ export function extractExcerpt(content: string, maxLength: number = 160): string
  * Generate absolute URL
  */
 export function getAbsoluteUrl(path: string): string {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://exceleur.fr';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.exceleur.fr';
   return `${baseUrl}${path.startsWith('/') ? path : `/${path}`}`;
 }
 

@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: 'La Machine - Formation VBA Excel | Exceleur',
   description:
     "Je vais te montrer ma méthode simple et efficace pour faire de toi LE spécialiste de l'automatisation à ton boulot même si tu pars de zéro en programmation.",
+  alternates: {
+    canonical: '/formations-excel/la-machine-liste-attente',
+  },
 };
 
 const faqItems = [
@@ -666,61 +669,6 @@ export default function LaMachinePage() {
                 </div>
               </FadeIn>
             ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* TOSA Section */}
-      <section className="py-20 lg:py-28 bg-white relative overflow-hidden">
-        <Container>
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
-            <FadeIn direction="right" className="lg:w-2/5 text-center">
-              <div className="relative inline-block">
-                <div className="absolute inset-0 bg-gradient-to-br from-secondary/30 to-primary/30 rounded-full blur-3xl" />
-                <Image
-                  src="/images/formations/la-machine/tampon-certification-tosa-vba.webp"
-                  alt="Attestation de fin de formation"
-                  width={280}
-                  height={280}
-                  className="relative mx-auto drop-shadow-2xl"
-                />
-              </div>
-            </FadeIn>
-
-            <FadeIn direction="left" className="lg:w-3/5">
-              <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-accent/10 rounded-full">
-                <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                </svg>
-                <span className="text-sm font-medium text-accent">Offert avec la formation</span>
-              </div>
-
-              <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-text-dark mb-6">
-                Certification <span className="text-secondary">VBA</span>
-              </h2>
-
-              <p className="text-lg text-text-light mb-8">
-                À la fin de la formation, tu passeras la <strong className="text-text-dark">certification VBA</strong>.
-                Tu vas pouvoir justifier et mettre en avant tes nouvelles compétences{' '}
-                <strong className="text-text-dark">en toute confiance</strong>.
-              </p>
-
-              <div className="grid sm:grid-cols-2 gap-6">
-                <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                  <h3 className="font-heading text-lg font-bold text-text-dark mb-2">C&apos;est quoi le TOSA ?</h3>
-                  <p className="text-text-light text-sm">
-                    La <strong>référence</strong> en certification, reconnue mondialement. La certification informatique{' '}
-                    <strong>la plus demandée</strong> par les entreprises françaises.
-                  </p>
-                </div>
-                <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                  <h3 className="font-heading text-lg font-bold text-text-dark mb-2">Comment ça se passe ?</h3>
-                  <p className="text-text-light text-sm">
-                    Pendant 1 heure, tu passes une série de tests. Tu recevras une <strong>note sur 1000</strong> à intégrer à ton CV.
-                  </p>
-                </div>
-              </div>
-            </FadeIn>
           </div>
         </Container>
       </section>

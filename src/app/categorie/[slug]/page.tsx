@@ -136,7 +136,7 @@ export default async function CategoryPage({
               {/* Breadcrumb */}
               <nav className="flex items-center justify-center gap-2 text-sm mb-6">
                 <Link
-                  href="/blog-excel"
+                  href="/blog-excel/"
                   className="text-text-light hover:text-primary transition-colors"
                 >
                   Blog Excel
@@ -242,7 +242,7 @@ export default async function CategoryPage({
                   </p>
 
                   <Link
-                    href="/blog-excel"
+                    href="/blog-excel/"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-secondary rounded-xl text-white font-semibold shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5"
                   >
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -278,7 +278,7 @@ export default async function CategoryPage({
                   </div>
 
                   <a
-                    href="/formations-excel"
+                    href="/formations-excel/"
                     className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-secondary rounded-xl text-white font-semibold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300 hover:-translate-y-1"
                   >
                     Voir les formations

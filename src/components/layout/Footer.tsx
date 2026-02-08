@@ -5,10 +5,10 @@ import Image from 'next/image';
 import { Container } from './Container';
 
 const legalLinks = [
-  { label: 'Mentions légales', href: '/mentions-legales' },
-  { label: 'Déclaration de confidentialité', href: '/declaration-de-confidentialite-ue' },
-  { label: 'Politique de cookies', href: '/politique-de-cookies-ue' },
-  { label: 'CGV', href: '/cgv' },
+  { label: 'Mentions légales', href: '/mentions-legales/' },
+  { label: 'Déclaration de confidentialité', href: '/declaration-de-confidentialite-ue/' },
+  { label: 'Politique de cookies', href: '/politique-de-cookies-ue/' },
+  { label: 'CGV', href: '/cgv/' },
   { label: 'Règlement intérieur', href: 'https://www.exceleur.fr/wp-content/uploads/2024/12/Reglement-interieur-Exceleur.pdf', external: true },
 ];
 

@@ -138,7 +138,7 @@ export function Hero({
                 <Button
                   variant="outline-white"
                   size="lg"
-                  href="/formations-excel"
+                  href="/formations-excel/"
                   className="group relative overflow-hidden px-8"
                   icon={
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

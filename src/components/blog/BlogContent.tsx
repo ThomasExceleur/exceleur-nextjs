@@ -22,7 +22,7 @@ export function BlogContent({ meta, children, className }: BlogContentProps) {
     { label: meta.title },
   ];
 
-  const articleUrl = `https://exceleur.fr/${meta.slug}`;
+  const articleUrl = `https://www.exceleur.fr/${meta.slug}`;
 
   return (
     <article className={cn(className)}>
@@ -163,7 +163,7 @@ export function BlogContent({ meta, children, className }: BlogContentProps) {
                 {meta.categories.map((category) => (
                   <Link
                     key={category}
-                    href={`/categorie/${category.toLowerCase().replace(/ /g, '-')}`}
+                    href={`/categorie/${category.toLowerCase().replace(/ /g, '-')}/`}
                     className="inline-flex items-center gap-1.5 px-4 py-2 bg-white rounded-full text-sm font-medium text-primary border border-primary/20 no-underline hover:bg-primary hover:text-white transition-colors duration-300"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-current" />
@@ -211,7 +211,7 @@ export function BlogContent({ meta, children, className }: BlogContentProps) {
                     Suivre
                   </Link>
                   <Link
-                    href="/formations-excel"
+                    href="/formations-excel/"
                     className="inline-flex items-center gap-2 px-4 py-2 bg-white text-primary text-sm font-bold rounded-full no-underline border border-primary/20 hover:bg-primary hover:text-white transition-colors"
                   >
                     Voir les formations

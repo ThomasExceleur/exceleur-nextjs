@@ -1,1 +1,1 @@
-export { OrganizationJsonLd, ArticleJsonLd, CourseJsonLd, WebsiteJsonLd } from './JsonLd';
+export { OrganizationJsonLd, ArticleJsonLd, BlogPostingJsonLd, CourseJsonLd, WebsiteJsonLd } from './JsonLd';

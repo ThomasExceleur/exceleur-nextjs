@@ -32,7 +32,7 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
 
   // Trailing slash configuration (match WordPress behavior)
-  trailingSlash: false,
+  trailingSlash: true,
 
   // Compress responses
   compress: true,

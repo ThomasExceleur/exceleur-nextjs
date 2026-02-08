@@ -131,6 +131,66 @@ export function CourseJsonLd({
   );
 }
 
+interface BlogPostingJsonLdProps {
+  title: string;
+  description: string;
+  slug: string;
+  datePublished: string;
+  dateModified?: string;
+  author?: string;
+  image?: string;
+}
+
+export function BlogPostingJsonLd({
+  title,
+  description,
+  slug,
+  datePublished,
+  dateModified,
+  author = "Thomas L'Exceleur",
+  image,
+}: BlogPostingJsonLdProps) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: title,
+    description: description,
+    url: `${siteConfig.url}/${slug}`,
+    datePublished: datePublished,
+    dateModified: dateModified || datePublished,
+    author: {
+      '@type': 'Person',
+      name: author,
+      url: siteConfig.url,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: siteConfig.name,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteConfig.url}/images/logo.webp`,
+      },
+    },
+    ...(image && {
+      image: {
+        '@type': 'ImageObject',
+        url: image.startsWith('http') ? image : `${siteConfig.url}${image}`,
+      },
+    }),
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${siteConfig.url}/${slug}`,
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
 export function WebsiteJsonLd() {
   const jsonLd = {
     '@context': 'https://schema.org',

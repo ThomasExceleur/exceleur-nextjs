@@ -26,7 +26,7 @@ export function BlogCard({
   if (variant === 'featured') {
     return (
       <article className={cn('group relative', className)}>
-        <Link href={`/${post.slug}`} className="block no-underline">
+        <Link href={`/${post.slug}/`} className="block no-underline">
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/5 to-accent/5 border border-gray-100 shadow-soft hover:shadow-card-elevated transition-all duration-500">
             {/* Image container */}
             <div className="relative aspect-[16/9] overflow-hidden">
@@ -88,7 +88,7 @@ export function BlogCard({
   if (variant === 'compact') {
     return (
       <article className={cn('group', className)}>
-        <Link href={`/${post.slug}`} className="flex gap-4 no-underline">
+        <Link href={`/${post.slug}/`} className="flex gap-4 no-underline">
           {/* Thumbnail */}
           <div className="relative flex-shrink-0 w-24 h-24 rounded-xl overflow-hidden">
             {post.featuredImage ? (
@@ -126,7 +126,7 @@ export function BlogCard({
 
       <div className="relative bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-soft hover:shadow-card-elevated transition-all duration-500 hover:-translate-y-1">
         {/* Featured Image */}
-        <Link href={`/${post.slug}`} className="block relative aspect-[16/10] overflow-hidden">
+        <Link href={`/${post.slug}/`} className="block relative aspect-[16/10] overflow-hidden">
           {post.featuredImage ? (
             <Image
               src={post.featuredImage}
@@ -197,7 +197,7 @@ export function BlogCard({
 
           {/* Title */}
           <h3 className="font-heading font-bold text-lg text-text-dark mb-2 line-clamp-2 group-hover:text-primary transition-colors duration-300">
-            <Link href={`/${post.slug}`} className="no-underline">
+            <Link href={`/${post.slug}/`} className="no-underline">
               {post.title}
             </Link>
           </h3>
@@ -212,7 +212,7 @@ export function BlogCard({
 
           {/* Read More Link */}
           <Link
-            href={`/${post.slug}`}
+            href={`/${post.slug}/`}
             className="inline-flex items-center gap-2 text-sm font-bold text-primary no-underline group/link"
           >
             <span className="relative">

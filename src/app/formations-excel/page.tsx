@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: 'Formations Excel | Exceleur',
   description:
     'Découvrez nos formations Excel. Devenez un expert Excel avec des programmes adaptés à tous les niveaux.',
+  alternates: {
+    canonical: '/formations-excel',
+  },
 };
 
 // Formation cards data with enhanced styling
@@ -195,7 +198,7 @@ export default function FormationsPage() {
             {formationsData.map((formation, index) => (
               <FadeIn key={formation.slug} direction="up" delay={index * 100}>
                 <Link
-                  href={`/formations-excel/${formation.slug}`}
+                  href={`/formations-excel/${formation.slug}/`}
                   className="group relative block h-full"
                 >
                   {/* Popular badge */}

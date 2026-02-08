@@ -2,7 +2,9 @@
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "framework": "nextjs",
-  "regions": ["cdg1"],
+  "regions": [
+    "cdg1"
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -37,83 +39,209 @@
   ],
   "redirects": [
     {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "exceleur.fr"
+        }
+      ],
+      "destination": "https://www.exceleur.fr/$1",
+      "permanent": true
+    },
+    {
       "source": "/formations-excel/le-decollage",
-      "destination": "/formations-excel/le-decollage-liste-attente",
+      "destination": "/formations-excel/le-decollage-liste-attente/",
       "permanent": true
     },
     {
       "source": "/formations-excel/la-machine",
-      "destination": "/formations-excel/la-machine-liste-attente",
+      "destination": "/formations-excel/la-machine-liste-attente/",
       "permanent": true
     },
     {
       "source": "/formations-excel/la-slide",
-      "destination": "/formations-excel/la-slide-liste-attente",
+      "destination": "/formations-excel/la-slide-liste-attente/",
       "permanent": true
     },
     {
       "source": "/formations-excel/power-query-secrets",
-      "destination": "/formations-excel/power-query-secrets-liste-attente",
+      "destination": "/formations-excel/power-query-secrets-liste-attente/",
       "permanent": true
     },
     {
       "source": "/blog",
-      "destination": "/blog-excel",
+      "destination": "/blog-excel/",
       "permanent": true
     },
     {
       "source": "/blog/",
-      "destination": "/blog-excel",
+      "destination": "/blog-excel/",
       "permanent": true
     },
     {
       "source": "/blog/:slug",
-      "destination": "/:slug",
+      "destination": "/:slug/",
       "permanent": true
     },
     {
       "source": "/blog/:slug/",
-      "destination": "/:slug",
+      "destination": "/:slug/",
       "permanent": true
     },
     {
       "source": "/category/:slug",
-      "destination": "/categorie/:slug",
+      "destination": "/categorie/:slug/",
       "permanent": true
     },
     {
       "source": "/category/:slug/",
-      "destination": "/categorie/:slug",
+      "destination": "/categorie/:slug/",
       "permanent": true
     },
     {
       "source": "/tag/:slug",
-      "destination": "/categorie/:slug",
+      "destination": "/categorie/:slug/",
       "permanent": true
     },
     {
       "source": "/tag/:slug/",
-      "destination": "/categorie/:slug",
+      "destination": "/categorie/:slug/",
       "permanent": true
     },
     {
       "source": "/formations/:slug",
-      "destination": "/formations-excel/:slug",
+      "destination": "/formations-excel/:slug/",
       "permanent": true
     },
     {
       "source": "/formations/:slug/",
-      "destination": "/formations-excel/:slug",
+      "destination": "/formations-excel/:slug/",
       "permanent": true
     },
     {
       "source": "/formations",
-      "destination": "/formations-excel",
+      "destination": "/formations-excel/",
       "permanent": true
     },
     {
       "source": "/formations/",
-      "destination": "/formations-excel",
+      "destination": "/formations-excel/",
+      "permanent": true
+    },
+    {
+      "source": "/formations_bf2025-2",
+      "destination": "/formations-excel/",
+      "permanent": true
+    },
+    {
+      "source": "/formations_bf2025-2/",
+      "destination": "/formations-excel/",
+      "permanent": true
+    },
+    {
+      "source": "/feed",
+      "destination": "/blog-excel/",
+      "permanent": true
+    },
+    {
+      "source": "/feed/",
+      "destination": "/blog-excel/",
+      "permanent": true
+    },
+    {
+      "source": "/blog-excel/feed",
+      "destination": "/blog-excel/",
+      "permanent": true
+    },
+    {
+      "source": "/blog-excel/feed/",
+      "destination": "/blog-excel/",
+      "permanent": true
+    },
+    {
+      "source": "/comments/feed",
+      "destination": "/blog-excel/",
+      "permanent": true
+    },
+    {
+      "source": "/comments/feed/",
+      "destination": "/blog-excel/",
+      "permanent": true
+    },
+    {
+      "source": "/author/:slug",
+      "destination": "/blog-excel/",
+      "permanent": true
+    },
+    {
+      "source": "/author/:slug/",
+      "destination": "/blog-excel/",
+      "permanent": true
+    },
+    {
+      "source": "/wp-login.php",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/wp-admin",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/wp-admin/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/xmlrpc.php",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/wp-json/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/page/:num",
+      "destination": "/blog-excel/",
+      "permanent": true
+    },
+    {
+      "source": "/page/:num/",
+      "destination": "/blog-excel/",
+      "permanent": true
+    },
+    {
+      "source": "/categorie/cellules/",
+      "destination": "/categorie/mise-en-forme/",
+      "permanent": true
+    },
+    {
+      "source": "/categorie/logiciels-gratuits/",
+      "destination": "/categorie/gratuit/",
+      "permanent": true
+    },
+    {
+      "source": "/categorie/logique/",
+      "destination": "/categorie/fonctions/",
+      "permanent": true
+    },
+    {
+      "source": "/categorie/recherche/",
+      "destination": "/categorie/fonctions/",
+      "permanent": true
+    },
+    {
+      "source": "/categorie/references/",
+      "destination": "/categorie/formules-excel/",
+      "permanent": true
+    },
+    {
+      "source": "/categorie/tva/",
+      "destination": "/categorie/comptabilite/",
       "permanent": true
     }
   ]

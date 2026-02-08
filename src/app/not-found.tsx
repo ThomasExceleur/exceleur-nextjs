@@ -121,7 +121,7 @@ export default function NotFound() {
               </Link>
 
               <Link
-                href="/blog-excel"
+                href="/blog-excel/"
                 className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent text-white font-heading font-bold text-base rounded-full border-2 border-white/30 hover:bg-white/10 hover:border-white/50 transition-all duration-300"
               >
                 <span>Explorer le blog</span>
