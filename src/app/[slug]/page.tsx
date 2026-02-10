@@ -84,22 +84,6 @@ Le livre est disponible sur les principales plateformes de vente en ligne.
     `,
     type: 'page',
   },
-  equipe: {
-    title: 'L\'équipe',
-    description: 'Découvrez l\'équipe derrière l\'Exceleur.',
-    content: `
-## Notre équipe
-
-### Thomas l'Exceleur
-
-Fondateur et formateur principal, Thomas est passionné par Excel depuis plus de 10 ans. Son objectif : rendre Excel accessible à tous et vous aider à booster votre carrière.
-
-### Notre mission
-
-Transformer Excel en votre super-pouvoir professionnel grâce à des formations de qualité.
-    `,
-    type: 'page',
-  },
   'guide-ultime-tcd': {
     title: 'Le guide ultime des Tableaux Croisés Dynamiques',
     description:

@@ -139,7 +139,6 @@ const pricingFeatures = [
   'Les questionnaires pour tester tes connaissances',
   'Les Cas Pratiques',
   '1 Accès à ma communauté privée',
-  '1 Accès aux Consultations',
   'Masterclass 1 : TCD Expert',
   'Masterclass 2 : Nouvelles formules',
   'Masterclass 3 : LAMBDA et LET',
@@ -726,7 +725,7 @@ export default function LeDecollagePage() {
                 title="Version Premium"
                 subtitle="Pour ceux qui veulent pouvoir me poser des questions"
                 price="1 200€"
-                features={pricingFeatures.slice(0, 8).map((f) => ({ text: f, included: true }))}
+                features={pricingFeatures.slice(0, 7).map((f) => ({ text: f, included: true }))}
                 ctaText="S'inscrire sur la liste d'attente"
                 ctaHref="#liste-attente"
                 highlighted

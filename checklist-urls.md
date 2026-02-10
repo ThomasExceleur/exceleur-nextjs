@@ -22,13 +22,9 @@ https://exceleur-nextjs.vercel.app/formations-excel/la-slide-liste-attente/
 
 https://exceleur-nextjs.vercel.app/formations-excel/excel-avance/
 
-https://exceleur-nextjs.vercel.app/formations-excel/formation-excel-entreprise/
-
 ### Pages contenu
 
 https://exceleur-nextjs.vercel.app/livre/
-
-https://exceleur-nextjs.vercel.app/equipe/
 
 https://exceleur-nextjs.vercel.app/guide-ultime-tcd/
 

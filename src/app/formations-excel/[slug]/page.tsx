@@ -13,10 +13,6 @@ const defaultFormations: Record<string, { title: string; description: string }> 
     title: 'Excel Avancé',
     description: 'Maîtrisez Excel pour optimiser vos compétences professionnelles. Formation créée par Thomas L\'Exceleur.',
   },
-  'formation-excel-entreprise': {
-    title: 'Formation Excel Entreprise',
-    description: 'Formation sur mesure pour les entreprises. Adaptée à vos besoins spécifiques et à votre secteur d\'activité.',
-  },
 };
 
 export async function generateStaticParams() {

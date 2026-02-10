@@ -82,6 +82,54 @@ const formationsData = [
       'Actualisation en un clic',
     ],
   },
+  {
+    slug: 'excelgpt',
+    title: 'ExcelGPT',
+    subtitle: 'Libère ton potentiel Excel grâce à l\'IA',
+    description: 'Et si ChatGPT t\'apportait un avantage injuste sur tes collègues ? 8 modules pour maîtriser l\'IA sur Excel.',
+    level: 'intermediaire' as const,
+    gradient: 'from-[#a78bfa] to-[#7c3aed]',
+    shadowColor: 'rgba(124, 58, 237, 0.3)',
+    icon: '🤖',
+    features: [
+      'L\'art du prompt professionnel',
+      'Formules parfaites avec l\'IA',
+      'Automatiser sans coder (VBA)',
+      'Les super-pouvoirs de Copilot',
+    ],
+  },
+  {
+    slug: 'tcd-express',
+    title: 'TCD Express',
+    subtitle: 'Maîtrise les TCD en moins de 7 jours',
+    description: 'Deviens celui qu\'on appelle quand il faut assurer sur Excel. 6 modules pour maîtriser les tableaux croisés dynamiques.',
+    level: 'intermediaire' as const,
+    gradient: 'from-[#f472b6] to-[#ec4899]',
+    shadowColor: 'rgba(236, 72, 153, 0.3)',
+    icon: '📋',
+    features: [
+      'Création de TCD professionnels',
+      'Filtres, segments et chronologies',
+      'Champs calculés et personnalisation',
+      'Projets et mises en pratique',
+    ],
+  },
+  {
+    slug: 'excel-avance',
+    title: 'Excel Avancé',
+    subtitle: 'Optimisez vos compétences professionnelles',
+    description: 'Maîtrisez les fonctionnalités avancées d\'Excel : TCD, Power Query, VBA et fonctions complexes.',
+    level: 'avance' as const,
+    gradient: 'from-[#2dd4bf] to-[#14b8a6]',
+    shadowColor: 'rgba(20, 184, 166, 0.3)',
+    icon: '🎯',
+    features: [
+      'Tableaux croisés dynamiques avancés',
+      'Fonctions RECHERCHEX, INDEX/EQUIV',
+      'Power Query et Power Pivot',
+      'Automatisation avec macros VBA',
+    ],
+  },
 ];
 
 const levelLabels = {
@@ -279,42 +327,6 @@ export default function FormationsPage() {
               </FadeIn>
             ))}
           </div>
-        </Container>
-      </section>
-
-      {/* Nos autres formations - Gradient section like exceleur.fr */}
-      <section className="relative py-16 lg:py-24 overflow-hidden">
-        {/* Gradient background matching exceleur.fr */}
-        <div className="absolute inset-0">
-          <div
-            className="absolute inset-0"
-            style={{
-              background: 'linear-gradient(135deg, #f0abfc 0%, #c084fc 30%, #818cf8 60%, #38bdf8 100%)',
-            }}
-          />
-          {/* Soft overlay blobs */}
-          <div
-            className="absolute inset-0 opacity-50"
-            style={{
-              background: `
-                radial-gradient(ellipse 60% 50% at 30% 30%, rgba(240, 171, 252, 0.6) 0%, transparent 50%),
-                radial-gradient(ellipse 50% 40% at 70% 70%, rgba(56, 189, 248, 0.5) 0%, transparent 50%)
-              `,
-            }}
-          />
-        </div>
-
-        <Container className="relative z-10">
-          <FadeIn direction="up">
-            <div className="text-center">
-              <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-black text-text-dark tracking-tight uppercase">
-                Nos autres formations
-              </h2>
-              <p className="mt-4 text-lg text-text-dark/70 max-w-2xl mx-auto">
-                D&apos;autres programmes sont en préparation. Inscrivez-vous à la newsletter pour être informé en avant-première.
-              </p>
-            </div>
-          </FadeIn>
         </Container>
       </section>
 

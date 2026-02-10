@@ -39,6 +39,22 @@ export function PricingCard({
         <div className="absolute -inset-1 bg-gradient-to-br from-primary via-secondary to-accent rounded-3xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity duration-500 -z-10" />
       )}
 
+      {/* Badge - outside overflow-hidden container to avoid clipping */}
+      {(highlighted || badge) && (
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
+          <div
+            className={cn(
+              'px-4 py-1.5 rounded-full text-sm font-heading font-bold shadow-lg whitespace-nowrap',
+              highlighted
+                ? 'bg-accent text-text-dark'
+                : 'bg-gradient-to-r from-primary to-secondary text-white'
+            )}
+          >
+            {badge || 'Recommandé'}
+          </div>
+        </div>
+      )}
+
       <div
         className={cn(
           'relative rounded-3xl p-6 lg:p-8 transition-all duration-500 overflow-hidden',
@@ -72,20 +88,6 @@ export function PricingCard({
               }}
             />
           </>
-        )}
-
-        {/* Badge */}
-        {(highlighted || badge) && (
-          <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-            <div className={cn(
-              'px-4 py-1.5 rounded-full text-sm font-heading font-bold shadow-lg',
-              highlighted
-                ? 'bg-accent text-text-dark'
-                : 'bg-gradient-to-r from-primary to-secondary text-white'
-            )}>
-              {badge || 'Recommandé'}
-            </div>
-          </div>
         )}
 
         <div className="relative z-10">

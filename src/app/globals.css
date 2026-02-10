@@ -513,12 +513,20 @@
   @apply text-body mb-6;
 }
 
-.prose ul, .prose ol {
-  @apply mb-6 pl-6;
+.prose ul {
+  @apply mb-6 pl-6 list-disc;
+}
+
+.prose ol {
+  @apply mb-6 pl-6 list-decimal;
 }
 
 .prose li {
   @apply mb-2;
+}
+
+.prose li::marker {
+  @apply text-primary;
 }
 
 .prose a {

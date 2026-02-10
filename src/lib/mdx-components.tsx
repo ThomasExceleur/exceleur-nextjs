@@ -50,7 +50,7 @@ export const mdxComponents = {
     );
   },
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className="my-6 space-y-3" {...props} />
+    <ul className="my-6 space-y-3 list-none pl-0" {...props} />
   ),
   ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
     <ol className="my-6 space-y-3 list-none counter-reset-item" {...props} />

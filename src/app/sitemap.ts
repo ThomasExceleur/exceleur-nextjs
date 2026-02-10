@@ -77,7 +77,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Formation pages
   const formations = [
     'excel-avance',
-    'formation-excel-entreprise',
     'le-decollage-liste-attente',
     'la-machine-liste-attente',
     'power-query-secrets-liste-attente',

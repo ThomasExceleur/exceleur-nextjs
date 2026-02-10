@@ -227,24 +227,13 @@ export function HorizontalBlogList({
       {/* Header */}
       {(title || subtitle) && (
         <FadeIn direction="up">
-          <div className="flex items-end justify-between">
-            <div>
-              {title && (
-                <h3 className="font-heading text-2xl font-bold text-text-dark">{title}</h3>
-              )}
-              {subtitle && (
-                <p className="text-text-light mt-1">{subtitle}</p>
-              )}
-            </div>
-            <a
-              href="/blog-excel/"
-              className="hidden sm:flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-hover transition-colors group"
-            >
-              Voir tous les articles
-              <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
+          <div>
+            {title && (
+              <h3 className="font-heading text-2xl font-bold text-text-dark">{title}</h3>
+            )}
+            {subtitle && (
+              <p className="text-text-light mt-1">{subtitle}</p>
+            )}
           </div>
         </FadeIn>
       )}
@@ -273,18 +262,6 @@ export function HorizontalBlogList({
         </div>
       </div>
 
-      {/* Mobile see all link */}
-      <div className="sm:hidden text-center">
-        <a
-          href="/blog-excel/"
-          className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-hover transition-colors"
-        >
-          Voir tous les articles
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </a>
-      </div>
     </div>
   );
 }
