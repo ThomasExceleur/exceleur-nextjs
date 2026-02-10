@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import remarkGfm from 'remark-gfm';
 import { BlogContent } from '@/components/blog/BlogContent';
 import { Container } from '@/components/layout/Container';
 import { Newsletter } from '@/components/sections/Newsletter';
@@ -9,6 +10,8 @@ import { FadeIn } from '@/components/ui/FadeIn';
 import { getBlogPost, getAllBlogPosts, getPage, getAllPageSlugs } from '@/lib/mdx';
 import { BlogPostingJsonLd } from '@/components/seo';
 import { mdxComponents } from '@/lib/mdx-components';
+
+const mdxOptions = { mdxOptions: { remarkPlugins: [remarkGfm] } };
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -650,7 +653,7 @@ export default async function DynamicPage({ params }: PageProps) {
           image={blogPost.meta.featuredImage}
         />
         <BlogContent meta={blogPost.meta}>
-          <MDXRemote source={blogPost.content} components={mdxComponents} />
+          <MDXRemote source={blogPost.content} components={mdxComponents} options={mdxOptions} />
         </BlogContent>
         <Newsletter variant="gradient" />
       </>
@@ -668,7 +671,7 @@ export default async function DynamicPage({ params }: PageProps) {
           type="page"
         />
         <ContentSection type="page">
-          <MDXRemote source={page.content} components={mdxComponents} />
+          <MDXRemote source={page.content} components={mdxComponents} options={mdxOptions} />
         </ContentSection>
         <Newsletter variant="gradient" />
       </>
@@ -688,7 +691,7 @@ export default async function DynamicPage({ params }: PageProps) {
           type={staticPage.type}
         />
         <ContentSection type={staticPage.type}>
-          <MDXRemote source={staticPage.content} components={mdxComponents} />
+          <MDXRemote source={staticPage.content} components={mdxComponents} options={mdxOptions} />
         </ContentSection>
         {staticPage.type === 'guide' && <GuideCTA />}
         {config.showNewsletter && <Newsletter variant="gradient" />}

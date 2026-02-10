@@ -50,14 +50,13 @@ export const mdxComponents = {
     );
   },
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className="my-6 space-y-3 list-none pl-0" {...props} />
+    <ul {...props} />
   ),
   ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className="my-6 space-y-3 list-none counter-reset-item" {...props} />
+    <ol {...props} />
   ),
   li: ({ children, ...props }: React.HTMLAttributes<HTMLLIElement>) => (
-    <li className="relative pl-7 text-body text-text" {...props}>
-      <span className="absolute left-0 top-1.5 w-2 h-2 rounded-full bg-gradient-to-br from-primary to-secondary" />
+    <li className="text-body text-text" {...props}>
       {children}
     </li>
   ),

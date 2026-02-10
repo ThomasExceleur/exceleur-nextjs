@@ -513,20 +513,41 @@
   @apply text-body mb-6;
 }
 
-.prose ul {
-  @apply mb-6 pl-6 list-disc;
+.prose ul,
+.prose ol {
+  @apply mb-6 pl-0;
+  list-style: none;
 }
 
-.prose ol {
-  @apply mb-6 pl-6 list-decimal;
+.prose ul > *:not(:first-child),
+.prose ol > *:not(:first-child) {
+  margin-top: 0.75rem;
 }
 
 .prose li {
-  @apply mb-2;
+  @apply relative mb-0;
+  padding-left: 1.75rem;
 }
 
-.prose li::marker {
-  @apply text-primary;
+.prose ul > li::before {
+  content: '';
+  @apply absolute w-2 h-2 rounded-full;
+  left: 0;
+  top: 0.5em;
+  background: linear-gradient(to bottom right, #CB6AED, #5048DD);
+}
+
+.prose ol {
+  counter-reset: item;
+}
+
+.prose ol > li::before {
+  content: counter(item);
+  counter-increment: item;
+  @apply absolute font-bold text-sm;
+  left: 0;
+  top: 0;
+  color: #CB6AED;
 }
 
 .prose a {
