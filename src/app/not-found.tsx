@@ -141,7 +141,7 @@ export default function NotFound() {
                   { label: 'Formations Excel', href: '/formations-excel' },
                   { label: 'Blog Excel', href: '/blog-excel' },
                   { label: 'Le Livre', href: '/livre' },
-                  { label: 'Contact', href: '/contact' },
+                  { label: 'Accueil', href: '/' },
                 ].map((link) => (
                   <Link
                     key={link.label}

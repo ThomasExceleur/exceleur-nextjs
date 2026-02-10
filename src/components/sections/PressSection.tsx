@@ -24,15 +24,33 @@ interface PressSectionProps {
 
 const defaultPressItems: PressItem[] = [
   {
+    name: 'Konbini',
+    logo: '/images/logos/logo-konbini.png',
+  },
+  {
+    name: 'BFM TV',
+    logo: '/images/logos/logo-bfm-tv.svg',
+  },
+  {
+    name: 'Microsoft',
+    logo: '/images/logos/logo-microsoft.png',
+  },
+  {
+    name: 'Society',
+    logo: '/images/logos/logo-society.png',
+  },
+  {
+    name: 'X (Twitter)',
+    logo: '/images/logos/logo-twitter-x.svg',
+  },
+  {
     name: 'Pose ta Dem',
     logo: '/images/logos/podcast-pose-ta-dem.png',
-    url: '#',
     description: 'Podcast entrepreneuriat',
   },
   {
     name: 'Les Geeks des Chiffres',
     logo: '/images/logos/podcast-geek-chiffres.png',
-    url: '#',
     description: 'Podcast finance & data',
   },
 ];

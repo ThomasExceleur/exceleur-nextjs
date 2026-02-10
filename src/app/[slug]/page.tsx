@@ -84,26 +84,6 @@ Le livre est disponible sur les principales plateformes de vente en ligne.
     `,
     type: 'page',
   },
-  contact: {
-    title: 'Contact',
-    description: 'Contactez l\'Exceleur pour vos questions sur les formations Excel.',
-    content: `
-## Contactez-nous
-
-Vous avez une question sur nos formations ? Vous souhaitez un devis personnalisé ?
-
-### Email
-contact@exceleur.fr
-
-### Réseaux sociaux
-Retrouvez-nous sur LinkedIn, YouTube et Facebook.
-
-### Formulaire de contact
-
-Un formulaire de contact sera bientôt disponible.
-    `,
-    type: 'page',
-  },
   equipe: {
     title: 'L\'équipe',
     description: 'Découvrez l\'équipe derrière l\'Exceleur.',
@@ -419,6 +399,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: blogPost.meta.metaDescription || blogPost.meta.excerpt,
       alternates: {
         canonical: `/${slug}`,
+      },
+      openGraph: {
+        title: blogPost.meta.title,
+        description: blogPost.meta.metaDescription || blogPost.meta.excerpt,
+        type: 'article',
+        images: blogPost.meta.featuredImage
+          ? [{ url: blogPost.meta.featuredImage }]
+          : [{ url: '/images/og-image.png' }],
       },
     };
   }

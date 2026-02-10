@@ -82,6 +82,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     'la-machine-liste-attente',
     'power-query-secrets-liste-attente',
     'la-slide-liste-attente',
+    'excelgpt',
+    'tcd-express',
   ];
 
   const formationUrls = formations.map((slug) => ({
