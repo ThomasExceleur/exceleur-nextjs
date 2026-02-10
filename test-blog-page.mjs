@@ -1,55 +1,66 @@
 import { chromium } from 'playwright';
 
-const browser = await chromium.launch({ headless: true });
-const context = await browser.newContext({
-  viewport: { width: 1280, height: 900 },
-  javaScriptEnabled: true,
-});
+const PORT = 3460;
+const BASE = `http://localhost:${PORT}`;
+
+// Wait for server to be ready
+async function waitForServer(maxAttempts = 30) {
+  for (let i = 0; i < maxAttempts; i++) {
+    try {
+      const resp = await fetch(`${BASE}/`, { signal: AbortSignal.timeout(5000) });
+      if (resp.ok || resp.status === 500) return true; // 500 = server running but page error
+    } catch (e) {}
+    await new Promise(r => setTimeout(r, 2000));
+    console.log(`Waiting for server... (${i + 1}/${maxAttempts})`);
+  }
+  return false;
+}
+
+console.log('Waiting for dev server...');
+const ready = await waitForServer();
+if (!ready) {
+  console.error('Server did not start');
+  process.exit(1);
+}
+console.log('Server ready!');
+
+const browser = await chromium.launch({ headless: true, channel: 'msedge' });
+const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
 const page = await context.newPage();
 
-// Navigate and wait for everything to load
-await page.goto('http://localhost:3457/blog-excel/', { waitUntil: 'networkidle', timeout: 60000 });
-await page.waitForTimeout(3000);
+// Warm up the blog-excel page
+console.log('Loading blog-excel page...');
+await page.goto(`${BASE}/blog-excel/`, { waitUntil: 'load', timeout: 120000 });
+await page.waitForTimeout(5000);
+await page.reload({ waitUntil: 'networkidle', timeout: 60000 });
+await page.waitForTimeout(2000);
 
-// Screenshot 1: Top of page (hero section with stats)
-await page.screenshot({ path: 'test-blog-hero.png', fullPage: false });
+// Hero section screenshot
+await page.screenshot({ path: 'test-blog-hero.png' });
+console.log('Hero screenshot taken');
 
-// Screenshot 2: Scroll to popular articles section
+// Popular articles
 await page.evaluate(() => window.scrollTo(0, 700));
-await page.waitForTimeout(1500);
-await page.screenshot({ path: 'test-blog-popular.png', fullPage: false });
+await page.waitForTimeout(1000);
+await page.screenshot({ path: 'test-blog-popular.png' });
+console.log('Popular screenshot taken');
 
-// Screenshot 3: Continue scrolling to articles grid
-await page.evaluate(() => window.scrollTo(0, 1400));
-await page.waitForTimeout(1500);
-await page.screenshot({ path: 'test-blog-articles.png', fullPage: false });
+// Now test a page with bullet points
+console.log('Loading page with bullet points...');
+await page.goto(`${BASE}/raccourcis-indispensables-excel/`, { waitUntil: 'load', timeout: 120000 });
+await page.waitForTimeout(5000);
+await page.reload({ waitUntil: 'networkidle', timeout: 60000 });
+await page.waitForTimeout(2000);
 
-// Screenshot 4: Scroll further
-await page.evaluate(() => window.scrollTo(0, 2100));
-await page.waitForTimeout(1500);
-await page.screenshot({ path: 'test-blog-more.png', fullPage: false });
+await page.evaluate(() => window.scrollTo(0, 500));
+await page.waitForTimeout(1000);
+await page.screenshot({ path: 'test-bullets-1.png' });
+console.log('Bullets 1 taken');
 
-// Screenshot 5: Bottom of page
-await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-await page.waitForTimeout(1500);
-await page.screenshot({ path: 'test-blog-bottom.png', fullPage: false });
-
-// Now navigate to an article that likely has bullet points
-await page.goto('http://localhost:3457/10-astuces-pour-optimiser-excel/', { waitUntil: 'networkidle', timeout: 60000 });
-await page.waitForTimeout(3000);
-
-// Scroll to content area
-await page.evaluate(() => window.scrollTo(0, 600));
-await page.waitForTimeout(1500);
-await page.screenshot({ path: 'test-blog-article-content.png', fullPage: false });
-
-await page.evaluate(() => window.scrollTo(0, 1200));
-await page.waitForTimeout(1500);
-await page.screenshot({ path: 'test-blog-article-content2.png', fullPage: false });
-
-await page.evaluate(() => window.scrollTo(0, 1800));
-await page.waitForTimeout(1500);
-await page.screenshot({ path: 'test-blog-article-content3.png', fullPage: false });
+await page.evaluate(() => window.scrollTo(0, 1000));
+await page.waitForTimeout(1000);
+await page.screenshot({ path: 'test-bullets-2.png' });
+console.log('Bullets 2 taken');
 
 await browser.close();
-console.log('All screenshots saved!');
+console.log('Done!');
