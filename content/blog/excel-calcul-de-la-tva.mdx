@@ -71,18 +71,13 @@ Médicaments remboursables
 La **formule calcul TVA Excel** la plus fondamentale :
 
 ```excel
-=Prix_HT  Taux_TVA
+=Prix_HT <em> Taux_TVA
 ```
-
-_
 
 **Exemple concret :**
 
-_
-
-```excel
-=B2
-```
+\=B2  0,20    // Pour un taux de 20%
+=B2 _ 20%     // Notation alternative_
 
 _
 
@@ -99,9 +94,8 @@ Pour obtenir le prix toutes taxes comprises :
 
 _
 
-```excel
-=Prix_HT
-```
+_\=Prix\_HT _ (1 + Taux\_TVA)
+=B2 _ 1,20    // Pour 20% de TVA_
 
 _
 
@@ -128,9 +122,8 @@ Pour isoler le montant de TVA contenu dans un prix TTC :
 
 _
 
-```excel
-=Prix_TTC
-```
+_\=Prix\_TTC _ (Taux\_TVA / (1 + Taux\_TVA))
+=C2 _ (0,20 / 1,20)    // Extrait la TVA à 20%_
 
 _
 
@@ -170,7 +163,7 @@ D
 
 Montant TVA
 
-`=B2C2`
+\=B2C2
 
 E
 
@@ -183,9 +176,11 @@ Prix TTC
 
 ```excel
 // Cellule D2 - Montant TVA
-=B2C2
-// Cellule E2 - Prix TTC  
-=B2(1+C2)
+=B2<em>C2
+<p>// Cellule E2 - Prix TTC  
+=B2</em>(1+C2)</p>
+<p>// Cellule F2 - Vérification (optionnelle)
+=SI(ABS(E2-(B2+D2))<0,01;"OK";"Erreur")
 ```
 
 
@@ -219,19 +214,18 @@ Médical
 **Formule automatisée :**
 
 ```excel
-=B2  RECHERCHEV(A2; TableauTVA; 2; FAUX)
+=B2 <em> RECHERCHEV(A2; TableauTVA; 2; FAUX)
 ```
-
-_
 
 
 ### Fonction SI Multiple pour les Taux
 
 _
 
-```excel
-=SI(A2="Standard"; B2
-```
+_\=SI(A2="Standard"; B2_0,20;
+   SI(A2="Restauration"; B2_0,10;
+   SI(A2="Alimentaire"; B2_0,055;
+   B2_0,021)))_
 
 _
 
@@ -256,10 +250,12 @@ Pour le **calcul déclaration TVA mensuelle Excel**, organisez vos données ains
 ```excel
 // Ligne 01 - Opérations imposables à 20%
 =SOMME.SI(TauxTVA; 0,20; BaseHT)
-// Ligne 02 - TVA brute à 20%
-=SOMME.SI(TauxTVA; 0,20; MontantTVA)
-// Ligne 08 - Opérations imposables à 10%
-=SOMME.SI(TauxTVA; 0,10; BaseHT)
+<p>// Ligne 02 - TVA brute à 20%
+=SOMME.SI(TauxTVA; 0,20; MontantTVA)</p>
+<p>// Ligne 08 - Opérations imposables à 10%
+=SOMME.SI(TauxTVA; 0,10; BaseHT)</p>
+<p>// Ligne 09 - TVA brute à 10%
+=SOMME.SI(TauxTVA; 0,10; MontantTVA)
 ```
 
 
@@ -270,16 +266,19 @@ Pour le **calcul déclaration TVA mensuelle Excel**, organisez vos données ains
 
 _
 
-```vba
-Sub CalculerTVA()
+_Sub CalculerTVA()
     Dim ws As Worksheet
     Set ws = ActiveSheet
     
     Dim i As Long
     For i = 2 To ws.Cells(ws.Rows.Count, "B").End(xlUp).Row
         ' Calcul TVA
-        ws.Cells(i, "D").Value = ws.Cells(i, "B").Value
-```
+        ws.Cells(i, "D").Value = ws.Cells(i, "B").Value _ ws.Cells(i, "C").Value
+        
+        ' Calcul TTC
+        ws.Cells(i, "E").Value = ws.Cells(i, "B").Value + ws.Cells(i, "D").Value
+    Next i
+End Sub
 
 
 ### Validation Automatique des Taux
@@ -321,22 +320,21 @@ End Sub
 
 ```excel
 // Prix HT après remise
-=PrixInitial  (1 - TauxRemise)
-// TVA sur prix remisé
-=(PrixInitial  (1 - TauxRemise))  TauxTVA
+=PrixInitial <em> (1 - TauxRemise)
+<p>// TVA sur prix remisé
+=(PrixInitial </em> (1 - TauxRemise)) <em> TauxTVA</p>
+<p>// Prix TTC final
+=(PrixInitial </em> (1 - TauxRemise)) <em> (1 + TauxTVA)
 ```
-
-_
 
 
 ### Arrondi TVA (Règles Fiscales)
 
-_
-
-```excel
 // Arrondi au centime inférieur (règle française)
-=ARRONDI.INF(B2
-```
+=ARRONDI.INF(B2  C2; 2)
+
+// Arrondi classique au centime
+=ARRONDI(B2 _ C2; 2)_
 
 _
 
@@ -349,8 +347,10 @@ _
 ```excel
 // Vérification cohérence HT + TVA = TTC
 =SI(ABS((B2+D2)-E2)<0,01; "✓"; "⚠️ Erreur")
-// Contrôle plausibilité taux TVA
-=SI(ET(C2>=0; C2<=0,25); "OK"; "Taux suspect")
+<p>// Contrôle plausibilité taux TVA
+=SI(ET(C2>=0; C2<=0,25); "OK"; "Taux suspect")</p>
+<p>// Validation montants positifs
+=SI(B2>0; "Valide"; "Montant négatif")
 ```
 
 
@@ -374,15 +374,15 @@ _
 
 ### Dashboard TVA Mensuel
 
-_
-
 ```excel
 // Total TVA collectée du mois
 =SOMME.SI(Mois; MoisEnCours; TVACollectée)
-// Total TVA déductible du mois  
-=SOMME.SI(Mois; MoisEnCours; TVADéductible)
-// TVA nette à payer
-=TotalTVACollectée - TotalTVADéductible
+<p>// Total TVA déductible du mois  
+=SOMME.SI(Mois; MoisEnCours; TVADéductible)</p>
+<p>// TVA nette à payer
+=TotalTVACollectée - TotalTVADéductible</p>
+<p>// Pourcentage de TVA effective
+=TotalTVA / TotalHT </em> 100
 ```
 
 
@@ -408,11 +408,11 @@ Préparez vos données pour l'export :
 ```excel
 // Format compte comptable
 ="44571" & SI(C2=0,20; "00"; SI(C2=0,10; "10"; "55"))
-// Libellé écriture
-="TVA " & C2100 & "% - " & A2
+<p>// Libellé écriture
+="TVA " & C2<em>100 & "% - " & A2</p>
+<p>// Montant avec signe comptable
+=SI(TypeEcriture="Vente"; D2; -D2)
 ```
-
-_
 
 
 ### Réconciliation Bancaire TVA
@@ -420,6 +420,8 @@ _
 ```excel
 // Vérification encaissement TVA
 =RECHERCHEV(NumFacture; TableauPaiements; 3; FAUX)
+<p>// Écart encaissement/facturation
+=MontantEncaissé - MontantFacturé
 ```
 
 
@@ -445,10 +447,11 @@ _
 
 _
 
-```excel
-// Dans un tableau Excel nommé "Factures"
-=Factures
-```
+_// Dans un tableau Excel nommé "Factures"
+=Factures _ Factures
+
+// Totaux automatiques
+=SOMME(Factures)
 
 
 ## Cas d'Usage Sectoriels
@@ -462,12 +465,15 @@ Le secteur e-commerce présente des défis particuliers pour le **calcul TVA Exc
 // TVA selon pays de livraison (Union Européenne)
 =SI(PaysLivraison="France"; 0,20; 
    SI(EstUE(PaysLivraison); 0; 0,20))
-// Calcul pour marketplace
-=PrixVente  (TauxCommission + TauxTVA)
-// Gestion seuils e-commerce européen
-=SI(ET(CADestination>10000; PaysDestination<>"France"); TauxTVADestination; 0,20)
-// TVA sur frais de port
-=SI(FraisPort>0; FraisPort  TauxTVA; 0)
+<p>// Calcul pour marketplace
+=PrixVente <em> (TauxCommission + TauxTVA)</p>
+<p>// Gestion seuils e-commerce européen
+=SI(ET(CADestination>10000; PaysDestination<>"France"); TauxTVADestination; 0,20)</p>
+<p>// TVA sur frais de port
+=SI(FraisPort>0; FraisPort </em> TauxTVA; 0)</p>
+<p>// Calcul pour expédition multi-pays
+=SI(OU(PaysDestination="Allemagne"; PaysDestination="Espagne"); 
+   PrixHT <em> TauxTVADestination; PrixHT </em> 0,20)
 ```
 
 **Tableau de gestion des taux TVA européens :**
@@ -520,28 +526,39 @@ Le secteur du BTP bénéficie du mécanisme d'autoliquidation qui nécessite une
 ```excel
 // TVA en autoliquidation (BTP)
 =SI(TypeClient="Professionnel BTP"; 0; TauxTVANormal)
-// Mention obligatoire
-=SI(TVAAutoliquidation=VRAI; "Autoliquidation TVA"; "")
-// Vérification conditions autoliquidation
+<p>// Mention obligatoire
+=SI(TVAAutoliquidation=VRAI; "Autoliquidation TVA"; "")</p>
+<p>// Vérification conditions autoliquidation
 =SI(ET(SecteurClient="BTP"; StatutClient="Professionnel"; 
-   CA_Client>7600); "Autoliquidation"; "TVA normale")
-// Calcul mixte (matériel TVA + main d'œuvre autoliquidation)
-=SI(TypePrestation="Matériel"; MontantHT  0,20; 0)
+   CA_Client>7600); "Autoliquidation"; "TVA normale")</p>
+<p>// Calcul mixte (matériel TVA + main d'œuvre autoliquidation)
+=SI(TypePrestation="Matériel"; MontantHT <em> 0,20; 0)</p>
+<p>// Contrôle cohérence facture BTP
+=SI(ET(SecteurActivité="BTP"; TypeFacture="Sous-traitance"); 
+   "Vérifier autoliquidation"; "TVA standard")
 ```
-
-_
 
 
 ### Professions Libérales
 
 Les professions libérales ont des règles spécifiques concernant la franchise de TVA et les seuils d'assujettissement.
 
-_
-
-```excel
 // TVA sur honoraires
-=SI(StatutTVA="Franchise"; 0; MontantHT
-```
+=SI(StatutTVA="Franchise"; 0; MontantHT  0,20)
+
+// Seuil franchise base
+=SI(CAannuel>36800; "Assujetti"; "Franchise")
+
+// Calcul prorata temporis pour dépassement seuil
+=SI(ET(CAannuel>36800; MoisDépassement<=12); 
+   (13-MoisDépassement)/12 _ CA\_Imposable _ 0,20; 0)
+
+// Gestion franchise en base et débits
+=SI(OU(CAannuel>36800; CA\_Encaissements>39100); 
+   "Sortie franchise"; "Maintien franchise")
+
+// TVA sur prestations internationales
+=SI(PaysPrestation="UE"; 0; MontantHT _ 0,20)_
 
 _
 
@@ -550,10 +567,16 @@ _
 
 _
 
-```excel
-// TVA médicaments et dispositifs
-=SI(CodeProduit="Médicament"; PrixHT
-```
+_// TVA médicaments et dispositifs
+=SI(CodeProduit="Médicament"; PrixHT _ 0,021; 
+   SI(CodeProduit="Dispositif"; PrixHT _ 0,055; PrixHT _ 0,20))
+
+// Prestations médicales (exonérées)
+=SI(TypePrestation="Soin"; 0; MontantHT _ 0,20)_
+
+_// Calcul pour pharmacies
+=SI(OU(CodeACL="Remboursable"; TypeProduit="Médicament"); 
+   PrixHT _ 0,021; PrixHT _ 0,20)_
 
 _
 
@@ -562,11 +585,15 @@ _
 
 _
 
-```excel
-// Produits agricoles
+_// Produits agricoles
 =SI(OU(Catégorie="Fruits"; Catégorie="Légumes"; Catégorie="Céréales"); 
-   PrixHT
-```
+   PrixHT _ 0,055; PrixHT _0,20)_
+
+_// Transformation agroalimentaire
+=SI(DegreTransformation="Primaire"; PrixHT _ 0,055; PrixHT _ 0,20)_
+
+_// Vente directe producteur
+=SI(TypeVente="Directe"; PrixHT _ 0,055; PrixHT _ 0,20)_
 
 _
 
@@ -588,10 +615,8 @@ _
 
 _
 
-```excel
-// Utiliser ARRONDI pour cohérence
-=ARRONDI(B2
-```
+_// Utiliser ARRONDI pour cohérence
+=ARRONDI(B2 _ C2; 2)
 
 **Références circulaires :**
 
@@ -609,9 +634,9 @@ _
 ```M
 // Nettoyage des taux TVA en Power Query
 = Table.TransformColumns(Source, {"Taux TVA", each Number.From(Text.Replace(_, "%", ""))/100})
+<p>// Calcul TVA en colonne calculée
+= Table.AddColumn(#"Étape précédente", "Montant TVA", each  <em> )
 ```
-
-_
 
 
 ## Analyse de Conformité et Contrôles Qualité
@@ -625,23 +650,28 @@ Pour garantir la fiabilité de vos **calculs TVA Excel**, implémentez des contr
 // Vérification cohérence taux/activité
 =SI(ET(TypeActivité="Restauration"; TauxTVA<>0,10); 
    "⚠️ Taux incorrect"; "✓ Conforme")
-// Contrôle plafonds et seuils
+<p>// Contrôle plafonds et seuils
 =SI(ET(TypeEntreprise="Auto-entrepreneur"; CAannuel>77700); 
-   "⚠️ Dépassement seuil"; "✓ Dans les limites")
-// Validation dates et périodes
+   "⚠️ Dépassement seuil"; "✓ Dans les limites")</p>
+<p>// Validation dates et périodes
 =SI(MOIS(DateFacture)<>MoisDéclaration; 
-   "⚠️ Période inadéquate"; "✓ Période correcte")
+   "⚠️ Période inadéquate"; "✓ Période correcte")</p>
+<p>// Contrôle total facture
+=SI(ABS(SommeHT + SommeTVA - SommeTTC) > 0,01; 
+   "⚠️ Erreur calcul"; "✓ Calcul exact")
 ```
 
 
 ### Tableau de Bord de Conformité TVA
 
-_
-
-```excel
 // Taux de conformité des calculs
-=NB.SI(ControleTVA; "✓ Conforme") / NB(ControleTVA)
-```
+=NB.SI(ControleTVA; "✓ Conforme") / NB(ControleTVA)  100
+
+// Écarts moyens détectés
+=MOYENNE(SI(EcartCalcul<>0; ABS(EcartCalcul)))
+
+// Nombre d'anomalies par type
+=NB.SI.ENS(TypeAnomalie; "Taux incorrect"; DateControle; ">="&DEBUT.MOIS(AUJOURD'HUI()))
 
 
 ## Intégration Avancée avec les Systèmes d'Information
@@ -655,8 +685,10 @@ Pour une automatisation complète du **calcul TVA Excel** avec vos systèmes exi
 // Import automatique depuis ERP
 =SI(ESTERREUR(RECHERCHEV(CodeProduit; TableERP; 5; FAUX)); 
    "Produit non trouvé"; RECHERCHEV(CodeProduit; TableERP; 5; FAUX))
-// Synchronisation des taux en temps réel
-=SI(DateMiseJour
+<p>// Synchronisation des taux en temps réel
+=SI(DateMiseJour<AUJOURD'HUI(); "Mettre à jour les taux"; TauxActuel)</p>
+<p>// Export vers système comptable
+="Compte: " & CompteTVA & " - Montant: " & TEXTE(MontantTVA; "0,00€")
 ```
 
 
@@ -666,8 +698,11 @@ Pour une automatisation complète du **calcul TVA Excel** avec vos systèmes exi
 // Déclencheurs conditionnels pour Power Automate
 =SI(ET(MontantTVA>10000; TypeDeclaration="Mensuelle"); 
    "DÉCLENCHER_ALERTE"; "TRAITEMENT_NORMAL")
-// Formatage pour API REST
-='{"montant_ht":' & B2 & ',"taux_tva":' & C2 & ',"montant_tva":' & D2 & '}'
+<p>// Formatage pour API REST
+='{"montant_ht":' & B2 & ',"taux_tva":' & C2 & ',"montant_tva":' & D2 & '}'</p>
+<p>// Validation format données
+=SI(ET(ESTNUM(MontantHT); ESTNUM(TauxTVA); MontantHT>0); 
+   "DONNÉES_VALIDES"; "ERREUR_FORMAT")
 ```
 
 
@@ -679,12 +714,15 @@ Pour une automatisation complète du **calcul TVA Excel** avec vos systèmes exi
 ```excel
 // Calcul TVA sur marge (brocanteurs, art...)
 =SI(TypeActivité="Brocante"; 
-   (PrixVente - PrixAchat) / (1 + TauxTVA)  TauxTVA; 
-   PrixVente  TauxTVA)
-// Régime spécial véhicules d'occasion
+   (PrixVente - PrixAchat) / (1 + TauxTVA) <em> TauxTVA; 
+   PrixVente </em> TauxTVA)
+<p>// Régime spécial véhicules d'occasion
 =SI(ET(TypeBien="Véhicule"; Statut="Occasion"); 
-   MAX((PrixVente - PrixAchat)  TauxTVA; 0); 
-   PrixVente  TauxTVA)
+   MAX((PrixVente - PrixAchat) <em> TauxTVA; 0); 
+   PrixVente </em> TauxTVA)</p>
+<p>// TVA déductible sur immobilisations
+=SI(ET(TypeBien="Immobilisation"; Secteur<>"Exonéré"); 
+   MontantHT <em> TauxTVA </em> CoeffDeduction; 0)
 ```
 
 
@@ -692,10 +730,13 @@ Pour une automatisation complète du **calcul TVA Excel** avec vos systèmes exi
 
 ```excel
 // TVA sur opérations immobilières
-=SI(TypeOperation="Vente neuf"; PrixHT  0,20; 
-   SI(TypeOperation="Location meublée"; LoyerHT  0,20; 0))
-// Option TVA sur locations nues
-=SI(OptionTVA=VRAI; LoyerHT  0,20; 0)
+=SI(TypeOperation="Vente neuf"; PrixHT <em> 0,20; 
+   SI(TypeOperation="Location meublée"; LoyerHT </em> 0,20; 0))
+<p>// Option TVA sur locations nues
+=SI(OptionTVA=VRAI; LoyerHT <em> 0,20; 0)</p>
+<p>// Prorata de déduction immobilier
+=SI(PourcentageUsageProfessionnel>0; 
+   TVAAchat </em> PourcentageUsageProfessionnel / 100; 0)
 ```
 
 
@@ -704,13 +745,14 @@ Pour une automatisation complète du **calcul TVA Excel** avec vos systèmes exi
 ```excel
 // Livraisons intracommunautaires
 =SI(ET(PaysDestination<>"France"; EstMembreUE(PaysDestination)); 0; 
-   SI(PaysDestination="France"; PrixHT  TauxTVA; 0))
-// Acquisitions intracommunautaires
+   SI(PaysDestination="France"; PrixHT <em> TauxTVA; 0))
+<p>// Acquisitions intracommunautaires
 =SI(ET(TypeOperation="Acquisition"; PaysOrigine<>"France"); 
-   PrixHT  TauxTVAFrance; 0)
+   PrixHT </em> TauxTVAFrance; 0)</p>
+<p>// TVA sur prestations de services UE
+=SI(ET(TypePrestation="Service"; LieuPrestation<>"France"); 
+   0; PrixHT <em> TauxTVA)
 ```
-
-_
 
 
 ## Modèles Prêts à l'Emploi
@@ -718,24 +760,49 @@ _
 
 ### Template Facture avec TVA Avancé
 
-_
-
 ```excel
 // Structure recommandée
 A1: "FACTURE N°" & B1
 A3: "Désignation"    B3: "Qté"    C3: "PU HT"    D3: "Total HT"    E3: "TVA"    F3: "Total TTC"
+<p>// Formules ligne produit avec validation
+D4: =SI(ET(ESTNUM(B4); ESTNUM(C4)); B4</em>C4; 0)      // Total HT sécurisé
+E4: =SI(D4>0; D4<em>INDEX(TauxTVA; EQUIV(CodeProduit; ListeProduits; 0)); 0)  // TVA par produit
+F4: =D4+E4                                          // Total TTC</p>
+<p>// Totaux facture avec contrôles
+D10: =SOMME(D4:D9)                                 // Total HT facture
+E10: =SOMME(E4:E9)                                 // Total TVA facture
+F10: =SOMME(F4:F9)                                 // Total TTC facture</p>
+<p>// Vérification cohérence
+G10: =SI(ABS(D10+E10-F10)<0,01; "✓"; "⚠️ Erreur")</p>
+<p>// Répartition par taux TVA
+D12: "TVA 20%: " & TEXTE(SOMME.SI(TauxLigne; 0,20; MontantTVALigne); "0,00€")
+D13: "TVA 10%: " & TEXTE(SOMME.SI(TauxLigne; 0,10; MontantTVALigne); "0,00€")
+D14: "TVA 5,5%: " & TEXTE(SOMME.SI(TauxLigne; 0,055; MontantTVALigne); "0,00€")
 ```
-
-_
 
 
 ### Template Déclaration TVA Complète
 
-_
-
 ```excel
 // CA3 complet avec toutes les lignes
 A1: "DÉCLARATION TVA - " & TEXTE(DateDéclaration; "MMMM AAAA")
+<p>// Section opérations imposables
+B5: =SOMME.SI.ENS(BaseHT; TauxTVA; 0,20; TypeOperation; "Vente")     // Ligne 01
+C5: =B5</em>0,20                                                          // Ligne 02</p>
+<p>B6: =SOMME.SI.ENS(BaseHT; TauxTVA; 0,10; TypeOperation; "Vente")     // Ligne 03  
+C6: =B6<em>0,10                                                          // Ligne 04</p>
+<p>B7: =SOMME.SI.ENS(BaseHT; TauxTVA; 0,055; TypeOperation; "Vente")    // Ligne 05
+C7: =B7</em>0,055                                                         // Ligne 06</p>
+<p>// Total TVA brute
+C8: =SOMME(C5:C7)                                                     // Ligne 08</p>
+<p>// TVA déductible
+C10: =SOMME.SI(TypeTVA; "Déductible"; MontantTVA)                    // Ligne 20</p>
+<p>// Crédit de TVA antérieur
+C11: =SI(CreditPrecedent>0; CreditPrecedent; 0)                      // Ligne 21</p>
+<p>// TVA nette due
+C12: =MAX(C8-C10-C11; 0)                                             // Ligne 22</p>
+<p>// Crédit de TVA à reporter
+C13: =SI(C8-C10-C11<0; ABS(C8-C10-C11); 0)                         // Ligne 23
 ```
 
 
@@ -744,21 +811,24 @@ A1: "DÉCLARATION TVA - " & TEXTE(DateDéclaration; "MMMM AAAA")
 ```excel
 // Dashboard mensuel automatisé
 A1: "SUIVI TVA " & TEXTE(AUJOURD'HUI(); "MMMM AAAA")
-// Indicateurs clés
+<p>// Indicateurs clés
 B3: "CA HT du mois:"
 C3: =SOMME.SI.ENS(MontantHT; DateFacture; ">="&DEBUT.MOIS(AUJOURD'HUI()); 
-                  DateFacture; "<"&FIN.MOIS(AUJOURD'HUI()))
-B4: "TVA collectée:"
+                  DateFacture; "<"&FIN.MOIS(AUJOURD'HUI()))</p>
+<p>B4: "TVA collectée:"
 C4: =SOMME.SI.ENS(MontantTVA; TypeTVA; "Collectée"; 
-                  DateFacture; ">="&DEBUT.MOIS(AUJOURD'HUI()))
-B5: "TVA déductible:"
+                  DateFacture; ">="&DEBUT.MOIS(AUJOURD'HUI()))</p>
+<p>B5: "TVA déductible:"
 C5: =SOMME.SI.ENS(MontantTVA; TypeTVA; "Déductible"; 
-                  DateFacture; ">="&DEBUT.MOIS(AUJOURD'HUI()))
-B6: "TVA à payer:"
-C6: =MAX(C4-C5; 0)
-// Évolution vs mois précédent
-D3: =SI(C3>0; (C3-CAPrecedent)/CAPrecedent100; 0) & "%"
-D4: =SI(C4>0; (C4-TVACollecteePrecedente)/TVACollecteePrecedente100; 0) & "%"
+                  DateFacture; ">="&DEBUT.MOIS(AUJOURD'HUI()))</p>
+<p>B6: "TVA à payer:"
+C6: =MAX(C4-C5; 0)</p>
+<p>// Évolution vs mois précédent
+D3: =SI(C3>0; (C3-CAPrecedent)/CAPrecedent<em>100; 0) & "%"
+D4: =SI(C4>0; (C4-TVACollecteePrecedente)/TVACollecteePrecedente</em>100; 0) & "%"</p>
+<p>// Alertes automatiques
+E3: =SI(C3<ObjectifCA; "⚠️ Sous objectif"; "✓ Objectif atteint")
+E6: =SI(C6>SeuilAlerte; "🔴 Montant important"; "✓ Normal")
 ```
 
 
@@ -778,5 +848,3 @@ Que vous soyez entrepreneur, comptable ou responsable financier, ces **formules 
 Commencez par implémenter les formules de base, puis enrichissez progressivement vos modèles avec les fonctionnalités avancées. Avec la pratique, le **calcul TVA sur Excel** deviendra un automatisme qui transformera votre efficacité professionnelle !
 
 N'hésitez pas à adapter ces modèles selon vos besoins spécifiques et à les enrichir avec vos propres innovations. L'excellence en comptabilité passe par la maîtrise de ces outils numériques essentiels.
-
-_

@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QA Report — Migration WordPress → Next.js</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+  header { background: linear-gradient(135deg, #1e40af, #7c3aed); color: white; padding: 40px 20px; text-align: center; }
+  header h1 { font-size: 2rem; margin-bottom: 8px; }
+  header p { opacity: 0.8; }
+  .status-badge { display: inline-block; padding: 6px 16px; border-radius: 20px; font-weight: 700; font-size: 1.2rem; margin-top: 12px; }
+  .counters { display: flex; gap: 20px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
+  .counter { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 12px 24px; border-radius: 12px; text-align: center; }
+  .counter .value { font-size: 1.5rem; font-weight: 700; }
+  .counter .label { font-size: 0.85rem; opacity: 0.8; }
+  section { margin-top: 32px; }
+  section h2 { font-size: 1.4rem; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; }
+  .agent-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .agent-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-left: 4px solid; }
+  .agent-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+  .agent-card .badge { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: 0.8rem; font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  th { background: #f1f5f9; text-align: left; padding: 12px 16px; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { padding: 10px 16px; border-top: 1px solid #f1f5f9; font-size: 0.9rem; }
+  tr:hover { background: #f8fafc; }
+  .filter-bar { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; align-items: center; }
+  .filter-bar input { padding: 8px 16px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; min-width: 240px; }
+  .filter-bar select { padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; }
+  .sev-fail { color: #dc2626; font-weight: 600; }
+  .sev-warn { color: #ca8a04; font-weight: 600; }
+  .sev-info { color: #2563eb; }
+  .actions-list { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  .actions-list li { padding: 8px 0; border-bottom: 1px solid #f1f5f9; }
+  .actions-list li:last-child { border-bottom: none; }
+  .timestamp { margin-top: 32px; text-align: center; color: #94a3b8; font-size: 0.85rem; }
+</style>
+</head>
+<body>
+
+<!-- 1. Header -->
+<header>
+  <h1>QA Report — Migration WordPress to Next.js</h1>
+  <p>exceleur.fr — mercredi 11 février 2026</p>
+  <div class="status-badge" style="background:#ef4444; color: white;">
+    FAIL
+  </div>
+  <div class="counters">
+    <div class="counter"><div class="value">380</div><div class="label">Articles</div></div>
+    <div class="counter"><div class="value" style="color:#86efac">3</div><div class="label">Pass</div></div>
+    <div class="counter"><div class="value" style="color:#fde047">30</div><div class="label">Warn</div></div>
+    <div class="counter"><div class="value" style="color:#fca5a5">11</div><div class="label">Fail</div></div>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- 2. Agent Cards -->
+<section>
+  <h2>Agents</h2>
+  <div class="agent-grid">
+    
+    <div class="agent-card" style="border-color:#22c55e">
+      <h3>formatting</h3>
+      <span class="badge" style="background:#f0fdf4; color:#22c55e">
+        PASS
+      </span>
+      <span style="margin-left:8px; color:#64748b">0 issues</span>
+    </div>
+    <div class="agent-card" style="border-color:#ef4444">
+      <h3>routing</h3>
+      <span class="badge" style="background:#fef2f2; color:#ef4444">
+        FAIL
+      </span>
+      <span style="margin-left:8px; color:#64748b">1 issue</span>
+    </div>
+    <div class="agent-card" style="border-color:#ef4444">
+      <h3>content-diff</h3>
+      <span class="badge" style="background:#fef2f2; color:#ef4444">
+        FAIL
+      </span>
+      <span style="margin-left:8px; color:#64748b">25 issues</span>
+    </div>
+    <div class="agent-card" style="border-color:#eab308">
+      <h3>seo</h3>
+      <span class="badge" style="background:#fefce8; color:#eab308">
+        WARN
+      </span>
+      <span style="margin-left:8px; color:#64748b">26 issues</span>
+    </div>
+    <div class="agent-card" style="border-color:#22c55e">
+      <h3>link-checker</h3>
+      <span class="badge" style="background:#f0fdf4; color:#22c55e">
+        PASS
+      </span>
+      <span style="margin-left:8px; color:#64748b">3 issues</span>
+    </div>
+    <div class="agent-card" style="border-color:#22c55e">
+      <h3>images</h3>
+      <span class="badge" style="background:#f0fdf4; color:#22c55e">
+        PASS
+      </span>
+      <span style="margin-left:8px; color:#64748b">0 issues</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Issues Detail -->
+<section>
+  <h2>Issues (55)</h2>
+  <div class="filter-bar">
+    <input type="text" id="issueFilter" placeholder="Filter by file or message..." oninput="filterIssues()">
+    <select id="severityFilter" onchange="filterIssues()">
+      <option value="">All severities</option>
+      <option value="fail">Fail only</option>
+      <option value="warn">Warn only</option>
+      <option value="info">Info only</option>
+    </select>
+  </div>
+  <table>
+    <thead><tr><th>Severity</th><th>Agent</th><th>Check</th><th>File</th><th>Message</th></tr></thead>
+    <tbody id="issuesBody">
+      
+      <tr class="issue-row" data-severity="fail" data-file="titre-test" data-message="WP slug &quot;titre-test&quot; has no MDX file">
+        <td><span class="sev-fail">FAIL</span></td>
+        <td>routing</td>
+        <td>6.1</td>
+        <td>titre-test</td>
+        <td>WP slug "titre-test" has no MDX file</td>
+      </tr>
+      <tr class="issue-row" data-severity="fail" data-file="excel-additionner-les-heures-et-les-minutes-2.mdx" data-message="Word ratio 0.61 (MDX: 1422, WP: 2320) — content may be truncated">
+        <td><span class="sev-fail">FAIL</span></td>
+        <td>content-diff</td>
+        <td>1.1</td>
+        <td>excel-additionner-les-heures-et-les-minutes-2.mdx</td>
+        <td>Word ratio 0.61 (MDX: 1422, WP: 2320) — content may be truncated</td>
+      </tr>
+      <tr class="issue-row" data-severity="fail" data-file="excel-afficher-le-jour-de-la-semaine-2.mdx" data-message="Word ratio 0.61 (MDX: 1419, WP: 2319) — content may be truncated">
+        <td><span class="sev-fail">FAIL</span></td>
+        <td>content-diff</td>
+        <td>1.1</td>
+        <td>excel-afficher-le-jour-de-la-semaine-2.mdx</td>
+        <td>Word ratio 0.61 (MDX: 1419, WP: 2319) — content may be truncated</td>
+      </tr>
+      <tr class="issue-row" data-severity="fail" data-file="excel-calcul-de-la-tva.mdx" data-message="Word ratio 0.74 (MDX: 1894, WP: 2552) — content may be truncated">
+        <td><span class="sev-fail">FAIL</span></td>
+        <td>content-diff</td>
+        <td>1.1</td>
+        <td>excel-calcul-de-la-tva.mdx</td>
+        <td>Word ratio 0.74 (MDX: 1894, WP: 2552) — content may be truncated</td>
+      </tr>
+      <tr class="issue-row" data-severity="fail" data-file="excel-formule-si.mdx" data-message="Word ratio 0.61 (MDX: 1738, WP: 2866) — content may be truncated">
+        <td><span class="sev-fail">FAIL</span></td>
+        <td>content-diff</td>
+        <td>1.1</td>
+        <td>excel-formule-si.mdx</td>
+        <td>Word ratio 0.61 (MDX: 1738, WP: 2866) — content may be truncated</td>
+      </tr>
+      <tr class="issue-row" data-severity="fail" data-file="excel-formule-somme.mdx" data-message="Word ratio 0.71 (MDX: 1603, WP: 2247) — content may be truncated">
+        <td><span class="sev-fail">FAIL</span></td>
+        <td>content-diff</td>
+        <td>1.1</td>
+        <td>excel-formule-somme.mdx</td>
+        <td>Word ratio 0.71 (MDX: 1603, WP: 2247) — content may be truncated</td>
+      </tr>
+      <tr class="issue-row" data-severity="fail" data-file="excel-recherche-multicriteres.mdx" data-message="Word ratio 0.57 (MDX: 986, WP: 1715) — content may be truncated">
+        <td><span class="sev-fail">FAIL</span></td>
+        <td>content-diff</td>
+        <td>1.1</td>
+        <td>excel-recherche-multicriteres.mdx</td>
+        <td>Word ratio 0.57 (MDX: 986, WP: 1715) — content may be truncated</td>
+      </tr>
+      <tr class="issue-row" data-severity="fail" data-file="excel-remplacer-une-couleur-par-une-autre.mdx" data-message="Word ratio 0.60 (MDX: 1569, WP: 2604) — content may be truncated">
+        <td><span class="sev-fail">FAIL</span></td>
+        <td>content-diff</td>
+        <td>1.1</td>
+        <td>excel-remplacer-une-couleur-par-une-autre.mdx</td>
+        <td>Word ratio 0.60 (MDX: 1569, WP: 2604) — content may be truncated</td>
+      </tr>
+      <tr class="issue-row" data-severity="fail" data-file="excel-sous-total.mdx" data-message="Word ratio 0.66 (MDX: 2092, WP: 3151) — content may be truncated">
+        <td><span class="sev-fail">FAIL</span></td>
+        <td>content-diff</td>
+        <td>1.1</td>
+        <td>excel-sous-total.mdx</td>
+        <td>Word ratio 0.66 (MDX: 2092, WP: 3151) — content may be truncated</td>
+      </tr>
+      <tr class="issue-row" data-severity="fail" data-file="nb-si-ens-excel-compter-additionner.mdx" data-message="Word ratio 0.72 (MDX: 1178, WP: 1637) — content may be truncated">
+        <td><span class="sev-fail">FAIL</span></td>
+        <td>content-diff</td>
+        <td>1.1</td>
+        <td>nb-si-ens-excel-compter-additionner.mdx</td>
+        <td>Word ratio 0.72 (MDX: 1178, WP: 1637) — content may be truncated</td>
+      </tr>
+      <tr class="issue-row" data-severity="fail" data-file="quelle-formule-excel-pour-additionner-des-heures.mdx" data-message="Word ratio 0.66 (MDX: 796, WP: 1204) — content may be truncated">
+        <td><span class="sev-fail">FAIL</span></td>
+        <td>content-diff</td>
+        <td>1.1</td>
+        <td>quelle-formule-excel-pour-additionner-des-heures.mdx</td>
+        <td>Word ratio 0.66 (MDX: 796, WP: 1204) — content may be truncated</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="additionner-la-meme-cellule-sur-plusieurs-onglets-excel-2.mdx" data-message="Word ratio 0.82 (MDX: 1571, WP: 1911) — some content may be missing">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>content-diff</td>
+        <td>1.1</td>
+        <td>additionner-la-meme-cellule-sur-plusieurs-onglets-excel-2.mdx</td>
+        <td>Word ratio 0.82 (MDX: 1571, WP: 1911) — some content may be missing</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="additionner-la-meme-cellule-sur-plusieurs-onglets-excel-2.mdx" data-message="1 WP heading(s) not found in MDX">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>content-diff</td>
+        <td>1.2</td>
+        <td>additionner-la-meme-cellule-sur-plusieurs-onglets-excel-2.mdx</td>
+        <td>1 WP heading(s) not found in MDX</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="excel-cest-quoi-index-equiv-2.mdx" data-message="1 WP heading(s) not found in MDX">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>content-diff</td>
+        <td>1.2</td>
+        <td>excel-cest-quoi-index-equiv-2.mdx</td>
+        <td>1 WP heading(s) not found in MDX</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="excel-comment-figer-une-cellule-dans-une-formule.mdx" data-message="4 WP heading(s) not found in MDX">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>content-diff</td>
+        <td>1.2</td>
+        <td>excel-comment-figer-une-cellule-dans-une-formule.mdx</td>
+        <td>4 WP heading(s) not found in MDX</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="excel-comment-fusionner-des-cellules.mdx" data-message="Word ratio 0.81 (MDX: 2152, WP: 2642) — some content may be missing">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>content-diff</td>
+        <td>1.1</td>
+        <td>excel-comment-fusionner-des-cellules.mdx</td>
+        <td>Word ratio 0.81 (MDX: 2152, WP: 2642) — some content may be missing</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="excel-et-si-2.mdx" data-message="Word ratio 0.82 (MDX: 1389, WP: 1697) — some content may be missing">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>content-diff</td>
+        <td>1.1</td>
+        <td>excel-et-si-2.mdx</td>
+        <td>Word ratio 0.82 (MDX: 1389, WP: 1697) — some content may be missing</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="excel-formule-si-avancee-2.mdx" data-message="Word ratio 0.88 (MDX: 1766, WP: 2015) — some content may be missing">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>content-diff</td>
+        <td>1.1</td>
+        <td>excel-formule-si-avancee-2.mdx</td>
+        <td>Word ratio 0.88 (MDX: 1766, WP: 2015) — some content may be missing</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="excel-formule-somme-si.mdx" data-message="Word ratio 0.78 (MDX: 2435, WP: 3123) — some content may be missing">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>content-diff</td>
+        <td>1.1</td>
+        <td>excel-formule-somme-si.mdx</td>
+        <td>Word ratio 0.78 (MDX: 2435, WP: 3123) — some content may be missing</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="excel-quel-ecart-type-utiliser.mdx" data-message="Word ratio 0.76 (MDX: 1450, WP: 1914) — some content may be missing">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>content-diff</td>
+        <td>1.1</td>
+        <td>excel-quel-ecart-type-utiliser.mdx</td>
+        <td>Word ratio 0.76 (MDX: 1450, WP: 1914) — some content may be missing</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="excel-utiliser-les-filtres-2.mdx" data-message="Word ratio 0.87 (MDX: 2780, WP: 3186) — some content may be missing">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>content-diff</td>
+        <td>1.1</td>
+        <td>excel-utiliser-les-filtres-2.mdx</td>
+        <td>Word ratio 0.87 (MDX: 2780, WP: 3186) — some content may be missing</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="formule-excel-et-si.mdx" data-message="Word ratio 0.86 (MDX: 2192, WP: 2542) — some content may be missing">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>content-diff</td>
+        <td>1.1</td>
+        <td>formule-excel-et-si.mdx</td>
+        <td>Word ratio 0.86 (MDX: 2192, WP: 2542) — some content may be missing</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="formule-excel-filtre-guide.mdx" data-message="Word ratio 0.78 (MDX: 1265, WP: 1612) — some content may be missing">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>content-diff</td>
+        <td>1.1</td>
+        <td>formule-excel-filtre-guide.mdx</td>
+        <td>Word ratio 0.78 (MDX: 1265, WP: 1612) — some content may be missing</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="nb-si-ens-compter-conditions.mdx" data-message="Word ratio 0.83 (MDX: 1223, WP: 1471) — some content may be missing">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>content-diff</td>
+        <td>1.1</td>
+        <td>nb-si-ens-compter-conditions.mdx</td>
+        <td>Word ratio 0.83 (MDX: 1223, WP: 1471) — some content may be missing</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="pourquoi-excel-affiche-valeur.mdx" data-message="Word ratio 0.86 (MDX: 2316, WP: 2687) — some content may be missing">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>content-diff</td>
+        <td>1.1</td>
+        <td>pourquoi-excel-affiche-valeur.mdx</td>
+        <td>Word ratio 0.86 (MDX: 2316, WP: 2687) — some content may be missing</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="quelle-formule-excel-pour-additionner-les-heures-2.mdx" data-message="1 WP heading(s) not found in MDX">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>content-diff</td>
+        <td>1.2</td>
+        <td>quelle-formule-excel-pour-additionner-les-heures-2.mdx</td>
+        <td>1 WP heading(s) not found in MDX</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="10-erreurs-plages-dynamiques-excel.mdx" data-message="Duplicate title found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>10-erreurs-plages-dynamiques-excel.mdx</td>
+        <td>Duplicate title found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="10-erreurs-plages-dynamiques.mdx" data-message="Duplicate title found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>10-erreurs-plages-dynamiques.mdx</td>
+        <td>Duplicate title found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="calculer-des-horaires-pour-rh-2.mdx" data-message="Duplicate title found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>calculer-des-horaires-pour-rh-2.mdx</td>
+        <td>Duplicate title found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="calculer-des-horaires-pour-rh.mdx" data-message="Duplicate title found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>calculer-des-horaires-pour-rh.mdx</td>
+        <td>Duplicate title found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="deplacer-et-changer-la-couleur-de-ses-onglets-2.mdx" data-message="Duplicate title found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>deplacer-et-changer-la-couleur-de-ses-onglets-2.mdx</td>
+        <td>Duplicate title found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="deplacer-et-changer-la-couleur-de-ses-onglets.mdx" data-message="Duplicate title found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>deplacer-et-changer-la-couleur-de-ses-onglets.mdx</td>
+        <td>Duplicate title found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="fonction-filtre-excel-donnees-dynamiques.mdx" data-message="Duplicate title found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>fonction-filtre-excel-donnees-dynamiques.mdx</td>
+        <td>Duplicate title found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="optimisez-vos-donnees-fonction-filtre-excel.mdx" data-message="Duplicate title found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>optimisez-vos-donnees-fonction-filtre-excel.mdx</td>
+        <td>Duplicate title found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="fonction-let-excel-simplifier-et-optimiser.mdx" data-message="Duplicate title found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>fonction-let-excel-simplifier-et-optimiser.mdx</td>
+        <td>Duplicate title found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="optimisez-vos-formules-avec-fonction-let-excel.mdx" data-message="Duplicate title found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>optimisez-vos-formules-avec-fonction-let-excel.mdx</td>
+        <td>Duplicate title found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="fractionner-du-texte-dans-plusieurs-cellules-2.mdx" data-message="Duplicate title found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>fractionner-du-texte-dans-plusieurs-cellules-2.mdx</td>
+        <td>Duplicate title found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="fractionner-du-texte-dans-plusieurs-cellules.mdx" data-message="Duplicate title found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>fractionner-du-texte-dans-plusieurs-cellules.mdx</td>
+        <td>Duplicate title found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="modifier-plusieurs-nombre-dun-coup-2.mdx" data-message="Duplicate title found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>modifier-plusieurs-nombre-dun-coup-2.mdx</td>
+        <td>Duplicate title found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="modifier-plusieurs-nombre-dun-coup.mdx" data-message="Duplicate title found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>modifier-plusieurs-nombre-dun-coup.mdx</td>
+        <td>Duplicate title found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="reduire-la-taille-de-lascenseur-excel-2.mdx" data-message="Duplicate title found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>reduire-la-taille-de-lascenseur-excel-2.mdx</td>
+        <td>Duplicate title found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="reduire-la-taille-de-lascenseur-excel.mdx" data-message="Duplicate title found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>reduire-la-taille-de-lascenseur-excel.mdx</td>
+        <td>Duplicate title found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="calculer-des-horaires-pour-rh-2.mdx" data-message="Duplicate description found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>calculer-des-horaires-pour-rh-2.mdx</td>
+        <td>Duplicate description found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="calculer-des-horaires-pour-rh.mdx" data-message="Duplicate description found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>calculer-des-horaires-pour-rh.mdx</td>
+        <td>Duplicate description found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="deplacer-et-changer-la-couleur-de-ses-onglets-2.mdx" data-message="Duplicate description found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>deplacer-et-changer-la-couleur-de-ses-onglets-2.mdx</td>
+        <td>Duplicate description found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="deplacer-et-changer-la-couleur-de-ses-onglets.mdx" data-message="Duplicate description found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>deplacer-et-changer-la-couleur-de-ses-onglets.mdx</td>
+        <td>Duplicate description found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="fractionner-du-texte-dans-plusieurs-cellules-2.mdx" data-message="Duplicate description found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>fractionner-du-texte-dans-plusieurs-cellules-2.mdx</td>
+        <td>Duplicate description found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="fractionner-du-texte-dans-plusieurs-cellules.mdx" data-message="Duplicate description found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>fractionner-du-texte-dans-plusieurs-cellules.mdx</td>
+        <td>Duplicate description found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="modifier-plusieurs-nombre-dun-coup-2.mdx" data-message="Duplicate description found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>modifier-plusieurs-nombre-dun-coup-2.mdx</td>
+        <td>Duplicate description found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="modifier-plusieurs-nombre-dun-coup.mdx" data-message="Duplicate description found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>modifier-plusieurs-nombre-dun-coup.mdx</td>
+        <td>Duplicate description found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="reduire-la-taille-de-lascenseur-excel-2.mdx" data-message="Duplicate description found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>reduire-la-taille-de-lascenseur-excel-2.mdx</td>
+        <td>Duplicate description found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="warn" data-file="reduire-la-taille-de-lascenseur-excel.mdx" data-message="Duplicate description found across 2 articles">
+        <td><span class="sev-warn">WARN</span></td>
+        <td>seo</td>
+        <td>3.7</td>
+        <td>reduire-la-taille-de-lascenseur-excel.mdx</td>
+        <td>Duplicate description found across 2 articles</td>
+      </tr>
+      <tr class="issue-row" data-severity="info" data-file="excel-ctrl-e-le-raccourci-magique-2.mdx" data-message="External link broken: https://www.reddit.com/r/excel/ → 403 (line 577)">
+        <td><span class="sev-info">INFO</span></td>
+        <td>link-checker</td>
+        <td>2.3</td>
+        <td>excel-ctrl-e-le-raccourci-magique-2.mdx</td>
+        <td>External link broken: https://www.reddit.com/r/excel/ → 403 (line 577)</td>
+      </tr>
+      <tr class="issue-row" data-severity="info" data-file="pourquoi-excel-affiche-la-formule-et-pas-le-resultat-2.mdx" data-message="External link broken: https://www.reddit.com/r/excel/ → 403 (line 316)">
+        <td><span class="sev-info">INFO</span></td>
+        <td>link-checker</td>
+        <td>2.3</td>
+        <td>pourquoi-excel-affiche-la-formule-et-pas-le-resultat-2.mdx</td>
+        <td>External link broken: https://www.reddit.com/r/excel/ → 403 (line 316)</td>
+      </tr>
+      <tr class="issue-row" data-severity="info" data-file="pourquoi-excel-ne-souvre-pas.mdx" data-message="External link broken: https://techcommunity.microsoft.com/ → 400 (line 372)">
+        <td><span class="sev-info">INFO</span></td>
+        <td>link-checker</td>
+        <td>2.3</td>
+        <td>pourquoi-excel-ne-souvre-pas.mdx</td>
+        <td>External link broken: https://techcommunity.microsoft.com/ → 400 (line 372)</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 4. Article Health -->
+<section>
+  <h2>Article Health (44 articles with issues)</h2>
+  <div class="filter-bar">
+    <input type="text" id="articleFilter" placeholder="Filter by slug..." oninput="filterArticles()">
+    <select id="articleStatusFilter" onchange="filterArticles()">
+      <option value="">All statuses</option>
+      <option value="fail">Fail only</option>
+      <option value="warn">Warn only</option>
+      <option value="pass">Pass only</option>
+    </select>
+  </div>
+  <table>
+    <thead><tr><th>Slug</th><th>Status</th><th>Issues</th></tr></thead>
+    <tbody id="articlesBody">
+      
+      <tr class="article-row" data-slug="additionner-la-meme-cellule-sur-plusieurs-onglets-excel-2" data-status="warn">
+        <td>additionner-la-meme-cellule-sur-plusieurs-onglets-excel-2</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>2</td>
+      </tr>
+      <tr class="article-row" data-slug="excel-cest-quoi-index-equiv-2" data-status="warn">
+        <td>excel-cest-quoi-index-equiv-2</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="excel-comment-figer-une-cellule-dans-une-formule" data-status="warn">
+        <td>excel-comment-figer-une-cellule-dans-une-formule</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="excel-comment-fusionner-des-cellules" data-status="warn">
+        <td>excel-comment-fusionner-des-cellules</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="excel-et-si-2" data-status="warn">
+        <td>excel-et-si-2</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="excel-formule-si-avancee-2" data-status="warn">
+        <td>excel-formule-si-avancee-2</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="excel-formule-somme-si" data-status="warn">
+        <td>excel-formule-somme-si</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="excel-quel-ecart-type-utiliser" data-status="warn">
+        <td>excel-quel-ecart-type-utiliser</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="excel-utiliser-les-filtres-2" data-status="warn">
+        <td>excel-utiliser-les-filtres-2</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="formule-excel-et-si" data-status="warn">
+        <td>formule-excel-et-si</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="formule-excel-filtre-guide" data-status="warn">
+        <td>formule-excel-filtre-guide</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="nb-si-ens-compter-conditions" data-status="warn">
+        <td>nb-si-ens-compter-conditions</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="pourquoi-excel-affiche-valeur" data-status="warn">
+        <td>pourquoi-excel-affiche-valeur</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="quelle-formule-excel-pour-additionner-les-heures-2" data-status="warn">
+        <td>quelle-formule-excel-pour-additionner-les-heures-2</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="10-erreurs-plages-dynamiques-excel" data-status="warn">
+        <td>10-erreurs-plages-dynamiques-excel</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="10-erreurs-plages-dynamiques" data-status="warn">
+        <td>10-erreurs-plages-dynamiques</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="calculer-des-horaires-pour-rh-2" data-status="warn">
+        <td>calculer-des-horaires-pour-rh-2</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>2</td>
+      </tr>
+      <tr class="article-row" data-slug="calculer-des-horaires-pour-rh" data-status="warn">
+        <td>calculer-des-horaires-pour-rh</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>2</td>
+      </tr>
+      <tr class="article-row" data-slug="deplacer-et-changer-la-couleur-de-ses-onglets-2" data-status="warn">
+        <td>deplacer-et-changer-la-couleur-de-ses-onglets-2</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>2</td>
+      </tr>
+      <tr class="article-row" data-slug="deplacer-et-changer-la-couleur-de-ses-onglets" data-status="warn">
+        <td>deplacer-et-changer-la-couleur-de-ses-onglets</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>2</td>
+      </tr>
+      <tr class="article-row" data-slug="fonction-filtre-excel-donnees-dynamiques" data-status="warn">
+        <td>fonction-filtre-excel-donnees-dynamiques</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="optimisez-vos-donnees-fonction-filtre-excel" data-status="warn">
+        <td>optimisez-vos-donnees-fonction-filtre-excel</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="fonction-let-excel-simplifier-et-optimiser" data-status="warn">
+        <td>fonction-let-excel-simplifier-et-optimiser</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="optimisez-vos-formules-avec-fonction-let-excel" data-status="warn">
+        <td>optimisez-vos-formules-avec-fonction-let-excel</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="fractionner-du-texte-dans-plusieurs-cellules-2" data-status="warn">
+        <td>fractionner-du-texte-dans-plusieurs-cellules-2</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>2</td>
+      </tr>
+      <tr class="article-row" data-slug="fractionner-du-texte-dans-plusieurs-cellules" data-status="warn">
+        <td>fractionner-du-texte-dans-plusieurs-cellules</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>2</td>
+      </tr>
+      <tr class="article-row" data-slug="modifier-plusieurs-nombre-dun-coup-2" data-status="warn">
+        <td>modifier-plusieurs-nombre-dun-coup-2</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>2</td>
+      </tr>
+      <tr class="article-row" data-slug="modifier-plusieurs-nombre-dun-coup" data-status="warn">
+        <td>modifier-plusieurs-nombre-dun-coup</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>2</td>
+      </tr>
+      <tr class="article-row" data-slug="reduire-la-taille-de-lascenseur-excel-2" data-status="warn">
+        <td>reduire-la-taille-de-lascenseur-excel-2</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>2</td>
+      </tr>
+      <tr class="article-row" data-slug="reduire-la-taille-de-lascenseur-excel" data-status="warn">
+        <td>reduire-la-taille-de-lascenseur-excel</td>
+        <td><span class="sev-warn">WARN</span></td>
+        <td>2</td>
+      </tr>
+      <tr class="article-row" data-slug="titre-test" data-status="fail">
+        <td>titre-test</td>
+        <td><span class="sev-fail">FAIL</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="excel-additionner-les-heures-et-les-minutes-2" data-status="fail">
+        <td>excel-additionner-les-heures-et-les-minutes-2</td>
+        <td><span class="sev-fail">FAIL</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="excel-afficher-le-jour-de-la-semaine-2" data-status="fail">
+        <td>excel-afficher-le-jour-de-la-semaine-2</td>
+        <td><span class="sev-fail">FAIL</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="excel-calcul-de-la-tva" data-status="fail">
+        <td>excel-calcul-de-la-tva</td>
+        <td><span class="sev-fail">FAIL</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="excel-formule-si" data-status="fail">
+        <td>excel-formule-si</td>
+        <td><span class="sev-fail">FAIL</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="excel-formule-somme" data-status="fail">
+        <td>excel-formule-somme</td>
+        <td><span class="sev-fail">FAIL</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="excel-recherche-multicriteres" data-status="fail">
+        <td>excel-recherche-multicriteres</td>
+        <td><span class="sev-fail">FAIL</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="excel-remplacer-une-couleur-par-une-autre" data-status="fail">
+        <td>excel-remplacer-une-couleur-par-une-autre</td>
+        <td><span class="sev-fail">FAIL</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="excel-sous-total" data-status="fail">
+        <td>excel-sous-total</td>
+        <td><span class="sev-fail">FAIL</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="nb-si-ens-excel-compter-additionner" data-status="fail">
+        <td>nb-si-ens-excel-compter-additionner</td>
+        <td><span class="sev-fail">FAIL</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="quelle-formule-excel-pour-additionner-des-heures" data-status="fail">
+        <td>quelle-formule-excel-pour-additionner-des-heures</td>
+        <td><span class="sev-fail">FAIL</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="excel-ctrl-e-le-raccourci-magique-2" data-status="pass">
+        <td>excel-ctrl-e-le-raccourci-magique-2</td>
+        <td><span class="sev-pass">PASS</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="pourquoi-excel-affiche-la-formule-et-pas-le-resultat-2" data-status="pass">
+        <td>pourquoi-excel-affiche-la-formule-et-pas-le-resultat-2</td>
+        <td><span class="sev-pass">PASS</span></td>
+        <td>1</td>
+      </tr>
+      <tr class="article-row" data-slug="pourquoi-excel-ne-souvre-pas" data-status="pass">
+        <td>pourquoi-excel-ne-souvre-pas</td>
+        <td><span class="sev-pass">PASS</span></td>
+        <td>1</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 5. Actions Required -->
+
+<section>
+  <h2>Actions Required</h2>
+  <div class="actions-list">
+    <ol>
+      <li><span class="sev-fail">[routing]</span> <strong>titre-test</strong> — WP slug "titre-test" has no MDX file</li><li><span class="sev-fail">[content-diff]</span> <strong>excel-additionner-les-heures-et-les-minutes-2.mdx</strong> — Word ratio 0.61 (MDX: 1422, WP: 2320) — content may be truncated</li><li><span class="sev-fail">[content-diff]</span> <strong>excel-afficher-le-jour-de-la-semaine-2.mdx</strong> — Word ratio 0.61 (MDX: 1419, WP: 2319) — content may be truncated</li><li><span class="sev-fail">[content-diff]</span> <strong>excel-calcul-de-la-tva.mdx</strong> — Word ratio 0.74 (MDX: 1894, WP: 2552) — content may be truncated</li><li><span class="sev-fail">[content-diff]</span> <strong>excel-formule-si.mdx</strong> — Word ratio 0.61 (MDX: 1738, WP: 2866) — content may be truncated</li><li><span class="sev-fail">[content-diff]</span> <strong>excel-formule-somme.mdx</strong> — Word ratio 0.71 (MDX: 1603, WP: 2247) — content may be truncated</li><li><span class="sev-fail">[content-diff]</span> <strong>excel-recherche-multicriteres.mdx</strong> — Word ratio 0.57 (MDX: 986, WP: 1715) — content may be truncated</li><li><span class="sev-fail">[content-diff]</span> <strong>excel-remplacer-une-couleur-par-une-autre.mdx</strong> — Word ratio 0.60 (MDX: 1569, WP: 2604) — content may be truncated</li><li><span class="sev-fail">[content-diff]</span> <strong>excel-sous-total.mdx</strong> — Word ratio 0.66 (MDX: 2092, WP: 3151) — content may be truncated</li><li><span class="sev-fail">[content-diff]</span> <strong>nb-si-ens-excel-compter-additionner.mdx</strong> — Word ratio 0.72 (MDX: 1178, WP: 1637) — content may be truncated</li><li><span class="sev-fail">[content-diff]</span> <strong>quelle-formule-excel-pour-additionner-des-heures.mdx</strong> — Word ratio 0.66 (MDX: 796, WP: 1204) — content may be truncated</li>
+    </ol>
+  </div>
+</section>
+
+<p class="timestamp">Generated: 2026-02-11T11:36:08.021Z</p>
+</div>
+
+<script>
+function filterIssues() {
+  const text = document.getElementById('issueFilter').value.toLowerCase();
+  const sev = document.getElementById('severityFilter').value;
+  document.querySelectorAll('.issue-row').forEach(row => {
+    const matchText = !text || row.dataset.file.toLowerCase().includes(text) || row.dataset.message.toLowerCase().includes(text);
+    const matchSev = !sev || row.dataset.severity === sev;
+    row.style.display = matchText && matchSev ? '' : 'none';
+  });
+}
+function filterArticles() {
+  const text = document.getElementById('articleFilter').value.toLowerCase();
+  const status = document.getElementById('articleStatusFilter').value;
+  document.querySelectorAll('.article-row').forEach(row => {
+    const matchText = !text || row.dataset.slug.toLowerCase().includes(text);
+    const matchStatus = !status || row.dataset.status === status;
+    row.style.display = matchText && matchStatus ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>

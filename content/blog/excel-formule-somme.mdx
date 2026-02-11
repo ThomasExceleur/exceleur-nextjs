@@ -99,10 +99,8 @@ Où :
 **Somme des valeurs contenant du texte :**
 
 ```
-=SOMME.SI(A2:A20, "Produit", B2:B20)
+=SOMME.SI(A2:A20, "Produit<em>", B2:B20)
 ```
-
-_
 
 Cette **somme texte excel** additionne les valeurs correspondant aux cellules commençant par « Produit ».
 
@@ -160,11 +158,7 @@ Multiplie chaque valeur de A par celle de B, puis additionne le tout.
 
 **Conditions complexes avec SOMMEPROD :**
 
-_
-
-```
-=SOMMEPROD((A2:A20="Produit A")
-```
+\=SOMMEPROD((A2:A20="Produit A")(B2:B20>100)_C2:C20)_
 
 _
 
@@ -288,4 +282,447 @@ Pour de gros volumes de données :
 2.  L'outil **Évaluer la formule** (onglet Formules)
 3.  Affichez les formules avec **Ctrl +**
 
-`   ## Comparaison avec d'Autres Fonctions  ### SOMME vs ADDITION (+)  -   **SOMME** : Gère les plages, ignore le texte -   **Addition** : Plus simple pour quelques cellules -   **Performance** : SOMME est plus efficace pour de gros volumes  ### SOMME vs SOUS.TOTAL  -   **SOUS.TOTAL** : Ignore les lignes masquées -   **SOMME** : Inclut toutes les données visibles ou non -   **Usage** : SOUS.TOTAL pour les données filtrées  ## Applications Métier Concrètes  ### Comptabilité et finance  **Bilan mensuel :**  ``` =SOMME.SI.ENS(Montants, Dates, ">="&DATE(2024,1,1), Dates, "<"&DATE(2024,2,1)) ```  **Calcul de TVA :**  ``` =SOMMEPROD(HT, TauxTVA) ```  ### Analyse de ventes  **Performance par région :**  ``` =SOMME.SI(Régions, "Nord", Ventes) ```  **Objectifs vs Réalisé :**   `_````   ``` =SOMME(Réalisé)/SOMME(Objectif) ```  ## FAQ - Questions Fréquentes  ### Comment additionner uniquement les cellules visibles ?  Utilisez la fonction SOUS.TOTAL :  ``` =SOUS.TOTAL(109, A1:A10) ```  Le code 109 correspond à la somme en ignorant les lignes masquées.  ### Peut-on faire une somme avec des critères sur plusieurs colonnes ?  Oui, avec SOMME.SI.ENS :  ``` =SOMME.SI.ENS(Montants, Région, "Paris", Mois, "Janvier") ```  ### Comment ignorer les cellules d'erreur dans une somme ?  Utilisez cette formule matricielle :  ``` =SOMME(SI(ISERROR(A1:A10), 0, A1:A10)) ```  Validez avec Ctrl+Maj+Entrée.  ### La fonction SOMME compte-t-elle les cellules vides ?  Non, Excel ignore automatiquement les cellules vides dans les calculs SOMME.  ### Comment créer une somme cumulative ?  Dans B2, saisissez : `=SOMME($A$2:A2)`   Copiez cette formule vers le bas pour obtenir une somme cumulative.  ### Quelle est la limite de la fonction SOMME ?  Excel peut additionner jusqu'à 255 arguments et gérer plus d'un million de lignes dans une plage.  ## Techniques de Performance et Optimisation Avancées  ### Formules SOMME Haute Performance  Pour de gros volumes de données, optimisez vos **formules calcul excel somme** :  #### Utilisation des Plages Nommées  ```excel // Définir une plage nommée VentesAnnee = $A$2:$A$1000 ```  #### Éviter les Références Complètes de Colonnes   ❌ **Lent** : `=SOMME(A:A)`   ✅ **Rapide** : `=SOMME(A1:A1000)`  #### Optimiser SOMME.SI avec des Index  ```excel // Plus rapide avec des données triées =SOMME.SI(DatesTries, ">="&DATE(2024,1,1), Montants) ```  ### Calculs en Temps Réel avec les Tableaux Structurés  Les tableaux Excel offrent des performances optimales pour la **formule excel addition** :  ```excel // Conversion en tableau (Ctrl+T) =SOMME(TableVentes) // Formules calculées automatiquement =SOMME(TableVentes) / NB(TableVentes) ```  ## Applications Métier Spécialisées  ### Secteur Financier et Bancaire  #### Calculs de Provision et Risques  ```excel // Provision sur créances douteuses =SOMME.SI.ENS(Creances, Anciennete, ">90", Statut, "Impayé") // Calcul du risque pondéré =SOMMEPROD(Expositions, CoefficientsRisque) ```  #### Analyse de Portefeuille  ```excel // Répartition par secteur =SOMME.SI(Secteurs, "Technologie", Investissements) // Performance cumulée =SOMME(SI(DatesTrans<=AUJOURD'HUI(), PlusValues, 0)) // VaR (Value at Risk) simplifiée =SOMME(SI(PerformancesDailyères ```  ``  ### Commerce et Distribution  #### Gestion des Stocks et Inventaires  ```excel // Stock valorisé par entrepôt =SOMME.SI.ENS(Quantités, Entrepôt, "Paris", Statut, "Disponible")  PrixMoyen // Rotation des stocks par catégorie =SOMME.SI(Catégories, "Électronique", Sorties) /   SOMME.SI(Catégories, "Électronique", StockMoyen) ```  _  #### Analyse des Ventes Multi-Canal  ```excel // CA par canal de vente =SOMME.SI.ENS(CA, Canal, "Online", Mois, MOIS(AUJOURD'HUI())) // Panier moyen par segment client =SOMME.SI(SegmentClient, "Premium", Montants) /   NB.SI(SegmentClient, "Premium") ```  ### Ressources Humaines et Paie  #### Calculs de Masse Salariale  ```excel // Masse salariale par département =SOMME.SI.ENS(Salaires, Département, "IT", Statut, "Actif") // Charges sociales totales =SOMMEPROD(SalairesBruts, TauxCharges) ```  #### Analyse des Absences et Congés  _  ```excel // Jours d'absence par type =SOMME.SI.ENS(JoursAbsence, TypeAbsence, "Maladie", Mois, MOIS(AUJOURD'HUI())) // Coût des remplacements =SOMMEPROD(JoursRemplacement, CoutJournalierRemplaçant) ```  _  ## Intégration avec Business Intelligence  ### Connexion Power BI et Tableaux de Bord  _  ```excel // Préparation des données pour Power BI =SOMME.SI.ENS(Données, MoisColonne, MOIS(AUJOURD'HUI()),                AnnéeColonne, ANNÉE(AUJOURD'HUI())) ```  ### Automatisation avec Power Automate  ```excel // Déclencheurs basés sur seuils =SI(SOMME(Commandes_Jour)>SeuilAlerte, "DÉCLENCHER", "NORMAL") ```  ## Formules SOMME Avancées avec Intelligence Artificielle  ### Prédictions et Tendances  ```excel // Projection linéaire simple =SOMME(Historique)/12  (ANNÉE(AUJOURD'HUI())-AnnéeBase+1) // Moyenne mobile pondérée =SOMMEPROD(ValeursRécentes, PoidsImportance) / SOMME(PoidsImportance) ```  ### Machine Learning Simple avec SOMME  ```excel // Scoring client basé sur pondération =SOMMEPROD(ComportementsClient, PoidsComportements) ```  ## Gestion des Erreurs et Fiabilité  ### Formules SOMME Robustes  ```excel // Validation des données avant calcul =SI(ET(NB(A1:A10)>0, NB.VIDE(A1:A10)=0), SOMME(A1:A10), "Données incomplètes") // Gestion des erreurs avec SIERREUR =SIERREUR(SOMME.SI(Critères, Valeur, Montants), "Critère non trouvé") ```  ### Audit et Traçabilité  ```excel // Journalisation des calculs ="Somme calculée le " & TEXTE(MAINTENANT(), "JJ/MM/AAAA HH:MM") &   " = " & SOMME(A1:A10) // Validation croisée =SI(SOMME(Méthode1)=SOMME(Méthode2), "Validé", "Divergence") ```  ## FAQ Avancée - Questions d'Experts  ### Comment additionner uniquement les cellules visibles ?  Utilisez la fonction SOUS.TOTAL :  ```excel =SOUS.TOTAL(109, A1:A10) ```  Le code 109 correspond à la somme en ignorant les lignes masquées.  **Codes SOUS.TOTAL utiles :**  -   109 : SOMME (ignore cellules masquées) -   101 : MOYENNE (ignore cellules masquées) -   103 : NB (ignore cellules masquées)  ### Peut-on faire une somme avec des critères sur plusieurs colonnes ?  Oui, avec SOMME.SI.ENS :  ```excel =SOMME.SI.ENS(Montants, Région, "Paris", Mois, "Janvier", Statut, "Validé") ```  Pour des conditions complexes :  ```excel =SOMMEPROD((Région="Paris")(Mois="Janvier")(Statut="Validé")Montants) ```  _  ### Comment ignorer les cellules d'erreur dans une somme ?  Utilisez cette formule matricielle :  ```excel =SOMME(SI(ESTERREUR(A1:A10), 0, A1:A10)) ```  Validez avec Ctrl+Maj+Entrée.  Ou plus simplement avec AGREGAT :  ```excel =AGREGAT(9, 6, A1:A10) ```  ### La fonction SOMME compte-t-elle les cellules vides ?  Non, Excel ignore automatiquement les cellules vides dans les calculs SOMME. Mais attention aux cellules contenant des espaces !  ### Comment créer une somme cumulative ?  **Méthode traditionnelle :**   Dans B2 : `=SOMME($A$2:A2)`   Copiez vers le bas.  **Méthode avec tableau structuré :**  ```excel =SOMME(INDIRECT("A$2:A" & LIGNE())) ```  ### Comment additionner chaque nième ligne ?  ```excel =SOMME(SI(MOD(LIGNE(A1:A100),3)=0, A1:A100, 0)) ```  Cette formule additionne chaque 3ème ligne.  ### Quelle est la limite de la fonction SOMME ?  Excel peut additionner :  -   Jusqu'à 255 arguments distincts -   Plus d'un million de lignes dans une plage -   Nombres jusqu'à 15 chiffres significatifs  ### Comment additionner des heures au-delà de 24h ?  _``_  `Formatez la cellule avec` :mm` :  ```excel =SOMME(A1:A10)  // Format :mm ```  ### Peut-on faire une SOMME conditionnelle avec des jokers ?  Oui :  _  ```excel =SOMME.SI(A1:A10, "Prod ```  ### Comment additionner par couleur de cellule ?  Excel n'a pas de fonction native, mais vous pouvez :  1.  **Utiliser un filtre et SOUS.TOTAL** 2.  **Créer une fonction VBA personnalisée** 3.  **Utiliser des critères basés sur la mise en forme conditionnelle**  ```vba Function SommeCouleur(PlageValeurs As Range, CelluleCouleur As Range)     Dim Cellule As Range, Total As Double     For Each Cellule In PlageValeurs         If Cellule.Interior.Color = CelluleCouleur.Interior.Color Then             Total = Total + Cellule.Value         End If     Next Cellule     SommeCouleur = Total End Function ```  ## Conclusion : Maîtrisez Toutes les Facettes de SOMME  La **formule SOMME Excel** et ses variantes constituent un arsenal puissant pour tous vos besoins de calcul. De la simple **formule excel addition** aux analyses conditionnelles complexes avec SOMME.SI.ENS, vous disposez maintenant de tous les outils nécessaires pour optimiser vos feuilles de calcul.  N'hésitez pas à pratiquer ces différentes techniques sur vos propres données. Commencez par les fonctions de base, puis progressez vers les applications plus avancées comme SOMMEPROD et les formules matricielles.  Pour aller plus loin dans votre maîtrise d'Excel, explorez également les [fonctions INDEX et EQUIV](https://www.exceleur.fr/index-equiv-excel/) pour des recherches avancées, ou approfondissez votre connaissance des [formules conditionnelles avec SI et ET](https://www.exceleur.fr/formule-si-et-excel/).  **Prêt à optimiser vos calculs Excel ?** Téléchargez notre modèle de feuille d'exercices avec 20 exemples pratiques de formules SOMME pour vous entraîner dès maintenant !   ````
+
+## Comparaison avec d'Autres Fonctions
+
+
+### SOMME vs ADDITION (+)
+
+-   **SOMME** : Gère les plages, ignore le texte
+-   **Addition** : Plus simple pour quelques cellules
+-   **Performance** : SOMME est plus efficace pour de gros volumes
+
+
+### SOMME vs SOUS.TOTAL
+
+-   **SOUS.TOTAL** : Ignore les lignes masquées
+-   **SOMME** : Inclut toutes les données visibles ou non
+-   **Usage** : SOUS.TOTAL pour les données filtrées
+
+
+## Applications Métier Concrètes
+
+
+### Comptabilité et finance
+
+**Bilan mensuel :**
+
+```
+=SOMME.SI.ENS(Montants, Dates, ">="&DATE(2024,1,1), Dates, "<"&DATE(2024,2,1))
+```
+
+**Calcul de TVA :**
+
+```
+=SOMMEPROD(HT, TauxTVA)
+```
+
+
+### Analyse de ventes
+
+**Performance par région :**
+
+```
+=SOMME.SI(Régions, "Nord", Ventes)
+```
+
+**Objectifs vs Réalisé :**
+
+_
+
+_\=SOMME(Réalisé)/SOMME(Objectif)_100
+
+
+## FAQ - Questions Fréquentes
+
+
+### Comment additionner uniquement les cellules visibles ?
+
+Utilisez la fonction SOUS.TOTAL :
+
+```
+=SOUS.TOTAL(109, A1:A10)
+```
+
+Le code 109 correspond à la somme en ignorant les lignes masquées.
+
+
+### Peut-on faire une somme avec des critères sur plusieurs colonnes ?
+
+Oui, avec SOMME.SI.ENS :
+
+```
+=SOMME.SI.ENS(Montants, Région, "Paris", Mois, "Janvier")
+```
+
+
+### Comment ignorer les cellules d'erreur dans une somme ?
+
+Utilisez cette formule matricielle :
+
+```
+=SOMME(SI(ISERROR(A1:A10), 0, A1:A10))
+```
+
+Validez avec Ctrl+Maj+Entrée.
+
+
+### La fonction SOMME compte-t-elle les cellules vides ?
+
+Non, Excel ignore automatiquement les cellules vides dans les calculs SOMME.
+
+
+### Comment créer une somme cumulative ?
+
+Dans B2, saisissez : `=SOMME($A$2:A2)`  
+Copiez cette formule vers le bas pour obtenir une somme cumulative.
+
+
+### Quelle est la limite de la fonction SOMME ?
+
+Excel peut additionner jusqu'à 255 arguments et gérer plus d'un million de lignes dans une plage.
+
+
+## Techniques de Performance et Optimisation Avancées
+
+
+### Formules SOMME Haute Performance
+
+Pour de gros volumes de données, optimisez vos **formules calcul excel somme** :
+
+\#### Utilisation des Plages Nommées
+
+// Définir une plage nommée
+VentesAnnee = $A$2:$A$1000
+
+// Utiliser dans la formule
+=SOMME(VentesAnnee)
+
+\#### Éviter les Références Complètes de Colonnes  
+❌ **Lent** : `=SOMME(A:A)`  
+✅ **Rapide** : `=SOMME(A1:A1000)`
+
+\#### Optimiser SOMME.SI avec des Index
+
+```excel
+// Plus rapide avec des données triées
+=SOMME.SI(DatesTries, ">="&DATE(2024,1,1), Montants)
+```
+
+
+### Calculs en Temps Réel avec les Tableaux Structurés
+
+Les tableaux Excel offrent des performances optimales pour la **formule excel addition** :
+
+```excel
+// Conversion en tableau (Ctrl+T)
+=SOMME(TableVentes)
+<p>// Formules calculées automatiquement
+=SOMME(TableVentes) / NB(TableVentes)</p>
+<p>// Références dynamiques
+=SOMME(INDIRECT("TableVentes[" & B2 & "]"))
+```
+
+
+## Applications Métier Spécialisées
+
+
+### Secteur Financier et Bancaire
+
+\#### Calculs de Provision et Risques
+
+// Provision sur créances douteuses
+=SOMME.SI.ENS(Creances, Anciennete, ">90", Statut, "Impayé")
+
+// Calcul du risque pondéré
+=SOMMEPROD(Expositions, CoefficientsRisque)
+
+// Marge nette d'intérêt
+=SOMME(IntérêtsPerçus) - SOMME(IntérêtsVersés)
+
+\#### Analyse de Portefeuille
+
+// Répartition par secteur
+=SOMME.SI(Secteurs, "Technologie", Investissements)
+
+// Performance cumulée
+=SOMME(SI(DatesTrans<=AUJOURD'HUI(), PlusValues, 0))
+
+// VaR (Value at Risk) simplifiée
+=SOMME(SI(PerformancesDailyères
+
+
+### Commerce et Distribution
+
+\#### Gestion des Stocks et Inventaires
+
+```excel
+// Stock valorisé par entrepôt
+=SOMME.SI.ENS(Quantités, Entrepôt, "Paris", Statut, "Disponible") <em> PrixMoyen</p>
+<p>// Rotation des stocks par catégorie
+=SOMME.SI(Catégories, "Électronique", Sorties) / 
+ SOMME.SI(Catégories, "Électronique", StockMoyen)</p>
+<p>// Seuil de réapprovisionnement
+=SI(SOMME.SI(Produits, A2, Quantités) <= SeuilMin, "RÉAPPRO", "OK")
+```
+
+\#### Analyse des Ventes Multi-Canal
+
+// CA par canal de vente
+=SOMME.SI.ENS(CA, Canal, "Online", Mois, MOIS(AUJOURD'HUI()))
+
+// Panier moyen par segment client
+=SOMME.SI(SegmentClient, "Premium", Montants) / 
+ NB.SI(SegmentClient, "Premium")
+
+// Contribution marge par produit
+=SOMMEPROD((PrixVente-PrixAchat), QuantitésVendues)
+
+
+### Ressources Humaines et Paie
+
+\#### Calculs de Masse Salariale
+
+// Masse salariale par département
+=SOMME.SI.ENS(Salaires, Département, "IT", Statut, "Actif")
+
+// Charges sociales totales
+=SOMMEPROD(SalairesBruts, TauxCharges)
+
+// Budget formation par service
+=SOMME.SI.ENS(CoutsFormation, Service, B2, Année, 2024)
+
+\#### Analyse des Absences et Congés
+
+// Jours d'absence par type
+=SOMME.SI.ENS(JoursAbsence, TypeAbsence, "Maladie", Mois, MOIS(AUJOURD'HUI()))
+
+// Coût des remplacements
+=SOMMEPROD(JoursRemplacement, CoutJournalierRemplaçant)
+
+// Taux d'absentéisme par équipe
+=SOMME.SI(Équipe, "Production", JoursAbsence) / 
+ (NB.SI(Équipe, "Production")  JoursOuvrables) _ 100_
+
+_
+
+
+## Intégration avec Business Intelligence
+
+
+### Connexion Power BI et Tableaux de Bord
+
+```excel
+// Préparation des données pour Power BI
+=SOMME.SI.ENS(Données, MoisColonne, MOIS(AUJOURD'HUI()), 
+              AnnéeColonne, ANNÉE(AUJOURD'HUI()))
+<p>// KPI calculés pour dashboards
+=SOMME(ObjectifsAtteints) / SOMME(ObjectifsTotal) </em> 100</p>
+<p>// Métriques temps réel
+=SOMME.SI(DatesVentes, ">="&AUJOURD'HUI(), MontantsVentes)
+```
+
+
+### Automatisation avec Power Automate
+
+```excel
+// Déclencheurs basés sur seuils
+=SI(SOMME(Commandes_Jour)>SeuilAlerte, "DÉCLENCHER", "NORMAL")
+<p>// Export formaté pour API
+="{'total':" & SOMME(A:A) & ",'date':'" & TEXTE(AUJOURD'HUI(),"AAAA-MM-JJ") & "'}"
+```
+
+
+## Formules SOMME Avancées avec Intelligence Artificielle
+
+
+### Prédictions et Tendances
+
+```excel
+// Projection linéaire simple
+=SOMME(Historique)/12 <em> (ANNÉE(AUJOURD'HUI())-AnnéeBase+1)
+<p>// Moyenne mobile pondérée
+=SOMMEPROD(ValeursRécentes, PoidsImportance) / SOMME(PoidsImportance)</p>
+<p>// Détection d'anomalies
+=SI(SOMME(DernièresSemaines)/4 > SOMME(MoyenneHistorique)</em>1.5, 
+   "ANOMALIE", "NORMAL")
+```
+
+
+### Machine Learning Simple avec SOMME
+
+```excel
+// Scoring client basé sur pondération
+=SOMMEPROD(ComportementsClient, PoidsComportements)
+<p>// Classification automatique
+=SI(SOMMEPROD(Critères, Poids) > SeuilHaut, "A", 
+   SI(SOMMEPROD(Critères, Poids) > SeuilMoyen, "B", "C"))
+```
+
+
+## Gestion des Erreurs et Fiabilité
+
+
+### Formules SOMME Robustes
+
+```excel
+// Validation des données avant calcul
+=SI(ET(NB(A1:A10)>0, NB.VIDE(A1:A10)=0), SOMME(A1:A10), "Données incomplètes")
+<p>// Gestion des erreurs avec SIERREUR
+=SIERREUR(SOMME.SI(Critères, Valeur, Montants), "Critère non trouvé")</p>
+<p>// Contrôle de cohérence
+=SI(ABS(SOMME(Détails)-Total)<0.01, "✓ Cohérent", "⚠️ Écart détecté")
+```
+
+
+### Audit et Traçabilité
+
+```excel
+// Journalisation des calculs
+="Somme calculée le " & TEXTE(MAINTENANT(), "JJ/MM/AAAA HH:MM") & 
+ " = " & SOMME(A1:A10)
+<p>// Validation croisée
+=SI(SOMME(Méthode1)=SOMME(Méthode2), "Validé", "Divergence")</p>
+<p>// Historisation des résultats
+=SI(Calcul<>CalculPrécédent, MAINTENANT(), DernièreModif)
+```
+
+
+## FAQ Avancée - Questions d'Experts
+
+
+### Comment additionner uniquement les cellules visibles ?
+
+Utilisez la fonction SOUS.TOTAL :
+
+```excel
+=SOUS.TOTAL(109, A1:A10)
+```
+
+Le code 109 correspond à la somme en ignorant les lignes masquées.
+
+**Codes SOUS.TOTAL utiles :**
+
+-   109 : SOMME (ignore cellules masquées)
+-   101 : MOYENNE (ignore cellules masquées)
+-   103 : NB (ignore cellules masquées)
+
+
+### Peut-on faire une somme avec des critères sur plusieurs colonnes ?
+
+Oui, avec SOMME.SI.ENS :
+
+```excel
+=SOMME.SI.ENS(Montants, Région, "Paris", Mois, "Janvier", Statut, "Validé")
+```
+
+Pour des conditions complexes :
+
+```excel
+=SOMMEPROD((Région="Paris")<em>(Mois="Janvier")</em>(Statut="Validé")<em>Montants)
+```
+
+
+### Comment ignorer les cellules d'erreur dans une somme ?
+
+Utilisez cette formule matricielle :
+
+```excel
+=SOMME(SI(ESTERREUR(A1:A10), 0, A1:A10))
+```
+
+Validez avec Ctrl+Maj+Entrée.
+
+Ou plus simplement avec AGREGAT :
+
+```excel
+=AGREGAT(9, 6, A1:A10)
+```
+
+
+### La fonction SOMME compte-t-elle les cellules vides ?
+
+Non, Excel ignore automatiquement les cellules vides dans les calculs SOMME. Mais attention aux cellules contenant des espaces !
+
+
+### Comment créer une somme cumulative ?
+
+**Méthode traditionnelle :**  
+Dans B2 : `=SOMME($A$2:A2)`  
+Copiez vers le bas.
+
+**Méthode avec tableau structuré :**
+
+```excel
+=SOMME(INDIRECT("A$2:A" & LIGNE()))
+```
+
+
+### Comment additionner chaque nième ligne ?
+
+```excel
+=SOMME(SI(MOD(LIGNE(A1:A100),3)=0, A1:A100, 0))
+```
+
+Cette formule additionne chaque 3ème ligne.
+
+
+### Quelle est la limite de la fonction SOMME ?
+
+Excel peut additionner :
+
+-   Jusqu'à 255 arguments distincts
+-   Plus d'un million de lignes dans une plage
+-   Nombres jusqu'à 15 chiffres significatifs
+
+
+### Comment additionner des heures au-delà de 24h ?
+
+Formatez la cellule avec :mm\` :
+
+```excel
+=SOMME(A1:A10)  // Format :mm
+```
+
+
+### Peut-on faire une SOMME conditionnelle avec des jokers ?
+
+Oui :
+
+_
+
+_\=SOMME.SI(A1:A10, "Prod_", B1:B10)      // Commence par "Prod"
+=SOMME.SI(A1:A10, "_total", B1:B10)     // Finit par "total"
+=SOMME.SI(A1:A10, "_vente\*", B1:B10)    // Contient "vente"
+
+
+### Comment additionner par couleur de cellule ?
+
+Excel n'a pas de fonction native, mais vous pouvez :
+
+1.  **Utiliser un filtre et SOUS.TOTAL**
+2.  **Créer une fonction VBA personnalisée**
+3.  **Utiliser des critères basés sur la mise en forme conditionnelle**
+
+```vba
+Function SommeCouleur(PlageValeurs As Range, CelluleCouleur As Range)
+    Dim Cellule As Range, Total As Double
+    For Each Cellule In PlageValeurs
+        If Cellule.Interior.Color = CelluleCouleur.Interior.Color Then
+            Total = Total + Cellule.Value
+        End If
+    Next Cellule
+    SommeCouleur = Total
+End Function
+```
+
+
+## Conclusion : Maîtrisez Toutes les Facettes de SOMME
+
+La **formule SOMME Excel** et ses variantes constituent un arsenal puissant pour tous vos besoins de calcul. De la simple **formule excel addition** aux analyses conditionnelles complexes avec SOMME.SI.ENS, vous disposez maintenant de tous les outils nécessaires pour optimiser vos feuilles de calcul.
+
+N'hésitez pas à pratiquer ces différentes techniques sur vos propres données. Commencez par les fonctions de base, puis progressez vers les applications plus avancées comme SOMMEPROD et les formules matricielles.
+
+Pour aller plus loin dans votre maîtrise d'Excel, explorez également les [fonctions INDEX et EQUIV](https://www.exceleur.fr/index-equiv-excel/) pour des recherches avancées, ou approfondissez votre connaissance des [formules conditionnelles avec SI et ET](https://www.exceleur.fr/formule-si-et-excel/).
+
+**Prêt à optimiser vos calculs Excel ?** Téléchargez notre modèle de feuille d'exercices avec 20 exemples pratiques de formules SOMME pour vous entraîner dès maintenant !

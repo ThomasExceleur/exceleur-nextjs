@@ -387,11 +387,11 @@ La **fonction sous total excel** excelle dans la création de structures hiérar
 ```excel
 // Niveau 1 : Total par région
 =SOUS.TOTAL(9; SI(Région=A2; Montant; ""))
-// Niveau 2 : Sous-total par vendeur dans chaque région  
-=SOUS.TOTAL(9; SI((Région=A2)(Vendeur=B2); Montant; ""))
+<p>// Niveau 2 : Sous-total par vendeur dans chaque région  
+=SOUS.TOTAL(9; SI((Région=A2)<em>(Vendeur=B2); Montant; ""))</p>
+<p>// Niveau 3 : Détail par produit
+=SOUS.TOTAL(9; SI((Région=A2)</em>(Vendeur=B2)<em>(Produit=C2); Montant; ""))
 ```
-
-_
 
 \#### Méthode 2 : Utilisation des Plans (Outline)
 
@@ -435,6 +435,8 @@ Function GroupeCA(valeur As Double) As String
             GroupeCA = "Client Premium"
     End Select
 End Function
+<p>// Utilisation avec SOUS.TOTAL
+=SOUS.TOTAL(9; SI(GroupeCA(CA_Client)="Gros Client"; Montant; ""))
 ```
 
 \#### Groupement Temporel Intelligent
@@ -442,8 +444,10 @@ End Function
 ```excel
 // Sous-totaux par période dynamique
 =SOUS.TOTAL(9; SI(ANNEE(Date_Commande)=ANNEE(AUJOURD.HUI()); Montant; ""))
-// Sous-totaux trimestriels
-=SOUS.TOTAL(9; SI(ARRONDI.SUP(MOIS(Date_Commande)/3;0)=1; Montant; ""))
+<p>// Sous-totaux trimestriels
+=SOUS.TOTAL(9; SI(ARRONDI.SUP(MOIS(Date_Commande)/3;0)=1; Montant; ""))</p>
+<p>// Groupement par semaine
+=SOUS.TOTAL(9; SI(NO.SEMAINE(Date_Commande)=NO.SEMAINE(AUJOURD.HUI()); Montant; ""))
 ```
 
 
@@ -464,15 +468,21 @@ Sub AfficherNiveau(niveau As Integer)
         ws.Outline.ShowLevels RowLevels:=niveau
     End If
 End Sub
+<p>// Boutons de navigation rapide
+Sub AfficherDetails() : Call AfficherNiveau(3) : End Sub
+Sub AfficherSousTotal() : Call AfficherNiveau(2) : End Sub  
+Sub AfficherTotalGeneral() : Call AfficherNiveau(1) : End Sub
 ```
 
 \#### Système de Filtrage Hiérarchique
 
-_
-
 ```excel
 // Filtre intelligent niveau 1 (Régions)
 =SOUS.TOTAL(9; SI(Région=Liste_Validation_Region; Montant; ""))
+<p>// Filtre niveau 2 (Vendeurs de la région sélectionnée)
+=SOUS.TOTAL(9; SI((Région=Region_Selectionnee)</em>(Vendeur=Vendeur_Selectionne); Montant; ""))</p>
+<p>// Filtre niveau 3 (Produits du vendeur sélectionné)
+=SOUS.TOTAL(9; SI((Région=Region_Selectionnee)<em>(Vendeur=Vendeur_Selectionne)</em>(Produit=Produit_Selectionne); Montant; ""))
 ```
 
 
@@ -491,6 +501,9 @@ _
 ```excel
 // Dans les cellules adjacentes au TCD
 =SOUS.TOTAL(9; DECALER(TCD.ChampValeur; -LIGNES(TCD.ChampValeur)+1; 0; LIGNES(TCD.ChampValeur)-1; 1))
+<p>// Calculs complémentaires au TCD
+=SOUS.TOTAL(1; PlageFiltrée) // Moyenne non disponible en standard dans TCD
+=SOUS.TOTAL(7; PlageFiltrée) // Écart-type pour analyser la dispersion
 ```
 
 \#### TCD avec Champs Calculés SOUS.TOTAL
@@ -535,10 +548,12 @@ End Sub
 ```excel
 // KPI principal lié aux segmenteurs
 =SOUS.TOTAL(9; TableauDonnées) & " €"
-// Évolution par rapport à la période précédente
-=((SOUS.TOTAL(9; TableauDonnées) / SOUS.TOTAL(9; CA_Période_Précédente)) - 1) * 100 & "%"
-// Nombre de transactions
-=SOUS.TOTAL(3; TableauDonnées) & " transactions"
+<p>// Évolution par rapport à la période précédente
+=((SOUS.TOTAL(9; TableauDonnées) / SOUS.TOTAL(9; CA_Période_Précédente)) - 1) * 100 & "%"</p>
+<p>// Nombre de transactions
+=SOUS.TOTAL(3; TableauDonnées) & " transactions"</p>
+<p>// Panier moyen dynamique
+=SOUS.TOTAL(9; TableauDonnées) / SOUS.TOTAL(3; TableauDonnées)
 ```
 
 \#### Graphiques Dynamiques Avancés
@@ -619,13 +634,29 @@ Function SousTotalAvance(plage As Range, fonction As Integer, Optional critère 
         SousTotalAvance = 0
     End If
 End Function
+<p>Function EvaluerCritère(valeur As Variant, critère As String) As Boolean
+    ' Gestion des opérateurs de comparaison
+    If Left(critère, 2) = ">=" Then
+        EvaluerCritère = (valeur >= CDbl(Mid(critère, 3)))
+    ElseIf Left(critère, 2) = "<=" Then
+        EvaluerCritère = (valeur <= CDbl(Mid(critère, 3)))
+    ElseIf Left(critère, 1) = ">" Then
+        EvaluerCritère = (valeur > CDbl(Mid(critère, 2)))
+    ElseIf Left(critère, 1) = "<" Then
+        EvaluerCritère = (valeur < CDbl(Mid(critère, 2)))
+    ElseIf Left(critère, 2) = "<>" Then
+        EvaluerCritère = (valeur <> Mid(critère, 3))
+    Else
+        EvaluerCritère = (valeur = critère)
+    End If
+End Function
 ```
 
 \#### Système de Cache pour Performance
 
 ```vba
 Public dictCache As Object
-Function SousTotalCache(plage As Range, fonction As Integer) As Double
+<p>Function SousTotalCache(plage As Range, fonction As Integer) As Double
     Dim clé As String
     Dim résultat As Double
     
@@ -646,7 +677,12 @@ Function SousTotalCache(plage As Range, fonction As Integer) As Double
         dictCache.Add clé, résultat
         SousTotalCache = résultat
     End If
-End Function
+End Function</p>
+<p>Sub ViderCacheSousTotal()
+    If Not dictCache Is Nothing Then
+        dictCache.RemoveAll
+    End If
+End Sub
 ```
 
 
@@ -866,17 +902,21 @@ Sub WorkflowOptimalAnalyse()
     ' Phase 4 : Tableau de bord final
     Call CreerTableauBordFinal
 End Sub
-Sub CreerTCDExploratoire()
+<p>Sub CreerTCDExploratoire()
     ' Création rapide d'un TCD pour explorer les données
     ' Identification des patterns et tendances
-End Sub
-Sub ExtraireInsightsTCD()
+End Sub</p>
+<p>Sub ExtraireInsightsTCD()
     ' Extraction des informations clés du TCD
     ' Documentation des critères de filtrage importants
-End Sub
-Sub CreerFormulesCiblées()
+End Sub</p>
+<p>Sub CreerFormulesCiblées()
     ' Création de formules SOUS.TOTAL basées sur les insights TCD
     ' Automatisation des calculs identifiés comme critiques
+End Sub</p>
+<p>Sub CreerTableauBordFinal()
+    ' Assemblage final combinant TCD et SOUS.TOTAL
+    ' Interface utilisateur optimisée
 End Sub
 ```
 
@@ -888,6 +928,10 @@ End Sub
 ```excel
 // Préparation des données pour Power BI
 =SI(SOUS.TOTAL(3;A:A)>0; SOUS.TOTAL(9;B:B); "")  // Éviter les valeurs nulles
+<p>// Métriques calculées pour Power BI
+Total_Filtré = SOUS.TOTAL(9; TableauDonnées)
+Moyenne_Filtrée = SOUS.TOTAL(1; TableauDonnées)  
+Count_Filtré = SOUS.TOTAL(3; TableauDonnées)
 ```
 
 \#### DAX Équivalent aux SOUS.TOTAL
@@ -898,6 +942,13 @@ Total Visible =
 CALCULATE(
     SUM(TableVentes),
     KEEPFILTERS(TableVentes)
+)
+<p>// Mesure dynamique selon filtre utilisateur
+Total Conditionnel = 
+IF(
+    HASONEVALUE(Slicer),
+    CALCULATE(SUM(TableVentes), Slicer = SELECTEDVALUE(Slicer)),
+    SUM(TableVentes)
 )
 ```
 
