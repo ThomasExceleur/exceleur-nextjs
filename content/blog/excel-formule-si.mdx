@@ -63,11 +63,11 @@ A1>100
 
 **Excel supérieur ou égal**
 
-<
+&lt;
 
 Inférieur
 
-A1<50
+A1&lt;50
 
 **Inférieur ou égal Excel**
 
@@ -79,11 +79,11 @@ A1>=100
 
 **Formule Excel supérieur ou égal**
 
-<=
+&lt;=
 
 Inférieur ou égal
 
-A1<=50
+A1&lt;=50
 
 **Inférieur ou égale Excel**
 
@@ -95,11 +95,11 @@ A1=100
 
 Égalité stricte
 
-<>
+&lt;>
 
 Différent
 
-A1<>100
+A1&lt;>100
 
 Inégalité
 
@@ -538,7 +538,7 @@ Créez une formule qui attribue des notes :
 -   B : ≥ 16/20
 -   C : ≥ 14/20
 -   D : ≥ 10/20
--   F : < 10/20
+-   F : &lt; 10/20
 
 
 ### Exercice 2 : Calcul de Remise
@@ -594,7 +594,7 @@ _// Score composite avec pondération
       SI(ScoreComposite>=50; "⭐ Basique"; "❌ Non qualifié")))
 
 // Recommandations personnalisées
-=SI(ET(Segment="Premium"; Activité<30); "Offre fidélisation";
+=SI(ET(Segment="Premium"; Activité&lt;30); "Offre fidélisation";
    SI(ET(Segment="Standard"; Commandes>5); "Proposition upgrade";
       SI(DernièreCommande>90; "Campagne réactivation"; "Suivi standard")))
 
@@ -651,7 +651,7 @@ _// Score composite avec pondération
 =SI(ET(Statut="Urgent"; ResponsableAbsent=VRAI); "DÉCLENCHER\_ESCALADE"; "TRAITEMENT\_NORMAL")
 
 // Formatage pour API
-='{"condition": "' & SI(Critère=VRAI; "TRUE"; "FALSE") & '", "action": "' & ActionRecommandée & '"}'
+='\{"condition": "' & SI(Critère=VRAI; "TRUE"; "FALSE") & '", "action": "' & ActionRecommandée & '"\}'
 
 // Seuils dynamiques pour alertes
 =SI(Valeur > MOYENNE(HistoriqueValeurs) + 2ECARTYPE(HistoriqueValeurs);
@@ -784,7 +784,7 @@ _// Score composite avec pondération
    SI(ESTGROUPE("Manager"); "Accès limité"; "Consultation seule"))
 
 // Adaptation temporelle
-=SI(HEURE(MAINTENANT())<9;
+=SI(HEURE(MAINTENANT())&lt;9;
    "Rapport matinal - Données J-1";
    SI(HEURE(MAINTENANT())>18; "Rapport vespéral - Données temps réel"; "Données courantes"))
 

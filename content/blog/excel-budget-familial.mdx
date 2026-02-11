@@ -418,7 +418,7 @@ Créez des segments pour filtrer vos données par :
 **Scorecard automatique :**
 
 ```excel
- Note_Épargne = SI(Taux_Épargne>=20;"Excellent";SI(Taux_Épargne>=10;"Bien";"À améliorer")) Note_Endettement = SI(Ratio_Endettement<=25;"Excellent";SI(Ratio_Endettement<=33;"Correct";"Attention")) ```
+ Note_Épargne = SI(Taux_Épargne>=20;"Excellent";SI(Taux_Épargne>=10;"Bien";"À améliorer")) Note_Endettement = SI(Ratio_Endettement&lt;=25;"Excellent";SI(Ratio_Endettement&lt;=33;"Correct";"Attention")) ```
 
 ### Connexion aux Données Externes et APIs
 
@@ -489,7 +489,7 @@ Utilisez Power Query pour :
 **Vérification automatique des totaux :**
 
 ```excel
- Contrôle = SI(ABS(Revenus-Dépenses-Épargne)<0.01;"OK";"ERREUR DE SAISIE") ```
+ Contrôle = SI(ABS(Revenus-Dépenses-Épargne)&lt;0.01;"OK";"ERREUR DE SAISIE") ```
 
 **Alerte sur les dépassements budgétaires :**
 

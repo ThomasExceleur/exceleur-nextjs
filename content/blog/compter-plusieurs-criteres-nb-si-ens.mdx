@@ -36,7 +36,7 @@ Commencez par identifier la plage à analyser, puis ajoutez autant de couples pl
 
 ### Exemples pratiques et syntaxe
 
-Supposons un tableau de ventes : dates en A, région en B, montant en C. Pour compter les commandes parisiennes de 2023 supérieures à 1 000 €, vous écririez : =NB.SI.ENS(C:C; B:B; « Paris »; A:A; « >=01/01/2023 »; A:A; « <=31/12/2023"; C:C; ">1000″). Avec des plages nommées (Montant, Région, Date), la lecture devient plus claire : =NB.SI.ENS(Montant; Région; « Paris »; Date; « >=01/01/2023 »; Date; « <=31/12/2023"; Montant; ">1000″). L’utilisation de noms facilite la maintenance et limite les erreurs de portée.
+Supposons un tableau de ventes : dates en A, région en B, montant en C. Pour compter les commandes parisiennes de 2023 supérieures à 1 000 €, vous écririez : =NB.SI.ENS(C:C; B:B; « Paris »; A:A; « >=01/01/2023 »; A:A; « &lt;=31/12/2023"; C:C; ">1000″). Avec des plages nommées (Montant, Région, Date), la lecture devient plus claire : =NB.SI.ENS(Montant; Région; « Paris »; Date; « >=01/01/2023 »; Date; « &lt;=31/12/2023"; Montant; ">1000″). L’utilisation de noms facilite la maintenance et limite les erreurs de portée.
 
 
 ### Astuces pour optimiser l'utilisation
@@ -49,7 +49,7 @@ Employez le Gestionnaire de noms pour créer des plages dynamiques qui s’adapt
 
 ### Gestion des critères de dates
 
-Pour filtrer un tableau de ventes par période, combinez la fonction NB.SI.ENS et des opérateurs logiques. Par exemple, =NB.SI.ENS(Mois; »>= »&DATE(2023;1;1);Mois; »<="&DATE(2023;3;31);Statut;"Clos") renverra le nombre de transactions clôturées au premier trimestre. Pensez à figer les dates de début et de fin dans des cellules dédiées : vous pourrez ainsi faire évoluer l’analyse sans toucher à la formule. Grâce à cette approche, la fonction NB.SI.ENS reste lisible et évite les oublis de mise à jour.
+Pour filtrer un tableau de ventes par période, combinez la fonction NB.SI.ENS et des opérateurs logiques. Par exemple, =NB.SI.ENS(Mois; »>= »&DATE(2023;1;1);Mois; »&lt;="&DATE(2023;3;31);Statut;"Clos") renverra le nombre de transactions clôturées au premier trimestre. Pensez à figer les dates de début et de fin dans des cellules dédiées : vous pourrez ainsi faire évoluer l’analyse sans toucher à la formule. Grâce à cette approche, la fonction NB.SI.ENS reste lisible et évite les oublis de mise à jour.
 
 
 ### Sélection des critères textuels
@@ -59,7 +59,7 @@ NB.SI.ENS Excel accepte les caractères génériques, pratique pour compter plus
 
 ### Combinaison des critères pour des résultats précis
 
-En croisant intervalle temporel et mot-clé, vous sécurisez vos rapports. =NB.SI.ENS(Ventes; »<5000";Date;">= »&$B$2;Date; »<="&$B$3;Ville;"Paris") illustre d’autres exemples NB.SI.ENS où plages nommées $B$2 et $B$3 clarifient le seuil. N’hésitez pas à créer des plages nommées pour vos champs récurrents : la maintenance de vos tableaux de bord s’en trouve simplifiée et le risque d’erreur diminue sensiblement.
+En croisant intervalle temporel et mot-clé, vous sécurisez vos rapports. =NB.SI.ENS(Ventes; »&lt;5000";Date;">= »&$B$2;Date; »&lt;="&$B$3;Ville;"Paris") illustre d’autres exemples NB.SI.ENS où plages nommées $B$2 et $B$3 clarifient le seuil. N’hésitez pas à créer des plages nommées pour vos champs récurrents : la maintenance de vos tableaux de bord s’en trouve simplifiée et le risque d’erreur diminue sensiblement.
 
 
 ## Exploiter NB.SI.ENS avec plages nommées : études de cas concrètes intégrant des données quantitatives
@@ -72,7 +72,7 @@ Vous travaillez régulièrement avec des tableaux volumineux où les intitulés 
 
 ### Cas pratiques avec données réelles
 
-Sur un fichier comptable de 10 000 factures, supposons trois colonnes nommées : Montant\_TTC, Client, Date\_Fac. Objectif : savoir combien de règlements dépassent 5 000 € pour le client Atlas, entre le 01/01/2023 et le 31/03/2023. La syntaxe devient : NB.SI.ENS Excel(Montant\_TTC; »>5000″;Client; »Atlas »;Date\_Fac; »>= »&DATE(2023;1;1);Date\_Fac; »<="&DATE(2023;3;31)). Grâce à ces exemples NB.SI.ENS, le résultat s’actualise dès qu’une nouvelle facture arrive, sans modifier la formule. Vous pouvez ensuite transformer la cellule en KPI, l’associer à une mise en forme conditionnelle et alimenter un tableau de bord financier. Vous obtenez ainsi un reporting réactif et totalement automatisé.
+Sur un fichier comptable de 10 000 factures, supposons trois colonnes nommées : Montant\_TTC, Client, Date\_Fac. Objectif : savoir combien de règlements dépassent 5 000 € pour le client Atlas, entre le 01/01/2023 et le 31/03/2023. La syntaxe devient : NB.SI.ENS Excel(Montant\_TTC; »>5000″;Client; »Atlas »;Date\_Fac; »>= »&DATE(2023;1;1);Date\_Fac; »&lt;="&DATE(2023;3;31)). Grâce à ces exemples NB.SI.ENS, le résultat s’actualise dès qu’une nouvelle facture arrive, sans modifier la formule. Vous pouvez ensuite transformer la cellule en KPI, l’associer à une mise en forme conditionnelle et alimenter un tableau de bord financier. Vous obtenez ainsi un reporting réactif et totalement automatisé.
 
 
 ## Analyse détaillée des cas spécifiques et des contextes sectoriels avec NB.SI.ENS

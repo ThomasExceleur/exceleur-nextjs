@@ -64,7 +64,7 @@ Pour tirer le meilleur parti de votre modèle budgétaire excel, commencez par d
 
 ### Optimisation des formules pour budget prévisionnel excel
 
-La performance de votre budget prévisionnel excel avec SOMME.SI.ENS et NB.SI.ENS dépend aussi d’une bonne optimisation. Remplacez les formules répétitives par des plages nommées communes, ce qui réduit la volatilité des calculs. Utilisez les tableaux croisés dynamiques pour pré-calculer des agrégations : vos feuilles d’analyse seront plus rapides et plus lisibles. Adoptez le format de date AAAA-MM pour simplifier les critères de mois ; vous pourrez alors filtrer une année complète en une seule condition « >=2024-01, <=2024-12 ». Enfin, regroupez vos validations de données dans un onglet caché : vous normalisez les catégories, évitez les fautes de frappe et sécurisez les calculs conditionnels.
+La performance de votre budget prévisionnel excel avec SOMME.SI.ENS et NB.SI.ENS dépend aussi d’une bonne optimisation. Remplacez les formules répétitives par des plages nommées communes, ce qui réduit la volatilité des calculs. Utilisez les tableaux croisés dynamiques pour pré-calculer des agrégations : vos feuilles d’analyse seront plus rapides et plus lisibles. Adoptez le format de date AAAA-MM pour simplifier les critères de mois ; vous pourrez alors filtrer une année complète en une seule condition « >=2024-01, &lt;=2024-12 ». Enfin, regroupez vos validations de données dans un onglet caché : vous normalisez les catégories, évitez les fautes de frappe et sécurisez les calculs conditionnels.
 
 
 ## Exemples pratiques et études de cas : budget annuel avec Excel
@@ -72,7 +72,7 @@ La performance de votre budget prévisionnel excel avec SOMME.SI.ENS et NB.SI.EN
 
 ### Exemple de budget annuel avec Excel
 
-Pour illustrer la mise en place d’un modèle budgétaire excel sur douze mois, prenons un tableau listant toutes vos dépenses et recettes catégorisées. Dans une feuille « Transactions », vous saisissez date, catégorie et montant. Dans la feuille « Synthèse », une fonction SOMME.SI.ENS() agrège les montants par catégorie et par mois : =SOMME.SI.ENS(Transactions!C:C;Transactions!A:A; »>= »&EOMONTH($B2;-1)+1;Transactions!A:A; »<="&EOMONTH($B2;0);Transactions!B:B;$C$1). Cette formule alimente les colonnes mensuelles du modèle budgétaire annuel excel et met à jour automatiquement les totaux. Pour suivre le nombre d’opérations, la fonction NB.SI.ENS() utilise les mêmes critères. Vous obtenez dès lors une vue dynamique qui révèle les dérives budgétaires en temps réel.
+Pour illustrer la mise en place d’un modèle budgétaire excel sur douze mois, prenons un tableau listant toutes vos dépenses et recettes catégorisées. Dans une feuille « Transactions », vous saisissez date, catégorie et montant. Dans la feuille « Synthèse », une fonction SOMME.SI.ENS() agrège les montants par catégorie et par mois : =SOMME.SI.ENS(Transactions!C:C;Transactions!A:A; »>= »&EOMONTH($B2;-1)+1;Transactions!A:A; »&lt;="&EOMONTH($B2;0);Transactions!B:B;$C$1). Cette formule alimente les colonnes mensuelles du modèle budgétaire annuel excel et met à jour automatiquement les totaux. Pour suivre le nombre d’opérations, la fonction NB.SI.ENS() utilise les mêmes critères. Vous obtenez dès lors une vue dynamique qui révèle les dérives budgétaires en temps réel.
 
 
 ### Études de cas et témoignages pour illustrer des stratégies concrètes

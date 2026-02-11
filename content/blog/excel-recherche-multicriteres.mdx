@@ -45,7 +45,7 @@ Supposons une base de ventes avec colonnes : Année, Région, Produit et CA. Pou
 
 ### Création d’un filtre dynamique pour extraire des données ciblées
 
-Grâce à la fonction FILTRE, vous pouvez isoler en temps réel les lignes qui répondent à plusieurs conditions sans recourir aux segments de tableau. Construisez votre matrice source, puis inscrivez =FILTRE(Tableau1;(Tableau1=G2)\*(Tableau1>=G3)\*(Tableau1<=G4)) pour renvoyer uniquement les enregistrements conformes aux critères. Ce mécanisme constitue un véritable atout pour toute Excel recherche multicritères et offre une Recherche multicritères dans Excel fluide et sans macros. Veillez à verrouiller les références de la plage de données afin d’éviter les décalages lors du glissement de la formule.
+Grâce à la fonction FILTRE, vous pouvez isoler en temps réel les lignes qui répondent à plusieurs conditions sans recourir aux segments de tableau. Construisez votre matrice source, puis inscrivez =FILTRE(Tableau1;(Tableau1=G2)\*(Tableau1>=G3)\*(Tableau1&lt;=G4)) pour renvoyer uniquement les enregistrements conformes aux critères. Ce mécanisme constitue un véritable atout pour toute Excel recherche multicritères et offre une Recherche multicritères dans Excel fluide et sans macros. Veillez à verrouiller les références de la plage de données afin d’éviter les décalages lors du glissement de la formule.
 
 
 ### Techniques pour combiner FILTRE avec d’autres fonctions Excel
@@ -58,7 +58,7 @@ Pour aller plus loin, combinez FILTRE avec RECHERCHEX et créez ainsi des RECHER
 
 ### Méthodologie pour utiliser RECHERCHEX et FILTRE ensemble
 
-Maîtriser la combinaison de RECHERCHEX et FILTRE permet d'interroger des bases volumineuses en une seule formule. Le principe : FILTRE réduit votre table aux lignes répondant à plusieurs critères, puis RECHERCHEX extrait la valeur spécifique voulue. Pour réussir votre Excel recherche multicritères, construisez d’abord une matrice logique avec les opérateurs \* (multiplication) ou + (addition) afin de cumuler ou d’alterner les conditions. Exemple : \`=RECHERCHEX(1;–(FILTRE(Base;(Base=G2)\*(Base>=H2)\*(Base<=I2)));Base)\`. Ici, FILTRE isole les lignes conformes, l’opérateur unaire crée un tableau de 1/0, et RECHERCHEX récupère le premier 1. Avantage : calcul instantané, aucune colonne auxiliaire, et un code lisible car RECHERCHEX et FILTRE combinés restent dans la même cellule.
+Maîtriser la combinaison de RECHERCHEX et FILTRE permet d'interroger des bases volumineuses en une seule formule. Le principe : FILTRE réduit votre table aux lignes répondant à plusieurs critères, puis RECHERCHEX extrait la valeur spécifique voulue. Pour réussir votre Excel recherche multicritères, construisez d’abord une matrice logique avec les opérateurs \* (multiplication) ou + (addition) afin de cumuler ou d’alterner les conditions. Exemple : `=RECHERCHEX(1;–(FILTRE(Base;(Base=G2)\*(Base>=H2)\*(Base<=I2)));Base)`. Ici, FILTRE isole les lignes conformes, l’opérateur unaire crée un tableau de 1/0, et RECHERCHEX récupère le premier 1. Avantage : calcul instantané, aucune colonne auxiliaire, et un code lisible car RECHERCHEX et FILTRE combinés restent dans la même cellule.
 
 
 ### Études de cas spécifiques et exemples pratiques

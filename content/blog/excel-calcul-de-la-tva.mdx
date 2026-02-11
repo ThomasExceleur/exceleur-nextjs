@@ -550,7 +550,7 @@ Les professions libérales ont des règles spécifiques concernant la franchise 
 =SI(CAannuel>36800; "Assujetti"; "Franchise")
 
 // Calcul prorata temporis pour dépassement seuil
-=SI(ET(CAannuel>36800; MoisDépassement<=12); 
+=SI(ET(CAannuel>36800; MoisDépassement&lt;=12); 
    (13-MoisDépassement)/12 _ CA\_Imposable _ 0,20; 0)
 
 // Gestion franchise en base et débits
@@ -668,7 +668,7 @@ Pour garantir la fiabilité de vos **calculs TVA Excel**, implémentez des contr
 =NB.SI(ControleTVA; "✓ Conforme") / NB(ControleTVA)  100
 
 // Écarts moyens détectés
-=MOYENNE(SI(EcartCalcul<>0; ABS(EcartCalcul)))
+=MOYENNE(SI(EcartCalcul&lt;>0; ABS(EcartCalcul)))
 
 // Nombre d'anomalies par type
 =NB.SI.ENS(TypeAnomalie; "Taux incorrect"; DateControle; ">="&DEBUT.MOIS(AUJOURD'HUI()))

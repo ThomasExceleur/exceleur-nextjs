@@ -38,7 +38,7 @@ Avec la syntaxe =LET(nom; expression; formule), vous créez un nom temporaire va
 
 ### Exemples pratiques d'intégration dans vos calculs
 
-Supposons des ventes mensuelles en A2:A13 et un taux de remise en B1. La formule classique moyenne remise =MOYENNE(A2:A13)\*(1-B1) peut être revisitée avec LET : =LET(Ventes;A2:A13;Taux;B1;MOYENNE(Ventes)\*(1-Taux)). Une seule variable change, toutes les occurrences suivent. Dans un tableau de cash-flow, combinez LET et SOMME.SI.ENS pour isoler l'année courante : =LET(Année;2024;Flux;B2:B100;Dates;A2:A100;SOMME.SI.ENS(Flux;Dates; »>= »&DATE(Année;1;1);Dates; »<"&DATE(Année+1;1;1))). Cette approche facilite l'optimisation formules Excel avec LET lorsqu'il faut ajuster l'exercice cible. Pour aller plus loin, le guide complet LET Excel recommande d’associer LET aux fonctions LAMBDA pour encapsuler vos logiques et les réutiliser dans tout le classeur.
+Supposons des ventes mensuelles en A2:A13 et un taux de remise en B1. La formule classique moyenne remise =MOYENNE(A2:A13)\*(1-B1) peut être revisitée avec LET : =LET(Ventes;A2:A13;Taux;B1;MOYENNE(Ventes)\*(1-Taux)). Une seule variable change, toutes les occurrences suivent. Dans un tableau de cash-flow, combinez LET et SOMME.SI.ENS pour isoler l'année courante : =LET(Année;2024;Flux;B2:B100;Dates;A2:A100;SOMME.SI.ENS(Flux;Dates; »>= »&DATE(Année;1;1);Dates; »&lt;"&DATE(Année+1;1;1))). Cette approche facilite l'optimisation formules Excel avec LET lorsqu'il faut ajuster l'exercice cible. Pour aller plus loin, le guide complet LET Excel recommande d’associer LET aux fonctions LAMBDA pour encapsuler vos logiques et les réutiliser dans tout le classeur.
 
 
 ## Astuces pour combiner LET et formules dynamiques dans Excel

@@ -41,12 +41,12 @@ Le filtrage dynamique s’appuie sur la fonction FILTRE() introduite dans Micros
 
 ### Tutoriels d'utilisation et exemples pratiques
 
-Pour extraire les ventes supérieures à 10 000 € et appartenant à 2024, placez par exemple \`=FILTRE(A2:E500;(E2:E500>10000)\*(C2:C500=2024))\`. La multiplication agit comme le ET logique. Vous souhaitez combiner OU ? Remplacez par \`+\`. Dans un second temps, exploitez les noms de plage pour clarifier la lecture : \`=FILTRE(Ventes;(Montant>10000)\*(Année=2024))\`. Grâce à filtre excel 365, un simple copier-coller de la formule dans une autre feuille suffit pour répliquer la logique sans recourir aux filtres automatiques classiques.
+Pour extraire les ventes supérieures à 10 000 € et appartenant à 2024, placez par exemple `=FILTRE(A2:E500;(E2:E500>10000)\*(C2:C500=2024))`. La multiplication agit comme le ET logique. Vous souhaitez combiner OU ? Remplacez par `+`. Dans un second temps, exploitez les noms de plage pour clarifier la lecture : `=FILTRE(Ventes;(Montant>10000)\*(Année=2024))`. Grâce à filtre excel 365, un simple copier-coller de la formule dans une autre feuille suffit pour répliquer la logique sans recourir aux filtres automatiques classiques.
 
 
 ### Astuces pour maîtriser le filtre sur plusieurs colonnes
 
-Pour aller plus loin, encapsulez FILTRE() dans SIERREUR() afin d’afficher un message personnalisé si aucun résultat ne correspond : \`=SIERREUR(FILTRE(…); »Aucune ligne »)\`. Songez également à trier immédiatement la sortie : \`=TRIER(FILTRE(…);2;-1)\` pour voir les plus gros montants en tête. Enfin, lorsque vos conditions dépendent d’une liste déroulante, transformez-la en référence structurée et verrouillez-la avec l’opérateur \`@\` ; vous éviterez les décalages durant la recopie. Ces bonnes pratiques font du filtre sur plusieurs colonnes un outil robuste, idéal pour vos tableaux de bord interactifs.
+Pour aller plus loin, encapsulez FILTRE() dans SIERREUR() afin d’afficher un message personnalisé si aucun résultat ne correspond : `=SIERREUR(FILTRE(…); »Aucune ligne »)`. Songez également à trier immédiatement la sortie : `=TRIER(FILTRE(…);2;-1)` pour voir les plus gros montants en tête. Enfin, lorsque vos conditions dépendent d’une liste déroulante, transformez-la en référence structurée et verrouillez-la avec l’opérateur `@` ; vous éviterez les décalages durant la recopie. Ces bonnes pratiques font du filtre sur plusieurs colonnes un outil robuste, idéal pour vos tableaux de bord interactifs.
 
 
 ## Filtrer plusieurs critères dans Excel : de la formule FILTRE aux conditions multiples

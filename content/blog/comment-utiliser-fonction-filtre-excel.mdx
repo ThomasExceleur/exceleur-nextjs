@@ -59,7 +59,7 @@ Vous pouvez également Filtrer des données dans Excel 365 pour alimenter un tab
 
 ### Techniques pour paramétrer des filtres dynamiques
 
-Pour transformer une plage en vue réactive, commencez par définir un tableau structuré afin que la fonction FILTRE actualise immédiatement les résultats quand de nouvelles lignes sont ajoutées. Dans la syntaxe, remplacez l’argument critère par une expression basée sur des références absolues mélangées à la fonction SEQUENCE pour générer automatiquement la hauteur recherchée. Par exemple, =FILTRE(Ventes;(Ventes>=F1)\*(Ventes<=G1)) crée une extraction dépendante de deux cellules de date, librement modifiables. Pour des cas plus complexes, regroupez plusieurs champs avec le signe plus pour un OU logique, ou multipliez-les pour un ET, assurant ainsi un filtrage des données en temps réel Excel sans recourir aux segments.
+Pour transformer une plage en vue réactive, commencez par définir un tableau structuré afin que la fonction FILTRE actualise immédiatement les résultats quand de nouvelles lignes sont ajoutées. Dans la syntaxe, remplacez l’argument critère par une expression basée sur des références absolues mélangées à la fonction SEQUENCE pour générer automatiquement la hauteur recherchée. Par exemple, =FILTRE(Ventes;(Ventes>=F1)\*(Ventes&lt;=G1)) crée une extraction dépendante de deux cellules de date, librement modifiables. Pour des cas plus complexes, regroupez plusieurs champs avec le signe plus pour un OU logique, ou multipliez-les pour un ET, assurant ainsi un filtrage des données en temps réel Excel sans recourir aux segments.
 
 
 ### Astuces pour améliorer l’efficacité de la fonction FILTRE
