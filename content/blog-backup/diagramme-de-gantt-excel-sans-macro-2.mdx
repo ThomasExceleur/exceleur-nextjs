@@ -1,0 +1,210 @@
+---
+title: "Diagramme de Gantt Excel sans Macro - Techniques Avancées"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Techniques avancées pour un Gantt professionnel sans VBA."
+description: "Techniques avancées pour créer un diagramme de Gantt sans macro."
+category: "Graphiques"
+catégories: ["Graphiques", "Productivité"]
+tags: ["Gantt", "Avancé", "Sans macro", "Techniques"]
+---
+
+# Diagramme de Gantt sans Macro - Techniques Avancées
+
+Poussez les limites d'Excel sans utiliser de code VBA.
+
+## Gantt avec sous-taches
+
+### Structuré hiérarchique
+
+| Niveau | Tache | Début | Duree |
+|--------|-------|-------|-------|
+| 1 | Phase 1 | 01/01 | 15 |
+| 2 | - Sous-tache 1.1 | 01/01 | 5 |
+| 2 | - Sous-tache 1.2 | 06/01 | 10 |
+| 1 | Phase 2 | 16/01 | 20 |
+
+### Indentation visuelle
+
+Utilisez des espaces où prefixes pour montrer la hiérarchie.
+
+### Calculs automatiques
+
+Duree phase parente :
+```excel
+=MAX(Fins_sous_taches)-MIN(Debuts_sous_taches)
+```
+
+## Dependances visuelles
+
+### Sans fleches automatiques
+
+Ajoutez une colonne "Predecesseur" et utilisez la mise en forme conditionnelle pour surligner.
+
+### Indicateur visuel
+
+```excel
+=SI([@Predecesseur]<>"";
+  SI(INDEX(Fins;EQUIV([@Predecesseur];IDs;0))>[@Début];
+    "⚠ Conflit";"✓");
+  "")
+```
+
+## Calendrier avec jours ouvres
+
+### Colonnes jour par jour
+
+Générez les dates avec :
+```excel
+=SERIE.JOUR.OUVRE(Date_debut;Numero_colonne-1)
+```
+
+### Mise en forme weekends
+
+Coloriez differemment samedi/dimanche :
+```excel
+=JOURSEM(C$1;2)>5
+```
+
+### Jours feries
+
+Ajoutez une table de jours feries et excluez-les.
+
+## Barres de ressources
+
+### Structuré
+
+| Tache | Ressource | Charge |
+|-------|-----------|--------|
+| Dev 1 | Alice | 100% |
+| Dev 2 | Bob | 50% |
+| Test | Alice | 50% |
+
+### Graphique de charge
+
+Créez un graphique séparé montrant la charge par ressource.
+
+### Surcapacite
+
+```excel
+=SI(SOMME.SI(Ressource;[@Ressource];Charge)>100%;"Surcharge";"OK")
+```
+
+## Timeline dynamique
+
+### Zoom sûr la période
+
+Utilisez des listes deroulantes pour définir la plage visible :
+- Date début affichage
+- Date fin affichage
+
+### Formule de visibilité
+
+```excel
+=ET([@Début]<=Fin_affichage;[@Fin]>=Debut_affichage)
+```
+
+## Indicateurs de performance
+
+### Avancement global
+
+```excel
+=SOMMEPROD(Durees;Progressions)/SOMME(Durees)
+```
+
+### Valeur acquise
+
+```excel
+Valeur_acquise = Budget_total * Avancement_global
+```
+
+### Indice de performance
+
+```excel
+SPI = Valeur_acquise / Valeur_planifiee
+```
+
+## Export et impression
+
+### Ajuster à la page
+
+1. **Mise en page** > **Ajuster**
+2. Définissez la largeur en pages
+
+### Zone d'impression dynamique
+
+Utilisez une plage nommée qui s'ajuste aux données.
+
+## Collaboration sans macro
+
+### Commentaires
+
+Ajoutez des commentaires aux cellules pour les notes.
+
+### Historique
+
+Gardez une feuille de modifications :
+| Date | Modification | Par |
+|------|--------------|-----|
+
+### Partage
+
+Excel Online permet la co-edition en temps reel.
+
+## Formules avancées utiles
+
+### Date la plus proche de la fin
+
+```excel
+=MAX(Fins)
+```
+
+### Taches en retard
+
+```excel
+=NB.SI.ENS(Fins;"<"&AUJOURDHUI();Statuts;"<>"&"Termine")
+```
+
+### Jours restants projet
+
+```excel
+=MAX(Fins)-AUJOURDHUI()
+```
+
+### Prochaine tache à commencer
+
+```excel
+=MIN(SI(Debuts>AUJOURDHUI();Debuts))
+```
+(Formule matricielle où MINIFS)
+
+## Template professionnel
+
+### Éléments à inclure
+
+| Élément | Obligatoire |
+|---------|-------------|
+| Tableau de données | Oui |
+| Graphique Gantt | Oui |
+| Segments filtres | Recommandé |
+| KPI | Recommandé |
+| Legende | Oui |
+| Instructions | Recommandé |
+
+### Protection
+
+Protégez les cellules de formules tout en laissant les cellules de saisie editables.
+
+## Performance
+
+### Optimisation
+
+1. Limitez les plages de données
+2. Évitez les colonnes entières
+3. Utilisez des tableaux structurés
+
+### Taille fichier
+
+Moins de 100 taches pour de bonnes performances sans macro.
+
+[Découvrir nos formations Excel](/formations-excel)

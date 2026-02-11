@@ -1,0 +1,151 @@
+---
+title: "Excel Quel Ecart-Type Utiliser : Guide Complet"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Comprenez la différence entre les fonctions d'ecart-type dans Excel."
+description: "Guide pour choisir entre ECARTYPE, ECARTYPE.STANDARD et ECARTYPE.PEARSON dans Excel."
+category: "Statistiques"
+catégories: ["Statistiques", "Fonctions"]
+tags: ["Ecart-type", "Statistiques", "Formules", "Analyse"]
+---
+
+# Quel Ecart-Type Utiliser dans Excel
+
+Excel propose plusieurs fonctions d'ecart-type. Voici comment choisir.
+
+## Les deux types d'ecart-type
+
+### Ecart-type de l'echantillon (n-1)
+
+Utilisez quand vos données representent un **echantillon** d'une population plus large.
+
+### Ecart-type de la population (n)
+
+Utilisez quand vos données representent la **population entière**.
+
+## Fonctions Excel
+
+### Pour un echantillon
+
+```excel
+=ECARTYPE.STANDARD(A1:A100)
+=ECARTYPE(A1:A100)            ' Equivalent (ancienne fonction)
+```
+
+### Pour une population
+
+```excel
+=ECARTYPEP(A1:A100)
+=ECARTYPE.PEARSON(A1:A100)    ' Equivalent moderne
+```
+
+## Différence mathematique
+
+### Echantillon (n-1)
+
+Division par (n-1) pour corriger le biais.
+
+### Population (n)
+
+Division par n.
+
+### Impact
+
+L'ecart-type echantillon est legerement plus grand.
+
+## Quand utiliser lequel ?
+
+### Utilisez ECARTYPE.STANDARD si
+
+- Vous analysez un echantillon
+- Vos données sont un sous-ensemble
+- Vous faites des statistiques inferentielles
+
+### Utilisez ECARTYPEP si
+
+- Vous avez toutes les données de la population
+- Vous faites des statistiques descriptives
+- Vous analysez un ensemble complet
+
+## Exemples pratiques
+
+### Notes d'une classe entière
+
+```excel
+=ECARTYPEP(Notes)             ' Population complete
+```
+
+### Echantillon de clients
+
+```excel
+=ECARTYPE.STANDARD(Ventes)    ' Echantillon
+```
+
+## Fonctions associees
+
+### Variance
+
+| Type | Fonction |
+|------|----------|
+| Echantillon | VAR.S où VAR |
+| Population | VAR.P où VARPA |
+
+### Relation
+
+```excel
+Ecart-type = RACINE(Variance)
+```
+
+## Cas pratique : Contrôle qualité
+
+### Mesures sûr un lot
+
+Si vous mesurez tous les produits d'un lot :
+
+```excel
+=ECARTYPEP(Mesures)           ' Population complete
+```
+
+### Mesures sûr un echantillon de lot
+
+```excel
+=ECARTYPE.STANDARD(Mesures)   ' Echantillon
+```
+
+## Interprétation
+
+### Ecart-type faible
+
+Les valeurs sont proches de la moyenne.
+
+### Ecart-type élevé
+
+Les valeurs sont dispersees.
+
+## Résumé des fonctions
+
+| Fonction | Type | Usage |
+|----------|------|-------|
+| ECARTYPE.STANDARD | Echantillon | Le plus courant |
+| ECARTYPEP | Population | Population complete |
+| ECARTYPE | Echantillon | Ancienne version |
+| ECARTYPE.PEARSON | Population | Moderne |
+
+## Conseil pratique
+
+En cas de doute, utilisez **ECARTYPE.STANDARD** (echantillon).
+
+C'est le choix le plus prudent statistiquement.
+
+## Ignorer les valeurs texte
+
+### ECARTYPEA et ECARTYPEPA
+
+- Comptent les textes comme 0
+- Comptent VRAI comme 1, FAUX comme 0
+
+```excel
+=ECARTYPEA(A1:A100)
+```
+
+[Découvrir nos formations Excel](/formations-excel)

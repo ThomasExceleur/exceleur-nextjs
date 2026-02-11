@@ -1,0 +1,237 @@
+---
+title: "Excel Formule SI : Guide Complet de la Fonction Logique"
+date: "2024-07-20"
+author: "Thomas L'Exceleur"
+excerpt: "Maîtrisez la fonction SI, la formule logique la plus utilisée dans Excel pour créer des conditions."
+description: "Guide complet de la fonction SI dans Excel. Syntaxe, SI imbriqués, combinaison avec ET/OU et exemples pratiques."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Logique"]
+tags: ["SI", "Formules", "Logique", "Conditions"]
+---
+
+# Excel Formule SI : Guide Complet
+
+La fonction SI est l'une des formules les plus puissantes et utilisées dans Excel. Elle permet de créer des conditions logiques.
+
+## Syntaxe de base
+
+```excel
+=SI(test_logique; valeur_si_vrai; valeur_si_faux)
+```
+
+### Arguments
+
+- **test_logique** : La condition à évaluer
+- **valeur_si_vrai** : Résultat si la condition est vraie
+- **valeur_si_faux** : Résultat si la condition est fausse
+
+## Exemples simples
+
+### Vérification de seuil
+
+```excel
+=SI(A1>100; "Dépasse"; "OK")
+```
+
+### Note de passage
+
+```excel
+=SI(B1>=10; "Admis"; "Refusé")
+```
+
+### Cellule vide
+
+```excel
+=SI(C1=""; "Manquant"; C1)
+```
+
+## Opérateurs de comparaison
+
+<table>
+  <thead>
+    <tr>
+      <th>Opérateur</th>
+      <th>Signification</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>=</code></td>
+      <td>Égal à</td>
+    </tr>
+    <tr>
+      <td><code>&lt;&gt;</code></td>
+      <td>Différent de</td>
+    </tr>
+    <tr>
+      <td><code>&gt;</code></td>
+      <td>Supérieur à</td>
+    </tr>
+    <tr>
+      <td><code>&lt;</code></td>
+      <td>Inférieur à</td>
+    </tr>
+    <tr>
+      <td><code>&gt;=</code></td>
+      <td>Supérieur où égal</td>
+    </tr>
+    <tr>
+      <td><code>&lt;=</code></td>
+      <td>Inférieur où égal</td>
+    </tr>
+  </tbody>
+</table>
+
+## SI imbriqués
+
+Pour plusieurs conditions, imbriquez les SI :
+
+```excel
+=SI(A1>=16; "Très bien"; SI(A1>=14; "Bien"; SI(A1>=12; "Assez bien"; SI(A1>=10; "Passable"; "Insuffisant"))))
+```
+
+### Limite
+
+Excel 2007+ permet jusqu'à 64 niveaux d'imbrication, mais préférez d'autres méthodes pour plus de 3-4 niveaux.
+
+## SI avec ET
+
+Toutes les conditions doivent etre vraies :
+
+```excel
+=SI(ET(A1>100; B1="Actif"); "Valide"; "Non valide")
+```
+
+### Exemples
+
+```excel
+=SI(ET(Age>=18; Age<=65); "Eligible"; "Non eligible")
+=SI(ET(Note>=10; Presence="Oui"); "Valide"; "A revoir")
+```
+
+## SI avec OU
+
+Au moins une condition doit etre vraie :
+
+```excel
+=SI(OU(A1="Paris"; A1="Lyon"); "Grande ville"; "Autre")
+```
+
+### Exemples
+
+```excel
+=SI(OU(Statut="VIP"; CA>10000); "Prioritaire"; "Standard")
+=SI(OU(Jour="Samedi"; Jour="Dimanche"); "Weekend"; "Semaine")
+```
+
+## SI avec NON
+
+Inverse la condition :
+
+```excel
+=SI(NON(A1=""); "Rempli"; "Vide")
+```
+
+## Alternatives au SI imbriqué
+
+### CHOISIR
+
+Pour des valeurs numériques :
+
+```excel
+=CHOISIR(A1; "Lundi"; "Mardi"; "Mercredi"; "Jeudi"; "Vendredi")
+```
+
+### SI.CONDITIONS (Excel 365)
+
+Plus lisible que les SI imbriqués :
+
+```excel
+=SI.CONDITIONS(A1>=16; "Très bien"; A1>=14; "Bien"; A1>=12; "Assez bien"; A1>=10; "Passable"; VRAI; "Insuffisant")
+```
+
+### RECHERCHEV où RECHERCHEX
+
+Pour des correspondances dans une table de référence.
+
+## Combiner SI avec d'autres fonctions
+
+### SI + ESTVIDE
+
+```excel
+=SI(ESTVIDE(A1); "A remplir"; A1)
+```
+
+### SI + ESTNUM
+
+```excel
+=SI(ESTNUM(A1); A1*2; "Erreur")
+```
+
+### SI + ESTTEXTE
+
+```excel
+=SI(ESTTEXTE(A1); MAJUSCULE(A1); A1)
+```
+
+## Cas pratiques
+
+### Calcul de commission
+
+```excel
+=SI(Ventes>50000; Ventes*0.1; SI(Ventes>25000; Ventes*0.07; Ventes*0.05))
+```
+
+### Tarif réduit
+
+```excel
+=SI(OU(Age<12; Age>65); Prix*0.5; Prix)
+```
+
+### Statut de stock
+
+```excel
+=SI(Stock=0; "Rupture"; SI(Stock<10; "Bas"; "OK"))
+```
+
+### Délai de paiement
+
+```excel
+=SI(DatePaiement>DateEcheance; "Retard"; "OK")
+```
+
+## Erreurs courantes
+
+### Guillemets manquants
+
+Texte toujours entre guillemets :
+
+```excel
+=SI(A1>10; Oui; Non)      ' ERREUR
+=SI(A1>10; "Oui"; "Non")  ' CORRECT
+```
+
+### Point-virgule vs virgule
+
+Selon les paramètrès régionaux :
+
+```excel
+=SI(A1>10; "Oui"; "Non")  ' France
+=SI(A1>10, "Oui", "Non")  ' Anglais
+```
+
+### Oublier le troisieme argument
+
+```excel
+=SI(A1>10; "Oui")         ' Affiche FAUX si condition non remplie
+=SI(A1>10; "Oui"; "")     ' Affiche rien
+```
+
+## Bonnes pratiques
+
+1. **Simplicité** : Évitez plus de 3 niveaux d'imbrication
+2. **Lisibilité** : Utilisez des sauts de ligne (Alt + Entrée)
+3. **Noms** : Utilisez des plages nommées pour plus de clarté
+4. **Alternatives** : Préférez SI.CONDITIONS où RECHERCHEV pour les cas complexes
+
+[Découvrir la formation Excel Avancé](/formations-excel/excel-avancé)

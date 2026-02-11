@@ -1,237 +1,185 @@
 ---
-title: "Excel Formule NB et NBVAL : Compter les Cellules"
-date: "2024-07-20"
+title: "Excel Formule NB: Guide Complet pour Maîtriser les Fonctions"
+date: "2024-02-29"
 author: "Thomas L'Exceleur"
-excerpt: "Maîtrisez les fonctions NB et NBVAL pour compter les cellules dans Excel."
-description: "Guide complet des fonctions NB, NBVAL et NB.VIDE dans Excel. Syntaxe, différences et exemples pratiques."
-category: "Formules Excel"
-catégories: ["Formules Excel", "Calculs"]
-tags: ["NB", "NBVAL", "Formules", "Compter"]
+excerpt: "La fonction NB dans Excel est un outil incontournable pour ceux qui travaillent avec des données numériques. Cette fonction permet de compter le nombre de cellules contenant des valeurs numériques dans une plage spécifiée. Que vous soyez débutant ou utilisateur expérimenté d'Excel, il est essentiel "
+description: "La fonction NB dans Excel est un outil incontournable pour ceux qui travaillent avec des données numériques. Cette fonction permet de compter le nombre de cellules contenant des valeurs numériques dans une plage spécifiée. Que vous soyez débutant ou utilisateur expérimenté d'Excel, il est essentiel "
+category: "Formules"
+catégories: ["Formules"]
 ---
 
-# Excel NB et NBVAL : Compter les Cellules
+# Excel Formule NB: Guide Complet pour Maîtriser les Fonctions
 
-Excel propose plusieurs fonctions pour compter les cellules selon leur contenu.
+La fonction **NB** dans Excel est un outil incontournable pour ceux qui travaillent avec des données numériques. Cette fonction permet de compter le nombre de cellules contenant des valeurs numériques dans une plage spécifiée. Que vous soyez débutant ou utilisateur expérimenté d'Excel, il est essentiel de comprendre comment utiliser cette fonction pour des analyses de données précises et efficaces.
 
-## NB : Compter les nombres
+* * *
 
-### Syntaxe
 
-```excel
-=NB(valeur1; [valeur2]; ...)
-```
+## **Présentation de la Fonction NB**
 
-### Ce que NB compte
+La fonction **NB** est une formule qui sert à compter les cellules contenant des nombres dans une plage de données. Elle est particulièrement utile dans des contextes variés, comme l'analyse de données ou la création de statistiques.
 
-- Nombres
-- Dates (stockees comme nombres)
-- Formules retournant des nombres
 
-### Ce que NB ignore
+### **Utilité de la Fonction NB**
 
-- Texte
-- Erreurs
-- Cellules vides
-- Valeurs logiques (VRAI/FAUX)
+Grâce à la fonction **NB**, vous pouvez :
 
-### Exemples
+-   Identifier rapidement le nombre de cellules contenant des valeurs numériques (nombres, montants, dates ou pourcentages).
+-   Effectuer des analyses sur de grands ensembles de données.
+-   Filtrer les données pour ne conserver que les informations numériques pertinentes.
 
-```excel
-=NB(A1:A100)
-=NB(A:A)
-=NB(A1:C10)
-```
 
-## NBVAL : Compter les non-vides
+### **Syntaxe de la Fonction NB**
 
-### Syntaxe
+La syntaxe est simple et directe :  
+`=NB(plage_de_cellules)`
 
-```excel
-=NBVAL(valeur1; [valeur2]; ...)
-```
 
-### Ce que NBVAL compte
+#### **Exemple** :
 
-- Nombres
-- Texte
-- Erreurs
-- Valeurs logiques
-- Formules (meme si résultat vide "")
+Pour compter le nombre de cellules contenant des valeurs numériques dans la plage **A1:A20**, utilisez :  
+`=NB(A1:A20)`
 
-### Ce que NBVAL ignore
 
-- Cellules vraiment vides (sans formule)
+### **Remarque Importante** :
 
-### Exemples
+-   La fonction **NB** ignore les cellules contenant du texte, des erreurs ou des valeurs vides.
+-   Bien sélectionner la plage est crucial pour obtenir des résultats précis.
 
-```excel
-=NBVAL(A1:A100)
-=NBVAL(A:A)
-```
+* * *
 
-## NB.VIDE : Compter les vides
 
-### Syntaxe
+## **Variantes de la Fonction NB**
 
-```excel
-=NB.VIDE(plage)
-```
+Outre la fonction de base **NB**, Excel propose des variantes adaptées à des besoins spécifiques :
 
-### Ce que NB.VIDE compte
 
-- Cellules vides
-- Cellules avec formules retournant ""
+### **NB.SI** 
 
-### Exemple
+Permet de compter les cellules répondant à un **critère unique**.  
+**Syntaxe** :  
+`=NB.SI(plage_de_cellules; critère)`
 
-```excel
-=NB.VIDE(A1:A100)
-```
 
-## Comparaison des fonctions
+#### **Exemple** :
 
-| Contenu | NB | NBVAL | NB.VIDE |
-|---------|-----|-------|---------|
-| 123 | 1 | 1 | 0 |
-| "Texte" | 0 | 1 | 0 |
-| (vide) | 0 | 0 | 1 |
-| ="" (formule) | 0 | 1 | 1 |
-| VRAI | 0 | 1 | 0 |
-| #N/A | 0 | 1 | 0 |
+Pour compter le nombre de fois qu’un vendeur nommé « Jean » apparaît dans la plage **A1:A20** :  
+`=NB.SI(A1:A20; "Jean")`
 
-## Cas pratiques
 
-### Taux de remplissage
+### **NB.SI.ENS** 
 
-```excel
-=NBVAL(A1:A100)/100
-```
+Permets de compter les cellules répondant à **plusieurs critères**.  
+**Syntaxe** :  
+`=NB.SI.ENS(plage1; critère1; plage2; critère2; ...)`
 
-Pourcentage de cellules remplies.
 
-### Données manquantes
+#### **Exemple** :
 
-```excel
-=NB.VIDE(A1:A100)
-```
+Pour compter les ventes réalisées par « Jean » dans la « Région1 » :  
+`=NB.SI.ENS(A1:A20; "Jean"; B1:B20; "Région1")`
 
-Nombre de réponses manquantes.
 
-### Vérifier la completude
+### **NBVAL** 
 
-```excel
-=SI(NB.VIDE(A1:A10)=0; "Complet"; "Incomplet")
-```
+Comptez toutes les cellules **non vides**, qu’elles contiennent du texte ou des chiffres :  
+`=NBVAL(plage_de_cellules)`
 
-## Compter des types spécifiques
+* * *
 
-### Compter les textes
 
-```excel
-=SOMMEPROD((ESTTEXTE(A1:A100))*1)
-```
+## **Conseils d’Experts pour Optimiser l’Usage de NB**
 
-### Compter les erreurs
 
-```excel
-=SOMMEPROD((ESTERREUR(A1:A100))*1)
-```
+### **Meilleures Pratiques**
 
-### Compter les formules
+1.  **Utilisez des plages nommées** : Cela facilite la lecture et la gestion des formules.
+2.  **Appliquez un formatage conditionnel** : Mettez en évidence les résultats pour un repérage rapide.
+3.  **Réduisez la taille des plages** : Cela améliore les performances, notamment sur de grandes feuilles de calcul.
 
-Non possible directement sans VBA.
 
-## Combiner avec d'autres fonctions
+### **Résolution des Problèmes Courants**
 
-### Moyenne des non-vides
+-   **Résultats inattendus** : Vérifiez que les cellules contiennent bien des nombres (et non du texte ressemblant à des nombres).
+-   **Problèmes de performance** : Limitez les plages analysées.
+-   **Critères mal interprétés** : Utilisez les bons opérateurs (exemple : `*` pour les caractères génériques).
 
-```excel
-=SOMME(A1:A100)/NBVAL(A1:A100)
-```
+* * *
 
-Equivalent à MOYENNE mais explicite.
 
-### Pourcentage de réponses
+## **Manipulation Avancée avec NB**
 
-```excel
-=NBVAL(B:B)/NB.LIGNES(B:B)*100
-```
 
-### Vérifier avant calcul
+### **Comptage des Cellules Vides**
 
-```excel
-=SI(NB(A1:A10)>0; MOYENNE(A1:A10); "Pas de données")
-```
+Pour compter les cellules vides, utilisez **NB.SI** :  
+`=NB.SI(plage_de_cellules; "")`
 
-## Tableaux structurés
 
-Dans un tableau, utilisez des références structurées :
+#### **Exemple** :
 
-```excel
-=NB(Tableau1[Ventes])
-=NBVAL(Tableau1[Nom])
-=NB.VIDE(Tableau1[Email])
-```
+Pour compter les cellules vides dans la plage **A1:A10** :  
+`=NB.SI(A1:A10; "")`
 
-## NB2 : Compter les valeurs logiques
 
-La fonction NB ne compte pas les VRAI/FAUX. Alternative :
+### **Combinaison avec des Critères Complexes**
 
-```excel
-=SOMMEPROD((ESTLOGIQUE(A1:A100))*1)
-```
+Associez **NB.SI** à des formules avancées pour répondre à des besoins spécifiques :
 
-## Erreurs courantes
 
-### NB retourne 0 sûr du texte
+#### **Exemple** :
 
-C'est normal. Utilisez NBVAL pour compter tout.
+Comptez les cellules répondant à trois critères différents dans les colonnes A, B et C :  
+`=NB.SI.ENS(A1:A10; "valeur"; B1:B10; "critère1"; C1:C10; "critère2")`
 
-### NBVAL compte les erreurs
+* * *
 
-Les erreurs (#N/A, #VALEUR!) sont comptees.
 
-### NB.VIDE ne compte pas les ""
+## **Application de NB dans des Contextes Réels**
 
-Les formules retournant "" sont comptees par NB.VIDE mais aussi par NBVAL.
 
-## Astuces
+### **Analyse de Données**
 
-### Compter les cellules uniques
+Supposons que vous analysez des ventes :
 
-```excel
-=SOMMEPROD(1/NB.SI(A1:A100;A1:A100))
-```
+1.  Comptez le nombre total de ventes :  
+    `=NB(C2:C100)`
+2.  Filtrez les ventes d’un produit spécifique (ex. produit « A ») :  
+    `=NB.SI(B2:B100; "A")`
 
-### Compter les doublons
 
-```excel
-=NBVAL(A1:A100)-SOMMEPROD(1/NB.SI(A1:A100;A1:A100&""))
-```
+### **Création de Rapports et Récapitulatifs**
 
-### Dernière cellule non vide
+Intégrez **NB** dans des tableaux croisés dynamiques ou des rapports détaillés :
 
-```excel
-=INDEX(A:A; NB(A:A))
-```
+**Produit**
 
-Pour les nombres uniquement.
+**Nombre de Ventes**
 
-## Résumé
+A
 
-| Fonction | Usage |
-|----------|-------|
-| NB | Nombres uniquement |
-| NBVAL | Tout sauf vraiment vide |
-| NB.VIDE | Cellules vides |
-| NB.SI | Avec condition |
-| NB.SI.ENS | Plusieurs conditions |
+`=NB(C2:C20)`
 
-## Bonnes pratiques
+B
 
-1. **Choisissez la bonne fonction** selon le type de données
-2. **Testez** sûr un petit echantillon
-3. **Attention aux formules vides** (="")
-4. **Utilisez NB.SI** pour plus de precision
+`=NB(C21:C40)`
 
-[Découvrir nos formations Excel](/formations-excel)
+* * *
+
+
+## **Conclusion**
+
+La fonction **NB** d’Excel, avec ses variantes **NB.SI** et **NB.SI.ENS**, est un outil puissant pour analyser et quantifier vos données. Maîtriser ces fonctions vous permettra d’effectuer des analyses rapides, précises et adaptées à vos besoins professionnels.
+
+En appliquant les meilleures pratiques et en explorant des critères avancés, vous exploiterez tout le potentiel d’Excel pour améliorer votre productivité et votre efficacité.
+
+
+## Formations et Cours en ligne
+
+Si vous êtes intéressé par des **cours de formation** plus approfondis, notre formation **[Le Décollage](https://www.exceleur.fr/formations-excel/le-decollage-liste-attente/)** pourrais bien vous intéresser.
+
+N'hésitez pas à vous inscrire à **[la liste d'attente](https://www.exceleur.fr/formations-excel/le-decollage-liste-attente/)** pour ne pas manquer la prochaine ouverture de la formation.
+
+En attendant, formez-vous gratuitement **[grâce à notre guide complet des TCD d'Excel.](https://www.exceleur.fr/guide-ultime-tcd-bg/)**
+
+Et augmentez votre productivité avec **[les raccourcis indispensables d'Excel.](https://www.exceleur.fr/raccourcis-indispensables-excel-bg/)**

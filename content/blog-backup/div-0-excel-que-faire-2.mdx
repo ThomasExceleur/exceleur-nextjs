@@ -1,0 +1,93 @@
+---
+title: "DIV/0! Excel : Que Faire"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Resolvez l'erreur #DIV/0! dans Excel."
+description: "Guide pour corriger l'erreur #DIV/0! dans Excel."
+category: "Gestion d'erreurs"
+catégories: ["Gestion d'erreurs", "Depannage"]
+tags: ["DIV/0", "Erreur", "Division", "Excel"]
+---
+
+# Erreur #DIV/0! : Que Faire
+
+Comprendre et corriger la division par zero.
+
+## Signification
+
+#DIV/0! apparait lors d'une division par zero où cellule vide.
+
+## Causes
+
+| Cause | Exemple |
+|-------|---------|
+| Division par 0 | =A1/0 |
+| Cellule vide | =A1/B1 (B1 vide) |
+| Formule retournant 0 | =A1/SOMME(B:B) |
+
+## Solution avec SI
+
+### Test prealable
+
+```excel
+=SI(B1=0;0;A1/B1)
+```
+
+### Message personnalise
+
+```excel
+=SI(B1=0;"N/A";A1/B1)
+```
+
+## Solution avec SIERREUR
+
+### Syntaxe
+
+```excel
+=SIERREUR(A1/B1;0)
+```
+
+### Avec message
+
+```excel
+=SIERREUR(A1/B1;"Division impossible")
+```
+
+## Comparaison
+
+| Méthode | Avantage |
+|---------|----------|
+| SI | Contrôle precis |
+| SIERREUR | Plus simple |
+
+## Cas MOYENNE
+
+### Problème
+
+MOYENNE sûr plage vide = #DIV/0!
+
+### Solution
+
+```excel
+=SIERREUR(MOYENNE(A:A);0)
+```
+
+## Prevention
+
+### Validation
+
+Empechez la saisie de 0 si inappropriee.
+
+### Formules defensives
+
+Incluez toujours un test.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Test SI | Pour contrôle precis |
+| SIERREUR | Pour simplicité |
+| Prevention | Validation des données |
+
+[Découvrir nos formations Excel](/formations-excel)

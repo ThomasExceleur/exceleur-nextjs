@@ -1,0 +1,92 @@
+---
+title: "Guide Pratique de la Fonction LAMBDA Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Guide pratique pour créer des fonctions personnalisees avec LAMBDA."
+description: "Guide pratique de la fonction LAMBDA Excel."
+category: "Excel 365"
+catégories: ["Excel 365", "Formules Excel"]
+tags: ["LAMBDA", "Fonctions", "Pratique", "Excel 365"]
+---
+
+# Guide Pratique de la Fonction LAMBDA
+
+Créez vos propres fonctions Excel pas à pas.
+
+## Concept
+
+LAMBDA permet de définir une fonction reutilisable.
+
+## Syntaxe
+
+```excel
+=LAMBDA(param1;[param2];...;expression)
+```
+
+## Créer une fonction
+
+### Étape 1 : Définir la logique
+
+```excel
+=LAMBDA(prix;prix*1.2)
+```
+
+### Étape 2 : Tester
+
+```excel
+=LAMBDA(prix;prix*1.2)(100)
+```
+
+Retourne 120.
+
+### Étape 3 : Nommer
+
+1. **Formules** > **Gestionnaire de noms**
+2. **Nouveau**
+3. Nom : TTC
+4. Fait référence à : =LAMBDA(prix;prix*1.2)
+
+### Étape 4 : Utiliser
+
+```excel
+=TTC(100)
+```
+
+## Exemples pratiques
+
+### Conversion temperature
+
+```excel
+Nom: CELSIUS_FAHRENHEIT
+=LAMBDA(c;c*9/5+32)
+```
+
+### Calcul d'age
+
+```excel
+Nom: AGE
+=LAMBDA(naissance;DATEDIF(naissance;AUJOURDHUI();"y"))
+```
+
+### Remise
+
+```excel
+Nom: REMISE
+=LAMBDA(prix;taux;prix*(1-taux))
+```
+
+## Fonctions à plusieurs paramètrès
+
+```excel
+=LAMBDA(à;b;c;à+b*c)(1;2;3)
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Noms explicites | Fonctions bien nommées |
+| Documentation | Commentaires dans le gestionnaire |
+| Test | Vérifiez avant de nommer |
+
+[Découvrir nos formations Excel](/formations-excel)

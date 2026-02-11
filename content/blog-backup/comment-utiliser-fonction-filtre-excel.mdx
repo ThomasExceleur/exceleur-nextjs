@@ -1,0 +1,155 @@
+---
+title: "Comment Utiliser la Fonction FILTRE dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez à utiliser la fonction FILTRE pour extraire des données dynamiquement."
+description: "Guide complet de la fonction FILTRE dans Excel 365. Syntaxe, exemples et cas pratiques."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Excel 365"]
+tags: ["FILTRE", "Tableaux dynamiques", "Excel 365", "Extraction"]
+---
+
+# La Fonction FILTRE dans Excel
+
+FILTRE est une fonction puissante d'Excel 365 pour extraire des données dynamiquement.
+
+## Disponibilité
+
+Cette fonction est disponible dans :
+- Excel 365
+- Excel 2021
+- Excel pour le web
+
+## Syntaxe
+
+```excel
+=FILTRE(tableau;inclure;[si_vide])
+```
+
+### Arguments
+
+| Argument | Description |
+|----------|-------------|
+| tableau | Plage à filtrer |
+| inclure | Conditions de filtre |
+| si_vide | Valeur si aucun résultat (optionnel) |
+
+## Exemples de base
+
+### Filtre simple
+
+```excel
+=FILTRE(A2:D100;C2:C100="Paris")
+```
+
+Retourne toutes les lignes où la colonne C contient "Paris".
+
+### Filtre numérique
+
+```excel
+=FILTRE(A2:D100;D2:D100>1000)
+```
+
+Retourne les lignes où D est supérieur à 1000.
+
+## Filtres avec plusieurs conditions
+
+### Condition ET (toutes vraies)
+
+```excel
+=FILTRE(A2:D100;(B2:B100="Actif")*(C2:C100>100))
+```
+
+Le `*` represente ET.
+
+### Condition OU (au moins une vraie)
+
+```excel
+=FILTRE(A2:D100;(B2:B100="Paris")+(B2:B100="Lyon"))
+```
+
+Le `+` represente OU.
+
+## Gérer l'absence de résultats
+
+### Message personnalise
+
+```excel
+=FILTRE(A2:D100;C2:C100="Paris";"Aucun résultat")
+```
+
+### Cellule vide
+
+```excel
+=FILTRE(A2:D100;C2:C100="Paris";"")
+```
+
+## Combinaison avec d'autres fonctions
+
+### FILTRE + TRIER
+
+```excel
+=TRIER(FILTRE(A2:D100;C2:C100="Paris");4;-1)
+```
+
+Filtre puis trie par la 4e colonne en ordre decroissant.
+
+### FILTRE + UNIQUE
+
+```excel
+=UNIQUE(FILTRE(B2:B100;C2:C100="Paris"))
+```
+
+Valeurs uniques parmi les résultats filtres.
+
+## Cas pratiques
+
+### Liste des clients VIP
+
+```excel
+=FILTRE(Clients;Clients[Statut]="VIP")
+```
+
+### Ventes du mois en cours
+
+```excel
+=FILTRE(Ventes;MOIS(Ventes[Date])=MOIS(AUJOURDHUI()))
+```
+
+### Produits en rupture
+
+```excel
+=FILTRE(Produits;Produits[Stock]=0;"Tous en stock")
+```
+
+## Avantages vs filtres classiques
+
+| FILTRE | Filtres classiques |
+|--------|-------------------|
+| Dynamique | Statique |
+| Dans une autre zone | Sur place |
+| Formule | Manuel |
+| Actualisation auto | Actualisation manuelle |
+
+## Erreurs courantes
+
+### #PROPAGATION
+
+L'espace de sortie n'est pas vide. Liberez les cellules.
+
+### #CALC!
+
+Aucun résultat et pas de valeur si_vide définie.
+
+```excel
+=FILTRE(A2:A100;A2:A100="Inexistant";"Non trouve")
+```
+
+## Bonnes pratiques
+
+1. **Prevoyez** l'espace pour les résultats
+2. **Utilisez** si_vide pour éviter les erreurs
+3. **Nommez** vos plages pour la lisibilité
+4. **Combinez** avec TRIER pour des résultats ordonnes
+
+[Découvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,83 @@
+---
+title: "Tableau de Bord KPI Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Construisez un tableau de bord KPI professionnel."
+description: "Guide pour créer un tableau de bord KPI Excel."
+category: "Visualisation"
+catégories: ["Visualisation", "Analyse de données Excel"]
+tags: ["KPI", "Tableau de bord", "Dashboard", "Excel"]
+---
+
+# Tableau de Bord KPI Excel
+
+Visualisez vos indicateurs clés de performance.
+
+## Définir les KPIs
+
+### Types courants
+
+| Type | Exemple |
+|------|---------|
+| Volume | CA, Ventes, Quantités |
+| Performance | Marge, Taux conversion |
+| Tendance | Croissance, Evolution |
+| Objectif | Réalisé vs Budget |
+
+## Structuré du dashboard
+
+### Layout recommandé
+
+```
+[KPI 1] [KPI 2] [KPI 3] [KPI 4]
+
+[Graphique Evolution]  [Top 5]
+
+[Répartition]  [Tendances]
+```
+
+## Affichage des KPIs
+
+### Formule
+
+```excel
+=CONCAT(TEXTE(Valeur;"# ##0");" | ";TEXTE(Variation;"+0%;-0%"))
+```
+
+### Mise en forme
+
+- Grande police
+- Couleur selon performance
+- Icone de tendance
+
+## Graphiques KPI
+
+### Jauge
+
+Graphique en anneau modifié.
+
+### Bullet chart
+
+Barre avec cible.
+
+## Indicateurs conditionnels
+
+### Formule
+
+```excel
+=SI(Reel>=Objectif;"OK";SI(Reel>=Objectif*0.9;"Attention";"Alerte"))
+```
+
+### Couleurs
+
+Mise en forme conditionnelle associee.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Clarté | Un KPI = un message |
+| Contexte | Montrez la comparaison |
+| Actualite | Indiquez la période |
+
+[Découvrir nos formations Excel](/formations-excel)

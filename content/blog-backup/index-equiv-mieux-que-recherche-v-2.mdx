@@ -1,0 +1,103 @@
+---
+title: "INDEX+EQUIV : Mieux que RECHERCHEV"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Pourquoi INDEX+EQUIV surpasse RECHERCHEV."
+description: "Guide comparatif INDEX+EQUIV vs RECHERCHEV dans Excel."
+category: "Fonctions"
+catégories: ["Fonctions", "Recherche"]
+tags: ["INDEX", "EQUIV", "RECHERCHEV", "Excel"]
+---
+
+# INDEX+EQUIV vs RECHERCHEV
+
+La combinaison gagnante pour vos recherches.
+
+## Syntaxe INDEX+EQUIV
+
+```excel
+=INDEX(plage_resultat;EQUIV(valeur;plage_recherche;0))
+```
+
+## Avantages
+
+| Avantage | INDEX+EQUIV | RECHERCHEV |
+|----------|-------------|------------|
+| Direction | Les deux | Droite seulement |
+| Insertion colonnes | Stable | Casse |
+| Performance | Meilleure | Moins bonne |
+| Flexibilité | Très haute | Limitee |
+
+## Recherche à gauche
+
+### Impossible avec RECHERCHEV
+
+### Possible avec INDEX+EQUIV
+
+```excel
+=INDEX(A:A;EQUIV(D1;C:C;0))
+```
+
+## Exemples pratiques
+
+### Recherche simple
+
+```excel
+=INDEX(B:B;EQUIV("Paris";A:A;0))
+```
+
+### Multi-colonnes
+
+```excel
+=INDEX(C:C;EQUIV(1;(A:A="Paris")*(B:B>100);0))
+```
+
+## EQUIV seul
+
+### Trouver la position
+
+```excel
+=EQUIV("Paris";A:A;0)
+```
+
+### Types de correspondance
+
+| Valeur | Comportement |
+|--------|--------------|
+| 0 | Exacte |
+| 1 | Plus grande inférieure |
+| -1 | Plus petite supérieure |
+
+## INDEX seul
+
+### Retourner une valeur
+
+```excel
+=INDEX(A:A;5)
+```
+
+Retourne la 5eme valeur.
+
+## Migration depuis RECHERCHEV
+
+### Avant
+
+```excel
+=RECHERCHEV(A1;B:E;3;FAUX)
+```
+
+### Après
+
+```excel
+=INDEX(D:D;EQUIV(A1;B:B;0))
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Nommer | Nommez vos plages |
+| 0 toujours | Correspondance exacte |
+| Test | Vérifiez les résultats |
+
+[Découvrir nos formations Excel](/formations-excel)

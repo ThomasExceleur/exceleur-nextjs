@@ -1,0 +1,111 @@
+---
+title: "La Fonction ASSEMB.V dans Excel : Empiler des Tableaux Verticalement"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez à utiliser ASSEMB.V pour combiner plusieurs plages verticalement."
+description: "Guide de la fonction ASSEMB.V dans Excel 365. Empiler des tableaux dynamiquement."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Excel 365"]
+tags: ["ASSEMB.V", "Tableaux dynamiques", "Excel 365", "Combinaison"]
+---
+
+# La Fonction ASSEMB.V dans Excel
+
+ASSEMB.V permet d'empiler des tableaux où des plages verticalement (l'un sous l'autre).
+
+## Disponibilité
+
+- Excel 365
+- Excel 2021
+
+## Syntaxe
+
+```excel
+=ASSEMB.V(tableau1;[tableau2];...)
+```
+
+### Arguments
+
+| Argument | Description |
+|----------|-------------|
+| tableau1 | Première plage où tableau |
+| tableau2 | Deuxieme plage (optionnel) |
+| ... | Tableaux supplémentaires |
+
+## Exemple de base
+
+### Empiler deux listes
+
+```excel
+=ASSEMB.V(A1:A5;B1:B3)
+```
+
+Combine les valeurs de A1:A5 et B1:B3 dans une seule colonne.
+
+## Cas pratiques
+
+### Consolider des données mensuelles
+
+```excel
+=ASSEMB.V(Janvier[Ventes];Fevrier[Ventes];Mars[Ventes])
+```
+
+### Combiner plusieurs tableaux
+
+```excel
+=ASSEMB.V(
+  TableauParis;
+  TableauLyon;
+  TableauMarseille
+)
+```
+
+## Combinaison avec d'autres fonctions
+
+### ASSEMB.V + TRIER
+
+```excel
+=TRIER(ASSEMB.V(A1:A10;B1:B10))
+```
+
+Empile puis trie les résultats.
+
+### ASSEMB.V + UNIQUE
+
+```excel
+=UNIQUE(ASSEMB.V(Liste1;Liste2))
+```
+
+Valeurs uniques de deux listes combinees.
+
+### ASSEMB.V + FILTRE
+
+```excel
+=FILTRE(ASSEMB.V(Donnees1;Donnees2);ASSEMB.V(Critere1;Critere2)>100)
+```
+
+## ASSEMB.V vs ASSEMB.H
+
+| Fonction | Direction | Usage |
+|----------|-----------|-------|
+| ASSEMB.V | Verticale | Empiler des lignes |
+| ASSEMB.H | Horizontale | Aligner des colonnes |
+
+## Erreurs courantes
+
+### #PROPAGATION
+
+L'espace de sortie n'est pas vide.
+
+### Largeurs différentes
+
+Toutes les plages doivent avoir le meme nombre de colonnes.
+
+## Bonnes pratiques
+
+1. **Vérifiez** que les colonnes correspondent
+2. **Nommez** vos plages pour la lisibilité
+3. **Combinez** avec TRIER pour ordonner
+4. **Utilisez** pour consolider des données
+
+[Découvrir nos formations Excel](/formations-excel)

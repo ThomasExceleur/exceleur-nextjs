@@ -1,0 +1,189 @@
+---
+title: "Excel Remplacer une Couleur par une Autre"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez à remplacer une couleur de cellule par une autre dans Excel."
+description: "Guide pour remplacer les couleurs de cellules dans Excel. Rechercher-Remplacer et VBA."
+category: "Mise en forme"
+catégories: ["Mise en forme", "Astuces Excel"]
+tags: ["Couleur", "Mise en forme", "Remplacement", "Format"]
+---
+
+# Remplacer une Couleur par une Autre dans Excel
+
+Plusieurs méthodes permettent de changer la couleur des cellules en masse.
+
+## Méthode 1 : Rechercher et Remplacer
+
+### Étapes
+
+1. **Ctrl + H** (Rechercher et remplacer)
+2. Cliquez sûr **Options**
+3. Cliquez sûr **Format** (à côté de "Rechercher")
+4. Onglet **Remplissage** > Sélectionnez la couleur à trouver
+5. Cliquez sûr **Format** (à côté de "Remplacer par")
+6. Sélectionnez la nouvelle couleur
+7. **Remplacer tout**
+
+### Résultat
+
+Toutes les cellules avec la couleur recherchee sont modifiées.
+
+## Méthode 2 : Sélectionner par couleur
+
+### Étapes
+
+1. **Accueil** > **Rechercher et sélectionner** > **Atteindre**
+2. **Cellules...** > **Formats**
+3. Sélectionnez une cellule avec la couleur
+4. Toutes les cellules de cette couleur sont sélectionnées
+5. Appliquez la nouvelle couleur
+
+## Méthode 3 : VBA
+
+### Code simple
+
+```vba
+Sub RemplacerCouleur()
+    Dim cell As Range
+    Dim ancienneCouleur As Long
+    Dim nouvelleCouleur As Long
+
+    ancienneCouleur = RGB(255, 255, 0)  ' Jaune
+    nouvelleCouleur = RGB(0, 176, 80)   ' Vert
+
+    For Each cell In ActiveSheet.UsedRange
+        If cell.Interior.Color = ancienneCouleur Then
+            cell.Interior.Color = nouvelleCouleur
+        End If
+    Next cell
+End Sub
+```
+
+### Utilisation
+
+1. Modifiez les valeurs RGB
+2. Executez la macro
+
+### Trouver la valeur RGB
+
+```vba
+Sub TrouverCouleur()
+    MsgBox "Couleur RGB: " & ActiveCell.Interior.Color
+End Sub
+```
+
+## Codes couleurs courants
+
+| Couleur | RGB | Code |
+|---------|-----|------|
+| Rouge | RGB(255,0,0) | 255 |
+| Vert | RGB(0,255,0) | 65280 |
+| Bleu | RGB(0,0,255) | 16711680 |
+| Jaune | RGB(255,255,0) | 65535 |
+| Orange | RGB(255,165,0) | 42495 |
+| Blanc | RGB(255,255,255) | 16777215 |
+
+## VBA avec sélection de couleur
+
+### Code interactif
+
+```vba
+Sub RemplacerCouleurSelection()
+    Dim ancienne As Long
+    Dim nouvelle As Long
+    Dim cell As Range
+
+    ' Demander à l'utilisateur de sélectionner la cellule source
+    ancienne = Application.InputBox("Cliquez sûr une cellule avec la couleur à remplacer", Type:=8).Interior.Color
+
+    ' Demander la cellule avec la nouvelle couleur
+    nouvelle = Application.InputBox("Cliquez sûr une cellule avec la nouvelle couleur", Type:=8).Interior.Color
+
+    ' Remplacer
+    For Each cell In ActiveSheet.UsedRange
+        If cell.Interior.Color = ancienne Then
+            cell.Interior.Color = nouvelle
+        End If
+    Next cell
+End Sub
+```
+
+## Couleur du texte
+
+### Remplacer la couleur de police
+
+```vba
+Sub RemplacerCouleurTexte()
+    Dim cell As Range
+    Dim ancienne As Long
+    Dim nouvelle As Long
+
+    ancienne = RGB(255, 0, 0)  ' Rouge
+    nouvelle = RGB(0, 0, 255)  ' Bleu
+
+    For Each cell In ActiveSheet.UsedRange
+        If cell.Font.Color = ancienne Then
+            cell.Font.Color = nouvelle
+        End If
+    Next cell
+End Sub
+```
+
+## Plusieurs feuilles
+
+### Code pour tout le classeur
+
+```vba
+Sub RemplacerToutClasseur()
+    Dim ws As Worksheet
+    Dim cell As Range
+    Dim ancienne As Long
+    Dim nouvelle As Long
+
+    ancienne = RGB(255, 255, 0)
+    nouvelle = RGB(0, 176, 80)
+
+    For Each ws In ThisWorkbook.Worksheets
+        For Each cell In ws.UsedRange
+            If cell.Interior.Color = ancienne Then
+                cell.Interior.Color = nouvelle
+            End If
+        Next cell
+    Next ws
+End Sub
+```
+
+## Mise en forme conditionnelle
+
+### Note importante
+
+La mise en forme conditionnelle n'est pas affectee par ces méthodes.
+
+### Modifier la MFC
+
+1. **Accueil** > **Mise en forme conditionnelle**
+2. **Gérer les règles**
+3. Modifiez les règles individuellement
+
+## Conseils
+
+### Avant de remplacer
+
+1. Sauvegardez votre fichier
+2. Testez sûr une copie
+3. Vérifiez le résultat
+
+### Couleurs proches
+
+Les couleurs peuvent paraîêêtre identiques mais avoir des codes différents. Utilisez la formule pour vérifier le code exact.
+
+## Sans VBA : Méthode manuelle
+
+### Si peu de cellules
+
+1. Sélectionnez une cellule coloree
+2. **Rechercher et sélectionner** > **Sélectionner les cellules de meme format**
+3. Appliquez la nouvelle couleur
+
+[Découvrir nos formations Excel](/formations-excel)

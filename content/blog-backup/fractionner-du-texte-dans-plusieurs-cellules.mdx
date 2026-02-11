@@ -1,0 +1,117 @@
+---
+title: "Excel : Fractionner du Texte dans Plusieurs Cellules"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez à séparer du texte en plusieurs colonnes dans Excel."
+description: "Guide pour fractionner du texte dans Excel. Convertir texte en colonnes."
+category: "Manipulation de données"
+catégories: ["Manipulation de données", "Astuces Excel"]
+tags: ["Texte", "Fractionnement", "Colonnes", "Données"]
+---
+
+# Fractionner du Texte dans Plusieurs Cellules
+
+Séparez facilement du texte en plusieurs colonnes grace aux outils Excel.
+
+## Méthode 1 : Convertir Texte en colonnes
+
+### Étapes
+
+1. Sélectionnez les cellules à fractionner
+2. **Données** > **Convertir**
+3. Choisissez le type de séparation
+4. Définissez le delimiteur
+5. **Terminer**
+
+### Delimiteurs courants
+
+| Delimiteur | Exemple |
+|------------|---------|
+| Point-virgule | Paris;France |
+| Virgule | Dupont, Jean |
+| Espace | Jean Dupont |
+| Tabulation | Données tabulees |
+
+## Méthode 2 : Formules de texte
+
+### Extraire le prenom
+
+```excel
+=GAUCHE(A1;CHERCHE(" ";A1)-1)
+```
+
+### Extraire le nom
+
+```excel
+=DROITE(A1;NBCAR(A1)-CHERCHE(" ";A1))
+```
+
+## Méthode 3 : Remplissage instantane (Ctrl+E)
+
+### Étapes
+
+1. Dans la colonne adjacente, tapez le résultat souhaité
+2. Descendez d'une cellule
+3. Appuyez sûr **Ctrl + E**
+4. Excel complete automatiquement
+
+### Exemple
+
+Si A1 contient "Jean Dupont", tapez "Jean" en B1, puis Ctrl+E.
+
+## Formules Excel 365
+
+### TEXTE.APRES
+
+```excel
+=TEXTE.APRES(A1;" ")
+```
+
+Retourne tout après le premier espace.
+
+### TEXTE.AVANT
+
+```excel
+=TEXTE.AVANT(A1;" ")
+```
+
+Retourne tout avant le premier espace.
+
+### FRACTIONNER.TEXTE
+
+```excel
+=FRACTIONNER.TEXTE(A1;" ")
+```
+
+Séparé le texte en plusieurs cellules automatiquement.
+
+## Cas pratiques
+
+### Séparer nom et prenom
+
+```excel
+=TEXTE.AVANT(A1;" ")      ' Prenom
+=TEXTE.APRES(A1;" ")      ' Nom
+```
+
+### Séparer adresse email
+
+```excel
+=TEXTE.AVANT(A1;"@")      ' Identifiant
+=TEXTE.APRES(A1;"@")      ' Domaine
+```
+
+### Extraire le code postal
+
+```excel
+=DROITE(A1;5)
+```
+
+## Bonnes pratiques
+
+1. **Sauvegardez** avant de convertir
+2. **Vérifiez** le delimiteur correct
+3. **Testez** sûr quelques cellules d'abord
+4. **Utilisez** des formules pour conserver l'original
+
+[Découvrir nos formations Excel](/formations-excel)

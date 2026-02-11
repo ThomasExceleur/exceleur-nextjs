@@ -1,0 +1,205 @@
+---
+title: "Astuces pour Nettoyer vos Données Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Techniques essentielles pour nettoyer et préparer vos données Excel."
+description: "Guide des meilleures astuces pour nettoyer les données dans Excel."
+category: "Manipulation de données"
+catégories: ["Manipulation de données", "Astuces Excel"]
+tags: ["Nettoyage", "Données", "SUPPRESPACE", "Préparation"]
+---
+
+# Astuces pour Nettoyer vos Données
+
+Un nettoyage efficace est la base de toute bonne analyse.
+
+## Supprimer les espaces
+
+### SUPPRESPACE
+
+Supprime les espaces en trop.
+
+```excel
+=SUPPRESPACE(A1)
+```
+
+### EPURAGE
+
+Supprime les caracteres non imprimables.
+
+```excel
+=EPURAGE(A1)
+```
+
+### Combinaison
+
+```excel
+=SUPPRESPACE(EPURAGE(A1))
+```
+
+## Uniformiser la casse
+
+### MAJUSCULE
+
+```excel
+=MAJUSCULE(A1)   ' PARIS
+```
+
+### MINUSCULE
+
+```excel
+=MINUSCULE(A1)   ' paris
+```
+
+### NOMPROPRE
+
+```excel
+=NOMPROPRE(A1)   ' Paris
+```
+
+## Corriger les dates
+
+### Problème courant
+
+Dates stockees comme texte.
+
+### Solution
+
+```excel
+=DATEVAL(A1)
+```
+
+### Format personnalise
+
+```excel
+=DATEVAL(DROITE(A1;4)&"-"&STXT(A1;4;2)&"-"&GAUCHE(A1;2))
+```
+
+## Corriger les nombres
+
+### Nombres comme texte
+
+```excel
+=CNUM(A1)           ' Convertit en nombre
+=A1*1               ' Méthode rapide
+=A1+0               ' Alternative
+```
+
+### Supprimer les devises
+
+```excel
+=CNUM(SUBSTITUE(SUBSTITUE(A1;"€";"");" ";""))
+```
+
+## Rechercher et remplacer
+
+### Raccourci
+
+**Ctrl+H**
+
+### Cas pratiques
+
+| Rechercher | Remplacer | Usage |
+|------------|-----------|-------|
+| Double espace | Espace simple | Nettoyage |
+| Virgule | Point | Format nombre |
+| Tab | Rien | Suppression |
+
+## Supprimer les doublons
+
+### Méthode rapide
+
+1. Sélectionnez les données
+2. **Données** > **Supprimer les doublons**
+3. Choisissez les colonnes à comparer
+
+### Avec formule (marquer)
+
+```excel
+=SI(NB.SI($A$1:A1;A1)>1;"Doublon";"Unique")
+```
+
+## Fractionner le texte
+
+### Remplissage instantane
+
+**Ctrl+E** après avoir saisi un exemple.
+
+### Formules texte
+
+```excel
+=GAUCHE(A1;CHERCHE(" ";A1)-1)      ' Premier mot
+=DROITE(A1;NBCAR(A1)-CHERCHE(" ";A1))  ' Reste
+```
+
+### TEXTE.APRES et TEXTE.AVANT
+
+```excel
+=TEXTE.AVANT(A1;" ")               ' Avant espace
+=TEXTE.APRES(A1;" ")               ' Après espace
+```
+
+## Valider les données
+
+### Reperer les erreurs
+
+```excel
+=ESTERREUR(A1)     ' Detecte les erreurs
+=ESTNUM(A1)        ' Vérifié si nombre
+=ESTTEXTE(A1)      ' Vérifié si texte
+```
+
+### Mise en forme conditionnelle
+
+1. Sélectionnez la plage
+2. **Mise en forme conditionnelle** > **Nouvelle règle**
+3. Utilisez une formule pour detecter les anomalies
+
+## Gérer les cellules vides
+
+### Compter les vides
+
+```excel
+=NB.VIDE(A:A)
+```
+
+### Remplacer les vides
+
+1. **Ctrl+H**
+2. Laissez "Rechercher" vide
+3. "Remplacer par" votre valeur
+4. **Options** > Cochez "Cellules entières"
+
+### Avec formule
+
+```excel
+=SI(A1="";"N/A";A1)
+```
+
+## Power Query pour le nettoyage
+
+### Avantages
+
+- Opérations repetables
+- Historique des transformations
+- Gestion de gros volumes
+
+### Transformations courantes
+
+1. Supprimer lignes vides
+2. Supprimer doublons
+3. Fractionner colonnes
+4. Remplacer valeurs
+
+## Checklist de nettoyage
+
+| Étape | Vérification |
+|-------|--------------|
+| Espaces | SUPPRESPACE applique |
+| Casse | Uniformisee |
+| Doublons | Supprimes |
+| Dates | Format correct |
+| Nombres | Format numérique |
+| Vides | Geres |
+
+[Découvrir nos formations Excel](/formations-excel)

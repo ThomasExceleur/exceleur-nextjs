@@ -1,0 +1,197 @@
+---
+title: "Fonction PREVISION.ETS pour les Prévisions de Ventes"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Utilisez PREVISION.ETS pour predire vos ventes futures dans Excel."
+description: "Guide PREVISION.ETS pour les previsions de ventes dans Excel."
+category: "Statistiques"
+catégories: ["Statistiques", "Analyse de données Excel"]
+tags: ["PREVISION.ETS", "Previsions", "Ventes", "Statistiques"]
+---
+
+# PREVISION.ETS pour les Previsions de Ventes
+
+Predisez vos ventes futures avec l'analyse de series temporelles.
+
+## Qu'est-ce que PREVISION.ETS ?
+
+### Définition
+
+PREVISION.ETS utilisé l'algorithme ETS (Error, Trend, Seasonality) pour predire des valeurs futures basees sûr l'historique.
+
+### Avantages
+
+- Detection automatique de la saisonnalite
+- Gestion des tendances
+- Plus precis que PREVISION lineaire
+
+## Syntaxe
+
+```excel
+=PREVISION.ETS(date_cible;valeurs;chronologie;[saisonnalite];[completion];[agregation])
+```
+
+## Paramètrès
+
+| Paramèêtre | Description | Defaut |
+|-----------|-------------|--------|
+| date_cible | Date à predire | - |
+| valeurs | Historique des valeurs | - |
+| chronologie | Dates correspondantes | - |
+| saisonnalite | Période saisonniere | 1 (auto) |
+| completion | Gestion des manquants | 1 |
+| agregation | Méthode d'agregation | 1 |
+
+## Exemple simple
+
+### Données historiques
+
+| Mois | Ventes |
+|------|--------|
+| Jan 2023 | 100 |
+| Fev 2023 | 110 |
+| Mar 2023 | 130 |
+| ... | ... |
+| Dec 2023 | 150 |
+
+### Prevision
+
+```excel
+=PREVISION.ETS(DATE(2024;1;1);B2:B13;A2:A13)
+```
+
+Predit les ventes de janvier 2024.
+
+## Previsions multiples
+
+### Avec SEQUENCE
+
+```excel
+=PREVISION.ETS(
+  FIN.MOIS(MAX(Dates);0)+SEQUENCE(6;1;1)*30;
+  Ventes;
+  Dates
+)
+```
+
+Predit les 6 prochains mois.
+
+## Saisonnalite
+
+### Detection automatique
+
+```excel
+=PREVISION.ETS(Date_cible;Ventes;Dates;1)
+```
+
+Le 4e paramèêtre à 1 detecte automatiquement.
+
+### Saisonnalite mensuelle
+
+```excel
+=PREVISION.ETS(Date_cible;Ventes;Dates;12)
+```
+
+Pour des données avec cycle annuel (12 mois).
+
+### Saisonnalite hebdomadaire
+
+```excel
+=PREVISION.ETS(Date_cible;Ventes;Dates;52)
+```
+
+Pour des données avec cycle annuel (52 semaines).
+
+## Intervalle de confiance
+
+### PREVISION.ETS.CONFINT
+
+```excel
+=PREVISION.ETS.CONFINT(Date_cible;Ventes;Dates;;0,95)
+```
+
+Retourne la marge d'erreur à 95% de confiance.
+
+### Bornes de prediction
+
+```excel
+' Borne supérieure
+=PREVISION.ETS(...)+PREVISION.ETS.CONFINT(...)
+
+' Borne inférieure
+=PREVISION.ETS(...)-PREVISION.ETS.CONFINT(...)
+```
+
+## Statistiques associees
+
+### PREVISION.ETS.STAT
+
+```excel
+=PREVISION.ETS.STAT(Ventes;Dates;;1)  ' Alpha
+=PREVISION.ETS.STAT(Ventes;Dates;;2)  ' Beta
+=PREVISION.ETS.STAT(Ventes;Dates;;3)  ' Gamma
+=PREVISION.ETS.STAT(Ventes;Dates;;7)  ' Saisonnalite detectee
+```
+
+## Cas pratique : Plan de ventes
+
+### Structuré
+
+| Mois | Reel | Prevision | Ecart |
+|------|------|-----------|-------|
+| Jan 2024 | | =PREVISION.ETS(...) | |
+| Fev 2024 | | =PREVISION.ETS(...) | |
+
+### Formule dynamique
+
+```excel
+=SI(A2<=AUJOURDHUI();
+  B2;
+  PREVISION.ETS(A2;$B$2:B1;$A$2:A1)
+)
+```
+
+## Visualisation
+
+### Graphique de prevision
+
+1. Sélectionnez vos données historiques
+2. **Insertion** > **Graphiques recommandés**
+3. Ou utilisez **Feuille de prevision**
+
+### Feuille de prevision automatique
+
+1. **Données** > **Feuille de prevision**
+2. Configurez les options
+3. Excel généré previsions et graphique
+
+## Limites
+
+### A considerer
+
+- Nécessité suffisamment de données historiques
+- Suppose que les patterns continuent
+- Événements exceptionnels non predits
+
+### Minimum de données
+
+Au moins 2 périodes completes de saisonnalite.
+
+## Comparaison avec PREVISION
+
+| PREVISION | PREVISION.ETS |
+|-----------|---------------|
+| Lineaire | Exponentiel |
+| Pas de saisonnalite | Saisonnalite |
+| Simple | Plus precis |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Données propres | Pas de valeurs manquantes |
+| Historique suffisant | 2+ cycles saisonniers |
+| Validation | Comparez aux valeurs reelles |
+| Marge | Utilisez l'intervalle de confiance |
+
+[Découvrir nos formations Excel](/formations-excel)

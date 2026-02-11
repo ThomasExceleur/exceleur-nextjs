@@ -1,0 +1,164 @@
+---
+title: "Liste Deroulante Dependante dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Créez des listes deroulantes en cascade dans Excel."
+description: "Guide pour créer des listes deroulantes dependantes dans Excel."
+category: "Astuces Excel"
+catégories: ["Astuces Excel", "Formules Excel"]
+tags: ["Liste deroulante", "Validation", "Cascade", "Excel"]
+---
+
+# Liste Deroulante Dependante dans Excel
+
+Les listes deroulantes dependantes (en cascade) filtrent les options selon un choix précédent.
+
+## Concept
+
+### Exemple
+
+- Liste 1 : Pays (France, Allemagne, Espagne)
+- Liste 2 : Villes (depend du pays choisi)
+
+## Préparer les données
+
+### Structuré
+
+| France | Allemagne | Espagne |
+|--------|-----------|---------|
+| Paris | Berlin | Madrid |
+| Lyon | Munich | Barcelone |
+| Marseille | Hambourg | Seville |
+
+### Nommer les plages
+
+1. Sélectionnez chaque colonne de données
+2. **Formules** > **Définir un nom**
+3. Nommez : France, Allemagne, Espagne
+
+## Créer la première liste
+
+### Étape 1 : Liste des pays
+
+1. Sélectionnez la cellule (ex: A1)
+2. **Données** > **Validation des données**
+3. Autoriser : Liste
+4. Source : France,Allemagne,Espagne
+
+## Créer la liste dependante
+
+### Méthode avec INDIRECT
+
+1. Sélectionnez la cellule pour les villes (ex: B1)
+2. **Données** > **Validation des données**
+3. Autoriser : Liste
+4. Source : `=INDIRECT(A1)`
+
+### Fonctionnement
+
+INDIRECT transforme le texte de A1 en référence de plage.
+
+## Gestion des espaces
+
+### Problème
+
+Si le nom contient des espaces (ex: "États Unis"), INDIRECT echoue.
+
+### Solution
+
+Utilisez SUBSTITUE pour remplacer les espaces :
+
+```excel
+=INDIRECT(SUBSTITUE(A1;" ";"_"))
+```
+
+Nommez la plage avec underscore : Etats_Unis
+
+## Trois niveaux de liste
+
+### Structuré
+
+| Continent | Pays | Ville |
+|-----------|------|-------|
+| Europe | France | Paris |
+| | | Lyon |
+| | Allemagne | Berlin |
+| Asie | Japon | Tokyo |
+
+### Implementation
+
+- Liste 1 : Continents (plage nommée)
+- Liste 2 : `=INDIRECT(A1)` (pays du continent)
+- Liste 3 : `=INDIRECT(B1)` (villes du pays)
+
+## Méthode avec FILTRE (Excel 365)
+
+### Avantage
+
+Plus flexible, pas besoin de plages nommées multiples.
+
+### Structuré des données
+
+| Pays | Ville |
+|------|-------|
+| France | Paris |
+| France | Lyon |
+| Allemagne | Berlin |
+| Allemagne | Munich |
+
+### Validation avec FILTRE
+
+```excel
+=FILTRE(Villes[Ville];Villes[Pays]=A1)
+```
+
+## Cas pratique : Catégorie > Produit
+
+### Données
+
+| Catégorie | Produit |
+|-----------|---------|
+| Fruits | Pomme |
+| Fruits | Banane |
+| Legumes | Carotte |
+| Legumes | Tomate |
+
+### Listes
+
+- A1 : Liste des catégories (UNIQUE)
+- B1 : `=FILTRE(Produits;Catégories=A1)`
+
+## Reinitialiser la liste dependante
+
+### Problème
+
+Quand la première liste change, la deuxieme peut contenir une valeur invalide.
+
+### Solution VBA
+
+```vba
+Private Sub Worksheet_Change(ByVal Target As Range)
+    If Target.Address = "$A$1" Then
+        Range("B1").ClearContents
+    End If
+End Sub
+```
+
+## Erreurs courantes
+
+| Erreur | Cause | Solution |
+|--------|-------|----------|
+| #REF! | Plage inexistante | Vérifiez le nom |
+| Liste vide | Espaces dans le nom | Utilisez SUBSTITUE |
+| Valeur invalide | Changement de liste 1 | Reinitialiser liste 2 |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Noms clairs | Nommez les plages explicitement |
+| Message d'erreur | Personnalisez le message |
+| Documentation | Notez la structuré des listes |
+| Test | Vérifiez toutes les combinaisons |
+
+[Découvrir nos formations Excel](/formations-excel)

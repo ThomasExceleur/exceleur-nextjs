@@ -1,0 +1,185 @@
+---
+title: "Utiliser NB.SI.ENS pour des Statistiques Avancées"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Exploitez NB.SI.ENS pour des analyses statistiques avancées."
+description: "Guide avancé de NB.SI.ENS pour les statistiques dans Excel."
+category: "Statistiques"
+catégories: ["Statistiques", "Formules Excel"]
+tags: ["NB.SI.ENS", "Statistiques", "Comptage", "Avancé"]
+---
+
+# Utiliser NB.SI.ENS pour des Statistiques Avancées
+
+NB.SI.ENS va au-dela du comptage simple pour des analyses elaborees.
+
+## Rappel de la syntaxe
+
+```excel
+=NB.SI.ENS(plage_critere1;critere1;[plage_critere2;critere2];...)
+```
+
+## Compter avec plages de dates
+
+### Entre deux dates
+
+```excel
+=NB.SI.ENS(
+  Dates;">="&DATE(2024;1;1);
+  Dates;"<="&DATE(2024;12;31)
+)
+```
+
+### Dernières 30 jours
+
+```excel
+=NB.SI.ENS(
+  Dates;">="&AUJOURDHUI()-30;
+  Dates;"<="&AUJOURDHUI()
+)
+```
+
+## Critères dynamiques avec cellules
+
+### Référence simple
+
+```excel
+=NB.SI.ENS(Region;$E$1;Mois;$F$1)
+```
+
+### Avec opérateur
+
+```excel
+=NB.SI.ENS(Montant;">"&$E$1)
+```
+
+## Caracteres generiques
+
+### Asterisque (*)
+
+```excel
+=NB.SI.ENS(Produit;"*pomme*")
+```
+
+Compte les produits contenant "pomme".
+
+### Point d'interrogation (?)
+
+```excel
+=NB.SI.ENS(Code;"AB??")
+```
+
+Compte les codes de 4 caracteres commencant par AB.
+
+## Combinaison avec SOMMEPROD
+
+### Alternative flexible
+
+```excel
+=SOMMEPROD((A:A="Paris")*(B:B>100)*(C:C="Actif"))
+```
+
+### Avantage
+
+Permet des conditions plus complexes que NB.SI.ENS standard.
+
+## Statistiques par catégorie
+
+### Structuré de données
+
+| Region | Mois | Ventes | Statut |
+|--------|------|--------|--------|
+| Nord | Jan | 100 | Actif |
+| Sud | Jan | 150 | Actif |
+| Nord | Fev | 120 | Inactif |
+
+### Tableau de synthèse
+
+| Region | Actifs | Inactifs | Total |
+|--------|--------|----------|-------|
+| Nord | =NB.SI.ENS(...) | =NB.SI.ENS(...) | =NB.SI(...) |
+
+## Pourcentages avec NB.SI.ENS
+
+### Calcul
+
+```excel
+=NB.SI.ENS(Region;"Nord";Statut;"Actif")/NB.SI(Region;"Nord")
+```
+
+### Format pourcentage
+
+Appliquez le format pourcentage à la cellule.
+
+## Compter les valeurs distinctes sous conditions
+
+### Avec SOMMEPROD et NB.SI
+
+```excel
+=SOMMEPROD((Region="Nord")*(1/NB.SI.ENS(Region;Region;Produit;Produit)))
+```
+
+Compte les combinaisons uniques Region-Produit pour le Nord.
+
+## Analyses temporelles
+
+### Ventes par trimestre
+
+```excel
+=NB.SI.ENS(
+  Dates;">="&DATE(2024;1;1);
+  Dates;"<="&DATE(2024;3;31);
+  Statut;"Valide"
+)
+```
+
+### Evolution mois par mois
+
+Copiez la formule avec des références relatives aux dates.
+
+## Matrice croisée automatique
+
+### Formule avec INDIRECT
+
+```excel
+=NB.SI.ENS(
+  Region;$A2;
+  Mois;B$1;
+  Statut;"Actif"
+)
+```
+
+Copiez pour remplir la matrice.
+
+## Performance
+
+### Optimisation
+
+| Conseil | Impact |
+|---------|--------|
+| Plages precisers | Réduit le temps de calcul |
+| Éviter colonnes entières | Plus rapide |
+| Tableaux structurés | Références optimisees |
+
+## Alternatives modernes
+
+### FILTRE + LIGNES
+
+```excel
+=LIGNES(FILTRE(Données;(Region="Nord")*(Statut="Actif")))
+```
+
+### Avantage
+
+Plus lisible, fonctionne avec Excel 365.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Noms de plages | Clarifiez les formules |
+| Validation | Vérifiez avec des filtres manuels |
+| Documentation | Commentez les critères complexes |
+| Cohérence | Memes plages partout |
+
+[Découvrir nos formations Excel](/formations-excel)

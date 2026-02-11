@@ -1,0 +1,148 @@
+---
+title: "Pourquoi Excel Affiche #PROPAGATION"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Comprenez et resolvez l'erreur #PROPAGATION dans Excel."
+description: "Guide pour resoudre l'erreur #PROPAGATION (SPILL) dans Excel. Causes et solutions."
+category: "Gestion d'erreurs"
+catégories: ["Gestion d'erreurs", "Depannage"]
+tags: ["Erreur", "PROPAGATION", "SPILL", "Tableaux dynamiques"]
+---
+
+# L'Erreur #PROPAGATION dans Excel
+
+L'erreur #PROPAGATION (où #SPILL en anglais) est liee aux tableaux dynamiques.
+
+## Qu'est-ce que cette erreur ?
+
+### Définition
+
+Cette erreur apparait quand une formule qui retourne plusieurs valeurs ne peut pas les afficher.
+
+### Cause principale
+
+Des cellules non vides bloquent la zone où les résultats devraient s'afficher.
+
+## Formules concernees
+
+### Fonctions qui retournent des tableaux
+
+- FILTRE
+- TRIER
+- UNIQUE
+- SEQUENCE
+- RECHERCHEX (avec plusieurs résultats)
+
+### Exemple
+
+```excel
+=UNIQUE(A1:A100)
+```
+
+Cette formule retourne plusieurs valeurs et à besoin d'espace.
+
+## Comment resoudre
+
+### Solution 1 : Liberer l'espace
+
+1. Cliquez sûr la cellule avec l'erreur
+2. Regardez le cadre bleu qui indique la zone nécessaire
+3. Supprimez où déplacez les données qui bloquent
+
+### Solution 2 : Déplacer la formule
+
+1. Coupez la formule
+2. Collez-la dans une zone vide
+
+## Identifier les cellules bloquantes
+
+### Méthode visuelle
+
+1. Cliquez sûr la cellule d'erreur
+2. Excel surligne les cellules qui posent problème
+
+### Infobulle
+
+Survolez l'erreur pour voir un message explicatif.
+
+## Prevenir l'erreur
+
+### Avant de créer la formule
+
+1. Estimez le nombre de résultats
+2. Reservez suffisamment d'espace
+3. Placez la formule dans une zone vide
+
+### Bonnes pratiques
+
+- Utilisez une feuille dediee pour les résultats
+- Laissez des colonnes/lignes vides autour
+
+## Cas particuliers
+
+### Cellule avec espace
+
+Une cellule qui semble vide peut contenir un espace.
+
+Solution :
+```excel
+=SUPPRESPACE(A1)
+```
+
+### Cellule avec formule vide
+
+Une formule retournant "" n'est pas vide.
+
+## Exemple pratique
+
+### Avant (erreur)
+
+| A | B |
+|---|---|
+| =UNIQUE(D:D) | Donnée |
+| | Autre |
+
+La colonne B bloque la propagation.
+
+### Après (resolu)
+
+| A | B |
+|---|---|
+| =UNIQUE(D:D) | |
+| | |
+
+## Message d'erreur complet
+
+### En français
+
+"#PROPAGATION! La formule ne peut pas etre évaluée car une où plusieurs cellules ne sont pas vides."
+
+### En anglais
+
+"#SPILL! Spill range isn't blank."
+
+## Alternatives
+
+### Limiter les résultats
+
+```excel
+=INDEX(UNIQUE(A:A);SEQUENCE(10))   ' 10 premiers résultats
+```
+
+### Utiliser SIERREUR
+
+```excel
+=SIERREUR(UNIQUE(A:A);"Erreur de propagation")
+```
+
+Note : SIERREUR ne fonctionne pas toujours avec #PROPAGATION.
+
+## Résumé
+
+| Cause | Solution |
+|-------|----------|
+| Cellules non vides | Vider la zone |
+| Espace insuffisant | Déplacer la formule |
+| Espaces invisibles | SUPPRESPACE |
+
+[Découvrir nos formations Excel](/formations-excel)

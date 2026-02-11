@@ -1,0 +1,237 @@
+---
+title: "Excel Formule SIERREUR : Gérer les Erreurs Elegamment"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Maîtrisez la fonction SIERREUR pour afficher un message personnalise au lieu des erreurs."
+description: "Guide complet de SIERREUR dans Excel. Syntaxe, exemples et alternatives pour gérer les erreurs de formules."
+category: "Gestion d'erreurs"
+catégories: ["Gestion d'erreurs", "Formules Excel"]
+tags: ["SIERREUR", "Erreurs", "Formules", "Gestion"]
+---
+
+# Excel Formule SIERREUR : Guide Complet
+
+SIERREUR permet de remplacer les messages d'erreur par une valeur personnalisee.
+
+## Syntaxe
+
+```excel
+=SIERREUR(valeur; valeur_si_erreur)
+```
+
+### Arguments
+
+- **valeur** : La formule où valeur à évaluer
+- **valeur_si_erreur** : Ce qui s'affiché si erreur
+
+## Exemple simple
+
+### Sans SIERREUR
+
+```excel
+=A1/B1
+```
+
+Si B1 = 0, affiché #DIV/0!
+
+### Avec SIERREUR
+
+```excel
+=SIERREUR(A1/B1; 0)
+```
+
+Si B1 = 0, affiché 0
+
+### Avec message texte
+
+```excel
+=SIERREUR(A1/B1; "Erreur de calcul")
+```
+
+## Types d'erreurs gerees
+
+SIERREUR capture toutes les erreurs :
+
+| Erreur | Signification |
+|--------|---------------|
+| #N/A | Valeur non disponible |
+| #VALEUR! | Mauvais type d'argument |
+| #REF! | Référence invalide |
+| #DIV/0! | Division par zero |
+| #NOM? | Nom non reconnu |
+| #NOMBRE! | Problème numérique |
+| #NUL! | Intersection vide |
+
+## Cas pratiques
+
+### RECHERCHEV sans erreur
+
+```excel
+=SIERREUR(RECHERCHEV(A1; B:D; 2; FAUX); "Non trouve")
+```
+
+### Division securisee
+
+```excel
+=SIERREUR(Ventes/Objectif; 0)
+```
+
+### Calcul avec cellule vide
+
+```excel
+=SIERREUR(A1+B1+C1; 0)
+```
+
+## SIERREUR vs SI.NON.DISP
+
+### SIERREUR
+
+Capture TOUTES les erreurs.
+
+```excel
+=SIERREUR(formule; alternative)
+```
+
+### SI.NON.DISP
+
+Capture UNIQUEMENT #N/A.
+
+```excel
+=SI.NON.DISP(formule; alternative)
+```
+
+### Quand utiliser SI.NON.DISP
+
+Lorsque vous voulez que les autres erreurs s'affichent (pour les corriger).
+
+## Problèmes de SIERREUR
+
+### Masque les vraies erreurs
+
+SIERREUR peut cacher des problèmes dans vos formules.
+
+### Exemple problematique
+
+```excel
+=SIERREUR(RECHERHCEV(A1; B:D; 2; FAUX); "")
+```
+
+La faute de frappe "RECHERHCEV" est masquee par SIERREUR.
+
+### Solution
+
+Testez d'abord sans SIERREUR, puis ajoutez-le.
+
+## Alternatives modernes
+
+### SI.ERREUR individuel (Excel 365)
+
+```excel
+=SI(ESTERREUR(formule); alternative; formule)
+```
+
+### SIERREUR.X (conceptuel)
+
+Pas de fonction native, mais vous pouvez imbriquer :
+
+```excel
+=SIERREUR(formule1; SIERREUR(formule2; alternative))
+```
+
+## Imbriquer SIERREUR
+
+### Plusieurs alternatives
+
+```excel
+=SIERREUR(RECHERCHEV(A1; Table1; 2; FAUX);
+  SIERREUR(RECHERCHEV(A1; Table2; 2; FAUX); "Introuvable"))
+```
+
+Cherche d'abord dans Table1, puis Table2.
+
+## Combiner avec d'autres fonctions
+
+### SIERREUR + SI
+
+```excel
+=SIERREUR(SI(A1>0; B1/A1; 0); "Erreur")
+```
+
+### SIERREUR + ET/OU
+
+```excel
+=SIERREUR(SI(ET(A1>0; B1>0); A1*B1; 0); 0)
+```
+
+## Cellule vide vs zero
+
+### Afficher rien
+
+```excel
+=SIERREUR(formule; "")
+```
+
+### Afficher zero
+
+```excel
+=SIERREUR(formule; 0)
+```
+
+### Garder la cellule vide pour les calculs
+
+Utilisez "" mais attention aux formules qui referencent cette cellule.
+
+## Performance
+
+SIERREUR évalué la formule deux fois si pas d'erreur. Pour les formules lourdes :
+
+```excel
+=SI(ESTERREUR(formule); alternative; formule)
+```
+
+Mais dans la plupart des cas, la différence est negligeable.
+
+## Bonnes pratiques
+
+### A faire
+
+1. **Testez d'abord** sans SIERREUR
+2. **Documentez** pourquoi vous l'utilisez
+3. **Utilisez SI.NON.DISP** pour les RECHERCHEV
+
+### A éviter
+
+1. **Masquer toutes les erreurs** systematiquement
+2. **Ignorer** la cause de l'erreur
+3. **Utiliser sûr des plages entières** sans reflexion
+
+## Exemples complets
+
+### Tableau de bord
+
+```excel
+=SIERREUR(RECHERCHEV(Produit; Ventes; 3; FAUX)/Objectif; "-")
+```
+
+### Calcul de marge
+
+```excel
+=SIERREUR((PrixVente-PrixAchat)/PrixAchat; 0)
+```
+
+### Formule matricielle
+
+```excel
+=SIERREUR(FILTRE(A:A; B:B>100); "Aucun résultat")
+```
+
+## Tableau recapitulatif
+
+| Fonction | Erreurs gerees | Usage |
+|----------|----------------|-------|
+| SIERREUR | Toutes | Général |
+| SI.NON.DISP | #N/A seulement | RECHERCHEV |
+| ESTERREUR | Test | Logique avancée |
+| SIERREUR.TYPE | Identifie erreur | Debogage |
+
+[Découvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,193 @@
+---
+title: "Fonction UNIQUE Excel : Supprimer les Doublons Automatiquement"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Utilisez UNIQUE pour extraire les valeurs sans doublons dans Excel."
+description: "Guide de la fonction UNIQUE pour supprimer les doublons dans Excel."
+category: "Excel 365"
+catégories: ["Excel 365", "Formules Excel"]
+tags: ["UNIQUE", "Doublons", "Extraction", "Excel 365"]
+---
+
+# Fonction UNIQUE : Supprimer les Doublons Automatiquement
+
+UNIQUE extrait les valeurs distinctes d'une plage de manière dynamique.
+
+## Syntaxe
+
+```excel
+=UNIQUE(tableau;[par_col];[exactement_une_fois])
+```
+
+## Paramètrès
+
+| Paramèêtre | Description | Defaut |
+|-----------|-------------|--------|
+| tableau | Plage source | - |
+| par_col | VRAI = comparer par colonne | FAUX |
+| exactement_une_fois | VRAI = valeurs apparaissant une seule fois | FAUX |
+
+## Exemple de base
+
+### Données
+
+| Produit |
+|---------|
+| Pomme |
+| Banane |
+| Pomme |
+| Orange |
+| Banane |
+
+### Formule
+
+```excel
+=UNIQUE(A2:A6)
+```
+
+### Résultat
+
+| Résultat |
+|----------|
+| Pomme |
+| Banane |
+| Orange |
+
+## Valeurs strictement uniques
+
+### Avec exactement_une_fois
+
+```excel
+=UNIQUE(A2:A6;;VRAI)
+```
+
+Retourne uniquement les valeurs apparaissant une seule fois (Orange dans l'exemple).
+
+## Plusieurs colonnes
+
+### Données
+
+| Nom | Ville |
+|-----|-------|
+| Jean | Paris |
+| Marie | Lyon |
+| Jean | Paris |
+| Marie | Marseille |
+
+### Formule
+
+```excel
+=UNIQUE(A2:B5)
+```
+
+### Résultat
+
+Combinaisons uniques de Nom + Ville.
+
+## Combiner avec TRIER
+
+### Liste triee et unique
+
+```excel
+=TRIER(UNIQUE(A2:A100))
+```
+
+## Combiner avec FILTRE
+
+### Valeurs uniques filtrees
+
+```excel
+=UNIQUE(FILTRE(A2:A100;B2:B100="Actif"))
+```
+
+Valeurs uniques parmi les éléments actifs.
+
+## Combiner avec NB.SI
+
+### Compter les occurrences
+
+```excel
+=LET(
+  valeurs;UNIQUE(A2:A100);
+  compte;BYCOL(valeurs;LAMBDA(v;NB.SI(A2:A100;v)));
+  HPILE(valeurs;compte)
+)
+```
+
+## Cas pratiques
+
+### Liste deroulante dynamique
+
+Source de validation : `=UNIQUE(Données[Catégorie])`
+
+La liste se met à jour automatiquement.
+
+### Clients distincts
+
+```excel
+=LIGNES(UNIQUE(Commandes[Client]))
+```
+
+Nombre de clients différents.
+
+### Produits vendus par region
+
+```excel
+=UNIQUE(FILTRE(Ventes[Produit];Ventes[Region]="Nord"))
+```
+
+## Gestion des erreurs
+
+### Plage vide
+
+```excel
+=SIERREUR(UNIQUE(A2:A100);"Aucune donnée")
+```
+
+### Avec LET
+
+```excel
+=LET(
+  résultat;UNIQUE(A2:A100);
+  SI(ESTERREUR(résultat);"Vide";résultat)
+)
+```
+
+## Comparaison avec Supprimer les doublons
+
+| UNIQUE | Supprimer les doublons |
+|--------|------------------------|
+| Formule dynamique | Action ponctuelle |
+| Non destructif | Supprime les données |
+| Se met à jour | A refaire si données changent |
+| Résultat séparé | Modifié la source |
+
+## Performance
+
+### Plages volumineuses
+
+UNIQUE peut etre lent sûr de très grandes plages.
+
+### Optimisation
+
+- Limitez la plage au strict nécessaire
+- Utilisez des tableaux structurés
+
+## Erreurs courantes
+
+| Erreur | Cause | Solution |
+|--------|-------|----------|
+| #PROPAGATION! | Pas d'espace | Liberez les cellules |
+| #CALC! | Plage vide | Gérez avec SIERREUR |
+| #VALEUR! | Syntaxe incorrecte | Vérifiez les paramètrès |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Plages nommées | Facilitent la lecture |
+| Tableaux structurés | Références dynamiques |
+| LET | Organisez les calculs complexes |
+| Test | Vérifiez le résultat |
+
+[Découvrir nos formations Excel](/formations-excel)

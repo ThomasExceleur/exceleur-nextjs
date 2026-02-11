@@ -1,0 +1,178 @@
+---
+title: "Automatiser les Rapports Excel avec Power Query et SharePoint"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Créez des rapports automatises avec Power Query connecte à SharePoint."
+description: "Guide pour automatiser les rapports Excel via Power Query et SharePoint."
+category: "Analyse de données Excel"
+catégories: ["Analyse de données Excel", "Excel 365"]
+tags: ["Power Query", "SharePoint", "Automatisation", "Rapports"]
+---
+
+# Automatiser les Rapports avec Power Query et SharePoint
+
+Connectez vos rapports Excel à SharePoint pour des mises à jour automatiques.
+
+## Pourquoi SharePoint + Power Query ?
+
+### Avantages
+
+- Données centralisees
+- Accès multi-utilisateurs
+- Actualisation automatique
+- Historique des versions
+
+## Connecter SharePoint à Excel
+
+### Étape 1 : Obtenir l'URL
+
+1. Allez sûr votre site SharePoint
+2. Copiez l'URL du site (pas de la bibliotheque)
+
+### Étape 2 : Connexion Power Query
+
+1. **Données** > **Obtenir des données** > **Services en ligne**
+2. **Liste SharePoint Online**
+3. Collez l'URL du site
+4. Authentifiez-vous
+
+### Étape 3 : Sélectionner les données
+
+1. Choisissez la liste où bibliotheque
+2. Power Query charge les données
+3. Transformez selon vos besoins
+
+## Se connecter à un fichier Excel sûr SharePoint
+
+### URL du fichier
+
+```
+https://entreprise.sharepoint.com/sites/MonSite/Documents/Données.xlsx
+```
+
+### Connexion
+
+1. **Données** > **Obtenir des données** > **A partir d'un classeur Excel**
+2. Utilisez l'URL complete du fichier
+3. Sélectionnez la feuille où table
+
+## Transformer les données
+
+### Étapes courantes
+
+1. **Supprimer les colonnes** inutiles
+2. **Renommer** pour plus de clarté
+3. **Filtrer** les lignes non pertinentes
+4. **Changer les types** de données
+
+### Exemple de transformation
+
+```m
+let
+    Source = SharePoint.Tables("https://site.sharepoint.com/"),
+    Ventes = Source{[Title="Ventes"]}[Items],
+    Filtre = Table.SelectRows(Ventes, each [Année] = 2024),
+    Colonnes = Table.SelectColumns(Filtre, {"Date", "Produit", "Montant"})
+in
+    Colonnes
+```
+
+## Combiner plusieurs sources
+
+### Fusion de requêtes
+
+1. Créez une requête pour chaque source
+2. **Fusionner les requêtes** sûr une clé commune
+3. Developpez les colonnes jointes
+
+### Ajout de requêtes
+
+Pour empiler des données similaires :
+
+1. Sélectionnez les requêtes
+2. **Ajouter** les données verticalement
+
+## Actualisation automatique
+
+### Dans Excel Desktop
+
+1. Clic droit sûr la requête > **Propriétés**
+2. Cochez **Actualiser toutes les X minutes**
+3. Ou **Actualiser à l'ouverture**
+
+### Excel Online
+
+Les données se mettent à jour à l'ouverture du fichier.
+
+### Power Automate
+
+Créez un flux pour declencher l'actualisation :
+
+1. Planification où evenement
+2. Action : Actualiser un jeu de données
+
+## Créer un rapport automatise
+
+### Structuré recommandée
+
+| Feuille | Contenu |
+|---------|---------|
+| Données | Tables Power Query |
+| Analyse | TCD et calculs |
+| Tableau de bord | Graphiques et KPI |
+
+### Tableaux croisés dynamiques
+
+1. Basez le TCD sûr les tables Power Query
+2. Actualisez le TCD avec les données
+
+## Sécurité et permissions
+
+### Authentification
+
+- Compte Microsoft
+- Authentification Windows
+- Clé d'accès
+
+### Bonnes pratiques
+
+1. **Utilisez** des comptes de service pour les rapports automatises
+2. **Limitez** les permissions au nécessaire
+3. **Documentez** les connexions
+
+## Depannage
+
+### Erreur d'authentification
+
+1. **Données** > **Paramètrès de source de données**
+2. Modifiez les identifiants
+3. Reconnectez-vous
+
+### Données non à jour
+
+1. Vérifiez la connexion reseau
+2. Vérifiez les permissions SharePoint
+3. Forcez l'actualisation manuelle
+
+### Timeout
+
+Optimisez vos requêtes Power Query pour réduire le temps de chargement.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Incrementiel | Ne chargez que les nouvelles données |
+| Filtrage source | Filtrez dans Power Query, pas Excel |
+| Documentation | Documentez chaque requête |
+| Tests | Testez après chaque modification |
+
+## Alternative : Power BI
+
+Pour des besoins plus avancés :
+
+- Actualisation planifiee
+- Partage via service cloud
+- Visualisations avancées
+
+[Découvrir nos formations Excel](/formations-excel)

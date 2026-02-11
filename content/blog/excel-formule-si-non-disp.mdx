@@ -1,101 +1,236 @@
 ---
 title: "Excel Formule SI NON DISP : Guide Rapide et Efficace"
-date: "2024-06-19"
+date: "2024-02-29"
 author: "Thomas L'Exceleur"
-excerpt: "Cet article traite de la fonction SI.NON.DISP dans Excel, un outil essentiel pour gérer les erreurs #N/A qui peuvent apparaîêêêtre lors de l'utilisation de certaines formules."
-description: "Maîtrisez la fonction SI.NON.DISP pour gérer les erreurs #N/A dans Excel. Découvrez comment l'utiliser avec RECHERCHEV et les alternatives possibles."
-category: "Formules Excel"
-catégories: ["Formules Excel", "Gestion d'erreurs"]
-tags: ["SI.NON.DISP", "RECHERCHEV", "Erreurs Excel", "Microsoft 365", "SIERREUR"]
+excerpt: "Dans le monde de Microsoft Excel, il existe une fonction appelée SI.NON.DISP qui peut considérablement faciliter la gestion des erreurs. Cette formule est particulièrement utile pour traiter les erreurs #N/A, un message fréquent affiché par Excel lorsque la formule ne parvient pas à trouver une vale"
+description: "Dans le monde de Microsoft Excel, il existe une fonction appelée SI.NON.DISP qui peut considérablement faciliter la gestion des erreurs. Cette formule est particulièrement utile pour traiter les erreurs #N/A, un message fréquent affiché par Excel lorsque la formule ne parvient pas à trouver une vale"
+category: "Formules"
+catégories: ["Formules"]
 ---
 
 # Excel Formule SI NON DISP : Guide Rapide et Efficace
 
-La fonction SI.NON.DISP facilite la gestion des erreurs dans Excel, particulièrement les erreurs #N/A. Elle nécessite deux arguments : la formule à vérifier et la valeur à afficher en cas d'erreur. Les fonctions RECHERCHEV et RECHERCHEH sont parmi les plus courantes générant cette erreur.
+Dans le monde de Microsoft Excel, il existe une fonction appelée SI.NON.DISP qui peut considérablement faciliter la gestion des erreurs. Cette formule est particulièrement utile pour traiter les erreurs #N/A, un message fréquent affiché par Excel lorsque la formule ne parvient pas à trouver une valeur. À travers les différentes mises à jour d'Excel, notamment avec Microsoft 365, l'utilisation de SI.NON.DISP est devenue de plus en plus courante pour améliorer la présentation des données et faciliter le travail des utilisateurs.
 
-## Principes de base des formules Excel
+La fonction SI.NON.DISP nécessite deux arguments : la formule ou valeur devant être vérifiée, et la valeur à afficher si l'erreur #N/A est rencontrée. Les fonctions Excel les plus courantes renvoyant cette erreur sont RECHERCHEV et RECHERCHEH. Grâce à SI.NON.DISP, vous pouvez personnaliser la gestion des erreurs et rendre vos feuilles de calcul plus explicites et faciles à lire. En maîtrisant les fonctionnalités d'Excel comme la formule SI et SI.NON.DISP, vous serez en mesure d'optimiser l'utilisation de vos données et de gérer avec efficacité les erreurs potentielles.
 
-### Syntaxe générale
 
-```excel
-=FONCTION(argument1;argument2, ...)
+## Principes de Base des Formules Excel
+
+
+### Syntaxe Générale
+
+Les **formules Excel** commencent généralement avec un signe égal (=), suivi d'une **fonction** et de ses **arguments** entre parenthèses. Pour utiliser une fonction, entrez simplement son nom dans une **cellule**. Par exemple, pour additionner les cellules A1 et A2, vous pouvez utiliser la formule `=SOMME(A1;A2)`.
+
+Voici une structure de base pour une formule Excel :
+
+`=FONCTION(argument1;argument2, ...)`
+
+
+### Types de Formules
+
+Il existe différents types de formules dans Excel, comme suit:
+
+-   **Formules arithmétiques** : elles utilisent des opérateurs tels que +, -, \*, / pour effectuer des calculs.
+-   **Fonctions logiques** : elles permettent de réaliser des comparaisons ou de prendre des décisions en fonction de certaines conditions (exemple: SI, ET, OU).
+-   **Fonctions statistiques** : elles permettent de réaliser des calculs sur un ensemble de **valeurs** (moyenne, écart-type, minimum, maximum, etc.).
+-   **Fonctions de recherche et de référence** : elles permettent d'accéder aux cellules et d'en extraire des informations. Le fonction `SI.NON.DISP`, par exemple, renvoie une valeur spécifique si une formule renvoie l'erreur « #N/A ».
+
+Vous pouvez trouver une liste complète des **fonctions Excel par catégorie** [ici](https://support.microsoft.com/fr-fr/office/fonctions-excel-par-cat%C3%A9gorie-5f91f4e9-7b42-46d2-9bd1-63f26a86c0eb), et les **fonctions Excel par ordre alphabétique** [là](https://support.microsoft.com/fr-fr/office/fonctions-excel-par-ordre-alphab%C3%A9tique-b3944572-255d-4efb-bb96-c6d90033e188#).
+
+
+### Utilisation des Fonctions
+
+Lors de l'utilisation des fonctions d'Excel, il est important de respecter la **syntaxe** et les arguments requis. Voici quelques conseils pour une utilisation réussie des fonctions:
+
+1.  Utilisez des parenthèses pour délimiter les arguments des fonctions.
+2.  Séparez les arguments avec des virgules.
+3.  Assurez-vous d'entrer les formules dans les cellules appropriées.
+4.  Apprenez les fonctions les plus courantes pour gagner du temps et améliorer votre productivité dans Excel.
+
+En suivant ces conseils et en ayant une bonne compréhension des principes de base des formules Excel, vous serez en mesure de tirer parti des nombreuses fonctionnalités que ce logiciel offre pour analyser et manipuler vos données.
+
+
+## La Fonction SI: Concepts et Applications
+
+
+### Comprendre la Fonction SI
+
+La fonction SI dans Excel est une fonction logique qui compare deux ou plusieurs éléments et renvoie un résultat en fonction de la véracité de la comparaison. La syntaxe de la fonction SI est `=SI(condition;valeur_si_vrai;valeur_si_faux)`. La **condition** est une expression logique qui renvoie **vrai** ou **faux**. Les **arguments** valeur\_si\_vrai et valeur\_si\_faux sont les valeurs renvoyées par la fonction selon le résultat de la condition.
+
+Voici un exemple simple :
+
+```
+=SI(A1>0; "Positif"; "Négatif")
 ```
 
-### Types de formules
+Dans cet exemple, la fonction compare la valeur en A1 à zéro. Si A1 est supérieur à zéro, la fonction renvoie « Positif », sinon, elle renvoie « Négatif ».
 
-- **Formules arithmétiques** : Addition (+), soustraction (-), multiplication (*), division (/)
-- **Fonctions logiques** : SI, ET, OU
-- **Fonctions statistiques** : MOYENNE, ECARTYPE
-- **Fonctions de recherche et référence** : RECHERCHEV, INDEX, EQUIV
 
-## La fonction SI : concepts et applications
+### Scénarios d'Usage de SI
 
-### Syntaxe SI
+1.  **Classification des valeurs** : Vous pouvez utiliser la fonction SI pour classer des valeurs en différentes catégories. Par exemple, pour classer les élèves en fonction de leurs notes :
+    
+    ```
+    =SI(B1>=60; "Admis"; "Refusé")
+    ```
+    
+2.  **Calcul des remises** : La fonction SI est également utile pour calculer des remises en fonction du montant d'achat. Par exemple, pour accorder une remise de 5 % si le montant d'achat est supérieur à 1000 € :
+    
+    ```
+    =SI(C1>1000;C1*0.05;0)
+    ```
+    
+3.  **Gestion des erreurs** : La fonction SI peut être combinée avec d'autres fonctions pour gérer les erreurs. Par exemple, pour afficher un message personnalisé à la place d'une erreur #N/A, utilisez la fonction SI.NON.DISP :
+    
+    ```
+    =SI.NON.DISP(RECHERCHEV(D1;A1:B10;2;0);"Non trouvé")
+    ```
+    
 
-```excel
-=SI(condition;valeur_si_vrai;valeur_si_faux)
+
+### Erreurs Communes
+
+-   **Incompréhension des arguments** : N'oubliez pas que la fonction SI prend trois arguments. Assurez-vous de bien vérifier la valeur\_si\_vrai et valeur\_si\_faux pour éviter des résultats incorrects.
+-   **Erreurs de typographie** : Veillez à ce que la syntaxe de la fonction soit correcte. Par exemple, n'utilisez pas de virgule à la place d'un point-virgule.
+-   **Problèmes d'ancrage** : Si vous copiez et collez une formule avec la fonction SI, assurez-vous que les références de cellules sont correctes et ajustées si nécessaire.
+
+En résumé, la fonction SI est un outil puissant dans Excel pour comparer des éléments, gérer des conditions et personnaliser les résultats. Prenez le temps de maîtriser cette fonction importante et explorez ses nombreuses applications dans vos projets Excel.
+
+
+## Traitement des Erreurs avec SI.NON.DISP
+
+
+### Fonctionnement de SI.NON.DISP
+
+La fonction **SI.NON.DISP** dans Excel vous permet de gérer les erreurs de type **#N/A** qui peuvent apparaître lors de l'utilisation de certaines formules. Pour utiliser cette fonction, il vous faudra respecter la syntaxe suivante : `=SI.NON.DISP(valeur;valeur_si_na)`. Cette fonction vérifie si la formule `valeur` renvoie une erreur **#N/A**. Si c'est le cas, la fonction retourne la `valeur_si_na` spécifiée. Dans le cas contraire, elle affiche le résultat de la formule.
+
+
+### Exemples Pratiques de SI.NON.DISP
+
+Voici quelques exemples pour vous aider à comprendre comment utiliser la fonction SI.NON.DISP :
+
+Exemple 1 :
+
 ```
-
-### Exemples d'usage
-
-- Classification de valeurs
-- Calcul de remises conditionnelles
-- Gestion des erreurs
-
-## Traitement des erreurs avec SI.NON.DISP
-
-### Syntaxe
-
-```excel
-=SI.NON.DISP(valeur;valeur_si_na)
-```
-
-### Exemple pratique
-
-```excel
 =SI.NON.DISP(RECHERCHEV(A1, B1:C10, 2, FAUX), "Non trouvé")
 ```
 
-Cette formule recherche la valeur de A1 dans la plage B1:C10. Si la valeur n'est pas trouvée (erreur #N/A), elle affiché "Non trouvé" au lieu de l'erreur.
+Dans cet exemple, on utilise la fonction de recherche RECHERCHEV pour chercher une valeur dans un tableau. Si la valeur n'est pas trouvée, la formule retourne l'erreur **#N/A**. Grâce à la fonction SI.NON.DISP, on remplace cette erreur par le texte « Non trouvé ».
 
-## Alternative : SIERREUR
 
-La fonction SIERREUR gère tous les types d'erreurs, pas seulement #N/A.
+### Alternative avec SIERREUR
 
-```excel
+Il est également possible d'utiliser la fonction **SIERREUR** pour gérer d'autres types d'erreurs en plus de **#N/A**. La syntaxe de cette fonction est : `=SIERREUR(valeur, valeur_si_erreur)`.
+
+Par exemple, si vous souhaitez remplacer toutes les erreurs (y compris **#N/A**) par le texte « Erreur » dans une formule, vous pouvez utiliser la fonction suivante :
+
+```
 =SIERREUR(RECHERCHEV(A1;B1:C10;2;FAUX);"Erreur")
 ```
 
-Cette formule capture toutes les erreurs possibles (#N/A, #REF!, #DIV/0!, etc.) et affiché "Erreur" à la place.
+N'oubliez pas que la fonction **SI.NON.DISP** ne traite que l'erreur **#N/A**, alors que la fonction **SIERREUR** permet de gérer toutes les erreurs. Il est donc important de choisir la fonction qui convient le mieux à votre situation et à vos besoins.
 
-## Fonctions avancées (ET, OU, NON)
 
-Vous pouvez combiner SI.NON.DISP avec d'autres fonctions logiques pour créer des formules complexes :
+## Fonctions Avancées et Référencement Matriciel
 
-- **ET** : Toutes les conditions doivent êêêêtre vraies
-- **OU** : Au moins une condition doit êêêêtre vraie
-- **NON** : Inverse le résultat d'une condition
 
-## Évolutions selon les versions Excel
+### Utilisation de ET, OU, NON
 
-- **Excel 2013-2016** : Introduction de SI.NON.DISP
-- **Excel 2021 et Microsoft 365** : Nouvelles fonctions (RECHERCHEX, EQUIVX)
-- **Versions antérieures** : Alternatives avec SI et ESTNA
+Dans Excel, les fonctions **ET**, **OU** et **NON** sont des opérations logiques utiles pour combiner des conditions dans une même formule. Vous pouvez les utiliser avec la fonction **SI** pour créer des formules complexes.
 
-### Alternative pour versions anciennes
+-   **ET**: Cette fonction vérifie si toutes les conditions spécifiées sont vraies. Par exemple :
+    
+    ```
+    =SI(ET(A1>10; B1<20); "Oui"; "Non")
+    ```
+    
+    Dans ce cas, si A1 est supérieur à 10 et B1 est inférieur à 20, la formule renverra « Oui », sinon « Non ».
+    
+-   **OU**: Cette fonction vérifie si au moins l'une des conditions spécifiées est vraie. Par exemple :
+    
+    ```
+    =SI(OU(A1>10; B1<20); "Oui"; "Non")
+    ```
+    
+    Dans ce cas, si A1 est supérieur à 10 ou B1 est inférieur à 20, la formule renverra « Oui », sinon « Non ».
+    
+-   **NON**: Cette fonction inverse le résultat d'une condition. Par exemple :
+    
+    ```
+    =SI(NON(A1>10); "Oui"; "Non")
+    ```
+    
+    Dans ce cas, si A1 n'est pas supérieur à 10, la formule renverra « Oui », sinon « Non ».
+    
 
-```excel
-=SI(ESTNA(RECHERCHEV(A1;B1:C10;2;FAUX));"Non trouvé";RECHERCHEV(A1;B1:C10;2;FAUX))
-```
 
-## RechercheV et validation de données
+## Version Spécifique et Évolutions d’Excel
 
-Combinez SI.NON.DISP avec RECHERCHEV pour créer des systèmes robustes de recherche et validation de données. Cela permet d'éviter que les erreurs n'interrompent vos calculs et analyses.
 
-## Ressources complémentaires
+### Excel 2013 et Excel 2016
 
-Pour aller plus loin dans votre maîtrise d'Excel, découvrez :
+Dans les versions Excel 2013 et Excel 2016, la formule **SI.NON.DISP** a été introduite et elle aide à gérer les erreurs #N/A dans vos feuilles de calcul. Cette fonction est particulièrement utile lorsque vous travaillez avec des données volumineuses ou des formules complexes, car elle vous permet de personnaliser le message d'erreur affiché au lieu du message générique #N/A. Utilisez cette formule comme suit : `=SI.NON.DISP(valeur; valeur si #N/A)`.
 
-- La formation "Le Décollage" pour maîtriser les bases
-- Le guide complet des tableaux croisés dynamiques
-- Les raccourcis Excel essentiels
+Dans ces versions, vous pouvez également utiliser la fonction **SIERREUR** pour gérer divers types d'erreurs, pas seulement #N/A.
+
+
+### Excel 2021 et Excel pour le Web
+
+Dans les versions récentes, comme Excel 2021 et Excel pour le Web, la fonction SI.NON.DISP continue d'être un outil précieux pour la gestion des erreurs. Vous pouvez utiliser cette fonction sur les systèmes Windows et dans Excel 2021 pour Mac. L'utilisation d'Excel pour le Web vous permet d'accéder à vos feuilles de calcul et à vos formules depuis n'importe quel appareil connecté à Internet, ce qui facilite la collaboration entre les membres de votre équipe et le partage des informations.
+
+
+### Nouveautés dans Excel 2019 et Microsoft 365
+
+Excel 2019 et Microsoft 365 ont introduit de nouvelles fonctionnalités et des améliorations pour vous aider à travailler plus efficacement avec vos données. Quelques-unes de ces nouveautés incluent:
+
+-   **Fonctions RECHERCHEX et EQUIVX** : Ces nouvelles fonctions de recherche sont plus puissantes et flexibles que les fonctions de recherche traditionnelles, telles que RECHERCHEV et RECHERCHEH.
+-   **Idées** : Cette fonctionnalité utilise l'intelligence artificielle pour analyser vos données et vous suggérer des graphiques et des analyses pertinentes pour mieux comprendre vos données.
+-   **Cartes de données** : Visualisez facilement vos données géographiques grâce à cette nouvelle fonctionnalité de cartographie.
+
+Gardez à l'esprit que les versions 2010 et antérieures d'Excel ne prennent pas en charge la fonction SI.NON.DISP. Si vous travaillez avec ces anciennes versions, vous devrez utiliser des alternatives, telles que la combinaison des fonctions SI et ESTNA.
+
+
+## RechercheV et Validation de Données
+
+
+### Fonctionnement de RechercheV
+
+La fonction **RechercheV** est une formule très utile pour rechercher des données dans un tableau à partir d'une valeur spécifique. Elle permet à l'utilisateur de trouver la valeur recherchée en utilisant des références de cellules et la fonction **RechercheV** s'occupera du reste.
+
+Supposons que vous ayez un tableau avec des informations sur les produits et leurs prix. Vous pouvez utiliser la fonction **RechercheV** pour rechercher le prix d'un produit spécifique en fonction de son nom. La syntaxe de base ressemble à ceci :
+
+`=RECHERCHEV(valeur_recherchée; plage_de_recherche; index_colonne; correspondance_approchée)`
+
+Voici comment cela fonctionne :
+
+-   `valeur_recherchée` est la valeur que vous souhaitez rechercher dans la première colonne de la `plage_de_recherche`.
+-   `plage_de_recherche` est la plage de cellules où vous souhaitez effectuer la recherche de la valeur.
+-   `index_colonne` est le numéro de la colonne, dans la `plage_de_recherche`, où se trouve la valeur que vous souhaitez renvoyer.
+-   `correspondance_approchée` est un argument facultatif permettant de choisir entre une recherche exacte (FAUX) et une recherche approximative (VRAI).
+
+
+### Gestion d’Erreurs avec RechercheV et SI.NON.DISP
+
+Il se peut que la valeur recherchée ne soit pas présente dans la plage de données, entraînant une erreur #N/A. Dans ce cas, vous pouvez combiner **RechercheV** avec la formule **SI.NON.DISP** pour gérer l'erreur et afficher un message personnalisé comme « Introuvable ».
+
+Voici un exemple d'utilisation combinée de ces deux fonctions :
+
+`=SI.NON.DISP(RECHERCHEV(valeur_recherchée; plage_de_recherche; index_colonne; correspondance_approchée), "Introuvable")`
+
+Dans cet exemple, si la fonction **RechercheV** rencontre une erreur #N/A, la formule **SI.NON.DISP** affichera « Introuvable » plutôt que l'erreur.
+
+Il est essentiel de gérer les erreurs lors de l'utilisation de la fonction **RechercheV** pour obtenir des résultats précis et éviter des erreurs potentielles dans vos projets. En combinant ces deux fonctions, vous pouvez facilement valider et rechercher des données tout en traitant les erreurs qui pourraient survenir.
+
+En résumé, la combinaison de la fonction **RechercheV** et **SI.NON.DISP** vous permet de rechercher efficacement des données dans un tableau, tout en gérant les erreurs afin que votre feuille de calcul reste claire et sans erreurs inattendues.
+
+
+## Formations et cours en ligne
+
+Si vous êtes intéressé par des **cours de formation** plus approfondis, notre formation **[Le Décollage](https://www.exceleur.fr/formations-excel/le-decollage-liste-attente/)** pourrais bien vous intéresser.
+
+N'hésitez pas à vous inscrire à **[la liste d'attente](https://www.exceleur.fr/formations-excel/le-decollage-liste-attente/)** pour ne pas manquer la prochaine ouverture de la formation.
+
+En attendant, formez-vousment **[grâce à notre guide complet des TCD d'Excel.](https://www.exceleur.fr/guide-ultime-tcd-bg/)**
+
+Et augmentez votre productivité avec **[les raccourcis indispensables d'Excel.](https://www.exceleur.fr/raccourcis-indispensables-excel-bg/)**

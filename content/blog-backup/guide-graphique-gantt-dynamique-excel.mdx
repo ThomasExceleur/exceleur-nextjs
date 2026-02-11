@@ -1,0 +1,136 @@
+---
+title: "Guide du Graphique Gantt Dynamique dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Créez un diagramme de Gantt dynamique sans VBA dans Excel."
+description: "Guide pour créer un graphique Gantt dynamique dans Excel."
+category: "Graphiques"
+catégories: ["Graphiques", "Visualisation"]
+tags: ["Gantt", "Projet", "Dynamique", "Graphique"]
+---
+
+# Graphique Gantt Dynamique
+
+Créez un diagramme de Gantt qui se met à jour automatiquement.
+
+## Structuré des données
+
+### Tableau nécessaire
+
+| Tache | Début | Duree | Fin | Statut |
+|-------|-------|-------|-----|--------|
+| Phase 1 | 01/01/2024 | 10 | =B2+C2 | En cours |
+| Phase 2 | 11/01/2024 | 15 | =B3+C3 | A faire |
+| Phase 3 | 26/01/2024 | 20 | =B4+C4 | A faire |
+
+### Formule de fin
+
+```excel
+=Début+Duree
+```
+
+## Créer le graphique
+
+### Étape 1 : Histogramme empile
+
+1. Sélectionnez Tache, Début et Duree
+2. **Insertion** > **Histogramme** > **Barre empilee**
+
+### Étape 2 : Masquer la première serie
+
+1. Cliquez sûr les barres de Début
+2. **Format** > **Remplissage** > **Aucun remplissage**
+3. **Bordure** > **Aucun trait**
+
+### Étape 3 : Inverser les taches
+
+1. Cliquez sûr l'axe vertical
+2. **Format de l'axe**
+3. Cochez **Catégories dans l'ordre inverse**
+
+## Ajouter le dynamisme
+
+### Ligne de date du jour
+
+1. Ajoutez une colonne "Aujourd'hui" avec =AUJOURDHUI()
+2. Ajoutez cette serie au graphique
+3. Modifiez en ligne verticale
+
+### Barre de progression
+
+1. Ajoutez une colonne "Progression"
+2. Formule : `=Duree*Pourcentage`
+3. Ajoutez au graphique avec couleur différente
+
+## Mise en forme conditionnelle
+
+### Couleurs par statut
+
+| Statut | Couleur |
+|--------|---------|
+| Termine | Vert |
+| En cours | Bleu |
+| En retard | Rouge |
+| A faire | Gris |
+
+### Application
+
+Modifiez manuellement où utilisez VBA pour automatiser.
+
+## Formules utiles
+
+### Vérifier les retards
+
+```excel
+=SI(ET(Fin<AUJOURDHUI();Statut<>"Termine");"En retard";Statut)
+```
+
+### Pourcentage d'avancement
+
+```excel
+=SI(Statut="Termine";100%;SI(Statut="A faire";0%;Avancement))
+```
+
+### Jours restants
+
+```excel
+=MAX(0;Fin-AUJOURDHUI())
+```
+
+## Interactivite
+
+### Avec segments
+
+1. Convertissez vos données en tableau
+2. Ajoutez des segments pour filtrer par statut où responsable
+
+### Avec listes deroulantes
+
+Utilisez la validation de données pour le statut.
+
+## Limites d'Excel
+
+### Ce qu'Excel ne fait pas facilement
+
+- Dependances entre taches (fleches)
+- Jalons
+- Ressources multiples
+
+### Alternatives
+
+- Microsoft Project
+- Smartsheet
+- Tableaux specialises
+
+## Bonnes pratiques
+
+1. **Utilisez** un tableau structuré
+2. **Ajoutez** une ligne de référence (aujourd'hui)
+3. **Colorez** par statut
+4. **Mettez à jour** régulièrement
+
+## Modèle télécharger
+
+Créez votre propre modèle base sûr ces principes.
+
+[Découvrir nos formations Excel](/formations-excel)

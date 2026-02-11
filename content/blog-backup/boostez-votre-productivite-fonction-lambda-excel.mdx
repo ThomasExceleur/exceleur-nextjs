@@ -1,0 +1,204 @@
+---
+title: "Boostez votre Productivité avec la Fonction LAMBDA Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Créez des fonctions personnalisees avec LAMBDA pour gagner en productivité."
+description: "Guide pour booster votre productivité Excel avec la fonction LAMBDA."
+category: "Excel 365"
+catégories: ["Excel 365", "Formules Excel"]
+tags: ["LAMBDA", "Productivité", "Fonctions", "Excel 365"]
+---
+
+# Boostez votre Productivité avec LAMBDA
+
+LAMBDA transforme vos formules en fonctions reutilisables.
+
+## Pourquoi LAMBDA augmente la productivité ?
+
+### Avant LAMBDA
+
+- Copier-coller les memes formules
+- Risque d'erreurs de modification
+- Maintenance difficile
+
+### Avec LAMBDA
+
+- Écrire une fois, utiliser partout
+- Modification centralisee
+- Code propre et reutilisable
+
+## Créer une fonction LAMBDA
+
+### Syntaxe
+
+```excel
+=LAMBDA(param1;param2;...;expression)
+```
+
+### Exemple : Calcul de TVA
+
+```excel
+=LAMBDA(montant_ht;taux;montant_ht*(1+taux))
+```
+
+## Nommer pour reutiliser
+
+### Étapes
+
+1. **Formules** > **Gestionnaire de noms**
+2. **Nouveau**
+3. Nom : TTC
+4. Fait référence à : `=LAMBDA(ht;taux;ht*(1+taux))`
+5. **OK**
+
+### Utilisation
+
+```excel
+=TTC(100;0,2)   ' Résultat : 120
+```
+
+## Fonctions pour la productivité
+
+### 1. Nettoyage de texte
+
+```excel
+Nom: NETTOYER
+Formule: =LAMBDA(txt;SUPPRESPACE(EPURAGE(NOMPROPRE(txt))))
+```
+
+Usage : `=NETTOYER("  jean DUPONT  ")` retourne "Jean Dupont"
+
+### 2. Extraction d'email
+
+```excel
+Nom: DOMAINE_EMAIL
+Formule: =LAMBDA(email;DROITE(email;NBCAR(email)-CHERCHE("@";email)))
+```
+
+Usage : `=DOMAINE_EMAIL("jean@example.com")` retourne "example.com"
+
+### 3. Calcul de commission
+
+```excel
+Nom: COMMISSION
+Formule: =LAMBDA(ventes;
+  SI(ventes<1000;ventes*0,05;
+    SI(ventes<5000;ventes*0,08;
+      ventes*0,12
+    )
+  )
+)
+```
+
+### 4. Age à partir d'une date
+
+```excel
+Nom: AGE
+Formule: =LAMBDA(naissance;ENT((AUJOURDHUI()-naissance)/365,25))
+```
+
+### 5. Formatage telephone
+
+```excel
+Nom: FORMAT_TEL
+Formule: =LAMBDA(num;
+  GAUCHE(num;2)&" "&STXT(num;3;2)&" "&STXT(num;5;2)&" "&STXT(num;7;2)&" "&DROITE(num;2)
+)
+```
+
+## Fonctions avec plusieurs paramètrès
+
+### Prix avec remise et TVA
+
+```excel
+Nom: PRIX_FINAL
+Formule: =LAMBDA(prix;remise;tva;
+  prix*(1-remise)*(1+tva)
+)
+```
+
+Usage : `=PRIX_FINAL(100;0,1;0,2)` retourne 108
+
+### Marge beneficiaire
+
+```excel
+Nom: MARGE
+Formule: =LAMBDA(vente;cout;
+  (vente-cout)/vente
+)
+```
+
+## Combiner avec LET
+
+### Pour des calculs complexes
+
+```excel
+Nom: ANALYSE_VENTE
+Formule: =LAMBDA(ventes;objectif;
+  LET(
+    ratio;ventes/objectif;
+    statut;SI(ratio>=1;"Atteint";SI(ratio>=0,8;"En cours";"A risque"));
+    bonus;SI(ratio>=1;ventes*0,05;0);
+    "Statut: "&statut&" | Bonus: "&bonus
+  )
+)
+```
+
+## Bibliotheque de fonctions
+
+### Organisation recommandée
+
+| Prefixe | Domaine |
+|---------|---------|
+| FIN_ | Finance |
+| RH_ | Ressources humaines |
+| TXT_ | Manipulation de texte |
+| DATE_ | Calculs de dates |
+| STAT_ | Statistiques |
+
+### Exemple
+
+```excel
+FIN_MARGE
+FIN_TVA
+FIN_INTERET
+RH_AGE
+RH_ANCIENNETE
+TXT_NETTOYER
+TXT_EXTRAIRE
+```
+
+## Partager vos fonctions
+
+### Exporter le classeur
+
+Les noms définis sont sauvegardes avec le classeur.
+
+### Copier les noms
+
+1. Ouvrez les deux classeurs
+2. Dans le classeur destination : **Gestionnaire de noms**
+3. Les noms sont disponibles
+
+### Modèle
+
+Créez un classeur modèle avec toutes vos fonctions LAMBDA.
+
+## Gain de productivité mesure
+
+| Sans LAMBDA | Avec LAMBDA |
+|-------------|-------------|
+| Copier formule | Taper nom |
+| Adapter références | Passer paramètrès |
+| Vérifier chaque copie | Tester une fois |
+| Modifier partout | Modifier une fois |
+
+## Bonnes pratiques
+
+1. **Nommez** clairement vos fonctions
+2. **Documentez** dans le commentaire du nom
+3. **Testez** avant deploiement
+4. **Organisez** par domaine
+5. **Partagez** avec l'equipe
+
+[Découvrir nos formations Excel](/formations-excel)

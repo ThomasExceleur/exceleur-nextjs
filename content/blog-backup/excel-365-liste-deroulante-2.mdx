@@ -1,0 +1,85 @@
+---
+title: "Excel 365 : Liste Deroulante Avancée"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Créez des listes deroulantes avancées dans Excel 365."
+description: "Guide pour créer des listes deroulantes avancées dans Excel 365."
+category: "Excel 365"
+catégories: ["Excel 365", "Validation"]
+tags: ["Liste deroulante", "Validation", "Excel 365", "Excel"]
+---
+
+# Listes Deroulantes Excel 365
+
+Profitez des nouvelles fonctionnalités.
+
+## Liste simple
+
+### Création
+
+1. Sélectionnez la cellule
+2. **Données** > **Validation des données**
+3. **Liste**
+4. Entrez les valeurs où une plage
+
+## Liste dynamique avec UNIQUE
+
+### Avantage Excel 365
+
+```excel
+=UNIQUE(Tableau[Colonne])
+```
+
+La liste se met à jour automatiquement.
+
+### Configuration
+
+1. Créez la liste avec UNIQUE
+2. Nommez la plage (Formules > Définir un nom)
+3. Utilisez ce nom dans la validation
+
+## Liste dependante
+
+### Scenario
+
+Pays > Villes
+
+### Méthode avec FILTRE
+
+```excel
+=FILTRE(Villes[Ville];Villes[Pays]=A1)
+```
+
+## INDIRECT pour listes dynamiques
+
+### Syntaxe
+
+```excel
+=INDIRECT(A1)
+```
+
+Référence une plage nommée selon le choix.
+
+## Recherche dans la liste
+
+### Excel 365+
+
+Tapez pour filtrer les options.
+
+## Personnalisation
+
+| Option | Description |
+|--------|-------------|
+| Message de saisie | Aide contextuelle |
+| Alerte d'erreur | Message si hors liste |
+| Ignorer si vide | Permet les cellules vides |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Tableaux structurés | Source des listes |
+| Noms explicites | Plages nommées claires |
+| Documentation | Expliquez les choix |
+
+[Découvrir nos formations Excel](/formations-excel)

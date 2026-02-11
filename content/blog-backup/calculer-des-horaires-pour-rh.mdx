@@ -1,0 +1,135 @@
+---
+title: "Excel : Calculer des Horaires pour les RH"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez à calculer les heures de travail dans Excel pour la gestion RH."
+description: "Guide pour calculer les horaires de travail dans Excel. Heures, pauses, heures sup."
+category: "RH"
+catégories: ["RH", "Calculs"]
+tags: ["Horaires", "RH", "Heures", "Temps de travail"]
+---
+
+# Calculer des Horaires pour les RH
+
+Excel est un outil puissant pour gérer les horaires et calculer les heures de travail.
+
+## Format des heures
+
+### Saisie correcte
+
+Utilisez le format HH:MM pour les heures :
+
+- 08:30 (pas 8h30)
+- 17:45 (pas 17.45)
+
+### Affichage personnalise
+
+Format > Cellules > Personnalise : `hh:mm`
+
+## Calcul de base
+
+### Duree de travail
+
+```excel
+=Fin-Début
+```
+
+Exemple : `=B2-A2` si A2=08:30 et B2=17:30
+
+### Avec pause dejeuner
+
+```excel
+=Fin-Début-Pause
+```
+
+Exemple : `=C2-A2-B2` (Fin - Début - Pause)
+
+## Formules avancées
+
+### Total hebdomadaire
+
+```excel
+=SOMME(E2:E6)
+```
+
+### Heures au-dela de 35h
+
+```excel
+=SI(Total>TEMPS(35;0;0);Total-TEMPS(35;0;0);0)
+```
+
+### Conversion en heures decimales
+
+```excel
+=Duree*24
+```
+
+8:30 devient 8.5 heures
+
+## Tableau de suivi
+
+### Structuré recommandée
+
+| Jour | Arrivee | Pause | Depart | Heures |
+|------|---------|-------|--------|--------|
+| Lundi | 08:30 | 01:00 | 17:30 | 08:00 |
+| Mardi | 09:00 | 01:00 | 18:00 | 08:00 |
+
+### Formule heures
+
+```excel
+=Depart-Arrivee-Pause
+```
+
+## Gestion des heures de nuit
+
+### Travail passant minuit
+
+```excel
+=SI(Fin<Début;Fin+1-Début;Fin-Début)
+```
+
+Cette formule gere les cas où l'heure de fin est le lendemain.
+
+## Heures supplémentaires
+
+### Calcul automatique
+
+```excel
+=SI(HeuresSemaine>TEMPS(35;0;0);
+  (HeuresSemaine-TEMPS(35;0;0))*24;
+  0)
+```
+
+### Avec majoration
+
+```excel
+=HeuresSup*24*TauxHoraire*1.25
+```
+
+## Format d'affichage
+
+### Pour dépasser 24h
+
+Format personnalise : `[h]:mm`
+
+Permet d'afficher 45:30 au lieu de 21:30.
+
+## Erreurs courantes
+
+### Résultat negatif
+
+Vérifiez que l'heure de fin est bien supérieure à l'heure de début.
+
+### Affichage en date
+
+Formatez les cellules en heure, pas en date.
+
+## Bonnes pratiques
+
+1. **Utilisez** le format hh:mm systematiquement
+2. **Vérifiez** le format de cellule
+3. **Testez** les cas limites (nuit, heures sup)
+4. **Documentez** vos formules
+
+[Découvrir nos formations Excel](/formations-excel)

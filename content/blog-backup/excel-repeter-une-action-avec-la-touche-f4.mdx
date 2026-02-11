@@ -1,0 +1,145 @@
+---
+title: "Excel Répéter une Action avec la Touche F4"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Découvrez comment utiliser F4 pour répéter des actions et basculer les références dans Excel."
+description: "Guide de la touche F4 dans Excel. Répéter une action et basculer les références absolues."
+category: "Raccourcis"
+catégories: ["Raccourcis", "Astuces Excel"]
+tags: ["F4", "Raccourci", "Références", "Répéter"]
+---
+
+# La Touche F4 dans Excel : Deux Fonctions Essentielles
+
+F4 à deux usages majeurs dans Excel : répéter une action et basculer les références.
+
+## Fonction 1 : Répéter la dernière action
+
+### Comment çà marche
+
+1. Effectuez une action (mise en forme, suppression, etc.)
+2. Sélectionnez d'autres cellules
+3. Appuyez sûr **F4**
+
+### Exemples
+
+#### Répéter une mise en forme
+
+1. Mettez une cellule en gras
+2. Sélectionnez une autre cellule
+3. **F4** : elle passe en gras
+
+#### Répéter une suppression
+
+1. Supprimez une ligne
+2. Sélectionnez une autre ligne
+3. **F4** : elle est supprimee
+
+#### Répéter une insertion
+
+1. Insérez une colonne
+2. **F4** : inséré une autre colonne
+
+### Actions compatibles
+
+- Mise en forme (couleur, police, bordures)
+- Insertion/suppression de lignes/colonnes
+- Largeur/hauteur de lignes/colonnes
+- Collage
+
+### Actions non repetables
+
+- Saisie de texte
+- Formules
+- Opérations multiples
+
+## Fonction 2 : Basculer les références
+
+### Dans une formule
+
+Lors de l'edition d'une formule, F4 bascule entre les types de références.
+
+### Cycle de basculement
+
+| Appui | Résultat | Type |
+|-------|----------|------|
+| 1 | $A$1 | Absolu |
+| 2 | A$1 | Mixte (ligne fixe) |
+| 3 | $A1 | Mixte (colonne fixe) |
+| 4 | A1 | Relatif |
+
+### Exemple pratique
+
+1. Tapez une formule : `=A1*B1`
+2. Cliquez sûr A1 dans la barre de formule
+3. Appuyez sûr **F4** : `=$A$1*B1`
+4. Appuyez encore : `=A$1*B1`
+
+### Quand utiliser
+
+| Référence | Utilisation |
+|-----------|-------------|
+| $A$1 | Toujours la meme cellule |
+| A$1 | Ligne fixe, colonne variable |
+| $A1 | Colonne fixe, ligne variable |
+| A1 | Tout variable |
+
+## Combinaison des deux fonctions
+
+### Contexte
+
+- **Hors formule** : répété l'action
+- **En mode edition** : bascule les références
+
+### Comment savoir
+
+Regardez si vous etes en mode edition (curseur dans la barre de formule).
+
+## Sur Mac
+
+### Raccourcis equivalents
+
+| Action | Mac |
+|--------|-----|
+| Répéter | Cmd + Y |
+| Basculer références | Fn + F4 où Cmd + T |
+
+## Alternatives
+
+### Pour répéter une action
+
+- **Ctrl + Y** : equivalent de F4
+
+### Pour les références absolues
+
+- Tapez manuellement les $
+
+## Bonnes pratiques
+
+### Pour F4 répétition
+
+1. Effectuez l'action une fois proprement
+2. Vérifiez qu'elle est correcte
+3. Utilisez F4 pour les autres cellules
+
+### Pour F4 références
+
+1. Sélectionnez la référence à modifier
+2. Appuyez sûr F4 jusqu'au type souhaité
+3. Vérifiez en copiant la formule
+
+## Exemples d'utilisation avancée
+
+### Mise en forme rapide
+
+1. Appliquez le format souhaité à une cellule
+2. Sélectionnez toutes les autres cellules concernees
+3. **F4** pour appliquer le meme format
+
+### Formule avec taux fixe
+
+```excel
+=A2*$B$1    ' B1 contient le taux, fixe avec F4
+```
+
+[Découvrir nos formations Excel](/formations-excel)

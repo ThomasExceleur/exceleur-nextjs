@@ -1,0 +1,101 @@
+---
+title: "Excel : Trouver la Plus Grande Valeur de son Tableau"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Trouvez facilement les valeurs maximales dans Excel."
+description: "Méthodes pour trouver la plus grande valeur dans un tableau Excel."
+category: "Fonctions"
+catégories: ["Fonctions", "Statistiques"]
+tags: ["MAX", "Maximum", "Valeur", "Excel"]
+---
+
+# Trouver la Plus Grande Valeur
+
+Identifiez rapidement les maximums dans vos données.
+
+## Fonction MAX
+
+### Syntaxe
+
+```excel
+=MAX(plage)
+```
+
+### Exemple
+
+```excel
+=MAX(A1:A100)
+```
+
+Retourne la plus grande valeur.
+
+## MAX avec conditions
+
+### MAXSI (Excel 365)
+
+```excel
+=MAXSI(plage;plage_critere;critère)
+```
+
+### Exemple
+
+```excel
+=MAXSI(Ventes;Region;"Nord")
+```
+
+## Alternatives
+
+### GRANDE.VALEUR
+
+```excel
+=GRANDE.VALEUR(plage;k)
+```
+
+| k | Résultat |
+|---|----------|
+| 1 | 1ere plus grande |
+| 2 | 2eme plus grande |
+| 3 | 3eme plus grande |
+
+### Exemple Top 3
+
+```excel
+=GRANDE.VALEUR(A:A;1)
+=GRANDE.VALEUR(A:A;2)
+=GRANDE.VALEUR(A:A;3)
+```
+
+## Trouver la position
+
+### INDEX + EQUIV
+
+```excel
+=INDEX(B:B;EQUIV(MAX(A:A);A:A;0))
+```
+
+Trouve l'élément associe au maximum.
+
+## Mise en forme conditionnelle
+
+### Mettre en evidence le max
+
+1. Sélectionnez la plage
+2. **Mise en forme conditionnelle** > **Règles de mise en surbrillance**
+3. **Autres règles** > Formule
+4. `=A1=MAX($A$1:$A$100)`
+
+## Plusieurs colonnes
+
+```excel
+=MAX(A:A;B:B;C:C)
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Plage precise | Évitez les colonnes entières |
+| Vérification | Controlez visuellement |
+| MAXSI | Utilisez pour les conditions |
+
+[Découvrir nos formations Excel](/formations-excel)

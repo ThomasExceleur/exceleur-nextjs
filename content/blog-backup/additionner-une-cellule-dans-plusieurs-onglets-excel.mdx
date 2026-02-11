@@ -1,0 +1,158 @@
+---
+title: "Additionner une Cellule dans Plusieurs Onglets Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez à additionner la meme cellule sûr plusieurs feuilles Excel."
+description: "Guide pour faire des calculs sûr plusieurs onglets Excel. Références 3D et consolidation."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Fonctions"]
+tags: ["3D", "Onglets", "Somme", "Multi-feuilles"]
+---
+
+# Additionner des Cellules sûr Plusieurs Onglets
+
+Excel permet de calculer sûr plusieurs feuilles avec les références 3D.
+
+## La référence 3D
+
+### Syntaxe
+
+```excel
+=SOMME(Feuille1:Feuille12!A1)
+```
+
+Cette formule additionne la cellule A1 des feuilles 1 à 12.
+
+### Structuré
+
+```
+=FONCTION(PremiereFeuille:DerniereFeuille!Plage)
+```
+
+## Exemples pratiques
+
+### Additionner une cellule
+
+```excel
+=SOMME(Jan:Dec!B5)        ' B5 de Jan à Dec
+=SOMME(Semaine1:Semaine52!C10)   ' C10 sûr toutes les semaines
+```
+
+### Additionner une plage
+
+```excel
+=SOMME(Jan:Dec!B5:B20)    ' Plage B5:B20 sûr tous les mois
+```
+
+### Autres fonctions
+
+```excel
+=MOYENNE(Jan:Dec!B5)      ' Moyenne sûr les feuilles
+=MAX(Jan:Dec!B5)          ' Maximum
+=MIN(Jan:Dec!B5)          ' Minimum
+=NB(Jan:Dec!B5)           ' Compter les nombres
+```
+
+## Conditions d'utilisation
+
+### Les feuilles doivent
+
+1. Êêêêtre dans le meme classeur
+2. Avoir les memes positions de données
+3. Êêêêtre consecutives dans l'ordre des onglets
+
+### Attention
+
+Si vous déplacez des feuilles, la référence 3D peut etre affectee.
+
+## Créer la formule
+
+### Méthode 1 : Saisie manuelle
+
+1. Tapez `=SOMME(`
+2. Cliquez sûr la première feuille
+3. Maintenez **Maj**
+4. Cliquez sûr la dernière feuille
+5. Sélectionnez la cellule
+6. Fermez la parenthese
+
+### Méthode 2 : Taper directement
+
+```excel
+=SOMME(Jan:Dec!B5)
+```
+
+## Alternative : INDIRECT
+
+### Pour des noms de feuilles variables
+
+```excel
+=SOMME(INDIRECT(A1&"!B5"))
+```
+
+Ou A1 contient le nom de la feuille.
+
+### Limites d'INDIRECT
+
+- Ne fonctionne pas directement en 3D
+- Plus lent à calculer
+- Ne met pas à jour si la feuille est renommee
+
+## Consolidation
+
+### Pour des structurés différentes
+
+1. **Données** > **Consolider**
+2. Sélectionnez la fonction
+3. Ajoutez les plages de chaque feuille
+4. Validez
+
+### Avantages de la consolidation
+
+- Structurés différentes possibles
+- Mise à jour manuelle où avec liaisons
+- Plus flexible
+
+## Cas pratique : Budget mensuel
+
+### Structuré
+
+| Feuille | Contenu |
+|---------|---------|
+| Jan | Budget janvier |
+| Fev | Budget fevrier |
+| ... | ... |
+| Dec | Budget decembre |
+| Synthèse | Total annuel |
+
+### Formule dans Synthèse
+
+```excel
+=SOMME(Jan:Dec!B10)       ' Total de la ligne 10
+```
+
+## Erreurs courantes
+
+### Noms de feuilles avec espaces
+
+```excel
+=SOMME('Jan 2024:Dec 2024'!B5)    ' Guillemets simples
+```
+
+### Feuilles non consecutives
+
+La référence 3D ne fonctionne pas. Utilisez :
+
+```excel
+=SOMME(Jan!B5;Mar!B5;Mai!B5)
+```
+
+## Bonnes pratiques
+
+1. **Structurez** vos feuilles de manière identique
+2. **Nommez** les feuilles simplement
+3. **Ordonnez** les feuilles logiquement
+4. **Testez** les formules avant de les copier
+5. **Documentez** les calculs complexes
+
+[Découvrir nos formations Excel](/formations-excel)

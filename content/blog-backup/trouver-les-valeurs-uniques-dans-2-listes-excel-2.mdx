@@ -1,0 +1,78 @@
+---
+title: "Trouver les Valeurs Uniques dans 2 Listes Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Comparez deux listes pour trouver les différences."
+description: "Guide pour trouver les valeurs uniques entre deux listes Excel."
+category: "Manipulation de données"
+catégories: ["Manipulation de données", "Fonctions"]
+tags: ["Listes", "Comparaison", "Unique", "Excel"]
+---
+
+# Trouver les Valeurs Uniques entre 2 Listes
+
+Identifiez les différences entre vos données.
+
+## Valeurs dans Liste1 pas dans Liste2
+
+### FILTRE + ESTNA
+
+```excel
+=FILTRE(Liste1;ESTNA(EQUIV(Liste1;Liste2;0)))
+```
+
+## Valeurs dans Liste2 pas dans Liste1
+
+```excel
+=FILTRE(Liste2;ESTNA(EQUIV(Liste2;Liste1;0)))
+```
+
+## Mise en forme conditionnelle
+
+### Surligner les uniques
+
+1. Sélectionnez la Liste1
+2. **Mise en forme conditionnelle** > **Nouvelle règle**
+3. Formule : `=ESTNA(EQUIV(A1;Liste2;0))`
+
+## NB.SI pour compter
+
+### Formule
+
+```excel
+=SI(NB.SI(Liste2;A1)=0;"Unique";"Commun")
+```
+
+## RECHERCHEV classique
+
+### Test d'existence
+
+```excel
+=SIERREUR(RECHERCHEV(A1;Liste2;1;FAUX);"Non trouve")
+```
+
+## Toutes les valeurs uniques
+
+### Combiner et dedupliquer
+
+```excel
+=UNIQUE(ASSEMB.V(Liste1;Liste2))
+```
+
+## Tableau comparatif
+
+| Méthode | Avantage |
+|---------|----------|
+| FILTRE | Résultat dynamique |
+| MFC | Visuel immediat |
+| NB.SI | Simple |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Nettoyage | SUPPRESPACE avant |
+| Format | Meme type de données |
+| Vérification | Test sûr echantillon |
+
+[Découvrir nos formations Excel](/formations-excel)

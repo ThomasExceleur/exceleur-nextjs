@@ -1,0 +1,98 @@
+---
+title: "RECHERCHEV : Explication Rapide"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Comprenez RECHERCHEV en quelques minutes."
+description: "Explication rapide de la fonction RECHERCHEV dans Excel."
+category: "Fonctions"
+catégories: ["Fonctions", "Recherche"]
+tags: ["RECHERCHEV", "Tutoriel", "Rapide", "Excel"]
+---
+
+# RECHERCHEV : Explication Rapide
+
+Maîtrisez RECHERCHEV en 5 minutes.
+
+## Syntaxe
+
+```excel
+=RECHERCHEV(valeur;tableau;colonne;[type])
+```
+
+## Les 4 arguments
+
+| # | Argument | Description |
+|---|----------|-------------|
+| 1 | valeur | Ce que vous cherchez |
+| 2 | tableau | Ou chercher |
+| 3 | colonne | Quelle colonne retourner |
+| 4 | type | FAUX = exact |
+
+## Exemple concret
+
+### Données
+
+| ID | Nom | Prix |
+|----|-----|------|
+| A1 | Pomme | 2 |
+| A2 | Poire | 3 |
+
+### Formule
+
+```excel
+=RECHERCHEV("A1";A:C;3;FAUX)
+```
+
+Retourne : 2
+
+## Règles importantes
+
+### Toujours FAUX
+
+Utilisez FAUX pour une correspondance exacte.
+
+### Première colonne
+
+RECHERCHEV cherche dans la première colonne du tableau.
+
+### Pas de recherche à gauche
+
+Le résultat doit etre à droite de la recherche.
+
+## Erreur #N/A
+
+### Causes
+
+- Valeur non trouvee
+- Espaces invisibles
+- Format différent
+
+### Solution
+
+```excel
+=SIERREUR(RECHERCHEV(...);"Non trouve")
+```
+
+## Alternatives
+
+| Fonction | Avantage |
+|----------|----------|
+| RECHERCHEX | Plus moderne |
+| INDEX+EQUIV | Plus flexible |
+
+## Résumé
+
+1. Valeur à chercher
+2. Tableau de données
+3. Numéro de colonne du résultat
+4. FAUX pour exact
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| FAUX | Toujours pour exact |
+| Tableaux | Utilisez des tableaux structurés |
+| SIERREUR | Gérez les erreurs |
+
+[Découvrir nos formations Excel](/formations-excel)

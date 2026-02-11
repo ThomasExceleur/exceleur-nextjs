@@ -1,0 +1,82 @@
+---
+title: "Optimisez vos Calculs avec SOMMEPROD Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maîtrisez SOMMEPROD pour des calculs avancés sans VBA."
+description: "Guide pour optimiser vos calculs Excel avec la fonction SOMMEPROD."
+category: "Fonctions"
+catégories: ["Fonctions", "Calculs"]
+tags: ["SOMMEPROD", "Calculs", "Formules", "Excel"]
+---
+
+# Optimisez vos Calculs avec SOMMEPROD
+
+SOMMEPROD multiplie et additionne des plages simultanement.
+
+## Syntaxe de base
+
+```excel
+=SOMMEPROD(plage1;plage2;...)
+```
+
+## Calcul simple
+
+### Multiplication et somme
+
+```excel
+=SOMMEPROD(A2:A10;B2:B10)
+```
+
+Equivalent à : (A2*B2) + (A3*B3) + ... + (A10*B10)
+
+## Comptage conditionnel
+
+### Remplace NB.SI.ENS
+
+```excel
+=SOMMEPROD((A:A="Paris")*(B:B>1000))
+```
+
+### Multi-critères
+
+```excel
+=SOMMEPROD((Region="Nord")*(Année=2024)*(Statut="Actif"))
+```
+
+## Somme conditionnelle
+
+### Remplace SOMME.SI.ENS
+
+```excel
+=SOMMEPROD((A:A="Paris")*(B:B>1000)*C:C)
+```
+
+## Moyenne conditionnelle
+
+```excel
+=SOMMEPROD((A:A="Paris")*B:B)/SOMMEPROD((A:A="Paris")*1)
+```
+
+## Comparaison
+
+| Fonction | Usage | SOMMEPROD equivalent |
+|----------|-------|----------------------|
+| NB.SI | 1 critère | `=SOMMEPROD((A:A="X")*1)` |
+| NB.SI.ENS | Multi | `=SOMMEPROD((A:A="X")*(B:B="Y"))` |
+| SOMME.SI.ENS | Somme cond. | `=SOMMEPROD((A:A="X")*B:B)` |
+
+## Avantages
+
+- Fonctionne sûr toutes versions Excel
+- Très flexible
+- Pas de limites de critères
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Parentheses | Encadrez chaque condition |
+| Taille plages | Utilisez des plages de meme taille |
+| Performance | Évitez les colonnes entières |
+
+[Découvrir nos formations Excel](/formations-excel)

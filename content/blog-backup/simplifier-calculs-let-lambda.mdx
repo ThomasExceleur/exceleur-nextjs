@@ -1,0 +1,98 @@
+---
+title: "Simplifier vos Calculs avec LET et LAMBDA"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Combinez LET et LAMBDA pour des formules puissantes et simples."
+description: "Guide pour simplifier les calculs avec LET et LAMBDA Excel."
+category: "Excel 365"
+catégories: ["Excel 365", "Formules Excel"]
+tags: ["LET", "LAMBDA", "Calculs", "Simplification"]
+---
+
+# Simplifier vos Calculs avec LET et LAMBDA
+
+La combinaison parfaite pour des formules elegantes.
+
+## LET : Variables locales
+
+### Syntaxe
+
+```excel
+=LET(nom1;valeur1;..;calcul)
+```
+
+### Exemple
+
+```excel
+=LET(
+  moy;MOYENNE(A:A);
+  ecart;ECARTYPE(A:A);
+  (B1-moy)/ecart
+)
+```
+
+## LAMBDA : Fonctions personnalisees
+
+### Syntaxe
+
+```excel
+=LAMBDA(param1;...;expression)
+```
+
+### Nommer une fonction
+
+Gestionnaire de noms > Fait référence à : =LAMBDA(...)
+
+## Combinaison LET + LAMBDA
+
+### Fonction avec logique complexe
+
+```excel
+Nom: CALCULER_SCORE
+=LAMBDA(valeur;
+  LET(
+    min;0;
+    max;100;
+    normalise;(valeur-min)/(max-min);
+    SI(normalise>0.8;\"A\";SI(normalise>0.6;\"B\";\"C\"))
+  )
+)
+```
+
+## Exemples pratiques
+
+### Calcul de marge
+
+```excel
+Nom: MARGE
+=LAMBDA(çà;couts;
+  LET(
+    marge;çà-couts;
+    taux;marge/çà;
+    SI(taux>0.2;\"Bonne\";\"A améliorer\")
+  )
+)
+```
+
+### Validation email
+
+```excel
+Nom: EMAIL_VALIDE
+=LAMBDA(email;
+  LET(
+    at;CHERCHE(\"@\";email);
+    point;CHERCHE(\".\";email;at);
+    ET(at>1;point>at+1)
+  )
+)
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Noms explicites | Variables claires |
+| Documentation | Commentaires |
+| Test | Cas limites |
+
+[Découvrir nos formations Excel](/formations-excel)

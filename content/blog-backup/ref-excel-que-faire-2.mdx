@@ -1,0 +1,85 @@
+---
+title: "REF! Excel : Que Faire"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Resolvez l'erreur #REF! dans Excel."
+description: "Guide pour corriger l'erreur #REF! dans Excel."
+category: "Gestion d'erreurs"
+catégories: ["Gestion d'erreurs", "Depannage"]
+tags: ["REF", "Erreur", "Resolution", "Excel"]
+---
+
+# Erreur #REF! : Que Faire
+
+Comprendre et corriger cette erreur de référence.
+
+## Signification
+
+#REF! indique une référence invalide à une cellule.
+
+## Causes
+
+| Cause | Exemple |
+|-------|---------|
+| Suppression | Ligne/colonne supprimee |
+| Copie invalide | Coller hors plage |
+| Index invalide | RECHERCHEV avec index trop grand |
+
+## Identifier le problème
+
+### Localiser l'erreur
+
+Cliquez sûr la cellule et examinez la formule.
+
+### Chercher #REF!
+
+Le #REF! apparait dans la formule elle-meme.
+
+## Solutions
+
+### Après suppression
+
+1. **Ctrl+Z** pour annuler
+2. Ou reconstruire la formule
+
+### Index RECHERCHEV
+
+```excel
+=RECHERCHEV(A1;B:E;3;FAUX)
+```
+
+Vérifiez que l'index (3) n'excede pas le nombre de colonnes.
+
+### Copie problematique
+
+Vérifiez les références avant de copier.
+
+## Prevention
+
+### Utiliser des tableaux
+
+Les tableaux structurés s'adaptent automatiquement.
+
+### Nommer les plages
+
+Les plages nommées sont plus robustes.
+
+### Vérifier avant suppression
+
+Vérifiez les dependances avant de supprimer.
+
+## Trouver les dependances
+
+### Audit
+
+**Formules** > **Reperer les dependants**
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Tableaux | Utilisez les tableaux structurés |
+| Audit | Vérifiez les dependances |
+| Sauvegarde | Avant modifications majeures |
+
+[Découvrir nos formations Excel](/formations-excel)

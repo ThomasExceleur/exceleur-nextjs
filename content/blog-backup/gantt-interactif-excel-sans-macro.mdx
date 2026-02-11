@@ -1,0 +1,93 @@
+---
+title: "Diagramme de Gantt Interactif Excel sans Macro"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Créez un diagramme de Gantt interactif sans VBA."
+description: "Guide pour créer un Gantt interactif sans macro Excel."
+category: "Graphiques"
+catégories: ["Graphiques", "Gestion de projet"]
+tags: ["Gantt", "Interactif", "Sans macro", "Projet"]
+---
+
+# Diagramme de Gantt Interactif sans Macro
+
+Créez un planning visuel et interactif avec des formules.
+
+## Structuré des données
+
+| Tache | Début | Duree | Fin | % Complete |
+|-------|-------|-------|-----|------------|
+| Analyse | 01/01 | 5 | 05/01 | 100% |
+| Design | 06/01 | 10 | 15/01 | 50% |
+| Dev | 16/01 | 20 | 04/02 | 0% |
+
+## Formules de base
+
+### Date de fin
+
+```excel
+=DateDebut+Duree-1
+```
+
+### Progression visuelle
+
+Mise en forme conditionnelle basee sûr les dates.
+
+## Méthode barres de données
+
+### Configuration
+
+1. Sélectionnez les cellules de la grille
+2. Mise en forme conditionnelle > Barres de données
+3. Personnalisez les couleurs
+
+## Méthode graphique
+
+### Barres empilees
+
+1. Créez un graphique à barres empilees
+2. Serie 1 : Jours avant début (invisible)
+3. Serie 2 : Duree de la tache
+
+### Rendre la base invisible
+
+Format > Remplissage > Aucun
+
+## Interactivite
+
+### Filtres avec segments
+
+Ajoutez des segments pour filtrer par :
+- Responsable
+- Statut
+- Priorité
+
+### Mise à jour automatique
+
+Les formules recalculent les dates.
+
+## Indicateurs visuels
+
+### Mise en forme conditionnelle
+
+| Condition | Couleur |
+|-----------|---------|
+| En retard | Rouge |
+| En cours | Jaune |
+| Termine | Vert |
+
+### Formule retard
+
+```excel
+=SI(Fin<AUJOURDHUI();\"En retard\";SI(Début<=AUJOURDHUI();\"En cours\";\"A venir\"))
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Dates dynamiques | Utilisez des formules |
+| Couleurs cohérentes | Meme code partout |
+| Mise à jour | Actualisez les pourcentages |
+
+[Découvrir nos formations Excel](/formations-excel)

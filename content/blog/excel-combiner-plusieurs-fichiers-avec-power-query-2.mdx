@@ -1,84 +1,214 @@
 ---
-title: "Combiner Plusieurs Fichiers avec Power Query"
-date: "2024-07-02"
+title: "Excel combiner plusieurs fichiers avec Power Query: Guide étape par étape"
+date: "2024-09-19"
 author: "Thomas L'Exceleur"
-excerpt: "Fusionnez plusieurs fichiers Excel avec Power Query."
-description: "Guide pour combiner des fichiers avec Power Query."
-category: "Power Query"
-catégories: ["Power Query", "Import"]
-tags: ["Power Query", "Fusion", "Fichiers", "Excel"]
+excerpt: "Combiner plusieurs fichiers Excel peut rapidement devenir un casse-tête, surtout lors de la manipulation de grands volumes de données. Grâce à Power Query, il est possible de combiner ces fichiers de manière efficace et sans effort. Cette fonctionnalité judicieuse optimise le flux de travail et rédu"
+description: "Combiner plusieurs fichiers Excel peut rapidement devenir un casse-tête, surtout lors de la manipulation de grands volumes de données. Grâce à Power Query, il est possible de combiner ces fichiers de manière efficace et sans effort. Cette fonctionnalité judicieuse optimise le flux de travail et rédu"
+category: "Astuces"
+catégories: ["Astuces"]
 ---
 
-# Combiner Plusieurs Fichiers avec Power Query
+# Excel combiner plusieurs fichiers avec Power Query: Guide étape par étape
 
-Fusionnez automatiquement vos fichiers.
+Combiner plusieurs fichiers Excel peut rapidement devenir un casse-tête, surtout lors de la manipulation de grands volumes de données. Grâce à **Power Query**, il est possible de combiner ces fichiers de manière efficace et sans effort. Cette fonctionnalité judicieuse optimise le flux de travail et réduit considérablement le temps consacré à la gestion des données.
 
-## Depuis un dossier
+Avec Power Query, l’utilisateur peut importer, nettoyer et consolider les données provenant de différents fichiers Excel en quelques clics. **Cette méthode est particulièrement avantageuse pour ceux qui doivent traiter des rapports mensuels ou trimestriels, en automatisant le processus de combinaison des fichiers**. Moins de temps passé à gérer les données signifie plus de temps pour l’analyse et la prise de décisions.
 
-### Étapes
+Power Query offre également des options de transformation avancées qui permettent de préparer les données avant de les combiner. Cela inclut le filtrage des lignes inutiles, la modification des types de données, et la création de nouvelles colonnes calculées. Grâce à ces capacités, les utilisateurs peuvent s’assurer que leurs données sont prêtes à l’emploi immédiatement après la combinaison.
 
-1. **Données** > **Obtenir des données** > **A partir d'un fichier** > **A partir d'un dossier**
-2. Sélectionnez le dossier
-3. **Combiner** > **Combiner et transformer**
 
-## Configuration
+## Prérequis et Configuration de l’Environnement Power Query
 
-### Fichier exemple
+Avant de combiner plusieurs fichiers, assurez-vous d’installer Power Query et de comprendre la structure de base des données.
 
-Power Query vous demande de choisir un fichier modèle.
 
-### Options
+### Installation et Accès à Power Query
 
-| Option | Description |
-|--------|-------------|
-| Première ligne en-tête | Utiliser comme noms |
-| Ignorer les erreurs | Continuer si fichier corrompu |
+Power Query est disponible dans Excel sous l’onglet **Données**. Pour accéder à Power Query, sélectionnez **Obtenir des données**. Il est intégré aux versions récentes d’Excel. Pour les versions plus anciennes, il peut être nécessaire de télécharger un complément de Microsoft.
 
-## Transformations
+Vérifiez que votre version d’Excel supporte Power Query. Les formations en ligne de Microsoft offrent des ressources détaillées pour installer et utiliser Power Query. Une fois installé, il devient un outil puissant pour la manipulation de données.
 
-### Ajouter la source
 
-La colonne "Source.Name" indique le fichier d'origine.
+### Comprendre la Structure de Base des Données
 
-### Filtrer les fichiers
+Une bonne structure des données est cruciale. Les fichiers doivent être organisés de manière uniforme pour être combinés efficacement. Chaque fichier doit avoir les mêmes colonnes et types de données. Par exemple, si un fichier contient des colonnes _ID_, _Nom_, et _Valeur_, tous les fichiers à combiner doivent suivre ce schéma.
 
-Excluez certains fichiers si nécessaire.
+Utilisez des noms de colonnes clairs et spécifiques. Évitez les colonnes inutiles pour simplifier le processus de combinaison. Une structure soignée facilite la fusion et réduit les erreurs. Power Query manipule les données en étapes, de l’importation à la transformation et fusion.
 
-## Types de fichiers
+Assurez-vous d’avoir une formation adéquate pour mieux maîtriser ces concepts et optimiser l’utilisation de Power Query.
 
-| Type | Support |
-|------|---------|
-| Excel | Oui |
-| CSV | Oui |
-| Texte | Oui |
-| JSON | Oui |
 
-## Actualisation
+## Importer des Données avec Power Query
 
-### Automatique
+Importer des données avec Power Query permet de centraliser et de transformer des fichiers de différentes sources. Cela est particulièrement utile pour consolider des données provenant de multiples **fichiers** dans des formats variés comme CSV, XML, ou JSON.
 
-Ajoutez des fichiers au dossier, actualisez la requête.
 
-### Manuelle
+### Utilisation de 'From Folder' pour Importer des Fichiers
 
-**Données** > **Actualiser tout**
+Pour regrouper des fichiers se trouvant dans un même dossier, utilisez l'option **From Folder**. Cette méthode nécessite de spécifier le chemin du **folder path** où se trouvent les fichiers. Cliquez sur **Data** > **Get Data** > **From File** > **From Folder**.
 
-## Structuré identique
+Après avoir sélectionné le **folder path**, Power Query analysera les fichiers présents. Un aperçu des contenus apparaîtra, permettant de vérifier que les fichiers à **importer** sont corrects. Vous pouvez choisir de transformer ou de combiner les fichiers en fonction de vos besoins.
 
-### Prerequis
 
-Tous les fichiers doivent avoir la meme structuré.
+### Gérer les Types de Fichiers et Extensions
 
-### Si différent
+Lorsque vous **importez** des fichiers, il est essentiel de gérer les différents types et extensions. Power Query supporte plusieurs formats, comme **text/csv**, **XML**, et **JSON**. Assurez-vous que les **fichiers** à importer sont compatibles avec Power Query.
 
-Utilisez plusieurs requêtes et ajoutez-les.
+Les types de fichiers doivent être cohérents. Par exemple, si vous combinez des fichiers **CSV**, tous les fichiers doivent avoir le même schéma de colonnes. Les fichiers XML et JSON nécessitent également une structure définie pour être interprétés correctement. Utilisez les options de transformation pour corriger toute incompatibilité.
 
-## Bonnes pratiques
 
-| Pratique | Description |
-|----------|-------------|
-| Structuré | Meme format partout |
-| Nommage | Noms de fichiers cohérents |
-| Dossier dedie | Organisez vos sources |
+## Transformer les Données
 
-[Découvrir nos formations Excel](/formations-excel)
+Utiliser Power Query permet de transformer et nettoyer les données pour les rendre exploitables. Explorer comment ajuster les colonnes et filtrer les données de manière efficace.
+
+
+### Nettoyage et Transformation de Colonnes
+
+Pour commencer, sélectionnez les colonnes qui nécessitent une transformation. Cliquez sur **« Transformer »** puis **« Format »**. Vous pouvez changer la casse, supprimer les espaces superflus ou remplacer certains caractères.
+
+Utilisez les **formules** pour transformer les valeurs. Par exemple, pour convertir des valeurs numériques en texte, utilisez _Text.From_. Vous pouvez également fusionner deux colonnes en une seule en utilisant l’option **« Fusionner des Colonnes »**.
+
+Créer des colonnes personnalisées permet d'ajouter des calculs ou des transformations spécifiques à vos données. Allez à **« Ajouter une Colonne »** et choisissez **« Colonne Personnalisée »**. Entrez la formule nécessaire pour ajuster les données à vos besoins.
+
+
+### Filtrer et Trier les Données Importées
+
+Appliquer des filtres sur les colonnes pour affiner les données importées. Cliquez sur l'icône du filtre à côté du nom de la colonne. Sélectionnez les valeurs que vous souhaitez inclure ou exclure.
+
+Pour trier des données par ordre croissant ou décroissant, cliquez sur le titre de la colonne, puis choisissez **« Trier A-Z »** ou **« Trier Z-A »**. Cette fonctionnalité est utile pour analyser des données de performance ou des dates.
+
+Il est possible d'appliquer plusieurs niveaux de filtres et de tri pour obtenir des résultats très spécifiques. Utilisez ces outils de manière stratégique pour optimiser votre analyse de données.
+
+
+## Combiner Plusieurs Fichiers
+
+Pour combiner plusieurs fichiers avec Power Query, il est essentiel de maîtriser la création de requêtes, la gestion des dossiers et sous-dossiers, ainsi que l'utilisation de la « Content Column » pour fusionner les données efficacement.
+
+
+### Créer une Requête pour Combiner des Fichiers
+
+Tout d'abord, ouvrez Power Query Editor. Sélectionnez **« Données »** dans le ruban, puis cliquez sur **« Nouvelle source de données »** et choisissez **« Dossier »**. Naviguez jusqu'au dossier contenant les fichiers souhaités. Une fois le dossier sélectionné, cliquez sur **« Combiner »** et **« Appliquer »**.
+
+Power Query listera tous les fichiers. Cliquez sur **« Combiner »** et une nouvelle requête sera créée. Personnalisez cette requête en sélectionnant les colonnes appropriées et en appliquant les transformations nécessaires.
+
+
+### Gestion des Sous-Dossiers et Fichiers
+
+Pour inclure les fichiers des sous-dossiers, il faut cocher l'option **« Inclure les sous-dossiers »** lors de la sélection initiale du dossier. Cette option est disponible dans la fenêtre **« Combiner des fichiers »**.
+
+Une autre méthode consiste à ajouter manuellement les chemins des sous-dossiers dans la requête principale. Cela permet d'assurer que tous les fichiers imbriqués sont inclus dans le processus de fusion.
+
+
+### Utiliser 'Content Column' pour Fusionner les Données
+
+Chaque fichier importé est représenté par une cellule dans la **« colonne contenu »** (Content Column). Cette colonne est cruciale pour fusionner les données. Cliquez sur l’icône de l’expansion à côté de **« Content »** pour extraire les données de chaque fichier.
+
+Ensuite, choisissez les colonnes qui doivent être incluses dans le fichier final fusionné. Appliquez ensuite les transformations nécessaires comme le filtrage ou l'agrégation des données pour uniformiser le tout.
+
+Utiliser ces techniques permet de combiner efficacement plusieurs fichiers dans Power Query, garantissant ainsi une intégration fluide des données.
+
+
+## Personnalisation des Requêtes
+
+Pour optimiser la combinaison de fichiers dans Power Query, il est essentiel de personnaliser les requêtes. Cela inclut la création de colonnes personnalisées, l’écriture de formules avancées et le paramétrage avancé de la combinaison de fichiers.
+
+
+### Créer des Colonnes Personnalisées
+
+Les colonnes personnalisées permettent d’ajouter des données dérivées aux requêtes.
+
+Pour créer une **custom column**, sélectionnez le menu « Ajouter une colonne » puis « Colonne Personnalisée ». Une boîte de dialogue apparaît où il est possible d’écrire une formule. Par exemple, pour calculer la taxe de 20% sur une colonne « Prix », utilisez la formule `= * 0.20`. Ces colonnes ajoutent des transformations significatives et spécifiques aux données.
+
+Les colonnes personnalisées peuvent aussi contenir des conditions **IF** pour des transformations plus complexes. Par exemple, pour appliquer une réduction de 10% sur les prix supérieurs à 100€, utilisez `= if > 100 then * 0.90 else` .
+
+
+### Écrire des Formules pour des Transformations Avancées
+
+Les formules avancées sont essentielles pour effectuer des transformations complexes.
+
+Power Query permet l’utilisation de **M Language** pour écrire des formules avancées. Cela donne plus de contrôle sur les transformations. Pour accéder à cette fonctionnalité, utilisez la commande « Editeur Avancé » dans le ruban. Un exemple de transformation avancée pourrait être de combiner des colonnes ou de les filtrer selon des critères spécifiques.
+
+Pour des transformations avancées, utilisez souvent les fonctions **List**, **Record**, et **Table** dans **M Language**. Par exemple, pour filtrer une table où la colonne « Nom » contient « John », utilisez `Table.SelectRows(<Nom de Table>, each Text.Contains(, "John"))`.
+
+
+### Paramétrage Avancé de la Combinaison de Fichiers
+
+Le paramétrage avancé de la combinaison de fichiers offre des options de personnalisation étendues.
+
+Utilisez la commande « Combiner des fichiers » pour ouvrir le **dialog de combinaison de fichiers**. Ici, vous pouvez définir des paramètres pour la combinaison, comme le choix de la première ligne pour les en-têtes de colonne, ou l’utilisation d’un fichier d’exemple pour prédéfinir des transformations.
+
+Les paramètres avancés permettent également de compléter des actions telles que le filtrage des fichiers selon des critères spécifiques avant de les combiner. Cela peut inclure la mise en place de conditions de filtrage pour inclure exclusivement certaines dates ou types de fichier. Ces options apportent une flexibilité précieuse pour l'automatisation des processus de données.
+
+
+## Charger et Traiter les Données Combinées
+
+L'importation et la préparation des données combinées dans Power Query sont des étapes cruciales pour assurer la qualité et la pertinence des rapports et analyses subséquentes.
+
+
+### Charger les Données dans Power Query
+
+Pour commencer, vous devez importer plusieurs fichiers dans Power Query. Allez dans l'onglet _Données_, puis sélectionnez _Nouvelle requête_. Choisissez le type de fichier (Excel, CSV, etc.) à importer.
+
+Une fois les fichiers sélectionnés, utilisez l'option _Combiner_ pour fusionner les données. Power Query vous affiche un aperçu des fichiers à combiner. Vérifiez que tous les fichiers contiennent les mêmes en-têtes pour éviter les erreurs.
+
+Ensuite, vous devez _Charger_ les données dans Power BI. Cliquez sur _Fermer et Charger_ pour importer les données dans votre modèle de données. Maintenant, les données combinées sont prêtes pour les transformations et analyses ultérieures.
+
+
+### Préparation des Données pour l'Analyse
+
+Une fois les données chargées, l'étape suivante est de les préparer pour l'analyse. Utilisez les outils de transformation de Power Query pour nettoyer et structurer les données. Par exemple, supprimez les doublons, remplacerez les valeurs incorrectes, ou ajouterez des colonnes calculées.
+
+Vous pouvez également appliquer des filtres pour isoler les données pertinentes. Utilisez l'option _Grouper par_ pour résumer les informations en fonction de critères spécifiques.
+
+L'objectif est de transformer les données brutes en un format analysable. Cela permet de générer des rapports précis et pertinents, en maximisant l'efficacité de l'analyse de données.
+
+
+## Bonnes Pratiques et Optimisation
+
+Pour garantir une efficacité maximale en utilisant Power Query pour combiner plusieurs fichiers, il est essentiel de suivre certaines bonnes pratiques. Cela concerne non seulement la gestion des erreurs, mais aussi l'optimisation des étapes de requêtes pour améliorer les performances et la rapidité du traitement des données.
+
+
+### Ignorer les Fichiers avec des Erreurs
+
+Lors de la combinaison de plusieurs fichiers, il peut arriver que certains contiennent des erreurs. **Power Query** permet d'ignorer ces fichiers pour éviter que des erreurs individuelles ne perturbent le processus global.
+
+Utilisez des filtres pour identifier les fichiers problématiques et configurez des règles dans l'éditeur de requêtes pour exclure automatiquement ces fichiers.
+
+Pour ce faire, allez dans l'éditeur de requêtes et créez une condition dans les étapes de requête pour vérifier la validité des données. Ainsi, vous maintenez la performance et l'efficacité du traitement.
+
+
+### Optimisation des Étapes de Requêtes
+
+Optimiser les étapes de requêtes est crucial pour améliorer la performance de Power Query. Commencez par réduire le nombre de transformations pour minimiser la complexité.
+
+Évitez les étapes redondantes en fusionnant les opérations similaires. Utilisez **les étapes de prévisualisation** pour diagnostiquer et améliorer le flux des données. Priorisez également les opérations de filtrage et de nettoyage au début des requêtes pour traiter le moins de données possible.
+
+L'utilisation de requêtes référencées peut aussi jouer un rôle dans l'amélioration de la performance. Cela permet de rediviser les tâches sans répéter les transformations complètes, réduisant ainsi le temps de traitement.
+
+Pour résumer, en suivant ces pratiques, les utilisateurs peuvent bénéficier d'un processus plus fluide et plus rapide lorsqu'ils travaillent avec Power Query.
+
+
+## Ressources Complémentaires
+
+Utiliser Power Query pour combiner plusieurs fichiers Excel peut être facilité par des ressources supplémentaires. Cela inclut des formations en ligne, la documentation officielle de Microsoft, et les forums communautaires.
+
+
+### Formations et Tutoriels Vidéo
+
+Les formations en ligne et les tutoriels vidéo sont essentiels pour maîtriser Power Query. **Udemy** et **LinkedIn Learning** offrent des cours dédiés à Power Query avec des exemples pratiques.
+
+Les utilisateurs peuvent également trouver des vidéos gratuites sur **YouTube**, où des experts partagent des astuces et des techniques avancées. Ces formations permettent de comprendre les bases ainsi que les fonctionnalités avancées de Power Query.
+
+
+### Documentation et Support Microsoft
+
+La documentation officielle de Microsoft pour Power Query est une ressource incontournable. Elle est disponible sur le [site de support Microsoft](https://support.microsoft.com) et couvre des sujets variés, des concepts de base aux scripts M avancés.
+
+Les guides et articles de la documentation incluent souvent des exemples pratiques et des études de cas pour aider les utilisateurs à appliquer les concepts à leurs besoins spécifiques. En cas de problème, le support technique de Microsoft peut fournir des solutions rapides.
+
+
+### Communauté et Forums En Ligne
+
+Pour des réponses rapides et des échanges de connaissances, les forums en ligne et les communautés sont inestimables. Sur le **Microsoft Community Forum** ou **Stack Overflow**, les utilisateurs peuvent poser des questions et obtenir des réponses de la part d'experts et d'autres utilisateurs.
+
+Les groupes **LinkedIn** et les forums spécialisés comme **MrExcel** sont également des lieux où des discussions approfondies et des conseils pratiques sont partagés. Participer à ces espaces permet de rester à jour avec les nouvelles fonctionnalités et astuces.

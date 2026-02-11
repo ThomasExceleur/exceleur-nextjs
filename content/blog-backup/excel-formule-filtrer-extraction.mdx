@@ -1,0 +1,191 @@
+---
+title: "Excel : Formule FILTRE pour l'Extraction de Données"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maîtrisez la formule FILTRE pour extraire vos données Excel."
+description: "Guide de la formule FILTRE pour l'extraction de données."
+category: "Excel 365"
+catégories: ["Excel 365", "Formules Excel"]
+tags: ["FILTRE", "Extraction", "Formules", "Excel 365"]
+---
+
+# Formule FILTRE pour l'Extraction de Données
+
+FILTRE extrait automatiquement les données repondant à vos critères.
+
+## Syntaxe
+
+```excel
+=FILTRE(tableau;inclure;[si_vide])
+```
+
+## Paramètrès
+
+| Paramèêtre | Description |
+|-----------|-------------|
+| tableau | Plage de données source |
+| inclure | Condition (tableau de VRAI/FAUX) |
+| si_vide | Valeur si aucun résultat |
+
+## Exemples fondamentaux
+
+### Filtre simple
+
+```excel
+=FILTRE(A2:C10;B2:B10="Paris")
+```
+
+Extrait les lignes où la colonne B = "Paris".
+
+### Filtre numérique
+
+```excel
+=FILTRE(A2:C10;C2:C10>100)
+```
+
+Extrait les lignes où la colonne C > 100.
+
+## Critères multiples
+
+### Avec ET (multiplication)
+
+```excel
+=FILTRE(A2:D10;(B2:B10="Paris")*(C2:C10>100))
+```
+
+Paris ET montant > 100.
+
+### Avec OU (addition)
+
+```excel
+=FILTRE(A2:D10;(B2:B10="Paris")+(B2:B10="Lyon"))
+```
+
+Paris OU Lyon.
+
+## Gestion des résultats vides
+
+### Problème
+
+Sans correspondance, FILTRE retourne #CALC!
+
+### Solution
+
+```excel
+=FILTRE(A2:C10;B2:B10="Berlin";"Aucun résultat")
+```
+
+### Retourner une cellule vide
+
+```excel
+=FILTRE(A2:C10;B2:B10="Berlin";"")
+```
+
+## Extraire une seule colonne
+
+### Toutes les colonnes
+
+```excel
+=FILTRE(A2:D10;B2:B10="Paris")
+```
+
+### Une colonne spécifique
+
+```excel
+=FILTRE(A2:A10;B2:B10="Paris")
+```
+
+Seulement la colonne A des lignes Paris.
+
+## Combiner avec TRIER
+
+### Filtrer et trier
+
+```excel
+=TRIER(FILTRE(A2:C10;B2:B10="Paris");3;-1)
+```
+
+Filtre Paris, trie par colonne 3 decroissant.
+
+## Combiner avec UNIQUE
+
+### Valeurs uniques filtrees
+
+```excel
+=UNIQUE(FILTRE(A2:A10;B2:B10="Actif"))
+```
+
+## Combiner avec INDEX
+
+### Première valeur du filtre
+
+```excel
+=INDEX(FILTRE(A2:C10;B2:B10="Paris");1;1)
+```
+
+### N-ieme valeur
+
+```excel
+=INDEX(FILTRE(A2:C10;B2:B10="Paris");3;2)
+```
+
+3eme ligne, 2eme colonne du résultat.
+
+## Filtres dynamiques
+
+### Référence cellule
+
+```excel
+=FILTRE(A2:C10;B2:B10=E1)
+```
+
+E1 contient le critère.
+
+### Recherche partielle
+
+```excel
+=FILTRE(A2:C10;ESTNUM(CHERCHE(E1;A2:A10)))
+```
+
+Filtre si A contient le texte de E1.
+
+## Top N valeurs
+
+### Les 5 plus grandes
+
+```excel
+=FILTRE(A2:C10;C2:C10>=GRANDE.VALEUR(C2:C10;5))
+```
+
+## Exclure des valeurs
+
+### Différent de
+
+```excel
+=FILTRE(A2:C10;A2:A10<>"Exclu")
+```
+
+### Pas dans une liste
+
+```excel
+=FILTRE(A2:C10;SIERREUR(EQUIV(A2:A10;Liste;0);0)=0)
+```
+
+## Erreurs courantes
+
+| Erreur | Cause | Solution |
+|--------|-------|----------|
+| #CALC! | Aucune correspondance | Ajoutez si_vide |
+| #VALEUR! | Tailles de plages différentes | Alignez les plages |
+| #PROPAGATION! | Pas d'espace pour le résultat | Liberez les cellules |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Tableaux structurés | Références dynamiques |
+| LET | Organisez les formules complexes |
+| Test | Vérifiez les résultats |
+| Documentation | Commentez les critères |
+
+[Découvrir nos formations Excel](/formations-excel)

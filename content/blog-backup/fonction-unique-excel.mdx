@@ -1,0 +1,161 @@
+---
+title: "La Fonction UNIQUE dans Excel : Supprimer les Doublons"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez à utiliser la fonction UNIQUE pour extraire les valeurs uniques."
+description: "Guide de la fonction UNIQUE dans Excel 365. Supprimer les doublons dynamiquement."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Excel 365"]
+tags: ["UNIQUE", "Doublons", "Excel 365", "Tableaux dynamiques"]
+---
+
+# La Fonction UNIQUE dans Excel
+
+UNIQUE extrait les valeurs uniques d'une plage sans modifier les données sources.
+
+## Disponibilité
+
+- Excel 365
+- Excel 2021
+- Excel pour le web
+
+## Syntaxe
+
+```excel
+=UNIQUE(tableau;[par_col];[exactement_une_fois])
+```
+
+### Arguments
+
+| Argument | Description | Par defaut |
+|----------|-------------|------------|
+| tableau | Plage de données | Requis |
+| par_col | VRAI = colonnes, FAUX = lignes | FAUX |
+| exactement_une_fois | VRAI = valeurs uniques seulement | FAUX |
+
+## Exemples de base
+
+### Valeurs uniques d'une colonne
+
+```excel
+=UNIQUE(A2:A100)
+```
+
+Retourne chaque valeur une seule fois.
+
+### Valeurs qui n'apparaissent qu'une fois
+
+```excel
+=UNIQUE(A2:A100;;VRAI)
+```
+
+Exclut les valeurs qui apparaissent plusieurs fois.
+
+## Cas pratiques
+
+### Liste des clients
+
+```excel
+=UNIQUE(Ventes[Client])
+```
+
+### Liste des produits
+
+```excel
+=UNIQUE(Commandes[Produit])
+```
+
+### Combinaisons uniques
+
+```excel
+=UNIQUE(A2:B100)
+```
+
+Retourne les paires uniques sûr plusieurs colonnes.
+
+## Combinaison avec d'autres fonctions
+
+### UNIQUE + TRIER
+
+```excel
+=TRIER(UNIQUE(A2:A100))
+```
+
+Valeurs uniques triees.
+
+### UNIQUE + FILTRE
+
+```excel
+=UNIQUE(FILTRE(A2:A100;B2:B100="Actif"))
+```
+
+Valeurs uniques parmi les actifs.
+
+### Compter les valeurs uniques
+
+```excel
+=LIGNES(UNIQUE(A2:A100))
+```
+
+## Avant UNIQUE (Excel ancien)
+
+### Alternative avec formule matricielle
+
+```excel
+{=INDEX($A$2:$A$100;EQUIV(0;NB.SI($C$1:C1;$A$2:$A$100);0))}
+```
+
+Complexe et lente. UNIQUE est bien plus simple.
+
+### Avec suppression manuelle
+
+1. Copier les données
+2. **Données** > **Supprimer les doublons**
+
+## Avantages de UNIQUE
+
+| Avantage | Description |
+|----------|-------------|
+| Dynamique | Se met à jour automatiquement |
+| Non destructif | Ne modifié pas les données |
+| Simple | Une seule formule |
+| Combinable | S'associe aux autres fonctions |
+
+## Erreurs courantes
+
+### #PROPAGATION
+
+L'espace de sortie n'est pas vide.
+
+### Résultat inattendu
+
+Vérifiez les espaces où caracteres invisibles.
+
+```excel
+=UNIQUE(SUPPRESPACE(A2:A100))    ' Ne fonctionne pas ainsi
+```
+
+Nettoyez d'abord les données avec Power Query.
+
+## Exemples avancés
+
+### Top N clients uniques par ventes
+
+```excel
+=PRENDRE(TRIER(UNIQUE(Ventes[Client]));10)
+```
+
+### Liste deroulante dynamique
+
+Utilisez UNIQUE pour créer une source de liste deroulante qui se met à jour.
+
+## Résumé
+
+| Objectif | Formule |
+|----------|---------|
+| Valeurs uniques | `=UNIQUE(A:A)` |
+| Triees | `=TRIER(UNIQUE(A:A))` |
+| Compter | `=LIGNES(UNIQUE(A:A))` |
+| Multi-colonnes | `=UNIQUE(A:B)` |
+
+[Découvrir nos formations Excel](/formations-excel)

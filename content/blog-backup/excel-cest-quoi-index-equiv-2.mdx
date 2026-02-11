@@ -1,0 +1,78 @@
+---
+title: "Excel : C'est Quoi INDEX EQUIV"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Introduction à INDEX+EQUIV."
+description: "Découvrez INDEX+EQUIV dans Excel."
+category: "Fonctions"
+catégories: ["Fonctions", "Recherche"]
+tags: ["INDEX", "EQUIV", "Recherche", "Excel"]
+---
+
+# C'est Quoi INDEX EQUIV
+
+La combinaison puissante pour les recherches.
+
+## Les deux fonctions
+
+### INDEX
+
+Retourne une valeur à une position.
+
+```excel
+=INDEX(plage;numero_ligne)
+```
+
+### EQUIV
+
+Trouve la position d'une valeur.
+
+```excel
+=EQUIV(valeur;plage;0)
+```
+
+## Combinaison
+
+```excel
+=INDEX(plage_resultat;EQUIV(cherche;plage_recherche;0))
+```
+
+## Exemple
+
+### Données
+
+| Nom | Salaire |
+|-----|---------|
+| Jean | 3000 |
+| Marie | 3500 |
+
+### Formule
+
+```excel
+=INDEX(B:B;EQUIV("Marie";A:A;0))
+```
+
+Résultat : 3500
+
+## Vs RECHERCHEV
+
+| Critère | INDEX+EQUIV | RECHERCHEV |
+|---------|-------------|------------|
+| Direction | Les deux | Droite |
+| Flexibilité | Haute | Limitee |
+
+## Avantages
+
+- Recherche bidirectionnelle
+- Plus performant
+- Plus flexible
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| 0 | Pour exact |
+| SIERREUR | Gérer les erreurs |
+| Nommer | Nommez les plages |
+
+[Découvrir nos formations Excel](/formations-excel)

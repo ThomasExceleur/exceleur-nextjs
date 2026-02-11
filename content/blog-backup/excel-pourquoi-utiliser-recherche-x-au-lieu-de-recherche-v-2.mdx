@@ -1,0 +1,96 @@
+---
+title: "Pourquoi Utiliser RECHERCHEX au lieu de RECHERCHEV"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Les avantages de RECHERCHEX sûr RECHERCHEV."
+description: "Comparatif RECHERCHEX vs RECHERCHEV dans Excel."
+category: "Fonctions"
+catégories: ["Fonctions", "Recherche"]
+tags: ["RECHERCHEX", "RECHERCHEV", "Comparatif", "Excel"]
+---
+
+# Pourquoi Passer à RECHERCHEX
+
+Les raisons de migrer vers RECHERCHEX.
+
+## Recherche bidirectionnelle
+
+### RECHERCHEV
+
+Recherche uniquement à droite.
+
+### RECHERCHEX
+
+Recherche dans n'importe quelle direction.
+
+## Gestion d'erreur intégrée
+
+### RECHERCHEV
+
+```excel
+=SIERREUR(RECHERCHEV(...);"Non trouve")
+```
+
+### RECHERCHEX
+
+```excel
+=RECHERCHEX(val;plage;result;"Non trouve")
+```
+
+## Syntaxe plus claire
+
+### RECHERCHEV
+
+```excel
+=RECHERCHEV(A1;B:E;3;FAUX)
+```
+
+3 = quelle colonne ?
+
+### RECHERCHEX
+
+```excel
+=RECHERCHEX(A1;B:B;D:D)
+```
+
+La colonne résultat est explicite.
+
+## Performance
+
+RECHERCHEX est plus rapide sûr gros volumes.
+
+## Retour multiple
+
+RECHERCHEX peut retourner plusieurs colonnes.
+
+```excel
+=RECHERCHEX(A1;B:B;C:E)
+```
+
+## Tableau comparatif
+
+| Critère | RECHERCHEV | RECHERCHEX |
+|---------|------------|------------|
+| Direction | Droite | Les deux |
+| Erreurs | SIERREUR | Intégrée |
+| Lisibilité | Moyenne | Excellente |
+| Performance | Bonne | Meilleure |
+| Multi-colonnes | Non | Oui |
+
+## Quand migrer ?
+
+| Situation | Recommandation |
+|-----------|----------------|
+| Nouveau projet | RECHERCHEX |
+| Fichier partage | Vérifier compatibilité |
+| Excel 365 | Migrer progressivement |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Nouveaux fichiers | RECHERCHEX |
+| Formation | Apprenez les deux |
+| Compatibilité | Vérifiez la version |
+
+[Découvrir nos formations Excel](/formations-excel)

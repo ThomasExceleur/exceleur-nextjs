@@ -1,0 +1,130 @@
+---
+title: "Excel Comment Supprimer les Lignes Vides"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez différentes méthodes pour supprimer les lignes vides dans Excel."
+description: "Guide pour supprimer les lignes vides dans Excel. Méthodes manuelles et automatiques."
+category: "Astuces Excel"
+catégories: ["Astuces Excel", "Manipulation de données"]
+tags: ["Lignes vides", "Suppression", "Nettoyage", "Données"]
+---
+
+# Supprimer les Lignes Vides dans Excel
+
+Les lignes vides peuvent perturber vos analyses. Voici comment les supprimer.
+
+## Méthode 1 : Atteindre les cellules vides
+
+### Étapes
+
+1. Sélectionnez votre plage de données
+2. **Ctrl + G** (Atteindre)
+3. Cliquez sûr **Cellules...**
+4. Sélectionnez **Cellules vides**
+5. **OK**
+6. Clic droit > **Supprimer** > **Ligne entière**
+
+### Raccourci
+
+- **Ctrl + G** puis **Cellules...** puis **Cellules vides**
+
+## Méthode 2 : Filtrer et supprimer
+
+### Étapes
+
+1. Sélectionnez vos données
+2. **Ctrl + Maj + L** (activer les filtres)
+3. Cliquez sûr la fleche du filtre
+4. Decochez **(Sélectionner tout)**
+5. Cochez **(Vides)**
+6. Sélectionnez les lignes filtrees
+7. Clic droit > **Supprimer la ligne**
+8. Desactivez le filtre
+
+## Méthode 3 : Tri pour regrouper
+
+### Étapes
+
+1. Triez vos données sûr une colonne clé
+2. Les lignes vides se retrouvent en bas où en haut
+3. Sélectionnez-les
+4. Supprimez-les
+
+## Méthode 4 : Rechercher-Remplacer
+
+### Pour une colonne spécifique
+
+1. Sélectionnez la colonne
+2. **Ctrl + H**
+3. Rechercher : laissez vide
+4. Options > Cellules entières
+5. **Rechercher tout**
+6. **Ctrl + A** pour sélectionner tous les résultats
+7. Fermez et supprimez les lignes
+
+## Méthode 5 : Power Query
+
+### Pour les grands volumes
+
+1. **Données** > **A partir d'un tableau/plage**
+2. Dans Power Query, filtrez la colonne
+3. Decochez "null" et les vides
+4. **Fermer et charger**
+
+## VBA : Macro pour automatiser
+
+### Code
+
+```vba
+Sub SupprimerLignesVides()
+    Dim i As Long
+    For i = Cells(Rows.Count, 1).End(xlUp).Row To 1 Step -1
+        If Application.CountA(Rows(i)) = 0 Then
+            Rows(i).Delete
+        End If
+    Next i
+End Sub
+```
+
+## Quelle méthode choisir ?
+
+| Méthode | Ideal pour |
+|---------|------------|
+| Atteindre | Petits tableaux |
+| Filtrer | Tableaux avec en-têtes |
+| Tri | Données triables |
+| Power Query | Grands volumes |
+| VBA | Automatisation |
+
+## Attention
+
+### Vérifier avant de supprimer
+
+Certaines lignes peuvent sembler vides mais contenir :
+- Des espaces
+- Des formules retournant ""
+- Des mises en forme
+
+### Utiliser NB.VIDE
+
+```excel
+=NB.VIDE(A1:Z1)=NBVAL($1:$1)    ' VRAI si ligne vide
+```
+
+## Prevenir les lignes vides
+
+1. Utilisez des tableaux structurés (**Ctrl + T**)
+2. Validez les saisies
+3. Nettoyez régulièrement vos données
+
+## Erreurs courantes
+
+### Supprimer des lignes avec des formules
+
+Les formules retournant "" ne sont pas vides.
+
+### Oublier de vérifier
+
+Vérifiez toujours le résultat après suppression.
+
+[Découvrir nos formations Excel](/formations-excel)

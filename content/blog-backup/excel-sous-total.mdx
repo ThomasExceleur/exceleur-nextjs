@@ -1,0 +1,213 @@
+---
+title: "Excel SOUS.TOTAL : La Fonction pour Données Filtrees"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Maîtrisez la fonction SOUS.TOTAL pour calculer uniquement sûr les données visibles."
+description: "Guide complet de la fonction SOUS.TOTAL dans Excel. Calculs sûr données filtrees, masquees et exemples pratiques."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Calculs"]
+tags: ["SOUS.TOTAL", "Formules", "Filtres", "Calculs"]
+---
+
+# Excel SOUS.TOTAL : Guide Complet
+
+La fonction SOUS.TOTAL effectue des calculs uniquement sûr les cellules visibles, ideal pour les données filtrees.
+
+## Syntaxe
+
+```excel
+=SOUS.TOTAL(no_fonction; ref1; [ref2]; ...)
+```
+
+### Arguments
+
+- **no_fonction** : Numéro de la fonction à utiliser (voir tableau)
+- **ref1** : Première plage de données
+- **ref2** : Plages supplémentaires (optionnel)
+
+## Numéros de fonction
+
+| Fonction | Ignore masque | Ignore masque + filtre |
+|----------|---------------|------------------------|
+| MOYENNE | 1 | 101 |
+| NB | 2 | 102 |
+| NBVAL | 3 | 103 |
+| MAX | 4 | 104 |
+| MIN | 5 | 105 |
+| PRODUIT | 6 | 106 |
+| ECARTYPE | 7 | 107 |
+| ECARTYPE.P | 8 | 108 |
+| SOMME | 9 | 109 |
+| VAR | 10 | 110 |
+| VAR.P | 11 | 111 |
+
+## Différence entre les numéros
+
+### 1 à 11
+
+Ignore les lignes masquees par un filtre, mais inclut les lignes masquees manuellement.
+
+### 101 à 111
+
+Ignore toutes les lignes masquees (filtre ET masquage manuel).
+
+## Exemples de base
+
+### Somme des données filtrees
+
+```excel
+=SOUS.TOTAL(9; A1:A100)
+```
+
+Additionne uniquement les cellules visibles.
+
+### Moyenne des données visibles
+
+```excel
+=SOUS.TOTAL(1; B1:B100)
+```
+
+### Compter les cellules visibles
+
+```excel
+=SOUS.TOTAL(102; C1:C100)
+```
+
+## Avantage sûr SOMME
+
+### SOMME classique
+
+```excel
+=SOMME(A1:A100)
+```
+
+Additionne TOUTES les cellules, meme filtrees.
+
+### SOUS.TOTAL
+
+```excel
+=SOUS.TOTAL(9; A1:A100)
+```
+
+Additionne UNIQUEMENT les cellules visibles.
+
+## Cas pratique : Tableau de ventes
+
+| Region | Vendeur | Ventes |
+|--------|---------|--------|
+| Nord | Dupont | 1000 |
+| Sud | Martin | 1500 |
+| Nord | Durand | 800 |
+| Est | Petit | 1200 |
+
+### Sans filtre
+
+```excel
+=SOUS.TOTAL(9; C2:C5)
+```
+Résultat : 4500
+
+### Avec filtre sûr "Nord"
+
+La formule retourne automatiquement 1800 (1000 + 800).
+
+## SOUS.TOTAL imbriqués
+
+Les SOUS.TOTAL ignorent les autres SOUS.TOTAL dans la meme plage. Pratique pour les totaux de section.
+
+### Exemple
+
+| Catégorie | Montant |
+|-----------|---------|
+| A | 100 |
+| A | 200 |
+| **Sous-total A** | =SOUS.TOTAL(9;B2:B3) |
+| B | 300 |
+| B | 400 |
+| **Sous-total B** | =SOUS.TOTAL(9;B5:B6) |
+| **TOTAL** | =SOUS.TOTAL(9;B2:B7) |
+
+Le TOTAL (1000) n'inclut pas les sous-totaux (evite le double comptage).
+
+## Créer des sous-totaux automatiques
+
+### Fonctionnalité Excel
+
+1. Sélectionnez vos données
+2. **Données** > **Sous-total**
+3. Choisissez le champ de regroupement
+4. Choisissez la fonction (Somme, Moyenne, etc.)
+5. **OK**
+
+### Avantages
+
+- Création automatique des groupes
+- Niveaux de plan
+- Formules SOUS.TOTAL générées
+
+## Combiner avec d'autres fonctions
+
+### SOUS.TOTAL dans SOMME.SI
+
+Non recommandé. Utilisez plutôt :
+
+```excel
+=SOMMEPROD(SOUS.TOTAL(9;INDIRECT("A"&LIGNE(A1:A100)));(B1:B100="Critère"))
+```
+
+### Avec une condition simple
+
+Filtrez d'abord vos données, puis utilisez SOUS.TOTAL.
+
+## Performances
+
+SOUS.TOTAL est optimise pour les grandes plages. Plus rapide que les alternatives matricielles.
+
+## Erreurs courantes
+
+### Mauvais numéro de fonction
+
+Vérifiez le numéro correspondant à la fonction souhaitée.
+
+### Plage incorrecte
+
+Assurez-vous que la plage inclut toutes les données.
+
+### Format texte
+
+Les cellules au format texte ne sont pas comptabilisees.
+
+## Alternatives
+
+### AGREGAT
+
+Plus puissante, permet d'ignorer les erreurs :
+
+```excel
+=AGREGAT(9; 5; A1:A100)
+```
+
+Le 5 signifie "ignorer les lignes masquees".
+
+### Tableau structuré
+
+Les tableaux Excel calculent automatiquement les totaux sûr données filtrees.
+
+## Bonnes pratiques
+
+1. **Utilisez 101-111** pour ignorer toutes les lignes masquees
+2. **Placez les totaux** en bas où en haut du tableau
+3. **Documentez** la signification des numéros de fonction
+4. **Testez** avec différents filtres
+
+## Tableau recapitulatif
+
+| Besoin | Fonction | Numéro |
+|--------|----------|--------|
+| Somme filtree | SOMME | 9 où 109 |
+| Moyenne visible | MOYENNE | 1 où 101 |
+| Compter visible | NBVAL | 3 où 103 |
+| Maximum visible | MAX | 4 où 104 |
+| Minimum visible | MIN | 5 où 105 |
+
+[Découvrir nos formations Excel](/formations-excel)

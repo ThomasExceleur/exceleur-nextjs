@@ -1,0 +1,205 @@
+---
+title: "Automatiser l'Envoi de Rapports Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Automatisez l'envoi de vos rapports Excel par email avec VBA où Power Automate."
+description: "Guide pour automatiser l'envoi de rapports Excel par email."
+category: "Macros et VBA"
+catégories: ["Macros et VBA", "Productivité"]
+tags: ["Automatisation", "Email", "VBA", "Power Automate", "Rapports"]
+---
+
+# Automatiser l'Envoi de Rapports
+
+Gagnez du temps en automatisant la distribution de vos rapports.
+
+## Méthode 1 : VBA avec Outlook
+
+### Code de base
+
+```vba
+Sub EnvoyerRapport()
+    Dim OutApp As Object
+    Dim OutMail As Object
+
+    Set OutApp = CreateObject("Outlook.Application")
+    Set OutMail = OutApp.CreateItem(0)
+
+    With OutMail
+        .To = "destinataire@email.com"
+        .Subject = "Rapport du " & Format(Date, "dd/mm/yyyy")
+        .Body = "Veuillez trouver ci-joint le rapport."
+        .Attachments.Add ThisWorkbook.FullName
+        .Send
+    End With
+
+    Set OutMail = Nothing
+    Set OutApp = Nothing
+End Sub
+```
+
+### Avec piece jointe PDF
+
+```vba
+Sub EnvoyerRapportPDF()
+    Dim chemin As String
+    chemin = Environ("TEMP") & "\Rapport.pdf"
+
+    ActiveSheet.ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        Filename:=chemin
+
+    ' Puis envoi par email avec ce fichier
+End Sub
+```
+
+## Méthode 2 : Power Automate
+
+### Flux automatique
+
+1. Declencheur : Planifie où à la demande
+2. Action : Obtenir le fichier OneDrive/SharePoint
+3. Action : Envoyer un email (Office 365 Outlook)
+
+### Avantages
+
+- Pas de code
+- Fonctionne dans le cloud
+- Planification flexible
+
+## Planifier l'envoi
+
+### Avec le Planificateur Windows
+
+1. Créez une macro d'envoi
+2. Sauvegardez en .xlsm
+3. Créez un script .vbs :
+
+```vba
+Set xlApp = CreateObject("Excel.Application")
+xlApp.Workbooks.Open "C:\Rapports\MonRapport.xlsm"
+xlApp.Run "EnvoyerRapport"
+xlApp.Quit
+```
+
+4. Planifiez avec le Planificateur de taches
+
+### Avec Power Automate
+
+1. Choisissez "Recurrence" comme declencheur
+2. Définissez la frequence
+3. Le flux s'executera automatiquement
+
+## Personnaliser le contenu
+
+### Email dynamique
+
+```vba
+Sub EnvoyerRapportPersonnalise()
+    Dim OutMail As Object
+    Dim corps As String
+
+    corps = "Bonjour," & vbNewLine & vbNewLine
+    corps = corps & "Voici le rapport avec:" & vbNewLine
+    corps = corps & "- Total: " & Range("B10").Value & vbNewLine
+    corps = corps & "- Moyenne: " & Range("B11").Value & vbNewLine
+    corps = corps & vbNewLine & "Cordialement"
+
+    With OutMail
+        .HTMLBody = corps
+    End With
+End Sub
+```
+
+### Corps HTML
+
+```vba
+.HTMLBody = "<h1>Rapport</h1>" & _
+            "<p>Total: <b>" & Range("B10").Value & "</b></p>" & _
+            "<table border='1'>...</table>"
+```
+
+## Envoyer à plusieurs destinataires
+
+### Liste de diffusion
+
+```vba
+Sub EnvoyerAListe()
+    Dim destinataires As Range
+    Dim cellule As Range
+
+    Set destinataires = Range("A2:A10")
+
+    For Each cellule In destinataires
+        If cellule.Value <> "" Then
+            ' Créer et envoyer email
+        End If
+    Next cellule
+End Sub
+```
+
+### En copie cachee (BCC)
+
+```vba
+.BCC = "liste@emails.com"
+```
+
+## Gérer les erreurs
+
+### Vérification Outlook
+
+```vba
+On Error Résumé Next
+Set OutApp = GetObject(, "Outlook.Application")
+If OutApp Is Nothing Then
+    Set OutApp = CreateObject("Outlook.Application")
+End If
+On Error GoTo 0
+```
+
+### Confirmation d'envoi
+
+```vba
+MsgBox "Rapport envoye avec succès!", vbInformation
+```
+
+## Bonnes pratiques
+
+### Sécurité
+
+| Pratique | Description |
+|----------|-------------|
+| Tester | Envoyez à vous-meme d'abord |
+| Confirmer | Demandez confirmation avant envoi |
+| Logs | Enregistrez les envois |
+
+### Performance
+
+1. **Évitez** les pieces jointes trop lourdes
+2. **Compressez** en PDF quand possible
+3. **Limitez** la frequence d'envoi
+
+## Alternatives
+
+### Liens OneDrive
+
+Au lieu de pieces jointes, partagez un lien vers le fichier :
+
+```vba
+.Body = "Accès au rapport: " & lienOneDrive
+```
+
+### SharePoint
+
+Utilisez les alertes SharePoint pour notifier des modifications.
+
+## Cas d'usage
+
+| Scenario | Solution |
+|----------|----------|
+| Rapport quotidien | Planificateur + VBA |
+| Sur demande | Bouton dans Excel |
+| Multi-destinataires | Boucle VBA |
+| Cloud | Power Automate |
+
+[Découvrir nos formations Excel](/formations-excel)

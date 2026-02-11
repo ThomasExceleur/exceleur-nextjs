@@ -1,0 +1,218 @@
+---
+title: "Automatiser votre Classeur avec LET et LAMBDA"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Combinez LET et LAMBDA pour des automatisations puissantes sans VBA."
+description: "Guide pour automatiser Excel avec les fonctions LET et LAMBDA."
+category: "Excel 365"
+catégories: ["Excel 365", "Formules Excel"]
+tags: ["LET", "LAMBDA", "Automatisation", "Formules"]
+---
+
+# Automatiser avec LET et LAMBDA
+
+Ces deux fonctions revolutionnent les possibilités sans VBA.
+
+## LET : Variables dans les formules
+
+### Syntaxe
+
+```excel
+=LET(nom1;valeur1;nom2;valeur2;...;calcul)
+```
+
+### Avantages
+
+- Code plus lisible
+- Performances ameliorees
+- Calculs complexes simplifies
+
+### Exemple
+
+```excel
+=LET(
+  total;SOMME(A:A);
+  moyenne;MOYENNE(A:A);
+  "Total: "&total&" | Moyenne: "&moyenne
+)
+```
+
+## LAMBDA : Fonctions personnalisees
+
+### Syntaxe
+
+```excel
+=LAMBDA(param1;param2;...;expression)
+```
+
+### Création d'une fonction nommée
+
+1. Gestionnaire de noms
+2. Définir la formule LAMBDA
+3. Utiliser comme fonction native
+
+## Combiner LET et LAMBDA
+
+### Exemple : Fonction de scoring
+
+```excel
+Nom: SCORE_CLIENT
+Formule: =LAMBDA(ventes;anciennete;retours;
+  LET(
+    score_ventes;MIN(ventes/1000;50);
+    score_anciennete;MIN(anciennete*2;30);
+    score_retours;MAX(0;20-retours*5);
+    score_ventes+score_anciennete+score_retours
+  )
+)
+```
+
+Usage : `=SCORE_CLIENT(5000;3;1)` retourne le score total.
+
+## Automatisations pratiques
+
+### 1. Nettoyage de texte
+
+```excel
+Nom: NETTOYER_TEXTE
+Formule: =LAMBDA(texte;
+  LET(
+    etape1;SUPPRESPACE(texte);
+    etape2;EPURAGE(etape1);
+    etape3;NOMPROPRE(etape2);
+    etape3
+  )
+)
+```
+
+### 2. Calcul de commission
+
+```excel
+Nom: COMMISSION
+Formule: =LAMBDA(ventes;
+  LET(
+    seuil1;5000;
+    seuil2;10000;
+    taux1;0,05;
+    taux2;0,08;
+    taux3;0,12;
+    SI(ventes<seuil1;ventes*taux1;
+      SI(ventes<seuil2;
+        seuil1*taux1+(ventes-seuil1)*taux2;
+        seuil1*taux1+(seuil2-seuil1)*taux2+(ventes-seuil2)*taux3
+      )
+    )
+  )
+)
+```
+
+### 3. Extraction intelligente
+
+```excel
+Nom: EXTRAIRE_DOMAINE
+Formule: =LAMBDA(email;
+  LET(
+    position_arobase;CHERCHE("@";email);
+    domaine;DROITE(email;NBCAR(email)-position_arobase);
+    domaine
+  )
+)
+```
+
+## Tableaux dynamiques avec LET
+
+### Filtrer et trier en une formule
+
+```excel
+=LET(
+  données;A2:D100;
+  filtre_region;B2:B100="Paris";
+  filtre_montant;C2:C100>1000;
+  filtrees;FILTRE(données;filtre_region*filtre_montant);
+  TRIER(filtrees;3;-1)
+)
+```
+
+### Top N avec calcul
+
+```excel
+=LET(
+  n;5;
+  données;A2:B100;
+  triees;TRIER(données;2;-1);
+  INDEX(triees;SEQUENCE(n);SEQUENCE(1;2))
+)
+```
+
+## Recursion avec LAMBDA
+
+### Somme cumulative
+
+```excel
+Nom: SOMME_RECURSIVE
+Formule: =LAMBDA(n;
+  SI(n<=0;0;n+SOMME_RECURSIVE(n-1))
+)
+```
+
+### PGCD (Plus Grand Commun Diviseur)
+
+```excel
+Nom: PGCD_CALC
+Formule: =LAMBDA(à;b;
+  SI(b=0;à;PGCD_CALC(b;MOD(à;b)))
+)
+```
+
+## Fonctions d'ordre supérieur
+
+### MAP : Appliquer à chaque élément
+
+```excel
+=MAP(A1:A10;LAMBDA(x;x^2))
+```
+
+### REDUCE : Agreger les valeurs
+
+```excel
+=REDUCE(1;A1:A10;LAMBDA(acc;val;acc*val))
+```
+
+Calcule le produit de toutes les valeurs.
+
+### SCAN : Agregation cumulative
+
+```excel
+=SCAN(0;A1:A10;LAMBDA(acc;val;acc+val))
+```
+
+Retourne les sommes cumulatives.
+
+## Bonnes pratiques
+
+### Organisation
+
+| Pratique | Recommandation |
+|----------|----------------|
+| Nommage | Prefixe par domaine (FIN_, RH_) |
+| Documentation | Commentaire dans le nom |
+| Test | Vérifier avant deploiement |
+| Modularite | Petites fonctions reutilisables |
+
+### Debug
+
+1. Testez chaque variable LET separement
+2. Vérifiez les types de données
+3. Utilisez SIERREUR pour gérer les exceptions
+
+## Comparaison avec VBA
+
+| Aspect | LET/LAMBDA | VBA |
+|--------|------------|-----|
+| Installation | Aucune | Activer macros |
+| Sécurité | Native | Avertissements |
+| Performance | Excellente | Variable |
+| Complexité | Moyenne | Élevée |
+| Reutilisation | Via noms | Modules |
+
+[Découvrir nos formations Excel](/formations-excel)

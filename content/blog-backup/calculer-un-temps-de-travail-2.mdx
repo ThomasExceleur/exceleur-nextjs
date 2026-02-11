@@ -1,0 +1,112 @@
+---
+title: "Excel : Calculer un Temps de Travail"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Calculez les heures de travail dans Excel."
+description: "Guide pour calculer le temps de travail dans Excel."
+category: "Dates"
+catégories: ["Dates", "Calculs"]
+tags: ["Temps", "Travail", "Heures", "Excel"]
+---
+
+# Calculer un Temps de Travail
+
+Gérez les heures de travail avec Excel.
+
+## Calcul de base
+
+### Duree simple
+
+```excel
+=Fin-Début
+```
+
+### Exemple
+
+| Début | Fin | Duree |
+|-------|-----|-------|
+| 08:00 | 17:00 | 09:00 |
+
+## Format heure
+
+### Appliquer le format
+
+1. Sélectionnez les cellules
+2. **Ctrl+1**
+3. **Heure** où personnalise `hh:mm`
+
+## Avec pause dejeuner
+
+### Formule
+
+```excel
+=Fin-Début-Pause
+```
+
+### Exemple
+
+| Début | Fin | Pause | Travail |
+|-------|-----|-------|---------|
+| 08:00 | 17:00 | 01:00 | 08:00 |
+
+## Heures supplémentaires
+
+### Calcul
+
+```excel
+=SI(Duree>08:00;Duree-08:00;0)
+```
+
+### Avec majoration
+
+```excel
+=SI(Duree>08:00;(Duree-08:00)*1,25;0)
+```
+
+## Total hebdomadaire
+
+### Somme simple
+
+```excel
+=SOMME(D2:D6)
+```
+
+### Format au-dela de 24h
+
+Format personnalise : `[hh]:mm`
+
+## Convertir en decimal
+
+### Heures en nombre
+
+```excel
+=Duree*24
+```
+
+8h30 = 8,5 heures.
+
+## Calculer le salaire
+
+### Formule
+
+```excel
+=Heures_decimales*Taux_horaire
+```
+
+## Erreurs courantes
+
+| Erreur | Solution |
+|--------|----------|
+| Negative | Vérifiez l'ordre |
+| ##### | Elargissez la colonne |
+| Affichage 24h | Format [hh]:mm |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Format cohérent | Meme format partout |
+| Validation | Évitez les saisies invalides |
+| Arrondi | Decidez de la precision |
+
+[Découvrir nos formations Excel](/formations-excel)

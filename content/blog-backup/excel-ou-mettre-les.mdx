@@ -1,0 +1,138 @@
+---
+title: "Excel : Où Mettre les $ dans les Formules"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Comprenez où placer les $ dans vos formules Excel pour maîtriser les références absolues et relatives."
+description: "Guide complet pour savoir où mettre les $ dans les formules Excel. Références absolues, relatives et mixtes expliquées avec des exemples pratiques."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Astuces Excel"]
+tags: ["Références", "Dollar", "Formules", "Références absolues", "F4"]
+---
+
+# Où Mettre les $ dans les Formules Excel
+
+Le symbole **$** dans les formules Excel permet de **verrouiller** une référence de cellule. Sans lui, vos références changent automatiquement quand vous copiez une formule. Avec lui, vous contrôlez exactement ce qui bouge et ce qui reste fixe.
+
+## Les 3 types de références
+
+| Type | Syntaxe | Comportement |
+|------|---------|-------------|
+| **Relative** | `A1` | Ligne et colonne s'adaptent |
+| **Absolue** | `$A$1` | Rien ne bouge |
+| **Mixte** | `$A1` ou `A$1` | Un seul axe est verrouillé |
+
+## Référence relative : `A1`
+
+C'est le comportement par défaut. Quand vous copiez la formule vers le bas ou la droite, la référence s'ajuste automatiquement.
+
+### Exemple
+
+En B1, vous écrivez `=A1*2`. Si vous copiez vers le bas :
+
+| Cellule | Formule | Résultat |
+|---------|---------|----------|
+| B1 | `=A1*2` | A1 × 2 |
+| B2 | `=A2*2` | A2 × 2 |
+| B3 | `=A3*2` | A3 × 2 |
+
+La référence **suit le déplacement**.
+
+## Référence absolue : `$A$1`
+
+Les deux **$** verrouillent la colonne ET la ligne. La référence ne change jamais, peu importe où vous copiez la formule.
+
+### Exemple : appliquer un taux de TVA
+
+Le taux de TVA est en **B1**. Pour calculer le prix TTC :
+
+```excel
+=A2*(1+$B$1)
+```
+
+En copiant vers le bas, `$B$1` reste toujours fixe :
+
+| Cellule | Formule |
+|---------|---------|
+| C2 | `=A2*(1+$B$1)` |
+| C3 | `=A3*(1+$B$1)` |
+| C4 | `=A4*(1+$B$1)` |
+
+## Référence mixte : `$A1` ou `A$1`
+
+Vous ne verrouillez qu'un seul axe :
+
+- **`$A1`** : la **colonne** A est verrouillée, la ligne s'adapte
+- **`A$1`** : la **ligne** 1 est verrouillée, la colonne s'adapte
+
+### Exemple : table de multiplication
+
+Pour créer une table de multiplication avec les multiplicateurs en ligne 1 et en colonne A :
+
+```excel
+=A$1*$A2
+```
+
+- `A$1` : quand on copie vers le bas, on reste en ligne 1 (les multiplicateurs)
+- `$A2` : quand on copie vers la droite, on reste en colonne A (les multiplicandes)
+
+## La touche F4 : ajouter les $ rapidement
+
+Pas besoin de taper les **$** manuellement. Placez le curseur sur une référence dans la barre de formule et appuyez sur **F4** :
+
+| Appui | Résultat | Type |
+|-------|----------|------|
+| 1er | `$A$1` | Absolue |
+| 2e | `A$1` | Mixte (ligne fixe) |
+| 3e | `$A1` | Mixte (colonne fixe) |
+| 4e | `A1` | Relative |
+
+**Astuce** : sur Mac, utilisez **Cmd + T** ou **Fn + F4**.
+
+## Quand utiliser chaque type
+
+### Référence relative `A1`
+
+- Calculs qui suivent la même logique ligne par ligne
+- Sommes, moyennes sur des données adjacentes
+- La majorité de vos formules
+
+### Référence absolue `$A$1`
+
+- Référence à une **constante** (taux, seuil, date)
+- Cellule de paramètre utilisée dans plusieurs formules
+- Référence à un en-tête ou une valeur fixe
+
+### Référence mixte `$A1` ou `A$1`
+
+- **Tables croisées** (multiplication, grilles tarifaires)
+- Formules copiées dans **deux directions** (bas + droite)
+- RECHERCHEV/INDEX avec plage fixe sur un axe
+
+## Erreurs courantes
+
+### 1. Oublier les $ avant de copier
+
+Votre formule fonctionne en B2 mais donne n'importe quoi en B10 ? Vérifiez si vous avez oublié de verrouiller une référence.
+
+### 2. Mettre des $ partout
+
+Trop de verrouillage empêche vos formules de s'adapter. N'utilisez **$** que là où c'est nécessaire.
+
+### 3. Confondre `$A1` et `A$1`
+
+- `$A1` verrouille la **colonne**
+- `A$1` verrouille la **ligne**
+
+Souvenez-vous : le **$** verrouille ce qui est **juste après lui**.
+
+## Résumé
+
+| Situation | Référence | Exemple |
+|-----------|-----------|---------|
+| Formule standard | `A1` | `=A1+B1` |
+| Taux fixe | `$A$1` | `=B2*$E$1` |
+| Table croisée | `$A1` / `A$1` | `=$A2*B$1` |
+
+**Règle d'or** : avant de copier une formule, demandez-vous "qu'est-ce qui doit rester fixe ?" et ajoutez les **$** en conséquence.
+
+[Découvrir nos formations Excel](/formations-excel)

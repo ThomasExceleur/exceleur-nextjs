@@ -1,0 +1,78 @@
+---
+title: "Excel Formule SI Avancée"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Techniques avancées pour la fonction SI."
+description: "Guide avancé de la fonction SI dans Excel."
+category: "Fonctions"
+catégories: ["Fonctions", "Logique"]
+tags: ["SI", "Avancé", "Logique", "Excel"]
+---
+
+# Formule SI Avancée
+
+Maîtrisez les conditions complexes.
+
+## SI imbriqué
+
+```excel
+=SI(A1>=90;"A";SI(A1>=80;"B";SI(A1>=70;"C";"D")))
+```
+
+## SI.CONDITIONS (Excel 365)
+
+### Plus lisible
+
+```excel
+=SI.CONDITIONS(A1>=90;"A";A1>=80;"B";A1>=70;"C";VRAI;"D")
+```
+
+## Combinaison ET/OU
+
+### ET
+
+```excel
+=SI(ET(A1>0;B1>0);"Positifs";"Non")
+```
+
+### OU
+
+```excel
+=SI(OU(A1="Oui";B1="Oui");"Au moins un";"Aucun")
+```
+
+## NON
+
+```excel
+=SI(NON(A1="Non");"Oui";"Non")
+```
+
+## SI avec calculs
+
+```excel
+=SI(A1>100;A1*0.9;A1)
+```
+
+## CHOISIR alternative
+
+```excel
+=CHOISIR(A1;"Lundi";"Mardi";"Mercredi")
+```
+
+## Erreurs courantes
+
+| Erreur | Cause |
+|--------|-------|
+| Parentheses | Compter ouvertures/fermetures |
+| Guillemets | "texte" pas texte |
+| Ordre | Du plus spécifique au général |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| SI.CONDITIONS | Préférez aux SI imbriqués |
+| Tables | Tables de correspondance |
+| Lisibilité | Decoupez si complexe |
+
+[Découvrir nos formations Excel](/formations-excel)

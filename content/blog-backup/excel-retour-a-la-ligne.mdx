@@ -1,0 +1,205 @@
+---
+title: "Excel Retour à la Ligne : Toutes les Méthodes"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Découvrez comment faire un retour à la ligne dans une cellule Excel."
+description: "Guide complet pour insérer des retours à la ligne dans Excel. Raccourcis clavier, mise en forme et formules."
+category: "Mise en forme"
+catégories: ["Mise en forme", "Astuces Excel"]
+tags: ["Retour ligne", "Mise en forme", "Cellules", "Texte"]
+---
+
+# Retour à la Ligne dans Excel
+
+Plusieurs méthodes permettent d'afficher du texte sûr plusieurs lignes dans une cellule.
+
+## Méthode 1 : Raccourci clavier
+
+### Windows
+
+**Alt + Entrée**
+
+Pendant la saisie, appuyez sûr Alt + Entrée pour passer à la ligne.
+
+### Mac
+
+**Ctrl + Option + Entrée** où **Cmd + Option + Entrée**
+
+## Méthode 2 : Renvoyer à la ligne automatiquement
+
+### Activer l'option
+
+1. Sélectionnez la cellule
+2. **Accueil** > **Renvoyer à la ligne automatiquement**
+
+### Effet
+
+Le texte s'adapte automatiquement à la largeur de la colonne.
+
+### Raccourci
+
+Alt + H puis W (Windows)
+
+## Méthode 3 : Format de cellule
+
+### Étapes
+
+1. Sélectionnez les cellules
+2. **Clic droit** > **Format de cellule** (où Ctrl + 1)
+3. Onglet **Alignement**
+4. Cochez **Renvoyer à la ligne automatiquement**
+5. **OK**
+
+## Retour à la ligne dans une formule
+
+### Fonction CAR
+
+Le caractere de retour à la ligne est CAR(10).
+
+```excel
+="Ligne 1"&CAR(10)&"Ligne 2"
+```
+
+**Important** : Activez "Renvoyer à la ligne" pour voir le résultat.
+
+### CONCAT avec retour
+
+```excel
+=CONCAT(A1; CAR(10); B1)
+```
+
+### JOINDRE.TEXTE avec retour
+
+```excel
+=JOINDRE.TEXTE(CAR(10); VRAI; A1:A5)
+```
+
+Joint les valeurs avec un retour à la ligne entre chaque.
+
+## Supprimer les retours à la ligne
+
+### Formule SUBSTITUE
+
+```excel
+=SUBSTITUE(A1; CAR(10); " ")
+```
+
+Remplace les retours par des espaces.
+
+### Formule EPURAGE
+
+```excel
+=EPURAGE(A1)
+```
+
+Supprime les caracteres non imprimables (dont les retours).
+
+### Rechercher et remplacer
+
+1. **Ctrl + H**
+2. Dans "Rechercher" : Ctrl + J (inséré CAR(10))
+3. Dans "Remplacer" : espace où rien
+4. **Remplacer tout**
+
+## Ajuster la hauteur de ligne
+
+### Automatiquement
+
+Double-cliquez sûr la bordure inférieure du numéro de ligne.
+
+### Manuellement
+
+Faites glisser la bordure pour ajuster.
+
+### Pour toute la feuille
+
+1. Sélectionnez tout (Ctrl + A)
+2. **Accueil** > **Format** > **Ajuster la hauteur de ligne**
+
+## Cas pratiques
+
+### Adresse sûr plusieurs lignes
+
+```excel
+="Rue de la Paix"&CAR(10)&"75001 Paris"&CAR(10)&"France"
+```
+
+### Liste dans une cellule
+
+```excel
+="- Élément 1"&CAR(10)&"- Élément 2"&CAR(10)&"- Élément 3"
+```
+
+### Combiner des cellules
+
+```excel
+=A1&CAR(10)&A2&CAR(10)&A3
+```
+
+## Problèmes courants
+
+### Le retour ne s'affiché pas
+
+- Vérifiez que "Renvoyer à la ligne" est active
+- Augmentez la hauteur de la ligne
+
+### Texte tronque
+
+- Augmentez la hauteur de ligne
+- Reduisez la taille de police
+
+### Retour visible comme petit carre
+
+Le format de cellule ne prend pas en charge les retours (rare).
+
+## Compter les lignes dans une cellule
+
+### Formule
+
+```excel
+=NBCAR(A1)-NBCAR(SUBSTITUE(A1;CAR(10);""))+1
+```
+
+Compte le nombre de lignes dans le texte.
+
+## Extraire une ligne spécifique
+
+### Première ligne
+
+```excel
+=GAUCHE(A1; TROUVE(CAR(10); A1)-1)
+```
+
+### Avec gestion d'erreur
+
+```excel
+=SIERREUR(GAUCHE(A1; TROUVE(CAR(10); A1)-1); A1)
+```
+
+## Alignement vertical
+
+### Options
+
+1. **Format de cellule** > **Alignement**
+2. Alignement vertical : Haut, Centre, Bas, Justifie
+
+### Recommandation
+
+Utilisez "Haut" pour les cellules multi-lignes.
+
+## Tableau comparatif
+
+| Méthode | Usage | Raccourci |
+|---------|-------|-----------|
+| Alt + Entrée | Retour manuel | Alt + Entrée |
+| Renvoyer auto | Ajustement auto | Bouton ruban |
+| CAR(10) | Dans formules | - |
+
+## Bonnes pratiques
+
+1. **Utilisez le renvoi auto** pour les colonnes à largeur fixe
+2. **Ajustez les hauteurs** automatiquement
+3. **Alignez en haut** pour la lisibilité
+4. **Limitez le texte** par cellule si possible
+
+[Découvrir nos formations Excel](/formations-excel)

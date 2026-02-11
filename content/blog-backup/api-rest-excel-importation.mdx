@@ -1,0 +1,161 @@
+---
+title: "Importer des Données API REST dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Connectez Excel à des API REST pour importer des données en direct."
+description: "Guide pour importer des données depuis une API REST dans Excel."
+category: "Analyse de données Excel"
+catégories: ["Analyse de données Excel", "Excel 365"]
+tags: ["API", "REST", "Power Query", "JSON", "Import"]
+---
+
+# Importer des Données API REST
+
+Connectez Excel à des sources de données en ligne via API.
+
+## Qu'est-ce qu'une API REST ?
+
+### Définition
+
+Une API REST permet d'acceder à des données via des requêtes HTTP (GET, POST, etc.).
+
+### Exemples d'API
+
+- Données meteo
+- Taux de change
+- Statistiques publiques
+- Données d'entreprise
+
+## Méthode 1 : Power Query
+
+### Étapes de connexion
+
+1. **Données** > **Obtenir des données** > **A partir du web**
+2. Collez l'URL de l'API
+3. Power Query s'ouvre avec les données JSON
+
+### Transformer le JSON
+
+1. Convertissez en table si nécessaire
+2. Developpez les colonnes imbriquées
+3. Sélectionnez les champs utiles
+4. **Fermer et charger**
+
+### Exemple : API de taux de change
+
+```
+https://api.exchangerate-api.com/v4/latest/EUR
+```
+
+## Méthode 2 : Fonction WEBSERVICE
+
+### Syntaxe
+
+```excel
+=WEBSERVICE(url)
+```
+
+### Limites
+
+- Retourne du texte brut
+- Maximum 32767 caracteres
+- Pas de parsing JSON intégré
+
+### Parser le JSON manuellement
+
+Utilisez des fonctions texte pour extraire les valeurs :
+
+```excel
+=STXT(WEBSERVICE(A1);CHERCHE("rate\":";A1)+6;10)
+```
+
+## Authentification
+
+### Types d'authentification
+
+| Type | Description |
+|------|-------------|
+| API Key | Clé dans l'URL où l'en-tête |
+| OAuth | Token d'accès |
+| Basic Auth | Utilisateur/mot de passe |
+
+### Dans Power Query
+
+1. **Modifier les requêtes**
+2. **Éditeur avancé**
+3. Ajoutez les en-têtes d'authentification
+
+### Exemple avec API Key
+
+```
+https://api.example.com/data?api_key=VOTRE_CLE
+```
+
+## Actualisation des données
+
+### Actualisation manuelle
+
+**Données** > **Actualiser tout**
+
+### Actualisation automatique
+
+1. Propriétés de la requête
+2. **Actualiser toutes les X minutes**
+3. Ou **Actualiser à l'ouverture du fichier**
+
+## Gestion des erreurs
+
+### Problèmes courants
+
+| Erreur | Cause | Solution |
+|--------|-------|----------|
+| 401 | Authentification | Vérifiez les identifiants |
+| 404 | URL invalide | Vérifiez l'endpoint |
+| 429 | Limite atteinte | Reduisez la frequence |
+| Timeout | Serveur lent | Augmentez le délai |
+
+### Dans Power Query
+
+Utilisez try...otherwise pour gérer les erreurs :
+
+```
+= try Web.Contents(url) otherwise null
+```
+
+## Exemple complet : Données meteo
+
+### Étape 1 : URL de l'API
+
+```
+https://api.open-meteo.com/v1/forecast?latitude=48.85&longitude=2.35&current_weather=true
+```
+
+### Étape 2 : Import Power Query
+
+1. Obtenir des données depuis le web
+2. Convertir en table
+3. Développer current_weather
+4. Charger dans Excel
+
+### Étape 3 : Mise en forme
+
+Renommez les colonnes et formatez les données.
+
+## Bonnes pratiques
+
+1. **Cachez** les clés API (ne les exposez pas)
+2. **Limitez** les appels pour respecter les quotas
+3. **Documentez** les sources de données
+4. **Testez** les URL avant l'intégration
+
+## Alternatives
+
+### Microsoft Power Automate
+
+Pour des scenarios plus complexes avec des workflows.
+
+### Office Scripts
+
+Pour des automatisations programmables dans Excel Online.
+
+[Découvrir nos formations Excel](/formations-excel)

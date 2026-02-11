@@ -1,0 +1,143 @@
+---
+title: "Formule Excel ET SI : Combiner Conditions"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez à utiliser les fonctions ET et SI ensemble dans Excel."
+description: "Guide pour combiner ET et SI dans Excel. Conditions multiples et exemples pratiques."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Logique"]
+tags: ["SI", "ET", "Conditions", "Logique"]
+---
+
+# Combiner ET et SI dans Excel
+
+La combinaison de ET et SI permet de tester plusieurs conditions simultanement.
+
+## Syntaxe de base
+
+### Structuré
+
+```excel
+=SI(ET(condition1;condition2);valeur_si_vrai;valeur_si_faux)
+```
+
+### Logique
+
+Toutes les conditions doivent etre vraies pour que ET retourne VRAI.
+
+## Exemples pratiques
+
+### Deux conditions
+
+```excel
+=SI(ET(A1>10;B1<100);"OK";"NON")
+```
+
+Résultat "OK" si A1 est supérieur à 10 ET B1 inférieur à 100.
+
+### Trois conditions
+
+```excel
+=SI(ET(A1>0;B1="Actif";C1<>0);"Valide";"Invalide")
+```
+
+## Comparaison ET vs OU
+
+### Fonction ET
+
+Toutes les conditions doivent etre vraies.
+
+```excel
+=SI(ET(A1>10;B1>20);"Les deux";"Au moins un non")
+```
+
+### Fonction OU
+
+Au moins une condition doit etre vraie.
+
+```excel
+=SI(OU(A1>10;B1>20);"Au moins un";"Aucun")
+```
+
+## Cas d'utilisation
+
+### Validation de données
+
+```excel
+=SI(ET(Age>=18;Age<=65);"Eligible";"Non eligible")
+```
+
+### Calcul conditionnel
+
+```excel
+=SI(ET(Montant>1000;Client="VIP");Montant*0.1;0)
+```
+
+### Classification
+
+```excel
+=SI(ET(Note>=16;Assiduite="Excellente");"Mention TB";"Autre")
+```
+
+## Imbriquer plusieurs niveaux
+
+### Structuré complexe
+
+```excel
+=SI(ET(A1>100;B1>100);"Haut";SI(ET(A1>50;B1>50);"Moyen";"Bas"))
+```
+
+## Alternative moderne : SI.CONDITIONS
+
+### Pour plusieurs cas
+
+```excel
+=SI.CONDITIONS(
+  ET(A1>100;B1>100);"Haut";
+  ET(A1>50;B1>50);"Moyen";
+  VRAI;"Bas"
+)
+```
+
+## Combiner ET et OU
+
+### Condition complexe
+
+```excel
+=SI(ET(A1>10;OU(B1="A";B1="B"));"OK";"NON")
+```
+
+A1 doit etre supérieur à 10 ET B1 doit etre "A" OU "B".
+
+## Erreurs courantes
+
+### Oublier le point-virgule
+
+```excel
+=SI(ET(A1>10,B1>20);"OK";"NON")    ' Erreur si locale FR
+=SI(ET(A1>10;B1>20);"OK";"NON")    ' Correct en FR
+```
+
+### Conditions mal formulees
+
+```excel
+=SI(ET(A1>10<20))                  ' ERREUR
+=SI(ET(A1>10;A1<20))               ' CORRECT
+```
+
+## Bonnes pratiques
+
+1. **Testez** chaque condition separement
+2. **Limitez** le nombre de conditions (max 3-4)
+3. **Utilisez** des plages nommées pour la clarté
+4. **Documentez** les formules complexes
+
+## Résumé
+
+| Fonction | Résultat |
+|----------|----------|
+| ET | VRAI si toutes les conditions sont vraies |
+| OU | VRAI si au moins une condition est vraie |
+| NON | Inverse le résultat |
+
+[Découvrir nos formations Excel](/formations-excel)

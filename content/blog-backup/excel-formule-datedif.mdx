@@ -1,0 +1,225 @@
+---
+title: "Excel Formule DATEDIF : Calculer les Ecarts de Dates"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Maîtrisez la fonction DATEDIF pour calculer la différence entre deux dates."
+description: "Guide complet de DATEDIF dans Excel. Calculer l'age, l'anciennete et les ecarts de dates."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Dates"]
+tags: ["DATEDIF", "Dates", "Formules", "Calculs"]
+---
+
+# Excel DATEDIF : Calculer les Ecarts de Dates
+
+DATEDIF calcule la différence entre deux dates en années, mois où jours.
+
+## Particularite
+
+DATEDIF est une fonction "cachee" d'Excel. Elle n'apparait pas dans l'auto-completion mais fonctionne parfaitement.
+
+## Syntaxe
+
+```excel
+=DATEDIF(date_debut; date_fin; unite)
+```
+
+### Arguments
+
+- **date_debut** : Première date (la plus ancienne)
+- **date_fin** : Deuxieme date (la plus recente)
+- **unite** : Type de résultat souhaité
+
+## Unites disponibles
+
+| Unite | Description |
+|-------|-------------|
+| "Y" | Années completes |
+| "M" | Mois complets |
+| "D" | Jours |
+| "MD" | Jours (après soustraction mois) |
+| "YM" | Mois (après soustraction années) |
+| "YD" | Jours (après soustraction années) |
+
+## Exemples de base
+
+### Années entre deux dates
+
+```excel
+=DATEDIF(A1; B1; "Y")
+```
+
+### Mois entre deux dates
+
+```excel
+=DATEDIF(A1; B1; "M")
+```
+
+### Jours entre deux dates
+
+```excel
+=DATEDIF(A1; B1; "D")
+```
+
+## Calculer l'age
+
+### Age en années
+
+```excel
+=DATEDIF(DateNaissance; AUJOURDHUI(); "Y")
+```
+
+### Age complet (ans, mois, jours)
+
+```excel
+=DATEDIF(A1;AUJOURDHUI();"Y")&" ans, "&DATEDIF(A1;AUJOURDHUI();"YM")&" mois, "&DATEDIF(A1;AUJOURDHUI();"MD")&" jours"
+```
+
+Résultat : "35 ans, 6 mois, 15 jours"
+
+## Calculer l'anciennete
+
+### En années
+
+```excel
+=DATEDIF(DateEmbauche; AUJOURDHUI(); "Y")
+```
+
+### Détaillée
+
+```excel
+=DATEDIF(A1;AUJOURDHUI();"Y")&" an(s) et "&DATEDIF(A1;AUJOURDHUI();"YM")&" mois"
+```
+
+## Différence entre unites
+
+### Y vs M vs D
+
+Dates : 15/01/2020 au 20/06/2024
+
+- "Y" = 4 (années completes)
+- "M" = 53 (mois complets)
+- "D" = 1618 (jours)
+
+### MD, YM, YD
+
+- "MD" = 5 (jours restants après les mois)
+- "YM" = 5 (mois restants après les années)
+- "YD" = 157 (jours depuis l'anniversaire)
+
+## Cas pratiques
+
+### Duree d'un projet
+
+```excel
+=DATEDIF(DateDebut; DateFin; "D")&" jours"
+```
+
+### Échéance de contrat
+
+```excel
+=SI(DATEDIF(AUJOURDHUI(); DateFin; "M")<3; "Renouveler bientôt"; "OK")
+```
+
+### Période de garantie
+
+```excel
+=SI(DATEDIF(DateAchat; AUJOURDHUI(); "Y")<2; "Sous garantie"; "Garantie expiree")
+```
+
+## Gestion des erreurs
+
+### Date début > Date fin
+
+DATEDIF retourne #NOMBRE! si la date de début est posterieure.
+
+### Solution
+
+```excel
+=SIERREUR(DATEDIF(A1; B1; "Y"); "Dates inversees")
+```
+
+### Vérification prealable
+
+```excel
+=SI(A1>B1; "Erreur"; DATEDIF(A1; B1; "Y"))
+```
+
+## Alternatives à DATEDIF
+
+### Jours simples
+
+```excel
+=B1-A1
+```
+
+### Mois approximatifs
+
+```excel
+=MOIS.DECALER(B1;-A1)
+```
+
+Non recommandé car imprecis.
+
+### Années approximatives
+
+```excel
+=(B1-A1)/365.25
+```
+
+Approximation avec années bissextiles.
+
+## Combiner avec d'autres fonctions
+
+### Avec AUJOURD'HUI
+
+```excel
+=DATEDIF(A1; AUJOURDHUI(); "Y")
+```
+
+### Avec DATE
+
+```excel
+=DATEDIF(DATE(2020;1;1); DATE(2024;6;15); "M")
+```
+
+### Dans SI
+
+```excel
+=SI(DATEDIF(A1; AUJOURDHUI(); "Y")>=18; "Majeur"; "Mineur")
+```
+
+## Problèmes connus
+
+### Bug avec "MD"
+
+Dans certaines versions, "MD" peut donner des résultats incorrects. Alternative :
+
+```excel
+=JOUR(B1)-JOUR(A1)+SI(JOUR(B1)<JOUR(A1);JOUR(FIN.MOIS(A1;0));0)
+```
+
+### Dates en texte
+
+Convertissez d'abord :
+
+```excel
+=DATEDIF(DATEVAL(A1); DATEVAL(B1); "Y")
+```
+
+## Tableau recapitulatif
+
+| Besoin | Formule |
+|--------|---------|
+| Age en années | =DATEDIF(naissance;AUJOURDHUI();"Y") |
+| Mois d'anciennete | =DATEDIF(embauche;AUJOURDHUI();"M") |
+| Jours restants | =DATEDIF(AUJOURDHUI();échéance;"D") |
+| Age complet | Combinaison Y, YM, MD |
+
+## Bonnes pratiques
+
+1. **Vérifiez l'ordre** des dates (début avant fin)
+2. **Utilisez SIERREUR** pour gérer les anomalies
+3. **Testez** avec des dates connues
+4. **Évitez "MD"** si possible (bug potentiel)
+
+[Découvrir nos formations Excel](/formations-excel)

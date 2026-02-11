@@ -15,78 +15,45 @@ export const metadata: Metadata = {
   },
 };
 
-// Formation cards data with enhanced styling
+// Formation cards data with enhanced styling - matching exceleur.fr content
 const formationsData = [
   {
     slug: 'le-decollage-liste-attente',
     title: 'Le Décollage',
-    subtitle: 'Les bases d\'Excel pour bien démarrer',
-    description: 'Idéal pour les débutants qui veulent maîtriser les fondamentaux d\'Excel et gagner en productivité dès les premières semaines.',
+    subtitle: 'Enfin une vraie méthode pour devenir un monstre d\'efficacité sur Excel',
+    description: 'La formation spécialement conçue pour faire de toi un dieu d\'Excel en t\'apprenant des compétences solides qui vont t\'accompagner tout au long de ta carrière.',
     level: 'debutant' as const,
     gradient: 'from-[#60a5fa] to-[#3b82f6]',
     shadowColor: 'rgba(59, 130, 246, 0.3)',
     icon: '🚀',
     features: [
-      'Prise en main complète d\'Excel',
-      'Formules essentielles (SOMME, MOYENNE, SI)',
-      'Mise en forme et tableaux',
-      'Graphiques de base',
+      'Méthode structurée pas-à-pas',
+      'Compétences solides et durables',
+      'Efficacité décuplée sur Excel',
     ],
+    popular: true,
   },
   {
     slug: 'la-machine-liste-attente',
     title: 'La Machine',
-    subtitle: 'Maîtrisez Excel comme un pro',
-    description: 'Pour ceux qui veulent aller plus loin et automatiser leurs tâches quotidiennes avec des techniques avancées.',
+    subtitle: 'Propulse ta carrière grâce au secret bien gardé des macros VBA',
+    description: 'La méthode simple et efficace pour faire de toi LE spécialiste de l\'automatisation à ton boulot même si tu pars de zéro en programmation.',
     level: 'intermediaire' as const,
     gradient: 'from-[#CB6AED] to-[#9333ea]',
     shadowColor: 'rgba(203, 106, 237, 0.3)',
     icon: '⚙️',
     features: [
-      'Tableaux croisés dynamiques',
-      'Fonctions avancées (RECHERCHEX, INDEX)',
-      'Mise en forme conditionnelle',
-      'Validation de données',
-    ],
-    popular: true,
-  },
-  {
-    slug: 'la-slide-liste-attente',
-    title: 'La Slide',
-    subtitle: 'Créez des présentations impactantes',
-    description: 'Apprenez à créer des tableaux de bord visuels et des présentations professionnelles qui impressionnent.',
-    level: 'intermediaire' as const,
-    gradient: 'from-[#34d399] to-[#10b981]',
-    shadowColor: 'rgba(16, 185, 129, 0.3)',
-    icon: '📊',
-    features: [
-      'Dashboards interactifs',
-      'Graphiques avancés',
-      'Design professionnel',
-      'Storytelling avec les données',
-    ],
-  },
-  {
-    slug: 'power-query-secrets-liste-attente',
-    title: 'Power Query Secrets',
-    subtitle: 'Automatisez vos traitements de données',
-    description: 'Découvrez la puissance de Power Query pour transformer et nettoyer vos données automatiquement.',
-    level: 'avance' as const,
-    gradient: 'from-[#fb923c] to-[#f97316]',
-    shadowColor: 'rgba(249, 115, 22, 0.3)',
-    icon: '⚡',
-    features: [
-      'Import de données multisources',
-      'Transformation automatisée',
-      'Nettoyage de données',
-      'Actualisation en un clic',
+      'Automatisation avec les macros VBA',
+      'Aucun prérequis en programmation',
+      'Deviens le spécialiste automation',
+      'Méthode simple et efficace',
     ],
   },
   {
     slug: 'excelgpt',
     title: 'ExcelGPT',
-    subtitle: 'Libère ton potentiel Excel grâce à l\'IA',
-    description: 'Et si ChatGPT t\'apportait un avantage injuste sur tes collègues ? 8 modules pour maîtriser l\'IA sur Excel.',
+    subtitle: 'Libère ton potentiel sur Excel grâce à la puissance de l\'IA',
+    description: 'Avec ExcelGPT, révolutionne ton usage d\'Excel grâce à ChatGPT. Booste ta carrière et deviens irremplaçable.',
     level: 'intermediaire' as const,
     gradient: 'from-[#a78bfa] to-[#7c3aed]',
     shadowColor: 'rgba(124, 58, 237, 0.3)',
@@ -99,10 +66,26 @@ const formationsData = [
     ],
   },
   {
+    slug: 'power-query-secrets-liste-attente',
+    title: 'Power Query Secrets',
+    subtitle: 'Deviens LA personne la plus efficace du bureau',
+    description: 'La nouvelle façon d\'exploiter ses données sur Excel grâce au pouvoir secret de Power Query.',
+    level: 'avance' as const,
+    gradient: 'from-[#fb923c] to-[#f97316]',
+    shadowColor: 'rgba(249, 115, 22, 0.3)',
+    icon: '⚡',
+    features: [
+      'Import de données multisources',
+      'Transformation automatisée',
+      'Nettoyage de données',
+      'Actualisation en un clic',
+    ],
+  },
+  {
     slug: 'tcd-express',
     title: 'TCD Express',
     subtitle: 'Maîtrise les TCD en moins de 7 jours',
-    description: 'Deviens celui qu\'on appelle quand il faut assurer sur Excel. 6 modules pour maîtriser les tableaux croisés dynamiques.',
+    description: 'La mini-formation pas-à-pas pour tout savoir sur les TCD.',
     level: 'intermediaire' as const,
     gradient: 'from-[#f472b6] to-[#ec4899]',
     shadowColor: 'rgba(236, 72, 153, 0.3)',
@@ -115,34 +98,39 @@ const formationsData = [
     ],
   },
   {
-    slug: 'excel-avance',
-    title: 'Excel Avancé',
-    subtitle: 'Optimisez vos compétences professionnelles',
-    description: 'Maîtrisez les fonctionnalités avancées d\'Excel : TCD, Power Query, VBA et fonctions complexes.',
-    level: 'avance' as const,
+    slug: 'le-declic',
+    title: 'Le Déclic',
+    subtitle: 'Maîtrise les formules indispensables d\'Excel en 7 jours',
+    description: 'La formation pour ENFIN savoir quelle formule utiliser, quand et comment.',
+    level: 'debutant' as const,
     gradient: 'from-[#2dd4bf] to-[#14b8a6]',
     shadowColor: 'rgba(20, 184, 166, 0.3)',
-    icon: '🎯',
+    icon: '💡',
     features: [
-      'Tableaux croisés dynamiques avancés',
-      'Fonctions RECHERCHEX, INDEX/EQUIV',
-      'Power Query et Power Pivot',
-      'Automatisation avec macros VBA',
+      'Savoir choisir la bonne formule',
+      'Maîtriser SI, RECHERCHEV, INDEX',
+      'Fini les erreurs #N/A et #VALEUR!',
+      'Résultats en 7 jours',
+    ],
+  },
+  {
+    slug: 'la-slide-liste-attente',
+    title: 'La Slide',
+    subtitle: 'Deviens le présentateur fascinant que tout le monde écoute',
+    description: 'La nouvelle méthode pour créer des présentations captivantes et mémorables.',
+    level: 'intermediaire' as const,
+    gradient: 'from-[#34d399] to-[#10b981]',
+    shadowColor: 'rgba(16, 185, 129, 0.3)',
+    icon: '🎤',
+    features: [
+      'Présentations captivantes',
+      'Méthode de storytelling',
+      'Design mémorable',
+      'Prise de parole impactante',
     ],
   },
 ];
 
-const levelLabels = {
-  debutant: 'Débutant',
-  intermediaire: 'Intermédiaire',
-  avance: 'Avancé',
-};
-
-const levelColors = {
-  debutant: 'bg-blue-100 text-blue-700',
-  intermediaire: 'bg-purple-100 text-purple-700',
-  avance: 'bg-orange-100 text-orange-700',
-};
 
 export default function FormationsPage() {
   // Try to get formations from MDX, fallback to default
@@ -247,7 +235,7 @@ export default function FormationsPage() {
               <FadeIn key={formation.slug} direction="up" delay={index * 100}>
                 <Link
                   href={`/formations-excel/${formation.slug}/`}
-                  className="group relative block h-full"
+                  className="group relative block h-full no-underline hover:no-underline"
                 >
                   {/* Popular badge */}
                   {formation.popular && (
@@ -269,7 +257,7 @@ export default function FormationsPage() {
 
                     <div className="p-6 lg:p-8">
                       {/* Header */}
-                      <div className="flex items-start justify-between gap-4 mb-4">
+                      <div className="flex items-start gap-4 mb-4">
                         <div className="flex items-center gap-4">
                           {/* Icon */}
                           <div
@@ -279,17 +267,12 @@ export default function FormationsPage() {
                             {formation.icon}
                           </div>
                           <div>
-                            <h3 className="font-heading text-xl font-extrabold text-text-dark group-hover:text-primary transition-colors">
+                            <h3 className="font-heading text-xl font-extrabold text-text-dark">
                               {formation.title}
                             </h3>
                             <p className="text-sm text-text-light">{formation.subtitle}</p>
                           </div>
                         </div>
-
-                        {/* Level badge */}
-                        <span className={`px-3 py-1 rounded-full text-xs font-semibold ${levelColors[formation.level]}`}>
-                          {levelLabels[formation.level]}
-                        </span>
                       </div>
 
                       {/* Description */}
@@ -312,8 +295,7 @@ export default function FormationsPage() {
                       </ul>
 
                       {/* CTA */}
-                      <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                        <span className="text-sm text-text-light">Inscriptions par session</span>
+                      <div className="flex items-center justify-end pt-4 border-t border-gray-100">
                         <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r ${formation.gradient} text-white font-semibold text-sm shadow-md group-hover:shadow-lg transition-all duration-300`}>
                           En savoir plus
                           <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">

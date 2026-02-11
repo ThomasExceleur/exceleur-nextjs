@@ -1,0 +1,93 @@
+---
+title: "Mettre en Evidence les Erreurs Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Detectez et mettez en evidence les erreurs dans Excel."
+description: "Guide pour mettre en evidence les erreurs dans Excel."
+category: "Gestion d'erreurs"
+catégories: ["Gestion d'erreurs", "Mise en forme"]
+tags: ["Erreurs", "Detection", "MFC", "Excel"]
+---
+
+# Mettre en Evidence les Erreurs
+
+Detectez visuellement les problèmes.
+
+## Types d'erreurs
+
+| Erreur | Cause |
+|--------|-------|
+| #N/A | Valeur non trouvee |
+| #REF! | Référence invalide |
+| #VALEUR! | Type incorrect |
+| #DIV/0! | Division par zero |
+| #NOM? | Fonction inconnue |
+
+## Mise en forme conditionnelle
+
+### Colorer les erreurs
+
+1. Sélectionnez la plage
+2. **Mise en forme conditionnelle** > **Nouvelle règle**
+3. **Formule** : `=ESTERREUR(A1)`
+4. Choisissez une couleur (ex: rouge)
+
+## ESTERREUR
+
+### Syntaxe
+
+```excel
+=ESTERREUR(cellule)
+```
+
+Retourne VRAI si erreur.
+
+## Fonctions spécifiques
+
+### Pour chaque type
+
+| Fonction | Detecte |
+|----------|---------|
+| EST.NA | #N/A |
+| ESTERR | Erreurs sauf #N/A |
+| ESTERREUR | Toutes les erreurs |
+
+## Compter les erreurs
+
+### Formule
+
+```excel
+=SOMMEPROD(ESTERREUR(A:A)*1)
+```
+
+## Corriger avec SIERREUR
+
+### Syntaxe
+
+```excel
+=SIERREUR(formule;valeur_si_erreur)
+```
+
+### Exemple
+
+```excel
+=SIERREUR(A1/B1;0)
+```
+
+## Atteindre les erreurs
+
+### Étapes
+
+1. **Ctrl+G** où **F5**
+2. **Cellules**
+3. **Formules** > **Erreurs**
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Prevention | SIERREUR systematique |
+| Detection | MFC pour visualiser |
+| Correction | Traiter à la source |
+
+[Découvrir nos formations Excel](/formations-excel)

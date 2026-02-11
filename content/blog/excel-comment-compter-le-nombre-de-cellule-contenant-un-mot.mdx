@@ -1,160 +1,709 @@
 ---
-title: "Excel Comment Compter les Cellules Contenant un Mot"
+title: "Excel Compter le Nombre de Cellules Contenant un Mot : Guide Complet des Formules"
 date: "2024-07-02"
 author: "Thomas L'Exceleur"
-excerpt: "Apprenez à compter les cellules contenant un mot où texte spécifique dans Excel."
-description: "Guide pour compter les cellules contenant un mot dans Excel. Formules NB.SI et astuces."
-category: "Formules Excel"
-catégories: ["Formules Excel", "Fonctions"]
-tags: ["NB.SI", "Compter", "Texte", "Recherche"]
+excerpt: "Découvrez toutes les méthodes pour compter les cellules contenant un mot dans Excel. Formules NB.SI, techniques avancées et exemples pratiques détaillés."
+description: "Découvrez toutes les méthodes pour compter les cellules contenant un mot dans Excel. Formules NB.SI, techniques avancées et exemples pratiques détaillés."
+category: "Analyse de données"
+catégories: ["Analyse de données", "Formules"]
+tags: ["excel compter le nombre de cellule contenant le même texte", "excel compter le nombre de cellule contenant un mot", "excel compter le nombre de cellule contenant une valeur", "formule excel compter le nombre de cellule contenant un mot"]
 ---
 
-# Compter les Cellules Contenant un Mot
+# Excel Compter le Nombre de Cellules Contenant un Mot : Guide Complet des Formules
 
-Plusieurs formules permettent de compter les cellules selon leur contenu textuel.
+# Excel Compter le Nombre de Cellules Contenant un Mot : Maîtrisez Toutes les Techniques
 
-## Correspondance exacte
+Savoir **compter le nombre de cellules contenant un mot** dans Excel constitue une compétence fondamentale pour l'analyse de données textuelles. Que vous analysiez des réponses de sondages, des commentaires clients, ou des bases de données produits, ces techniques vous permettront d'extraire rapidement des insights quantitatifs depuis vos données qualitatives.
 
-### NB.SI pour un mot exact
+Dans ce guide exhaustif, nous explorerons toutes les méthodes pour **Excel compter le nombre de cellule contenant un mot**, depuis les formules de base jusqu'aux techniques avancées pour des analyses complexes. Vous découvrirez comment optimiser vos formules, gérer les cas particuliers, et automatiser ces calculs dans vos tableaux de bord professionnels.
 
-```excel
-=NB.SI(A:A;"Paris")
-```
 
-Compte les cellules contenant exactement "Paris".
+## Fondamentaux du Comptage de Cellules dans Excel
 
-## Cellules contenant un mot
 
-### Avec les jokers
+### Comprendre les Besoins de Comptage Textuel
 
-```excel
-=NB.SI(A:A;"*Paris*")
-```
+Lorsque vous devez **excel compter le nombre de cellule contenant le même texte**, vous faites face à plusieurs scénarios possibles :
 
-Compte les cellules contenant "Paris" n'importe où.
+**Correspondance Exacte :** Rechercher uniquement les cellules contenant exactement le mot spécifié, sans caractères supplémentaires.
 
-### Jokers disponibles
+**Correspondance Partielle :** Identifier les cellules où le mot apparaît, même s'il fait partie d'une phrase plus longue.
 
-| Joker | Signification |
-|-------|---------------|
-| * | N'importe quels caracteres |
-| ? | Un seul caractere |
+**Correspondance Multiple :** Compter plusieurs occurrences d'un même mot dans une seule cellule.
 
-## Exemples pratiques
+**Correspondance Conditionnelle :** Combiner la recherche textuelle avec d'autres critères (dates, valeurs numériques, etc.).
 
-### Commence par
 
-```excel
-=NB.SI(A:A;"Paris*")          ' Commence par Paris
-```
+### Structure des Données pour un Comptage Efficace
 
-### Se termine par
+Pour optimiser vos **formules Excel compter le nombre de cellule contenant un mot**, organisez vos données selon ces principes :
 
-```excel
-=NB.SI(A:A;"*Paris")          ' Se termine par Paris
-```
+Colonne A
 
-### Contient un mot de X lettres
+Colonne B
 
-```excel
-=NB.SI(A:A;"???")             ' Exactement 3 caracteres
-```
+Colonne C
 
-## Avec une référence
+Commentaire Client
 
-### Mot dans une cellule
+Produit
 
-```excel
-=NB.SI(A:A;"*"&C1&"*")
-```
+Statut
 
-C1 contient le mot à rechercher.
+« Excellent service, très satisfait »
 
-## Compter plusieurs mots
+Smartphone
 
-### Somme de NB.SI
+Résolu
 
-```excel
-=NB.SI(A:A;"*Paris*")+NB.SI(A:A;"*Lyon*")
-```
+« Problème technique majeur »
 
-### Avec SOMMEPROD
+Laptop
 
-```excel
-=SOMMEPROD((ESTNUM(CHERCHE("Paris";A1:A100)))*1)
-```
+En cours
 
-## Insensible à la casse
+« Service client excellent »
 
-### NB.SI est déjà insensible
+Tablette
 
-"Paris", "PARIS" et "paris" sont comptes de la meme façon.
+Résolu
 
-## Comptage conditionnel
+« Délai de livraison trop long »
 
-### NB.SI.ENS pour plusieurs critères
+Smartphone
 
-```excel
-=NB.SI.ENS(A:A;"*Paris*";B:B;"Client")
-```
+Résolu
 
-## Compter les cellules vides
+Cette structure facilite l'application de **formules excel compter le nombre de cellule contenant un texte** avec différents critères de filtrage.
 
-### Cellules vides
 
-```excel
-=NB.VIDE(A1:A100)
-```
+## La Fonction NB.SI : Méthode de Base Incontournable
 
-### Cellules non vides
 
-```excel
-=NBVAL(A1:A100)
-```
+### Syntaxe et Utilisation Fondamentale
 
-## Compter les cellules avec texte
+La fonction **NB.SI** constitue l'outil principal pour **compter le nombre de cellule contenant un mot** dans Excel :
 
-### Uniquement du texte
+`=NB.SI(plage;critère)`
+
+**Paramètres détaillés :**
+
+-   **plage** : Zone de cellules à analyser
+-   **critère** : Mot ou condition à rechercher
+
+
+### Exemples Pratiques de NB.SI
+
+**Exemple 1 : Correspondance Exacte**  
+Pour compter les cellules contenant exactement « Excellent » :
+
+`=NB.SI(A1:A100;"Excellent")`
+
+Cette **formule excel compter le nombre de cellule contenant un mot** retourne le nombre de cellules contenant uniquement le mot « Excellent ».
+
+**Exemple 2 : Correspondance Partielle avec Jokers**  
+Pour **excel compter le nombre de cellule contenant une valeur** partielle :
+
+`=NB.SI(A1:A100;"_excellent_")`
+
+L'astérisque (_) permet de trouver « excellent » n'importe où dans la cellule, même au milieu d'une phrase._
+
+_
+
+**Exemple 3 : Début ou Fin de Phrase**
+
+_
 
 ```excel
-=SOMMEPROD((ESTTEXTE(A1:A100))*1)
+=NB.SI(A1:A100;"excellent
 ```
 
-## Astuces
+_
 
-### Supprimer les doublons dans le comptage
 
-Utilisez UNIQUE puis NB.SI sûr le résultat.
+### Gestion de la Casse et des Accents
 
-### Ignorer les espaces
+La fonction NB.SI présente des particularités importantes :
+
+**Insensibilité à la Casse :** NB.SI ne distingue pas majuscules et minuscules par défaut.
+
+`=NB.SI(A1:A100;"EXCELLENT")`
+
+Cette formule trouvera « excellent », « Excellent », « EXCELLENT », etc.
+
+**Sensibilité aux Accents :** Attention aux caractères accentués qui sont traités comme différents.
+
+_
+
+_Pour gérer ce cas :  
+`=NB.SI(A1:A100;"`_`élégant_")+NB.SI(A1:A100;"_elegant_")_`
+
+_
+
+
+## Techniques Avancées avec NB.SI.ENS
+
+
+### Comptage avec Critères Multiples
+
+Quand vous devez **excel compter le nombre de cellule contenant le même texte** selon plusieurs conditions, utilisez NB.SI.ENS :
+
+_
+
+_`=NB.SI.ENS(A1:A100;"`_`excellent_";B1:B100;"Résolu")_`
+
+_
+
+Cette **formule excel compter le nombre de cellule contenant un texte** combine recherche textuelle et statut spécifique.
+
+
+### Exemples Complexes de NB.SI.ENS
+
+**Analyse Client Avancée :**
+
+_
+
+_`=NB.SI.ENS(A1:A100;"`_`problème_";C1:C100;">=2023-01-01";D1:D100;"Priorité Haute")_`
+
+_
+
+Cette formule compte les cellules contenant « problème » pour les tickets de 2023 avec priorité haute.
+
+**Segmentation Produit :**
+
+_
 
 ```excel
-=NB.SI(A:A;"*"&SUPPRESPACE(C1)&"*")
+=NB.SI.ENS(
+    A1:A100;"
 ```
 
-## Erreurs courantes
+_
 
-### Oublier les guillemets
+Compte les avis satisfaits pour les smartphones Premium uniquement.
+
+
+## Alternatives et Techniques Complémentaires
+
+
+### Utilisation de SOMMEPROD pour Comptages Complexes
+
+**SOMMEPROD** offre plus de flexibilité pour des analyses sophistiquées :
+
+_
+
+_`=SOMMEPROD((ESTERREUR(CHERCHE("excellent";A1:A100))=FAUX)`_`1)`
+
+Cette approche gère la casse et offre plus de contrôle sur la recherche.
+
+
+### FREQUENCE pour Analyses Statistiques
+
+Pour analyser la distribution des mots :
+
+`=FREQUENCE(SI(ESTERREUR(CHERCHE("mot";A1:A100));0;1);{0;1})`
+
+Cette formule matricielle révèle la fréquence d'apparition dans votre dataset.
+
+
+### RECHERCHEV Combinée pour Enrichissement
+
+Combinez comptage et récupération d'informations :
 
 ```excel
-=NB.SI(A:A;Paris)             ' ERREUR
-=NB.SI(A:A;"Paris")           ' CORRECT
+Comptage: =NB.SI(Commentaires;"excellent")
+Détail: =RECHERCHEV("excellent";TableAnalyse;2;FAUX)
 ```
 
-### Oublier les jokers
+
+## Applications Métier Pratiques
+
+
+### Analyse de Satisfaction Client
+
+**Dashboard de Monitoring :**
+
+Sentiment
+
+Formule
+
+Résultat
+
+Positif
+
+`=NB.SI(A:A;"_excellent_")+NB.SI(A:A;"_parfait_")`
+
+45
+
+Négatif
+
+`=NB.SI(A:A;"_problème_")+NB.SI(A:A;"_décevant_")`
+
+12
+
+Neutre
+
+`=NBVAL(A:A)-Positif-Négatif`
+
+23
+
+Cette approche automatise le **comptage de cellules contenant des mots** clés de sentiment.
+
+
+### Gestion des Stocks et Inventaire
+
+**Suivi des Statuts Produits :**
+
+`=NB.SI(StatusColumn;"_rupture_")`
+
+**Analyse des Catégories :**
+
+`=NB.SI.ENS(A:A;"_électronique_";B:B;">100")`
+
+Compte les produits électroniques avec stock supérieur à 100.
+
+
+### Analyse RH et Recrutement
+
+**Évaluation des Compétences :**
 
 ```excel
-=NB.SI(A:A;"Paris")           ' Exact uniquement
-=NB.SI(A:A;"*Paris*")         ' Contient
+=NB.SI(E2:E100;"Excel")     // Candidats maîtrisant Excel
+=NB.SI(E2:E100;"bilingue")  // Candidats bilingues
+=NB.SI(E2:E100;"leadership") // Expérience leadership
 ```
 
-## Tableau recapitulatif
 
-| Objectif | Formule |
-|----------|---------|
-| Exactement | `=NB.SI(A:A;"Paris")` |
-| Contient | `=NB.SI(A:A;"*Paris*")` |
-| Commence par | `=NB.SI(A:A;"Paris*")` |
-| Se termine par | `=NB.SI(A:A;"*Paris")` |
+## Optimisation et Performance
 
-[Découvrir nos formations Excel](/formations-excel)
+
+### Stratégies pour Gros Volumes
+
+Quand vous devez **excel compter le nombre de cellule contenant une valeur** sur de gros datasets :
+
+**Limitez les Plages :** Évitez les références à des colonnes entières  
+`=NB.SI(A1:A10000;"_mot_")`  
+Plutôt que :  
+`=NB.SI(A:A;"_mot_")`
+
+**Utilisez des Plages Nommées :**  
+`=NB.SI(CommentairesClients;"_excellent_")`
+
+**Précalcul pour Tableaux de Bord :**  
+Créez des colonnes helper avec des formules simples plutôt que des formules complexes répétées.
+
+
+### Éviter les Erreurs Communes
+
+**Espaces Parasites :** Les espaces invisibles faussent les comptages.  
+Solution : Utilisez la fonction SUPPRESPACE avant de compter.
+
+**Formats de Cellules :** Assurez-vous que les cellules sont formatées en texte.
+
+**Caractères Spéciaux :** Attention aux guillemets courbes, tirets longs, etc.
+
+
+## Techniques de Débogage
+
+
+### Diagnostic des Formules NB.SI
+
+Quand votre **formule excel compter le nombre de cellule contenant un mot** ne fonctionne pas :
+
+**Vérification Étape par Étape :**
+
+1.  Testez sur une petite plage d'abord
+2.  Vérifiez la syntaxe des jokers ( _et ?)_
+_-   Examinez le contenu réel des cellules (espaces cachés)
+-   Utilisez l'évaluateur de formule d'Excel_
+
+_**Formule de Diagnostic :**  
+`=SI(NB.SI(A1:A10;"`_`mot_")=0;"Aucune occurrence";"Trouvé: "&NB.SI(A1:A10;"_mot_"))_`
+
+_
+
+
+### Outils de Validation
+
+**Fonction de Contrôle :**
+
+_
+
+```excel
+=SI(
+    NB.SI(A:A;"
+```
+
+_
+
+Cette formule dynamique teste différents mots en changeant la cellule B1.
+
+
+## Automatisation et Macros
+
+
+### VBA pour Comptages Complexes
+
+Pour des besoins très spécifiques, le VBA peut compléter les formules :
+
+```vba
+Function CompterMot(plage As Range, mot As String) As Integer
+    Dim cellule As Range
+    Dim compteur As Integer
+    
+    For Each cellule In plage
+        If InStr(1, cellule.Value, mot, vbTextCompare) > 0 Then
+            compteur = compteur + 1
+        End If
+    Next cellule
+    
+    CompterMot = compteur
+End Function
+```
+
+Usage : `=CompterMot(A1:A100;"excellent")`
+
+
+### Techniques d'Expressions Régulières et Analyse Textuelle Avancée
+
+\#### Simulation d'Expressions Régulières avec Excel
+
+Bien qu'Excel ne supporte pas nativement les regex, vous pouvez simuler certains patterns avec des **formules excel compter le nombre de cellule contenant un mot** avancées :
+
+**Recherche de motifs de numéros de téléphone :**
+
+_
+
+```excel
+=NB.SI(A:A;"
+```
+
+_
+
+**Détection d'adresses email :**
+
+_
+
+```excel
+=NB.SI(A:A;"
+```
+
+\#### Analyse de Sentiments Textuelle
+
+Créez un système d'analyse de sentiment automatisé :
+
+**Classification par mots-clés positifs/négatifs :**
+
+```excel
+Mots_Positifs = NB.SI(A:A;"excellent")+NB.SI(A:A;"parfait")+NB.SI(A:A;"formidable")
+Mots_Négatifs = NB.SI(A:A;"mauvais")+NB.SI(A:A;"décevant")+NB.SI(A:A;"problème")
+Score_Sentiment = (Mots_Positifs-Mots_Négatifs)/NBVAL(A:A)100
+```
+
+_
+
+**Calcul de polarité avancé :**
+
+```excel
+=SI(Score_Sentiment>10;"Très Positif";
+   SI(Score_Sentiment>0;"Positif";
+   SI(Score_Sentiment>-10;"Neutre";"Négatif")))
+```
+
+\#### Détection de Langues Automatique
+
+_
+
+```excel
+Indicateur_Francais = NB.SI(A:A;"
+```
+
+_
+
+
+### Fonctions NB.SI.ENS et Analyses Multi-Critères
+
+\#### Comptage avec Critères Temporels
+
+**Compter les mentions par période :**
+
+_
+
+```excel
+=NB.SI.ENS(A:A;"
+```
+
+_
+
+Cette formule compte les cellules contenant « urgent » dans les 30 derniers jours.
+
+\#### Analyse Géographique des Mentions
+
+_
+
+```excel
+=NB.SI.ENS(Commentaires;"
+```
+
+_
+
+\#### Segmentation Client Avancée
+
+**Analyse comportementale par segment :**
+
+_
+
+```excel
+Clients_Premium_Satisfaits = NB.SI.ENS(
+    Commentaires;"
+```
+
+_
+
+
+### Analyse de Fréquence et Tendances
+
+\#### Calcul de Densité de Mots-Clés
+
+_
+
+```excel
+Densité_Mot_Clé = (NB.SI(A:A;"
+```
+
+_
+
+\#### Analyse de Co-occurrence
+
+Pour analyser quels mots apparaissent souvent ensemble :
+
+_
+
+```excel
+Cooccurrence_A_B = NB.SI.ENS(A:A;"
+```
+
+_
+
+\#### Détection de Tendances Temporelles
+
+_
+
+```excel
+=SOMMEPROD(
+    (MOIS(Dates)=MOIS(AUJOURDHUI()))
+```
+
+
+### Power Query pour Analyses Textuelles Massives
+
+Power Query offre des capacités supérieures pour des analyses textuelles complexes sur de gros volumes :
+
+\#### Nettoyage et Standardisation
+
+-   **Données** → **Obtenir des données** → **Depuis Excel**
+-   **Transformation des données** :
+
+– Suppression des doublons  
+– Normalisation de la casse  
+– Suppression des caractères spéciaux
+
+1.  **Création de colonnes calculées** pour le comptage
+2.  **Regroupement par catégories** automatique
+
+\#### Code Power Query pour Comptage Avancé
+
+```m
+let
+    Source = Excel.CurrentWorkbook(){},
+    AjoutComptage = Table.AddColumn(Source, "Contient_Mot", 
+        each if Text.Contains(, "mot_recherché", Comparer.OrdinalIgnoreCase) 
+             then 1 else 0),
+    Regroupement = Table.Group(AjoutComptage, {"Catégorie"}, 
+        {{"Total_Occurrences", each List.Sum(), type number}})
+in
+    Regroupement
+```
+
+
+### Techniques de Machine Learning Simple
+
+\#### Classification Automatique par Mots-Clés
+
+Créez un système de classification automatique :
+
+```excel
+Categorie_Auto = SI(
+    SOMMEPROD((ESTERREUR(CHERCHE(Mots_Clés_Tech;A1))=FAUX))>0;"Technique";
+    SI(SOMMEPROD((ESTERREUR(CHERCHE(Mots_Clés_Commercial;A1))=FAUX))>0;"Commercial";
+    "Autre"))
+```
+
+\#### Score de Pertinence
+
+```excel
+Score_Pertinence = SOMMEPROD(
+    (ESTERREUR(CHERCHE(Liste_Mots_Importants;A1))=FAUX)
+    Poids_Mots_Importants
+)
+```
+
+_
+
+
+### Analyse Prédictive Simple
+
+\#### Prédiction de Volume de Mentions
+
+```excel
+Tendance_Lineaire = PENTE(Comptages_Historiques;Periode_Historique)
+Prediction_Mois_Prochain = DERNIERE_VALEUR + Tendance_Lineaire
+```
+
+\#### Détection d'Anomalies
+
+_
+
+```excel
+Seuil_Anomalie = MOYENNE(Comptages_Habituels) + 2
+```
+
+
+## Cas d'Usage Sectoriels
+
+
+### E-commerce et Marketing Digital
+
+**Analyse des Avis Produits :**
+
+```excel
+Qualité: =NB.SI(AvisClients;"qualité")
+Livraison: =NB.SI(AvisClients;"livraison")
+SAV: =NB.SI(AvisClients;"service")
+```
+
+**Monitoring des Réseaux Sociaux :**  
+`=NB.SI.ENS(Posts;"_@monentreprise_";Dates;">="&AUJOURDHUI()-7)`
+
+
+### Secteur Médical et Recherche
+
+**Analyse des Symptômes :**
+
+```excel
+Fièvre: =NB.SI(Symptomes;"fièvre")
+Toux: =NB.SI(Symptomes;"toux")
+Fatigue: =NB.SI(Symptomes;"fatigue")
+```
+
+**Suivi des Traitements :**  
+`=NB.SI.ENS(Traitements;"_antibiotique_";Efficacité;"Positive")`
+
+
+### Éducation et Formation
+
+**Évaluation des Compétences :**
+
+```excel
+ExcelAvancé: =NB.SI(Compétences;"Excel avancé")
+Débutant: =NB.SI(Compétences;"débutant")
+Expert: =NB.SI(Compétences;"expert")
+```
+
+
+## Tableau de Bord Automatisé
+
+
+### Construction d'un Dashboard Dynamique
+
+Créez un tableau de bord qui se met à jour automatiquement :
+
+Critère
+
+Formule
+
+Pourcentage
+
+Satisfaction
+
+`=NB.SI(A:A;"_satisfait_")`
+
+`=B2/NBVAL(A:A)_100_`
+
+Problèmes
+
+`=NB.SI(A:A;"problème_")_`
+
+`=B3/NBVAL(A:A)100`
+
+Recommandations
+
+`=NB.SI(A:A;"_recommande_")`
+
+`=B4/NBVAL(A:A)_100_`
+
+
+### Graphiques Dynamiques
+
+Combinez vos comptages avec des graphiques automatiques :
+
+1.  Créez votre tableau de comptage
+2.  Sélectionnez les données
+3.  **Insertion** → **Graphique** → **Secteurs**
+4.  Le graphique se met à jour avec les nouvelles données
+
+
+## Conclusion : Exploitez Pleinement vos Données Textuelles
+
+Maîtriser les techniques pour **excel compter le nombre de cellule contenant un mot** transforme radicalement votre capacité d'analyse de données qualitatives. Ces compétences vous permettent de quantifier l'inquantifiable, révélant des patterns cachés dans vos commentaires, avis, et données textuelles.
+
+Les **formules excel compter le nombre de cellule contenant un texte** présentées dans ce guide couvrent l'essentiel des besoins professionnels. Commencez par maîtriser NB.SI pour les cas simples, puis progressez vers NB.SI.ENS et SOMMEPROD pour des analyses plus sophistiquées.
+
+N'oubliez jamais que la qualité de vos résultats dépend de la qualité de vos données source. Investissez du temps dans le nettoyage et la standardisation de vos données textuelles pour maximiser l'efficacité de vos **nombre de cellule contenant un mot** analyses.
+
+Continuez à expérimenter avec ces techniques, adaptez-les à vos besoins spécifiques, et n'hésitez pas à combiner plusieurs méthodes pour créer des solutions d'analyse sur mesure. La maîtrise de ces outils vous donnera un avantage concurrentiel considérable dans l'exploitation de vos données textuelles.
+
+
+### Techniques Power Query pour l'Analyse Textuelle Massive
+
+\#### Transformation et Nettoyage Avancé
+
+Power Query révolutionne le **calcul ancienneté excel** en offrant des capacités de transformation textuelle impossibles avec les formules classiques :
+
+**Code M pour extraction de motifs :**
+
+```m
+let
+    Source = Excel.CurrentWorkbook(){},
+    SeparationMots = Table.SplitColumn(Source, "Texte", Splitter.SplitTextByAnyDelimiter({" ", ",", ".", "!"}, QuoteStyle.Csv)),
+    ComptageOccurrences = Table.Group(SeparationMots, {"Mot"}, {{"Fréquence", each Table.RowCount(_), type number}})
+in
+    ComptageOccurrences
+```
+
+\#### Analyses Sectorielles Spécialisées
+
+**Secteur Retail – Analyse des Avis Produits :**
+
+```excel
+Sentiment_Global = MOYENNE(
+    NB.SI(Avis;"excellent")5 +
+    NB.SI(Avis;"bon")4 +
+    NB.SI(Avis;"moyen")3 +
+    NB.SI(Avis;"décevant")2 +
+    NB.SI(Avis;"mauvais")1
+) / NBVAL(Avis)
+```
+
+**Secteur Immobilier – Classification des Annonces :**
+
+```excel
+Type_Bien = SI(
+    SOMMEPROD((ESTERREUR(CHERCHE({"Studio";"T1";"F1"};Description))=FAUX))>0;"Studio";
+    SI(SOMMEPROD((ESTERREUR(CHERCHE({"T2";"F2";"deux pièces"};Description))=FAUX))>0;"T2";
+    SI(SOMMEPROD((ESTERREUR(CHERCHE({"T3";"F3";"trois pièces"};Description))=FAUX))>0;"T3";"Autre")))
+```
+
+Ces techniques avancées permettent d'automatiser l'analyse de milliers de commentaires clients, d'avis produits ou de descriptions textuelles, transformant votre **excel compter le nombre de cellule contenant un mot** en véritable outil de business intelligence.
+
+L'expertise développée dans ce domaine vous positionne comme un analyste de données accompli, capable de transformer des volumes importants d'informations qualitatives en insights quantifiables et exploitables pour la prise de décision stratégique de votre organisation.

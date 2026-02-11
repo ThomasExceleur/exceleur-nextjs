@@ -1,0 +1,165 @@
+---
+title: "Les Fonctions TRIER et TRIERPAR dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez à utiliser TRIER et TRIERPAR pour ordonner vos données dynamiquement."
+description: "Guide des fonctions TRIER et TRIERPAR dans Excel 365. Tri dynamique des données."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Excel 365"]
+tags: ["TRIER", "TRIERPAR", "Tri", "Excel 365"]
+---
+
+# Les Fonctions TRIER et TRIERPAR
+
+Ces fonctions permettent de trier des données dynamiquement avec des formules.
+
+## Disponibilité
+
+- Excel 365
+- Excel 2021
+- Excel pour le web
+
+## TRIER : Tri simple
+
+### Syntaxe
+
+```excel
+=TRIER(tableau;[index_tri];[ordre_tri];[par_col])
+```
+
+### Arguments
+
+| Argument | Description | Par defaut |
+|----------|-------------|------------|
+| tableau | Données à trier | Requis |
+| index_tri | Colonne de tri | 1 |
+| ordre_tri | 1=croissant, -1=decroissant | 1 |
+| par_col | VRAI=colonnes, FAUX=lignes | FAUX |
+
+### Exemples
+
+```excel
+=TRIER(A2:D100)                ' Tri sûr 1ere colonne
+=TRIER(A2:D100;3)              ' Tri sûr 3e colonne
+=TRIER(A2:D100;2;-1)           ' 2e colonne, decroissant
+```
+
+## TRIERPAR : Tri par autre plage
+
+### Syntaxe
+
+```excel
+=TRIERPAR(tableau;par_tableau1;[ordre_tri1];...)
+```
+
+### Avantage
+
+Trier un tableau selon les valeurs d'un autre tableau.
+
+### Exemples
+
+```excel
+=TRIERPAR(A2:A100;B2:B100)     ' Trier A selon B
+=TRIERPAR(A2:A100;B2:B100;-1)  ' Decroissant
+```
+
+## Tri sûr plusieurs critères
+
+### Avec TRIER (non possible directement)
+
+Utilisez TRIERPAR pour plusieurs critères.
+
+### Avec TRIERPAR
+
+```excel
+=TRIERPAR(A2:D100;C2:C100;1;B2:B100;-1)
+```
+
+Trie d'abord par C (croissant), puis par B (decroissant).
+
+## Cas pratiques
+
+### Top 10 des ventes
+
+```excel
+=PRENDRE(TRIER(Ventes;4;-1);10)
+```
+
+### Liste alphabetique des clients
+
+```excel
+=TRIER(UNIQUE(Clients[Nom]))
+```
+
+### Produits par date decroissante
+
+```excel
+=TRIER(Produits;3;-1)          ' 3e colonne = date
+```
+
+## Combinaisons utiles
+
+### TRIER + FILTRE
+
+```excel
+=TRIER(FILTRE(A2:D100;C2:C100>1000);4;-1)
+```
+
+Filtre puis trie les résultats.
+
+### TRIER + UNIQUE
+
+```excel
+=TRIER(UNIQUE(A2:A100))
+```
+
+Valeurs uniques triees.
+
+## Tri par ligne (horizontal)
+
+### Syntaxe
+
+```excel
+=TRIER(A1:Z1;;;VRAI)
+```
+
+Le dernier argument VRAI indique un tri par colonnes.
+
+## Comparaison avec le tri classique
+
+| Fonctions TRIER | Tri classique |
+|-----------------|---------------|
+| Dynamique | Statique |
+| Formule | Manuel |
+| Résultat séparé | Sur place |
+| Auto-actualisation | Re-tri nécessaire |
+
+## Erreurs courantes
+
+### #PROPAGATION
+
+Liberez l'espace de sortie.
+
+### Index hors limites
+
+```excel
+=TRIER(A2:B100;5)              ' ERREUR : pas de 5e colonne
+```
+
+## Bonnes pratiques
+
+1. **Vérifiez** l'index de colonne
+2. **Prevoyez** l'espace pour les résultats
+3. **Combinez** avec PRENDRE pour limiter
+4. **Utilisez** TRIERPAR pour les tris complexes
+
+## Résumé
+
+| Objectif | Formule |
+|----------|---------|
+| Tri simple | `=TRIER(A:D)` |
+| Tri decroissant | `=TRIER(A:D;1;-1)` |
+| Tri par autre colonne | `=TRIERPAR(A:B;C:C)` |
+| Multi-critères | `=TRIERPAR(A:D;B:B;1;C:C;-1)` |
+
+[Découvrir nos formations Excel](/formations-excel)

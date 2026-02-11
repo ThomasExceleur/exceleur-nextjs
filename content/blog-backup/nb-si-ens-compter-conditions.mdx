@@ -1,0 +1,92 @@
+---
+title: "NB.SI.ENS : Compter avec Plusieurs Conditions"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Comptez les cellules repondant à plusieurs critères avec NB.SI.ENS."
+description: "Guide NB.SI.ENS pour le comptage multi-conditions Excel."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Statistiques"]
+tags: ["NB.SI.ENS", "Comptage", "Conditions", "Formules"]
+---
+
+# NB.SI.ENS : Compter avec Plusieurs Conditions
+
+Comptez les cellules qui satisfont plusieurs critères simultanement.
+
+## Syntaxe
+
+```excel
+=NB.SI.ENS(plage1;critere1;[plage2;critere2];...)
+```
+
+## Exemples de base
+
+### Deux conditions
+
+```excel
+=NB.SI.ENS(Region;\"Nord\";Statut;\"Actif\")
+```
+
+### Trois conditions
+
+```excel
+=NB.SI.ENS(Region;\"Nord\";Statut;\"Actif\";Année;2024)
+```
+
+## Opérateurs
+
+| Opérateur | Exemple |
+|-----------|---------|
+| Égal | `"Paris"` |
+| Différent | `"<>Paris"` |
+| Supérieur | `">100"` |
+| Inférieur | `"<100"` |
+| Supérieur où égal | `">=100"` |
+| Inférieur où égal | `"<=100"` |
+
+## Critères avec cellules
+
+```excel
+=NB.SI.ENS(Region;E1;Statut;F1)
+```
+
+## Caracteres generiques
+
+| Caractere | Signification |
+|-----------|---------------|
+| * | N'importe quels caracteres |
+| ? | Un seul caractere |
+
+```excel
+=NB.SI.ENS(Nom;\"Mar*\")
+```
+
+## Avec dates
+
+```excel
+=NB.SI.ENS(Dates;\">=\"&DATE(2024;1;1);Dates;\"<=\"&DATE(2024;12;31))
+```
+
+## Fonctions associees
+
+### SOMME.SI.ENS
+
+```excel
+=SOMME.SI.ENS(Montants;Region;\"Nord\";Statut;\"Actif\")
+```
+
+### MOYENNE.SI.ENS
+
+```excel
+=MOYENNE.SI.ENS(Notes;Classe;\"A\";Matière;\"Maths\")
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Plages alignees | Meme nombre de lignes |
+| Références absolues | Pour copier la formule |
+| Test | Vérifiez avec des filtres |
+
+[Découvrir nos formations Excel](/formations-excel)

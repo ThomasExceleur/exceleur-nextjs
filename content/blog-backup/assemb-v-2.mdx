@@ -1,0 +1,104 @@
+---
+title: "ASSEMB.V : Empiler des Données Verticalement"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Utilisez ASSEMB.V pour combiner des plages verticalement."
+description: "Guide de la fonction ASSEMB.V dans Excel."
+category: "Fonctions"
+catégories: ["Fonctions", "Excel 365"]
+tags: ["ASSEMB.V", "Empiler", "Données", "Excel"]
+---
+
+# ASSEMB.V : Empiler des Données
+
+Combinez plusieurs plages en une seule colonne.
+
+## Syntaxe
+
+```excel
+=ASSEMB.V(plage1;plage2;...)
+```
+
+## Exemple simple
+
+### Données
+
+| Liste 1 | Liste 2 |
+|---------|---------|
+| Paris | Lyon |
+| Marseille | Nice |
+
+### Formule
+
+```excel
+=ASSEMB.V(A1:A2;B1:B2)
+```
+
+### Résultat
+
+Paris, Marseille, Lyon, Nice (en colonne)
+
+## Cas d'usage
+
+### Consolider des listes
+
+Regroupez des données de plusieurs sources.
+
+### Préparation pour UNIQUE
+
+```excel
+=UNIQUE(ASSEMB.V(A:A;B:B))
+```
+
+## ASSEMB.H
+
+### Empiler horizontalement
+
+```excel
+=ASSEMB.H(plage1;plage2;...)
+```
+
+Combine en ligne.
+
+## Combinaison avec autres fonctions
+
+### Avec FILTRE
+
+```excel
+=FILTRE(ASSEMB.V(A:A;B:B);ASSEMB.V(A:A;B:B)<>"")
+```
+
+### Avec TRIER
+
+```excel
+=TRIER(ASSEMB.V(A:A;B:B))
+```
+
+## Ignorer les vides
+
+### Avec FILTRE
+
+```excel
+=FILTRE(ASSEMB.V(A:A;B:B);ASSEMB.V(A:A;B:B)<>"")
+```
+
+## Limites
+
+| Limite | Solution |
+|--------|----------|
+| Taille max | Divisez en plusieurs formules |
+| Performance | Limitez les plages |
+
+## Disponibilité
+
+Excel 365 et Excel pour le web uniquement.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Plages nommées | Améliorez la lisibilité |
+| Cohérence | Meme type de données |
+| Test | Vérifiez le résultat |
+
+[Découvrir nos formations Excel](/formations-excel)

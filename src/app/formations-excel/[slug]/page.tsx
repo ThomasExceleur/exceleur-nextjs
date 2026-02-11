@@ -13,6 +13,10 @@ const defaultFormations: Record<string, { title: string; description: string }> 
     title: 'Excel Avancé',
     description: 'Maîtrisez Excel pour optimiser vos compétences professionnelles. Formation créée par Thomas L\'Exceleur.',
   },
+  'le-declic': {
+    title: 'Le Déclic',
+    description: 'Maîtrise les formules indispensables d\'Excel en 7 jours. La formation pour ENFIN savoir quelle formule utiliser, quand et comment.',
+  },
 };
 
 export async function generateStaticParams() {

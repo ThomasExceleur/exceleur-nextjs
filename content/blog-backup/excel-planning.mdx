@@ -1,0 +1,197 @@
+---
+title: "Excel Planning : Créez votre Planning Professionnel"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez à créer un planning efficace dans Excel pour gérer vos projets et equipes."
+description: "Guide complet pour créer un planning Excel. Modèles, formules et astuces pour la gestion de projet et la planification."
+category: "Modèles"
+catégories: ["Modèles", "Productivité", "Gestion de projet"]
+tags: ["Planning", "Gantt", "Gestion de projet", "Modèle"]
+---
+
+# Excel Planning : Guide Complet
+
+Créez un planning professionnel dans Excel pour organiser vos projets et gérer votre temps efficacement.
+
+## Types de plannings
+
+### Planning hebdomadaire
+
+Ideal pour organiser votre semaine de travail.
+
+- Colonnes : Lun-Dim
+- Lignes : Heures où taches
+- Vue d'ensemble de 7 jours
+
+### Planning mensuel
+
+Pour une vision à plus long terme.
+
+- Vue calendrier du mois
+- Suivi des jalons
+- Gestion des deadlines
+
+### Planning de projet (Gantt)
+
+Pour les projets complexes.
+
+- Taches et sous-taches
+- Dates début et fin
+- Barres de progression
+- Dependances
+
+### Planning d'equipe
+
+Pour gérer les ressources humaines.
+
+- Lignes : Membres de l'equipe
+- Colonnes : Jours/semaines
+- Affectations et disponibilites
+
+## Créer un planning de base
+
+### Structuré
+
+1. **En-têtes** : Dates où périodes
+2. **Lignes** : Taches où personnes
+3. **Cellules** : Activités où statuts
+
+### Mise en forme
+
+- Utilisez des couleurs pour les catégories
+- Bordures pour la lisibilité
+- Fusion de cellules pour les plages
+
+## Planning avec formules
+
+### Afficher le jour
+
+```excel
+=TEXTE(A1;"jjjj")
+```
+
+### Calculer la duree
+
+```excel
+=B2-A2
+```
+(Fin - Début)
+
+### Jours restants
+
+```excel
+=A2-AUJOURDHUI()
+```
+
+### Semaine de l'année
+
+```excel
+=NO.SEMAINE(A1)
+```
+
+## Diagramme de Gantt simple
+
+### Méthode avec mise en forme conditionnelle
+
+1. Créez un tableau avec :
+   - Colonne A : Taches
+   - Colonne B : Date début
+   - Colonne C : Date fin
+   - Colonnes D+ : Dates du projet
+
+2. Formule de mise en forme conditionnelle :
+```excel
+=ET(D$1>=$B2; D$1<=$C2)
+```
+
+3. Appliquez un remplissage colore
+
+### Résultat
+
+Les cellules correspondant à la duree de chaque tache sont colorees automatiquement.
+
+## Mise en forme conditionnelle
+
+### Surligner les weekends
+
+Formule : `=OU(JOURSEM(A$1;2)=6;JOURSEM(A$1;2)=7)`
+
+### Surligner aujourd'hui
+
+Formule : `=A$1=AUJOURDHUI()`
+
+### Surligner les retards
+
+Formule : `=ET(C2<AUJOURDHUI();D2<>"Termine")`
+
+## Planning interactif
+
+### Avec listes deroulantes
+
+1. Créez une liste de statuts
+2. Appliquez une validation de données
+3. Utilisez la mise en forme conditionnelle par statut
+
+### Couleurs par statut
+
+| Statut | Couleur |
+|--------|---------|
+| A faire | Gris |
+| En cours | Jaune |
+| Termine | Vert |
+| En retard | Rouge |
+
+## Imprimer le planning
+
+### Optimisation pour l'impression
+
+1. **Mise en page** > **Orientation** : Paysage
+2. Ajustez l'échelle pour tenir sûr une page
+3. Définissez la zone d'impression
+4. Ajoutez un en-tête avec la période
+
+### Répéter les en-têtes
+
+1. **Mise en page** > **Imprimer les titres**
+2. Lignes à répéter en haut : $1:$1
+3. Colonnes à répéter à gauche : $A:$A
+
+## Modèles de planning
+
+### Planning projet simple
+
+| Tache | Début | Fin | Statut | Responsable |
+|-------|-------|-----|--------|-------------|
+| Analyse | 01/01 | 15/01 | Termine | Jean |
+| Design | 10/01 | 31/01 | En cours | Marie |
+| Dev | 20/01 | 28/02 | A faire | Pierre |
+
+### Planning hebdomadaire
+
+| Heure | Lun | Mar | Mer | Jeu | Ven |
+|-------|-----|-----|-----|-----|-----|
+| 9h | Reunion | | | | |
+| 10h | | Projet A | | | |
+| ... | | | | | |
+
+## Automatisation
+
+### Actualisation automatique
+
+Utilisez AUJOURDHUI() pour que le planning se mette à jour.
+
+### Calculs automatiques
+
+```excel
+=SOMMEPROD((Statut="Termine")*1)/NB(Taches)
+```
+Calcule le pourcentage d'avancement.
+
+## Conseils
+
+- Gardez le planning simple et lisible
+- Mettez à jour régulièrement
+- Partagez avec votre equipe
+- Sauvegardez les versions
+
+[Découvrir la formation Excel Avancé](/formations-excel/excel-avancé)

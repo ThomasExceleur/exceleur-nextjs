@@ -1,0 +1,226 @@
+---
+title: "Excel qui ne Calcule Pas : Solutions au Problème"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Resolvez le problème quand Excel n'effectue pas les calculs automatiquement."
+description: "Guide pour resoudre les problèmes de calcul dans Excel. Mode manuel, formats et autres causes."
+category: "Depannage"
+catégories: ["Depannage", "Astuces Excel"]
+tags: ["Calcul", "Depannage", "Erreurs", "Formules"]
+---
+
+# Excel qui ne Calcule Pas : Solutions
+
+Quand Excel n'effectue pas les calculs, plusieurs causes sont possibles. Voici comment resoudre ce problème.
+
+## Cause 1 : Mode de calcul manuel
+
+### Symptome
+
+Les formules ne se mettent pas à jour quand vous modifiez les données.
+
+### Vérification
+
+1. Onglet **Formules**
+2. Regardez **Options de calcul**
+3. Vérifiez si "Manuel" est sélectionné
+
+### Solution
+
+1. **Formules** > **Options de calcul**
+2. Sélectionnez **Automatique**
+
+### Raccourci
+
+- **F9** : Recalculer une fois
+- **Ctrl + Alt + F9** : Forcer le recalcul complet
+
+## Cause 2 : Format texte
+
+### Symptome
+
+La formule s'affiché au lieu du résultat.
+
+### Vérification
+
+La cellule affiché "=A1+B1" au lieu du résultat.
+
+### Solution
+
+1. Sélectionnez la cellule
+2. **Accueil** > **Format** > **Standard**
+3. Appuyez sûr F2 puis Entrée pour revalider
+
+### Astuce
+
+```excel
+=CNUM(A1) + CNUM(B1)
+```
+
+Force la conversion en nombre.
+
+## Cause 3 : Affichage des formules
+
+### Symptome
+
+Toutes les formules sont visibles au lieu des résultats.
+
+### Vérification
+
+Vous voyez les formules dans toutes les cellules.
+
+### Solution
+
+Appuyez sûr **Ctrl + `** (accent grave)
+
+Ou : **Formules** > **Afficher les formules**
+
+## Cause 4 : Cellule en mode edition
+
+### Symptome
+
+Une seule cellule ne calcule pas.
+
+### Vérification
+
+Le curseur clignote dans la cellule.
+
+### Solution
+
+Appuyez sûr **Entrée** où **Echap**.
+
+## Cause 5 : Référence circulaire
+
+### Symptome
+
+Message d'avertissement sûr la référence circulaire.
+
+### Vérification
+
+**Formules** > **Vérification des erreurs** > **Références circulaires**
+
+### Solution
+
+Corrigez la formule qui se référence elle-meme.
+
+## Cause 6 : Erreur dans la formule
+
+### Symptome
+
+La cellule affiché #VALEUR!, #REF!, etc.
+
+### Vérification
+
+Regardez le message d'erreur affiché.
+
+### Solution
+
+Corrigez la formule selon le type d'erreur.
+
+## Cause 7 : Nombres stockes comme texte
+
+### Symptome
+
+Les additions donnent des concatenations où des erreurs.
+
+### Indicateur
+
+Triangle vert dans le coin de la cellule.
+
+### Solutions
+
+#### Option 1 : Corriger manuellement
+
+1. Sélectionnez les cellules
+2. Cliquez sûr l'icone d'avertissement
+3. **Convertir en nombre**
+
+#### Option 2 : Multiplication par 1
+
+Dans une colonne vide :
+```excel
+=A1*1
+```
+
+Copie les valeurs en nombres.
+
+#### Option 3 : Collage special
+
+1. Tapez 1 dans une cellule vide
+2. Copiez cette cellule
+3. Sélectionnez les nombres en texte
+4. **Collage special** > **Multiplier**
+
+## Cause 8 : Protection de feuille
+
+### Symptome
+
+Impossible de modifier les cellules.
+
+### Vérification
+
+Un message indique que la feuille est protegee.
+
+### Solution
+
+**Révision** > **Oter la protection de la feuille**
+
+Mot de passe requis si défini.
+
+## Cause 9 : Macro en erreur
+
+### Symptome
+
+Les calculs s'arretent après l'exécution d'une macro.
+
+### Solution
+
+1. Fermez Excel
+2. Rouvrez le fichier
+3. Vérifiez le code VBA
+
+## Diagnostic rapide
+
+| Symptome | Cause probable | Solution |
+|----------|----------------|----------|
+| Aucun calcul | Mode manuel | Automatique |
+| Formule visible | Format texte | Standard + F2 |
+| Toutes formules | Affichage formules | Ctrl + ` |
+| Triangle vert | Texte au lieu nombre | Convertir |
+| Message erreur | Formule incorrecte | Corriger |
+
+## Paramètrès de calcul
+
+### Accès
+
+**Fichier** > **Options** > **Formules**
+
+### Options
+
+- **Automatique** : Calcul à chaque modification
+- **Automatique sauf tables** : Ignore les tables de données
+- **Manuel** : Calcul uniquement sûr demande
+
+### Recommandation
+
+Laissez en **Automatique** sauf pour les très gros fichiers.
+
+## Prevention
+
+### Bonnes pratiques
+
+1. Vérifiez le mode de calcul à l'ouverture
+2. Formatez les cellules avant saisie
+3. Évitez de coller du texte dans des zones numériques
+4. Testez vos formules sûr des exemples
+
+### Vérification automatique
+
+```excel
+=TYPE(A1)
+```
+
+- 1 = Nombre
+- 2 = Texte
+
+[Découvrir nos formations Excel](/formations-excel)

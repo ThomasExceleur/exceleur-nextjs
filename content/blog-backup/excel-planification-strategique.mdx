@@ -1,0 +1,197 @@
+---
+title: "Excel Planification Strategique : Outils et Méthodes"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Utilisez Excel pour votre planification strategique avec ces outils et méthodes."
+description: "Guide pour la planification strategique dans Excel. SWOT, objectifs, plan d'action et suivi."
+category: "Productivité"
+catégories: ["Productivité", "Analyse de données Excel"]
+tags: ["Strategie", "Planification", "Objectifs", "Management"]
+---
+
+# Planification Strategique dans Excel
+
+Excel est un outil precieux pour structurer et suivre votre planification strategique.
+
+## Analyse SWOT
+
+### Structuré
+
+| | Positif | Negatif |
+|-|---------|---------|
+| **Interne** | Forces | Faiblesses |
+| **Externe** | Opportunites | Menaces |
+
+### Tableau détaillé
+
+| Forces | Faiblesses |
+|--------|------------|
+| Expertise technique | Manque de notoriete |
+| Équipe motivee | Budget limite |
+
+| Opportunites | Menaces |
+|--------------|---------|
+| Marche en croissance | Nouveaux concurrents |
+| Digitalisation | Reglementation |
+
+## Définition des objectifs SMART
+
+### Tableau des objectifs
+
+| Objectif | Spécifique | Mesurable | Atteignable | Relevant | Temporel |
+|----------|------------|-----------|-------------|----------|----------|
+| Augmenter CA | +20% CA France | 1.2M | Etude marche OK | Priorité 1 | 31/12/2024 |
+
+### Suivi des objectifs
+
+```excel
+=SI(Reel>=Cible;"Atteint";"En cours")
+=Reel/Cible                           ' Pourcentage d'avancement
+```
+
+## Plan d'action strategique
+
+### Structuré
+
+| Action | Responsable | Début | Fin | Budget | Statut |
+|--------|-------------|-------|-----|--------|--------|
+| Lancer produit X | Marketing | 01/03 | 30/06 | 50 000 | En cours |
+
+### Suivi d'avancement
+
+```excel
+=NB.SI(Statut;"Termine")/NB(Statut)   ' % acheve
+```
+
+## Diagramme de Gantt
+
+### Tableau de base
+
+| Tache | Début | Duree | Fin |
+|-------|-------|-------|-----|
+| Etude de marche | 01/01 | 30 | 31/01 |
+| Développement | 01/02 | 60 | 01/04 |
+
+### Formule de fin
+
+```excel
+=B2+C2-1
+```
+
+### Gantt avec mise en forme conditionnelle
+
+1. Créez une grille de dates en colonnes
+2. Formule : `=ET(E$1>=$B2;E$1<=$D2)`
+3. Appliquez un remplissage colore
+
+## Matrice de priorisation
+
+### Matrice Effort/Impact
+
+| Action | Impact (1-5) | Effort (1-5) | Score |
+|--------|--------------|--------------|-------|
+| Action 1 | 5 | 2 | 2.5 |
+| Action 2 | 3 | 4 | 0.75 |
+
+### Formule de score
+
+```excel
+=Impact/Effort              ' Plus le score est haut, plus c'est prioritaire
+```
+
+## Budget strategique
+
+### Allocation par axe
+
+| Axe strategique | Budget | % Total |
+|-----------------|--------|---------|
+| Innovation | 200 000 | 40% |
+| Commercial | 150 000 | 30% |
+| RH | 100 000 | 20% |
+| IT | 50 000 | 10% |
+
+### Suivi budget vs reel
+
+```excel
+=Budget-Engage-Reste_a_engager
+```
+
+## Indicateurs strategiques
+
+### Balanced Scorecard
+
+| Perspective | KPI | Cible | Reel | Statut |
+|-------------|-----|-------|------|--------|
+| Finance | ROI | 15% | 12% | Orange |
+| Clients | NPS | 50 | 45 | Orange |
+| Processus | Délai moyen | 5j | 4j | Vert |
+| RH | Turnover | 10% | 8% | Vert |
+
+### Mise en forme conditionnelle
+
+```excel
+Vert si Reel >= Cible
+Orange si Reel >= Cible * 0.8
+Rouge sinon
+```
+
+## Roadmap produit
+
+### Structuré
+
+| Trimestre | Q1 | Q2 | Q3 | Q4 |
+|-----------|----|----|----|----|
+| Produit A | Conception | Dev | Test | Lancement |
+| Produit B | | Conception | Dev | Test |
+
+## Analyse de scenarios
+
+### Tableau de scenarios
+
+| Élément | Pessimiste | Realiste | Optimiste |
+|---------|------------|----------|-----------|
+| CA | 800 000 | 1 000 000 | 1 200 000 |
+| Couts | 700 000 | 650 000 | 600 000 |
+| Résultat | 100 000 | 350 000 | 600 000 |
+
+### Utiliser le gestionnaire de scenarios
+
+1. **Données** > **Analyse de scenarios**
+2. Créez vos scenarios
+3. Générez un rapport de synthèse
+
+## Communication strategique
+
+### Tableau de bord executif
+
+- Résumé en une page
+- KPI clés avec feux tricolores
+- Graphiques de tendance
+- Points d'attention
+
+### Graphiques recommandés
+
+1. **Evolution** : courbes temporelles
+2. **Répartition** : camemberts
+3. **Comparaison** : histogrammes
+4. **Objectifs** : jauges
+
+## Revue strategique
+
+### Checklist de revue
+
+| Point | Q1 | Q2 | Q3 | Q4 |
+|-------|----|----|----|----|
+| Revue objectifs | ✓ | ✓ | | |
+| Mise à jour budget | ✓ | ✓ | | |
+| Ajustement plan | ✓ | | | |
+
+## Bonnes pratiques
+
+1. **Révisez** régulièrement (trimestriel minimum)
+2. **Impliquez** les parties prenantes
+3. **Documentez** les decisions
+4. **Mesurez** les résultats
+5. **Ajustez** en fonction des ecarts
+
+[Découvrir nos formations Excel](/formations-excel)

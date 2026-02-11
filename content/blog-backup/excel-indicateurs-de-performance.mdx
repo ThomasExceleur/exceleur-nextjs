@@ -1,0 +1,210 @@
+---
+title: "Excel Indicateurs de Performance (KPI) : Guide Complet"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez à créer et suivre vos indicateurs de performance (KPI) dans Excel."
+description: "Guide pour créer des tableaux de bord KPI dans Excel. Formules, graphiques et mise en forme."
+category: "Analyse de données Excel"
+catégories: ["Analyse de données Excel", "Productivité"]
+tags: ["KPI", "Performance", "Tableau de bord", "Indicateurs"]
+---
+
+# Indicateurs de Performance (KPI) dans Excel
+
+Les KPI sont essentiels pour mesurer et piloter la performance de votre activité.
+
+## Qu'est-ce qu'un KPI ?
+
+### Définition
+
+Un KPI (Key Performance Indicator) est un indicateur clé permettant de mesurer l'atteinte d'un objectif.
+
+### Caracteristiques d'un bon KPI
+
+- **Spécifique** : mesure un élément precis
+- **Mesurable** : quantifiable
+- **Atteignable** : objectif realiste
+- **Relevant** : pertinent pour l'activité
+- **Temporel** : défini dans le temps
+
+## Types de KPI courants
+
+### KPI commerciaux
+
+| KPI | Formule |
+|-----|---------|
+| Chiffre d'affaires | Somme des ventes |
+| Taux de conversion | Ventes / Prospects |
+| Panier moyen | CA / Nombre de ventes |
+| Taux de retention | Clients fideles / Total clients |
+
+### KPI financiers
+
+| KPI | Formule |
+|-----|---------|
+| Marge brute | (CA - Cout) / CA |
+| ROI | (Gain - Cout) / Cout |
+| BFR | Stocks + Creances - Dettes |
+| Tresorerie | Encaissements - Decaissements |
+
+### KPI RH
+
+| KPI | Formule |
+|-----|---------|
+| Turnover | Departs / Effectif moyen |
+| Absenteisme | Jours absence / Jours travailles |
+| Productivité | Production / Heures travaillees |
+
+## Créer un tableau de bord KPI
+
+### Structuré recommandée
+
+```
++------------------+--------+--------+--------+
+| KPI              | Cible  | Reel   | %      |
++------------------+--------+--------+--------+
+| CA mensuel       | 100000 | 95000  | 95%    |
+| Nb clients       | 50     | 55     | 110%   |
+| Marge            | 30%    | 28%    | 93%    |
++------------------+--------+--------+--------+
+```
+
+### Formules de calcul
+
+```excel
+=C2/B2                           ' Pourcentage realisation
+=SI(D2>=100%;"OK";"Attention")   ' Statut
+```
+
+## Visualisation des KPI
+
+### Jauge de performance
+
+Utilisez un graphique en anneau pour créer une jauge :
+
+1. Créez deux valeurs : réalisé et reste
+2. **Insertion** > **Graphique** > **Anneau**
+3. Masquez la serie "reste"
+
+### Graphique sparkline
+
+```excel
+Insertion > Graphiques sparkline > Courbes
+Sélectionnez l'historique des valeurs
+```
+
+### Feux tricolores
+
+```excel
+=SI(D2>=100%;"Vert";SI(D2>=80%;"Orange";"Rouge"))
+```
+
+## Mise en forme conditionnelle
+
+### Barres de données
+
+1. Sélectionnez les valeurs de KPI
+2. **Mise en forme conditionnelle** > **Barres de données**
+3. Choisissez le style
+
+### Échelles de couleurs
+
+1. **Mise en forme conditionnelle** > **Échelles de couleurs**
+2. Rouge-Jaune-Vert pour les pourcentages
+
+### Jeux d'icones
+
+```excel
+Mise en forme conditionnelle > Jeux d'icones > Feux de signalisation
+```
+
+## Formules avancées pour KPI
+
+### Evolution par rapport à N-1
+
+```excel
+=(Valeur_actuelle - Valeur_precedente) / Valeur_precedente
+```
+
+### Moyenne mobile
+
+```excel
+=MOYENNE(DECALER(A10;-2;0;3;1))    ' Moyenne 3 périodes
+```
+
+### Taux de croissance compose (TCAC)
+
+```excel
+=(Valeur_finale/Valeur_initiale)^(1/Nombre_annees)-1
+```
+
+### Atteinte objectif progressif
+
+```excel
+=Objectif_annuel * MOIS(AUJOURDHUI()) / 12
+```
+
+## Tableau de bord automatise
+
+### Avec des tableaux croisés dynamiques
+
+1. Créez un TCD avec vos données
+2. Ajoutez des champs calcules
+3. Utilisez des segments pour filtrer
+
+### Actualisation automatique
+
+```excel
+' Dans les options du TCD
+Cochez "Actualiser les données à l'ouverture"
+```
+
+## KPI avec tendance
+
+### Structuré
+
+| KPI | M-2 | M-1 | M | Tendance |
+|-----|-----|-----|---|----------|
+| CA | 90K | 95K | 100K | ↗ |
+
+### Formule de tendance
+
+```excel
+=SI(C2>B2;"↗";SI(C2<B2;"↘";"→"))
+```
+
+## Alertes et notifications
+
+### Mise en forme rouge si alerte
+
+```excel
+=D2<80%    ' Condition pour alerte
+```
+
+### Commentaires automatiques
+
+```excel
+=SI(D2<80%;"Action requise : "&A2&" sous objectif";"")
+```
+
+## Bonnes pratiques
+
+### Conception
+
+1. **Limitez** le nombre de KPI (5-7 max par dashboard)
+2. **Priorisez** les indicateurs clés
+3. **Contextualisez** avec des objectifs et historiques
+
+### Présentation
+
+1. **Clarifiez** les définitions
+2. **Actualisez** régulièrement
+3. **Commentez** les ecarts significatifs
+
+### Technique
+
+1. Utilisez des **tableaux structurés**
+2. Créez des **plages nommées**
+3. Documentez vos **formules**
+
+[Découvrir nos formations Excel](/formations-excel)

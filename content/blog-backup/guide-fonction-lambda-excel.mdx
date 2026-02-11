@@ -1,0 +1,166 @@
+---
+title: "Guide de la Fonction LAMBDA dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Créez vos propres fonctions personnalisees avec LAMBDA dans Excel."
+description: "Guide LAMBDA dans Excel 365. Créer des fonctions personnalisees sans VBA."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Excel 365"]
+tags: ["LAMBDA", "Fonctions", "Excel 365", "Avancé"]
+---
+
+# Guide de la Fonction LAMBDA
+
+LAMBDA permet de créer des fonctions personnalisees sans VBA.
+
+## Disponibilité
+
+- Excel 365
+- Excel pour le web
+
+## Syntaxe de base
+
+```excel
+=LAMBDA(parametre1;[parametre2];...;calcul)
+```
+
+## Créer une fonction simple
+
+### Exemple : Calcul de TVA
+
+```excel
+=LAMBDA(montant;montant*1.20)
+```
+
+### Utilisation directe
+
+```excel
+=LAMBDA(montant;montant*1.20)(100)
+```
+
+Résultat : 120
+
+## Nommer une fonction LAMBDA
+
+### Étapes
+
+1. **Formules** > **Gestionnaire de noms**
+2. **Nouveau**
+3. Nom : `CalculTVA`
+4. Fait référence à : `=LAMBDA(montant;montant*1.20)`
+5. **OK**
+
+### Utilisation
+
+```excel
+=CalculTVA(100)    ' Retourne 120
+```
+
+## Fonctions avec plusieurs paramètrès
+
+### Exemple : Remise
+
+```excel
+=LAMBDA(prix;quantité;taux;
+  prix*quantité*(1-taux)
+)
+```
+
+### Usage
+
+```excel
+=Remise(100;5;0.1)    ' 450 (500 - 10%)
+```
+
+## Recursivite
+
+### Fonction recursive
+
+LAMBDA peut s'appeler elle-meme pour des calculs iteratifs.
+
+### Exemple : Factorielle
+
+```excel
+=LAMBDA(n;
+  SI(n<=1;1;n*Factorielle(n-1))
+)
+```
+
+## Fonctions auxiliaires
+
+### MAP
+
+Applique LAMBDA à chaque élément :
+
+```excel
+=MAP(A1:A10;LAMBDA(x;x*2))
+```
+
+### REDUCE
+
+Réduit une plage à une valeur :
+
+```excel
+=REDUCE(0;A1:A10;LAMBDA(acc;val;acc+val))
+```
+
+### SCAN
+
+Retourne les valeurs intermediaires :
+
+```excel
+=SCAN(0;A1:A10;LAMBDA(acc;val;acc+val))
+```
+
+## Cas pratiques
+
+### Conversion Celsius/Fahrenheit
+
+```excel
+=LAMBDA(c;c*9/5+32)
+```
+
+Nommez-la `CelsiusVersFahrenheit`.
+
+### Note en lettre
+
+```excel
+=LAMBDA(note;
+  SI(note>=90;"A";
+    SI(note>=80;"B";
+      SI(note>=70;"C";
+        SI(note>=60;"D";"F"))))
+)
+```
+
+### Distance entre deux points
+
+```excel
+=LAMBDA(x1;y1;x2;y2;
+  RACINE((x2-x1)^2+(y2-y1)^2)
+)
+```
+
+## Avantages de LAMBDA
+
+| Avantage | Description |
+|----------|-------------|
+| Reutilisabilite | Définir une fois, utiliser partout |
+| Lisibilité | Formules simples à lire |
+| Pas de VBA | Fonctionne dans le cloud |
+| Portable | Se copie avec le classeur |
+
+## Limites
+
+- Disponible uniquement dans Excel 365
+- Pas de debogage comme VBA
+- Limite de complexité
+
+## Bonnes pratiques
+
+1. **Nommez** vos fonctions clairement
+2. **Documentez** les paramètrès
+3. **Testez** avec différentes valeurs
+4. **Préférez** la simplicité
+
+[Découvrir nos formations Excel](/formations-excel)

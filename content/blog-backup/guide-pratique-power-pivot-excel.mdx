@@ -1,0 +1,166 @@
+---
+title: "Guide Pratique Power Pivot Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Guide pratique pour maîtriser Power Pivot dans Excel."
+description: "Guide pratique de Power Pivot pour l'analyse de données Excel."
+category: "Power Pivot"
+catégories: ["Power Pivot", "Analyse de données Excel"]
+tags: ["Power Pivot", "DAX", "Pratique", "Excel"]
+---
+
+# Guide Pratique Power Pivot Excel
+
+Mettez Power Pivot en pratique avec des exemples concrets.
+
+## Cas d'usage : Analyse des ventes
+
+### Données
+
+Tables :
+- Ventes (Date, ProduitID, ClientID, Montant)
+- Produits (ProduitID, Nom, Catégorie)
+- Clients (ClientID, Nom, Region)
+- Calendrier (Date, Année, Mois, Trimestre)
+
+### Objectif
+
+Analyser les ventes par produit, client, region et période.
+
+## Étape 1 : Importer les données
+
+### Depuis Excel
+
+1. **Power Pivot** > **Gérer**
+2. **Accueil** > **Obtenir des données externes** > **Excel**
+3. Importez chaque table
+
+### Conseil
+
+Importez des tableaux structurés (Ctrl+T).
+
+## Étape 2 : Créer les relations
+
+### Vue Diagramme
+
+1. **Affichage** > **Vue Diagramme**
+2. Glissez ProduitID vers ProduitID
+3. Glissez ClientID vers ClientID
+4. Glissez Date vers Date
+
+### Schéma
+
+```
+Ventes (fait) -> Produits (dimension)
+Ventes (fait) -> Clients (dimension)
+Ventes (fait) -> Calendrier (dimension)
+```
+
+## Étape 3 : Mesures de base
+
+### Total des ventes
+
+```dax
+Total Ventes := SUM(Ventes[Montant])
+```
+
+### Nombre de transactions
+
+```dax
+Nb Transactions := COUNT(Ventes[ID])
+```
+
+### Panier moyen
+
+```dax
+Panier Moyen := DIVIDE([Total Ventes]; [Nb Transactions])
+```
+
+## Étape 4 : Mesures temporelles
+
+### Table calendrier
+
+Essentielle pour les calculs temporels.
+
+### Ventes année précédente
+
+```dax
+Ventes N-1 := CALCULATE(
+    [Total Ventes];
+    SAMEPERIODLASTYEAR(Calendrier[Date])
+)
+```
+
+### Variation
+
+```dax
+Variation := DIVIDE([Total Ventes] - [Ventes N-1]; [Ventes N-1])
+```
+
+### Cumul annuel
+
+```dax
+YTD := TOTALYTD([Total Ventes]; Calendrier[Date])
+```
+
+## Étape 5 : Mesures analytiques
+
+### Part du total
+
+```dax
+% Total := DIVIDE(
+    [Total Ventes];
+    CALCULATE([Total Ventes]; ALL(Ventes))
+)
+```
+
+### Classement
+
+```dax
+Rang := RANKX(ALL(Produits); [Total Ventes]; ; DESC)
+```
+
+## Étape 6 : Créer le TCD
+
+### Ajouter au classeur
+
+1. **Power Pivot** > **Tableau croisé dynamique**
+2. Placez les champs
+3. Utilisez les mesures dans Valeurs
+
+### Configuration
+
+- Lignes : Catégorie, Produit
+- Colonnes : Année, Trimestre
+- Valeurs : Total Ventes, Variation
+
+## Étape 7 : Visualiser
+
+### Graphiques croisés
+
+Ajoutez des graphiques lies au TCD.
+
+### Segments
+
+Ajoutez des filtres interactifs.
+
+## Optimisations
+
+### Colonnes calculees vs Mesures
+
+| Colonnes calculees | Mesures |
+|-------------------|---------|
+| Catégories fixes | Valeurs dynamiques |
+| Stockees | Calculees à la volee |
+| Contexte de ligne | Contexte de filtre |
+
+### Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Mesures preferees | Plus flexibles que colonnes |
+| Nommage | Prefixes par type (Mes_, Col_) |
+| Documentation | Commentez les formules DAX |
+| Test | Vérifiez les résultats |
+
+[Découvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,149 @@
+---
+title: "Débuter avec Power Pivot : Guide de Modelisation"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Guide pour débuter avec Power Pivot et la modelisation de données."
+description: "Guide débutant Power Pivot dans Excel. Modelisation et relations."
+category: "Analyse de données Excel"
+catégories: ["Analyse de données Excel", "Excel 365"]
+tags: ["Power Pivot", "Débutant", "Modelisation", "Guide"]
+---
+
+# Débuter avec Power Pivot
+
+Guide pour créer votre premier modèle de données Power Pivot.
+
+## Qu'est-ce que Power Pivot ?
+
+Power Pivot permet de :
+- Analyser des millions de lignes
+- Relier plusieurs tables
+- Créer des calculs avancés (DAX)
+- Alimenter des TCD puissants
+
+## Activer Power Pivot
+
+### Étapes
+
+1. **Fichier** > **Options** > **Complements**
+2. En bas : **Gérer** > **Complements COM**
+3. **Atteindre**
+4. Cochez **Microsoft Power Pivot for Excel**
+5. **OK**
+
+## Votre premier modèle
+
+### Étape 1 : Préparer les données
+
+Créez deux tables :
+
+**Table Ventes**
+| ID | Date | ProduitID | Montant |
+|----|------|-----------|---------|
+| 1 | 01/01 | P001 | 100 |
+| 2 | 02/01 | P002 | 200 |
+
+**Table Produits**
+| ProduitID | Nom | Catégorie |
+|-----------|-----|-----------|
+| P001 | Widget | A |
+| P002 | Gadget | B |
+
+### Étape 2 : Ajouter au modèle
+
+1. Sélectionnez chaque table
+2. **Power Pivot** > **Ajouter au modèle de données**
+
+### Étape 3 : Créer la relation
+
+1. **Power Pivot** > **Gérer**
+2. Vue **Diagramme**
+3. Faites glisser ProduitID de Ventes vers Produits
+
+## Créer un TCD avec le modèle
+
+### Étapes
+
+1. **Insertion** > **Tableau croisé dynamique**
+2. Cochez **Utiliser le modèle de données de ce classeur**
+3. **OK**
+4. Choisissez des champs des deux tables
+
+## Première mesure DAX
+
+### Dans Power Pivot
+
+1. Cliquez dans une cellule de la zone de calcul
+2. Tapez :
+
+```dax
+Total Ventes = SUM(Ventes[Montant])
+```
+
+3. Appuyez sûr Entrée
+
+### Utiliser la mesure
+
+Elle apparait dans les champs du TCD.
+
+## Types de relations
+
+### Un-à-plusieurs
+
+La plus courante. Un produit peut avoir plusieurs ventes.
+
+### Plusieurs-à-plusieurs
+
+Via une table intermediaire.
+
+## Colonnes calculees vs Mesures
+
+| Élément | Quand utiliser |
+|---------|----------------|
+| Colonne calculee | Valeur pour chaque ligne |
+| Mesure | Agregation (somme, moyenne...) |
+
+## Formules DAX essentielles
+
+### Somme
+
+```dax
+=SUM(Table[Colonne])
+```
+
+### Moyenne
+
+```dax
+=AVERAGE(Table[Colonne])
+```
+
+### Compte
+
+```dax
+=COUNTROWS(Table)
+```
+
+### Condition
+
+```dax
+=IF(condition; valeur_si_vrai; valeur_si_faux)
+```
+
+## Bonnes pratiques
+
+1. **Nommez** clairement vos tables
+2. **Créez** une table Dates
+3. **Préférez** les mesures aux colonnes
+4. **Documentez** vos formules
+
+## Erreurs courantes
+
+### Relation manquante
+
+Si les données ne correspondent pas, vérifiez les relations.
+
+### Types incompatibles
+
+Les colonnes liees doivent avoir le meme type.
+
+[Découvrir nos formations Excel](/formations-excel)

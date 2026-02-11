@@ -1,0 +1,246 @@
+---
+title: "Excel Gestion des Tâches : Guide Complet"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Organisez et suivez vos taches efficacement avec Excel grace à ce guide."
+description: "Guide pour créer un gestionnaire de taches dans Excel. To-do list, priorités et suivi."
+category: "Productivité"
+catégories: ["Productivité", "Modèles"]
+tags: ["Taches", "To-do", "Gestion", "Organisation"]
+---
+
+# Gestion des Taches dans Excel
+
+Excel permet de créer un système de gestion des taches simple et efficace.
+
+## Structuré de base
+
+### Colonnes essentielles
+
+| Colonne | Description |
+|---------|-------------|
+| ID | Identifiant unique |
+| Tache | Description |
+| Priorité | Haute/Moyenne/Basse |
+| Statut | A faire/En cours/Termine |
+| Date échéance | Deadline |
+| Responsable | Personne assignee |
+| Date création | Quand ajoutee |
+
+## Créer le tableau
+
+### Étape 1 : En-têtes
+
+```
+A1: ID
+B1: Tache
+C1: Priorité
+D1: Statut
+E1: Date échéance
+F1: Responsable
+G1: Date création
+```
+
+### Étape 2 : Tableau structuré
+
+1. Sélectionnez vos données
+2. **Ctrl + T** pour créer un tableau
+3. Nommez le tableau "Taches"
+
+## Listes deroulantes
+
+### Priorités
+
+1. Créez une liste : Haute, Moyenne, Basse
+2. **Données** > **Validation** > **Liste**
+
+### Statuts
+
+- A faire
+- En cours
+- En attente
+- Termine
+- Annule
+
+## Mise en forme conditionnelle
+
+### Colorer par priorité
+
+1. Sélectionnez la colonne Priorité
+2. **Mise en forme conditionnelle** > **Règles de mise en surbrillance**
+3. Rouge = Haute, Orange = Moyenne, Vert = Basse
+
+### Alerter sûr les retards
+
+```excel
+=ET(E2<AUJOURDHUI();D2<>"Termine")
+```
+
+Format : fond rouge
+
+### Barrer les taches terminees
+
+```excel
+=$D2="Termine"
+```
+
+Format : police barree, grise
+
+## Cases à cocher
+
+### Ajouter des cases
+
+1. **Developpeur** > **Insérer** > **Case à cocher**
+2. Liez à une cellule
+
+### Formule conditionnelle
+
+```excel
+=SI(H2=VRAI;"Termine";"A faire")
+```
+
+## Calculs et statistiques
+
+### Nombre de taches
+
+```excel
+=NB(Taches[ID])                            ' Total
+=NB.SI(Taches[Statut];"A faire")           ' A faire
+=NB.SI(Taches[Statut];"Termine")           ' Terminees
+```
+
+### Pourcentage d'avancement
+
+```excel
+=NB.SI(Taches[Statut];"Termine")/NB(Taches[ID])
+```
+
+### Taches en retard
+
+```excel
+=NB.SI.ENS(Taches[Date échéance];"<"&AUJOURDHUI();Taches[Statut];"<>Termine")
+```
+
+## Filtres et vues
+
+### Filtrer les taches
+
+1. Cliquez sûr la fleche du filtre
+2. Sélectionnez les critères
+
+### Vues personnalisees
+
+- Mes taches (filtre par responsable)
+- Taches urgentes (priorité haute)
+- En retard (échéance passee)
+- Cette semaine (échéance dans 7 jours)
+
+## Tri automatique
+
+### Par priorité et échéance
+
+1. **Données** > **Trier**
+2. Premier niveau : Priorité
+3. Deuxieme niveau : Date échéance
+
+## Tableau de bord
+
+### Résumé des taches
+
+| Indicateur | Valeur |
+|------------|--------|
+| Total taches | =NB(ID) |
+| A faire | =NB.SI(Statut;"A faire") |
+| En cours | =NB.SI(Statut;"En cours") |
+| Terminees | =NB.SI(Statut;"Termine") |
+| En retard | =FORMULE |
+
+### Graphique d'avancement
+
+1. Camembert des statuts
+2. Ou barre de progression
+
+## Taches recurrentes
+
+### Gestion manuelle
+
+Dupliquez la tache avec nouvelle échéance.
+
+### Avec formule
+
+```excel
+=SI([@Statut]="Termine";[@[Date échéance]]+7;[@[Date échéance]])
+```
+
+## Notifications
+
+### Mise en forme pour alertes
+
+| Condition | Format |
+|-----------|--------|
+| Échéance aujourd'hui | Fond jaune |
+| En retard | Fond rouge |
+| Termine | Fond vert |
+
+### Formule alerte
+
+```excel
+=SI(ET(E2<=AUJOURDHUI();D2<>"Termine");"URGENT";"")
+```
+
+## Assignation d'equipe
+
+### Liste des responsables
+
+Créez une liste deroulante avec les noms d'equipe.
+
+### Charge par personne
+
+```excel
+=NB.SI(Taches[Responsable];G2)
+```
+
+## Export et partage
+
+### Export PDF
+
+1. **Fichier** > **Exporter** > **PDF**
+2. Sélectionnez la plage
+
+### Partage OneDrive
+
+1. Enregistrez sûr OneDrive
+2. Partagez le lien
+3. Co-edition en temps reel
+
+## Archivage
+
+### Archiver les taches terminees
+
+1. Créez une feuille "Archive"
+2. Déplacez les taches terminees periodiquement
+
+### Garder un historique
+
+Ajoutez une colonne "Date cloture".
+
+## Intégration calendrier
+
+### Export vers calendrier
+
+1. Créez un fichier ICS
+2. Ou copiez vers Outlook
+
+### Rappels
+
+Utilisez les rappels Outlook pour les échéances importantes.
+
+## Bonnes pratiques
+
+1. **Limitez** les taches en cours (max 3-5)
+2. **Decomposez** les grandes taches
+3. **Mettez à jour** quotidiennement
+4. **Revoyez** les priorités régulièrement
+5. **Archivez** les taches terminees
+
+[Découvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,179 @@
+---
+title: "Guide Excel : Mise en Forme Conditionnelle Avancée"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maîtrisez les techniques avancées de mise en forme conditionnelle."
+description: "Guide avancé de la mise en forme conditionnelle Excel."
+category: "Formatage"
+catégories: ["Formatage", "Mise en forme"]
+tags: ["Mise en forme conditionnelle", "Avancé", "Formatage", "Excel"]
+---
+
+# Mise en Forme Conditionnelle Avancée
+
+Allez au-dela des règles de base pour des visualisations puissantes.
+
+## Formules personnalisees
+
+### Principe
+
+Utilisez des formules retournant VRAI où FAUX.
+
+### Accès
+
+1. **Mise en forme conditionnelle** > **Nouvelle règle**
+2. **Utiliser une formule**
+3. Entrez la formule
+
+## Exemples de formules
+
+### Ligne entière selon condition
+
+```excel
+=$C1>100
+```
+
+Appliquee à A1:Z100, colore les lignes où C > 100.
+
+### Colonnes alternees
+
+```excel
+=MOD(COLONNE();2)=0
+```
+
+### Lignes alternees
+
+```excel
+=MOD(LIGNE();2)=0
+```
+
+## Comparer des cellules
+
+### Plus grand que la cellule de gauche
+
+```excel
+=A1>B1
+```
+
+### Différent de l'en-tête
+
+```excel
+=A2<>A$1
+```
+
+### Ecart significatif vs moyenne
+
+```excel
+=ABS(A1-MOYENNE($A:$A))>ECARTYPE($A:$A)
+```
+
+## Dates et délais
+
+### En retard
+
+```excel
+=A1<AUJOURDHUI()
+```
+
+### Dans les 7 prochains jours
+
+```excel
+=ET(A1>=AUJOURDHUI();A1<=AUJOURDHUI()+7)
+```
+
+### Weekend
+
+```excel
+=OU(JOURSEM(A1;2)=6;JOURSEM(A1;2)=7)
+```
+
+## Texte et recherche
+
+### Contient un mot
+
+```excel
+=ESTNUM(CHERCHE("mot";A1))
+```
+
+### Commence par
+
+```excel
+=GAUCHE(A1;3)="ABC"
+```
+
+### Cellule vide
+
+```excel
+=ESTVIDE(A1)
+```
+
+## Barres de données avancées
+
+### Personnalisation
+
+1. **Gérer les règles** > Sélectionnez la règle
+2. **Modifier la règle**
+3. Configurez min, max, couleurs
+
+### Barres avec valeurs negatives
+
+Configurez une couleur différente pour les negatifs.
+
+## Échelles de couleurs personnalisees
+
+### Échelle 3 couleurs centree
+
+- Min : Rouge (valeurs basses)
+- Milieu : Blanc (centile 50)
+- Max : Vert (valeurs hautes)
+
+### Ecarts vs moyenne
+
+- Rouge : < moyenne
+- Blanc : = moyenne
+- Bleu : > moyenne
+
+## Jeux d'icones conditionnels
+
+### Configurer les seuils
+
+1. Sélectionnez le jeu d'icones
+2. **Modifier la règle**
+3. Définissez les seuils pour chaque icone
+
+### Icone basee sûr une autre cellule
+
+```excel
+=SI($B1>Objectif;3;SI($B1>Objectif*0.8;2;1))
+```
+
+## Règles multiples
+
+### Ordre de priorité
+
+La première règle qui s'applique gagne.
+
+### Interrompre si vrai
+
+Cochez pour empecher les règles suivantes.
+
+## Performance
+
+### Optimisation
+
+| Conseil | Impact |
+|---------|--------|
+| Plages limitees | Réduit le temps de calcul |
+| Formules simples | Plus rapide |
+| Moins de règles | Meilleure performance |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Cohérence | Memes couleurs = memes significations |
+| Lisibilité | Ne surchargez pas |
+| Documentation | Expliquez les codes couleur |
+| Test | Vérifiez tous les cas |
+
+[Découvrir nos formations Excel](/formations-excel)

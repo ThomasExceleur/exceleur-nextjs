@@ -1,0 +1,220 @@
+---
+title: "Découvrir FILTRE Excel pour les Tableaux Dynamiques"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez à utiliser la fonction FILTRE pour créer des tableaux dynamiques."
+description: "Guide pour découvrir la fonction FILTRE et les tableaux dynamiques Excel."
+category: "Excel 365"
+catégories: ["Excel 365", "Formules Excel"]
+tags: ["FILTRE", "Tableaux dynamiques", "Excel 365", "Formules"]
+---
+
+# Découvrir FILTRE pour les Tableaux Dynamiques
+
+La fonction FILTRE revolutionne l'extraction de données dans Excel 365.
+
+## Qu'est-ce que la fonction FILTRE ?
+
+### Définition
+
+FILTRE extrait les données correspondant à un où plusieurs critères, de manière dynamique.
+
+### Avantages
+
+- Pas de formules copiees
+- Mise à jour automatique
+- Syntaxe simple
+
+### Disponibilité
+
+Excel 365, Excel 2021
+
+## Syntaxe de base
+
+```excel
+=FILTRE(tableau;inclure;[si_vide])
+```
+
+| Paramèêtre | Description |
+|-----------|-------------|
+| tableau | Plage à filtrer |
+| inclure | Condition (VRAI/FAUX) |
+| si_vide | Message si aucun résultat |
+
+## Premier exemple
+
+### Données
+
+| Ville | Ventes |
+|-------|--------|
+| Paris | 100 |
+| Lyon | 80 |
+| Paris | 120 |
+| Marseille | 90 |
+
+### Formule
+
+```excel
+=FILTRE(A2:B5;A2:A5="Paris")
+```
+
+### Résultat
+
+| Paris | 100 |
+| Paris | 120 |
+
+## Critère numérique
+
+### Plus grand que
+
+```excel
+=FILTRE(A2:B5;B2:B5>85)
+```
+
+### Intervalle
+
+```excel
+=FILTRE(A2:B5;(B2:B5>=80)*(B2:B5<=100))
+```
+
+## Critères multiples
+
+### ET logique
+
+```excel
+=FILTRE(A2:C5;(A2:A5="Paris")*(B2:B5>100))
+```
+
+Ville = Paris ET Ventes > 100
+
+### OU logique
+
+```excel
+=FILTRE(A2:C5;(A2:A5="Paris")+(A2:A5="Lyon"))
+```
+
+Ville = Paris OU Ville = Lyon
+
+## Gérer les résultats vides
+
+### Problème
+
+Si aucune ligne ne correspond, FILTRE retourne #CALC!
+
+### Solution
+
+```excel
+=FILTRE(A2:B5;A2:A5="Inexistant";"Aucun résultat")
+```
+
+### Message personnalise
+
+Vous pouvez aussi retourner une cellule vide : `""`
+
+## Combiner avec d'autres fonctions
+
+### FILTRE + TRIER
+
+```excel
+=TRIER(FILTRE(A2:B5;B2:B5>80);2;-1)
+```
+
+Filtre puis trie par ventes decroissantes.
+
+### FILTRE + UNIQUE
+
+```excel
+=UNIQUE(FILTRE(A2:A5;B2:B5>80))
+```
+
+Villes uniques avec ventes > 80.
+
+### FILTRE + SOMME
+
+```excel
+=SOMME(FILTRE(B2:B5;A2:A5="Paris"))
+```
+
+Somme des ventes de Paris.
+
+## Tableaux dynamiques
+
+### Debordement
+
+Le résultat s'etend automatiquement sûr plusieurs cellules.
+
+### Référence debordante
+
+Utilisez # pour referencer tout le résultat :
+
+```excel
+=SOMME(D1#)
+```
+
+Ou D1 contient une formule FILTRE.
+
+## Filtre avec critère variable
+
+### Référence à une cellule
+
+```excel
+=FILTRE(A2:B5;A2:A5=E1)
+```
+
+E1 contient le critère (ex: "Paris")
+
+### Liste deroulante
+
+1. Créez une validation de données en E1
+2. La formule FILTRE s'adapte automatiquement
+
+## Exemples pratiques
+
+### Commandes en attente
+
+```excel
+=FILTRE(Commandes;Statut="En attente";"Aucune commande en attente")
+```
+
+### Ventes du mois en cours
+
+```excel
+=FILTRE(Ventes;MOIS(Ventes[Date])=MOIS(AUJOURDHUI()))
+```
+
+### Top clients
+
+```excel
+=FILTRE(Clients;Clients[CA]>=GRANDE.VALEUR(Clients[CA];10))
+```
+
+## Comparaison avec alternatives
+
+| Méthode | Avantage | Inconvenient |
+|---------|----------|--------------|
+| FILTRE | Dynamique | Excel 365 requis |
+| Filtre auto | Simple | Pas de formule |
+| TCD | Puissant | Plus complexe |
+
+## Limites
+
+### A savoir
+
+- Plage contigue uniquement
+- Pas de formatage du résultat
+- Espace nécessaire pour le debordement
+
+### Solutions
+
+Combinez avec d'autres fonctions pour contourner les limites.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| si_vide | Toujours le définir |
+| Plages nommées | Plus lisible |
+| Espace libre | Prevoir le debordement |
+| Tests | Vérifier les critères |
+
+[Découvrir nos formations Excel](/formations-excel)

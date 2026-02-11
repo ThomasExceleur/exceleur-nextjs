@@ -1,0 +1,225 @@
+---
+title: "Fonction FILTRE Excel : Comment Extraire des Données Dynamiquement"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maîtrisez la fonction FILTRE pour extraire des données de manière dynamique."
+description: "Guide complet de la fonction FILTRE Excel pour l'extraction dynamique."
+category: "Excel 365"
+catégories: ["Excel 365", "Formules Excel"]
+tags: ["FILTRE", "Extraction", "Dynamique", "Excel 365"]
+---
+
+# Fonction FILTRE : Extraire des Données Dynamiquement
+
+FILTRE est l'une des fonctions les plus puissantes d'Excel 365.
+
+## Présentation de FILTRE
+
+### Syntaxe
+
+```excel
+=FILTRE(tableau;inclure;[si_vide])
+```
+
+### Paramètrès
+
+| Paramèêtre | Description | Obligatoire |
+|-----------|-------------|-------------|
+| tableau | Données à filtrer | Oui |
+| inclure | Condition booleenne | Oui |
+| si_vide | Valeur si aucun résultat | Non |
+
+### Résultat
+
+Un tableau dynamique qui s'etend automatiquement.
+
+## Exemples de base
+
+### Filtrer par texte
+
+```excel
+=FILTRE(A2:C10;A2:A10="Paris")
+```
+
+### Filtrer par nombre
+
+```excel
+=FILTRE(A2:C10;B2:B10>1000)
+```
+
+### Filtrer par date
+
+```excel
+=FILTRE(A2:C10;C2:C10>=DATE(2024;1;1))
+```
+
+## Critères multiples
+
+### ET logique (toutes les conditions)
+
+```excel
+=FILTRE(A2:D10;(B2:B10="Paris")*(C2:C10>100))
+```
+
+La multiplication (*) agit comme ET.
+
+### OU logique (au moins une condition)
+
+```excel
+=FILTRE(A2:D10;(B2:B10="Paris")+(B2:B10="Lyon"))
+```
+
+L'addition (+) agit comme OU.
+
+### Combinaison ET/OU
+
+```excel
+=FILTRE(A2:D10;((B2:B10="Paris")+(B2:B10="Lyon"))*(C2:C10>100))
+```
+
+## Gestion du résultat vide
+
+### Problème
+
+Sans le paramèêtre si_vide, FILTRE retourne #CALC! si aucune ligne ne correspond.
+
+### Solutions
+
+```excel
+' Message texte
+=FILTRE(A2:C10;B2:B10="Inexistant";"Aucun résultat")
+
+' Cellule vide
+=FILTRE(A2:C10;B2:B10="Inexistant";"")
+
+' Valeur spécifique
+=FILTRE(A2:C10;B2:B10="Inexistant";0)
+```
+
+## Filtrage dynamique
+
+### Avec référence cellule
+
+```excel
+=FILTRE(Données;Données[Ville]=E1)
+```
+
+E1 contient la ville choisie par l'utilisateur.
+
+### Avec liste deroulante
+
+1. Créez une validation de données en E1
+2. La formule FILTRE s'adapte automatiquement
+
+## Combinaisons puissantes
+
+### FILTRE + TRIER
+
+```excel
+=TRIER(FILTRE(A2:C10;B2:B10>100);2;-1)
+```
+
+Filtre puis trie par la 2e colonne decroissante.
+
+### FILTRE + UNIQUE
+
+```excel
+=UNIQUE(FILTRE(A2:A10;B2:B10>100))
+```
+
+Valeurs uniques parmi les résultats filtres.
+
+### FILTRE + INDEX
+
+```excel
+=INDEX(FILTRE(A2:C10;B2:B10>100);1;2)
+```
+
+Première valeur de la 2e colonne du résultat.
+
+### FILTRE + LIGNES
+
+```excel
+=LIGNES(FILTRE(A2:A10;B2:B10>100))
+```
+
+Nombre de résultats.
+
+## Référence debordante
+
+### Syntaxe #
+
+```excel
+=SOMME(D1#)
+```
+
+Référence tout le résultat de la formule en D1.
+
+### Utilisation
+
+Utile pour calculer des statistiques sûr le résultat filtre.
+
+## Filtrage de colonnes
+
+### Sélectionner des colonnes
+
+```excel
+=FILTRE(CHOISIRCOLS(Données;1;3;5);Données[Statut]="Actif")
+```
+
+## Cas pratiques
+
+### Commandes du jour
+
+```excel
+=FILTRE(Commandes;Commandes[Date]=AUJOURDHUI();"Aucune commande")
+```
+
+### Clients VIP
+
+```excel
+=FILTRE(Clients;Clients[CA]>=10000)
+```
+
+### Produits en rupture
+
+```excel
+=FILTRE(Produits;Produits[Stock]=0;"Tous les produits disponibles")
+```
+
+### Employes d'un departement
+
+```excel
+=FILTRE(Employes;Employes[Dept]=INDIRECT("E1"))
+```
+
+## Erreurs courantes
+
+| Erreur | Cause | Solution |
+|--------|-------|----------|
+| #CALC! | Aucun résultat | Ajouter si_vide |
+| #VALEUR! | Tailles différentes | Vérifier les plages |
+| #DEBORDEMENT | Cellules occupees | Liberer l'espace |
+
+## Performance
+
+### Optimisation
+
+1. Limitez la taille du tableau source
+2. Évitez les colonnes entières (A:A)
+3. Utilisez des tableaux structurés
+
+### Grandes données
+
+Pour des millions de lignes, préférez Power Query.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| si_vide | Toujours le définir |
+| Noms | Utilisez des plages nommées |
+| Espace | Prevoyez le debordement |
+| Tests | Validez les critères |
+
+[Découvrir nos formations Excel](/formations-excel)

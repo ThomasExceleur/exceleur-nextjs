@@ -1,0 +1,175 @@
+---
+title: "Guide Pratique : FILTRE Excel pour Extraire vos Données"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez à extraire vos données efficacement avec la fonction FILTRE."
+description: "Guide pratique de la fonction FILTRE pour l'extraction de données Excel."
+category: "Excel 365"
+catégories: ["Excel 365", "Formules Excel"]
+tags: ["FILTRE", "Extraction", "Données", "Excel 365"]
+---
+
+# Guide Pratique : FILTRE Excel pour Extraire vos Données
+
+La fonction FILTRE transforme la façon dont vous extrayez des données.
+
+## Introduction à FILTRE
+
+### Syntaxe
+
+```excel
+=FILTRE(tableau;inclure;[si_vide])
+```
+
+### Paramètrès
+
+| Paramèêtre | Description |
+|-----------|-------------|
+| tableau | Plage de données à filtrer |
+| inclure | Condition logique (tableau de VRAI/FAUX) |
+| si_vide | Valeur si aucun résultat (optionnel) |
+
+## Premier exemple
+
+### Données
+
+| Produit | Region | Ventes |
+|---------|--------|--------|
+| A | Nord | 100 |
+| B | Sud | 150 |
+| A | Sud | 200 |
+| C | Nord | 80 |
+
+### Filtrer par region
+
+```excel
+=FILTRE(A2:C5;B2:B5="Nord")
+```
+
+Résultat : Lignes où Region = "Nord"
+
+## Critères multiples
+
+### Avec ET
+
+```excel
+=FILTRE(A2:C10;(B2:B10="Nord")*(C2:C10>100))
+```
+
+### Avec OU
+
+```excel
+=FILTRE(A2:C10;(B2:B10="Nord")+(B2:B10="Sud"))
+```
+
+## Gestion des résultats vides
+
+### Sans gestion
+
+```excel
+=FILTRE(A2:C10;B2:B10="Est")
+```
+
+Retourne #CALC! si aucune correspondance.
+
+### Avec message
+
+```excel
+=FILTRE(A2:C10;B2:B10="Est";"Aucune donnée")
+```
+
+### Avec tableau vide
+
+```excel
+=FILTRE(A2:C10;B2:B10="Est";{""})
+```
+
+## Combiner avec d'autres fonctions
+
+### FILTRE + TRIER
+
+```excel
+=TRIER(FILTRE(A2:C10;B2:B10="Nord");3;-1)
+```
+
+Filtre puis trie par la 3eme colonne decroissant.
+
+### FILTRE + UNIQUE
+
+```excel
+=UNIQUE(FILTRE(A2:A10;B2:B10="Actif"))
+```
+
+Valeurs uniques parmi les éléments actifs.
+
+### FILTRE + INDEX
+
+```excel
+=INDEX(FILTRE(A2:C10;B2:B10="Nord");1;3)
+```
+
+Première valeur de la 3eme colonne du résultat filtre.
+
+## Filtres dynamiques
+
+### Référence cellule
+
+```excel
+=FILTRE(A2:C10;B2:B10=E1)
+```
+
+E1 contient le critère de filtrage.
+
+### Recherche partielle
+
+```excel
+=FILTRE(A2:C10;CHERCHE(E1;A2:A10)>0)
+```
+
+Filtre les lignes contenant le texte de E1.
+
+## Cas pratiques
+
+### Top N valeurs
+
+```excel
+=FILTRE(A2:C10;C2:C10>=GRANDE.VALEUR(C2:C10;5))
+```
+
+Les 5 plus grandes valeurs.
+
+### Exclure des valeurs
+
+```excel
+=FILTRE(A2:C10;A2:A10<>"Exclu")
+```
+
+Tout sauf les lignes avec "Exclu".
+
+### Plage de dates
+
+```excel
+=FILTRE(A2:C10;(D2:D10>=DATE(2024;1;1))*(D2:D10<=DATE(2024;12;31)))
+```
+
+Données de l'année 2024.
+
+## Performance
+
+### Optimisation
+
+| Conseil | Impact |
+|---------|--------|
+| Plages precises | Accelere le calcul |
+| Critères simples | Évaluation plus rapide |
+| Éviter les boucles | Moins de recalculs |
+
+## Erreurs courantes
+
+| Erreur | Cause | Solution |
+|--------|-------|----------|
+| #CALC! | Aucune correspondance | Utilisez si_vide |
+| #VALEUR! | Tailles incompatibles | Vérifiez les plages |
+| Résultats inattendus | Types différents | Vérifiez les formats |
+
+[Découvrir nos formations Excel](/formations-excel)

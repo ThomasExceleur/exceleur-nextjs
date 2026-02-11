@@ -1,0 +1,170 @@
+---
+title: "Quelle Formule Excel pour Calculer l'Anciennete"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez à calculer l'anciennete d'un employe dans Excel avec ces formules."
+description: "Guide pour calculer l'anciennete dans Excel. Formules DATEDIF et alternatives."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Dates"]
+tags: ["Anciennete", "DATEDIF", "Date", "RH"]
+---
+
+# Calculer l'Anciennete dans Excel
+
+Plusieurs formules permettent de calculer l'anciennete avec precision.
+
+## Formule principale : DATEDIF
+
+### Syntaxe
+
+```excel
+=DATEDIF(date_debut;date_fin;unite)
+```
+
+### Unites disponibles
+
+| Unite | Résultat |
+|-------|----------|
+| "Y" | Années completes |
+| "M" | Mois complets |
+| "D" | Jours |
+| "YM" | Mois (sans les années) |
+| "YD" | Jours (sans les années) |
+| "MD" | Jours (sans mois ni années) |
+
+## Exemples d'anciennete
+
+### En années
+
+```excel
+=DATEDIF(A1;AUJOURDHUI();"Y")
+```
+
+### En mois
+
+```excel
+=DATEDIF(A1;AUJOURDHUI();"M")
+```
+
+### Format complet
+
+```excel
+=DATEDIF(A1;AUJOURDHUI();"Y")&" ans et "&DATEDIF(A1;AUJOURDHUI();"YM")&" mois"
+```
+
+## Affichage détaillé
+
+### Années, mois et jours
+
+```excel
+=DATEDIF(A1;AUJOURDHUI();"Y")&" an(s), "&DATEDIF(A1;AUJOURDHUI();"YM")&" mois et "&DATEDIF(A1;AUJOURDHUI();"MD")&" jour(s)"
+```
+
+### Résultat
+
+```
+5 an(s), 3 mois et 15 jour(s)
+```
+
+## Alternative sans DATEDIF
+
+### En années (approximatif)
+
+```excel
+=ENT((AUJOURDHUI()-A1)/365.25)
+```
+
+### En mois (approximatif)
+
+```excel
+=ENT((AUJOURDHUI()-A1)/30.44)
+```
+
+## Avec une date de référence
+
+### Pour un calcul à date fixe
+
+```excel
+=DATEDIF(A1;DATE(2024;12;31);"Y")
+```
+
+## Cas particuliers
+
+### Anciennete inférieure à 1 an
+
+```excel
+=SI(DATEDIF(A1;AUJOURDHUI();"Y")<1;DATEDIF(A1;AUJOURDHUI();"M")&" mois";DATEDIF(A1;AUJOURDHUI();"Y")&" an(s)")
+```
+
+### Éviter les erreurs
+
+```excel
+=SI(A1>AUJOURDHUI();"Date future";DATEDIF(A1;AUJOURDHUI();"Y")&" ans")
+```
+
+## Tableau RH
+
+### Structuré
+
+| Nom | Date entrée | Anciennete |
+|-----|-------------|------------|
+| Dupont | 15/03/2019 | =FORMULE |
+
+### Formule
+
+```excel
+=DATEDIF(B2;AUJOURDHUI();"Y")&" ans"
+```
+
+## Tranches d'anciennete
+
+### Classification
+
+```excel
+=SI(DATEDIF(A1;AUJOURDHUI();"Y")<2;"Junior";SI(DATEDIF(A1;AUJOURDHUI();"Y")<5;"Confirme";"Senior"))
+```
+
+## Prime d'anciennete
+
+### Calcul selon anciennete
+
+```excel
+=SI(DATEDIF(A1;AUJOURDHUI();"Y")>=10;Salaire*0.1;SI(DATEDIF(A1;AUJOURDHUI();"Y")>=5;Salaire*0.05;0))
+```
+
+## Nombre de jours exact
+
+### Total jours travailles
+
+```excel
+=AUJOURDHUI()-A1
+```
+
+### Jours ouvres
+
+```excel
+=NB.JOURS.OUVRES(A1;AUJOURDHUI())
+```
+
+## Erreurs courantes
+
+### Date au format texte
+
+Convertissez avec DATEVAL :
+
+```excel
+=DATEDIF(DATEVAL(A1);AUJOURDHUI();"Y")
+```
+
+### Dates inversees
+
+DATEDIF retourne une erreur si la date de fin est anterieure.
+
+## Bonnes pratiques
+
+1. **Vérifiez** le format des dates
+2. **Utilisez** AUJOURDHUI() pour un calcul dynamique
+3. **Testez** avec des dates connues
+4. **Gérez** les cas d'erreur avec SI
+
+[Découvrir nos formations Excel](/formations-excel)

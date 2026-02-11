@@ -1,239 +1,178 @@
 ---
-title: "Excel Formule NB.SI : Compter avec Condition"
-date: "2024-07-20"
+title: "Excel Formule NB.SI : Guide Essentiel pour les Débutants"
+date: "2024-02-29"
 author: "Thomas L'Exceleur"
-excerpt: "Maîtrisez NB.SI et NB.SI.ENS pour compter les cellules selon des critères."
-description: "Guide complet de NB.SI et NB.SI.ENS dans Excel. Syntaxe, exemples pratiques et cas d'utilisation."
-category: "Formules Excel"
-catégories: ["Formules Excel", "Calculs"]
-tags: ["NB.SI", "NB.SI.ENS", "Formules", "Compter"]
+excerpt: "Dans le monde d'Excel, de nombreuses fonctions permettent d’analyser et de manipuler efficacement des données. L'une des plus utiles est la fonction NB.SI, qui vous aide à compter le nombre de cellules répondant à un critère spécifique. Cette fonction est idéale pour des tâches telles que le suivi d"
+description: "Dans le monde d'Excel, de nombreuses fonctions permettent d’analyser et de manipuler efficacement des données. L'une des plus utiles est la fonction NB.SI, qui vous aide à compter le nombre de cellules répondant à un critère spécifique. Cette fonction est idéale pour des tâches telles que le suivi d"
+category: "Formules"
+catégories: ["Formules"]
 ---
 
-# Excel NB.SI : Compter avec Conditions
+# Excel Formule NB.SI : Guide Essentiel pour les Débutants
 
-NB.SI compte les cellules qui repondent à un critère spécifique.
+Dans le monde d'Excel, de nombreuses fonctions permettent d’analyser et de manipuler efficacement des données. L'une des plus utiles est la fonction **NB.SI**, qui vous aide à compter le nombre de cellules répondant à un **critère spécifique**.
 
-## NB.SI : Un seul critère
+Cette fonction est idéale pour des tâches telles que le suivi des ventes, le décompte des inscriptions à un cours ou la mesure des performances en fonction de conditions données. En maîtrisant cette fonction, vous optimiserez votre analyse de données et gagnerez en productivité.
 
-### Syntaxe
+* * *
 
-```excel
-=NB.SI(plage; critère)
-```
 
-### Arguments
+## **Qu’est-ce que la fonction NB.SI ?**
 
-- **plage** : Les cellules à examiner
-- **critère** : La condition à remplir
+La fonction **NB.SI** est utilisée pour **compter les cellules** d'une plage donnée qui remplissent une **condition précise**. Elle est particulièrement utile pour des statistiques rapides ou des analyses ciblées.
 
-### Exemples
 
-#### Compter un texte exact
+### **Syntaxe de NB.SI**
 
-```excel
-=NB.SI(A:A; "Paris")
-```
+`=NB.SI(plage_de_cellules; critère)   `
 
-Compte les cellules contenant exactement "Paris".
+-   **plage\_de\_cellules** : La plage où se trouve les données à analyser (ex. : A1:A10).
+-   **critère** : La condition à vérifier pour chaque cellule de la plage. Ce critère peut être un texte, un nombre ou une expression.
 
-#### Compter les nombres supérieurs à
 
-```excel
-=NB.SI(B:B; ">100")
-```
+#### **Exemple basique** :
 
-#### Compter les cellules non vides
+Pour compter le nombre de cellules dans la plage **A1:A10** contenant des valeurs supérieures à 50 :
 
-```excel
-=NB.SI(A:A; "<>")
-```
+`=NB.SI(A1:A10; ">50")   `
 
-#### Compter avec référence
+* * *
 
-```excel
-=NB.SI(A:A; D1)
-```
 
-Compte selon la valeur de D1.
+## **Maîtriser les Critères de Comptage**
 
-## Critères possibles
+La flexibilité de **NB.SI** repose sur les différents types de critères que vous pouvez utiliser. Voici un résumé des options disponibles.
 
-| Critère | Signification |
-|---------|---------------|
-| `"Texte"` | Égal à Texte |
-| `">10"` | Supérieur à 10 |
-| `"<5"` | Inférieur à 5 |
-| `">=20"` | Supérieur où égal à 20 |
-| `"<=50"` | Inférieur où égal à 50 |
-| `"<>"` | Différent de (non vide) |
-| `"<>0"` | Différent de zero |
-| `"A*"` | Commence par A |
-| `"*e"` | Finit par e |
-| `"???"` | Exactement 3 caracteres |
 
-## NB.SI.ENS : Plusieurs critères
+### **Critères numériques**
 
-### Syntaxe
+Les opérateurs de comparaison vous permettent de spécifier des conditions :
 
-```excel
-=NB.SI.ENS(plage1; critere1; [plage2; critere2]; ...)
-```
+-   `=NB.SI(A1:A10; ">50")` : Compte les cellules avec des valeurs supérieures à 50.
+-   `=NB.SI(A1:A10; "<=100")` : Compte les cellules avec des valeurs inférieures ou égales à 100.
 
-### Exemples
 
-#### Deux critères
+### **Critères textuels**
 
-```excel
-=NB.SI.ENS(A:A; "Paris"; B:B; ">1000")
-```
+Vous pouvez chercher des correspondances exactes avec du texte :
 
-Compte où A = Paris ET B > 1000.
+-   `=NB.SI(A1:A10; "Oui")` : Compte les cellules contenant exactement « Oui ».
+-   `=NB.SI(A1:A10; "<>Non")` : Compte les cellules ne contenant pas « Non ».
 
-#### Trois critères
 
-```excel
-=NB.SI.ENS(A:A; "Ventes"; B:B; "Nord"; C:C; ">=100")
-```
+### **Caractères génériques**
 
-#### Entre deux valeurs
+Pour des correspondances partielles, utilisez :
 
-```excel
-=NB.SI.ENS(A:A; ">="&D1; A:A; "<="&E1)
-```
+-   **Astérisque (\*)** : Remplace n’importe quel nombre de caractères.
+    -   `=NB.SI(A1:A10; "*chat*")` : Compte les cellules contenant « chat », peu importe sa position.
+-   **Point d’interrogation (?)** : Remplace un seul caractère.
+    -   `=NB.SI(A1:A10; "??tion")` : Compte les cellules contenant des mots de 6 lettres terminant par « tion ».
 
-Compte les valeurs entre D1 et E1.
+* * *
 
-## Caracteres joker
 
-### * (zero où plusieurs caracteres)
+## **Erreurs et Dépannage**
 
-```excel
-=NB.SI(A:A; "*Excel*")
-```
 
-Compte les cellules contenant "Excel".
+### **Erreur #VALEUR!**
 
-### ? (un seul caractere)
+Cette erreur se produit lorsque :
 
-```excel
-=NB.SI(A:A; "A???")
-```
+1.  Les critères ne correspondent pas au type des données (ex. : comparer un texte à un nombre).
+2.  La plage contient des cellules avec des erreurs (#DIV/0!, #N/A, etc.).
 
-Compte les valeurs de 4 caracteres commencant par A.
 
-### Echapper les caracteres joker
+#### **Solutions** :
 
-Pour chercher un vrai asterisque :
+-   Vérifiez que le critère est bien défini et correspond au contenu des cellules.
+-   Si vous travaillez avec du texte, entourez les critères de guillemets doubles (`"Paris"`).
 
-```excel
-=NB.SI(A:A; "*~**")
-```
 
-Le ~ escape le caractere suivant.
+### **Critères complexes**
 
-## Critères avec opérateurs
+Pour des recherches sensibles à la casse ou nécessitant plusieurs conditions, combinez NB.SI avec d'autres fonctions comme **SOMMEPROD**.
 
-### Supérieur à une cellule
+* * *
 
-```excel
-=NB.SI(B:B; ">"&D1)
-```
 
-### Différent d'une cellule
+## **Applications Avancées : NB.SI.ENS**
 
-```excel
-=NB.SI(A:A; "<>"&E1)
-```
+Pour des analyses plus complexes impliquant **plusieurs critères**, utilisez la fonction **NB.SI.ENS**.
 
-### Dates
 
-```excel
-=NB.SI(A:A; ">"&DATE(2024;1;1))
-```
+### **Syntaxe de NB.SI.ENS**
 
-## Cas pratiques
+`=NB.SI.ENS(plage_critères1; critère1; ; …)   `
 
-### Compter les statuts
 
-```excel
-=NB.SI(Statut; "En cours")
-=NB.SI(Statut; "Termine")
-=NB.SI(Statut; "Annule")
-```
+#### **Exemple** :
 
-### Compter par tranche d'age
+Comptez les ventes de « Produit X » réalisées entre le 01/01/2023 et le 31/12/2023 :
 
-```excel
-=NB.SI.ENS(Age; ">=18"; Age; "<30")
-=NB.SI.ENS(Age; ">=30"; Age; "<50")
-=NB.SI.ENS(Age; ">=50")
-```
+`=NB.SI.ENS(A1:A100; "Produit X"; B1:B100; ">=01/01/2023"; B1:B100; "<=31/12/2023")   `
 
-### Compter les ventes par region et produit
+* * *
 
-```excel
-=NB.SI.ENS(Regions; "Nord"; Produits; "Widget")
-```
 
-### Compter les retards
+## **Pratiques Courantes et Exemples**
 
-```excel
-=NB.SI(DateLivraison-DatePrevue; ">0")
-```
 
-## Différence NB.SI vs SOMME.SI
+### **Compter les cellules avec du texte**
 
-| Fonction | Résultat |
-|----------|----------|
-| NB.SI | Nombre de cellules |
-| SOMME.SI | Somme des valeurs |
+Si vous souhaitez compter combien de fois « Paris » apparaît dans une liste :
 
-## Compter les valeurs uniques
+`=NB.SI(A1:A10; "Paris")   `
 
-### Formule
 
-```excel
-=SOMMEPROD(1/NB.SI(A1:A100;A1:A100))
-```
+### **Compter les cellules avec des dates**
 
-Attention aux cellules vides.
+Pour compter les commandes passées après le 01/01/2023 :
 
-### Version securisee
+`=NB.SI(A1:A10; ">01/01/2023")   `
 
-```excel
-=SOMMEPROD((A1:A100<>"")/NB.SI(A1:A100;A1:A100&""))
-```
 
-## Erreurs courantes
+### **Compter les cellules vides**
 
-### #VALEUR!
+Pour compter les cellules sans contenu dans une plage :
 
-**Cause** : Plages de tailles différentes dans NB.SI.ENS
+`=NB.SI(A1:A10; "")   `
 
-**Solution** : Utilisez des plages de meme taille
 
-### Résultat zero inattendu
+### **Compter les cellules non vides**
 
-**Causes** :
-- Critère mal écrit
-- Espaces invisibles
-- Format texte vs nombre
+Pour identifier les cellules remplies :
 
-## Comparaison des fonctions
+`=NB(A1:A10) - NB.SI(A1:A10; "")   `
 
-| Fonction | Critères | Usage |
-|----------|----------|-------|
-| NB | 0 | Compte les nombres |
-| NBVAL | 0 | Compte les non-vides |
-| NB.VIDE | 0 | Compte les vides |
-| NB.SI | 1 | Compte avec condition |
-| NB.SI.ENS | Plusieurs | Conditions multiples |
+* * *
 
-## Bonnes pratiques
 
-1. **Vérifiez les plages** : Meme taille pour NB.SI.ENS
-2. **Utilisez des guillemets** : Pour les critères texte
-3. **Concatenez avec &** : Pour les références
-4. **Testez vos critères** : Sur quelques cellules d'abord
+## **Conseils pour Automatiser avec NB.SI**
 
-[Découvrir nos formations Excel](/formations-excel)
+Vous pouvez utiliser **VBA** pour automatiser les tâches impliquant **NB.SI**. Par exemple, pour mettre à jour automatiquement le résultat d’un comptage :
+
+1.  Ouvrez l'éditeur VBA (Alt + F11).
+2.  Ajoutez un module avec le code suivant :
+
+`Private Sub Worksheet_Change(ByVal Target As Range)   Dim plage As Range   Dim critere As String   Dim resultat As Long  Set plage = ThisWorkbook.Worksheets("Feuil1").Range("A1:A10")   critere = ">=50"  `
+
+`resultat = Application.WorksheetFunction.CountIf(plage, critere)   ThisWorkbook.Worksheets("Feuil1").Range("B1").Value = resultat   End Sub   `
+
+Ce code mettra automatiquement à jour le résultat dans **B1** dès qu’une valeur de la plage **A1:A10** est modifiée.
+
+* * *
+
+
+## **En Résumé**
+
+La fonction **NB.SI** est un outil incontournable pour les analyses ciblées dans Excel. Avec ses critères variés et ses nombreuses applications, elle permet de simplifier des tâches complexes, comme le filtrage et le comptage conditionnel.
+
+Pour aller plus loin, explorez sa version avancée **NB.SI.ENS**, et combinez-la avec des outils comme VBA pour maximiser vos capacités d’analyse et d’automatisation.
+
+
+### Formations et Cours en Ligne
+
+Si vous êtes intéressé par des **cours de formation** plus approfondis, notre formation **[Le Décollage](https://www.exceleur.fr/formations-excel/le-decollage-liste-attente/)** pourrais bien vous intéresser.
+
+N'hésitez pas à vous inscrire à **[la liste d'attente](https://www.exceleur.fr/formations-excel/le-decollage-liste-attente/)** pour ne pas manquer la prochaine ouverture de la formation.

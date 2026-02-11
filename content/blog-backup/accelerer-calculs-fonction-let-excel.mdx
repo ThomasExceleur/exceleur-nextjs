@@ -1,0 +1,154 @@
+---
+title: "Accélérer vos Calculs avec la Fonction LET"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Optimisez les performances de vos formules avec LET."
+description: "Comment LET ameliore les performances des calculs Excel."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Excel 365"]
+tags: ["LET", "Performance", "Optimisation", "Excel 365"]
+---
+
+# Accelerer vos Calculs avec LET
+
+LET ne rend pas seulement les formules lisibles, mais aussi plus rapides.
+
+## Le problème : Calculs répétés
+
+### Exemple sans LET
+
+```excel
+=SI(RECHERCHEX(A1;B:B;C:C)>100;
+  RECHERCHEX(A1;B:B;C:C)*1.1;
+  RECHERCHEX(A1;B:B;C:C)*0.9)
+```
+
+RECHERCHEX est execute 3 fois.
+
+### Avec LET
+
+```excel
+=LET(
+  résultat;RECHERCHEX(A1;B:B;C:C);
+  SI(résultat>100;résultat*1.1;résultat*0.9)
+)
+```
+
+RECHERCHEX n'est execute qu'une fois.
+
+## Gains de performance
+
+### Fonctions couteuses
+
+Certaines fonctions sont lentes :
+- RECHERCHEX sûr grandes plages
+- FILTRE
+- TRIER
+- UNIQUE
+- Fonctions matricielles
+
+### Reduction des calculs
+
+Si une formule utilisé 5 fois le meme calcul, LET divise le temps par 5.
+
+## Exemple : Statistiques
+
+### Sans LET
+
+```excel
+=MOYENNE(A:A)&" | "&ECARTYPE.STANDARD(A:A)&" | "&(A1-MOYENNE(A:A))/ECARTYPE.STANDARD(A:A)
+```
+
+MOYENNE calcule 2 fois, ECARTYPE 2 fois.
+
+### Avec LET
+
+```excel
+=LET(
+  moy;MOYENNE(A:A);
+  ecart;ECARTYPE.STANDARD(A:A);
+  zscore;(A1-moy)/ecart;
+  moy&" | "&ecart&" | "&zscore
+)
+```
+
+Chaque calcul une seule fois.
+
+## Exemple : Recherche avec traitement
+
+### Sans LET
+
+```excel
+=SI(ESTNA(RECHERCHEX(A1;B:B;C:C));"N/A";
+  SI(RECHERCHEX(A1;B:B;C:C)>1000;
+    "VIP: "&RECHERCHEX(A1;B:B;C:C);
+    "Standard: "&RECHERCHEX(A1;B:B;C:C)))
+```
+
+### Avec LET
+
+```excel
+=LET(
+  val;RECHERCHEX(A1;B:B;C:C;"N/A");
+  SI(val="N/A";val;
+    SI(val>1000;"VIP: "&val;"Standard: "&val))
+)
+```
+
+## Mesurer l'amélioration
+
+### Méthode simple
+
+1. Desactivez le calcul automatique
+2. Mesurez le temps de recalcul (Ctrl+Shift+F9)
+3. Comparez avant/après LET
+
+### Formules volumineuses
+
+Sur des milliers de lignes, la différence devient significative.
+
+## Combiner avec autres optimisations
+
+### LET + Plages limitees
+
+```excel
+=LET(
+  données;A2:A1000;  ' Pas A:A
+  somme;SOMME(données);
+  moyenne;MOYENNE(données);
+  ...
+)
+```
+
+### LET + Tables
+
+```excel
+=LET(
+  table;Ventes[Montant];
+  total;SOMME(table);
+  ...
+)
+```
+
+## Cas où LET n'aide pas
+
+### Calculs uniques
+
+Si chaque calcul n'est fait qu'une fois, LET n'accelere rien.
+
+### Formules simples
+
+```excel
+=A1+B1
+```
+
+Pas besoin de LET ici.
+
+## Bonnes pratiques
+
+1. **Identifiez** les calculs répétés
+2. **Utilisez** LET pour les fonctions couteuses
+3. **Limitez** les plages
+4. **Mesurez** les gains
+
+[Découvrir nos formations Excel](/formations-excel)

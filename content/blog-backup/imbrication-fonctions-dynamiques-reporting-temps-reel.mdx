@@ -1,0 +1,91 @@
+---
+title: "Imbrication de Fonctions Dynamiques pour le Reporting Temps Reel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Combinez les fonctions dynamiques pour des rapports en temps reel."
+description: "Guide d'imbrication des fonctions dynamiques Excel."
+category: "Excel 365"
+catégories: ["Excel 365", "Analyse de données Excel"]
+tags: ["Fonctions dynamiques", "Reporting", "Temps reel", "Imbrication"]
+---
+
+# Imbrication de Fonctions Dynamiques pour le Reporting
+
+Créez des rapports qui se mettent à jour automatiquement.
+
+## Fonctions dynamiques principales
+
+| Fonction | Rôle |
+|----------|------|
+| FILTRE | Extraire selon critères |
+| TRIER | Ordonner les résultats |
+| UNIQUE | Eliminer les doublons |
+| SEQUENCE | Générer des series |
+
+## Combinaisons puissantes
+
+### FILTRE + TRIER
+
+```excel
+=TRIER(FILTRE(Données;Region=\"Nord\");3;-1)
+```
+
+Filtre puis trie par la 3eme colonne.
+
+### UNIQUE + TRIER
+
+```excel
+=TRIER(UNIQUE(Données))
+```
+
+Liste unique et triee.
+
+### FILTRE + UNIQUE
+
+```excel
+=UNIQUE(FILTRE(Produits;Statut=\"Actif\"))
+```
+
+Produits actifs uniques.
+
+## Avec LET pour la lisibilité
+
+```excel
+=LET(
+  source;Ventes;
+  filtrees;FILTRE(source;Region=\"Nord\");
+  triees;TRIER(filtrees;Montant;-1);
+  top10;INDEX(triees;SEQUENCE(10);SEQUENCE(1;COLONNES(source)));
+  top10
+)
+```
+
+## Reporting automatique
+
+### KPIs dynamiques
+
+```excel
+=LET(
+  données;FILTRE(Ventes;Mois=MoisActuel);
+  total;SOMME(INDEX(données;;3));
+  nb;LIGNES(données);
+  moyenne;total/nb;
+  CONCAT(\"Total: \";total;\" | Moyenne: \";moyenne)
+)
+```
+
+### Top performers
+
+```excel
+=INDEX(TRIER(FILTRE(Données;Année=2024);Montant;-1);SEQUENCE(5);SEQUENCE(1;4))
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| LET | Structurez les formules complexes |
+| Noms | Utilisez des plages nommées |
+| Test | Vérifiez chaque étape |
+
+[Découvrir nos formations Excel](/formations-excel)

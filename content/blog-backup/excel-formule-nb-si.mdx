@@ -1,0 +1,239 @@
+---
+title: "Excel Formule NB.SI : Compter avec Condition"
+date: "2024-07-20"
+author: "Thomas L'Exceleur"
+excerpt: "Maîtrisez NB.SI et NB.SI.ENS pour compter les cellules selon des critères."
+description: "Guide complet de NB.SI et NB.SI.ENS dans Excel. Syntaxe, exemples pratiques et cas d'utilisation."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Calculs"]
+tags: ["NB.SI", "NB.SI.ENS", "Formules", "Compter"]
+---
+
+# Excel NB.SI : Compter avec Conditions
+
+NB.SI compte les cellules qui repondent à un critère spécifique.
+
+## NB.SI : Un seul critère
+
+### Syntaxe
+
+```excel
+=NB.SI(plage; critère)
+```
+
+### Arguments
+
+- **plage** : Les cellules à examiner
+- **critère** : La condition à remplir
+
+### Exemples
+
+#### Compter un texte exact
+
+```excel
+=NB.SI(A:A; "Paris")
+```
+
+Compte les cellules contenant exactement "Paris".
+
+#### Compter les nombres supérieurs à
+
+```excel
+=NB.SI(B:B; ">100")
+```
+
+#### Compter les cellules non vides
+
+```excel
+=NB.SI(A:A; "<>")
+```
+
+#### Compter avec référence
+
+```excel
+=NB.SI(A:A; D1)
+```
+
+Compte selon la valeur de D1.
+
+## Critères possibles
+
+| Critère | Signification |
+|---------|---------------|
+| `"Texte"` | Égal à Texte |
+| `">10"` | Supérieur à 10 |
+| `"<5"` | Inférieur à 5 |
+| `">=20"` | Supérieur où égal à 20 |
+| `"<=50"` | Inférieur où égal à 50 |
+| `"<>"` | Différent de (non vide) |
+| `"<>0"` | Différent de zero |
+| `"A*"` | Commence par A |
+| `"*e"` | Finit par e |
+| `"???"` | Exactement 3 caracteres |
+
+## NB.SI.ENS : Plusieurs critères
+
+### Syntaxe
+
+```excel
+=NB.SI.ENS(plage1; critere1; [plage2; critere2]; ...)
+```
+
+### Exemples
+
+#### Deux critères
+
+```excel
+=NB.SI.ENS(A:A; "Paris"; B:B; ">1000")
+```
+
+Compte où A = Paris ET B > 1000.
+
+#### Trois critères
+
+```excel
+=NB.SI.ENS(A:A; "Ventes"; B:B; "Nord"; C:C; ">=100")
+```
+
+#### Entre deux valeurs
+
+```excel
+=NB.SI.ENS(A:A; ">="&D1; A:A; "<="&E1)
+```
+
+Compte les valeurs entre D1 et E1.
+
+## Caracteres joker
+
+### * (zero où plusieurs caracteres)
+
+```excel
+=NB.SI(A:A; "*Excel*")
+```
+
+Compte les cellules contenant "Excel".
+
+### ? (un seul caractere)
+
+```excel
+=NB.SI(A:A; "A???")
+```
+
+Compte les valeurs de 4 caracteres commencant par A.
+
+### Echapper les caracteres joker
+
+Pour chercher un vrai asterisque :
+
+```excel
+=NB.SI(A:A; "*~**")
+```
+
+Le ~ escape le caractere suivant.
+
+## Critères avec opérateurs
+
+### Supérieur à une cellule
+
+```excel
+=NB.SI(B:B; ">"&D1)
+```
+
+### Différent d'une cellule
+
+```excel
+=NB.SI(A:A; "<>"&E1)
+```
+
+### Dates
+
+```excel
+=NB.SI(A:A; ">"&DATE(2024;1;1))
+```
+
+## Cas pratiques
+
+### Compter les statuts
+
+```excel
+=NB.SI(Statut; "En cours")
+=NB.SI(Statut; "Termine")
+=NB.SI(Statut; "Annule")
+```
+
+### Compter par tranche d'age
+
+```excel
+=NB.SI.ENS(Age; ">=18"; Age; "<30")
+=NB.SI.ENS(Age; ">=30"; Age; "<50")
+=NB.SI.ENS(Age; ">=50")
+```
+
+### Compter les ventes par region et produit
+
+```excel
+=NB.SI.ENS(Regions; "Nord"; Produits; "Widget")
+```
+
+### Compter les retards
+
+```excel
+=NB.SI(DateLivraison-DatePrevue; ">0")
+```
+
+## Différence NB.SI vs SOMME.SI
+
+| Fonction | Résultat |
+|----------|----------|
+| NB.SI | Nombre de cellules |
+| SOMME.SI | Somme des valeurs |
+
+## Compter les valeurs uniques
+
+### Formule
+
+```excel
+=SOMMEPROD(1/NB.SI(A1:A100;A1:A100))
+```
+
+Attention aux cellules vides.
+
+### Version securisee
+
+```excel
+=SOMMEPROD((A1:A100<>"")/NB.SI(A1:A100;A1:A100&""))
+```
+
+## Erreurs courantes
+
+### #VALEUR!
+
+**Cause** : Plages de tailles différentes dans NB.SI.ENS
+
+**Solution** : Utilisez des plages de meme taille
+
+### Résultat zero inattendu
+
+**Causes** :
+- Critère mal écrit
+- Espaces invisibles
+- Format texte vs nombre
+
+## Comparaison des fonctions
+
+| Fonction | Critères | Usage |
+|----------|----------|-------|
+| NB | 0 | Compte les nombres |
+| NBVAL | 0 | Compte les non-vides |
+| NB.VIDE | 0 | Compte les vides |
+| NB.SI | 1 | Compte avec condition |
+| NB.SI.ENS | Plusieurs | Conditions multiples |
+
+## Bonnes pratiques
+
+1. **Vérifiez les plages** : Meme taille pour NB.SI.ENS
+2. **Utilisez des guillemets** : Pour les critères texte
+3. **Concatenez avec &** : Pour les références
+4. **Testez vos critères** : Sur quelques cellules d'abord
+
+[Découvrir nos formations Excel](/formations-excel)

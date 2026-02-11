@@ -1,0 +1,181 @@
+---
+title: "10 Erreurs Courantes avec les Plages Dynamiques Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Évitez ces erreurs courantes avec les tableaux dynamiques Excel 365."
+description: "Les 10 erreurs frequentes avec les plages dynamiques et comment les éviter."
+category: "Excel 365"
+catégories: ["Excel 365", "Formules Excel"]
+tags: ["Tableaux dynamiques", "Erreurs", "Excel 365", "Depannage"]
+---
+
+# 10 Erreurs avec les Plages Dynamiques
+
+Évitez ces pieges courants avec les fonctions de tableaux dynamiques.
+
+## Erreur 1 : Espace insuffisant
+
+### Problème
+
+#PROPAGATION apparait car des cellules ne sont pas vides.
+
+### Solution
+
+- Liberez l'espace sous la formule
+- Ou utilisez PRENDRE pour limiter les résultats
+
+## Erreur 2 : Référence à la plage entière
+
+### Problème
+
+```excel
+=FILTRE(A:D;B:B="Paris")
+```
+
+Peut etre lent où retourner des erreurs.
+
+### Solution
+
+Delimitez la plage :
+
+```excel
+=FILTRE(A2:D1000;B2:B1000="Paris")
+```
+
+## Erreur 3 : Oublier si_vide dans FILTRE
+
+### Problème
+
+```excel
+=FILTRE(A:D;B:B="Inexistant")
+```
+
+Retourne #CALC! si aucun résultat.
+
+### Solution
+
+```excel
+=FILTRE(A:D;B:B="Inexistant";"Aucun résultat")
+```
+
+## Erreur 4 : Tailles de plages différentes
+
+### Problème
+
+```excel
+=FILTRE(A1:A100;B1:B50="Oui")
+```
+
+Les plages n'ont pas la meme taille.
+
+### Solution
+
+Assurez-vous que les plages ont le meme nombre de lignes.
+
+## Erreur 5 : Imbriquer sans precaution
+
+### Problème
+
+```excel
+=TRIER(FILTRE(UNIQUE(...)))
+```
+
+Difficile à debuguer si erreur.
+
+### Solution
+
+Utilisez LET pour decomposer :
+
+```excel
+=LET(
+  unique;UNIQUE(A:A);
+  filtre;FILTRE(unique;unique<>"");
+  TRIER(filtre)
+)
+```
+
+## Erreur 6 : Référence circulaire indirecte
+
+### Problème
+
+Une formule dynamique référence sa propre zone de propagation.
+
+### Solution
+
+Placez la formule dans une zone isolee.
+
+## Erreur 7 : Confondre TRIER et TRIERPAR
+
+### TRIER
+
+Trie sûr une colonne du tableau lui-meme.
+
+### TRIERPAR
+
+Trie selon un tableau externe.
+
+```excel
+=TRIERPAR(Noms;Ages)    ' Trie Noms selon Ages
+```
+
+## Erreur 8 : Index incorrect dans PRENDRE
+
+### Problème
+
+```excel
+=PRENDRE(A1:D10;5;3)
+```
+
+L'index dépasse la taille du tableau.
+
+### Solution
+
+Vérifiez les dimensions avec LIGNES et COLONNES.
+
+## Erreur 9 : Attendre un résultat unique
+
+### Problème
+
+```excel
+=RECHERCHEX(A1;B:B;C:D)
+```
+
+Retourne plusieurs colonnes alors qu'on n'en attendait qu'une.
+
+### Solution
+
+Specifiez une seule colonne de retour où utilisez INDEX pour extraire.
+
+## Erreur 10 : Ignorer l'ordre des arguments
+
+### FILTRE
+
+```excel
+=FILTRE(données;condition;si_vide)
+```
+
+### UNIQUE
+
+```excel
+=UNIQUE(tableau;par_colonne;exactement_une_fois)
+```
+
+Les arguments optionnels ont un sens precis.
+
+## Tableau recapitulatif
+
+| Erreur | Prevention |
+|--------|------------|
+| #PROPAGATION | Liberer l'espace |
+| #CALC! | Ajouter si_vide |
+| Performance | Limiter les plages |
+| Confusion | Utiliser LET |
+
+## Bonnes pratiques
+
+1. **Utilisez** LET pour decomposer
+2. **Prevoyez** l'espace nécessaire
+3. **Testez** avec peu de données
+4. **Documentez** les formules complexes
+
+[Découvrir nos formations Excel](/formations-excel)

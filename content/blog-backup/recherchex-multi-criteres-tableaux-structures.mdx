@@ -1,0 +1,72 @@
+---
+title: "RECHERCHEX Multi-Critères avec Tableaux Structurés"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Utilisez RECHERCHEX avec plusieurs critères dans des tableaux structurés."
+description: "Guide pour maîtriser RECHERCHEX multi-critères avec les tableaux structurés Excel."
+category: "Fonctions"
+catégories: ["Fonctions", "Recherche"]
+tags: ["RECHERCHEX", "Multi-critères", "Tableaux structurés", "Excel"]
+---
+
+# RECHERCHEX Multi-Critères
+
+Combinez plusieurs critères avec RECHERCHEX.
+
+## Syntaxe de base
+
+```excel
+=RECHERCHEX(valeur_cherchee;plage_recherche;plage_resultat;[si_non_trouve];[mode];[ordre])
+```
+
+## Multi-critères avec concatenation
+
+### Méthode
+
+```excel
+=RECHERCHEX(A1&B1;Tableau[Col1]&Tableau[Col2];Tableau[Résultat])
+```
+
+### Exemple pratique
+
+| Critère 1 | Critère 2 | Formule |
+|-----------|-----------|---------|
+| "Paris" | "2024" | `=RECHERCHEX("Paris"&"2024";T[Ville]&T[Année];T[CA])` |
+
+## Avec tableaux structurés
+
+### Avantages
+
+- Références automatiques
+- Expansion dynamique
+- Lisibilité amelioree
+
+### Syntaxe
+
+```excel
+=RECHERCHEX(critère;Ventes[Region]&Ventes[Produit];Ventes[Montant])
+```
+
+## Gestion des erreurs
+
+### SIERREUR
+
+```excel
+=SIERREUR(RECHERCHEX(...);"Non trouve")
+```
+
+### Argument natif
+
+```excel
+=RECHERCHEX(valeur;plage;result;"Non trouve")
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Nommage | Utilisez des tableaux nommés |
+| Séparateur | Ajoutez un caractere unique entre critères |
+| Test | Vérifiez avec des données connues |
+
+[Découvrir nos formations Excel](/formations-excel)

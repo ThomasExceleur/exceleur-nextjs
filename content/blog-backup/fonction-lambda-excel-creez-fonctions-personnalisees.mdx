@@ -1,0 +1,226 @@
+---
+title: "Fonction LAMBDA Excel : Créez des Fonctions Personnalisees"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez à créer vos propres fonctions Excel avec LAMBDA."
+description: "Tutoriel pour créer des fonctions personnalisees avec LAMBDA Excel."
+category: "Excel 365"
+catégories: ["Excel 365", "Formules Excel"]
+tags: ["LAMBDA", "Fonctions personnalisees", "Excel 365", "Tutoriel"]
+---
+
+# LAMBDA : Créez des Fonctions Personnalisees
+
+Transformez vos formules complexes en fonctions simples à utiliser.
+
+## Le concept
+
+### Problème
+
+Vous utilisez souvent la meme formule complexe.
+
+### Solution
+
+Créez une fonction nommée avec LAMBDA.
+
+## Créer votre première fonction
+
+### Étape 1 : Définir la logique
+
+Quelle formule voulez-vous reutiliser ?
+
+Exemple : Calculer le prix TTC avec TVA à 20%
+
+```excel
+=prix*1,2
+```
+
+### Étape 2 : Convertir en LAMBDA
+
+```excel
+=LAMBDA(prix;prix*1,2)
+```
+
+### Étape 3 : Nommer la fonction
+
+1. **Formules** > **Gestionnaire de noms**
+2. **Nouveau**
+3. Nom : `PRIX_TTC`
+4. Fait référence à : `=LAMBDA(prix;prix*1,2)`
+
+### Étape 4 : Utiliser
+
+```excel
+=PRIX_TTC(100)   ' Retourne 120
+=PRIX_TTC(A1)    ' Calcule TTC de A1
+```
+
+## Fonctions à un paramèêtre
+
+### Conversion Celsius-Fahrenheit
+
+```excel
+Nom: C_TO_F
+Formule: =LAMBDA(c;c*9/5+32)
+```
+
+### Arrondi à 5 centimes
+
+```excel
+Nom: ARRONDI_5CT
+Formule: =LAMBDA(x;ARRONDI.AU.MULTIPLE(x;0,05))
+```
+
+### Extraire domaine email
+
+```excel
+Nom: DOMAINE
+Formule: =LAMBDA(email;DROITE(email;NBCAR(email)-CHERCHE("@";email)))
+```
+
+## Fonctions à plusieurs paramètrès
+
+### Calcul de remise
+
+```excel
+Nom: APRES_REMISE
+Formule: =LAMBDA(prix;remise;prix*(1-remise))
+```
+
+Usage : `=APRES_REMISE(100;0,1)` retourne 90
+
+### Prix avec TVA variable
+
+```excel
+Nom: TTC_VARIABLE
+Formule: =LAMBDA(ht;taux;ht*(1+taux))
+```
+
+Usage : `=TTC_VARIABLE(100;0,055)` pour TVA 5,5%
+
+### Commission par paliers
+
+```excel
+Nom: COMMISSION
+Formule: =LAMBDA(ventes;seuil;taux_bas;taux_haut;
+  SI(ventes<=seuil;ventes*taux_bas;
+    seuil*taux_bas+(ventes-seuil)*taux_haut
+  )
+)
+```
+
+## Fonctions avec conditions
+
+### Classification automatique
+
+```excel
+Nom: CATEGORIE_CLIENT
+Formule: =LAMBDA(çà;
+  SI(çà>=10000;"VIP";
+    SI(çà>=5000;"Premium";
+      SI(çà>=1000;"Standard";"Prospect")))
+)
+```
+
+### Validation
+
+```excel
+Nom: EST_EMAIL_VALIDE
+Formule: =LAMBDA(email;
+  ET(
+    CHERCHE("@";email)>1;
+    CHERCHE(".";email;CHERCHE("@";email))>CHERCHE("@";email)+1
+  )
+)
+```
+
+## Fonctions pour le texte
+
+### Initiales
+
+```excel
+Nom: INITIALES
+Formule: =LAMBDA(nom;
+  MAJUSCULE(GAUCHE(nom;1))&MAJUSCULE(STXT(nom;CHERCHE(" ";nom)+1;1))
+)
+```
+
+### Nettoyage complet
+
+```excel
+Nom: NETTOYER_TEXTE
+Formule: =LAMBDA(txt;SUPPRESPACE(EPURAGE(NOMPROPRE(txt))))
+```
+
+## Fonctions pour les dates
+
+### Age en années
+
+```excel
+Nom: AGE
+Formule: =LAMBDA(naissance;DATEDIF(naissance;AUJOURDHUI();"y"))
+```
+
+### Prochain lundi
+
+```excel
+Nom: LUNDI_SUIVANT
+Formule: =LAMBDA(date;date+MOD(8-JOURSEM(date;2);7))
+```
+
+## Tester vos fonctions
+
+### Méthode 1 : Appel direct
+
+```excel
+=LAMBDA(x;x*2)(5)
+```
+
+Teste sans créer de nom.
+
+### Méthode 2 : Cellule de test
+
+Créez une feuille "Tests" avec des cas d'usage.
+
+## Partager vos fonctions
+
+### Via le classeur
+
+Les noms sont sauvegardes avec le classeur.
+
+### Via copie
+
+1. Ouvrez les deux classeurs
+2. Les noms peuvent etre copies
+
+### Classeur de référence
+
+Créez un classeur modèle avec toutes vos fonctions.
+
+## Organisation recommandée
+
+### Par domaine
+
+| Prefixe | Usage |
+|---------|-------|
+| CALC_ | Calculs |
+| TXT_ | Texte |
+| DATE_ | Dates |
+| VAL_ | Validation |
+
+### Documentation
+
+Utilisez le commentaire du nom pour decrire :
+- Paramètrès attendus
+- Valeur retournee
+- Exemple d'utilisation
+
+## Erreurs courantes
+
+| Erreur | Cause | Solution |
+|--------|-------|----------|
+| #NOM? | Fonction non définie | Vérifiez le nom |
+| #VALEUR! | Mauvais type | Vérifiez les paramètrès |
+| #CALC! | Erreur de calcul | Debuggez la formule |
+
+[Découvrir nos formations Excel](/formations-excel)

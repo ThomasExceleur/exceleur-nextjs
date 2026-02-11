@@ -1,0 +1,80 @@
+---
+title: "Excel : Aller à la Ligne dans une Cellule"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Créez des retours à la ligne dans les cellules."
+description: "Guide pour les retours à la ligne dans Excel."
+category: "Formatage"
+catégories: ["Formatage", "Astuces Excel"]
+tags: ["Retour à la ligne", "Cellule", "Format", "Excel"]
+---
+
+# Retour à la Ligne dans une Cellule
+
+Plusieurs lignes dans une seule cellule.
+
+## Raccourci clavier
+
+### Alt + Entrée
+
+En mode edition (F2), appuyez sûr **Alt+Entrée**.
+
+## Retour automatique
+
+### Activer
+
+1. Sélectionnez les cellules
+2. **Accueil** > **Renvoyer à la ligne automatiquement**
+
+### Effet
+
+Le texte s'adapte à la largeur de la colonne.
+
+## Différences
+
+| Méthode | Comportement |
+|---------|--------------|
+| Alt+Entrée | Saut manuel |
+| Renvoyer auto | S'adapte à la largeur |
+
+## Formule avec saut de ligne
+
+### CAR(10)
+
+```excel
+=A1&CAR(10)&B1
+```
+
+CAR(10) inséré un saut de ligne.
+
+## Exemple pratique
+
+### Adresse
+
+```excel
+=Nom&CAR(10)&Rue&CAR(10)&CP&" "&Ville
+```
+
+## Supprimer les sauts
+
+### SUBSTITUE
+
+```excel
+=SUBSTITUE(A1;CAR(10);" ")
+```
+
+## Hauteur de ligne
+
+### Ajuster automatiquement
+
+Double-cliquez sûr la bordure de la ligne.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Cohérence | Meme méthode partout |
+| Hauteur | Ajustez les lignes |
+| Lisibilité | N'abusez pas des sauts |
+
+[Découvrir nos formations Excel](/formations-excel)

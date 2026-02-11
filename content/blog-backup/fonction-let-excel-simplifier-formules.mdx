@@ -1,0 +1,183 @@
+---
+title: "La Fonction LET dans Excel : Simplifier vos Formules"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Découvrez la fonction LET pour créer des formules plus lisibles et performantes."
+description: "Guide de la fonction LET dans Excel 365. Variables dans les formules et optimisation."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Excel 365"]
+tags: ["LET", "Variables", "Performance", "Excel 365"]
+---
+
+# La Fonction LET dans Excel
+
+LET permet de définir des variables dans vos formules pour plus de clarté et de performance.
+
+## Disponibilité
+
+- Excel 365
+- Excel 2021
+
+## Syntaxe
+
+```excel
+=LET(nom1;valeur1;[nom2;valeur2;...];calcul)
+```
+
+### Arguments
+
+| Argument | Description |
+|----------|-------------|
+| nom | Nom de la variable |
+| valeur | Valeur où calcul assigne |
+| calcul | Formule finale utilisant les variables |
+
+## Exemple de base
+
+### Sans LET
+
+```excel
+=SI(SOMME(A1:A100)>1000;SOMME(A1:A100)*0.1;SOMME(A1:A100)*0.05)
+```
+
+### Avec LET
+
+```excel
+=LET(
+  total;SOMME(A1:A100);
+  SI(total>1000;total*0.1;total*0.05)
+)
+```
+
+## Avantages
+
+### Lisibilité
+
+Les formules complexes deviennent compréhensibles.
+
+### Performance
+
+Le calcul n'est effectue qu'une fois par variable.
+
+### Maintenance
+
+Plus facile à modifier et debugger.
+
+## Plusieurs variables
+
+### Exemple
+
+```excel
+=LET(
+  ventes;SOMME(B:B);
+  couts;SOMME(C:C);
+  marge;ventes-couts;
+  taux;marge/ventes;
+  taux
+)
+```
+
+## Variables reutilisees
+
+### Calcul incremental
+
+```excel
+=LET(
+  x;A1;
+  y;x*2;
+  z;y+10;
+  z
+)
+```
+
+Chaque variable peut utiliser les précédentes.
+
+## Cas pratiques
+
+### Calcul de remise
+
+```excel
+=LET(
+  montant;B2;
+  remise;SI(montant>1000;0.1;SI(montant>500;0.05;0));
+  montant*(1-remise)
+)
+```
+
+### Recherche avec traitement
+
+```excel
+=LET(
+  résultat;RECHERCHEX(A1;Tableau[ID];Tableau[Valeur]);
+  SI(ESTERREUR(résultat);"Non trouve";résultat*1.2)
+)
+```
+
+### Statistiques
+
+```excel
+=LET(
+  données;A1:A100;
+  moy;MOYENNE(données);
+  ecart;ECARTYPE.STANDARD(données);
+  "Moyenne: "&moy&" - Ecart-type: "&ecart
+)
+```
+
+## Combinaison avec d'autres fonctions
+
+### LET + FILTRE
+
+```excel
+=LET(
+  filtre;FILTRE(A:D;B:B="Actif");
+  TRIER(filtre;3;-1)
+)
+```
+
+### LET + RECHERCHEX
+
+```excel
+=LET(
+  id;E1;
+  nom;RECHERCHEX(id;A:A;B:B);
+  prix;RECHERCHEX(id;A:A;C:C);
+  nom&" - "&prix&" euros"
+)
+```
+
+## Règles de nommage
+
+### Noms valides
+
+- Lettres, chiffres, underscore
+- Commencer par une lettre
+- Pas de noms reserves (VRAI, FAUX, etc.)
+
+### Exemples
+
+```excel
+=LET(total;...;...)           ' OK
+=LET(mon_total;...;...)       ' OK
+=LET(1total;...;...)          ' ERREUR
+=LET(VRAI;...;...)            ' ERREUR
+```
+
+## Erreurs courantes
+
+### Ordre des variables
+
+Utilisez une variable seulement après l'avoir définie.
+
+### Nombre d'arguments
+
+Il faut au moins un nom, une valeur, et un calcul.
+
+## Bonnes pratiques
+
+1. **Nommez** clairement vos variables
+2. **Limitez** le nombre de variables (5-7 max)
+3. **Commentez** les formules complexes
+4. **Testez** chaque variable separement
+
+[Découvrir nos formations Excel](/formations-excel)

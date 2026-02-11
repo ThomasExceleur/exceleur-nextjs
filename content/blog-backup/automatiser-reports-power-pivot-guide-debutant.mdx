@@ -1,0 +1,203 @@
+---
+title: "Automatiser les Reports avec Power Pivot - Guide Débutant"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez à automatiser vos reports avec Power Pivot pour débutants."
+description: "Guide débutant pour automatiser les reports Excel avec Power Pivot."
+category: "Analyse de données Excel"
+catégories: ["Analyse de données Excel", "Excel 365"]
+tags: ["Power Pivot", "Automatisation", "Reports", "DAX", "Débutant"]
+---
+
+# Automatiser les Reports avec Power Pivot
+
+Guide débutant pour créer des reports automatises avec Power Pivot.
+
+## Qu'est-ce que Power Pivot ?
+
+### Définition
+
+Power Pivot est un complement Excel pour :
+
+- Gérer de grands volumes de données
+- Créer des modèles relationnels
+- Calculer avec DAX
+- Alimenter des TCD puissants
+
+### Activer Power Pivot
+
+1. **Fichier** > **Options** > **Complements**
+2. Gérer : **Complements COM** > **Atteindre**
+3. Cochez **Microsoft Power Pivot for Excel**
+
+## Importer vos données
+
+### Depuis Excel
+
+1. Sélectionnez votre tableau
+2. **Power Pivot** > **Ajouter au modèle de données**
+
+### Depuis d'autres sources
+
+1. **Power Pivot** > **Gérer**
+2. **Obtenir des données externes**
+3. Choisissez votre source (SQL, Access, etc.)
+
+## Créer des relations
+
+### Pourquoi des relations ?
+
+Pour lier plusieurs tables entre elles (ventes avec produits, par exemple).
+
+### Comment faire
+
+1. Ouvrez la fenêêtre Power Pivot
+2. Vue **Diagramme**
+3. Glissez un champ d'une table vers l'autre
+4. La relation est créée
+
+### Exemple
+
+| Table Ventes | Table Produits |
+|--------------|----------------|
+| ProduitID | ProduitID (clé) |
+| Date | Nom |
+| Montant | Catégorie |
+
+## Vos premières mesures DAX
+
+### Qu'est-ce qu'une mesure ?
+
+Un calcul dynamique qui s'adapte au contexte (filtres, lignes, colonnes).
+
+### Mesures de base
+
+```dax
+Total Ventes = SUM(Ventes[Montant])
+```
+
+```dax
+Nombre Transactions = COUNTROWS(Ventes)
+```
+
+```dax
+Moyenne Vente = AVERAGE(Ventes[Montant])
+```
+
+### Créer une mesure
+
+1. Cliquez dans la zone de calcul Power Pivot
+2. Tapez votre formule
+3. Appuyez sûr Entrée
+
+## Créer un TCD automatise
+
+### Étapes
+
+1. **Insertion** > **Tableau croisé dynamique**
+2. Cochez **Utiliser le modèle de données**
+3. Placez vos champs
+4. Utilisez vos mesures
+
+### Avantages
+
+- Données de plusieurs tables
+- Mesures personnalisees
+- Grande performance
+
+## Mesures pour reports
+
+### Comparaison avec période précédente
+
+```dax
+Ventes Mois Précédent =
+CALCULATE(
+    [Total Ventes];
+    DATEADD(Calendrier[Date];-1;MONTH)
+)
+```
+
+### Cumul annuel (YTD)
+
+```dax
+Ventes YTD =
+TOTALYTD(
+    [Total Ventes];
+    Calendrier[Date]
+)
+```
+
+### Variation en pourcentage
+
+```dax
+Variation % =
+DIVIDE(
+    [Total Ventes] - [Ventes Mois Précédent];
+    [Ventes Mois Précédent];
+    0
+)
+```
+
+## Table de dates
+
+### Pourquoi une table de dates ?
+
+Indispensable pour les calculs temporels (YTD, comparaisons).
+
+### Créer automatiquement
+
+```dax
+Calendrier = CALENDAR(DATE(2020;1;1);DATE(2025;12;31))
+```
+
+### Colonnes utiles
+
+```dax
+Année = YEAR(Calendrier[Date])
+Mois = MONTH(Calendrier[Date])
+NomMois = FORMAT(Calendrier[Date];"MMMM")
+```
+
+## Automatiser l'actualisation
+
+### Depuis Excel
+
+1. Actualisez le TCD : **Actualiser**
+2. Les données Power Pivot se mettent à jour
+
+### Connexions externes
+
+1. **Données** > **Actualiser tout**
+2. Toutes les sources sont actualisees
+
+## Bonnes pratiques débutant
+
+| Pratique | Description |
+|----------|-------------|
+| Nommage | Noms clairs pour tables et mesures |
+| Relations | Vérifiez les cardinalites |
+| Mesures | Préférez aux colonnes calculees |
+| Test | Validez chaque mesure |
+
+## Erreurs courantes
+
+### Relation manquante
+
+**Symptome** : Données incorrectes où dupliquees.
+
+**Solution** : Vérifiez les relations dans la vue Diagramme.
+
+### Formule DAX incorrecte
+
+**Symptome** : Erreur où valeur vide.
+
+**Solution** : Testez la formule étape par étape.
+
+## Prochaines étapes
+
+1. **Approfondissez** DAX (CALCULATE, FILTER)
+2. **Explorez** les hierarchies
+3. **Connectez** plus de sources
+4. **Créez** des tableaux de bord
+
+[Découvrir nos formations Excel](/formations-excel)

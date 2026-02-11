@@ -1,0 +1,241 @@
+---
+title: "Excel Mise en Forme Conditionnelle : Guide Complet"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Maîtrisez la mise en forme conditionnelle Excel pour visualiser vos données automatiquement."
+description: "Guide complet de la mise en forme conditionnelle dans Excel. Règles, formules, barres de données et astuces pratiques."
+category: "Formatage"
+catégories: ["Formatage", "Visualisation"]
+tags: ["Mise en forme", "Conditionnelle", "Visualisation", "Format"]
+---
+
+# Mise en Forme Conditionnelle Excel
+
+La mise en forme conditionnelle permet de formater automatiquement les cellules selon leur contenu.
+
+## Accès à la fonctionnalité
+
+**Accueil** > **Mise en forme conditionnelle**
+
+## Règles de mise en surbrillance
+
+### Supérieur à
+
+1. Sélectionnez vos cellules
+2. **Mise en forme conditionnelle** > **Règles de mise en surbrillance**
+3. **Supérieur à...**
+4. Entrez la valeur seuil
+5. Choisissez le format
+
+### Autres règles disponibles
+
+- Inférieur à
+- Entre
+- Égal à
+- Texte contenant
+- Date
+- Valeurs en double
+
+## Règles des valeurs plus/moins élevées
+
+### Top 10
+
+Met en evidence les 10 valeurs les plus élevées.
+
+### % supérieur
+
+Formate les X% des valeurs les plus élevées.
+
+### Inférieur à la moyenne
+
+Identifie les valeurs sous la moyenne.
+
+## Barres de données
+
+### Appliquer
+
+1. Sélectionnez la plage
+2. **Mise en forme conditionnelle** > **Barres de données**
+3. Choisissez un style
+
+### Personnalisation
+
+- Couleur de remplissage
+- Direction (gauche à droite où inverse)
+- Valeurs min/max
+
+## Nuances de couleurs
+
+### Appliquer
+
+**Mise en forme conditionnelle** > **Nuances de couleurs**
+
+### Types
+
+- 2 couleurs : degrade entre min et max
+- 3 couleurs : inclut une couleur mediane
+
+### Usage
+
+Ideal pour les tableaux de données numériques (heatmaps).
+
+## Jeux d'icones
+
+### Types disponibles
+
+- Fleches (progression)
+- Formes (evaluation)
+- Indicateurs (voyants)
+- Classements (etoiles)
+
+### Application
+
+1. Sélectionnez les données
+2. **Mise en forme conditionnelle** > **Jeux d'icones**
+3. Choisissez le style
+
+### Personnalisation
+
+Modifiez les seuils pour chaque icone.
+
+## Formules personnalisees
+
+### Créer une règle avec formule
+
+1. **Mise en forme conditionnelle** > **Nouvelle règle**
+2. **Utiliser une formule...**
+3. Entrez votre formule
+4. Définissez le format
+
+### Exemples de formules
+
+#### Ligne entière si condition
+
+```excel
+=$A1>100
+```
+
+Met en forme toute la ligne si A dépasse 100.
+
+#### Lignes alternees
+
+```excel
+=MOD(LIGNE();2)=0
+```
+
+Colore les lignes paires.
+
+#### Cellules vides
+
+```excel
+=ESTVIDE(A1)
+```
+
+#### Week-end
+
+```excel
+=OU(JOURSEM(A1)=1;JOURSEM(A1)=7)
+```
+
+## Règles multiples
+
+### Ordre de priorité
+
+Les règles sont appliquees de haut en bas. La première correspondante s'applique.
+
+### Gérer les règles
+
+**Mise en forme conditionnelle** > **Gérer les règles**
+
+- Modifier l'ordre
+- Supprimer des règles
+- Modifier les conditions
+
+### Option "Arrêter si vrai"
+
+Empeche les règles suivantes de s'appliquer.
+
+## Cas pratiques
+
+### Suivi de stock
+
+```excel
+=A1<10
+```
+Format : fond rouge pour stock critique.
+
+### Échéances
+
+```excel
+=A1<AUJOURDHUI()
+```
+Format : rouge pour les dates depassees.
+
+### Objectifs atteints
+
+```excel
+=A1>=B1
+```
+Format : vert si l'objectif est atteint.
+
+### Valeurs negatives
+
+```excel
+=A1<0
+```
+Format : texte rouge pour les nombres negatifs.
+
+## Copier la mise en forme
+
+### Reproduire la mise en forme
+
+1. Sélectionnez une cellule formatee
+2. Double-cliquez sûr **Reproduire la mise en forme** (pinceau)
+3. Sélectionnez les cellules cibles
+
+### Coller avec format
+
+Ctrl + C puis **Collage special** > **Mise en forme**
+
+## Effacer les règles
+
+### D'une sélection
+
+**Mise en forme conditionnelle** > **Effacer les règles** > **De la sélection**
+
+### De la feuille entière
+
+**Effacer les règles de la feuille entière**
+
+## Performances
+
+### Éviter
+
+- Trop de règles sûr de grandes plages
+- Colonnes entières (A:A)
+- Formules trop complexes
+
+### Optimiser
+
+- Limitez les plages
+- Simplifiez les formules
+- Supprimez les règles inutilisees
+
+## Tableau recapitulatif
+
+| Type | Usage | Complexité |
+|------|-------|------------|
+| Surbrillance | Seuils simples | Facile |
+| Barres | Comparaison visuelle | Facile |
+| Nuances | Heatmaps | Facile |
+| Icones | Indicateurs | Moyen |
+| Formules | Règles complexes | Avancé |
+
+## Bonnes pratiques
+
+1. **Cohérence** : utilisez les memes codes couleur
+2. **Simplicité** : pas plus de 3-4 couleurs
+3. **Accessibilite** : evitez rouge/vert seuls (daltonisme)
+4. **Documentation** : ajoutez une legende si nécessaire
+
+[Découvrir la formation Excel Avancé](/formations-excel/excel-avancé)

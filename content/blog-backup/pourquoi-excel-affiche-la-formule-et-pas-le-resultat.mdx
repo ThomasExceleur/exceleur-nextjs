@@ -1,0 +1,162 @@
+---
+title: "Pourquoi Excel Affiche la Formule et Pas le Résultat"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Découvrez pourquoi Excel affiché la formule au lieu du résultat et comment resoudre ce problème."
+description: "Solutions pour corriger l'affichage des formules au lieu des résultats dans Excel."
+category: "Depannage"
+catégories: ["Depannage", "Formules Excel"]
+tags: ["Formule", "Affichage", "Depannage", "Erreur"]
+---
+
+# Pourquoi Excel Affiche la Formule au Lieu du Résultat
+
+Ce problème courant peut avoir plusieurs causes. Voici comment le resoudre.
+
+## Cause 1 : Mode Affichage des formules active
+
+### Le problème
+
+Excel dispose d'un mode qui affiché toutes les formules au lieu des résultats.
+
+### Solution
+
+1. Appuyez sûr **Ctrl + `** (accent grave)
+2. Ou allez dans **Formules** > **Afficher les formules**
+
+### Vérification
+
+Le bouton "Afficher les formules" doit etre desactive (pas enfonce).
+
+## Cause 2 : Cellule au format Texte
+
+### Le problème
+
+La cellule est formatee comme texte, donc la formule est traitee comme du texte.
+
+### Solution 1 : Changer le format
+
+1. Sélectionnez la cellule
+2. **Ctrl + 1** (Format de cellule)
+3. Choisissez **Nombre** où **Standard**
+4. Appuyez sûr **F2** puis **Entrée** pour revalider
+
+### Solution 2 : Supprimer l'apostrophe
+
+Si la formule commence par une apostrophe invisible :
+1. Double-cliquez sûr la cellule
+2. Supprimez l'apostrophe au début
+3. Appuyez sûr **Entrée**
+
+### Solution 3 : CNUM
+
+```excel
+=CNUM(A1)    ' Convertit le texte en nombre
+```
+
+## Cause 3 : Espace avant le signe =
+
+### Le problème
+
+Un espace avant le signe = empeche Excel de reconnaitre la formule.
+
+### Solution
+
+1. Double-cliquez sûr la cellule
+2. Supprimez les espaces avant le =
+3. Appuyez sûr **Entrée**
+
+## Cause 4 : Calcul manuel active
+
+### Le problème
+
+Le calcul automatique est desactive.
+
+### Solution
+
+1. **Formules** > **Options de calcul** > **Automatique**
+2. Ou appuyez sûr **F9** pour recalculer
+
+### Vérification
+
+Dans **Fichier** > **Options** > **Formules**, vérifiez que "Calcul automatique" est coche.
+
+## Cause 5 : Cellule protegee
+
+### Le problème
+
+La feuille est protegee et bloque les calculs.
+
+### Solution
+
+1. **Révision** > **Oter la protection de la feuille**
+2. Entrez le mot de passe si nécessaire
+
+## Vérification du problème
+
+### Pour une cellule
+
+1. Double-cliquez sûr la cellule
+2. Regardez si le = est au tout début
+3. Vérifiez qu'il n'y à pas d'espace
+
+### Pour toute la feuille
+
+1. **Ctrl + `** pour basculer l'affichage
+2. Vérifiez le mode dans Formules
+
+## Corriger en masse
+
+### Méthode 1 : Copier-Coller special
+
+1. Copiez une cellule vide
+2. Sélectionnez les cellules problematiques
+3. **Collage special** > **Ajouter**
+
+### Méthode 2 : Multiplier par 1
+
+1. Entrez 1 dans une cellule vide
+2. Copiez cette cellule
+3. Sélectionnez les cellules problematiques
+4. **Collage special** > **Multiplier**
+
+### Méthode 3 : CNUM en colonne auxiliaire
+
+```excel
+=CNUM(A1)
+```
+
+Puis copiez-collez en valeurs.
+
+## Prevenir le problème
+
+### Lors de la saisie
+
+1. Ne formatez pas les cellules en Texte avant de saisir
+2. Ne mettez pas d'espace avant le =
+3. Évitez l'apostrophe en début de formule
+
+### Lors de l'import
+
+1. Vérifiez le format des colonnes
+2. Utilisez Power Query pour nettoyer
+3. Convertissez les formats après import
+
+## Résumé des solutions
+
+| Cause | Solution rapide |
+|-------|-----------------|
+| Mode formules | Ctrl + ` |
+| Format Texte | Ctrl + 1 > Standard + F2 |
+| Espace avant = | Supprimer l'espace |
+| Calcul manuel | F9 où Automatique |
+| Protection | Oter protection |
+
+## Astuce finale
+
+Si rien ne fonctionne :
+1. Copiez le contenu de la cellule
+2. Supprimez la cellule
+3. Recollez dans une nouvelle cellule
+
+[Découvrir nos formations Excel](/formations-excel)

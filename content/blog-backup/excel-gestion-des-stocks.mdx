@@ -1,0 +1,244 @@
+---
+title: "Excel Gestion des Stocks : Guide Complet"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Gérez efficacement vos stocks dans Excel avec ce guide complet."
+description: "Guide pour la gestion des stocks dans Excel. Inventaire, mouvements et alertes."
+category: "Modèles"
+catégories: ["Modèles", "Comptabilite"]
+tags: ["Stocks", "Inventaire", "Gestion", "Logistique"]
+---
+
+# Gestion des Stocks dans Excel
+
+Une bonne gestion des stocks optimise votre tresorerie et votre service client.
+
+## Structuré de base
+
+### Fiche article
+
+| Champ | Description |
+|-------|-------------|
+| Référence | Code unique |
+| Designation | Nom du produit |
+| Catégorie | Type de produit |
+| Stock actuel | Quantité disponible |
+| Stock mini | Seuil de reappro |
+| Prix achat | Cout unitaire |
+| Prix vente | Prix de vente |
+
+## Tableau d'inventaire
+
+### Structuré
+
+| Ref | Designation | Stock | Mini | Maxi | Valeur |
+|-----|-------------|-------|------|------|--------|
+| A001 | Produit A | 50 | 20 | 100 | 500 |
+| A002 | Produit B | 15 | 10 | 50 | 300 |
+
+### Formule valeur stock
+
+```excel
+=Stock * Prix_achat
+```
+
+## Mouvements de stock
+
+### Journal des mouvements
+
+| Date | Ref | Type | Qte | Stock après |
+|------|-----|------|-----|-------------|
+| 01/01 | A001 | Entrée | +100 | 100 |
+| 05/01 | A001 | Sortie | -50 | 50 |
+
+### Types de mouvements
+
+- Entrée (achat, retour client)
+- Sortie (vente, rebut)
+- Transfert
+- Inventaire (ajustement)
+
+## Calcul du stock actuel
+
+### Formule
+
+```excel
+=SOMME.SI.ENS(Mouvements[Qte];Mouvements[Ref];[@Ref];Mouvements[Type];"Entrée") - SOMME.SI.ENS(Mouvements[Qte];Mouvements[Ref];[@Ref];Mouvements[Type];"Sortie")
+```
+
+### Plus simple avec colonne signee
+
+```excel
+=SOMME.SI(Mouvements[Ref];[@Ref];Mouvements[Qte_signee])
+```
+
+## Alertes de stock
+
+### Stock minimum
+
+```excel
+=SI([@Stock]<[@Mini];"A COMMANDER";"OK")
+```
+
+### Mise en forme conditionnelle
+
+1. Sélectionnez la colonne Stock
+2. **Mise en forme conditionnelle** > **Nouvelle règle**
+3. Formule : `=C2<D2`
+4. Format : fond rouge
+
+### Niveaux d'alerte
+
+```excel
+=SI(Stock<Mini;"RUPTURE";SI(Stock<Mini*1.5;"ALERTE";"OK"))
+```
+
+## Valorisation du stock
+
+### Méthodes de valorisation
+
+| Méthode | Description |
+|---------|-------------|
+| FIFO | Premier entre, premier sorti |
+| LIFO | Dernier entre, premier sorti |
+| CMP | Cout Moyen Pondere |
+
+### Calcul CMP
+
+```excel
+=(Valeur_stock_ancien + Valeur_nouvel_achat) / (Qte_ancienne + Qte_nouvelle)
+```
+
+## Inventaire physique
+
+### Feuille d'inventaire
+
+| Ref | Designation | Stock theo | Stock reel | Ecart |
+|-----|-------------|------------|------------|-------|
+| A001 | Produit A | 50 | 48 | -2 |
+| A002 | Produit B | 15 | 15 | 0 |
+
+### Formule ecart
+
+```excel
+=D2-C2
+```
+
+### Ajustement
+
+```excel
+=SI(E2<>0;"Regularisation requise";"OK")
+```
+
+## Analyse ABC
+
+### Classification
+
+| Classe | % articles | % valeur |
+|--------|------------|----------|
+| A | 20% | 80% |
+| B | 30% | 15% |
+| C | 50% | 5% |
+
+### Formule de classification
+
+```excel
+=SI(Cumul_pct<=80%;"A";SI(Cumul_pct<=95%;"B";"C"))
+```
+
+## Rotation des stocks
+
+### Taux de rotation
+
+```excel
+=Cout_des_ventes / Stock_moyen
+```
+
+### Couverture en jours
+
+```excel
+=Stock_moyen / Cout_des_ventes * 365
+```
+
+### Par article
+
+| Ref | Sorties annuelles | Stock moyen | Rotation |
+|-----|-------------------|-------------|----------|
+| A001 | 500 | 50 | 10 |
+| A002 | 100 | 25 | 4 |
+
+## Prevision des besoins
+
+### Calcul du besoin
+
+```excel
+=Ventes_prevues - Stock_actuel + Stock_securite
+```
+
+### Point de commande
+
+```excel
+=Consommation_journaliere * Delai_approvisionnement + Stock_securite
+```
+
+## Bon de commande
+
+### Structuré
+
+| Ref | Designation | A commander | Prix | Total |
+|-----|-------------|-------------|------|-------|
+| A001 | Produit A | 50 | 10 | 500 |
+
+### Quantité à commander
+
+```excel
+=MAX(0;Stock_cible - Stock_actuel)
+=ARRONDI.SUP((Stock_cible - Stock_actuel)/Lot_mini;0)*Lot_mini
+```
+
+## Indicateurs de stock
+
+### KPI essentiels
+
+| Indicateur | Formule |
+|------------|---------|
+| Valeur totale | SOMME(Valeur) |
+| Nb ruptures | NB.SI(Statut;"RUPTURE") |
+| Taux service | Commandes servies / Total |
+| Couverture | Stock / Conso moyenne |
+
+## Graphiques de suivi
+
+### Evolution du stock
+
+1. Courbe du stock par article
+2. Ligne du seuil minimum
+
+### Répartition par catégorie
+
+1. Camembert de la valeur par catégorie
+2. Histogramme des quantités
+
+## Multi-entrepots
+
+### Structuré
+
+| Ref | Entrepot 1 | Entrepot 2 | Total |
+|-----|------------|------------|-------|
+| A001 | 30 | 20 | 50 |
+
+### Stock total par article
+
+```excel
+=SOMME.SI(Stocks[Ref];[@Ref];Stocks[Qte])
+```
+
+## Bonnes pratiques
+
+1. **Mettez à jour** les mouvements en temps reel
+2. **Inventoriez** régulièrement
+3. **Analysez** les ecarts
+4. **Optimisez** les niveaux de stock
+5. **Securisez** les données
+
+[Découvrir nos formations Excel](/formations-excel)

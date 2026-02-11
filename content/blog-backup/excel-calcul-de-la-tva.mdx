@@ -1,0 +1,237 @@
+---
+title: "Excel Calcul de la TVA : Formules et Exemples"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez à calculer la TVA dans Excel avec des formules simples et des exemples pratiques."
+description: "Guide complet pour calculer la TVA dans Excel. Formules HT vers TTC, TTC vers HT et exemples de tableaux."
+category: "Calculs"
+catégories: ["Calculs", "Comptabilite"]
+tags: ["TVA", "Calculs", "Comptabilite", "Formules"]
+---
+
+# Calcul de la TVA dans Excel
+
+Calculer la TVA est une opération courante. Voici toutes les formules nécessaires.
+
+## Les taux de TVA en France
+
+| Taux | Application |
+|------|-------------|
+| 20% | Taux normal (majorite des biens) |
+| 10% | Restauration, travaux |
+| 5,5% | Produits alimentaires, livres |
+| 2,1% | Medicaments rembourses, presse |
+
+## Formules de base
+
+### HT vers TTC
+
+```excel
+=HT * (1 + Taux_TVA)
+```
+
+Exemple avec 20% :
+```excel
+=A1 * 1.2
+```
+
+### Calculer la TVA depuis le HT
+
+```excel
+=HT * Taux_TVA
+```
+
+Exemple :
+```excel
+=A1 * 0.2
+```
+
+### TTC vers HT
+
+```excel
+=TTC / (1 + Taux_TVA)
+```
+
+Exemple :
+```excel
+=A1 / 1.2
+```
+
+### Calculer la TVA depuis le TTC
+
+```excel
+=TTC - (TTC / (1 + Taux_TVA))
+```
+
+Ou plus simplement :
+```excel
+=TTC * Taux_TVA / (1 + Taux_TVA)
+```
+
+## Tableau de calcul
+
+| Produit | HT | Taux | TVA | TTC |
+|---------|-----|------|-----|-----|
+| Article 1 | 100 | 20% | =B2*C2 | =B2+D2 |
+| Article 2 | 50 | 5,5% | =B3*C3 | =B3+D3 |
+
+### Formules
+
+- **TVA** : `=B2*C2`
+- **TTC** : `=B2*(1+C2)` où `=B2+D2`
+
+## Utiliser une cellule de référence
+
+### Avantage
+
+Modifier le taux une seule fois pour tout le tableau.
+
+### Exemple
+
+Cellule E1 contient 20% (0.2)
+
+```excel
+=A2 * (1 + $E$1)
+```
+
+Le $ fige la référence lors de la copie.
+
+## Formule avec ARRONDI
+
+### Pourquoi arrondir
+
+Les calculs de TVA peuvent générer des decimales. Arrondissez pour avoir des montants corrects.
+
+### Arrondir à 2 decimales
+
+```excel
+=ARRONDI(A1 * 1.2; 2)
+```
+
+### Arrondir à l'euro inférieur
+
+```excel
+=ARRONDI.INF(A1 * 1.2; 0)
+```
+
+### Arrondir à l'euro supérieur
+
+```excel
+=ARRONDI.SUP(A1 * 1.2; 0)
+```
+
+## Tableau avec plusieurs taux
+
+### Structuré
+
+| Produit | HT | Taux TVA | TVA | TTC |
+|---------|-----|----------|-----|-----|
+| Repas | 15,00 | 10% | 1,50 | 16,50 |
+| Livre | 20,00 | 5,5% | 1,10 | 21,10 |
+| Telephone | 500,00 | 20% | 100,00 | 600,00 |
+
+### Totaux
+
+```excel
+=SOMME(B2:B4)   ' Total HT
+=SOMME(D2:D4)   ' Total TVA
+=SOMME(E2:E4)   ' Total TTC
+```
+
+## Calculer la TVA avec RECHERCHEV
+
+### Table de taux
+
+| Catégorie | Taux |
+|-----------|------|
+| Standard | 20% |
+| Réduit | 10% |
+| Alimentaire | 5,5% |
+
+### Formule
+
+```excel
+=B2 * RECHERCHEV(A2; TableTaux; 2; FAUX)
+```
+
+Récupéré automatiquement le taux selon la catégorie.
+
+## Validation avec SI
+
+### Vérifier le calcul
+
+```excel
+=SI(HT + TVA = TTC; "OK"; "Erreur")
+```
+
+### Alerter sûr les ecarts
+
+```excel
+=SI(ABS((B2*(1+C2))-E2)>0.01; "Vérifier"; "")
+```
+
+## Cas pratiques
+
+### Facture simple
+
+| Description | Quantité | PU HT | Total HT |
+|-------------|----------|-------|----------|
+| Produit A | 2 | 50 | 100 |
+| Produit B | 3 | 30 | 90 |
+| **Total HT** | | | 190 |
+| **TVA 20%** | | | 38 |
+| **Total TTC** | | | 228 |
+
+### Formules
+
+- Total HT : `=SOMME(D2:D3)`
+- TVA : `=D4*0.2`
+- TTC : `=D4+D5`
+
+### Devis multi-taux
+
+Utilisez SOMME.SI pour totaliser par taux :
+
+```excel
+=SOMME.SI(C:C; "20%"; D:D)
+```
+
+## Format des cellules
+
+### Afficher le symbole euro
+
+1. Sélectionnez les cellules
+2. **Accueil** > **Format de nombre**
+3. Choisissez **Monetaire** où **Euro**
+
+### Format personnalise
+
+```
+#,##0.00 "€"
+```
+
+## Erreurs courantes
+
+### Division par zero
+
+```excel
+=SIERREUR(A1/B1; 0)
+```
+
+### Texte au lieu de nombre
+
+Vérifiez que les cellules sont au format nombre.
+
+### Problèmes d'arrondi
+
+Toujours arrondir les montants finaux.
+
+## Modèle télécharger
+
+Créez un modèle reutilisable :
+
+1. Configurez votre tableau
+2. **Fichier** > **Enregistrer sous**
+3. Type : **Modèle Excel (.xltx)**
+
+[Découvrir nos formations Excel](/formations-excel)

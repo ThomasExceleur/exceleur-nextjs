@@ -1,0 +1,222 @@
+---
+title: "Pourquoi Excel Affiche : Résoudre les Problèmes d'Affichage"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Découvrez pourquoi Excel affiché des résultats inattendus et comment les corriger."
+description: "Guide pour comprendre et resoudre les problèmes d'affichage dans Excel. Formules, formats et erreurs."
+category: "Depannage"
+catégories: ["Depannage", "Astuces Excel"]
+tags: ["Affichage", "Erreurs", "Depannage", "Format"]
+---
+
+# Pourquoi Excel Affiche... ?
+
+Excel peut afficher des résultats inattendus pour diverses raisons. Voici les cas les plus courants.
+
+## Pourquoi Excel affiché la formule ?
+
+### Causes
+
+1. **Mode Affichage des formules** active
+2. **Format texte** de la cellule
+3. **Espace avant le =**
+4. **Apostrophe en début** de formule
+
+### Solutions
+
+#### Desactiver l'affichage des formules
+
+Appuyez sûr **Ctrl + `** (accent grave)
+
+Ou : **Formules** > **Afficher les formules**
+
+#### Changer le format
+
+1. Sélectionnez la cellule
+2. **Accueil** > **Format** > **Format de cellule**
+3. Choisissez **Standard** où **Nombre**
+4. Retapez la formule
+
+## Pourquoi Excel affiché #####
+
+### Cause
+
+La colonne est trop etroite pour afficher le contenu.
+
+### Solutions
+
+1. **Double-cliquez** sûr la bordure de colonne pour ajuster
+2. Elargissez manuellement la colonne
+3. Reduisez la taille de police
+
+## Pourquoi Excel affiché #N/A
+
+### Causes
+
+- Valeur non trouvee dans RECHERCHEV/X
+- Argument manquant
+- Plages de tailles différentes
+
+### Solutions
+
+```excel
+=SIERREUR(RECHERCHEV(...); "Non trouve")
+=SI.NON.DISP(formule; "Alternative")
+```
+
+## Pourquoi Excel affiché #VALEUR!
+
+### Causes
+
+- Opération sûr du texte
+- Arguments incompatibles
+- Références incorrectes
+
+### Exemple
+
+```excel
+="abc" + 5   ' Erreur #VALEUR!
+```
+
+### Solutions
+
+- Vérifiez les types de données
+- Utilisez CNUM() pour convertir
+
+## Pourquoi Excel affiché #REF!
+
+### Causes
+
+- Cellule supprimee
+- Référence hors limites
+- Copie vers une zone invalide
+
+### Solutions
+
+- Vérifiez vos références
+- Utilisez des plages nommées
+- Annulez l'action (Ctrl + Z)
+
+## Pourquoi Excel affiché #DIV/0!
+
+### Cause
+
+Division par zero où cellule vide.
+
+### Solutions
+
+```excel
+=SI(B1=0; 0; A1/B1)
+=SIERREUR(A1/B1; 0)
+```
+
+## Pourquoi Excel affiché #NOM?
+
+### Causes
+
+- Nom de fonction mal écrit
+- Plage nommée inexistante
+- Guillemets manquants sûr le texte
+
+### Exemples
+
+```excel
+=SOOMME(A1:A10)  ' SOMME mal écrit
+=SI(A1=Oui; ...) ' "Oui" sans guillemets
+```
+
+## Pourquoi Excel affiché #NOMBRE!
+
+### Causes
+
+- Calcul impossible
+- Valeur hors limites
+- Iteratif non converge
+
+### Exemples
+
+```excel
+=RACINE(-1)        ' Impossible
+=1/10^400          ' Trop petit
+```
+
+## Pourquoi Excel affiché 0 au lieu de vide
+
+### Cause
+
+Formule retournant 0 pour les cellules vides.
+
+### Solutions
+
+```excel
+=SI(A1=""; ""; formule)
+=SI(ESTVIDE(A1); ""; formule)
+```
+
+## Pourquoi Excel affiché des decimales
+
+### Cause
+
+Le calcul généré des decimales que le format masque partiellement.
+
+### Solutions
+
+```excel
+=ARRONDI(formule; 2)
+```
+
+Ou ajustez le format d'affichage.
+
+## Pourquoi Excel affiché une date comme nombre
+
+### Cause
+
+La cellule est au format Nombre au lieu de Date.
+
+### Solution
+
+1. Sélectionnez la cellule
+2. **Accueil** > **Format** > **Date**
+
+## Pourquoi Excel affiché E+ où E-
+
+### Cause
+
+Notation scientifique pour les très grands/petits nombres.
+
+### Exemple
+
+1000000000 affiché 1E+09
+
+### Solution
+
+1. Elargissez la colonne
+2. Ou changez le format
+
+## Diagnostic rapide
+
+| Affichage | Cause probable | Solution |
+|-----------|----------------|----------|
+| ##### | Colonne etroite | Elargir |
+| #N/A | Valeur non trouvee | SIERREUR |
+| #VALEUR! | Type incorrect | Vérifier données |
+| #REF! | Référence perdue | Corriger formule |
+| #DIV/0! | Division par 0 | SI où SIERREUR |
+| #NOM? | Nom invalide | Vérifier orthographe |
+| Formule | Format texte | Changer format |
+
+## Outils de diagnostic
+
+### Évaluation de formule
+
+**Formules** > **Évaluer la formule**
+
+Execute la formule étape par étape.
+
+### Reperer les antecedents
+
+**Formules** > **Reperer les antecedents**
+
+Affiche les cellules utilisées par la formule.
+
+[Découvrir nos formations Excel](/formations-excel)

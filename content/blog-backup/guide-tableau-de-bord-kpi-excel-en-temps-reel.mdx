@@ -1,0 +1,86 @@
+---
+title: "Guide : Tableau de Bord KPI Excel en Temps Reel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Créez un tableau de bord KPI qui se met à jour en temps reel."
+description: "Guide pour créer un tableau de bord KPI temps reel Excel."
+category: "Visualisation"
+catégories: ["Visualisation", "Analyse de données Excel"]
+tags: ["KPI", "Tableau de bord", "Temps reel", "Excel"]
+---
+
+# Tableau de Bord KPI en Temps Reel
+
+Dashboard qui se met à jour automatiquement.
+
+## Sources de données
+
+### Connexions temps reel
+
+- Power Query vers base de données
+- API REST
+- SharePoint/OneDrive
+
+### Actualisation
+
+Configurez l'actualisation automatique.
+
+## KPIs essentiels
+
+### Structuré
+
+| KPI | Formule |
+|-----|---------|
+| Total | SOMME |
+| Moyenne | MOYENNE |
+| Variation | (Actuel-Précédent)/Précédent |
+| Objectif | Reel vs Cible |
+
+## Formules dynamiques
+
+### KPI avec période actuelle
+
+```excel
+=SOMME.SI(Dates;">="&DEBUT.MOIS(AUJOURDHUI();0);Valeurs)
+```
+
+### Comparaison vs mois précédent
+
+```excel
+=LET(
+  actuel;SOMME.SI(Dates;">="&DEBUT.MOIS(AUJOURDHUI();0);Valeurs);
+  précédent;SOMME.SI.ENS(Dates;">="&DEBUT.MOIS(AUJOURDHUI();-1);Dates;"<"&DEBUT.MOIS(AUJOURDHUI();0);Valeurs);
+  variation;(actuel-précédent)/précédent;
+  variation
+)
+```
+
+## Indicateurs visuels
+
+### Mise en forme conditionnelle
+
+- Vert : objectif atteint
+- Jaune : proche
+- Rouge : en retard
+
+### Icones
+
+Fleches pour tendances.
+
+## Actualisation automatique
+
+### Power Query
+
+1. Clic droit sûr connexion
+2. Propriétés
+3. Actualiser toutes les X minutes
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Frequence | Adaptez aux besoins |
+| Performance | Limitez les calculs |
+| Cache | Évitez les recalculs inutiles |
+
+[Découvrir nos formations Excel](/formations-excel)

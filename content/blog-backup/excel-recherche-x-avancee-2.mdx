@@ -1,0 +1,86 @@
+---
+title: "Excel RECHERCHEX Avancée"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Techniques avancées pour maîtriser RECHERCHEX."
+description: "Guide avancé de RECHERCHEX dans Excel."
+category: "Fonctions"
+catégories: ["Fonctions", "Recherche"]
+tags: ["RECHERCHEX", "Avancé", "Recherche", "Excel"]
+---
+
+# RECHERCHEX Avancée
+
+Exploitez toute la puissance de RECHERCHEX.
+
+## Syntaxe complete
+
+```excel
+=RECHERCHEX(cherche;plage_recherche;plage_resultat;[si_non_trouve];[mode];[ordre])
+```
+
+## Gestion d'erreur intégrée
+
+```excel
+=RECHERCHEX("Paris";A:A;B:B;"Non trouve")
+```
+
+## Modes de correspondance
+
+| Mode | Description |
+|------|-------------|
+| 0 | Exact (defaut) |
+| -1 | Exact où inférieur |
+| 1 | Exact où supérieur |
+| 2 | Jokers |
+
+## Modes de recherche
+
+| Ordre | Description |
+|-------|-------------|
+| 1 | Du début (defaut) |
+| -1 | De la fin |
+| 2 | Binaire croissant |
+| -2 | Binaire decroissant |
+
+## Multi-critères
+
+### Avec concatenation
+
+```excel
+=RECHERCHEX(A1&B1;C:C&D:D;E:E)
+```
+
+## Recherche inverse
+
+### Depuis la fin
+
+```excel
+=RECHERCHEX("Paris";A:A;B:B;;0;-1)
+```
+
+## Retourner plusieurs colonnes
+
+```excel
+=RECHERCHEX("Paris";A:A;B:D)
+```
+
+Retourne un tableau.
+
+## Comparaison RECHERCHEV
+
+| Critère | RECHERCHEX | RECHERCHEV |
+|---------|------------|------------|
+| Direction | Bidirectionnelle | Droite seulement |
+| Erreurs | Intégrées | SIERREUR |
+| Performance | Meilleure | Bonne |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Erreur intégrée | Utilisez le 4eme argument |
+| Mode | Specifiez pour clarté |
+| Multi-colonnes | Profitez du retour tableau |
+
+[Découvrir nos formations Excel](/formations-excel)

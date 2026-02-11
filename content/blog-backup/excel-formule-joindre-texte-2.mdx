@@ -1,0 +1,92 @@
+---
+title: "Excel : Formule JOINDRE.TEXTE"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Utilisez JOINDRE.TEXTE pour concatener avec delimiteur."
+description: "Guide de la fonction JOINDRE.TEXTE dans Excel."
+category: "Fonctions"
+catégories: ["Fonctions", "Texte"]
+tags: ["JOINDRE.TEXTE", "Concatenation", "Texte", "Excel"]
+---
+
+# Formule JOINDRE.TEXTE
+
+Concatenez avec delimiteur automatique.
+
+## Syntaxe
+
+```excel
+=JOINDRE.TEXTE(delimiteur;ignorer_vides;texte1;texte2;...)
+```
+
+## Arguments
+
+| Argument | Description |
+|----------|-------------|
+| delimiteur | Séparateur |
+| ignorer_vides | VRAI/FAUX |
+| texte | Valeurs à joindre |
+
+## Exemple simple
+
+```excel
+=JOINDRE.TEXTE(", ";VRAI;A1:A5)
+```
+
+Résultat : "Paris, Lyon, Marseille"
+
+## Vs CONCATENER
+
+### CONCATENER
+
+```excel
+=A1&", "&B1&", "&C1
+```
+
+### JOINDRE.TEXTE
+
+```excel
+=JOINDRE.TEXTE(", ";VRAI;A1:C1)
+```
+
+Plus simple pour plusieurs cellules.
+
+## Ignorer les vides
+
+### FAUX
+
+Inclut les vides comme séparateurs doubles.
+
+### VRAI
+
+Ignore les cellules vides.
+
+## Cas d'usage
+
+### Liste d'adresse
+
+```excel
+=JOINDRE.TEXTE(", ";VRAI;Rue;CP;Ville)
+```
+
+### Tags
+
+```excel
+=JOINDRE.TEXTE("; ";VRAI;A1:A10)
+```
+
+## Avec FILTRE
+
+```excel
+=JOINDRE.TEXTE(", ";VRAI;FILTRE(A:A;B:B="Actif"))
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| VRAI | Ignorez les vides |
+| Plages | Utilisez des plages |
+| Delimiteur | Adaptez au contexte |
+
+[Découvrir nos formations Excel](/formations-excel)

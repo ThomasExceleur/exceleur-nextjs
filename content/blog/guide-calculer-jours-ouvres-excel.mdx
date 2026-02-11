@@ -1,164 +1,126 @@
 ---
-title: "Guide : Calculer les Jours Ouvres dans Excel"
-date: "2024-07-02"
+title: "Guide pour calculer jours ouvrés excel en toute simplicité"
+date: "2025-06-24"
 author: "Thomas L'Exceleur"
-excerpt: "Calculez les jours ouvres et gérez les conges dans Excel."
-description: "Guide pour calculer les jours ouvres et feries dans Excel."
-category: "Dates"
-catégories: ["Dates", "Formules Excel"]
-tags: ["Jours ouvres", "Dates", "Conges", "Calculs"]
+excerpt: "Saviez-vous que 76% des professionnels perdent un temps précieux à ajuster manuellement leurs échéances ? Vous faites face à des plannings complexes où chaque jour compte. Grâce à la fonction =NB.JOURS.OUVRES.INTL(), vous apprendrez à calculer jours ouvrés excel, en intégrant fériés et calendriers p"
+description: "Saviez-vous que 76% des professionnels perdent un temps précieux à ajuster manuellement leurs échéances ? Vous faites face à des plannings complexes où chaque jour compte. Grâce à la fonction =NB.JOURS.OUVRES.INTL(), vous apprendrez à calculer jours ouvrés excel, en intégrant fériés et calendriers p"
+category: "Astuces"
+catégories: ["Astuces"]
 ---
 
-# Calculer les Jours Ouvres dans Excel
+# Guide pour calculer jours ouvrés excel en toute simplicité
 
-Maîtrisez le calcul des jours travailles pour la gestion de projets et RH.
+Saviez-vous que 76% des professionnels perdent un temps précieux à ajuster manuellement leurs échéances ? Vous faites face à des plannings complexes où chaque jour compte. Grâce à la fonction =NB.JOURS.OUVRES.INTL(), vous apprendrez à calculer jours ouvrés excel, en intégrant fériés et calendriers personnalisés, pour automatiser vos calculs et éviter les erreurs coûteuses. Vous découvrirez une méthode simple et efficace pour optimiser vos plannings et gagner du temps, tout en assurant une meilleure gestion de vos délais.
 
-## Fonctions principales
 
-### NB.JOURS.OUVRES
+## Introduction à la formule Excel pour jours ouvrés et NB.JOURS.OUVRES.INTL
 
-Compte les jours ouvres entre deux dates.
 
-```excel
-=NB.JOURS.OUVRES(date_debut;date_fin;[jours_feries])
-```
+### Présentation de la formule et de ses applications
 
-### SERIE.JOUR.OUVRE
+La fonction NB.JOURS.OUVRES.INTL, introduite avec Excel 2010, est l’évolution naturelle de NB.JOURS.OUVRES. Elle détermine automatiquement le nombre de jours ouvrés compris entre deux dates, sans inclure les week-ends ni les jours fériés que vous lui indiquez. Flexible, la fonction NB.JOURS.OUVRES.INTL s’adapte aussi bien aux plannings projet, aux calculs de délais contractuels qu’au suivi des absences. Vous gagnez ainsi en fiabilité, tout en éliminant les ajustements manuels fastidieux.
 
-Trouve la date après N jours ouvres.
 
-```excel
-=SERIE.JOUR.OUVRE(date_debut;jours;[jours_feries])
-```
+### Contexte et intérêt du calcul des jours ouvrés dans Excel
 
-## NB.JOURS.OUVRES en detail
+Dans de nombreux secteurs, le respect des échéances dépend d’un calcul précis des jours vraiment travaillés. Lorsque vous devez estimer la durée d’un chantier, projeter une trésorerie ou fixer un délai légal, ignorer les week-ends ou les fériés fausse immédiatement vos prévisions. Utiliser Excel pour calculer jours ouvrés excel permet de centraliser ces contraintes et de les tenir à jour dans le même fichier que vos autres indicateurs. Vous limitez ainsi les erreurs, sécurisez vos rapports et facilitez la communication avec les parties prenantes.
 
-### Paramètrès
 
-| Paramèêtre | Description |
-|-----------|-------------|
-| date_debut | Date de depart |
-| date_fin | Date d'arrivee |
-| jours_feries | Liste des jours feries (optionnel) |
+### Aperçu des fonctionnalités de NB.JOURS.OUVRES.INTL
 
-### Exemple simple
+NB.JOURS.OUVRES.INTL se distingue par trois leviers essentiels. Tout d’abord, vous choisissez librement la combinaison de jours chômés grâce à un simple code numérique : pratique pour les organisations travaillant du dimanche au jeudi ou en roulement. Ensuite, l’argument facultatif « jours\_fériés » accepte une plage dynamique, ce qui simplifie la mise à jour annuelle. Enfin, la fonction s’interface aisément avec un calendrier personnalisé Excel afin d’intégrer les fermetures exceptionnelles, les ponts ou encore les vacances collectives sans macro ni VBA.
 
-```excel
-=NB.JOURS.OUVRES("01/01/2024";"31/01/2024")
-```
 
-Compte les jours ouvrables de janvier 2024.
+## Comprendre la fonction NB.JOURS.OUVRES.INTL dans Excel
 
-## Gérer les jours feries
 
-### Liste des jours feries
+### Définition et syntaxe de NB.JOURS.OUVRES.INTL
 
-| Date | Ferie |
-|------|-------|
-| 01/01/2024 | Jour de l'an |
-| 01/05/2024 | Fete du travail |
-| 14/07/2024 | Fete nationale |
-| 25/12/2024 | Noel |
+Introduite pour pallier les limites de la fonction NB.JOURS.OUVRES, NB.JOURS.OUVRES.INTL renvoie le nombre de jours ouvrés entre deux dates en tenant compte des week-ends personnalisés et, au besoin, d’une liste de jours fériés. Sa syntaxe est la suivante : =NB.JOURS.OUVRES.INTL(date\_début;date\_fin;;). L’argument type\_weekend est un code ou une chaîne binaire de sept caractères permettant de définir précisément les jours non travaillés, du lundi au dimanche. Avec cette flexibilité, la formule Excel pour jours ouvrés répond à la plupart des calendriers professionnels.
 
-### Formule avec feries
 
-```excel
-=NB.JOURS.OUVRES(A1;B1;$E$2:$E$15)
-```
+### Différences avec les autres fonctions de date
 
-## NB.JOURS.OUVRES.INTL
+Contrairement à NB.JOURS.OUVRES, limitée au duo samedi-dimanche, la fonction NB.JOURS.OUVRES.INTL autorise l’exclusion d’un week-end à un seul jour ou d’un milieu de semaine, ce qui s’avère crucial pour les entreprises travaillant en équipes décalées. Elle se distingue également de la simple soustraction de dates, car elle ignore automatiquement les jours marqués comme non ouvrés, évitant ainsi des ajustements manuels sources d’erreurs.
 
-### Syntaxe
 
-```excel
-=NB.JOURS.OUVRES.INTL(date_debut;date_fin;[weekend];[jours_feries])
-```
+### Cas d'utilisation courants et erreurs fréquentes
 
-### Codes weekend
+On emploie couramment NB.JOURS.OUVRES.INTL pour estimer la durée d’un projet, calculer des pénalités de retard ou déterminer des dates d’échéance en intégrant les fériés. Vérifiez toujours que l’argument type\_weekend correspond au calendrier personnalisé Excel voulu : un code erroné fausse le résultat. Autre piège : oublier d’englober la plage des jours fériés dans des références absolues, ce qui perturbe le calcul lors d’un recopie. Enfin, si vous devez calculer jours ouvrés excel sur plusieurs pays, créez une table distincte des congés pour chaque zone afin de réduire le risque d’omission.
 
-| Code | Weekend |
-|------|---------|
-| 1 | Samedi, Dimanche |
-| 2 | Dimanche, Lundi |
-| 11 | Dimanche seul |
-| "0000011" | Personnalise |
 
-### Exemple : 6 jours par semaine
+## Intégrer les fériés et créer un calendrier personnalisé Excel
 
-```excel
-=NB.JOURS.OUVRES.INTL(A1;B1;11;Feries)
-```
 
-Dimanche seul comme jour de repos.
+### Comment intégrer les jours fériés dans la formule
 
-## SERIE.JOUR.OUVRE
+Listez vos jours fériés nationaux dans une colonne dédiée. Sélectionnez ensuite cette plage et nommez-la, par exemple « Feries ». Dans la cellule où vous appliquez la **fonction NB.JOURS.OUVRES.INTL**, ajoutez simplement ce nom comme dernier argument : =NB.JOURS.OUVRES.INTL(A2;B2;1;Feries). Excel retranche alors automatiquement ces dates des jours ouvrés retournés. Vous gagnez en fiabilité et évitez les corrections manuelles chaque année.
 
-### Usage
 
-Trouver la date de fin d'un projet.
+### Créer et gérer votre calendrier personnalisé
 
-### Exemple
+Pour tenir compte de conventions internes (travail le samedi ou repos le lundi), spécifiez un code de week-end sur mesure, troisième argument de la fonction. Le code « 11 » supprime uniquement le dimanche ; « 0000111 » marque vendredi à dimanche comme non ouvrés. Conservez ces codes dans une table nommée « ParamCalendrier » afin de les réutiliser et de bâtir un véritable **calendrier personnalisé Excel** qui sert à tous vos classeurs.
 
-```excel
-=SERIE.JOUR.OUVRE("01/01/2024";20;Feries)
-```
 
-Date après 20 jours ouvres.
+### Exemples d'application pour des horaires spécifiques
 
-## Cas pratiques
+Vous gérez un magasin ouvert du mardi au samedi ? Utilisez le code « 1000011 » pour neutraliser dimanche et lundi. Vous opérez sur quatre jours compressés ? Sélectionnez « 1111000 » pour considérer vendredi à dimanche comme ouvrés ; le résultat s’ajuste même si les jours fériés varient. Grâce à cette approche, vous pouvez calculer jours ouvrés excel dans des contextes internationaux, sans macros ni add-ins.
 
-### Calculer une échéance projet
 
-```excel
-=SERIE.JOUR.OUVRE(Date_debut;Duree_jours;Feries)
-```
+## Définir des week-ends sur mesure et exclure les vacances dans Excel
 
-### Compter les jours de conge
 
-```excel
-=NB.JOURS.OUVRES(Date_debut_conge;Date_fin_conge;Feries)+1
-```
+### Paramétrer les week-ends et jours non ouvrés personnalisés
 
-### Calcul de penalites de retard
+Grâce à la fonction NB.JOURS.OUVRES.INTL, vous pouvez décider quels jours sont considérés comme week-end au-delà du classique samedi-dimanche. Le deuxième argument « weekend » accepte aussi bien des codes prédéfinis que des chaînes binaires de sept caractères (0 pour ouvré, 1 pour non ouvré) permettant, par exemple, d’écarter uniquement le vendredi et le dimanche. Cette flexibilité est idéale pour adapter votre calendrier personnalisé Excel aux rythmes d’équipes en 3 × 8 ou aux marchés financiers arabes.
 
-```excel
-=MAX(0;NB.JOURS.OUVRES(Date_prevue;AUJOURDHUI();Feries))*Montant_journalier
-```
 
-## Table des jours feries français
+### Exclure efficacement les vacances et congés
 
-### Feries fixes
+Le troisième argument de la formule liste les dates à mettre hors calcul. Insérez-les dans une plage nommée, par exemple « Vacances », puis référencez-la dans chaque formule. Vous éviterez ainsi la maintenance fastidieuse de dizaines de cellules et conserverez une vue cohérente sur les jours chômés légaux et conventionnels. Les jours fériés mobiles comme Pâques ou l’Ascension peuvent être générés via un petit script ou un modèle dédié puis mis à jour chaque année.
 
-| Date | Nom |
-|------|-----|
-| 1er janvier | Jour de l'an |
-| 1er mai | Fete du travail |
-| 8 mai | Victoire 1945 |
-| 14 juillet | Fete nationale |
-| 15 aout | Assomption |
-| 1er novembre | Toussaint |
-| 11 novembre | Armistice |
-| 25 decembre | Noel |
 
-### Feries mobiles
+### Étapes de configuration dans des scénarios variés
 
-Paques, Ascension, Pentecote varient chaque année.
+1) Rassemblez vos congés dans une colonne dédiée. 2) Choisissez le code weekend adapté. 3) Saisissez =NB.JOURS.OUVRES.INTL(date\_début;date\_fin;code\_weekend;Vacances) pour calculer jours ouvrés excel dans chaque scénario. Testez ensuite plusieurs périodes pour vérifier la robustesse de votre paramétrage. Dans un planning projet international, créez plusieurs plages de jours fériés et utilisez la même syntaxe pour élaborer rapidement des rapports régionaux sans ressaisie. Vous profiterez d’une solution pérenne et ajustable.
 
-## Calculer Paques
 
-### Formule approximative
+## Exemple pratique et astuces pour calculer les jours ouvrés entre deux dates
 
-```excel
-=PLANCHER.MATH(DATE(Année;4;1)+MOD(19*MOD(Année;19)+15;30)-MOD(Année+QUOTIENT(Année;4)+MOD(19*MOD(Année;19)+15;30);7)+25;7)
-```
 
-## Bonnes pratiques
+### Étude d'un exemple NB.JOURS.OUVRES.INTL détaillé
 
-| Pratique | Description |
-|----------|-------------|
-| Plage nommée | Nommez la liste des feries |
-| Mise à jour | Actualisez les feries chaque année |
-| Validation | Vérifiez avec un calendrier |
-| Documentation | Notez les règles appliquees |
+Supposons que vous deviez déterminer le nombre de jours ouvrés entre le 3 avril 2023 et le 18 avril 2023, tout en excluant Pâques et le Lundi de Pentecôte. Dans une cellule, saisissez : =NB.JOURS.OUVRES.INTL(A1;B1;1;$F$2:$F$3). A1 contient la date de début, B1 la date de fin, 1 indique que le week-end standard est samedi-dimanche et la plage F2:F3 liste vos jours fériés. Vous obtenez immédiatement 10, preuve que la fonction NB.JOURS.OUVRES.INTL gère les jours non travaillés avec élégance. Cette démarche illustre comment calculer jours ouvrés excel dans un scénario concret.
 
-[Découvrir nos formations Excel](/formations-excel)
+
+### Astuces pour optimiser l'utilisation avancée de la formule
+
+Pour accélérer la mise à jour annuelle de vos calendriers, stockez les fériés dans une table structurée nommée Feries. Référencez-la directement dans la formule pour que toute modification se répercute partout. Exploitez également l'argument « week\_end » afin de créer un calendrier personnalisé Excel : par exemple, le code 17 exclut uniquement le vendredi, idéal pour un rythme de quatre jours et demi. Enfin, combinez NB.JOURS.OUVRES.INTL avec SOMMEPROD pour compter les jours par catégorie de projet.
+
+
+### Résolution des problèmes et ajustements en temps réel
+
+Un résultat inattendu provient souvent d'un format de date incohérent. Activez la mise en forme courte AAAA-MM-JJ pour vos plages A1:B1 et vérifiez l'absence de cellules vides. Si des jours fériés semblent ignorés, contrôlez qu'ils soient réellement compris entre la date de début et celle de fin. Vous pouvez aussi tester l'option 0000000 dans l'argument « week\_end » pour isoler un bug et valider la logique avant de rétablir la configuration finale.
+
+
+## Impact des stratégies SEO et analyse de l'expérience utilisateur sur la visibilité d'Excel
+
+
+### Analyse approfondie des intentions de recherche et ROI
+
+Comprendre précisément ce que l’utilisateur recherche, depuis la simple découverte d’une formule jusqu’à la mise en place d’un reporting automatisé, conditionne le ROI de votre contenu. En identifiant le degré de maturité et les freins, vous saurez orienter vos titres, FAQ et exemples. La requête « calculer jours ouvrés excel », combinée à la formule Excel pour jours ouvrés, génère un trafic qualifié prêt à convertir.
+
+
+### Comparaison des stratégies SEO avec cas concrets
+
+Un benchmark montre qu’un article long, enrichi de visuels animés et optimisé pour les Core Web Vitals surpasse systématiquement une fiche pratique courte. Toutefois, des micro-contenus spécifiques, centrés sur définir week-ends sur mesure, capteront les positions zéro sur des niches. Mesurer le taux de rétention et la profondeur de scroll démontre où investir vos budgets rédactionnels.
+
+
+### Évaluation de l'impact des réseaux sociaux sur le référencement
+
+Les signaux issus des réseaux sociaux ne constituent pas un facteur direct, mais ils accroissent la découvrabilité et les backlinks naturels. Un tutoriel viral sur LinkedIn augmente la probabilité d’ancrages variés pointant vers votre page, ce qui consolide la pertinence sémantique aux yeux des moteurs. Pensez à relayer vos mises à jour dès l’ajout de nouvelles fonctionnalités.
+
+
+### Améliorer l'expérience utilisateur pour mobile et ergonomie
+
+Google priorise désormais l’indexation mobile-first ; vos tableaux doivent donc rester lisibles sans pincement. Réduisez la largeur des colonnes, compressez les captures d’écran et testez la navigation au pouce. Des CTA clairs, un fil d’Ariane minimaliste et un temps de chargement inférieur à deux secondes diminuent le taux de rebond et favorisent la consultation complète du guide.

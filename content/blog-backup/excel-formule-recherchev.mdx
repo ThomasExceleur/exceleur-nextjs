@@ -1,0 +1,190 @@
+---
+title: "Excel Formule RECHERCHEV : Guide Complet"
+date: "2024-07-20"
+author: "Thomas L'Exceleur"
+excerpt: "Maîtrisez RECHERCHEV, la fonction de recherche la plus populaire d'Excel pour retrouver des données."
+description: "Guide complet de RECHERCHEV dans Excel. Syntaxe, exemples pratiques, erreurs courantes et alternatives comme RECHERCHEX."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Recherche"]
+tags: ["RECHERCHEV", "Formules", "Recherche", "Données"]
+---
+
+# Excel Formule RECHERCHEV : Guide Complet
+
+RECHERCHEV (VLOOKUP en anglais) est la fonction de recherche la plus utilisée dans Excel. Elle permet de retrouver une valeur dans un tableau.
+
+## Syntaxe
+
+```excel
+=RECHERCHEV(valeur_cherchee; table_matrice; no_index_col; [valeur_proche])
+```
+
+### Arguments
+
+- **valeur_cherchee** : La valeur à rechercher
+- **table_matrice** : La plage de données
+- **no_index_col** : Numéro de la colonne contenant le résultat
+- **valeur_proche** : FAUX pour correspondance exacte (recommandé)
+
+## Exemple simple
+
+Tableau de produits :
+
+| Code | Produit | Prix |
+|------|---------|------|
+| A001 | Stylo | 2,50 |
+| A002 | Cahier | 5,00 |
+| A003 | Classeur | 8,00 |
+
+Pour trouver le prix du code A002 :
+
+```excel
+=RECHERCHEV("A002"; A1:C4; 3; FAUX)
+```
+
+Résultat : 5,00
+
+## Correspondance exacte vs approximative
+
+### FAUX (recommandé)
+
+Recherche une correspondance exacte. Retourne #N/A si non trouve.
+
+```excel
+=RECHERCHEV(E1; A:C; 2; FAUX)
+```
+
+### VRAI (où omis)
+
+Recherche une correspondance approximative. Nécessité des données triees.
+
+**Usage** : Tranches de valeurs (ex: remises par montant).
+
+## Exemples pratiques
+
+### Recherche de prix
+
+```excel
+=RECHERCHEV(CodeProduit; TableProduits; 3; FAUX)
+```
+
+### Calcul de facture
+
+```excel
+=RECHERCHEV(A2; Tarifs; 2; FAUX) * B2
+```
+
+### Afficher un nom
+
+```excel
+=RECHERCHEV(IDClient; Clients; 2; FAUX) & " " & RECHERCHEV(IDClient; Clients; 3; FAUX)
+```
+
+## Erreurs courantes
+
+### #N/A
+
+**Causes :**
+- Valeur non trouvee
+- Espaces invisibles
+- Formats différents (texte vs nombre)
+
+**Solutions :**
+```excel
+=SIERREUR(RECHERCHEV(A1; B:D; 2; FAUX); "Non trouve")
+=SI.NON.DISP(RECHERCHEV(A1; B:D; 2; FAUX); "Non trouve")
+```
+
+### #REF!
+
+**Cause :** Numéro de colonne trop grand
+
+**Solution :** Vérifiez que no_index_col n'excede pas le nombre de colonnes de table_matrice
+
+### Mauvais résultat
+
+**Causes possibles :**
+- VRAI au lieu de FAUX
+- Données non triees avec VRAI
+- Mauvais numéro de colonne
+
+## Limites de RECHERCHEV
+
+1. **Recherche vers la droite uniquement** : La colonne de recherche doit etre à gauche
+2. **Une seule valeur** : Ne retourne que la première correspondance
+3. **Numéro de colonne fixe** : Problème si vous insérez des colonnes
+
+## Alternatives
+
+### INDEX + EQUIV
+
+Plus flexible que RECHERCHEV :
+
+```excel
+=INDEX(C:C; EQUIV(E1; A:A; 0))
+```
+
+**Avantages :**
+- Recherche dans toutes les directions
+- Plus robuste aux modifications de structuré
+
+### RECHERCHEX (Excel 365)
+
+La fonction moderne qui remplace RECHERCHEV :
+
+```excel
+=RECHERCHEX(E1; A:A; C:C; "Non trouve")
+```
+
+**Avantages :**
+- Recherche dans les deux sens
+- Valeur par defaut intégrée
+- Plus performante
+
+## Astuces avancées
+
+### Recherche avec caracteres joker
+
+```excel
+=RECHERCHEV("*pomme*"; A:C; 2; FAUX)
+```
+
+Trouve les cellules contenant "pomme".
+
+### Recherche insensible à la casse
+
+Par defaut, RECHERCHEV est sensible à la casse avec le mode exact.
+
+### Plages nommées
+
+Pour plus de clarté :
+
+```excel
+=RECHERCHEV(IDProduit; TablePrix; 3; FAUX)
+```
+
+### Figer les références
+
+Utilisez $ pour figer la plage lors de la copie :
+
+```excel
+=RECHERCHEV(A1; $B$1:$D$100; 2; FAUX)
+```
+
+## Bonnes pratiques
+
+1. **Toujours utiliser FAUX** sauf cas spécifique
+2. **Gérer les erreurs** avec SIERREUR
+3. **Vérifier les formats** (texte vs nombre)
+4. **Éviter les plages entières** (A:C) dans les gros fichiers
+
+## Comparaison des fonctions de recherche
+
+| Fonction | Direction | Erreur par defaut | Excel |
+|----------|-----------|-------------------|-------|
+| RECHERCHEV | Droite | #N/A | Toutes |
+| RECHERCHEH | Bas | #N/A | Toutes |
+| INDEX/EQUIV | Tous | #N/A | Toutes |
+| RECHERCHEX | Tous | Personnalisable | 365 |
+
+[Découvrir la formation Excel Avancé](/formations-excel/excel-avancé)

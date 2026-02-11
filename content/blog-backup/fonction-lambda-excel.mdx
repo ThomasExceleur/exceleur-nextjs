@@ -1,0 +1,217 @@
+---
+title: "La Fonction LAMBDA dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Créez vos propres fonctions personnalisees avec LAMBDA."
+description: "Guide complet de la fonction LAMBDA pour créer des fonctions Excel."
+category: "Excel 365"
+catégories: ["Excel 365", "Formules Excel"]
+tags: ["LAMBDA", "Fonctions", "Personnalise", "Excel 365"]
+---
+
+# La Fonction LAMBDA dans Excel
+
+LAMBDA permet de créer des fonctions personnalisees sans VBA.
+
+## Qu'est-ce que LAMBDA ?
+
+### Définition
+
+LAMBDA créé une fonction reutilisable à partir d'une expression.
+
+### Disponibilité
+
+Excel 365, Excel 2024
+
+## Syntaxe
+
+```excel
+=LAMBDA(param1;param2;...;expression)
+```
+
+## Premier exemple
+
+### Définition
+
+```excel
+=LAMBDA(x;x*2)
+```
+
+Créé une fonction qui double une valeur.
+
+### Utilisation directe
+
+```excel
+=LAMBDA(x;x*2)(5)
+```
+
+Résultat : 10
+
+## Créer une fonction nommée
+
+### Étapes
+
+1. **Formules** > **Gestionnaire de noms**
+2. **Nouveau**
+3. Nom : DOUBLER
+4. Fait référence à : `=LAMBDA(x;x*2)`
+5. **OK**
+
+### Utilisation
+
+```excel
+=DOUBLER(5)   ' Résultat : 10
+=DOUBLER(A1)  ' Double la valeur de A1
+```
+
+## Exemples pratiques
+
+### Calcul de TVA
+
+```excel
+Nom: TVA
+Formule: =LAMBDA(ht;taux;ht*taux)
+```
+
+Usage : `=TVA(100;0,2)` retourne 20
+
+### Prix TTC
+
+```excel
+Nom: TTC
+Formule: =LAMBDA(ht;ht*1,2)
+```
+
+Usage : `=TTC(100)` retourne 120
+
+### Conversion temperature
+
+```excel
+Nom: CELSIUS_FAHRENHEIT
+Formule: =LAMBDA(c;c*9/5+32)
+```
+
+Usage : `=CELSIUS_FAHRENHEIT(0)` retourne 32
+
+## Plusieurs paramètrès
+
+### Exemple : Calcul d'intérêt
+
+```excel
+Nom: INTERET_SIMPLE
+Formule: =LAMBDA(capital;taux;duree;capital*taux*duree)
+```
+
+Usage : `=INTERET_SIMPLE(1000;0,05;2)` retourne 100
+
+## LAMBDA avec conditions
+
+### Exemple : Classification
+
+```excel
+Nom: NIVEAU_VENTE
+Formule: =LAMBDA(montant;
+  SI(montant>=10000;"VIP";
+    SI(montant>=5000;"Premium";
+      SI(montant>=1000;"Standard";"Basique"))))
+```
+
+## Combiner avec LET
+
+### Pour des fonctions complexes
+
+```excel
+Nom: SCORE_CLIENT
+Formule: =LAMBDA(ventes;anciennete;
+  LET(
+    score_v;MIN(50;ventes/200);
+    score_a;MIN(50;anciennete*5);
+    score_v+score_a
+  )
+)
+```
+
+## Fonctions recursives
+
+### Exemple : Factorielle
+
+```excel
+Nom: FACT
+Formule: =LAMBDA(n;SI(n<=1;1;n*FACT(n-1)))
+```
+
+Usage : `=FACT(5)` retourne 120
+
+### Exemple : Fibonacci
+
+```excel
+Nom: FIB
+Formule: =LAMBDA(n;SI(n<=2;1;FIB(n-1)+FIB(n-2)))
+```
+
+## LAMBDA avec fonctions d'ordre supérieur
+
+### MAP
+
+Applique LAMBDA à chaque élément :
+
+```excel
+=MAP(A1:A10;LAMBDA(x;x^2))
+```
+
+### REDUCE
+
+Agregation avec LAMBDA :
+
+```excel
+=REDUCE(0;A1:A10;LAMBDA(acc;val;acc+val))
+```
+
+### SCAN
+
+Agregation cumulative :
+
+```excel
+=SCAN(0;A1:A10;LAMBDA(acc;val;acc+val))
+```
+
+## Organisation des fonctions
+
+### Convention de nommage
+
+| Prefixe | Domaine |
+|---------|---------|
+| FIN_ | Finance |
+| TXT_ | Texte |
+| DATE_ | Dates |
+| STAT_ | Statistiques |
+
+### Documentation
+
+Utilisez le champ Commentaire du gestionnaire de noms.
+
+## Avantages de LAMBDA
+
+| Avantage | Description |
+|----------|-------------|
+| Reutilisabilite | Une définition, usages multiples |
+| Lisibilité | Nom explicite vs formule |
+| Maintenance | Modification centralisee |
+| Pas de VBA | Fonctions natives |
+
+## Limites
+
+### A considerer
+
+- Excel 365 uniquement
+- Recursion limitee
+- Pas de persistance entre classeurs
+
+## Bonnes pratiques
+
+1. **Noms explicites** pour les fonctions
+2. **Documentation** dans les commentaires
+3. **Tests** avant deploiement
+4. **Partage** du classeur avec les définitions
+
+[Découvrir nos formations Excel](/formations-excel)

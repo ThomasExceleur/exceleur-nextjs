@@ -1,0 +1,109 @@
+---
+title: "Fractionner du Texte dans Plusieurs Cellules"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Separaez du texte en plusieurs colonnes dans Excel."
+description: "Guide pour fractionner du texte dans Excel."
+category: "Manipulation de données"
+catégories: ["Manipulation de données", "Astuces Excel"]
+tags: ["Fractionner", "Texte", "Colonnes", "Excel"]
+---
+
+# Fractionner du Texte
+
+Divisez vos cellules en plusieurs colonnes.
+
+## Assistant Convertir
+
+### Accès
+
+**Données** > **Convertir**
+
+### Types
+
+| Type | Usage |
+|------|-------|
+| Delimiteur | Virgule, espace, etc. |
+| Largeur fixe | Position exacte |
+
+## Étapes Delimiteur
+
+1. Sélectionnez la colonne
+2. **Données** > **Convertir**
+3. **Delimiteur**
+4. Choisissez le séparateur
+5. Définissez la destination
+
+## TEXTE.SEPARER (Excel 365)
+
+### Syntaxe
+
+```excel
+=TEXTE.SEPARER(texte;delimiteur)
+```
+
+### Exemple
+
+```excel
+=TEXTE.SEPARER(A1;" ")
+```
+
+Retourne un tableau dynamique.
+
+## Formules classiques
+
+### GAUCHE
+
+```excel
+=GAUCHE(A1;TROUVE(" ";A1)-1)
+```
+
+### DROITE
+
+```excel
+=DROITE(A1;NBCAR(A1)-TROUVE(" ";A1))
+```
+
+### STXT
+
+```excel
+=STXT(A1;début;longueur)
+```
+
+## Ctrl+E (Flash Fill)
+
+### Méthode
+
+1. Tapez le résultat souhaité
+2. Descendez d'une cellule
+3. **Ctrl+E**
+
+## Power Query
+
+### Avantages
+
+- Reproductible
+- Multi-delimiteurs
+- Actualisation automatique
+
+### Accès
+
+**Données** > **A partir d'un tableau** > **Fractionner la colonne**
+
+## Exemples
+
+| Avant | Delimiteur | Résultat |
+|-------|------------|----------|
+| Jean Dupont | Espace | Jean, Dupont |
+| Paris,France | Virgule | Paris, France |
+| 2024-01-15 | Tiret | 2024, 01, 15 |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Sauvegarde | Gardez l'original |
+| Test | Vérifiez sûr echantillon |
+| Cohérence | Meme format partout |
+
+[Découvrir nos formations Excel](/formations-excel)

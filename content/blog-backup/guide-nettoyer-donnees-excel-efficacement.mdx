@@ -1,0 +1,152 @@
+---
+title: "Guide pour Nettoyer vos Données Excel Efficacement"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Techniques essentielles pour nettoyer vos données dans Excel."
+description: "Guide de nettoyage de données dans Excel. Formules et Power Query."
+category: "Manipulation de données"
+catégories: ["Manipulation de données", "Astuces Excel"]
+tags: ["Nettoyage", "Données", "Power Query", "Qualité"]
+---
+
+# Nettoyer vos Données Efficacement
+
+Le nettoyage des données est essentiel pour des analyses fiables.
+
+## Problèmes courants
+
+### Types de problèmes
+
+| Problème | Description |
+|----------|-------------|
+| Espaces | Espaces avant/après le texte |
+| Doublons | Lignes identiques |
+| Formats | Texte au lieu de nombres |
+| Casse | Majuscules/minuscules |
+| Vides | Cellules vides |
+
+## Formules de nettoyage
+
+### Supprimer les espaces
+
+```excel
+=SUPPRESPACE(A1)
+```
+
+Supprime les espaces en début, fin et doubles.
+
+### Uniformiser la casse
+
+```excel
+=MAJUSCULE(A1)        ' TOUT EN MAJUSCULE
+=MINUSCULE(A1)        ' tout en minuscule
+=NOMPROPRE(A1)        ' Première Lettre Majuscule
+```
+
+### Nettoyer les caracteres
+
+```excel
+=EPURAGE(A1)          ' Supprime les non-imprimables
+```
+
+### Combiner le nettoyage
+
+```excel
+=SUPPRESPACE(EPURAGE(MINUSCULE(A1)))
+```
+
+## Supprimer les doublons
+
+### Méthode manuelle
+
+1. Sélectionnez les données
+2. **Données** > **Supprimer les doublons**
+3. Choisissez les colonnes
+4. **OK**
+
+### Avec formule (marquer)
+
+```excel
+=SI(NB.SI($A$1:A1;A1)>1;"Doublon";"Unique")
+```
+
+## Convertir texte en nombre
+
+### Méthode Convertir
+
+1. Sélectionnez la colonne
+2. **Données** > **Convertir**
+3. **Terminer**
+
+### Avec formule
+
+```excel
+=CNUM(A1)
+```
+
+### Multiplier par 1
+
+```excel
+=A1*1
+```
+
+## Power Query
+
+### Avantages
+
+- Process automatisable
+- Interface visuelle
+- Transformations multiples
+
+### Étapes courantes
+
+1. **Données** > **A partir d'un tableau**
+2. Dans l'éditeur, utilisez :
+   - **Supprimer les lignes** > **Supprimer les doublons**
+   - **Transformer** > **Nettoyer**
+   - **Transformer** > **Supprimer les espaces**
+
+## Remplir les cellules vides
+
+### Avec Atteindre
+
+1. Sélectionnez la plage
+2. **Ctrl + G** > **Special** > **Cellules vides**
+3. Tapez `=` puis la cellule au-dessus
+4. **Ctrl + Entrée**
+
+### Avec Power Query
+
+**Transformer** > **Remplir** > **Vers le bas**
+
+## Standardiser les dates
+
+### Format date
+
+```excel
+=DATEVAL(A1)
+```
+
+### Format texte
+
+```excel
+=TEXTE(A1;"JJ/MM/AAAA")
+```
+
+## Checklist de nettoyage
+
+1. Supprimer les doublons
+2. Nettoyer les espaces
+3. Uniformiser la casse
+4. Vérifier les formats
+5. Remplir les vides
+6. Valider les résultats
+
+## Bonnes pratiques
+
+1. **Sauvegardez** avant de nettoyer
+2. **Documentez** les transformations
+3. **Automatisez** avec Power Query
+4. **Vérifiez** après chaque étape
+
+[Découvrir nos formations Excel](/formations-excel)

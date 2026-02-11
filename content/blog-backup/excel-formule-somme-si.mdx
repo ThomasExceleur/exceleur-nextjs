@@ -1,0 +1,212 @@
+---
+title: "Excel Formule SOMME.SI : Additionner avec Conditions"
+date: "2024-07-20"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez à utiliser SOMME.SI et SOMME.SI.ENS pour additionner des valeurs selon des critères."
+description: "Guide complet de SOMME.SI et SOMME.SI.ENS dans Excel. Syntaxe, exemples pratiques et astuces pour les sommes conditionnelles."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Calculs"]
+tags: ["SOMME.SI", "SOMME.SI.ENS", "Formules", "Calculs"]
+---
+
+# Excel Formule SOMME.SI : Guide Complet
+
+SOMME.SI et SOMME.SI.ENS permettent d'additionner des valeurs en fonction de critères spécifiques.
+
+## SOMME.SI : Un seul critère
+
+### Syntaxe
+
+```excel
+=SOMME.SI(plage_criteres; critère; [plage_somme])
+```
+
+### Arguments
+
+- **plage_criteres** : Plage à évaluer
+- **critère** : Condition à remplir
+- **plage_somme** : Plage à additionner (optionnel si identique)
+
+## Exemples SOMME.SI
+
+### Somme par catégorie
+
+```excel
+=SOMME.SI(A:A; "Fruits"; B:B)
+```
+
+Additionne les valeurs de B où A = "Fruits".
+
+### Somme des valeurs supérieures à
+
+```excel
+=SOMME.SI(B:B; ">100")
+```
+
+Additionne les cellules de B supérieures à 100.
+
+### Somme avec référence
+
+```excel
+=SOMME.SI(A:A; D1; B:B)
+```
+
+Additionne selon la valeur de D1.
+
+## Critères possibles
+
+| Critère | Signification |
+|---------|---------------|
+| `"Pommes"` | Égal à "Pommes" |
+| `">100"` | Supérieur à 100 |
+| `"<50"` | Inférieur à 50 |
+| `">=10"` | Supérieur où égal à 10 |
+| `"<>0"` | Différent de 0 |
+| `"P*"` | Commence par P |
+| `"*e"` | Finit par e |
+| `"???"` | Exactement 3 caracteres |
+
+## SOMME.SI.ENS : Plusieurs critères
+
+### Syntaxe
+
+```excel
+=SOMME.SI.ENS(plage_somme; plage_criteres1; critere1; [plage_criteres2; critere2]; ...)
+```
+
+**Note** : L'ordre des arguments est différent de SOMME.SI !
+
+### Exemples SOMME.SI.ENS
+
+### Deux critères
+
+```excel
+=SOMME.SI.ENS(C:C; A:A; "Paris"; B:B; "2024")
+```
+
+Additionne C où A = "Paris" ET B = "2024".
+
+### Trois critères
+
+```excel
+=SOMME.SI.ENS(D:D; A:A; "Ventes"; B:B; "Nord"; C:C; ">1000")
+```
+
+### Avec références de cellules
+
+```excel
+=SOMME.SI.ENS(Montants; Regions; F1; Années; G1)
+```
+
+## Caracteres joker
+
+### * (zero où plusieurs caracteres)
+
+```excel
+=SOMME.SI(A:A; "*pomme*"; B:B)
+```
+
+Trouve "pomme", "compote de pomme", etc.
+
+### ? (un seul caractere)
+
+```excel
+=SOMME.SI(A:A; "A0??"; B:B)
+```
+
+Trouve "A001", "A002", etc.
+
+## Critères avec opérateurs
+
+### Supérieur à une cellule
+
+```excel
+=SOMME.SI(B:B; ">"&D1)
+```
+
+### Entre deux valeurs
+
+```excel
+=SOMME.SI.ENS(C:C; B:B; ">="&D1; B:B; "<="&E1)
+```
+
+### Dates
+
+```excel
+=SOMME.SI.ENS(Montants; Dates; ">="&DATE(2024;1;1); Dates; "<"&DATE(2025;1;1))
+```
+
+## Cas pratiques
+
+### Ventes par vendeur
+
+```excel
+=SOMME.SI(Vendeurs; "Dupont"; Ventes)
+```
+
+### Ventes par region et produit
+
+```excel
+=SOMME.SI.ENS(Ventes; Regions; "Nord"; Produits; "Widget")
+```
+
+### Ventes du mois en cours
+
+```excel
+=SOMME.SI.ENS(Montants; Dates; ">="&DEBUT.MOIS(AUJOURDHUI();0); Dates; "<="&FIN.MOIS(AUJOURDHUI();0))
+```
+
+### Exclusion de valeurs
+
+```excel
+=SOMME.SI(Statuts; "<>Annule"; Montants)
+```
+
+## Comparaison SOMME.SI vs SOMME.SI.ENS
+
+| Aspect | SOMME.SI | SOMME.SI.ENS |
+|--------|----------|--------------|
+| Critères | 1 seul | Plusieurs |
+| Ordre arguments | plage_critere, critère, plage_somme | plage_somme, plage_critere1, critere1... |
+| Plage_somme | Optionnelle | Obligatoire |
+
+## Alternatives
+
+### SOMMEPROD
+
+Pour des calculs plus complexes :
+
+```excel
+=SOMMEPROD((A:A="Paris")*(B:B>100)*(C:C))
+```
+
+### SOMME avec condition matricielle
+
+```excel
+=SOMME(SI(A:A="Paris"; C:C; 0))
+```
+(Validation avec Ctrl + Maj + Entrée dans les anciennes versions)
+
+## Erreurs courantes
+
+### #VALEUR!
+
+**Cause** : Plages de tailles différentes
+
+**Solution** : Assurez-vous que toutes les plages ont la meme taille
+
+### Résultat de 0 inattendu
+
+**Causes** :
+- Critère mal écrit
+- Espaces dans les données
+- Format texte vs nombre
+
+## Bonnes pratiques
+
+1. **Vérifiez les plages** : Meme taille pour tous les arguments
+2. **Utilisez des guillemets** : Pour les critères texte et opérateurs
+3. **Concatenez avec &** : Pour les références de cellules
+4. **Nommez vos plages** : Pour plus de lisibilité
+
+[Découvrir la formation Excel Avancé](/formations-excel/excel-avancé)

@@ -1,0 +1,177 @@
+---
+title: "Guide : Créer une Heatmap Dynamique dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Créez des heatmaps dynamiques et visuelles dans Excel."
+description: "Guide complet pour créer des heatmaps dynamiques dans Excel."
+category: "Visualisation"
+catégories: ["Visualisation", "Graphiques"]
+tags: ["Heatmap", "Visualisation", "Mise en forme", "Excel"]
+---
+
+# Créer une Heatmap Dynamique dans Excel
+
+Les heatmaps (cartes de chaleur) permettent de visualiser des données numériques avec des couleurs.
+
+## Qu'est-ce qu'une heatmap ?
+
+### Définition
+
+Une heatmap represente des valeurs par des intensites de couleur :
+- Valeurs élevées : couleurs chaudes
+- Valeurs basses : couleurs froides
+
+### Applications
+
+- Analyse de performance
+- Comparaisons temporelles
+- Matrices de correlation
+- Tableaux de bord
+
+## Méthode simple : Mise en forme conditionnelle
+
+### Étape 1 : Sélectionnez les données
+
+Sélectionnez la plage de données numériques.
+
+### Étape 2 : Appliquer l'échelle de couleurs
+
+1. **Accueil** > **Mise en forme conditionnelle**
+2. **Nuances de couleurs**
+3. Choisissez un schéma
+
+### Schémas disponibles
+
+| Schéma | Usage |
+|--------|-------|
+| Vert-Jaune-Rouge | Performance (vert=bon) |
+| Rouge-Jaune-Vert | Performance inversee |
+| Bleu-Blanc-Rouge | Ecarts (blanc=neutre) |
+
+## Personnaliser l'échelle
+
+### Accès
+
+1. **Mise en forme conditionnelle** > **Gérer les règles**
+2. Sélectionnez la règle
+3. **Modifier la règle**
+
+### Options
+
+| Paramèêtre | Description |
+|-----------|-------------|
+| Type | Nombre, Pourcentage, Formule, Centile |
+| Valeur | Seuils pour chaque couleur |
+| Couleur | Personnalisation des teintes |
+
+### Exemple : Échelle 3 couleurs
+
+- Minimum : Rouge (Type: Min)
+- Milieu : Jaune (Type: Centile, Valeur: 50)
+- Maximum : Vert (Type: Max)
+
+## Heatmap avec ecart-type
+
+### Concept
+
+Colorez selon l'ecart par rapport à la moyenne.
+
+### Formule
+
+```excel
+=A1-MOYENNE($A$1:$Z$10)
+```
+
+### Application
+
+Appliquez une échelle de couleurs :
+- Rouge : valeurs negatives (sous la moyenne)
+- Blanc : proche de zero (moyenne)
+- Bleu : valeurs positives (au-dessus)
+
+## Heatmap calendrier
+
+### Structuré
+
+| | Lun | Mar | Mer | Jeu | Ven | Sam | Dim |
+|---|-----|-----|-----|-----|-----|-----|-----|
+| S1 | 10 | 15 | 8 | 12 | 20 | 5 | 3 |
+| S2 | 12 | 18 | 9 | 14 | 22 | 6 | 4 |
+
+### Application
+
+Parfait pour visualiser l'activité par jour de la semaine.
+
+## Heatmap avec formules conditionnelles
+
+### Règle personnalisee
+
+1. **Mise en forme conditionnelle** > **Nouvelle règle**
+2. **Utiliser une formule**
+3. Entrez votre condition
+
+### Exemples
+
+```excel
+=A1>MOYENNE($A:$A)     ' Au-dessus de la moyenne
+=A1=MAX($A:$A)         ' Valeur maximale
+=ABS(A1-$B1)>10        ' Ecart significatif
+```
+
+## Matrice de correlation
+
+### Structuré
+
+|   | A | B | C |
+|---|---|---|---|
+| A | 1.00 | 0.85 | -0.20 |
+| B | 0.85 | 1.00 | 0.45 |
+| C | -0.20 | 0.45 | 1.00 |
+
+### Échelle recommandée
+
+- Rouge : -1 (correlation negative)
+- Blanc : 0 (pas de correlation)
+- Vert : +1 (correlation positive)
+
+## Astuces avancées
+
+### Masquer les valeurs
+
+1. Sélectionnez les cellules
+2. Format personnalise : `;;;`
+3. Seules les couleurs apparaissent
+
+### Bordures pour lisibilité
+
+Ajoutez des bordures blanches fines pour séparer les cellules.
+
+### Legende
+
+Créez une legende à côté expliquant les couleurs.
+
+## Cas pratique : Ventes par region et mois
+
+### Données
+
+| Region | Jan | Fev | Mar |
+|--------|-----|-----|-----|
+| Nord | 150 | 180 | 200 |
+| Sud | 120 | 140 | 160 |
+| Est | 90 | 100 | 110 |
+| Ouest | 200 | 220 | 250 |
+
+### Résultat
+
+Les cellules à forte valeur apparaissent en vert, les faibles en rouge.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Cohérence | Meme échelle pour comparaisons |
+| Lisibilité | Pas trop de nuances |
+| Legende | Expliquez les couleurs |
+| Accessibilite | Évitez rouge-vert seul |
+
+[Découvrir nos formations Excel](/formations-excel)

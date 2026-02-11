@@ -1,0 +1,182 @@
+---
+title: "Formule Excel FILTRE : Guide Complet"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Guide complet de la formule FILTRE pour l'extraction dynamique."
+description: "Guide complet de la formule FILTRE Excel pour l'extraction."
+category: "Excel 365"
+catégories: ["Excel 365", "Formules Excel"]
+tags: ["FILTRE", "Formules", "Extraction", "Guide"]
+---
+
+# Formule FILTRE : Guide Complet
+
+Tout ce que vous devez savoir sûr la fonction FILTRE.
+
+## Syntaxe
+
+```excel
+=FILTRE(tableau;inclure;[si_vide])
+```
+
+## Comprendre le paramèêtre inclure
+
+### Ce que c'est
+
+Un tableau de valeurs VRAI/FAUX de meme dimension que le tableau source.
+
+### Création automatique
+
+```excel
+B2:B100="Paris"
+```
+
+Créé un tableau de VRAI/FAUX pour chaque cellule de B2:B100.
+
+## Tous les types de critères
+
+### Égal à
+
+```excel
+=FILTRE(A:C;B:B="Valeur")
+```
+
+### Différent de
+
+```excel
+=FILTRE(A:C;B:B<>"Exclu")
+```
+
+### Supérieur
+
+```excel
+=FILTRE(A:C;C:C>100)
+```
+
+### Entre deux valeurs
+
+```excel
+=FILTRE(A:C;(C:C>=100)*(C:C<=500))
+```
+
+### Contient du texte
+
+```excel
+=FILTRE(A:C;ESTNUM(CHERCHE("mot";A:A)))
+```
+
+## Critères multiples
+
+### ET logique (tous les critères)
+
+Multiplication :
+```excel
+=FILTRE(A:C;(B:B="Paris")*(C:C>100))
+```
+
+### OU logique (au moins un critère)
+
+Addition :
+```excel
+=FILTRE(A:C;(B:B="Paris")+(B:B="Lyon"))
+```
+
+### Combinaison
+
+```excel
+=FILTRE(A:C;((B:B="Paris")+(B:B="Lyon"))*(C:C>100))
+```
+
+## Gestion si_vide
+
+### Message texte
+
+```excel
+=FILTRE(A:C;B:B="Berlin";"Aucune correspondance")
+```
+
+### Cellule vide
+
+```excel
+=FILTRE(A:C;B:B="Berlin";"")
+```
+
+### Tableau vide
+
+```excel
+=FILTRE(A:C;B:B="Berlin";{""})
+```
+
+## Une seule colonne
+
+### Extraire colonne A
+
+```excel
+=FILTRE(A:A;B:B="Paris")
+```
+
+### Extraire colonne C
+
+```excel
+=FILTRE(C:C;B:B="Paris")
+```
+
+## Combinaisons avancées
+
+### FILTRE + TRIER
+
+```excel
+=TRIER(FILTRE(A:C;B:B="Paris");3;-1)
+```
+
+### FILTRE + UNIQUE
+
+```excel
+=UNIQUE(FILTRE(A:A;B:B="Actif"))
+```
+
+### FILTRE + INDEX
+
+```excel
+=INDEX(FILTRE(A:C;B:B="Paris");1;3)
+```
+
+Première ligne, troisieme colonne du résultat.
+
+### FILTRE + SOMME
+
+```excel
+=SOMME(FILTRE(C:C;B:B="Paris"))
+```
+
+## Plages dynamiques avec LET
+
+```excel
+=LET(
+  données;A2:D100;
+  region;B2:B100;
+  montant;D2:D100;
+  critere_region;"Paris";
+  critere_montant;100;
+  FILTRE(données;(region=critere_region)*(montant>critere_montant))
+)
+```
+
+## Erreurs et solutions
+
+| Erreur | Cause | Solution |
+|--------|-------|----------|
+| #CALC! | Aucun résultat | Ajoutez si_vide |
+| #VALEUR! | Plages différentes | Alignez les tailles |
+| #PROPAGATION! | Pas d'espace | Liberez les cellules |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Tableaux structurés | Références dynamiques |
+| LET | Clarifiez les formules |
+| si_vide | Toujours le définir |
+| Test | Vérifiez les résultats |
+
+[Découvrir nos formations Excel](/formations-excel)

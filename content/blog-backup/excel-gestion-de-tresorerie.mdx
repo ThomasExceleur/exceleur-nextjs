@@ -1,0 +1,205 @@
+---
+title: "Excel Gestion de Trésorerie : Guide Pratique"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Gérez efficacement votre tresorerie d'entreprise avec Excel grace à ce guide complet."
+description: "Guide pour gérer la tresorerie dans Excel. Plan de tresorerie, previsions et suivi de flux."
+category: "Finance"
+catégories: ["Finance", "Comptabilite"]
+tags: ["Tresorerie", "Cash", "Finance", "Previsions"]
+---
+
+# Gestion de Tresorerie dans Excel
+
+Une bonne gestion de tresorerie est essentielle pour la sante financiere de l'entreprise.
+
+## Plan de tresorerie
+
+### Structuré de base
+
+| Semaine | S1 | S2 | S3 | S4 |
+|---------|----|----|----|----|
+| Solde initial | 50 000 | 45 000 | 35 000 | 55 000 |
+| Encaissements | 30 000 | 25 000 | 40 000 | 20 000 |
+| Decaissements | 35 000 | 35 000 | 20 000 | 30 000 |
+| Solde final | 45 000 | 35 000 | 55 000 | 45 000 |
+
+### Formules
+
+```excel
+=Solde_initial + Encaissements - Decaissements
+```
+
+## Detail des encaissements
+
+### Previsions d'encaissement
+
+| Type | Montant | Échéance | Probabilite |
+|------|---------|----------|-------------|
+| Client A | 15 000 | 15/01 | 90% |
+| Client B | 10 000 | 20/01 | 70% |
+
+### Encaissement pondere
+
+```excel
+=Montant * Probabilite
+```
+
+### Délai de reglement
+
+```excel
+=DATE_facture + Delai_paiement_client
+```
+
+## Detail des decaissements
+
+### Types de decaissements
+
+| Catégorie | Periodicite |
+|-----------|-------------|
+| Salaires | Mensuel (fin de mois) |
+| Loyers | Mensuel (début) |
+| Fournisseurs | Variable |
+| Charges sociales | Trimestriel |
+| Impots | Échéances fixes |
+
+### Tableau de decaissements
+
+| Poste | Jan | Fev | Mar | ... |
+|-------|-----|-----|-----|-----|
+| Salaires | 50 000 | 50 000 | 50 000 | |
+| Fournisseurs | 30 000 | 25 000 | 35 000 | |
+| Loyer | 5 000 | 5 000 | 5 000 | |
+
+## Suivi quotidien
+
+### Journal de tresorerie
+
+| Date | Libelle | Entrée | Sortie | Solde |
+|------|---------|--------|--------|-------|
+| 01/01 | Solde initial | | | 50 000 |
+| 02/01 | Reglement Client A | 10 000 | | 60 000 |
+| 03/01 | Fournisseur X | | 5 000 | 55 000 |
+
+### Solde glissant
+
+```excel
+=D2+C3-B3         ' Nouveau solde
+```
+
+## Previsions à moyen terme
+
+### Budget de tresorerie mensuel
+
+| Mois | Jan | Fev | Mar | Q1 |
+|------|-----|-----|-----|-----|
+| Encaissements | 100 | 95 | 110 | 305 |
+| Decaissements | 90 | 100 | 85 | 275 |
+| Flux net | 10 | -5 | 25 | 30 |
+| Solde cumule | 60 | 55 | 80 | |
+
+### Formules
+
+```excel
+=SOMME(B2:D2)                    ' Total trimestriel
+=B5+B4                           ' Solde cumule
+```
+
+## Indicateurs de tresorerie
+
+### KPI clés
+
+| Indicateur | Formule | Cible |
+|------------|---------|-------|
+| Cash burn rate | Decaissements mensuels moyens | < 80 000 |
+| Runway | Tresorerie / Cash burn | > 6 mois |
+| DSO | (Creances / CA) x 365 | < 45 jours |
+| DPO | (Dettes / Achats) x 365 | > 30 jours |
+
+### Calcul du BFR
+
+```excel
+=Stocks + Creances_clients - Dettes_fournisseurs
+```
+
+## Scenarios de tresorerie
+
+### Tableau de scenarios
+
+| Élément | Pessimiste | Base | Optimiste |
+|---------|------------|------|-----------|
+| Encaissements | 80 000 | 100 000 | 120 000 |
+| Decaissements | 95 000 | 90 000 | 85 000 |
+| Flux net | -15 000 | 10 000 | 35 000 |
+
+## Alertes et seuils
+
+### Mise en forme conditionnelle
+
+```excel
+Rouge si Solde < 10 000
+Orange si Solde < 30 000
+Vert si Solde >= 30 000
+```
+
+### Alerte de tresorerie negative
+
+```excel
+=SI(Solde<0;"ALERTE TRESORERIE";"OK")
+```
+
+## Rapprochement bancaire
+
+### Structuré
+
+| Élément | Comptabilite | Banque | Ecart |
+|---------|--------------|--------|-------|
+| Solde | 48 500 | 50 000 | 1 500 |
+| Cheques non encaisses | | -1 500 | |
+| Solde rapproche | 48 500 | 48 500 | 0 |
+
+## Graphiques de tresorerie
+
+### Evolution du solde
+
+1. Courbe du solde quotidien où hebdomadaire
+2. Ajoutez une ligne de seuil minimal
+
+### Flux entrants/sortants
+
+1. Histogramme empile
+2. Encaissements en vert, decaissements en rouge
+
+## Optimisation de tresorerie
+
+### Levier d'amélioration
+
+| Levier | Action |
+|--------|--------|
+| Réduire DSO | Relance clients, escompte |
+| Augmenter DPO | Negocier délais fournisseurs |
+| Optimiser stocks | Réduire le BFR |
+| Placer l'excedent | Placement court terme |
+
+## Automatisation
+
+### Import des releves bancaires
+
+1. **Données** > **Obtenir des données** > **Fichier CSV**
+2. Nettoyez et categorisez automatiquement
+
+### Actualisation
+
+```excel
+Power Query pour actualiser les données automatiquement
+```
+
+## Bonnes pratiques
+
+1. **Mettez à jour** quotidiennement
+2. **Anticipez** les échéances importantes
+3. **Constituez** une reserve de sécurité
+4. **Negociez** les délais de paiement
+5. **Surveillez** les indicateurs clés
+
+[Découvrir nos formations Excel](/formations-excel)

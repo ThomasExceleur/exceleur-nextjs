@@ -1,0 +1,98 @@
+---
+title: "VALEUR! Excel : Que Faire"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Resolvez l'erreur #VALEUR! dans Excel."
+description: "Guide pour corriger l'erreur #VALEUR! dans Excel."
+category: "Gestion d'erreurs"
+catégories: ["Gestion d'erreurs", "Depannage"]
+tags: ["VALEUR", "Erreur", "Resolution", "Excel"]
+---
+
+# Erreur #VALEUR! : Que Faire
+
+Comprendre et corriger cette erreur de type.
+
+## Signification
+
+#VALEUR! indique un type de données incompatible.
+
+## Causes frequentes
+
+| Cause | Exemple |
+|-------|---------|
+| Texte dans calcul | "abc" + 5 |
+| Espaces invisibles | " 123" |
+| Format incorrect | Date en texte |
+
+## Diagnostic
+
+### Vérifier le type
+
+```excel
+=ESTNUM(A1)
+=ESTTEXTE(A1)
+```
+
+### Vérifier les espaces
+
+```excel
+=NBCAR(A1)
+=SUPPRESPACE(A1)
+```
+
+## Solutions
+
+### Convertir texte en nombre
+
+```excel
+=CNUM(A1)
+=A1*1
+=A1+0
+```
+
+### Supprimer les espaces
+
+```excel
+=SUPPRESPACE(A1)
+```
+
+### Nettoyer
+
+```excel
+=EPURAGE(A1)
+```
+
+## Opérations mixtes
+
+### Addition texte/nombre
+
+```excel
+=CNUM(A1)+B1
+```
+
+### Avec SIERREUR
+
+```excel
+=SIERREUR(A1+B1;0)
+```
+
+## Prevention
+
+### Validation des données
+
+Utilisez la validation pour forcer les types.
+
+### Format cohérent
+
+Appliquez des formats uniformes.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Validation | Forcez les types |
+| Nettoyage | SUPPRESPACE avant calcul |
+| SIERREUR | En dernier recours |
+
+[Découvrir nos formations Excel](/formations-excel)

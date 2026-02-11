@@ -1,0 +1,78 @@
+---
+title: "Excel : Mettre en Forme un Numéro de Téléphone"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Formatez les numéros de telephone dans Excel."
+description: "Guide pour formater les numéros de telephone dans Excel."
+category: "Formatage"
+catégories: ["Formatage", "Astuces Excel"]
+tags: ["Telephone", "Format", "Mise en forme", "Excel"]
+---
+
+# Formater un Numéro de Telephone
+
+Affichez les numéros correctement.
+
+## Format personnalise
+
+### Accès
+
+1. **Ctrl+1**
+2. **Personnalise**
+3. Entrez le format
+
+### Formats courants
+
+| Format | Résultat |
+|--------|----------|
+| 00 00 00 00 00 | 06 12 34 56 78 |
+| 00.00.00.00.00 | 06.12.34.56.78 |
+| +33 0 00 00 00 00 | +33 6 12 34 56 78 |
+
+## Formule TEXTE
+
+```excel
+=TEXTE(A1;"00 00 00 00 00")
+```
+
+## Ctrl+E (Flash Fill)
+
+1. Tapez le premier numéro formate
+2. Descendez
+3. **Ctrl+E**
+
+## Conserver le zero initial
+
+### Problème
+
+Excel supprime le 0 devant.
+
+### Solution
+
+- Format texte
+- Apostrophe : '0612345678
+- Format personnalise
+
+## Formule de reformatage
+
+```excel
+=GAUCHE(A1;2)&" "&STXT(A1;3;2)&" "&STXT(A1;5;2)&" "&STXT(A1;7;2)&" "&DROITE(A1;2)
+```
+
+## International
+
+### Format international
+
+```excel
+="+33 "&DROITE(A1;9)
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Format texte | Pour conserver les zeros |
+| Cohérence | Meme format partout |
+| Validation | Vérifiez la longueur |
+
+[Découvrir nos formations Excel](/formations-excel)

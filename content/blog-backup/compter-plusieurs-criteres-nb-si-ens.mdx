@@ -1,0 +1,226 @@
+---
+title: "Compter avec Plusieurs Critères : NB.SI.ENS"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maîtrisez NB.SI.ENS pour compter selon plusieurs conditions."
+description: "Guide NB.SI.ENS pour compter avec plusieurs critères dans Excel."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Statistiques"]
+tags: ["NB.SI.ENS", "Comptage", "Multicriteres", "Formules"]
+---
+
+# Compter avec Plusieurs Critères : NB.SI.ENS
+
+NB.SI.ENS compte les cellules repondant à plusieurs conditions.
+
+## Syntaxe
+
+```excel
+=NB.SI.ENS(plage1;critere1;plage2;critere2;...)
+```
+
+## Différence avec NB.SI
+
+### NB.SI : Un seul critère
+
+```excel
+=NB.SI(A:A;"Paris")
+```
+
+### NB.SI.ENS : Plusieurs critères
+
+```excel
+=NB.SI.ENS(A:A;"Paris";B:B;">100")
+```
+
+Compte où A="Paris" ET B>100.
+
+## Exemples de base
+
+### Deux critères
+
+```excel
+=NB.SI.ENS(Region;"Nord";Statut;"Actif")
+```
+
+### Trois critères
+
+```excel
+=NB.SI.ENS(Region;"Nord";Statut;"Actif";Année;2024)
+```
+
+### Avec opérateurs
+
+```excel
+=NB.SI.ENS(Montant;">1000";Date;">="&DATE(2024;1;1))
+```
+
+## Opérateurs disponibles
+
+| Opérateur | Signification |
+|-----------|---------------|
+| `"="` | Égal (par defaut) |
+| `"<>"` | Différent |
+| `">"` | Supérieur |
+| `"<"` | Inférieur |
+| `">="` | Supérieur où égal |
+| `"<="` | Inférieur où égal |
+
+## Avec des références
+
+### Critère dans une cellule
+
+```excel
+=NB.SI.ENS(Region;E1;Statut;E2)
+```
+
+### Avec concatenation
+
+```excel
+=NB.SI.ENS(Montant;">"&F1;Date;">="&G1)
+```
+
+## Critères de texte
+
+### Texte exact
+
+```excel
+=NB.SI.ENS(Nom;"Dupont")
+```
+
+### Contient (joker)
+
+```excel
+=NB.SI.ENS(Email;"*@gmail.com")
+```
+
+### Commence par
+
+```excel
+=NB.SI.ENS(Code;"AB*")
+```
+
+### Caractere unique
+
+```excel
+=NB.SI.ENS(Code;"A?1")   ' A suivi d'un caractere puis 1
+```
+
+## Critères de dates
+
+### Année spécifique
+
+```excel
+=NB.SI.ENS(Date;">="&DATE(2024;1;1);Date;"<="&DATE(2024;12;31))
+```
+
+### Mois en cours
+
+```excel
+=NB.SI.ENS(Date;">="&EOMONTH(AUJOURDHUI();-1)+1;Date;"<="&EOMONTH(AUJOURDHUI();0))
+```
+
+### Dernières 30 jours
+
+```excel
+=NB.SI.ENS(Date;">="&AUJOURDHUI()-30)
+```
+
+## Cas pratiques
+
+### 1. Ventes par region et produit
+
+```excel
+=NB.SI.ENS(Region;"Ile-de-France";Produit;"Widget")
+```
+
+### 2. Commandes en attente > 1000€
+
+```excel
+=NB.SI.ENS(Statut;"En attente";Montant;">1000")
+```
+
+### 3. Clients actifs depuis 2020
+
+```excel
+=NB.SI.ENS(Statut;"Actif";DateInscription;">="&DATE(2020;1;1))
+```
+
+### 4. Projets en retard
+
+```excel
+=NB.SI.ENS(Fin;"<"&AUJOURDHUI();Statut;"<>"&"Termine")
+```
+
+## Fonctions associees
+
+| Fonction | Usage |
+|----------|-------|
+| SOMME.SI.ENS | Somme multicritere |
+| MOYENNE.SI.ENS | Moyenne multicritere |
+| MAX.SI.ENS | Maximum multicritere |
+| MIN.SI.ENS | Minimum multicritere |
+
+### Exemple SOMME.SI.ENS
+
+```excel
+=SOMME.SI.ENS(Montant;Region;"Paris";Statut;"Valide")
+```
+
+## Alternatives
+
+### Avec SOMMEPROD
+
+```excel
+=SOMMEPROD((Region="Paris")*(Statut="Actif")*1)
+```
+
+### Avec FILTRE et LIGNES
+
+```excel
+=LIGNES(FILTRE(Données;(Region="Paris")*(Statut="Actif")))
+```
+
+## Erreurs courantes
+
+### Plages de tailles différentes
+
+```excel
+=NB.SI.ENS(A1:A10;"Oui";B1:B5;">10")   ' ERREUR
+```
+
+Les plages doivent avoir la meme taille.
+
+### Opérateur mal place
+
+```excel
+=NB.SI.ENS(A:A;>10)     ' INCORRECT
+=NB.SI.ENS(A:A;">10")   ' CORRECT
+```
+
+## Optimisation
+
+### Plages limitees
+
+```excel
+=NB.SI.ENS(A2:A1000;"Paris";B2:B1000;">100")
+```
+
+Au lieu de A:A pour de meilleures performances.
+
+### Tableaux structurés
+
+```excel
+=NB.SI.ENS(Ventes[Region];"Paris";Ventes[Montant];">100")
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Nommer plages | Plus lisible |
+| Meme taille | Obligatoire |
+| Tester | Vérifiez les critères |
+| Documenter | Commentez les formules complexes |
+
+[Découvrir nos formations Excel](/formations-excel)

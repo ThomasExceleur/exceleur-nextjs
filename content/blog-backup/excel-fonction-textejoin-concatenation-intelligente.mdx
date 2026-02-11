@@ -1,0 +1,198 @@
+---
+title: "Excel : TEXTEJOIN pour une Concatenation Intelligente"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Utilisez TEXTEJOIN pour concatener du texte intelligemment dans Excel."
+description: "Guide de la fonction TEXTEJOIN pour la concatenation dans Excel."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Excel 365"]
+tags: ["TEXTEJOIN", "Concatenation", "Texte", "Excel"]
+---
+
+# TEXTEJOIN : Concatenation Intelligente dans Excel
+
+TEXTEJOIN simplifie considerablement l'assemblage de texte.
+
+## Syntaxe
+
+```excel
+=TEXTEJOIN(delimiteur;ignorer_vides;texte1;[texte2];...)
+```
+
+## Paramètrès
+
+| Paramèêtre | Description |
+|-----------|-------------|
+| delimiteur | Caractere de séparation |
+| ignorer_vides | VRAI pour ignorer les cellules vides |
+| texte1, texte2... | Textes où plages à concatener |
+
+## Exemple de base
+
+### Données
+
+| A | B | C |
+|---|---|---|
+| Jean | | Dupont |
+
+### Formule
+
+```excel
+=TEXTEJOIN(" ";VRAI;A1:C1)
+```
+
+### Résultat
+
+"Jean Dupont" (la cellule vide est ignoree)
+
+## Comparaison avec CONCATENER
+
+| CONCATENER | TEXTEJOIN |
+|------------|-----------|
+| Pas de delimiteur automatique | Delimiteur défini |
+| Inclut les vides | Peut ignorer les vides |
+| Argument par argument | Accepte les plages |
+
+### CONCATENER
+
+```excel
+=CONCATENER(A1;" ";B1;" ";C1)
+```
+
+### TEXTEJOIN
+
+```excel
+=TEXTEJOIN(" ";VRAI;A1:C1)
+```
+
+## Concatener une colonne entière
+
+### Données
+
+| Nom |
+|-----|
+| Alice |
+| Bob |
+| Charlie |
+
+### Formule
+
+```excel
+=TEXTEJOIN(", ";VRAI;A2:A10)
+```
+
+### Résultat
+
+"Alice, Bob, Charlie"
+
+## Delimiteurs multiples
+
+### Caracteres speciaux
+
+| Delimiteur | Résultat |
+|------------|----------|
+| " " | Espace |
+| ", " | Virgule + espace |
+| CARACTERE(10) | Retour à la ligne |
+| " - " | Tiret |
+
+### Retour à la ligne
+
+```excel
+=TEXTEJOIN(CARACTERE(10);VRAI;A1:A5)
+```
+
+(Activez le retour à la ligne dans la cellule)
+
+## Combiner avec d'autres fonctions
+
+### Avec SI
+
+```excel
+=TEXTEJOIN(", ";VRAI;SI(B2:B10="Actif";A2:A10;""))
+```
+
+Concatene seulement les noms actifs.
+
+### Avec FILTRE
+
+```excel
+=TEXTEJOIN(", ";VRAI;FILTRE(A2:A10;B2:B10="Actif"))
+```
+
+Plus elegant avec Excel 365.
+
+### Avec UNIQUE
+
+```excel
+=TEXTEJOIN(", ";VRAI;UNIQUE(A2:A100))
+```
+
+Liste des valeurs distinctes.
+
+## Cas pratiques
+
+### Adresse complete
+
+```excel
+=TEXTEJOIN(", ";VRAI;Rue;CP;Ville;Pays)
+```
+
+### Liste de produits commandes
+
+```excel
+=TEXTEJOIN(" + ";VRAI;FILTRE(Produits;Commande=A1))
+```
+
+### Email groupes
+
+```excel
+=TEXTEJOIN(";";VRAI;FILTRE(Emails;Departement="Marketing"))
+```
+
+## Limites
+
+### Longueur maximale
+
+32 767 caracteres maximum dans le résultat.
+
+### Nombre d'arguments
+
+252 arguments texte maximum.
+
+## Alternatives
+
+### Avec &
+
+```excel
+=A1&" "&B1&" "&C1
+```
+
+Simple mais ne gere pas les vides.
+
+### CONCAT (Excel 2016+)
+
+```excel
+=CONCAT(A1:C1)
+```
+
+Concatene sans delimiteur.
+
+## Erreurs courantes
+
+| Erreur | Cause | Solution |
+|--------|-------|----------|
+| #VALEUR! | Plage trop grande | Limitez la plage |
+| Espaces en trop | Ignorer_vides = FAUX | Mettez VRAI |
+| #CALC! | Formule matricielle dans version ancienne | Utilisez Excel 365 |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| VRAI | Ignorez les vides sauf si nécessaire |
+| Plages nommées | Clarifiez les formules longues |
+| Test | Vérifiez avec différentes données |
+| Performance | Évitez les très grandes plages |
+
+[Découvrir nos formations Excel](/formations-excel)

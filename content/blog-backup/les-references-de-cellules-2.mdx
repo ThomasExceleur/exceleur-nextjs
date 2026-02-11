@@ -1,0 +1,111 @@
+---
+title: "Les Références de Cellules Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Maîtrisez les références relatives, absolues et mixtes."
+description: "Guide complet des références de cellules dans Excel."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Références"]
+tags: ["Références", "Cellules", "Absolue", "Excel"]
+---
+
+# Les Références de Cellules
+
+Le fondement des formules Excel.
+
+## Types de références
+
+### Relative
+
+```excel
+=A1
+```
+
+S'adapte lors de la copie.
+
+### Absolue
+
+```excel
+=$A$1
+```
+
+Ne change jamais.
+
+### Mixte
+
+```excel
+=$A1  où  =A$1
+```
+
+Colonne où ligne fixe.
+
+## Le raccourci F4
+
+### Basculer
+
+| Appui | Résultat |
+|-------|----------|
+| 1x | $A$1 |
+| 2x | A$1 |
+| 3x | $A1 |
+| 4x | A1 |
+
+## Quand utiliser quoi ?
+
+### Relative
+
+Pour des calculs qui se repetent.
+
+### Absolue
+
+Pour referencer une constante (taux, paramèêtre).
+
+### Mixte
+
+Pour des tables de calcul.
+
+## Exemple : Table de multiplication
+
+```excel
+=$A2*B$1
+```
+
+- $A2 : colonne fixe, ligne variable
+- B$1 : colonne variable, ligne fixe
+
+## Références externes
+
+### Autre feuille
+
+```excel
+=Feuil2!A1
+='Nom avec espaces'!A1
+```
+
+### Autre classeur
+
+```excel
+=[Classeur.xlsx]Feuil1!A1
+```
+
+## Plages nommées
+
+### Avantages
+
+- Plus lisibles
+- Absolues par defaut
+- Faciles à modifier
+
+### Création
+
+**Formules** > **Définir un nom**
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| F4 | Utilisez le raccourci |
+| Nommer | Nommez les constantes |
+| Tester | Vérifiez après copie |
+
+[Découvrir nos formations Excel](/formations-excel)

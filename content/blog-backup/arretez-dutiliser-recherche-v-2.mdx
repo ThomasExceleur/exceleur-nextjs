@@ -1,0 +1,94 @@
+---
+title: "Arrêtez d'Utiliser RECHERCHEV"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Pourquoi migrer vers RECHERCHEX et INDEX+EQUIV."
+description: "Arguments pour abandonner RECHERCHEV au profit de RECHERCHEX."
+category: "Fonctions"
+catégories: ["Fonctions", "Recherche"]
+tags: ["RECHERCHEV", "RECHERCHEX", "Migration", "Excel"]
+---
+
+# Arrêtez d'Utiliser RECHERCHEV
+
+Passez aux alternatives modernes.
+
+## Problèmes de RECHERCHEV
+
+### Limites
+
+| Limitation | Impact |
+|------------|--------|
+| Recherche à droite seulement | Contrainte de structuré |
+| Insertion de colonnes | Casse les formules |
+| Performance | Plus lent sûr gros volumes |
+| Syntaxe | Index de colonne peu lisible |
+
+## RECHERCHEX : Le remplacant
+
+### Syntaxe
+
+```excel
+=RECHERCHEX(cherche;plage_recherche;plage_resultat)
+```
+
+### Avantages
+
+- Recherche bidirectionnelle
+- Gestion d'erreur intégrée
+- Plus performant
+- Plus lisible
+
+## Comparaison
+
+### RECHERCHEV
+
+```excel
+=RECHERCHEV(A1;B:E;3;FAUX)
+```
+
+### RECHERCHEX
+
+```excel
+=RECHERCHEX(A1;B:B;D:D)
+```
+
+## INDEX+EQUIV : L'alternative universelle
+
+### Syntaxe
+
+```excel
+=INDEX(plage_resultat;EQUIV(cherche;plage_recherche;0))
+```
+
+### Avantages
+
+- Fonctionne partout
+- Très flexible
+- Recherche bidirectionnelle
+
+## Tableau comparatif
+
+| Critère | RECHERCHEV | RECHERCHEX | INDEX+EQUIV |
+|---------|------------|------------|-------------|
+| Direction | Droite | Les deux | Les deux |
+| Gestion erreur | Non | Oui | Avec SIERREUR |
+| Disponibilité | Toutes | Excel 365 | Toutes |
+
+## Migration
+
+### Quand migrer ?
+
+- Nouvelles formules : RECHERCHEX
+- Fichiers existants : Progressivement
+- Partage : Vérifiez la compatibilité
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Nouveaux projets | Utilisez RECHERCHEX |
+| Formation | Apprenez INDEX+EQUIV |
+| Tests | Vérifiez la compatibilité |
+
+[Découvrir nos formations Excel](/formations-excel)

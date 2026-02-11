@@ -1,0 +1,92 @@
+---
+title: "Excel : Remplacer une Couleur par une Autre"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Remplacez les couleurs de cellules dans Excel."
+description: "Guide pour remplacer une couleur par une autre dans Excel."
+category: "Mise en forme"
+catégories: ["Mise en forme", "Astuces Excel"]
+tags: ["Couleur", "Remplacer", "Mise en forme", "Excel"]
+---
+
+# Remplacer une Couleur par une Autre
+
+Modifiez les couleurs de vos cellules efficacement.
+
+## Méthode Rechercher/Remplacer
+
+### Étapes
+
+1. **Ctrl+H** (Rechercher et remplacer)
+2. **Options** > **Format**
+3. Dans **Rechercher** : sélectionnez la couleur d'origine
+4. Dans **Remplacer** : sélectionnez la nouvelle couleur
+5. **Remplacer tout**
+
+### Accès au format
+
+Cliquez sûr **Format** à côté de chaque champ.
+
+## Rechercher par couleur
+
+### Étapes
+
+1. **Format** > **Arriere-plan**
+2. Sélectionnez la couleur
+3. OK
+
+## Limites
+
+### Ce qui fonctionne
+
+- Couleur de remplissage
+- Couleur de police
+- Bordures
+
+### Ce qui ne fonctionne pas
+
+- Mise en forme conditionnelle
+- Couleurs de graphiques
+
+## Mise en forme conditionnelle
+
+### Modifier une règle
+
+1. **Accueil** > **Mise en forme conditionnelle**
+2. **Gérer les règles**
+3. Sélectionnez et **Modifier**
+4. Changez la couleur
+
+## VBA pour gros volumes
+
+### Code
+
+```vba
+Sub RemplacerCouleur()
+    Dim c As Range
+    For Each c In Sélection
+        If c.Interior.Color = RGB(255, 0, 0) Then
+            c.Interior.Color = RGB(0, 255, 0)
+        End If
+    Next c
+End Sub
+```
+
+## Cas d'usage
+
+| Situation | Solution |
+|-----------|----------|
+| Quelques cellules | Rechercher/Remplacer |
+| Document entier | Rechercher/Remplacer |
+| MFC | Modifier les règles |
+| Automatisation | VBA |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Test d'abord | Testez sûr une copie |
+| Sélection | Limitez la zone si nécessaire |
+| MFC | Vérifiez les règles existantes |
+
+[Découvrir nos formations Excel](/formations-excel)

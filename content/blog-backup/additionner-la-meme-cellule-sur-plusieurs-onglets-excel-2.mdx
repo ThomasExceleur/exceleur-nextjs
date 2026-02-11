@@ -1,0 +1,87 @@
+---
+title: "Additionner la Même Cellule sûr Plusieurs Onglets Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Additionnez des cellules identiques sûr plusieurs feuilles Excel."
+description: "Technique pour additionner la meme cellule sûr plusieurs onglets dans Excel."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Calculs"]
+tags: ["Somme", "Onglets", "3D", "Excel"]
+---
+
+# Additionner sûr Plusieurs Onglets
+
+Sommez la meme cellule à travers plusieurs feuilles.
+
+## Référence 3D
+
+### Syntaxe
+
+```excel
+=SOMME(Feuil1:Feuil12!A1)
+```
+
+### Explication
+
+- **Feuil1:Feuil12** : Plage de feuilles
+- **!A1** : Cellule à sommer
+
+## Exemple pratique
+
+### Scenario
+
+12 feuilles mensuelles avec le CA en B10.
+
+### Formule
+
+```excel
+=SOMME(Janvier:Decembre!B10)
+```
+
+## Conditions d'utilisation
+
+| Condition | Importance |
+|-----------|------------|
+| Noms contigus | Feuilles consecutives |
+| Meme structuré | Cellules identiques |
+| Ordre | Première et dernière feuille |
+
+## Autres fonctions 3D
+
+### MOYENNE
+
+```excel
+=MOYENNE(Feuil1:Feuil12!A1)
+```
+
+### MAX / MIN
+
+```excel
+=MAX(Feuil1:Feuil12!A1)
+=MIN(Feuil1:Feuil12!A1)
+```
+
+### NB
+
+```excel
+=NB(Feuil1:Feuil12!A1)
+```
+
+## Attention
+
+- Si vous ajoutez une feuille entre les bornes, elle est incluse
+- Les noms de feuilles avec espaces necessitent des apostrophes
+
+```excel
+=SOMME('Jan 2024:Dec 2024'!B10)
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Nommage cohérent | Facilitez les références |
+| Structuré identique | Meme mise en page |
+| Documentation | Notez les plages utilisées |
+
+[Découvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,75 @@
+---
+title: "Power Pivot : Modeliser des Volumes de Données avec DAX"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Gérez de grands volumes de données avec Power Pivot et DAX."
+description: "Guide Power Pivot pour modeliser des volumes importants."
+category: "Power Pivot"
+catégories: ["Power Pivot", "DAX"]
+tags: ["Power Pivot", "DAX", "Volumes", "Modelisation"]
+---
+
+# Power Pivot : Modeliser des Volumes avec DAX
+
+Gérez des millions de lignes efficacement.
+
+## Avantages Power Pivot
+
+### Capacité
+
+- Millions de lignes
+- Compression des données
+- Moteur de calcul optimise
+
+### Comparaison
+
+| Excel standard | Power Pivot |
+|---------------|-------------|
+| 1M lignes max | Illimite |
+| RAM intensive | Compresse |
+| Formules cellules | Mesures DAX |
+
+## Architecture optimale
+
+### Schéma en etoile
+
+- Table de faits (transactions)
+- Tables de dimensions (référence)
+- Relations one-to-many
+
+## Mesures performantes
+
+### Bonnes pratiques
+
+```dax
+// Bon : mesure simple
+Total := SUM(Ventes[Montant])
+
+// A éviter : colonne calculee non nécessaire
+```
+
+### CALCULATE efficace
+
+```dax
+VentesNord := CALCULATE([Total]; Region[Nom]=\"Nord\")
+```
+
+## Contexte et performance
+
+### Comprendre le contexte
+
+Les mesures DAX sont calculees dans un contexte de filtre.
+
+### Éviter les calculs ligne par ligne
+
+Préférez les agregations DAX aux colonnes calculees.
+
+## Bonnes pratiques
+
+| Pratique | Impact |
+|----------|--------|
+| Mesures vs colonnes | Mémoire |
+| Relations | Performance |
+| Types de données | Compression |
+
+[Découvrir nos formations Excel](/formations-excel)

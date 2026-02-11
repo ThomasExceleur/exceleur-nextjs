@@ -1,0 +1,106 @@
+---
+title: "SOMME.SI Avancée"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Techniques avancées pour SOMME.SI et SOMME.SI.ENS."
+description: "Guide avancé des fonctions SOMME.SI dans Excel."
+category: "Fonctions"
+catégories: ["Fonctions", "Calculs"]
+tags: ["SOMME.SI", "Avancé", "Conditions", "Excel"]
+---
+
+# SOMME.SI Avancée
+
+Sommez avec des conditions complexes.
+
+## SOMME.SI rappel
+
+### Syntaxe
+
+```excel
+=SOMME.SI(plage_critere;critère;[plage_somme])
+```
+
+### Exemple
+
+```excel
+=SOMME.SI(A:A;"Paris";B:B)
+```
+
+## SOMME.SI.ENS
+
+### Syntaxe
+
+```excel
+=SOMME.SI.ENS(plage_somme;plage1;crit1;plage2;crit2;...)
+```
+
+### Exemple
+
+```excel
+=SOMME.SI.ENS(C:C;A:A;"Paris";B:B;">1000")
+```
+
+## Opérateurs
+
+| Opérateur | Exemple | Signification |
+|-----------|---------|---------------|
+| `>` | `">100"` | Supérieur à 100 |
+| `<` | `"<50"` | Inférieur à 50 |
+| `>=` | `">=2024"` | Supérieur où égal |
+| `<>` | `"<>0"` | Différent de zero |
+
+## Avec références
+
+### Cellule
+
+```excel
+=SOMME.SI(A:A;">"&D1;B:B)
+```
+
+### Date
+
+```excel
+=SOMME.SI.ENS(C:C;A:A;">="&DATE(2024;1;1))
+```
+
+## Jokers
+
+### Utilisation
+
+```excel
+=SOMME.SI(A:A;"*Paris*";B:B)
+```
+
+| Joker | Signification |
+|-------|---------------|
+| `*` | N'importe quels caracteres |
+| `?` | Un seul caractere |
+
+## Alternative SOMMEPROD
+
+### Avantage
+
+Plus de 127 conditions possibles.
+
+```excel
+=SOMMEPROD((A:A="Paris")*(B:B>1000)*C:C)
+```
+
+## Erreurs courantes
+
+| Erreur | Solution |
+|--------|----------|
+| #VALEUR! | Vérifiez les plages |
+| 0 inattendu | Vérifiez les critères |
+| Texte/Nombre | Cohérence des types |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Tableaux | Utilisez des tableaux structurés |
+| Plages nommées | Améliorez la lisibilité |
+| Test | Vérifiez avec des exemples |
+
+[Découvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,215 @@
+---
+title: "Excel INDEX EQUIV : La Combinaison Magique"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Maîtrisez INDEX et EQUIV pour des recherches plus flexibles que RECHERCHEV."
+description: "Guide complet de INDEX et EQUIV dans Excel. Syntaxe, exemples pratiques et avantages par rapport à RECHERCHEV."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Recherche"]
+tags: ["INDEX", "EQUIV", "Formules", "Recherche"]
+---
+
+# INDEX EQUIV : Le Duo Puissant
+
+La combinaison INDEX + EQUIV offre plus de flexibilité que RECHERCHEV pour les recherches dans Excel.
+
+## Comprendre chaque fonction
+
+### EQUIV (MATCH)
+
+Trouve la position d'une valeur dans une plage.
+
+```excel
+=EQUIV(valeur_cherchee; plage_recherche; [type])
+```
+
+- **valeur_cherchee** : Ce que vous recherchez
+- **plage_recherche** : Ou chercher (ligne où colonne)
+- **type** : 0 = correspondance exacte
+
+### INDEX
+
+Retourne la valeur à une position donnée.
+
+```excel
+=INDEX(plage; no_ligne; [no_colonne])
+```
+
+- **plage** : La plage de données
+- **no_ligne** : Numéro de ligne
+- **no_colonne** : Numéro de colonne (optionnel)
+
+## La combinaison magique
+
+### Formule de base
+
+```excel
+=INDEX(plage_resultat; EQUIV(valeur_cherchee; plage_recherche; 0))
+```
+
+### Exemple concret
+
+Tableau de données en A1:C4 :
+
+| Code | Produit | Prix |
+|------|---------|------|
+| A01 | Stylo | 2,50 |
+| A02 | Cahier | 5,00 |
+| A03 | Classeur | 8,00 |
+
+Pour trouver le prix de A02 :
+
+```excel
+=INDEX(C1:C4; EQUIV("A02"; A1:A4; 0))
+```
+
+Résultat : 5,00
+
+## Avantages sûr RECHERCHEV
+
+### Recherche vers la gauche
+
+RECHERCHEV ne cherche que vers la droite. INDEX EQUIV n'à pas cette limite.
+
+```excel
+=INDEX(A:A; EQUIV("Cahier"; B:B; 0))
+```
+
+Trouve le code du produit "Cahier".
+
+### Robustesse aux insertions
+
+Le numéro de colonne dans RECHERCHEV pose problème si vous insérez des colonnes. INDEX EQUIV reste stable.
+
+### Performances
+
+INDEX EQUIV est souvent plus rapide sûr de grands tableaux.
+
+## Recherche bidimensionnelle
+
+### Trouver une valeur dans un tableau
+
+```excel
+=INDEX(données; EQUIV(valeur_ligne; entetes_lignes; 0); EQUIV(valeur_colonne; entetes_colonnes; 0))
+```
+
+### Exemple
+
+| | Jan | Fev | Mar |
+|---|-----|-----|-----|
+| Nord | 100 | 150 | 120 |
+| Sud | 200 | 180 | 210 |
+
+```excel
+=INDEX(B2:D3; EQUIV("Sud"; A2:A3; 0); EQUIV("Fev"; B1:D1; 0))
+```
+
+Résultat : 180
+
+## Correspondance approximative
+
+### Type 1 (valeur inférieure)
+
+```excel
+=EQUIV(75; A:A; 1)
+```
+
+Trouve la plus grande valeur inférieure où égale à 75.
+
+**Attention** : Les données doivent etre triees par ordre croissant.
+
+### Type -1 (valeur supérieure)
+
+```excel
+=EQUIV(75; A:A; -1)
+```
+
+Trouve la plus petite valeur supérieure où égale à 75.
+
+**Attention** : Les données doivent etre triees par ordre decroissant.
+
+## Gestion des erreurs
+
+### Avec SIERREUR
+
+```excel
+=SIERREUR(INDEX(C:C; EQUIV(E1; A:A; 0)); "Non trouve")
+```
+
+### Avec SI.NON.DISP
+
+```excel
+=SI.NON.DISP(INDEX(C:C; EQUIV(E1; A:A; 0)); "Non trouve")
+```
+
+## Cas pratiques
+
+### Dernière valeur d'une colonne
+
+```excel
+=INDEX(A:A; EQUIV(9.99E+307; A:A; 1))
+```
+
+Pour du texte :
+```excel
+=INDEX(A:A; EQUIV("zzz"; A:A; 1))
+```
+
+### Recherche avec caracteres joker
+
+```excel
+=INDEX(B:B; EQUIV("*pomme*"; A:A; 0))
+```
+
+### Recherche multi-critères
+
+```excel
+=INDEX(C:C; EQUIV(1; (A:A=E1)*(B:B=F1); 0))
+```
+
+Valider avec Ctrl + Maj + Entrée (anciennes versions).
+
+## Comparaison avec RECHERCHEV
+
+| Aspect | RECHERCHEV | INDEX EQUIV |
+|--------|------------|-------------|
+| Direction | Droite uniquement | Toutes |
+| Colonnes inserees | Problème | Robuste |
+| Performance | Bonne | Meilleure |
+| Lisibilité | Simple | Plus complexe |
+| Flexibilité | Limitee | Élevée |
+
+## RECHERCHEX : Le meilleur des deux
+
+Dans Excel 365, RECHERCHEX combine les avantages :
+
+```excel
+=RECHERCHEX(valeur; plage_recherche; plage_resultat; "Non trouve")
+```
+
+## Astuces avancées
+
+### Retourner plusieurs colonnes
+
+```excel
+=INDEX(A:D; EQUIV(E1; A:A; 0); 0)
+```
+
+Retourne la ligne entière.
+
+### Avec des noms de plages
+
+```excel
+=INDEX(Prix; EQUIV(Code_cherche; Codes; 0))
+```
+
+Plus lisible avec des plages nommées.
+
+## Bonnes pratiques
+
+1. **Utilisez 0 pour EQUIV** : Correspondance exacte
+2. **Évitez les colonnes entières** : Limitez les plages
+3. **Nommez vos plages** : Ameliore la lisibilité
+4. **Testez les erreurs** : Utilisez SIERREUR
+
+[Découvrir la formation Excel Avancé](/formations-excel/excel-avancé)

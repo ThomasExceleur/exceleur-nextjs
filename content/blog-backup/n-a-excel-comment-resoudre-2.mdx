@@ -1,0 +1,96 @@
+---
+title: "N/A Excel : Comment Résoudre"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Solutions pour corriger l'erreur #N/A dans Excel."
+description: "Guide pour resoudre l'erreur #N/A dans Excel."
+category: "Gestion d'erreurs"
+catégories: ["Gestion d'erreurs", "Depannage"]
+tags: ["N/A", "Erreur", "Resolution", "Excel"]
+---
+
+# Resoudre l'Erreur #N/A
+
+Comprendre et corriger cette erreur.
+
+## Signification
+
+#N/A = "Non Applicable" - la valeur n'à pas ete trouvee.
+
+## Causes principales
+
+| Cause | Solution |
+|-------|----------|
+| Valeur absente | Vérifier les données |
+| Espaces invisibles | SUPPRESPACE |
+| Format différent | Convertir |
+| Faute de frappe | Corriger |
+
+## Diagnostic
+
+### Vérifier les espaces
+
+```excel
+=NBCAR(A1)
+```
+
+### Vérifier le format
+
+```excel
+=ESTNUM(A1)
+=ESTTEXTE(A1)
+```
+
+## Solutions
+
+### SIERREUR
+
+```excel
+=SIERREUR(RECHERCHEV(...);"Non trouve")
+```
+
+### SI.NON.DISP
+
+```excel
+=SI.NON.DISP(RECHERCHEV(...);"Valeur par defaut")
+```
+
+### RECHERCHEX natif
+
+```excel
+=RECHERCHEX(valeur;plage;result;"Non trouve")
+```
+
+## Nettoyer les données
+
+### SUPPRESPACE
+
+```excel
+=SUPPRESPACE(A1)
+```
+
+### Convertir texte en nombre
+
+```excel
+=CNUM(A1)
+```
+
+## Prevention
+
+### Bonnes pratiques
+
+| Action | Bénéfice |
+|--------|----------|
+| Validation | Evite les erreurs de saisie |
+| Nettoyage | Données cohérentes |
+| SIERREUR | Masque les erreurs |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Diagnostic d'abord | Identifiez la cause |
+| Source | Corrigez à la source |
+| SIERREUR | En dernier recours |
+
+[Découvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,80 @@
+---
+title: "Optimisez vos Formules avec la Fonction LET Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Rendez vos formules plus lisibles et performantes avec LET."
+description: "Guide d'optimisation des formules avec LET Excel."
+category: "Excel 365"
+catégories: ["Excel 365", "Formules Excel"]
+tags: ["LET", "Optimisation", "Formules", "Performance"]
+---
+
+# Optimisez vos Formules avec LET
+
+Améliorez la lisibilité et la performance.
+
+## Pourquoi LET ?
+
+### Problèmes resolus
+
+| Sans LET | Avec LET |
+|----------|----------|
+| Calculs répétés | Calcul unique |
+| Formule illisible | Variables nommées |
+| Maintenance difficile | Facile à modifier |
+
+## Syntaxe
+
+```excel
+=LET(nom1;valeur1;..;résultat)
+```
+
+## Exemple d'optimisation
+
+### Avant
+
+```excel
+=SI(MOYENNE(A:A)>100;MOYENNE(A:A)*1.1;MOYENNE(A:A)*0.9)
+```
+
+MOYENNE calculee 3 fois.
+
+### Après
+
+```excel
+=LET(moy;MOYENNE(A:A);SI(moy>100;moy*1.1;moy*0.9))
+```
+
+MOYENNE calculee 1 fois.
+
+## Structurer les formules complexes
+
+```excel
+=LET(
+  données;A2:D100;
+  filtrees;FILTRE(données;B2:B100="Nord");
+  triees;TRIER(filtrees;4;-1);
+  total;SOMME(INDEX(triees;;4));
+  total
+)
+```
+
+## Deboguer
+
+### Technique
+
+Retournez une variable intermediaire :
+
+```excel
+=LET(x;Calcul1;y;Calcul2;x)
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Noms clairs | total, moyenne, pas x, y |
+| Une étape par variable | Decomposez la logique |
+| Test | Vérifiez les intermediaires |
+
+[Découvrir nos formations Excel](/formations-excel)

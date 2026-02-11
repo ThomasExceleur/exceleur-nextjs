@@ -1,0 +1,91 @@
+---
+title: "Pourquoi Excel ne Reconnait Pas les Chiffres"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Solutions quand Excel traite les nombres comme du texte."
+description: "Guide pour resoudre les problèmes de reconnaissance de chiffres."
+category: "Depannage"
+catégories: ["Depannage", "Calculs"]
+tags: ["Chiffres", "Texte", "Conversion", "Excel"]
+---
+
+# Excel ne Reconnait Pas les Chiffres
+
+Solutions au problème texte/nombre.
+
+## Symptomes
+
+- Triangle vert dans la cellule
+- Calculs qui ne fonctionnent pas
+- Alignement à gauche (comme du texte)
+
+## Causes
+
+| Cause | Frequence |
+|-------|-----------|
+| Import CSV | Haute |
+| Copier-coller | Haute |
+| Format texte | Moyenne |
+| Espaces invisibles | Moyenne |
+
+## Solutions
+
+### Conversion rapide
+
+1. Sélectionnez les cellules
+2. Cliquez sûr l'icone d'avertissement
+3. **Convertir en nombre**
+
+### Formule CNUM
+
+```excel
+=CNUM(A1)
+```
+
+### Collage special
+
+1. Tapez 1 dans une cellule
+2. Copiez
+3. Sélectionnez les "faux nombres"
+4. Collage special > Multiplier
+
+## Supprimer les espaces
+
+```excel
+=SUPPRESPACE(A1)
+```
+
+## Nettoyer
+
+```excel
+=EPURAGE(A1)
+```
+
+Supprime les caracteres non imprimables.
+
+## Vérification
+
+```excel
+=ESTNUM(A1)
+=ESTTEXTE(A1)
+```
+
+## Prevention
+
+### A l'import
+
+Specifiez les types de colonnes.
+
+### Format de cellule
+
+Appliquez le format Nombre avant la saisie.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Import | Configurez les types |
+| Vérification | ESTNUM pour controler |
+| Nettoyage | SUPPRESPACE systematique |
+
+[Découvrir nos formations Excel](/formations-excel)

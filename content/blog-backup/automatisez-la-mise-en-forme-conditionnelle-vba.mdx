@@ -1,0 +1,168 @@
+---
+title: "Automatiser la Mise en Forme Conditionnelle avec VBA"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Créez des règles de mise en forme conditionnelle par programmation."
+description: "Guide VBA pour automatiser la mise en forme conditionnelle dans Excel."
+category: "Macros et VBA"
+catégories: ["Macros et VBA", "Automatisation"]
+tags: ["VBA", "Mise en forme", "Automatisation", "Macros"]
+---
+
+# Automatiser la Mise en Forme Conditionnelle
+
+Utilisez VBA pour créer et gérer les règles de mise en forme conditionnelle.
+
+## Pourquoi automatiser ?
+
+- Appliquer les memes règles à plusieurs feuilles
+- Créer des règles complexes
+- Reinitialiser rapidement les formats
+- Standardiser les classeurs
+
+## Structuré de base
+
+### Accès à la collection
+
+```vba
+Range("A1:A100").FormatConditions
+```
+
+### Supprimer les règles existantes
+
+```vba
+Range("A1:A100").FormatConditions.Delete
+```
+
+## Créer une règle simple
+
+### Valeurs supérieures à
+
+```vba
+Sub MiseEnFormeSuperieureA()
+    Dim rng As Range
+    Set rng = Range("A1:A100")
+
+    rng.FormatConditions.Delete
+
+    With rng.FormatConditions.Add( _
+        Type:=xlCellValue, _
+        Operator:=xlGreater, _
+        Formula1:="100")
+        .Interior.Color = RGB(0, 255, 0) ' Vert
+    End With
+End Sub
+```
+
+## Types de conditions
+
+### xlCellValue
+
+Basee sûr la valeur de la cellule.
+
+```vba
+.Add(Type:=xlCellValue, Operator:=xlBetween, _
+    Formula1:="10", Formula2:="20")
+```
+
+### xlExpression
+
+Basee sûr une formule.
+
+```vba
+.Add(Type:=xlExpression, Formula1:="=A1>MOYENNE($A:$A)")
+```
+
+## Opérateurs disponibles
+
+| Opérateur | Signification |
+|-----------|---------------|
+| xlBetween | Entre deux valeurs |
+| xlEqual | Égal à |
+| xlGreater | Supérieur à |
+| xlGreaterEqual | Supérieur où égal |
+| xlLess | Inférieur à |
+| xlLessEqual | Inférieur où égal |
+| xlNotBetween | Pas entre |
+| xlNotEqual | Différent de |
+
+## Mise en forme avancée
+
+### Police et bordure
+
+```vba
+With rng.FormatConditions.Add(Type:=xlCellValue, _
+    Operator:=xlLess, Formula1:="0")
+    .Font.Color = RGB(255, 0, 0)
+    .Font.Bold = True
+    .Borders.LineStyle = xlContinuous
+    .Interior.Color = RGB(255, 200, 200)
+End With
+```
+
+## Échelle de couleurs
+
+```vba
+Sub EchelleCouleur()
+    Dim rng As Range
+    Set rng = Range("A1:A100")
+
+    rng.FormatConditions.Delete
+
+    Dim cs As ColorScale
+    Set cs = rng.FormatConditions.AddColorScale(ColorScaleType:=3)
+
+    ' Minimum - Vert
+    cs.ColorScaleCriteria(1).Type = xlConditionValueLowestValue
+    cs.ColorScaleCriteria(1).FormatColor.Color = RGB(0, 255, 0)
+
+    ' Milieu - Jaune
+    cs.ColorScaleCriteria(2).Type = xlConditionValuePercentile
+    cs.ColorScaleCriteria(2).Value = 50
+    cs.ColorScaleCriteria(2).FormatColor.Color = RGB(255, 255, 0)
+
+    ' Maximum - Rouge
+    cs.ColorScaleCriteria(3).Type = xlConditionValueHighestValue
+    cs.ColorScaleCriteria(3).FormatColor.Color = RGB(255, 0, 0)
+End Sub
+```
+
+## Barres de données
+
+```vba
+Sub BarresDonnees()
+    Dim rng As Range
+    Set rng = Range("A1:A100")
+
+    rng.FormatConditions.Delete
+    rng.FormatConditions.AddDatabar
+
+    With rng.FormatConditions(1)
+        .BarColor.Color = RGB(0, 100, 200)
+        .BarFillType = xlDataBarFillSolid
+    End With
+End Sub
+```
+
+## Appliquer à plusieurs feuilles
+
+```vba
+Sub AppliquerAToutesFeuilles()
+    Dim ws As Worksheet
+    For Each ws In ThisWorkbook.Worksheets
+        With ws.Range("A1:A100").FormatConditions.Add( _
+            Type:=xlCellValue, Operator:=xlGreater, Formula1:="100")
+            .Interior.Color = RGB(0, 255, 0)
+        End With
+    Next ws
+End Sub
+```
+
+## Bonnes pratiques
+
+1. **Supprimez** les règles existantes avant d'en créer
+2. **Testez** sûr une petite plage d'abord
+3. **Documentez** vos règles
+4. **Utilisez** des constantes pour les couleurs
+
+[Découvrir nos formations Excel](/formations-excel)

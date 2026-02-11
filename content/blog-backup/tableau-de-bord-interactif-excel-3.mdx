@@ -1,0 +1,80 @@
+---
+title: "Tableau de Bord Interactif Excel : Niveau Expert"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Techniques expertes pour des tableaux de bord exceptionnels."
+description: "Guide expert pour les tableaux de bord interactifs Excel."
+category: "Visualisation"
+catégories: ["Visualisation", "Analyse de données Excel"]
+tags: ["Tableau de bord", "Expert", "Interactif", "Excel"]
+---
+
+# Tableau de Bord Interactif : Niveau Expert
+
+Techniques avancées pour des dashboards professionnels.
+
+## Architecture experte
+
+### Séparation des couches
+
+| Couche | Rôle |
+|--------|------|
+| Données | Sources brutes |
+| Transformation | Power Query |
+| Modèle | Power Pivot |
+| Présentation | Dashboard |
+
+## KPIs conditionnels
+
+### Formule avancée
+
+```excel
+=LET(
+  période;CellulePeriode;
+  actuel;SOMME.SI(Périodes;période;Valeurs);
+  précédent;SOMME.SI(Périodes;période-1;Valeurs);
+  variation;(actuel-précédent)/précédent;
+  objectif;RECHERCHEV(période;Objectifs;2;FAUX);
+  ecart;(actuel-objectif)/objectif;
+  CONCAT(TEXTE(actuel;\"# ##0\");\" (\";TEXTE(variation;\"+0%;-0%\");\") vs obj: \";TEXTE(ecart;\"+0%;-0%\"))
+)
+```
+
+## Graphiques dynamiques
+
+### Source FILTRE
+
+```excel
+=FILTRE(TRIER(Données;3;-1);Region=Sélection)
+```
+
+### Mise à jour automatique
+
+Le graphique suit les données filtrees.
+
+## Interactivite avancée
+
+### Menus derives
+
+Liste 2 depend de Liste 1 via FILTRE.
+
+### Boutons de reset
+
+Formes avec macros simples pour reinitialiser.
+
+## Animations
+
+### Mise en forme conditionnelle dynamique
+
+Couleurs qui changent selon les sélections.
+
+## Bonnes pratiques expertes
+
+| Pratique | Description |
+|----------|-------------|
+| Modularite | Composants reutilisables |
+| Documentation | Guide utilisateur |
+| Test | Tous les scenarios |
+| Performance | Mesures et optimisation |
+
+[Découvrir nos formations Excel](/formations-excel)

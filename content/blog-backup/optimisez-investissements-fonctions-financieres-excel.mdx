@@ -1,0 +1,146 @@
+---
+title: "Optimisez vos Investissements avec les Fonctions Financières Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Utilisez les fonctions financieres Excel pour vos investissements."
+description: "Guide des fonctions financieres Excel pour l'investissement."
+category: "Finance"
+catégories: ["Finance", "Formules Excel"]
+tags: ["Finance", "Investissement", "VAN", "TRI"]
+---
+
+# Fonctions Financieres Excel pour l'Investissement
+
+Évaluez vos projets d'investissement avec les outils Excel.
+
+## VAN - Valeur Actuelle Nette
+
+### Syntaxe
+
+```excel
+=VAN(taux;valeur1;valeur2;...)
+```
+
+### Exemple
+
+```excel
+=VAN(10%;CF1;CF2;CF3;CF4;CF5)+Investissement_initial
+```
+
+### Interprétation
+
+VAN > 0 : Projet rentable
+
+## TRI - Taux de Rendement Interne
+
+### Syntaxe
+
+```excel
+=TRI(valeurs;[estimation])
+```
+
+### Exemple
+
+```excel
+=TRI(B1:B6)
+```
+
+B1 contient l'investissement initial (negatif).
+
+### Interprétation
+
+Taux auquel VAN = 0.
+
+## VPM - Versement Periodique
+
+### Syntaxe
+
+```excel
+=VPM(taux;npm;va;[vc];[type])
+```
+
+### Exemple
+
+```excel
+=VPM(5%/12;120;100000)
+```
+
+Mensualite d'un pret de 100 000 € sûr 10 ans à 5%.
+
+## VA - Valeur Actuelle
+
+### Syntaxe
+
+```excel
+=VA(taux;npm;vpm;[vc];[type])
+```
+
+### Usage
+
+Calculer combien vaut aujourd'hui une serie de paiements futurs.
+
+## VC - Valeur Capitalisee
+
+### Syntaxe
+
+```excel
+=VC(taux;npm;vpm;[va];[type])
+```
+
+### Exemple
+
+```excel
+=VC(8%/12;120;-500)
+```
+
+Valeur future d'un placement de 500 €/mois pendant 10 ans à 8%.
+
+## TAUX
+
+### Syntaxe
+
+```excel
+=TAUX(npm;vpm;va;[vc];[type];[estimation])
+```
+
+### Usage
+
+Trouver le taux d'intérêt d'un pret où investissement.
+
+## NPM - Nombre de Périodes
+
+### Syntaxe
+
+```excel
+=NPM(taux;vpm;va;[vc];[type])
+```
+
+### Usage
+
+Calculer la duree nécessaire pour atteindre un objectif.
+
+## TRI.PAIEMENTS
+
+### Pour flux irreguliers
+
+```excel
+=TRI.PAIEMENTS(valeurs;dates;[estimation])
+```
+
+## VAN.PAIEMENTS
+
+### Pour flux irreguliers
+
+```excel
+=VAN.PAIEMENTS(taux;valeurs;dates)
+```
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Cohérence | Meme periodicite pour taux et npm |
+| Signes | Negatif = sortie, Positif = entrée |
+| Vérification | Comparez plusieurs méthodes |
+
+[Découvrir nos formations Excel](/formations-excel)

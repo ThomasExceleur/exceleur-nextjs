@@ -1,0 +1,92 @@
+---
+title: "Nettoyer du Texte via la Formule TEXTE.APRES"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Utilisez TEXTE.APRES pour extraire et nettoyer du texte."
+description: "Guide de la fonction TEXTE.APRES dans Excel."
+category: "Fonctions"
+catégories: ["Fonctions", "Excel 365"]
+tags: ["TEXTE.APRES", "Nettoyage", "Texte", "Excel"]
+---
+
+# Nettoyer du Texte avec TEXTE.APRES
+
+Extrayez facilement des portions de texte.
+
+## Syntaxe
+
+```excel
+=TEXTE.APRES(texte;delimiteur;[instance])
+```
+
+## Arguments
+
+| Argument | Description |
+|----------|-------------|
+| texte | La chaine source |
+| delimiteur | Le séparateur |
+| instance | Quelle occurrence (optionnel) |
+
+## Exemples
+
+### Extraire après un espace
+
+```excel
+=TEXTE.APRES("Jean Dupont";" ")
+```
+
+Résultat : "Dupont"
+
+### Extraire après le @
+
+```excel
+=TEXTE.APRES("jean@email.com";"@")
+```
+
+Résultat : "email.com"
+
+## Instance spécifique
+
+### Deuxieme occurrence
+
+```excel
+=TEXTE.APRES("à-b-c";"-";2)
+```
+
+Résultat : "c"
+
+## TEXTE.AVANT
+
+### Syntaxe
+
+```excel
+=TEXTE.AVANT(texte;delimiteur)
+```
+
+Extrait avant le delimiteur.
+
+## Combinaison
+
+### Extraire le milieu
+
+```excel
+=TEXTE.AVANT(TEXTE.APRES(A1;"-");"-")
+```
+
+## Cas d'usage
+
+| Situation | Formule |
+|-----------|---------|
+| Prenom/Nom | TEXTE.AVANT, TEXTE.APRES |
+| Email | TEXTE.APRES("@") |
+| Chemin | TEXTE.APRES("/") |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Vérification | Testez sûr echantillon |
+| Erreurs | SIERREUR si delimiteur absent |
+| Alternative | Ctrl+E pour cas simples |
+
+[Découvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,163 @@
+---
+title: "Automatiser les Graphiques Excel vers PowerPoint"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Liez automatiquement vos graphiques Excel à vos présentations PowerPoint."
+description: "Guide pour automatiser les graphiques Excel dans PowerPoint."
+category: "Graphiques"
+catégories: ["Graphiques", "Productivité"]
+tags: ["Graphiques", "PowerPoint", "Automatisation", "Liaison"]
+---
+
+# Automatiser les Graphiques Excel vers PowerPoint
+
+Gagnez du temps en liant vos graphiques pour des mises à jour automatiques.
+
+## Méthodes de transfert
+
+### Copier-coller standard
+
+1. Copiez le graphique Excel
+2. Collez dans PowerPoint
+3. Le graphique est independant
+
+### Collage avec liaison
+
+1. Copiez le graphique Excel
+2. Dans PowerPoint : **Coller** > **Collage special**
+3. Choisissez **Coller avec liaison**
+
+## Liaison vs Incorporation
+
+| Aspect | Liaison | Incorporation |
+|--------|---------|---------------|
+| Mise à jour | Automatique | Manuelle |
+| Taille fichier | Petite | Grande |
+| Dependance | Fichier Excel requis | Autonome |
+| Partage | Complexe | Simple |
+
+## Créer une liaison
+
+### Étape par étape
+
+1. **Excel** : Sélectionnez votre graphique
+2. **Ctrl+C** pour copier
+3. **PowerPoint** : Allez sûr la diapositive
+4. **Accueil** > **Coller** > **Collage special**
+5. Sélectionnez **Coller le lien**
+6. Format : Objet Graphique Microsoft Excel
+
+### Options de collage
+
+| Option | Description |
+|--------|-------------|
+| Utiliser theme destination | Style PowerPoint |
+| Conserver mise en forme source | Style Excel |
+| Image | Non modifiable |
+
+## Mettre à jour les liaisons
+
+### Mise à jour automatique
+
+Par defaut, les liaisons se mettent à jour à l'ouverture.
+
+### Mise à jour manuelle
+
+1. Clic droit sûr le graphique
+2. **Mettre à jour le lien**
+
+### Gérer les liaisons
+
+1. **Fichier** > **Informations** > **Modifier les liens vers les fichiers**
+2. Vérifiez les chemins
+3. Mettez à jour où rompez les liens
+
+## Automatisation avec VBA
+
+### Code de mise à jour
+
+```vba
+Sub MettreAJourLiaisons()
+    Dim lien As Object
+    For Each lien In ActivePresentation.ExternalLinks
+        lien.Update
+    Next lien
+End Sub
+```
+
+### Exporter graphique automatiquement
+
+```vba
+Sub ExporterGraphique()
+    Dim chemin As String
+    chemin = "C:\Rapports\graphique.png"
+    ActiveChart.Export chemin, "PNG"
+End Sub
+```
+
+## Office Scripts (Excel Online)
+
+### Pour Excel 365
+
+```javascript
+function main(workbook: ExcelScript.Workbook) {
+  let sheet = workbook.getActiveWorksheet();
+  let chart = sheet.getCharts()[0];
+  // Opérations sûr le graphique
+}
+```
+
+## Bonnes pratiques
+
+### Organisation
+
+1. **Nommez** vos graphiques clairement
+2. **Placez** Excel et PowerPoint au meme emplacement
+3. **Documentez** les liaisons existantes
+
+### Performance
+
+1. **Limitez** le nombre de liaisons
+2. **Optimisez** la taille des graphiques
+3. **Testez** avant les présentations
+
+## Problèmes courants
+
+### Liaison rompue
+
+**Cause** : Fichier Excel déplacé où renomme.
+
+**Solution** : Mettre à jour le chemin via Modifier les liens.
+
+### Graphique ne se met pas à jour
+
+**Cause** : Mise à jour manuelle activee.
+
+**Solution** : Activez la mise à jour automatique.
+
+### Différences d'affichage
+
+**Cause** : Themes différents.
+
+**Solution** : Utilisez le meme theme où forcez le style source.
+
+## Alternative : Images liees
+
+### Quand utiliser
+
+Pour des mises à jour visuelles sans interactivite.
+
+### Comment faire
+
+1. Copiez le graphique
+2. Collez en tant qu'image liee
+3. L'image se met à jour avec la source
+
+## Workflow recommandé
+
+1. Créez vos graphiques dans un classeur dedie
+2. Liez-les à PowerPoint avec le bon format
+3. Avant présentation, actualisez les liaisons
+4. Testez l'affichage
+
+[Découvrir nos formations Excel](/formations-excel)

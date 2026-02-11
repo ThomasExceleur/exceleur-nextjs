@@ -1,0 +1,107 @@
+---
+title: "INDEX+EQUIV et RECHERCHEX : Comparaison"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Comparez INDEX+EQUIV et RECHERCHEX pour vos recherches."
+description: "Guide comparatif entre INDEX+EQUIV et RECHERCHEX dans Excel."
+category: "Fonctions"
+catégories: ["Fonctions", "Recherche"]
+tags: ["INDEX", "EQUIV", "RECHERCHEX", "Excel"]
+---
+
+# INDEX+EQUIV vs RECHERCHEX
+
+Deux approches modernes pour les recherches.
+
+## INDEX+EQUIV
+
+### Syntaxe
+
+```excel
+=INDEX(plage_resultat;EQUIV(valeur;plage_recherche;0))
+```
+
+### Avantages
+
+- Compatible toutes versions
+- Très flexible
+- Deux fonctions = deux usages
+
+## RECHERCHEX
+
+### Syntaxe
+
+```excel
+=RECHERCHEX(valeur;plage_recherche;plage_resultat)
+```
+
+### Avantages
+
+- Plus lisible
+- Gestion erreur intégrée
+- Mode de recherche avancé
+
+## Comparaison
+
+| Critère | INDEX+EQUIV | RECHERCHEX |
+|---------|-------------|------------|
+| Disponibilité | Toutes versions | Excel 365+ |
+| Lisibilité | Moyenne | Excellente |
+| Performance | Très bonne | Excellente |
+| Gestion erreur | SIERREUR | Intégrée |
+| Recherche inverse | Oui | Oui |
+
+## Exemples equivalents
+
+### INDEX+EQUIV
+
+```excel
+=INDEX(B:B;EQUIV("Paris";A:A;0))
+```
+
+### RECHERCHEX
+
+```excel
+=RECHERCHEX("Paris";A:A;B:B)
+```
+
+## Gestion des erreurs
+
+### INDEX+EQUIV
+
+```excel
+=SIERREUR(INDEX(B:B;EQUIV("Paris";A:A;0));"Non trouve")
+```
+
+### RECHERCHEX
+
+```excel
+=RECHERCHEX("Paris";A:A;B:B;"Non trouve")
+```
+
+## Modes de recherche RECHERCHEX
+
+| Mode | Description |
+|------|-------------|
+| 1 | Du début (defaut) |
+| -1 | De la fin |
+| 2 | Binaire croissant |
+| -2 | Binaire decroissant |
+
+## Quand choisir quoi ?
+
+| Situation | Recommandation |
+|-----------|----------------|
+| Excel 365 | RECHERCHEX |
+| Compatibilité requise | INDEX+EQUIV |
+| Recherche complexe | INDEX+EQUIV |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Standardiser | Un style par projet |
+| Documenter | Commentez les formules |
+| Tester | Vérifiez les résultats |
+
+[Découvrir nos formations Excel](/formations-excel)

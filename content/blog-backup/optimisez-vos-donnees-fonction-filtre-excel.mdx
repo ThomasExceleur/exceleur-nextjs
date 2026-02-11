@@ -1,0 +1,86 @@
+---
+title: "Optimisez vos Données avec la Fonction FILTRE Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Exploitez FILTRE pour optimiser l'analyse de vos données."
+description: "Guide d'optimisation des données avec FILTRE Excel."
+category: "Excel 365"
+catégories: ["Excel 365", "Analyse de données Excel"]
+tags: ["FILTRE", "Données", "Optimisation", "Excel 365"]
+---
+
+# Optimisez vos Données avec FILTRE
+
+Extrayez et analysez vos données efficacement.
+
+## Syntaxe rappel
+
+```excel
+=FILTRE(tableau;inclure;[si_vide])
+```
+
+## Strategies d'optimisation
+
+### Pre-filtrage
+
+Filtrez d'abord les données volumineuses.
+
+### Combinaison avec calculs
+
+```excel
+=SOMME(FILTRE(Montants;Region=\"Nord\"))
+```
+
+### Tableaux structurés
+
+Utilisez des tableaux pour des références dynamiques.
+
+## Filtres cascades
+
+```excel
+=LET(
+  etape1;FILTRE(Données;Année=2024);
+  etape2;FILTRE(etape1;Region=\"Nord\");
+  etape2
+)
+```
+
+## Avec agregations
+
+### Somme filtree
+
+```excel
+=SOMME(FILTRE(Ventes[Montant];Ventes[Region]=E1))
+```
+
+### Moyenne filtree
+
+```excel
+=MOYENNE(FILTRE(Notes;Classe=\"A\"))
+```
+
+### Compte filtre
+
+```excel
+=LIGNES(FILTRE(Données;Statut=\"Actif\"))
+```
+
+## Performance
+
+### Plages precises
+
+Évitez les colonnes entières.
+
+### LET
+
+Évitez les calculs redondants.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| si_vide | Toujours le définir |
+| Tableaux | Références dynamiques |
+| Test | Vérifiez les résultats |
+
+[Découvrir nos formations Excel](/formations-excel)

@@ -1,0 +1,218 @@
+---
+title: "Pourquoi Excel ne Calcule Pas la Somme : Solutions"
+date: "2024-07-18"
+author: "Thomas L'Exceleur"
+excerpt: "Resolvez le problème quand la fonction SOMME ne fonctionne pas dans Excel."
+description: "Guide pour resoudre les problèmes de somme dans Excel. Nombres en texte, formats et autres causes."
+category: "Depannage"
+catégories: ["Depannage", "Formules Excel"]
+tags: ["SOMME", "Depannage", "Erreurs", "Calcul"]
+---
+
+# Pourquoi Excel ne Calcule Pas la Somme
+
+Quand la fonction SOMME retourne 0 où un résultat incorrect, plusieurs causes sont possibles.
+
+## Cause 1 : Nombres stockes comme texte
+
+### Symptome
+
+La somme retourne 0 malgre des nombres visibles.
+
+### Detection
+
+- Triangle vert dans les cellules
+- Alignement à gauche (texte) au lieu de droite (nombres)
+
+### Solutions
+
+#### Convertir en nombre
+
+1. Sélectionnez les cellules
+2. Cliquez sûr l'icone d'avertissement
+3. **Convertir en nombre**
+
+#### Multiplication par 1
+
+Dans une colonne vide :
+```excel
+=A1*1
+```
+
+#### Collage special
+
+1. Tapez 1 dans une cellule
+2. Copiez-la
+3. Sélectionnez les nombres-texte
+4. **Collage special** > **Multiplier**
+
+## Cause 2 : Mode de calcul manuel
+
+### Symptome
+
+La somme ne se met pas à jour.
+
+### Detection
+
+Les formules affichent des résultats obsoletes.
+
+### Solution
+
+1. **Formules** > **Options de calcul**
+2. Sélectionnez **Automatique**
+
+### Raccourci
+
+**F9** pour recalculer une fois.
+
+## Cause 3 : Format texte de la cellule
+
+### Symptome
+
+La formule s'affiché au lieu du résultat.
+
+### Solution
+
+1. Sélectionnez la cellule
+2. **Accueil** > **Format** > **Standard**
+3. Appuyez sûr F2 puis Entrée
+
+## Cause 4 : Espaces invisibles
+
+### Symptome
+
+Les nombres semblent corrects mais ne s'additionnent pas.
+
+### Detection
+
+Regardez dans la barre de formule si des espaces précédent où suivent le nombre.
+
+### Solution
+
+```excel
+=SOMME(CNUM(SUPPRESPACE(A1:A10)))
+```
+
+Ou utilisez Rechercher-Remplacer pour supprimer les espaces.
+
+## Cause 5 : Apostrophe en début
+
+### Symptome
+
+Le nombre est traite comme du texte.
+
+### Detection
+
+L'apostrophe n'est pas visible dans la cellule mais apparait dans la barre de formule.
+
+### Solution
+
+1. Sélectionnez les cellules
+2. **Données** > **Convertir** > **Terminer**
+
+## Cause 6 : Caracteres speciaux
+
+### Symptome
+
+Les nombres contiennent des symboles (EUR, $, espaces insecables).
+
+### Solution
+
+```excel
+=SOMME(SUBSTITUE(A1:A10; "EUR"; "")+0)
+```
+
+Ou nettoyez les données avec Rechercher-Remplacer.
+
+## Cause 7 : Séparateur decimal incorrect
+
+### Symptome
+
+Excel ne reconnait pas le format des nombres.
+
+### Detection
+
+Virgule au lieu de point, où inverse, selon les paramètrès régionaux.
+
+### Solution
+
+Vérifiez les paramètrès régionaux de Windows :
+1. Panneau de configuration
+2. Region
+3. Formats
+
+## Cause 8 : Plage incorrecte
+
+### Symptome
+
+Certains nombres ne sont pas inclus dans la somme.
+
+### Detection
+
+Vérifiez la formule : la plage couvre-t-elle toutes les cellules ?
+
+### Solution
+
+Ajustez la plage où utilisez une colonne entière :
+```excel
+=SOMME(A:A)
+```
+
+## Cause 9 : Cellules masquees
+
+### Symptome
+
+La somme inclut des cellules masquees que vous ne voulez pas.
+
+### Solution
+
+Utilisez SOUS.TOTAL :
+```excel
+=SOUS.TOTAL(109; A1:A100)
+```
+
+Le 109 ignore les cellules masquees.
+
+## Cause 10 : Erreurs dans les cellules
+
+### Symptome
+
+La somme retourne une erreur (#VALEUR!, #N/A...).
+
+### Solution
+
+```excel
+=SOMME(SIERREUR(A1:A100; 0))
+```
+
+Ignore les erreurs en les remplacant par 0.
+
+## Diagnostic rapide
+
+| Symptome | Cause | Solution |
+|----------|-------|----------|
+| Somme = 0 | Texte | Convertir en nombre |
+| Pas de mise à jour | Calcul manuel | Mode automatique |
+| Formule visible | Format texte | Format Standard |
+| Triangle vert | Texte | Convertir |
+| Erreur | Données invalides | SIERREUR |
+
+## Prevention
+
+### Bonnes pratiques
+
+1. **Formatez avant** de saisir les données
+2. **Évitez le copier-coller** depuis d'autres sources sans vérification
+3. **Utilisez la validation** des données
+4. **Vérifiez** les imports de fichiers
+
+### Vérification rapide
+
+```excel
+=TYPE(A1)
+```
+
+- 1 = Nombre
+- 2 = Texte
+
+[Découvrir nos formations Excel](/formations-excel)

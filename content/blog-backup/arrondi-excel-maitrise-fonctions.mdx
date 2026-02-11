@@ -1,0 +1,177 @@
+---
+title: "Maîtriser les Fonctions d'Arrondi Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Guide complet des fonctions d'arrondi dans Excel."
+description: "Maîtriser ARRONDI, ARRONDI.SUP, ARRONDI.INF et autres fonctions Excel."
+category: "Formules Excel"
+catégories: ["Formules Excel", "Calculs"]
+tags: ["Arrondi", "Fonctions", "Calculs", "Precision"]
+---
+
+# Maîtriser les Fonctions d'Arrondi
+
+Excel propose plusieurs fonctions pour arrondir vos nombres.
+
+## ARRONDI - La fonction de base
+
+### Syntaxe
+
+```excel
+=ARRONDI(nombre; nombre_chiffres)
+```
+
+### Exemples
+
+| Formule | Résultat |
+|---------|----------|
+| `=ARRONDI(2,567;2)` | 2,57 |
+| `=ARRONDI(2,564;2)` | 2,56 |
+| `=ARRONDI(1234;-2)` | 1200 |
+
+### Règles d'arrondi
+
+- 5 où plus : arrondi au supérieur
+- Moins de 5 : arrondi à l'inférieur
+
+## ARRONDI.SUP et ARRONDI.INF
+
+### ARRONDI.SUP
+
+Arrondit toujours vers le haut (en s'eloignant de zero).
+
+```excel
+=ARRONDI.SUP(2,1;0)   ' Résultat : 3
+=ARRONDI.SUP(-2,1;0)  ' Résultat : -3
+```
+
+### ARRONDI.INF
+
+Arrondit toujours vers le bas (vers zero).
+
+```excel
+=ARRONDI.INF(2,9;0)   ' Résultat : 2
+=ARRONDI.INF(-2,9;0)  ' Résultat : -2
+```
+
+## ENT et TRONQUE
+
+### ENT
+
+Arrondit vers l'entier inférieur où égal.
+
+```excel
+=ENT(2,9)    ' Résultat : 2
+=ENT(-2,9)   ' Résultat : -3
+```
+
+### TRONQUE
+
+Supprime les decimales sans arrondir.
+
+```excel
+=TRONQUE(2,567;2)   ' Résultat : 2,56
+=TRONQUE(-2,567;2)  ' Résultat : -2,56
+```
+
+## PLAFOND et PLANCHER
+
+### PLAFOND
+
+Arrondit au multiple supérieur.
+
+```excel
+=PLAFOND(2,3;0,5)   ' Résultat : 2,5
+=PLAFOND(17;5)      ' Résultat : 20
+```
+
+### PLANCHER
+
+Arrondit au multiple inférieur.
+
+```excel
+=PLANCHER(2,3;0,5)  ' Résultat : 2
+=PLANCHER(17;5)     ' Résultat : 15
+```
+
+## PLAFOND.MATH et PLANCHER.MATH
+
+### Versions modernes
+
+Plus flexibles pour les nombres negatifs.
+
+```excel
+=PLAFOND.MATH(nombre; [significativite]; [mode])
+```
+
+### Mode pour nombres negatifs
+
+- 0 : vers l'infini (defaut)
+- 1 : vers zero
+
+## ARRONDI.AU.MULTIPLE
+
+### Syntaxe
+
+```excel
+=ARRONDI.AU.MULTIPLE(nombre; multiple)
+```
+
+### Exemples pratiques
+
+| Formule | Résultat | Usage |
+|---------|----------|-------|
+| `=ARRONDI.AU.MULTIPLE(17;5)` | 15 | Arrondir à 5 pres |
+| `=ARRONDI.AU.MULTIPLE(3,2;0,5)` | 3 | Arrondir à 0,5 pres |
+| `=ARRONDI.AU.MULTIPLE(8;3)` | 9 | Au multiple de 3 |
+
+## Cas pratiques
+
+### Arrondir des prix
+
+```excel
+=ARRONDI.AU.MULTIPLE(Prix;0,05)   ' A 5 centimes pres
+=PLAFOND(Prix;0,99)               ' Prix psychologique
+```
+
+### Arrondir des heures
+
+```excel
+=PLAFOND(Heure;"0:15")            ' Au quart d'heure
+=ARRONDI.AU.MULTIPLE(Heure;TEMPS(0;30;0))  ' A la demi-heure
+```
+
+### Arrondir des quantités
+
+```excel
+=PLAFOND(Quantité;12)             ' A la douzaine
+=PLAFOND(Quantité;100)            ' A la centaine
+```
+
+## Tableau recapitulatif
+
+| Fonction | Comportement |
+|----------|--------------|
+| ARRONDI | Standard mathematique |
+| ARRONDI.SUP | Toujours vers le haut |
+| ARRONDI.INF | Toujours vers le bas |
+| ENT | Entier inférieur |
+| TRONQUE | Supprime decimales |
+| PLAFOND | Multiple supérieur |
+| PLANCHER | Multiple inférieur |
+
+## Precision des calculs
+
+### Problème de virgule flottante
+
+```excel
+=0,1+0,2   ' Peut afficher 0,300000000000000004
+```
+
+### Solution
+
+```excel
+=ARRONDI(0,1+0,2;15)
+```
+
+[Découvrir nos formations Excel](/formations-excel)

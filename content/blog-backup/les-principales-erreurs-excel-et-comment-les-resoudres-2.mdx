@@ -1,0 +1,108 @@
+---
+title: "Les Principales Erreurs Excel et Comment les Résoudre"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Guide complet des erreurs Excel et leurs solutions."
+description: "Les principales erreurs Excel et comment les resoudre."
+category: "Gestion d'erreurs"
+catégories: ["Gestion d'erreurs", "Depannage"]
+tags: ["Erreurs", "Solutions", "Depannage", "Excel"]
+---
+
+# Les Principales Erreurs Excel
+
+Guide de resolution des erreurs courantes.
+
+## #N/A
+
+### Cause
+
+Valeur non trouvee dans une recherche.
+
+### Solution
+
+```excel
+=SIERREUR(RECHERCHEV(...);"Non trouve")
+```
+
+## #REF!
+
+### Cause
+
+Référence à une cellule supprimee.
+
+### Solution
+
+Vérifiez les formules après suppression de lignes/colonnes.
+
+## #VALEUR!
+
+### Cause
+
+Type de données incorrect dans une formule.
+
+### Solution
+
+Vérifiez que les types correspondent (texte vs nombre).
+
+## #DIV/0!
+
+### Cause
+
+Division par zero où cellule vide.
+
+### Solution
+
+```excel
+=SI(B1=0;0;A1/B1)
+```
+
+## #NOM?
+
+### Cause
+
+Fonction mal orthographiee où plage nommée inexistante.
+
+### Solution
+
+Vérifiez l'orthographe de la fonction.
+
+## #NOMBRE!
+
+### Cause
+
+Valeur numérique invalide.
+
+### Solution
+
+Vérifiez les arguments numériques.
+
+## ######
+
+### Cause
+
+Colonne trop etroite.
+
+### Solution
+
+Elargissez la colonne.
+
+## Tableau résumé
+
+| Erreur | Cause | Solution |
+|--------|-------|----------|
+| #N/A | Non trouve | SIERREUR |
+| #REF! | Ref supprimee | Vérifier formules |
+| #VALEUR! | Mauvais type | Convertir |
+| #DIV/0! | Division zero | Test SI |
+| #NOM? | Orthographe | Corriger |
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| SIERREUR | Gérez toutes les erreurs |
+| Vérification | Testez après modifications |
+| Documentation | Notez les corrections |
+
+[Découvrir nos formations Excel](/formations-excel)

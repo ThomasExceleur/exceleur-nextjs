@@ -1,0 +1,140 @@
+---
+title: "Power Pivot : Modèle de Données et DAX"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Découvrez Power Pivot pour l'analyse de données avancée dans Excel."
+description: "Guide Power Pivot dans Excel. Modèle de données et formules DAX."
+category: "Analyse de données Excel"
+catégories: ["Analyse de données Excel", "Excel 365"]
+tags: ["Power Pivot", "DAX", "Modèle de données", "BI"]
+---
+
+# Power Pivot : Modèle de Données et DAX
+
+Power Pivot permet d'analyser des millions de lignes et de créer des modèles de données relationnels.
+
+## Qu'est-ce que Power Pivot ?
+
+### Définition
+
+Power Pivot est un complement Excel pour :
+- Importer des données volumineuses
+- Créer des relations entre tables
+- Écrire des formules DAX avancées
+- Alimenter des tableaux croisés dynamiques
+
+### Disponibilité
+
+- Excel 2016+ Professionnel
+- Excel 365
+
+## Activer Power Pivot
+
+### Étapes
+
+1. **Fichier** > **Options** > **Complements**
+2. **Gérer** : Complements COM
+3. **Atteindre**
+4. Cochez **Microsoft Power Pivot for Excel**
+5. **OK**
+
+## Le modèle de données
+
+### Concept
+
+Plusieurs tables reliees par des clés, comme une base de données.
+
+### Exemple
+
+- Table Ventes (ID, DateVente, ProduitID, Montant)
+- Table Produits (ProduitID, Nom, Catégorie)
+- Table Dates (Date, Mois, Année)
+
+### Créer une relation
+
+1. **Power Pivot** > **Gérer**
+2. Vue **Diagramme**
+3. Faites glisser un champ sûr un autre
+
+## Introduction au DAX
+
+### Qu'est-ce que DAX ?
+
+Data Analysis Expressions - langage de formules pour Power Pivot.
+
+### Mesures de base
+
+```dax
+Total Ventes = SUM(Ventes[Montant])
+```
+
+```dax
+Nb Commandes = COUNTROWS(Ventes)
+```
+
+```dax
+Moyenne = AVERAGE(Ventes[Montant])
+```
+
+## Fonctions DAX essentielles
+
+### Agregation
+
+| Fonction | Description |
+|----------|-------------|
+| SUM | Somme |
+| AVERAGE | Moyenne |
+| COUNT | Compte les nombres |
+| COUNTROWS | Compte les lignes |
+| MIN / MAX | Minimum / Maximum |
+
+### Logique
+
+```dax
+Statut = IF(Ventes[Montant] > 1000; "VIP"; "Standard")
+```
+
+### Temps
+
+```dax
+Ventes YTD = TOTALYTD(SUM(Ventes[Montant]); Dates[Date])
+```
+
+## Créer une mesure
+
+### Étapes
+
+1. Dans Power Pivot, sélectionnez une table
+2. Zone de calcul en bas
+3. Tapez la formule DAX
+4. Appuyez sûr Entrée
+
+### Exemple
+
+```dax
+Marge = SUM(Ventes[CA]) - SUM(Ventes[Cout])
+```
+
+## Avantages de Power Pivot
+
+| Avantage | Description |
+|----------|-------------|
+| Volume | Millions de lignes |
+| Relations | Tables liees |
+| Calculs | DAX puissant |
+| Performance | Compression des données |
+
+## Limites
+
+- Courbe d'apprentissage
+- Pas de collaboration temps reel
+- Necesssite version Pro d'Excel
+
+## Bonnes pratiques
+
+1. **Nommez** clairement vos tables et colonnes
+2. **Créez** une table Dates complete
+3. **Utilisez** des mesures plutôt que des colonnes calculees
+4. **Documentez** vos formules DAX
+
+[Découvrir nos formations Excel](/formations-excel)

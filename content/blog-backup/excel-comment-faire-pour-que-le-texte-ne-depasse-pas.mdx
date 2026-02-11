@@ -1,0 +1,116 @@
+---
+title: "Excel Comment Faire pour que le Texte ne Dépasse Pas"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez à gérer le texte qui dépasse des cellules dans Excel."
+description: "Solutions pour empecher le texte de dépasser dans Excel. Retour à la ligne et ajustement."
+category: "Mise en forme"
+catégories: ["Mise en forme", "Astuces Excel"]
+tags: ["Texte", "Mise en forme", "Cellule", "Affichage"]
+---
+
+# Empecher le Texte de Dépasser dans Excel
+
+Plusieurs solutions existent pour gérer le texte long dans les cellules.
+
+## Solution 1 : Retour à la ligne automatique
+
+### Activer le retour à la ligne
+
+1. Sélectionnez les cellules
+2. **Accueil** > **Renvoyer à la ligne automatiquement**
+3. Ou **Ctrl + 1** > **Alignement** > **Renvoyer à la ligne**
+
+### Effet
+
+Le texte reste dans la cellule et s'affiché sûr plusieurs lignes.
+
+## Solution 2 : Ajuster la largeur de colonne
+
+### Manuellement
+
+1. Placez le curseur entre deux en-têtes de colonnes
+2. Double-cliquez pour ajuster automatiquement
+
+### Automatiquement
+
+1. Sélectionnez la colonne
+2. **Accueil** > **Format** > **Ajuster la largeur de colonne**
+
+## Solution 3 : Réduire le texte
+
+### Ajuster à la cellule
+
+1. **Ctrl + 1** (Format de cellule)
+2. Onglet **Alignement**
+3. Cochez **Ajuster**
+
+### Effet
+
+Le texte est réduit pour tenir dans la cellule.
+
+## Solution 4 : Fusionner des cellules
+
+### Pour un titre long
+
+1. Sélectionnez plusieurs cellules adjacentes
+2. **Accueil** > **Fusionner et centrer**
+
+### Attention
+
+Les cellules fusionnées peuvent poser des problèmes avec les formules.
+
+## Solution 5 : Tronquer le texte
+
+### Avec une formule
+
+```excel
+=GAUCHE(A1;20)                ' Garde les 20 premiers caracteres
+=GAUCHE(A1;20)&"..."          ' Avec points de suspension
+```
+
+### Formule intelligente
+
+```excel
+=SI(NBCAR(A1)>20;GAUCHE(A1;17)&"...";A1)
+```
+
+## Comparaison des solutions
+
+| Solution | Avantage | Inconvenient |
+|----------|----------|--------------|
+| Retour à la ligne | Tout le texte visible | Ligne plus haute |
+| Largeur colonne | Simple | Peut etre trop large |
+| Réduire | Tout dans une cellule | Texte petit |
+| Fusionner | Espace etendu | Problèmes formules |
+| Tronquer | Taille controlee | Texte coupe |
+
+## Afficher le texte au survol
+
+### Info-bulle
+
+1. Sélectionnez la cellule
+2. **Révision** > **Nouveau commentaire**
+3. Collez le texte complet
+
+## Pour l'impression
+
+### Vérifier l'apercu
+
+1. **Fichier** > **Imprimer**
+2. Vérifiez l'apercu
+3. Ajustez si nécessaire
+
+### Répéter les en-têtes
+
+1. **Mise en page** > **Imprimer les titres**
+2. Définissez les lignes à répéter
+
+## Bonnes pratiques
+
+1. **Prevoyez** la largeur des colonnes
+2. **Utilisez** le retour à la ligne pour les descriptions
+3. **Évitez** les cellules fusionnées dans les données
+4. **Testez** l'impression
+
+[Découvrir nos formations Excel](/formations-excel)

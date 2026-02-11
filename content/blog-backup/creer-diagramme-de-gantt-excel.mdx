@@ -1,0 +1,155 @@
+---
+title: "Créer un Diagramme de Gantt dans Excel"
+date: "2024-07-02"
+author: "Thomas L'Exceleur"
+excerpt: "Apprenez à créer un diagramme de Gantt professionnel dans Excel."
+description: "Guide pour créer un diagramme de Gantt dans Excel pas à pas."
+category: "Graphiques"
+catégories: ["Graphiques", "Productivité"]
+tags: ["Gantt", "Graphique", "Projet", "Planning"]
+---
+
+# Créer un Diagramme de Gantt dans Excel
+
+Le diagramme de Gantt visualise les taches d'un projet dans le temps.
+
+## Préparer les données
+
+### Structuré du tableau
+
+| Tache | Date début | Duree (jours) | Date fin |
+|-------|------------|---------------|----------|
+| Analyse | 01/01/2024 | 5 | 06/01/2024 |
+| Conception | 06/01/2024 | 10 | 16/01/2024 |
+| Développement | 16/01/2024 | 20 | 05/02/2024 |
+| Tests | 05/02/2024 | 8 | 13/02/2024 |
+| Deploiement | 13/02/2024 | 3 | 16/02/2024 |
+
+### Formule date de fin
+
+```excel
+=Date_debut+Duree
+```
+
+## Créer le graphique
+
+### Étape 1 : Insérer un histogramme empile
+
+1. Sélectionnez Taches, Dates début et Durees
+2. **Insertion** > **Graphiques** > **Barres empilees**
+
+### Étape 2 : Masquer la première serie
+
+1. Cliquez sûr les barres des dates de début
+2. **Format** > **Remplissage** > **Aucun remplissage**
+3. **Bordure** > **Aucun trait**
+
+### Étape 3 : Inverser l'ordre des taches
+
+1. Cliquez sûr l'axe vertical
+2. Clic droit > **Format de l'axe**
+3. Cochez **Catégories dans l'ordre inverse**
+
+### Étape 4 : Ajuster l'axe horizontal
+
+1. Cliquez sûr l'axe horizontal
+2. Définissez les dates min et max
+3. Format de date approprie
+
+## Personnaliser le Gantt
+
+### Couleurs par statut
+
+| Statut | Couleur suggeree |
+|--------|------------------|
+| Termine | Vert |
+| En cours | Bleu |
+| A faire | Gris |
+| En retard | Rouge |
+
+### Ajouter une ligne de date actuelle
+
+1. Ajoutez une serie avec la date du jour
+2. Formatez en ligne verticale
+3. Position : axe secondaire
+
+## Formules utiles
+
+### Calculer le retard
+
+```excel
+=SI(Date_fin<AUJOURDHUI();"En retard";SI(Date_debut<=AUJOURDHUI();"En cours";"A venir"))
+```
+
+### Pourcentage d'avancement
+
+```excel
+=SI(Statut="Termine";100%;
+  SI(Statut="A faire";0%;
+    (AUJOURDHUI()-Date_debut)/(Date_fin-Date_debut)))
+```
+
+## Version dynamique
+
+### Barre de progression
+
+1. Ajoutez une colonne "Progression"
+2. Calculez : `=Duree*Pourcentage`
+3. Ajoutez cette serie au graphique
+4. Superposez sûr la barre principale
+
+### Mise à jour automatique
+
+Utilisez AUJOURDHUI() pour les calculs temporels.
+
+## Limites d'Excel
+
+### Ce que le Gantt Excel ne fait pas
+
+- Liens de dependance (fleches)
+- Jalons visuels
+- Ressources assignees
+- Chemin critique automatique
+
+### Alternatives
+
+- Microsoft Project
+- Smartsheet
+- Online Gantt tools
+
+## Astuces
+
+### Afficher les weekends
+
+Utilisez la mise en forme conditionnelle sûr les dates.
+
+### Etiquettes de données
+
+Ajoutez des etiquettes pour afficher les durees.
+
+### Legende
+
+Ajoutez une legende pour les couleurs de statut.
+
+## Modèle reutilisable
+
+### Création
+
+1. Créez votre Gantt de base
+2. Supprimez les données spécifiques
+3. Sauvegardez comme modèle .xltx
+
+### Utilisation
+
+Ouvrez le modèle et remplissez vos données.
+
+## Bonnes pratiques
+
+| Pratique | Description |
+|----------|-------------|
+| Dates realistes | Basez-vous sûr des estimations |
+| Mise à jour | Actualisez régulièrement |
+| Couleurs cohérentes | Gardez la meme legende |
+| Jalons | Marquez les étapes clés |
+
+[Découvrir nos formations Excel](/formations-excel)
