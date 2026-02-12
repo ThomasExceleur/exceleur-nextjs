@@ -22,20 +22,12 @@ const methodItems = [
     number: '02',
   },
   {
-    icon: '/images/illustrations/time.webp',
-    title: 'Un accompagnement sur le long terme',
-    description: 'Où je réponds personnellement à toutes les questions autour d\'Excel qui me sont posées.',
-    color: 'from-secondary/20 to-secondary/5',
-    iconBg: 'from-secondary to-secondary-hover',
-    number: '03',
-  },
-  {
     icon: '/images/illustrations/cible.webp',
     title: 'Le tout condensé dans un programme renfermant uniquement l\'essentiel',
     description: 'Des vidéos courtes, des exemples concrets, et des méthodes de travail qui ont (réellement) fait leurs preuves.',
     color: 'from-primary/15 via-accent/10 to-secondary/15',
     iconBg: 'from-primary via-accent to-secondary',
-    number: '04',
+    number: '03',
   },
 ];
 
