@@ -41,7 +41,7 @@ export default function HomePage() {
       {/* Programs Section - "Des programmes complémentaires" */}
       <ProgramsSection />
 
-      {/* Stats Section - "Plus de 2000 stagiaires accompagnés" */}
+      {/* Stats Section - "Plus de 3000 stagiaires accompagnés" */}
       <StatsSection />
 
       {/* Testimonials Section */}
@@ -56,7 +56,7 @@ export default function HomePage() {
       {/* Newsletter Section */}
       <Newsletter
         variant="homepage"
-        subtitle="Comme plus de 50 000 lecteurs,"
+        subtitle="Comme plus de 60 000 lecteurs,"
         title="rejoignez la #REFérence"
         description="Recevez en exclusivité mes emails privés dans lesquels je partage mes conseils et mes dernières découvertes sur Excel."
         placeholder="Votre email"

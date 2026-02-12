@@ -337,7 +337,7 @@ export default function FormationPageClient({ slug }: FormationPageClientProps) 
                     </svg>
                   </a>
                   <a
-                    href="mailto:hello@exceleur.fr"
+                    href="mailto:thomas@exceleur.fr"
                     className="inline-flex items-center gap-2 px-8 py-4 bg-white border-2 border-gray-200 rounded-xl text-text-dark font-semibold hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
                   >
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -918,7 +918,7 @@ export default function FormationPageClient({ slug }: FormationPageClientProps) 
 
                 <div className="flex flex-wrap justify-center gap-4">
                   <a
-                    href="mailto:hello@exceleur.fr"
+                    href="mailto:thomas@exceleur.fr"
                     className="group inline-flex items-center gap-3 px-8 py-4 rounded-xl text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                     style={{
                       background: `linear-gradient(135deg, ${gradientFrom} 0%, ${gradientTo} 100%)`,

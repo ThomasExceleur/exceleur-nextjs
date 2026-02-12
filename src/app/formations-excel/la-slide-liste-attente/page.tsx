@@ -920,8 +920,8 @@ export default function LaSlidePage() {
 
               <p className="text-text-light mb-8">
                 Il te suffit simplement d&apos;envoyer un email à cette adresse :{' '}
-                <a href="mailto:hello@exceleur.fr" className="text-orange-600 hover:underline font-medium">
-                  hello@exceleur.fr
+                <a href="mailto:thomas@exceleur.fr" className="text-orange-600 hover:underline font-medium">
+                  thomas@exceleur.fr
                 </a>
               </p>
 
@@ -1029,8 +1029,8 @@ export default function LaSlidePage() {
               </h2>
               <p className="text-text-light mb-2">
                 Envoie-moi un mail à{' '}
-                <a href="mailto:hello@exceleur.fr" className="text-orange-600 hover:underline font-medium">
-                  hello@exceleur.fr
+                <a href="mailto:thomas@exceleur.fr" className="text-orange-600 hover:underline font-medium">
+                  thomas@exceleur.fr
                 </a>
               </p>
               <p className="text-text-light">Je me ferai un plaisir d&apos;y répondre.</p>

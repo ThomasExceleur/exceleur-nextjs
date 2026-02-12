@@ -6,15 +6,15 @@ import { FadeIn } from '@/components/ui/FadeIn';
 
 const stats = [
   {
-    value: 2000,
+    value: 3000,
     suffix: '+',
     label: 'Stagiaires accompagnés',
     description: 'Des professionnels formés à Excel',
   },
   {
-    value: 175000,
+    value: 1000000,
     suffix: '+',
-    label: 'Abonnés Instagram',
+    label: 'Abonnés sur les réseaux',
     description: 'Une communauté engagée',
   },
   {
@@ -24,7 +24,7 @@ const stats = [
     description: 'Taux de recommandation',
   },
   {
-    value: 50000,
+    value: 60000,
     suffix: '+',
     label: 'Lecteurs newsletter',
     description: 'Chaque semaine',
@@ -69,7 +69,7 @@ export function StatsSection() {
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold text-text-dark leading-tight">
               Plus de{' '}
               <span className="relative inline-block">
-                <span className="text-gradient">2000</span>
+                <span className="text-gradient">3000</span>
                 {/* Decorative underline */}
                 <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent rounded-full" />
               </span>

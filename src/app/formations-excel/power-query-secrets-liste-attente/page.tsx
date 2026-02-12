@@ -537,7 +537,7 @@ export default function PowerQuerySecretsListeAttentePage() {
                   </div>
                   {/* Floating badge */}
                   <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-teal-500 to-emerald-500 text-white px-6 py-3 rounded-2xl font-bold shadow-lg">
-                    700 000+ abonnés
+                    1 000 000+ abonnés
                   </div>
                 </div>
               </FadeIn>
@@ -967,8 +967,8 @@ export default function PowerQuerySecretsListeAttentePage() {
               </h2>
               <p className="text-text-light mb-2">
                 Envoie-moi un mail à{' '}
-                <a href="mailto:hello@exceleur.fr" className="text-teal-600 hover:underline font-medium">
-                  hello@exceleur.fr
+                <a href="mailto:thomas@exceleur.fr" className="text-teal-600 hover:underline font-medium">
+                  thomas@exceleur.fr
                 </a>
               </p>
               <p className="text-text-light">Je me ferai un plaisir d&apos;y répondre.</p>

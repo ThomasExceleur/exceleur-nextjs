@@ -99,22 +99,23 @@ export function Hero({
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
                 </span>
-                <span className="text-sm text-white/90 font-medium">+2000 professionnels formés</span>
+                <span className="text-sm text-white/90 font-medium">+3000 professionnels formés</span>
               </div>
 
               {/* Animated title with staggered reveal */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-[4.2rem] font-heading font-extrabold text-white leading-[1.1] tracking-tight">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.5rem] font-heading font-extrabold text-white leading-[1.15] tracking-tight">
                 <span className="block animate-fade-in-up" style={{ animationDelay: '0.15s', animationFillMode: 'both' }}>
                   Faites d&apos;Excel
                 </span>
                 <span className="block animate-fade-in-up" style={{ animationDelay: '0.25s', animationFillMode: 'both' }}>
                   la compétence
                 </span>
-                <span className="block animate-fade-in-up relative" style={{ animationDelay: '0.35s', animationFillMode: 'both' }}>
+                <span className="block animate-fade-in-up" style={{ animationDelay: '0.35s', animationFillMode: 'both' }}>
+                  la plus{' '}
                   <span className="relative inline-block">
-                    la plus rentable
+                    rentable
                     {/* Animated underline */}
-                    <span className="absolute -bottom-2 left-0 w-full h-1.5 bg-white/40 rounded-full origin-left animate-scale-in" style={{ animationDelay: '0.8s', animationFillMode: 'both' }} />
+                    <span className="absolute -bottom-1 left-0 w-full h-1 bg-white/40 rounded-full origin-left animate-scale-in" style={{ animationDelay: '0.8s', animationFillMode: 'both' }} />
                   </span>
                 </span>
                 <span className="block animate-fade-in-up" style={{ animationDelay: '0.45s', animationFillMode: 'both' }}>
@@ -136,10 +137,10 @@ export function Hero({
                 style={{ animationDelay: '0.65s', animationFillMode: 'both' }}
               >
                 <Button
-                  variant="outline-white"
+                  variant="solid"
                   size="lg"
                   href="/formations-excel/"
-                  className="group relative overflow-hidden px-8"
+                  className="group relative overflow-hidden px-8 !bg-white !text-primary !border-white hover:!bg-white/90 hover:!shadow-xl hover:!shadow-white/20"
                   icon={
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

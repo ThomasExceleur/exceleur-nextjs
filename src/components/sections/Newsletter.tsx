@@ -136,7 +136,7 @@ export function Newsletter({
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-6 border border-white/20">
                 <span className="text-sm text-white/90">
-                  {subtitle || 'Comme plus de 50 000 lecteurs,'}
+                  {subtitle || 'Comme plus de 60 000 lecteurs,'}
                 </span>
               </div>
 

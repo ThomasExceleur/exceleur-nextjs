@@ -941,10 +941,10 @@ export default function LaMachinePage() {
               <p className="text-text-light mb-2">
                 Envoie-moi un mail à{' '}
                 <a
-                  href="mailto:hello@exceleur.fr"
+                  href="mailto:thomas@exceleur.fr"
                   className="text-secondary hover:text-primary transition-colors font-semibold"
                 >
-                  hello@exceleur.fr
+                  thomas@exceleur.fr
                 </a>
               </p>
               <p className="text-text-light">Je me ferai un plaisir d&apos;y répondre.</p>

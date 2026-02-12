@@ -4,7 +4,7 @@ import { FilterableBlogList, HorizontalBlogList } from '@/components/blog/BlogLi
 import { Pagination } from '@/components/blog/Pagination';
 import { Newsletter } from '@/components/sections/Newsletter';
 import { FadeIn } from '@/components/ui/FadeIn';
-import { getPaginatedBlogPosts, getAllBlogPosts } from '@/lib/mdx';
+import { getPaginatedBlogPosts } from '@/lib/mdx';
 
 export const metadata: Metadata = {
   title: 'Blog Excel | Tutoriels et actualités',
@@ -23,15 +23,6 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   const params = await searchParams;
   const currentPage = Number(params.page) || 1;
   const { posts, totalPages, totalPosts } = getPaginatedBlogPosts(currentPage, 12);
-  const allPosts = getAllBlogPosts();
-
-  // Extract unique categories
-  const categories = Array.from(
-    new Set(allPosts.flatMap(post => post.categories || []))
-  ).filter(Boolean);
-
-  // Get featured posts (most recent 3)
-  const featuredPosts = allPosts.slice(0, 3);
 
   return (
     <>
@@ -102,20 +93,6 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                   <div className="text-left">
                     <div className="text-xl font-bold text-text-dark">{totalPosts}+</div>
                     <div className="text-xs text-text-light">Articles</div>
-                  </div>
-                </div>
-
-                <div className="w-px h-10 bg-gray-200 hidden md:block" />
-
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-secondary/10 to-secondary/20 flex items-center justify-center">
-                    <svg className="w-5 h-5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
-                    </svg>
-                  </div>
-                  <div className="text-left">
-                    <div className="text-xl font-bold text-text-dark">{categories.length}</div>
-                    <div className="text-xs text-text-light">Catégories</div>
                   </div>
                 </div>
 

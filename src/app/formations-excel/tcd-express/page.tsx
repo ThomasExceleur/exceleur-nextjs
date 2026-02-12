@@ -609,8 +609,8 @@ export default function TCDExpressPage() {
               </h2>
               <p className="text-text-light mb-2">
                 Envoie-moi un mail &agrave;{' '}
-                <a href="mailto:hello@exceleur.fr" className="text-indigo-600 hover:text-indigo-700 transition-colors font-semibold">
-                  hello@exceleur.fr
+                <a href="mailto:thomas@exceleur.fr" className="text-indigo-600 hover:text-indigo-700 transition-colors font-semibold">
+                  thomas@exceleur.fr
                 </a>
               </p>
               <p className="text-text-light">Je me ferai un plaisir d&apos;y r&eacute;pondre.</p>

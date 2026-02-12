@@ -9,7 +9,6 @@ const legalLinks = [
   { label: 'Déclaration de confidentialité', href: '/declaration-de-confidentialite-ue/' },
   { label: 'Politique de cookies', href: '/politique-de-cookies-ue/' },
   { label: 'CGV', href: '/cgv/' },
-  { label: 'Règlement intérieur', href: 'https://www.exceleur.fr/wp-content/uploads/2024/12/Reglement-interieur-Exceleur.pdf', external: true },
 ];
 
 const socialLinks = [
@@ -17,27 +16,28 @@ const socialLinks = [
     label: 'Instagram',
     href: 'https://www.instagram.com/lexceleur/',
     icon: 'instagram',
-    followers: '175K',
+    followers: '280K',
     color: 'hover:bg-gradient-to-br hover:from-[#833AB4] hover:via-[#E1306C] hover:to-[#F77737]',
   },
   {
     label: 'TikTok',
     href: 'https://www.tiktok.com/@exceleur',
     icon: 'tiktok',
-    followers: '50K',
+    followers: '660K',
     color: 'hover:bg-[#000000]',
   },
   {
     label: 'YouTube',
     href: 'https://www.youtube.com/@lexceleur',
     icon: 'youtube',
-    followers: '10K',
+    followers: '130K',
     color: 'hover:bg-[#FF0000]',
   },
   {
     label: 'LinkedIn',
     href: 'https://www.linkedin.com/in/thomas-lexceleur/',
     icon: 'linkedin',
+    followers: '80K',
     color: 'hover:bg-[#0A66C2]',
   },
 ];
@@ -138,15 +138,9 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    target={'external' in link && link.external ? '_blank' : undefined}
                     className="text-white/70 hover:text-white text-sm no-underline transition-colors duration-200 inline-flex items-center gap-1 group"
                   >
                     <span className="group-hover:translate-x-1 transition-transform duration-200">{link.label}</span>
-                    {link.external && (
-                      <svg className="w-3 h-3 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                      </svg>
-                    )}
                   </Link>
                 </li>
               ))}
@@ -186,7 +180,7 @@ export function Footer() {
               Newsletter
             </h3>
             <p className="text-white/70 text-sm mb-4">
-              Rejoignez +50 000 lecteurs et recevez mes conseils Excel en exclusivité.
+              Rejoignez +60 000 lecteurs et recevez mes conseils Excel en exclusivité.
             </p>
             <Link
               href="#newsletter"
@@ -226,16 +220,6 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-white/60 text-sm text-center md:text-left">
               <p>&copy; {currentYear} Exceleur. Tous droits réservés.</p>
-              <p className="mt-1">
-                Réalisation{' '}
-                <Link
-                  href="https://charlenezybala.com/"
-                  target="_blank"
-                  className="text-white/80 hover:text-white no-underline transition-colors"
-                >
-                  Charlène Zybala
-                </Link>
-              </p>
             </div>
 
             {/* Back to top button */}

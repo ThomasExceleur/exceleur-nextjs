@@ -304,13 +304,33 @@ Découvrez nos formations Excel pour maîtriser encore plus de fonctionnalités.
     `,
     type: 'utility',
   },
+  'thank-you-raccourcis-excel': {
+    title: 'Merci pour votre téléchargement !',
+    description: 'Votre guide des raccourcis indispensables d\'Excel arrive dans votre boîte mail.',
+    content: `
+## Merci pour votre téléchargement !
+
+Votre guide des raccourcis indispensables d'Excel est en route vers votre boîte mail.
+
+### Et maintenant ?
+
+1. **Vérifiez votre boîte mail** (et vos spams)
+2. **Téléchargez le guide** depuis le lien dans l'email
+3. **Pratiquez les raccourcis** et boostez votre productivité !
+
+### Besoin d'aller plus loin ?
+
+Découvrez nos formations Excel pour maîtriser encore plus de fonctionnalités.
+    `,
+    type: 'utility',
+  },
   'newsletter-externe': {
     title: 'Inscrivez-vous à la newsletter',
-    description: 'Rejoignez plus de 50 000 lecteurs et recevez mes conseils Excel en exclusivité.',
+    description: 'Rejoignez plus de 60 000 lecteurs et recevez mes conseils Excel en exclusivité.',
     content: `
 ## Rejoignez la newsletter Exceleur
 
-Comme plus de 50 000 lecteurs, recevez chaque semaine mes meilleurs conseils Excel directement dans votre boîte mail.
+Comme plus de 60 000 lecteurs, recevez chaque semaine mes meilleurs conseils Excel directement dans votre boîte mail.
 
 ### Ce que vous recevrez :
 
@@ -559,7 +579,7 @@ function ContentSection({
       />
 
       <Container className="relative">
-        <FadeIn direction="up">
+        <FadeIn direction="up" threshold={0}>
           <div className="max-w-3xl mx-auto">
             {/* Content card for legal pages */}
             {type === 'legal' ? (
