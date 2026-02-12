@@ -8,7 +8,7 @@ import { FadeIn } from '@/components/ui/FadeIn';
 const formations = [
   {
     title: 'Le Décollage',
-    description: 'Les bases d\'Excel pour bien démarrer',
+    description: 'La vraie méthode pour devenir un monstre d\'efficacité sur Excel',
     href: '/formations-excel/le-decollage-liste-attente',
     gradient: 'from-[#60a5fa] to-[#3b82f6]',
     shadowColor: 'rgba(59, 130, 246, 0.4)',
@@ -17,7 +17,7 @@ const formations = [
   },
   {
     title: 'La Machine',
-    description: 'Maîtrisez Excel comme un pro',
+    description: 'Propulse ta carrière grâce au secret bien gardé des macros VBA',
     href: '/formations-excel/la-machine-liste-attente',
     gradient: 'from-[#CB6AED] to-[#9333ea]',
     shadowColor: 'rgba(203, 106, 237, 0.4)',
@@ -26,7 +26,7 @@ const formations = [
   },
   {
     title: 'La Slide',
-    description: 'Créez des présentations impactantes',
+    description: 'Deviens le présentateur fascinant que tout le monde écoute',
     href: '/formations-excel/la-slide-liste-attente',
     gradient: 'from-[#34d399] to-[#10b981]',
     shadowColor: 'rgba(16, 185, 129, 0.4)',
@@ -35,7 +35,7 @@ const formations = [
   },
   {
     title: 'Power Query Secrets',
-    description: 'Automatisez vos traitements de données',
+    description: 'Deviens LA personne la plus efficace du bureau',
     href: '/formations-excel/power-query-secrets-liste-attente',
     gradient: 'from-[#fb923c] to-[#f97316]',
     shadowColor: 'rgba(249, 115, 22, 0.4)',
@@ -44,7 +44,7 @@ const formations = [
   },
   {
     title: 'ExcelGPT',
-    description: 'Libérez votre potentiel Excel grâce à l\'IA',
+    description: 'Libère ton potentiel sur Excel grâce à la puissance de l\'IA',
     href: '/formations-excel/excelgpt',
     gradient: 'from-[#a78bfa] to-[#7c3aed]',
     shadowColor: 'rgba(124, 58, 237, 0.4)',
@@ -53,21 +53,12 @@ const formations = [
   },
   {
     title: 'TCD Express',
-    description: 'Maîtrisez les tableaux croisés dynamiques en 7 jours',
+    description: 'Maîtrise les TCD en moins de 7 jours',
     href: '/formations-excel/tcd-express',
     gradient: 'from-[#f472b6] to-[#ec4899]',
     shadowColor: 'rgba(236, 72, 153, 0.4)',
     icon: '📋',
     image: '/images/formations/tcd-express/thumbnail.webp',
-  },
-  {
-    title: 'Excel Avancé',
-    description: 'Optimisez vos compétences professionnelles sur Excel',
-    href: '/formations-excel/excel-avance',
-    gradient: 'from-[#2dd4bf] to-[#14b8a6]',
-    shadowColor: 'rgba(20, 184, 166, 0.4)',
-    icon: '🎯',
-    image: '/images/formations/excel-avance/thumbnail.webp',
   },
 ];
 

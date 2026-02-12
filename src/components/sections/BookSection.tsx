@@ -76,21 +76,6 @@ export function BookSection() {
                   className="relative w-auto max-h-[470px] object-contain drop-shadow-2xl group-hover:scale-[1.02] group-hover:-rotate-2 transition-all duration-500"
                 />
 
-                {/* Floating badge - Sales */}
-                <div className="absolute -right-4 top-8 bg-white rounded-2xl shadow-card-elevated px-4 py-3 animate-bounce-subtle">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-green-500 flex items-center justify-center">
-                      <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-xs text-text-light">Ventes</p>
-                      <p className="text-sm font-bold text-text-dark">5000+</p>
-                    </div>
-                  </div>
-                </div>
-
                 {/* Floating badge - Rating */}
                 <div className="absolute -left-4 bottom-20 bg-white rounded-2xl shadow-card-elevated px-4 py-3 animate-bounce-subtle" style={{ animationDelay: '0.5s' }}>
                   <div className="flex items-center gap-3">
@@ -187,7 +172,7 @@ export function BookSection() {
                   ))}
                 </div>
                 <p className="text-sm text-white/70">
-                  <span className="text-white font-semibold">4.7/5</span> sur Amazon ({'>'}200 avis)
+                  <span className="text-white font-semibold">4.7/5</span> sur Amazon
                 </p>
               </div>
             </div>

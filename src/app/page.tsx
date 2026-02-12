@@ -9,7 +9,6 @@ import { BookSection } from '@/components/sections/BookSection';
 import { InstagramSection } from '@/components/sections/InstagramSection';
 import { Newsletter } from '@/components/sections/Newsletter';
 import { PressSection } from '@/components/sections/PressSection';
-import { FinancingSection } from '@/components/sections/FinancingSection';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { siteConfig } from '@/lib/content';
 
@@ -38,9 +37,6 @@ export default function HomePage() {
 
       {/* Method Section - "Plusieurs formations, une seule méthode" */}
       <MethodSection />
-
-      {/* Financing Section - "Faites financer votre formation" (Qualiopi, OPCO, CPF, TOSA) */}
-      <FinancingSection />
 
       {/* Programs Section - "Des programmes complémentaires" */}
       <ProgramsSection />
