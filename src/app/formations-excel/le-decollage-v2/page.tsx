@@ -122,7 +122,7 @@ const testimonialVideosSecond = [
 ];
 
 /* ==========================================================================
-   CTA BUTTON — Un seul type, même couleur, même texte partout
+   CTA BUTTON
    ========================================================================== */
 
 function CTAButton({ className = '' }: { className?: string }) {
@@ -141,39 +141,33 @@ function CTAButton({ className = '' }: { className?: string }) {
 
 /* ==========================================================================
    PAGE
-   Séquence du rapport : Hero → Problème → Pont → Solution → Preuve #1 →
-   Programme → À qui → Preuve #2 → Offre → Garantie → FAQ → CTA final
+   Séquence slippery slide : Accroche → Douleur → Solutions échouées →
+   Mécanisme (Règle 95%) → Crédibilité → Projection → Seul vs accompagné →
+   Présentation formation → Preuve #1 → Programme → À qui → Preuve #2 →
+   Offre → Garantie → FAQ → CTA final
    ========================================================================== */
 
 export default function LeDecollageV2Page() {
-  const [email, setEmail] = useState('');
-
   return (
     <div className="bg-white">
 
       {/* ────────────────────────────────────────────────────────────────────
-          SECTION 1 — HERO / ACCROCHE
-          Centré, 1 écran, 1 CTA unique
+          SECTION 1 — ACCROCHE / HERO
           ──────────────────────────────────────────────────────────────────── */}
       <section className="pt-12 pb-20 lg:pt-20 lg:pb-28">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          {/* Logo discret */}
           <p className="text-sm font-medium text-text-light tracking-widest uppercase mb-8">
             Exceleur
           </p>
 
-          <h1 className="font-heading text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold text-text-dark leading-tight mb-6">
-            6 semaines pour devenir un monstre d&apos;efficacité sur Excel
+          <h1 className="font-heading text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold text-text-dark leading-tight mb-6">
+            Si Excel te prend 15&nbsp;heures par semaine et que tu compenses en silence… Alors sache que le problème n&apos;a jamais été ton niveau.
           </h1>
 
           <p className="text-lg md:text-xl text-text-light leading-relaxed mb-10 max-w-xl mx-auto">
-            Et faire un bond dans ta carrière même si tu n&apos;as que 15 minutes par jour
-            à y consacrer.
+            Et dans la suite de cette page, je vais te montrer pourquoi.
           </p>
 
-          <CTAButton />
-
-          {/* Indicateur de confiance — sobre, sous le CTA */}
           <div className="flex items-center justify-center gap-6 mt-8 text-sm text-text-light">
             <span className="flex items-center gap-1.5">
               <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
@@ -188,91 +182,427 @@ export default function LeDecollageV2Page() {
       </section>
 
       {/* ────────────────────────────────────────────────────────────────────
-          SECTION 2 — PROBLÈME / DOULEUR
-          Agiter le problème, créer l'empathie
-          Texte à gauche, max 680px
+          SECTION 2 — LE CONSTAT (Des gens brillants galèrent)
           ──────────────────────────────────────────────────────────────────── */}
       <section className="py-20 lg:py-28">
         <div className="max-w-3xl mx-auto px-6">
-          <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-text-dark mb-8">
-            Tu utilises Excel tous les jours, mais tu sens que tu perds un temps fou ?
-          </h2>
-
           <div className="space-y-6 text-lg text-text-light leading-relaxed">
             <p>
-              Tu passes des heures à chercher des formules sur Google. Tu copies-colles des données
-              manuellement d&apos;un fichier à l&apos;autre. Et quand tu ouvres un fichier créé par
-              quelqu&apos;un d&apos;autre, c&apos;est le chaos.
+              Il y a des gens brillants qui galèrent sur Excel.
             </p>
             <p>
-              Tes collègues te demandent de l&apos;aide, mais tu n&apos;es même pas sûr de ta propre méthode.
-              <strong className="text-text-dark"> Tu sais que tu pourrais faire mieux</strong>, mais par où commencer quand il y a des centaines de
-              fonctionnalités ?
+              Des managers respectés. Des commerciaux qui dépassent leurs objectifs chaque trimestre.
+              Des comptables avec 20&nbsp;ans de métier. Des chefs de projet qui gèrent des équipes
+              de 15&nbsp;personnes sans sourciller.
             </p>
             <p>
-              Le pire ? Chaque erreur dans un tableau peut avoir des conséquences réelles :
-              un rapport faux envoyé à ton manager, des données perdues, une présentation ratée.
+              Et pourtant, quand ils reçoivent un fichier Excel un peu costaud,{' '}
+              <strong className="text-text-dark">leur estomac se noue.</strong>
+            </p>
+            <p>
+              Ils copient-collent ligne par ligne. Ils envoient un message à &laquo;&nbsp;celui qui gère&nbsp;&raquo;
+              en s&apos;excusant de déranger. Ils restent une heure de plus le soir pour finir un truc
+              qu&apos;un stagiaire bouclerait en 20&nbsp;minutes.
+            </p>
+            <p>
+              À l&apos;inverse, il y a des gens avec moitié moins d&apos;expérience qui ouvrent le même
+              fichier et le traitent les doigts dans le nez.
+            </p>
+            <p>
+              Pas parce qu&apos;ils sont plus intelligents. Pas parce qu&apos;ils connaissent 400&nbsp;formules.
+            </p>
+            <p>
+              <strong className="text-text-dark">
+                La différence entre les deux n&apos;a rien à voir avec le talent, ni avec le nombre
+                d&apos;heures passées sur des tutos YouTube.
+              </strong>
+            </p>
+            <p>
+              Et si tu fais partie du premier groupe — si tu portes cette compétence manquante comme
+              un secret professionnel que tu n&apos;avoues à personne — alors ce qui suit va probablement
+              changer ta façon de voir Excel.
+            </p>
+            <p className="font-medium text-text-dark">
+              Parce que le vrai problème n&apos;est pas celui que tu crois.
             </p>
           </div>
         </div>
       </section>
 
       {/* ────────────────────────────────────────────────────────────────────
-          SECTION 3 — PONT / TRANSITION
-          "Il existe une meilleure façon" — centré, accent color
+          SECTION 3 — LA DOULEUR QUOTIDIENNE
           ──────────────────────────────────────────────────────────────────── */}
-      <section className="py-16 lg:py-20">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <p className="text-2xl md:text-3xl font-heading font-bold text-primary leading-snug">
-            Et si en 6 semaines, tu pouvais devenir meilleur que 90% des utilisateurs d&apos;Excel ?
-          </p>
+      <section className="py-20 lg:py-28 bg-gray-50">
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-text-dark mb-10">
+            Si aujourd&apos;hui Excel te donne cette sensation de nager à contre-courant…
+          </h2>
+
+          <div className="space-y-5 text-lg text-text-light leading-relaxed mb-10">
+            <p>
+              → Tu reçois un fichier avec 12&nbsp;onglets et ton premier réflexe, c&apos;est de vérifier
+              qui d&apos;autre dans l&apos;équipe pourrait s&apos;en charger
+            </p>
+            <p>
+              → Tu tapes &laquo;&nbsp;RECHERCHEV Excel&nbsp;&raquo; sur Google pour la quatrième fois ce trimestre
+              — et tu retombes sur le même tuto que la dernière fois, sans te souvenir pourquoi ça n&apos;avait pas marché
+            </p>
+            <p>
+              → Tu construis tes tableaux en empilant des copier-coller et des formules en dur,
+              en croisant les doigts pour que rien ne se décale — et tu sauvegardes 3&nbsp;versions du fichier &laquo;&nbsp;au cas où&nbsp;&raquo;
+            </p>
+            <p>
+              → Tu acquiesces en réunion quand on parle de &laquo;&nbsp;pivoter les données&nbsp;&raquo; ou de
+              &laquo;&nbsp;croiser par trimestre et par zone&nbsp;&raquo;… sans oser demander ce que ça veut dire concrètement
+            </p>
+            <p>
+              → Tu vois le junior arrivé il y a 6&nbsp;mois sortir un dashboard impeccable en 2&nbsp;heures
+              — le genre de fichier que tu ne saurais même pas commencer
+            </p>
+          </div>
+
+          <div className="space-y-6 text-lg text-text-light leading-relaxed">
+            <p className="font-medium text-text-dark">
+              Et le plus insidieux dans tout ça ? C&apos;est ce que ça provoque en toi. Sans que tu le dises à personne.
+            </p>
+            <p>
+              C&apos;est possible que tu rentres certains soirs avec une fatigue qui n&apos;a rien à voir
+              avec la charge de travail. Juste l&apos;énergie mentale qu&apos;Excel te pompe.
+            </p>
+            <p>
+              Que tu te retrouves à compenser le soir ou le week-end pour boucler des tâches que d&apos;autres
+              expédient avant la pause café.
+            </p>
+            <p>
+              Si tu as 10, 15 ou 20&nbsp;ans de carrière et que tu te surprends à penser
+              &laquo;&nbsp;à mon âge, je devrais savoir faire ça&nbsp;&raquo;… alors il y a de fortes chances
+              que cette pensée contamine le reste.
+            </p>
+            <p>
+              Que tu commences à douter. Pas juste de ton niveau sur Excel.{' '}
+              <strong className="text-text-dark">De ta capacité à apprendre tout court.</strong>
+            </p>
+            <p>
+              Et pendant ce temps, personne ne sait. Parce que ce n&apos;est pas le genre de truc qu&apos;on
+              avoue à son manager ou à ses collègues. On fait semblant. On contourne. On compense.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* ────────────────────────────────────────────────────────────────────
-          SECTION 4 — SOLUTION / PROMESSE
-          Présenter la méthode (pas le produit) — bullet points
+          SECTION 4 — LES SOLUTIONS ÉCHOUÉES
           ──────────────────────────────────────────────────────────────────── */}
       <section className="py-20 lg:py-28">
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-text-dark mb-8">
-            La Méthode Exceleur : apprendre uniquement ce qui compte
+            Alors tu as cherché des solutions. Et à chaque fois, ça a donné la même chose.
           </h2>
 
-          <p className="text-lg text-text-light leading-relaxed mb-8">
-            J&apos;ai formé plus de 1 000 élèves. Et j&apos;ai constaté que{' '}
-            <strong className="text-text-dark">95% des utilisateurs n&apos;ont besoin que de 5% des fonctionnalités d&apos;Excel</strong>.
-            Le Décollage se concentre exactement sur ces 5%.
-          </p>
-
-          <p className="text-lg text-text-light leading-relaxed mb-8">
-            Grâce à cette formation, tu vas :
-          </p>
-
-          <ul className="space-y-4 mb-10">
-            {[
-              'Réaliser des fichiers ultra-professionnels qui prouvent tes compétences',
-              'Importer et mettre à jour automatiquement tes données (sans VBA)',
-              "Réduire drastiquement l'apparition des erreurs dans tes classeurs",
-              'Maîtriser plus de 70 formules essentielles',
-              "Savoir auditer et corriger n'importe quel fichier Excel",
-            ].map((item, i) => (
-              <li key={i} className="flex items-start gap-3 text-lg">
-                <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="text-text-light">{item}</span>
-              </li>
-            ))}
-          </ul>
-
-          <CTAButton />
+          <div className="space-y-6 text-lg text-text-light leading-relaxed">
+            <p>
+              Peut-être que ça a commencé par YouTube. Tu as tapé &laquo;&nbsp;apprendre Excel&nbsp;&raquo;,
+              tu es tombé sur une vidéo &laquo;&nbsp;Les 10&nbsp;formules indispensables&nbsp;&raquo;.
+            </p>
+            <p>
+              Tu as compris sur le moment. Le lendemain, devant ton fichier, c&apos;était déjà flou.
+            </p>
+            <p>
+              Alors tu as essayé autre chose. Un MOOC. Une formation en ligne. Tu as tenu quelques jours,
+              peut-être deux semaines.
+            </p>
+            <p>
+              Et puis le quotidien a repris le dessus. La formation est restée ouverte dans un onglet
+              pendant un mois avant que tu la refermes définitivement.
+            </p>
+            <p>
+              Tu as peut-être aussi testé ChatGPT. Tu lui décris ton problème, il te crache une formule.
+              Tu la colles dans ta cellule, ça marche — ou pas.
+            </p>
+            <p>
+              Mais dans les deux cas, tu n&apos;as rien compris à ce qui vient de se passer. La prochaine fois,
+              tu es toujours aussi dépendant.{' '}
+              <strong className="text-text-dark">Tu as juste changé de béquille.</strong>
+            </p>
+            <p>
+              Le point commun de toutes ces tentatives ?
+            </p>
+            <p>
+              Elles t&apos;ont donné des morceaux — une formule ici, une astuce là — mais jamais le tableau complet.
+              Comme essayer de construire une maison en récupérant des briques à droite à gauche.{' '}
+              <strong className="text-text-dark">Sans plan. Sans fondations.</strong>
+            </p>
+            <p>
+              Et si rien de tout ça n&apos;a marché, ce n&apos;est pas parce que tu manques de volonté ou de capacités.
+            </p>
+            <p className="font-medium text-text-dark">
+              C&apos;est parce que ces méthodes ne sont pas conçues pour t&apos;amener quelque part.
+              Elles sont conçues pour répondre à une question ponctuelle — pas pour te rendre autonome.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* ────────────────────────────────────────────────────────────────────
-          SECTION 5 — PREUVE SOCIALE #1
-          3 témoignages vidéo
+          SECTION 5 — LE MÉCANISME (Règle des 95%)
+          ──────────────────────────────────────────────────────────────────── */}
+      <section className="py-20 lg:py-28 bg-gray-50">
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-text-dark mb-8">
+            Ce qu&apos;on ne t&apos;a jamais dit sur Excel
+          </h2>
+
+          <div className="space-y-6 text-lg text-text-light leading-relaxed">
+            <p>
+              Tout le monde aborde Excel de la même manière&nbsp;: empiler des formules.
+              Plus tu en connais, meilleur tu es.
+            </p>
+            <p>
+              C&apos;est ce que disent les tutos YouTube, les formations en ligne, les livres
+              &laquo;&nbsp;400&nbsp;formules Excel pour tout maîtriser&nbsp;&raquo;.
+            </p>
+            <p className="font-medium text-text-dark">
+              Et c&apos;est exactement pour ça que ça ne marche pas.
+            </p>
+            <p>
+              Le problème n&apos;a jamais été le nombre de formules que tu connais. Le problème, c&apos;est
+              que personne ne t&apos;a appris à <strong className="text-text-dark">structurer ta manière de travailler</strong> sur Excel.
+            </p>
+            <p>
+              Tu empiles des briques sans fondations. Alors forcément, à chaque nouveau fichier, tout vacille.
+            </p>
+            <p>
+              Pendant 11&nbsp;ans en entreprise, j&apos;ai vu passer des centaines de professionnels dans la
+              même situation que toi. Des gens compétents, rigoureux, intelligents — qui galéraient sur Excel.
+            </p>
+            <p>
+              En observant ceux qui étaient vraiment à l&apos;aise, j&apos;ai remarqué quelque chose de contre-intuitif.
+            </p>
+            <p>
+              <strong className="text-text-dark">
+                Ils n&apos;utilisaient pas plus de formules que les autres. Ils en utilisaient moins.
+              </strong>{' '}
+              Mais ils les maîtrisaient en profondeur — et surtout, ils avaient une structure de travail solide derrière.
+            </p>
+            <p>
+              C&apos;est un principe que le sociologue Vilfredo Pareto a mis en lumière il y a plus d&apos;un siècle&nbsp;:
+              dans n&apos;importe quel domaine, une minorité d&apos;éléments produit la majorité des résultats.
+            </p>
+            <p>
+              Microsoft l&apos;a vérifié en interne — corriger 20% des bugs les plus signalés éliminait 80% des crashes.
+              En linguistique, 1&nbsp;000&nbsp;mots suffisent à couvrir 80% des conversations dans n&apos;importe quelle langue.
+            </p>
+            <p>
+              Sur Excel, c&apos;est pareil.
+            </p>
+          </div>
+
+          {/* Encadré Règle des 95% */}
+          <div className="my-10 p-8 border-l-4 border-primary bg-white rounded-r-xl">
+            <p className="text-xl md:text-2xl font-heading font-bold text-text-dark mb-3">
+              La Règle des 95%
+            </p>
+            <p className="text-lg text-text-light leading-relaxed">
+              Un socle de formules bien maîtrisées — pas 400, pas 200, mais les bonnes — couvre{' '}
+              <strong className="text-text-dark">95% de ce que tu as besoin de faire au quotidien</strong>.
+            </p>
+          </div>
+
+          <div className="space-y-6 text-lg text-text-light leading-relaxed">
+            <p>
+              Et la solution, ce n&apos;est pas d&apos;apprendre toujours plus. C&apos;est de maîtriser ce socle
+              en profondeur, dans le bon ordre, avec les bonnes méthodes de travail autour.
+            </p>
+            <p className="font-medium text-text-dark">
+              Que chaque formule devienne un réflexe — pas quelque chose que tu dois re-googler à chaque fois.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ────────────────────────────────────────────────────────────────────
+          SECTION 6 — CRÉDIBILITÉ (11 ans en entreprise)
+          ──────────────────────────────────────────────────────────────────── */}
+      <section className="py-20 lg:py-28">
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-text-dark mb-8">
+            Comment je le sais&nbsp;? Parce que je l&apos;ai vu de l&apos;intérieur pendant 11&nbsp;ans.
+          </h2>
+
+          <div className="space-y-6 text-lg text-text-light leading-relaxed">
+            <p>
+              Avant de créer du contenu sur Excel, j&apos;ai passé 6&nbsp;ans en comptabilité
+              puis 5&nbsp;ans en contrôle de gestion. En entreprise. Avec des fichiers réels,
+              des deadlines réelles, et des collègues réels qui me demandaient de l&apos;aide.
+            </p>
+            <p>
+              Ce que j&apos;ai observé, encore et encore&nbsp;? Les gens qui progressaient le plus vite
+              n&apos;étaient pas ceux qui apprenaient le plus de formules.
+            </p>
+            <p>
+              <strong className="text-text-dark">
+                C&apos;étaient ceux qui avaient un cadre de travail clair.
+              </strong>{' '}
+              Comment structurer un fichier. Quelles formules utiliser dans quelle situation.
+              Comment les combiner pour résoudre un problème en 3&nbsp;étapes au lieu de 15.
+            </p>
+            <p>
+              J&apos;ai construit mon approche autour de ça. Et les résultats parlent d&apos;eux-mêmes.
+            </p>
+          </div>
+
+          {/* Témoignages texte */}
+          <div className="mt-10 space-y-8">
+            <div className="pl-6 border-l-4 border-gray-200">
+              <p className="text-lg text-text-light leading-relaxed mb-2">
+                Une élève passait <strong className="text-text-dark">3&nbsp;jours par mois</strong> sur son reporting.
+                Après avoir appliqué la Règle des 95%, elle a réduit ça à{' '}
+                <strong className="text-text-dark">une demi-journée</strong>.
+                Sur un an, c&apos;est l&apos;équivalent de 30&nbsp;jours de travail récupérés.
+                Elle a depuis pris plus de responsabilités dans son poste.
+              </p>
+            </div>
+            <div className="pl-6 border-l-4 border-gray-200">
+              <p className="text-lg text-text-light leading-relaxed mb-2">
+                <strong className="text-text-dark">Julien</strong> était opérateur machine. Excel, pour lui, c&apos;était un mur.
+                Aujourd&apos;hui, il est responsable d&apos;atelier — et il dit se sentir enfin légitime,
+                parce qu&apos;il maîtrise l&apos;outil que son poste exige.
+              </p>
+            </div>
+            <div className="pl-6 border-l-4 border-gray-200">
+              <p className="text-lg text-text-light leading-relaxed mb-2">
+                <strong className="text-text-dark">Franck</strong> revenait d&apos;un arrêt maladie.
+                Il avait peur d&apos;être largué, dépassé par les évolutions.
+                Quelques semaines plus tard, ses collègues l&apos;appelaient &laquo;&nbsp;Monsieur Excel&nbsp;&raquo;.
+              </p>
+            </div>
+          </div>
+
+          <p className="mt-8 text-lg text-text-light leading-relaxed">
+            Ces trois personnes n&apos;avaient rien de particulier au départ. Juste la volonté
+            de s&apos;y mettre — et un système qui leur montrait quoi apprendre, dans quel ordre,
+            et comment l&apos;appliquer.
+          </p>
+        </div>
+      </section>
+
+      {/* ────────────────────────────────────────────────────────────────────
+          SECTION 7 — PROJECTION (Ce que ça change dans ta semaine)
+          ──────────────────────────────────────────────────────────────────── */}
+      <section className="py-20 lg:py-28 bg-gray-50">
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-text-dark mb-8">
+            Et concrètement, qu&apos;est-ce que ça change dans ta semaine&nbsp;?
+          </h2>
+
+          <div className="space-y-6 text-lg text-text-light leading-relaxed">
+            <p>
+              Imagine un lundi matin. Tu reçois un fichier à traiter.
+            </p>
+            <p>
+              Tu l&apos;ouvres, tu comprends la structure, tu sais exactement par où commencer.
+              Pas de boule au ventre. Pas de message Teams à envoyer. Pas de tuto à chercher en urgence.
+            </p>
+            <p>
+              Ta manager te demande une analyse croisée par zone et par trimestre.
+              Tu dis &laquo;&nbsp;oui&nbsp;&raquo; — et cette fois, c&apos;est un vrai oui.
+            </p>
+            <p>
+              Tu ouvres un tableau croisé dynamique, tu configures les champs, tu envoies le résultat
+              dans l&apos;heure. Propre. Lisible. Professionnel.
+            </p>
+            <p>
+              <strong className="text-text-dark">Le reporting qui te prenait une journée entière&nbsp;?
+              Tu le boucles avant la pause déjeuner.</strong>
+            </p>
+            <p>
+              Les heures que tu passais le soir à compenser, tu les récupères.
+              Tu rentres chez toi à l&apos;heure. Sans cette fatigue sourde qui n&apos;avait rien à voir avec ton métier.
+            </p>
+            <p>
+              Et puis un jour, un collègue vient te voir&nbsp;: &laquo;&nbsp;Tu sais comment faire un RECHERCHEV&nbsp;?&nbsp;&raquo;
+            </p>
+            <p>
+              Tu souris. Tu lui montres.{' '}
+              <strong className="text-text-dark">
+                Tu es passé de l&apos;autre côté — de celui qui demande à celui qu&apos;on vient voir.
+              </strong>
+            </p>
+            <p>
+              Mais ce qui change vraiment, au fond, ça n&apos;a pas grand-chose à voir avec Excel.
+            </p>
+            <p>
+              C&apos;est le soulagement de ne plus porter ce secret professionnel. La fierté de te dire
+              que tu l&apos;as fait — que ce truc qui te bloquait depuis des années, tu l&apos;as dépassé.
+            </p>
+            <p className="font-medium text-text-dark">
+              Et la certitude, désormais, que si tu as été capable d&apos;apprendre ça,
+              tu es capable d&apos;apprendre n&apos;importe quoi d&apos;autre.
+            </p>
+          </div>
+
+          <div className="mt-10">
+            <CTAButton />
+          </div>
+        </div>
+      </section>
+
+      {/* ────────────────────────────────────────────────────────────────────
+          SECTION 8 — SEUL VS ACCOMPAGNÉ
+          ──────────────────────────────────────────────────────────────────── */}
+      <section className="py-20 lg:py-28">
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-text-dark mb-8">
+            Tu pourrais essayer seul. Mais voilà ce qui se passe en général.
+          </h2>
+
+          <div className="space-y-6 text-lg text-text-light leading-relaxed">
+            <p>
+              La Règle des 95% est simple à comprendre. Mais l&apos;appliquer seul, c&apos;est une autre histoire.
+            </p>
+            <p>
+              Il ne suffit pas de connaître la règle. Il faut savoir quelles formules font partie de ce socle.
+              Dans quel ordre les apprendre. Et comment les relier entre elles pour construire des fichiers solides.
+            </p>
+            <p>
+              Si tu pars seul, tu vas probablement retomber dans le même schéma. Piocher un bout ici,
+              un bout là. Comprendre sur le moment. Oublier la semaine suivante.
+            </p>
+            <p>
+              Pas par manque de discipline — mais parce que sans parcours structuré,{' '}
+              <strong className="text-text-dark">ton cerveau n&apos;a rien à quoi accrocher les nouvelles connaissances</strong>.
+            </p>
+            <p>
+              C&apos;est la différence entre apprendre une langue en ramassant des mots au hasard dans des conversations…
+              et suivre un cours qui te donne la grammaire, le vocabulaire essentiel et les mises en situation
+              pour que ça tienne.
+            </p>
+            <p className="font-medium text-text-dark">
+              Tu as déjà essayé la première approche. Tu sais où ça mène.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ────────────────────────────────────────────────────────────────────
+          SECTION 9 — PRÉSENTATION DU DÉCOLLAGE
+          ──────────────────────────────────────────────────────────────────── */}
+      <section className="py-16 lg:py-20">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-text-dark mb-4">
+            C&apos;est pour ça que j&apos;ai créé Le Décollage.
+          </h2>
+          <p className="text-lg md:text-xl text-text-light leading-relaxed max-w-2xl mx-auto">
+            C&apos;est le système que j&apos;aurais voulu avoir quand j&apos;accompagnais mes collègues en entreprise.
+            Un parcours structuré, étape par étape, construit autour de la Règle des 95% — pour que tu
+            maîtrises exactement ce dont tu as besoin, dans le bon ordre, sans te noyer dans des centaines
+            de formules que tu n&apos;utiliseras jamais.
+          </p>
+        </div>
+      </section>
+
+      {/* ────────────────────────────────────────────────────────────────────
+          SECTION 10 — PREUVE SOCIALE #1
           ──────────────────────────────────────────────────────────────────── */}
       <section className="py-20 lg:py-28 bg-gray-50">
         <div className="max-w-5xl mx-auto px-6">
@@ -297,8 +627,7 @@ export default function LeDecollageV2Page() {
       </section>
 
       {/* ────────────────────────────────────────────────────────────────────
-          SECTION 6 — PROGRAMME / CONTENU
-          Ce qu'ils vont apprendre — liste structurée, une colonne
+          SECTION 11 — PROGRAMME / CONTENU
           ──────────────────────────────────────────────────────────────────── */}
       <section id="programme" className="py-20 lg:py-28">
         <div className="max-w-3xl mx-auto px-6">
@@ -339,17 +668,15 @@ export default function LeDecollageV2Page() {
       </section>
 
       {/* ────────────────────────────────────────────────────────────────────
-          SECTION 7 — À QUI C'EST DESTINÉ
-          "C'est pour toi si..." / "Pas pour toi si..."
+          SECTION 12 — À QUI C'EST DESTINÉ
           ──────────────────────────────────────────────────────────────────── */}
       <section className="py-20 lg:py-28 bg-gray-50">
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-text-dark mb-10">
-            Est-ce que Le Décollage est fait pour toi ?
+            Est-ce que Le Décollage est fait pour toi&nbsp;?
           </h2>
 
           <div className="space-y-10">
-            {/* Pour toi si */}
             <div>
               <h3 className="font-heading text-xl font-bold text-text-dark mb-4">
                 C&apos;est pour toi si...
@@ -372,7 +699,6 @@ export default function LeDecollageV2Page() {
               </ul>
             </div>
 
-            {/* Pas pour toi si */}
             <div>
               <h3 className="font-heading text-xl font-bold text-text-dark mb-4">
                 Ce n&apos;est pas pour toi si...
@@ -397,12 +723,10 @@ export default function LeDecollageV2Page() {
       </section>
 
       {/* ────────────────────────────────────────────────────────────────────
-          SECTION 8 — PREUVE SOCIALE #2
-          Stats + 3 témoignages supplémentaires
+          SECTION 13 — PREUVE SOCIALE #2
           ──────────────────────────────────────────────────────────────────── */}
       <section className="py-20 lg:py-28">
         <div className="max-w-5xl mx-auto px-6">
-          {/* Stats — chiffres bruts, pas d'animation */}
           <div className="max-w-3xl mx-auto mb-16">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16 text-center">
               <div>
@@ -431,7 +755,6 @@ export default function LeDecollageV2Page() {
             </p>
           </div>
 
-          {/* Témoignages #2 */}
           <div className="grid md:grid-cols-3 gap-6">
             {testimonialVideosSecond.map((video) => (
               <VideoTestimonial
@@ -446,9 +769,7 @@ export default function LeDecollageV2Page() {
       </section>
 
       {/* ────────────────────────────────────────────────────────────────────
-          SECTION 9 — L'OFFRE / PRIX
-          Un seul bloc, fond léger, ancrage de valeur avant le prix
-          Le seul élément avec un fond différent
+          SECTION 14 — L'OFFRE / PRIX
           ──────────────────────────────────────────────────────────────────── */}
       <section id="offre" className="py-20 lg:py-28">
         <div className="max-w-3xl mx-auto px-6">
@@ -459,9 +780,7 @@ export default function LeDecollageV2Page() {
             Choisis la formule qui te convient
           </p>
 
-          {/* Bloc offre — seul élément avec fond distinct */}
           <div className="border border-gray-200 rounded-2xl overflow-hidden">
-            {/* Version Complète */}
             <div className="p-8 border-b border-gray-100">
               <div className="flex items-baseline justify-between mb-2">
                 <h3 className="font-heading text-lg font-bold text-text-dark">
@@ -472,7 +791,6 @@ export default function LeDecollageV2Page() {
               <p className="text-sm text-text-light">Les 6 modules + fiches PDF + quiz + cas pratiques</p>
             </div>
 
-            {/* Version Premium — mise en avant */}
             <div className="p-8 bg-primary/5 border-b border-gray-100 relative">
               <div className="absolute top-0 right-8 -translate-y-1/2">
                 <span className="inline-block px-3 py-1 bg-primary text-white text-xs font-bold rounded-full">
@@ -490,7 +808,6 @@ export default function LeDecollageV2Page() {
               </p>
             </div>
 
-            {/* Version Ultime */}
             <div className="p-8">
               <div className="flex items-baseline justify-between mb-2">
                 <h3 className="font-heading text-lg font-bold text-text-dark">
@@ -503,13 +820,11 @@ export default function LeDecollageV2Page() {
               </p>
             </div>
 
-            {/* CTA dans le bloc offre */}
             <div className="px-8 pb-8 pt-4 text-center">
               <CTAButton className="w-full sm:w-auto" />
             </div>
           </div>
 
-          {/* Ce qui est inclus — résumé rapide */}
           <div className="mt-8 grid sm:grid-cols-2 gap-3 text-sm text-text-light">
             {[
               '6 modules vidéo complets',
@@ -531,8 +846,7 @@ export default function LeDecollageV2Page() {
       </section>
 
       {/* ────────────────────────────────────────────────────────────────────
-          SECTION 10 — GARANTIE
-          Réduire le risque perçu — 1 paragraphe sobre
+          SECTION 15 — GARANTIE
           ──────────────────────────────────────────────────────────────────── */}
       <section className="py-16 lg:py-20">
         <div className="max-w-3xl mx-auto px-6 text-center">
@@ -545,15 +859,14 @@ export default function LeDecollageV2Page() {
             Garantie 14 jours
           </h2>
           <p className="text-lg text-text-light leading-relaxed max-w-lg mx-auto">
-            Tu disposes d&apos;un délai de 14 jours pour exercer ton droit de rétractation.
+            Tu disposes d&apos;un délai de 14&nbsp;jours pour exercer ton droit de rétractation.
             Si la formation ne te convient pas, tu es intégralement remboursé. Sans condition.
           </p>
         </div>
       </section>
 
       {/* ────────────────────────────────────────────────────────────────────
-          SECTION 11 — FAQ
-          Lever les dernières objections — accordéon, colonne étroite
+          SECTION 16 — FAQ
           ──────────────────────────────────────────────────────────────────── */}
       <section className="py-20 lg:py-28 bg-gray-50">
         <div className="max-w-3xl mx-auto px-6">
@@ -569,16 +882,15 @@ export default function LeDecollageV2Page() {
       </section>
 
       {/* ────────────────────────────────────────────────────────────────────
-          SECTION 12 — CTA FINAL
-          Dernier appel à l'action — centré, sobre
+          SECTION 17 — CTA FINAL
           ──────────────────────────────────────────────────────────────────── */}
       <section className="py-20 lg:py-28">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-text-dark mb-4">
-            Prêt à faire décoller tes compétences Excel ?
+            Prêt à faire décoller tes compétences Excel&nbsp;?
           </h2>
           <p className="text-lg text-text-light mb-8 max-w-lg mx-auto">
-            Rejoins les 1 000+ élèves qui ont transformé leur façon de travailler sur Excel.
+            Rejoins les 1&nbsp;000+ élèves qui ont transformé leur façon de travailler sur Excel.
           </p>
           <CTAButton />
           <p className="text-sm text-text-muted mt-6">
