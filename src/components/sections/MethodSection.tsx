@@ -90,7 +90,9 @@ export function MethodSection() {
         {/* Method cards grid */}
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
           {methodItems.map((item, index) => (
-            <FadeIn key={index} direction="up" delay={index * 100}>
+            <div key={index} className={methodItems.length % 2 !== 0 && index === methodItems.length - 1 ? 'md:col-span-2 md:max-w-[calc(50%-1rem)] md:mx-auto' : ''}>
+
+            <FadeIn direction="up" delay={index * 100}>
               <div className="group relative h-full">
                 {/* Card */}
                 <div className={`relative h-full p-8 rounded-3xl bg-gradient-to-br ${item.color} border border-white/50 backdrop-blur-sm transition-all duration-500 hover:shadow-card-hover hover:-translate-y-1`}>
@@ -137,6 +139,7 @@ export function MethodSection() {
                 <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${item.iconBg} opacity-0 group-hover:opacity-10 transition-opacity duration-500 -z-10 blur-xl`} />
               </div>
             </FadeIn>
+            </div>
           ))}
         </div>
 
