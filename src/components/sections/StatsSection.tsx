@@ -12,8 +12,8 @@ const stats = [
     description: 'Des professionnels formés à Excel',
   },
   {
-    value: 1000000,
-    suffix: '+',
+    value: 1,
+    suffix: 'M+',
     label: 'Abonnés sur les réseaux',
     description: 'Une communauté engagée',
   },

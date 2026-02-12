@@ -156,7 +156,7 @@ export function MethodSection() {
                 ))}
               </div>
               <div className="text-left">
-                <p className="text-sm font-semibold text-text-dark">+2000 professionnels formés</p>
+                <p className="text-sm font-semibold text-text-dark">+3000 professionnels formés</p>
                 <p className="text-xs text-text-light">avec cette méthode éprouvée</p>
               </div>
             </div>

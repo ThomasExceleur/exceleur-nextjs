@@ -62,7 +62,7 @@ export function AboutThomas() {
                   <strong className="font-semibold text-text-dark">Excel ludique et accessible</strong> au plus grand nombre.
                 </p>
                 <p>
-                  Avec plus d&apos;<strong className="font-semibold text-text-dark">1 million d&apos;abonnés sur les réseaux sociaux</strong> et des millions de vues par
+                  Avec <strong className="font-semibold text-text-dark">1M+ d&apos;abonnés sur les réseaux sociaux</strong> et des millions de vues par
                   mois, on peut affirmer sans se tromper que ma <strong className="font-semibold text-text-dark">pédagogie</strong> a su trouver
                   son public.
                 </p>
