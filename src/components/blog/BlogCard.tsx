@@ -82,10 +82,10 @@ export function BlogCard({
         <div className="p-5">
           {/* Meta info */}
           {(showDate || showReadingTime) && (
-            <div className="flex items-center gap-3 mb-3 text-xs text-text-light">
+            <div className="flex items-center gap-3 mb-3 text-xs text-gray-500">
               {showDate && post.date && (
                 <div className="flex items-center gap-1.5">
-                  <svg className="w-3.5 h-3.5 text-primary/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-3.5 h-3.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                   <time dateTime={post.date}>{formatDate(post.date)}</time>
@@ -93,7 +93,7 @@ export function BlogCard({
               )}
               {showReadingTime && post.readingTime && (
                 <div className="flex items-center gap-1.5">
-                  <svg className="w-3.5 h-3.5 text-primary/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-3.5 h-3.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <span>{post.readingTime} min</span>
@@ -103,7 +103,7 @@ export function BlogCard({
           )}
 
           {/* Title */}
-          <h3 className="font-heading font-bold text-lg text-text-dark mb-2 line-clamp-2 group-hover:text-primary transition-colors duration-300">
+          <h3 className="font-heading font-bold text-lg text-gray-900 mb-2 line-clamp-2 group-hover:text-primary transition-colors duration-300">
             <Link href={`/${post.slug}/`} className="no-underline">
               {post.title}
             </Link>
@@ -111,16 +111,16 @@ export function BlogCard({
 
           {/* Excerpt */}
           {showExcerpt && post.excerpt && (
-            <p className="text-sm text-text-light mb-4 line-clamp-2 leading-relaxed">{post.excerpt}</p>
+            <p className="text-sm text-gray-600 mb-4 line-clamp-2 leading-relaxed">{post.excerpt}</p>
           )}
 
           {/* Decorative line */}
-          <div className="w-full h-px bg-gradient-to-r from-primary/20 via-accent/20 to-transparent mb-4" />
+          <div className="w-full h-px bg-gray-200 mb-4" />
 
           {/* Read More Link */}
           <Link
             href={`/${post.slug}/`}
-            className="inline-flex items-center gap-2 text-sm font-bold text-primary no-underline group/link"
+            className="inline-flex items-center gap-2 text-sm font-bold text-gray-700 no-underline group/link"
           >
             <span className="relative">
               Lire l&apos;article

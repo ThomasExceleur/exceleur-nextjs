@@ -10,6 +10,7 @@ import { FadeIn } from '@/components/ui/FadeIn';
 import { getBlogPost, getAllBlogPosts, getPage, getAllPageSlugs } from '@/lib/mdx';
 import { BlogPostingJsonLd } from '@/components/seo';
 import { mdxComponents } from '@/lib/mdx-components';
+import { injectBlogCTAs } from '@/lib/inject-blog-ctas';
 
 const mdxOptions = { mdxOptions: { remarkPlugins: [remarkGfm] } };
 
@@ -662,6 +663,8 @@ export default async function DynamicPage({ params }: PageProps) {
   // Try to find as blog post
   const blogPost = getBlogPost(slug);
   if (blogPost) {
+    const contentWithCTAs = injectBlogCTAs(blogPost.content);
+
     return (
       <>
         <BlogPostingJsonLd
@@ -673,7 +676,7 @@ export default async function DynamicPage({ params }: PageProps) {
           image={blogPost.meta.featuredImage}
         />
         <BlogContent meta={blogPost.meta}>
-          <MDXRemote source={blogPost.content} components={mdxComponents} options={mdxOptions} />
+          <MDXRemote source={contentWithCTAs} components={mdxComponents} options={mdxOptions} />
         </BlogContent>
         <Newsletter variant="gradient" />
       </>

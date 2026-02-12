@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { Container } from '@/components/layout/Container';
-import { FilterableBlogList, HorizontalBlogList } from '@/components/blog/BlogList';
+import { FilterableBlogList } from '@/components/blog/BlogList';
 import { Pagination } from '@/components/blog/Pagination';
 import { Newsletter } from '@/components/sections/Newsletter';
 import { FadeIn } from '@/components/ui/FadeIn';
@@ -115,20 +115,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
         </Container>
       </section>
 
-      {/* Featured Articles (only on first page) */}
-      {currentPage === 1 && featuredPosts.length > 0 && (
-        <section className="py-12 lg:py-16 bg-white border-b border-gray-100">
-          <Container>
-            <HorizontalBlogList
-              posts={featuredPosts}
-              title="Articles populaires"
-              subtitle="Les tutoriels les plus consultés"
-            />
-          </Container>
-        </section>
-      )}
-
-      {/* Blog List Section with categories */}
+      {/* Blog List Section */}
       <section className="py-16 lg:py-24 bg-gradient-to-b from-white to-gray-50/50">
         <Container>
           <FadeIn direction="up">
@@ -137,7 +124,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 Tous les articles
               </h2>
               <p className="text-text-light">
-                Explorez nos tutoriels par catégorie ou parcourez tous les articles
+                Parcourez tous nos tutoriels et articles Excel
               </p>
             </div>
           </FadeIn>
@@ -148,8 +135,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
             showExcerpt={true}
             showDate={true}
             showReadingTime={true}
-            categories={categories}
-            showFilter={categories.length > 0}
+            showFilter={false}
             variant="default"
             animated={true}
           />

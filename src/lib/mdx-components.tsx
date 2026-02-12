@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
+import { ElyxCTA } from '@/components/blog/ElyxCTA';
 
 // Custom components available in MDX files
 export const mdxComponents = {
@@ -154,6 +155,7 @@ export const mdxComponents = {
   CardTitle,
   CardContent,
   Badge,
+  ElyxCTA,
 
   // Custom callout component
   Callout: ({
