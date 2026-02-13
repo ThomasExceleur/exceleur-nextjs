@@ -6,5 +6,4 @@ export { CTASection } from './CTASection';
 export { Newsletter } from './Newsletter';
 export { Breadcrumb } from './Breadcrumb';
 export { ShareButtons } from './ShareButtons';
-export { FinancingSection } from './FinancingSection';
 export { TestimonialsSection } from './TestimonialsSection';
