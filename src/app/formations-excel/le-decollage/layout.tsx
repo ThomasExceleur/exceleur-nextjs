@@ -10,5 +10,10 @@ export const metadata: Metadata = {
 };
 
 export default function LeDecollageLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      <style>{`header, footer { display: none !important; }`}</style>
+      {children}
+    </>
+  );
 }
