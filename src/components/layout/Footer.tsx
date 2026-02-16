@@ -219,7 +219,7 @@ export function Footer() {
         <div className="mt-16 pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-white/60 text-sm text-center md:text-left">
-              <p>&copy; {currentYear} Exceleur. Tous droits réservés.</p>
+              <p>&copy; {currentYear} TCD Apps. Tous droits réservés.</p>
             </div>
 
             {/* Back to top button */}
