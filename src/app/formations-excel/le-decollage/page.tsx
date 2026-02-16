@@ -546,7 +546,7 @@ export default function LeDecollagePage() {
       {/* ================================================================
           SECTION 4 - LES SOLUTIONS ECHOUEES
           ================================================================ */}
-      <section className="py-20 lg:py-28 bg-gray-50/70">
+      <section className="py-20 lg:py-28 bg-gray-100/80">
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-extrabold text-text-dark mb-10 normal-case">
             Alors tu as cherch&eacute; des solutions. Et &agrave; chaque fois, &ccedil;a a
@@ -685,7 +685,7 @@ export default function LeDecollagePage() {
       {/* ================================================================
           SECTION 6 - CREDIBILITE
           ================================================================ */}
-      <section className="py-20 lg:py-28 bg-gray-50/70">
+      <section className="py-20 lg:py-28 bg-gray-100/80">
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-extrabold text-text-dark mb-8 normal-case">
             Comment je le sais&nbsp;? Parce que je l&apos;ai vu de l&apos;int&eacute;rieur pendant
@@ -813,7 +813,7 @@ export default function LeDecollagePage() {
       {/* ================================================================
           SECTION 8 - SEUL VS ACCOMPAGNE
           ================================================================ */}
-      <section className="py-20 lg:py-28 bg-gray-50/70">
+      <section className="py-20 lg:py-28 bg-gray-100/80">
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-extrabold text-text-dark mb-8 normal-case">
             Tu pourrais essayer seul. Mais voil&agrave; ce qui se passe en g&eacute;n&eacute;ral.
@@ -896,7 +896,7 @@ export default function LeDecollagePage() {
       {/* ================================================================
           SECTION 10 - SOUS-PROMESSES
           ================================================================ */}
-      <section className="py-20 lg:py-28 bg-gray-50/70">
+      <section className="py-20 lg:py-28 bg-gray-100/80">
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-text-dark mb-10 normal-case">
             Dans Le D&eacute;collage, je te montre &eacute;tape par &eacute;tape les
@@ -1077,7 +1077,7 @@ export default function LeDecollagePage() {
       {/* ================================================================
           SECTION 13 - BONUS
           ================================================================ */}
-      <section className="py-20 lg:py-28 bg-gray-50/70">
+      <section className="py-20 lg:py-28 bg-gray-100/80">
         <div className="max-w-3xl mx-auto px-6">
           <div className="text-center mb-12">
             <p className="text-sm font-bold text-primary uppercase tracking-widest mb-3">
@@ -1225,7 +1225,7 @@ export default function LeDecollagePage() {
       {/* ================================================================
           SECTION 15 - BIO
           ================================================================ */}
-      <section className="py-20 lg:py-28 bg-gray-50/70">
+      <section className="py-20 lg:py-28 bg-gray-100/80">
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-extrabold text-text-dark mb-10 normal-case">
             Qui suis-je pour te dire &ccedil;a&nbsp;?
@@ -1436,7 +1436,7 @@ export default function LeDecollagePage() {
       {/* ================================================================
           SECTION 18 - COUP DE PRESSION
           ================================================================ */}
-      <section className="py-20 lg:py-28 bg-gray-50/70">
+      <section className="py-20 lg:py-28 bg-gray-100/80">
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-extrabold text-text-dark mb-8 normal-case">
             Soyons honn&ecirc;tes une minute.
