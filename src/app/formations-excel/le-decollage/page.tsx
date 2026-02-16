@@ -40,157 +40,157 @@ function useCountdown(deadline: Date) {
 const faqItems = [
   {
     question:
-      'Est-ce que j\'ai besoin d\'etre "bon en maths" ou d\'avoir des bases techniques pour suivre Le Decollage ?',
+      'Est-ce que j\'ai besoin d\'être "bon en maths" ou d\'avoir des bases techniques pour suivre Le Décollage ?',
     answer:
-      "Non. Et c'est justement pour ca que la formation existe. Le Decollage part de zero et construit tes competences brique par brique, dans un ordre logique. Pas de jargon inutile, pas de prerequis. Parmi les eleves, certains n'avaient jamais ecrit une seule formule avant de commencer \u2014 et ils sont devenus autonomes en quelques semaines. Le probleme n'a jamais ete ton niveau. C'etait l'absence d'un parcours structure et adapte.",
+      "Non. Et c'est justement pour ça que la formation existe. Le Décollage part de zéro et construit tes compétences brique par brique, dans un ordre logique. Pas de jargon inutile, pas de prérequis. Parmi les élèves, certains n'avaient jamais écrit une seule formule avant de commencer \u2014 et ils sont devenus autonomes en quelques semaines. Le problème n'a jamais été ton niveau. C'était l'absence d'un parcours structuré et adapté.",
   },
   {
-    question: 'Quels resultats je peux esperer ?',
+    question: 'Quels résultats je peux espérer ?',
     answer:
-      "Les resultats dependent de ton implication, mais voici ce qu'on observe regulierement : des eleves qui divisent par 2 ou 3 le temps passe sur leurs taches Excel, qui produisent des fichiers propres et professionnels pour la premiere fois, et qui passent de \u00ab celui qui demande \u00bb a \u00ab celui qu'on vient voir \u00bb. Thierry ecrit aujourd'hui des fichiers pour la base de donnees d'une multinationale. Un autre eleve est devenu l'expert Excel de son bureau en partant de zero.",
+      "Les résultats dépendent de ton implication, mais voici ce qu'on observe régulièrement : des élèves qui divisent par 2 ou 3 le temps passé sur leurs tâches Excel, qui produisent des fichiers propres et professionnels pour la première fois, et qui passent de \u00ab celui qui demande \u00bb à \u00ab celui qu'on vient voir \u00bb. Thierry écrit aujourd'hui des fichiers pour la base de données d'une multinationale. Un autre élève est devenu l'expert Excel de son bureau en partant de zéro.",
   },
   {
-    question: 'En combien de temps je vais voir des resultats ?',
+    question: 'En combien de temps je vais voir des résultats ?',
     answer:
-      "Certains eleves appliquent ce qu'ils apprennent des le premier module \u2014 les fondations et l'organisation de fichiers sont immediatement utilisables dans ton travail. En quelques semaines, a raison de quelques minutes par jour, tu peux avoir couvert les formules essentielles et commencer a automatiser des taches. Le rythme depend de toi : la formation est en videos courtes, accessible a vie, et ta progression est sauvegardee. La formation concentre en 10h de videos tout ce qu'il te faut.",
+      "Certains élèves appliquent ce qu'ils apprennent dès le premier module \u2014 les fondations et l'organisation de fichiers sont immédiatement utilisables dans ton travail. En quelques semaines, à raison de quelques minutes par jour, tu peux avoir couvert les formules essentielles et commencer à automatiser des tâches. Le rythme dépend de toi : la formation est en vidéos courtes, accessible à vie, et ta progression est sauvegardée. La formation concentre en 12h de vidéos tout ce qu'il te faut.",
   },
   {
     question:
-      "J'ai deja essaye des tutos YouTube et des formations en ligne sans resultat. Pourquoi ca marcherait cette fois ?",
+      "J'ai déjà essayé des tutos YouTube et des formations en ligne sans résultat. Pourquoi ça marcherait cette fois ?",
     answer:
-      "Parce que le probleme n'etait pas toi \u2014 c'etait la methode. Les tutos YouTube sont fragmentes, sans fil conducteur. Tu comprends sur le moment, tu oublies le lendemain. Les formations encyclopediques te noient sous 400 formules sans t'apprendre a les utiliser. Le Decollage est construit autour de la Regle des 95% : un socle maitrise en profondeur, qui couvre la quasi-totalite de tes besoins reels. Avec des cas pratiques, des questionnaires express et des resumes PDF pour que ca reste.",
+      "Parce que le problème n'était pas toi \u2014 c'était la méthode. Les tutos YouTube sont fragmentés, sans fil conducteur. Tu comprends sur le moment, tu oublies le lendemain. Les formations encyclopédiques te noient sous 400 formules sans t'apprendre à les utiliser. Le Décollage est construit autour de la Règle des 95% : un socle maîtrisé en profondeur, qui couvre la quasi-totalité de tes besoins réels. Avec des cas pratiques, des questionnaires express et des résumés PDF pour que ça reste.",
   },
   {
-    question: "Je ne suis pas sur d'avoir le temps.",
+    question: "Je ne suis pas sûr d'avoir le temps.",
     answer:
-      "La formation est en videos courtes, concues pour delivrer un maximum en un minimum de temps. Tu peux suivre Le Decollage aux heures que tu preferes, sur n'importe quel appareil. En quelques minutes par jour, tu progresses. Et l'acces est a vie. Mais pose-toi la question inverse \u2014 combien de temps tu perds chaque semaine a cause d'Excel ? Les heures que tu investis dans la formation, ce sont des heures que tu recuperes chaque semaine ensuite.",
+      "La formation est en vidéos courtes, conçues pour délivrer un maximum en un minimum de temps. Tu peux suivre Le Décollage aux heures que tu préfères, sur n'importe quel appareil. En quelques minutes par jour, tu progresses. Et l'accès est à vie. Mais pose-toi la question inverse \u2014 combien de temps tu perds chaque semaine à cause d'Excel ? Les heures que tu investis dans la formation, ce sont des heures que tu récupères chaque semaine ensuite.",
   },
   {
     question: "Pourquoi payer alors qu'il y a des contenus gratuits sur internet ?",
     answer:
-      "Tu as raison, une bonne partie de ce que tu trouveras dans Le Decollage est techniquement accessible sur internet. Et tu as surement deja essaye : des heures sur Google, des tutos YouTube regardes et oublies, des forums incomprehensibles. Le resultat ? Tu es toujours au meme point. Le Decollage te donne tout ce dont tu as besoin, structure dans le bon ordre, avec des methodes de travail que tu ne trouveras nulle part ailleurs.",
+      "Tu as raison, une bonne partie de ce que tu trouveras dans Le Décollage est techniquement accessible sur internet. Et tu as sûrement déjà essayé : des heures sur Google, des tutos YouTube regardés et oubliés, des forums incompréhensibles. Le résultat ? Tu es toujours au même point. Le Décollage te donne tout ce dont tu as besoin, structuré dans le bon ordre, avec des méthodes de travail que tu ne trouveras nulle part ailleurs.",
   },
   {
-    question: "Est-ce que c'est eligible au CPF ?",
-    answer: "Non, cette formation n'est pas eligible au CPF.",
+    question: "Est-ce que c'est éligible au CPF ?",
+    answer: "Non, cette formation n'est pas éligible au CPF.",
   },
   {
     question: "Est-ce qu'il y a une garantie ?",
     answer:
-      "Tu beneficies de 15 jours de garantie remboursement integral. Sans condition. Sans justification. Par simple email a thomas@exceleur.fr. Si tu n'es pas satisfait, on te rembourse \u2014 point.",
+      "Tu bénéficies de 15 jours de garantie remboursement intégral. Sans condition. Sans justification. Par simple email à thomas@exceleur.fr. Si tu n'es pas satisfait, on te rembourse \u2014 point.",
   },
   {
     question: "C'est quoi Elyx exactement ?",
     answer:
-      "Elyx est un add-in Excel que j'ai cree. C'est un agent IA autonome qui s'integre directement dans ton tableur. Tu lui decris ce que tu veux faire en langage naturel, et il l'execute : nettoyage de donnees, formules, tableaux croises dynamiques, graphiques, automatisations. Tu peux aussi lui demander de t'expliquer ce qu'il fait pour apprendre en meme temps. Pendant le lancement, tu recois 3 mois d'abonnement offerts (plan Solo, valeur 57\u20ac). Apres les 3 mois, tu es libre de continuer ou non \u2014 aucun engagement.",
+      "Elyx est un add-in Excel que j'ai créé. C'est un agent IA autonome qui s'intègre directement dans ton tableur. Tu lui décris ce que tu veux faire en langage naturel, et il l'exécute : nettoyage de données, formules, tableaux croisés dynamiques, graphiques, automatisations. Tu peux aussi lui demander de t'expliquer ce qu'il fait pour apprendre en même temps. Pendant le lancement, tu reçois 3 mois d'abonnement offerts (plan Solo, valeur 57\u20ac). Après les 3 mois, tu es libre de continuer ou non \u2014 aucun engagement.",
   },
 ];
 
 const modules = [
   {
     number: 1,
-    title: 'Poser les fondations pour ne plus jamais mal demarrer un fichier',
+    title: 'Poser les fondations pour ne plus jamais mal démarrer un fichier',
     items: [
-      "Les reglages indispensables a faire avant meme d'ecrire une seule formule (la plupart des gens sautent cette etape \u2014 et le paient plus tard)",
-      'Les 4 manieres de faire appel a une cellule (et comment choisir la bonne a chaque fois pour ne pas casser tes formules)',
-      "L'erreur de parametrage meconnue qui a fait perdre dans la nature des milliers de cas positifs a la COVID-19 au Royaume-Uni en 2020 (et que tu fais peut-etre aussi sans le savoir)",
-      "Mon secret pour recuperer des classeurs corrompus et ne pas devoir recommencer plusieurs heures de travail",
+      "Les réglages indispensables à faire avant même d'écrire une seule formule (la plupart des gens sautent cette étape \u2014 et le paient plus tard)",
+      'Les 4 manières de faire appel à une cellule (et comment choisir la bonne à chaque fois pour ne pas casser tes formules)',
+      "L'erreur de paramétrage méconnue qui a fait perdre dans la nature des milliers de cas positifs à la COVID-19 au Royaume-Uni en 2020 (et que tu fais peut-être aussi sans le savoir)",
+      "Mon secret pour récupérer des classeurs corrompus et ne pas devoir recommencer plusieurs heures de travail",
     ],
   },
   {
     number: 2,
-    title: "Creer des fichiers propres, pro et comprehensibles par n'importe qui",
+    title: "Créer des fichiers propres, pro et compréhensibles par n'importe qui",
     items: [
-      "La strategie qu'il faut TOUJOURS adopter lorsque tu as plusieurs tables de donnees (mais aussi la SEULE exception a cette regle)",
-      'Les 17 habitudes a developper pour creer des tableaux professionnels et resistants aux modifications',
-      "L'astuce simple a mettre en place pour permettre a n'importe qui de comprendre ton fichier en moins de 2 minutes",
+      "La stratégie qu'il faut TOUJOURS adopter lorsque tu as plusieurs tables de données (mais aussi la SEULE exception à cette règle)",
+      'Les 17 habitudes à développer pour créer des tableaux professionnels et résistants aux modifications',
+      "L'astuce simple à mettre en place pour permettre à n'importe qui de comprendre ton fichier en moins de 2 minutes",
     ],
   },
   {
     number: 3,
-    title: 'Maitriser les 70+ formules qui couvrent 95% de tes besoins',
+    title: 'Maîtriser les 70+ formules qui couvrent 95% de tes besoins',
     items: [
-      '11 formules puissantes pour etre un crack de la recherche de donnees (RECHERCHEV, INDEX/EQUIV, RECHERCHEX...)',
-      '7 formules matricielles dynamiques geniales pour mettre a jour toutes tes donnees d\'un seul coup',
-      '8 formules conditionnelles pour devenir le maitre des tests logiques',
+      '11 formules puissantes pour être un crack de la recherche de données (RECHERCHEV, INDEX/EQUIV, RECHERCHEX...)',
+      '7 formules matricielles dynamiques géniales pour mettre à jour toutes tes données d\'un seul coup',
+      '8 formules conditionnelles pour devenir le maître des tests logiques',
       '4 formules peu connues mais indispensables pour te sortir de certaines situations',
-      "Et bien d'autres qui elevent le total a plus de 70 formules avec lesquelles tu peux presque tout faire",
+      "Et bien d'autres qui élèvent le total à plus de 70 formules avec lesquelles tu peux presque tout faire",
     ],
   },
   {
     number: 4,
-    title: 'Eliminer 90% des erreurs qui te gachent la vie',
+    title: 'Éliminer 90% des erreurs qui te gâchent la vie',
     items: [
-      "L'outil genial pour identifier en un coup d'\u0153il l'origine de tes erreurs",
-      'La formule qui va sauver ton fichier plein d\'erreurs lorsque tu dois le presenter a tes collegues',
-      "Comment anticiper l'erreur la plus frequente sur Excel (celle qui t'arrive a coup sur si tu utilises RECHERCHEV, RECHERCHEX ou INDEX/EQUIV)",
-      'La methode du tamis : comment recuperer instantanement toutes tes cellules contenant une erreur',
+      "L'outil génial pour identifier en un coup d'\u0153il l'origine de tes erreurs",
+      'La formule qui va sauver ton fichier plein d\'erreurs lorsque tu dois le présenter à tes collègues',
+      "Comment anticiper l'erreur la plus fréquente sur Excel (celle qui t'arrive à coup sûr si tu utilises RECHERCHEV, RECHERCHEX ou INDEX/EQUIV)",
+      'La méthode du tamis : comment récupérer instantanément toutes tes cellules contenant une erreur',
     ],
   },
   {
     number: 5,
-    title: 'Automatiser tes taches repetitives (sans toucher a VBA)',
+    title: 'Automatiser tes tâches répétitives (sans toucher à VBA)',
     items: [
-      'Comment importer tes donnees directement sous forme de tableaux a partir de fichiers PDF, CSV, txt, web \u2014 sans ecrire une seule ligne de code',
-      'Comment mettre automatiquement a jour tes donnees a partir de ces fichiers, meme si la taille des tableaux change',
-      "Un exemple complet d'automatisation que je fais sous tes yeux, a partir d'un cas concret que j'ai moi-meme rencontre",
+      'Comment importer tes données directement sous forme de tableaux à partir de fichiers PDF, CSV, txt, web \u2014 sans écrire une seule ligne de code',
+      'Comment mettre automatiquement à jour tes données à partir de ces fichiers, même si la taille des tableaux change',
+      "Un exemple complet d'automatisation que je fais sous tes yeux, à partir d'un cas concret que j'ai moi-même rencontré",
     ],
   },
   {
     number: 6,
-    title: 'Creer des graphiques impactants qui mettent en valeur tes donnees',
+    title: 'Créer des graphiques impactants qui mettent en valeur tes données',
     items: [
-      'Les differents types de graphiques qu\'il faut absolument connaitre (et maitriser)',
-      'Comment choisir le bon graphique qui mettra en valeur tes donnees',
-      'La fonctionnalite qui te permet d\'inserer un graphique a l\'interieur d\'une cellule',
-      'Comment creer une carte interactive dans Excel',
+      'Les différents types de graphiques qu\'il faut absolument connaître (et maîtriser)',
+      'Comment choisir le bon graphique qui mettra en valeur tes données',
+      'La fonctionnalité qui te permet d\'insérer un graphique à l\'intérieur d\'une cellule',
+      'Comment créer une carte interactive dans Excel',
     ],
   },
 ];
 
 const masterclasses = [
   {
-    title: 'TCD Expert : maitriser les tableaux croises dynamiques comme un pro',
+    title: 'TCD Expert : maîtriser les tableaux croisés dynamiques comme un pro',
     items: [
-      'Un decryptage complet de la formule imbuvable (mais indispensable) pour manipuler tes TCD',
-      'Les 5 grands dangers sur les TCD (pour ne plus jamais tomber dans le piege)',
-      'Ma methode pour relier plusieurs tableaux dans un seul TCD',
+      'Un décryptage complet de la formule imbuvable (mais indispensable) pour manipuler tes TCD',
+      'Les 5 grands dangers sur les TCD (pour ne plus jamais tomber dans le piège)',
+      'Ma méthode pour relier plusieurs tableaux dans un seul TCD',
     ],
   },
   {
-    title: 'Les 15 nouvelles formules d\'Excel a decouvrir absolument',
+    title: 'Les 15 nouvelles formules d\'Excel à découvrir absolument',
     items: [
-      '15 formules recentes qui vont te sauver la mise dans pas mal de situations',
-      'Je te montre a quoi elles servent, comment les utiliser et dans quelle situation',
+      '15 formules récentes qui vont te sauver la mise dans pas mal de situations',
+      'Je te montre à quoi elles servent, comment les utiliser et dans quelle situation',
     ],
   },
   {
-    title: 'LAMBDA et LET : la revolution qui remplace VBA',
+    title: 'LAMBDA et LET : la révolution qui remplace VBA',
     items: [
-      '2 fonctions tellement puissantes qu\'elles meritent une masterclass entiere',
-      'Comment simplifier des formules existantes et creer tes propres formules en quelques secondes',
+      '2 fonctions tellement puissantes qu\'elles méritent une masterclass entière',
+      'Comment simplifier des formules existantes et créer tes propres formules en quelques secondes',
     ],
   },
   {
-    title: 'Reussir avec brio les tests Excel en entretien de recrutement',
+    title: 'Réussir avec brio les tests Excel en entretien de recrutement',
     items: [
-      'Les questions theoriques les plus posees',
+      'Les questions théoriques les plus posées',
       'Les 3 types de tests pratiques qu\'on te fera faire',
-      'Les exercices incontournables autour de la resolution de problemes',
+      'Les exercices incontournables autour de la résolution de problèmes',
     ],
   },
 ];
 
 const testimonialVideosFirst = [
-  { vimeoId: '904003571', alt: 'Temoignage Thierry' },
-  { vimeoId: '903995368', alt: 'Temoignage Benedicte' },
-  { vimeoId: '904000252', alt: 'Temoignage Gaetan' },
+  { vimeoId: '904003571', alt: 'Témoignage Thierry' },
+  { vimeoId: '903995368', alt: 'Témoignage Bénédicte' },
+  { vimeoId: '904000252', alt: 'Témoignage Gaëtan' },
 ];
 
 const testimonialVideosSecond = [
-  { vimeoId: '904002361', alt: 'Temoignage Marie' },
-  { vimeoId: '904005061', alt: 'Temoignage Elodie' },
-  { vimeoId: '904384660', alt: 'Temoignage Clement' },
+  { vimeoId: '904002361', alt: 'Témoignage Marie' },
+  { vimeoId: '904005061', alt: 'Témoignage Élodie' },
+  { vimeoId: '904384660', alt: 'Témoignage Clément' },
 ];
 
 const URL_PAIEMENT_1X = 'https://exceleur.schoolmaker.co/purchases/new?price_id=ff1bd50f-9532-441d-b8ac-98041d289ddb';
@@ -415,14 +415,14 @@ export default function LeDecollagePage() {
               <svg className="w-4 h-4 text-white/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
               </svg>
-              <span className="text-white font-bold text-sm">1&nbsp;000+</span>
+              <span className="text-white font-bold text-sm">3&nbsp;000+</span>
               <span className="text-white/60 text-sm">&eacute;l&egrave;ves form&eacute;s</span>
             </div>
             <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/15">
               <svg className="w-4 h-4 text-white/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span className="text-white font-bold text-sm">10h</span>
+              <span className="text-white font-bold text-sm">12h</span>
               <span className="text-white/60 text-sm">de formation</span>
             </div>
           </div>
@@ -494,11 +494,11 @@ export default function LeDecollagePage() {
 
           <div className="space-y-4 mb-12">
             {[
-              "Tu recois un fichier avec 12 onglets et ton premier reflexe, c'est de verifier qui d'autre dans l'equipe pourrait s'en charger",
-              'Tu tapes \u00ab RECHERCHEV Excel \u00bb sur Google pour la quatrieme fois ce trimestre \u2014 et tu retombes sur le meme tuto que la derniere fois',
-              "Tu construis tes tableaux en empilant des copier-coller et des formules en dur, en croisant les doigts pour que rien ne se decale",
-              'Tu acquiesces en reunion quand on parle de \u00ab pivoter les donnees \u00bb\u2026 sans oser demander ce que ca veut dire concretement',
-              "Tu vois le junior arrive il y a 6 mois sortir un dashboard impeccable en 2 heures \u2014 le genre de fichier que tu ne saurais meme pas commencer",
+              "Tu reçois un fichier avec 12 onglets et ton premier réflexe, c'est de vérifier qui d'autre dans l'équipe pourrait s'en charger",
+              'Tu tapes \u00ab RECHERCHEV Excel \u00bb sur Google pour la quatrième fois ce trimestre \u2014 et tu retombes sur le même tuto que la dernière fois',
+              "Tu construis tes tableaux en empilant des copier-coller et des formules en dur, en croisant les doigts pour que rien ne se décale",
+              'Tu acquiesces en réunion quand on parle de \u00ab pivoter les données \u00bb\u2026 sans oser demander ce que ça veut dire concrètement',
+              "Tu vois le junior arrivé il y a 6 mois sortir un dashboard impeccable en 2 heures \u2014 le genre de fichier que tu ne saurais même pas commencer",
             ].map((item, i) => (
               <div
                 key={i}
@@ -717,17 +717,17 @@ export default function LeDecollagePage() {
           <div className="mt-10 grid gap-4">
             {[
               {
-                text: 'Une eleve passait 3 jours par mois sur son reporting. Apres avoir applique la Regle des 95%, elle a reduit ca a une demi-journee. Sur un an, c\'est l\'equivalent de 30 jours de travail recuperes.',
+                text: 'Une élève passait 3 jours par mois sur son reporting. Après avoir appliqué la Règle des 95%, elle a réduit ça à une demi-journée. Sur un an, c\'est l\'équivalent de 30 jours de travail récupérés.',
                 highlight: '3 jours \u2192 \u00bd journ\u00e9e',
                 color: 'primary' as const,
               },
               {
-                text: 'Julien etait operateur machine. Excel, pour lui, c\'etait un mur. Aujourd\'hui, il est responsable d\'atelier \u2014 et il dit se sentir enfin legitime.',
+                text: 'Julien était opérateur de machine. Excel, pour lui, c\'était un mur. Aujourd\'hui, il est responsable d\'atelier \u2014 et il dit se sentir enfin légitime.',
                 highlight: 'Op\u00e9rateur \u2192 Responsable',
                 color: 'secondary' as const,
               },
               {
-                text: 'Franck revenait d\'un arret maladie. Il avait peur d\'etre largue. Quelques semaines plus tard, ses collegues l\'appelaient \u00ab Monsieur Excel \u00bb.',
+                text: 'Franck revenait d\'un arrêt maladie. Il avait peur d\'être largué. Quelques semaines plus tard, ses collègues l\'appelaient \u00ab Monsieur Excel \u00bb.',
                 highlight: '\u00ab Monsieur Excel \u00bb',
                 color: 'accent' as const,
               },
@@ -882,7 +882,7 @@ export default function LeDecollagePage() {
               <div className="relative rounded-2xl overflow-hidden shadow-card-elevated border border-white/50">
                 <Image
                   src="/images/formations/le-decollage/le-decollage-exceleur.png"
-                  alt="Formation Le Decollage - Exceleur"
+                  alt="Formation Le Décollage - Exceleur"
                   width={600}
                   height={400}
                   className="w-full h-auto"
@@ -905,11 +905,11 @@ export default function LeDecollagePage() {
 
           <div className="space-y-4">
             {[
-              "Devenir autonome sur Excel au quotidien (ne plus jamais avoir a deranger un collegue ou a perdre 30 minutes sur Google pour une formule)",
-              "Diviser par 2 ou 3 le temps que tu passes sur tes taches Excel (et recuperer tes soirees et tes week-ends)",
-              'Produire des fichiers propres, fiables et professionnels que tu peux partager sans stress (et qui font dire a ton manager "c\'est clair, merci")',
-              "Maitriser les formules et fonctionnalites qui couvrent 95% de tes besoins reels \u2014 et les avoir dans tes reflexes, pas dans tes notes",
-              "Retrouver de la serenite face a Excel : ouvrir un fichier sans boule au ventre, dire \u00ab oui, je gere \u00bb quand on te demande quelque chose",
+              "Devenir autonome sur Excel au quotidien (ne plus jamais avoir à déranger un collègue ou à perdre 30 minutes sur Google pour une formule)",
+              "Diviser par 2 ou 3 le temps que tu passes sur tes tâches Excel (et récupérer tes soirées et tes week-ends)",
+              'Produire des fichiers propres, fiables et professionnels que tu peux partager sans stress (et qui font dire à ton manager "c\'est clair, merci")',
+              "Maîtriser les formules et fonctionnalités qui couvrent 95% de tes besoins réels \u2014 et les avoir dans tes réflexes, pas dans tes notes",
+              "Retrouver de la sérénité face à Excel : ouvrir un fichier sans boule au ventre, dire \u00ab oui, je gère \u00bb quand on te demande quelque chose",
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm">
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center mt-0.5">
@@ -1196,7 +1196,7 @@ export default function LeDecollagePage() {
               {[
                 { value: '9.4', suffix: '/10', label: 'Note de satisfaction' },
                 { value: '9.6', suffix: '/10', label: 'Taux de recommandation' },
-                { value: '1 000', suffix: '+', label: '\u00c9l\u00e8ves depuis 2022' },
+                { value: '3 000', suffix: '+', label: 'Élèves depuis 2022' },
               ].map((stat, i) => (
                 <div key={i} className="text-center p-4 md:p-6 rounded-2xl bg-gray-50 border border-gray-100">
                   <p className="text-3xl md:text-4xl lg:text-5xl font-heading font-extrabold">
@@ -1300,15 +1300,15 @@ export default function LeDecollagePage() {
               <div className="relative">
                 <div className="space-y-3.5 mb-8">
                   {[
-                    'La formation Le Decollage : 6 modules complets pour devenir autonome sur Excel grace a la Regle des 95%',
-                    '4 Masterclass incluses : TCD Expert, les 15 nouvelles formules, LAMBDA & LET, et Reussir les tests Excel en entretien',
+                    'La formation Le Décollage : 6 modules complets pour devenir autonome sur Excel grâce à la Règle des 95%',
+                    '4 Masterclass incluses : TCD Expert, les 15 nouvelles formules, LAMBDA & LET, et Réussir les tests Excel en entretien',
                     'Bonus #1 : Fast Excel \u2014 les raccourcis qui te font gagner du temps chaque jour',
-                    "Bonus #2 : La methode pour reprendre le fichier d'un collegue",
+                    "Bonus #2 : La méthode pour reprendre le fichier d'un collègue",
                     'Bonus #3 : Les mises en forme conditionnelles',
-                    'Les resumes PDF de chaque module',
-                    "Des questionnaires express pour t'entrainer",
+                    'Les résumés PDF de chaque module',
+                    "Des questionnaires express pour t'entraîner",
                     'Des cas pratiques pour appliquer les cours',
-                    "Acces a vie a l'ensemble du contenu",
+                    "Accès à vie à l'ensemble du contenu",
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <CheckIcon className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
@@ -1556,7 +1556,7 @@ export default function LeDecollagePage() {
             Pr&ecirc;t &agrave; faire d&eacute;coller tes comp&eacute;tences Excel&nbsp;?
           </h2>
           <p className="text-lg text-white/80 mb-10 max-w-lg mx-auto">
-            Rejoins les 1&nbsp;000+ &eacute;l&egrave;ves qui ont transform&eacute; leur
+            Rejoins les 3&nbsp;000+ &eacute;l&egrave;ves qui ont transform&eacute; leur
             fa&ccedil;on de travailler sur Excel.
           </p>
 
