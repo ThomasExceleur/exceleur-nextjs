@@ -182,10 +182,6 @@ const faqItems = [
     answer: "Malheureusement, Power Query n'est pas disponible sur Mac. Cette formation est destinée aux utilisateurs Windows."
   },
   {
-    question: "Quelle est la différence entre les 3 formules ?",
-    answer: "La Version Complète contient tous les modules de formation. La Version Premium ajoute l'accès à la communauté privée pour poser tes questions. La Version Ultime inclut en plus les 3 Masterclasses avancées et l'accès aux consultations."
-  },
-  {
     question: "Est-ce que je peux payer en plusieurs fois ?",
     answer: "Oui, le paiement en 3 fois est disponible pour toutes les formules. Les détails seront indiqués lors de l'inscription."
   },
@@ -199,61 +195,17 @@ const faqItems = [
   }
 ];
 
-const pricingOptions = [
-  {
-    title: "Version Ultime",
-    subtitle: "Pour devenir un pro",
-    price: "2100€",
-    features: [
-      { text: "Les 9 Modules de Power Query Secrets", included: true },
-      { text: "Les 3 Modules Bonus offerts", included: true },
-      { text: "Les fiches recap' PDF à télécharger", included: true },
-      { text: "Les fichiers Excel présentés", included: true },
-      { text: "Les Cas Pratiques", included: true },
-      { text: "Accès à ma communauté privée", included: true },
-      { text: "Accès aux Consultations", included: true },
-      { text: "Masterclass 1 : Langage M", included: true },
-      { text: "Masterclass 2 : Tableau de bord", included: true },
-      { text: "Masterclass 3 : Fichiers résistants", included: true },
-    ],
-    highlighted: true,
-  },
-  {
-    title: "Version Premium",
-    subtitle: "Pour poser tes questions",
-    price: "1300€",
-    features: [
-      { text: "Les 9 Modules de Power Query Secrets", included: true },
-      { text: "Les 3 Modules Bonus offerts", included: true },
-      { text: "Les fiches recap' PDF à télécharger", included: true },
-      { text: "Les fichiers Excel présentés", included: true },
-      { text: "Les Cas Pratiques", included: true },
-      { text: "Accès à ma communauté privée", included: true },
-      { text: "Accès aux Consultations", included: false },
-      { text: "Masterclass 1 : Langage M", included: false },
-      { text: "Masterclass 2 : Tableau de bord", included: false },
-      { text: "Masterclass 3 : Fichiers résistants", included: false },
-    ],
-    highlighted: false,
-  },
-  {
-    title: "Version Complète",
-    subtitle: "Pour la théorie",
-    price: "900€",
-    features: [
-      { text: "Les 9 Modules de Power Query Secrets", included: true },
-      { text: "Les 3 Modules Bonus offerts", included: true },
-      { text: "Les fiches recap' PDF à télécharger", included: true },
-      { text: "Les fichiers Excel présentés", included: true },
-      { text: "Les Cas Pratiques", included: true },
-      { text: "Accès à ma communauté privée", included: false },
-      { text: "Accès aux Consultations", included: false },
-      { text: "Masterclass 1 : Langage M", included: false },
-      { text: "Masterclass 2 : Tableau de bord", included: false },
-      { text: "Masterclass 3 : Fichiers résistants", included: false },
-    ],
-    highlighted: false,
-  },
+const pricingFeatures = [
+  { text: "Les 9 Modules de Power Query Secrets", included: true },
+  { text: "Les 3 Modules Bonus offerts", included: true },
+  { text: "Les fiches recap' PDF à télécharger", included: true },
+  { text: "Les fichiers Excel présentés", included: true },
+  { text: "Les Cas Pratiques", included: true },
+  { text: "Accès à ma communauté privée", included: true },
+  { text: "Accès aux Consultations", included: true },
+  { text: "Masterclass 1 : Langage M", included: true },
+  { text: "Masterclass 2 : Tableau de bord", included: true },
+  { text: "Masterclass 3 : Fichiers résistants", included: true },
 ];
 
 export default function PowerQuerySecretsListeAttentePage() {
@@ -874,33 +826,24 @@ export default function PowerQuerySecretsListeAttentePage() {
         <Container>
           <FadeIn direction="up">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-teal-100 rounded-full">
-                <div className="w-2 h-2 rounded-full bg-gradient-to-r from-teal-500 to-emerald-500" />
-                <span className="text-sm font-medium text-teal-700">3 formules disponibles</span>
-              </div>
               <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-text-dark mb-4">
-                DÉCOUVRE LES FORMULES
+                Investis dans <span className="text-teal-600">ton avenir</span>
               </h2>
-              <p className="text-text-light max-w-2xl mx-auto">
-                Choisis la formule qui correspond à tes besoins
-              </p>
             </div>
           </FadeIn>
 
-          <div className="grid lg:grid-cols-3 gap-8 items-start max-w-6xl mx-auto">
-            {pricingOptions.map((option, index) => (
-              <FadeIn key={index} direction="up" delay={index * 100}>
-                <PricingCard
-                  title={option.title}
-                  subtitle={option.subtitle}
-                  price={option.price}
-                  features={option.features}
-                  ctaText="Rejoindre la liste d'attente"
-                  ctaHref="#liste-attente"
-                  highlighted={option.highlighted}
-                />
-              </FadeIn>
-            ))}
+          <div className="max-w-md mx-auto">
+            <FadeIn direction="up">
+              <PricingCard
+                title="Power Query Secrets"
+                subtitle="La formation complète pour devenir un crack de Power Query"
+                price=""
+                features={pricingFeatures}
+                ctaText="Rejoindre la liste d'attente"
+                ctaHref="#liste-attente"
+                highlighted
+              />
+            </FadeIn>
           </div>
         </Container>
       </section>

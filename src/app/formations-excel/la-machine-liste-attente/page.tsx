@@ -225,33 +225,6 @@ const pricingFeaturesUltime = [
   { text: "Masterclass 3 : Gestion d'erreurs", included: true },
 ];
 
-const pricingFeaturesPremium = [
-  { text: 'Les 9 Modules de La Machine', included: true },
-  { text: 'Les 2 Modules Bonus offerts', included: true },
-  { text: 'Les fiches récap PDF à télécharger', included: true },
-  { text: 'Les Fichiers Excel contenant les macros', included: true },
-  { text: 'Les Cas Pratiques', included: true },
-  { text: '1 accès à ma communauté privée', included: true },
-  { text: '1 accès aux Consultations', included: true },
-  { text: 'Attestation de fin de formation', included: true },
-  { text: 'Masterclass 1 : ChatGPT', included: false },
-  { text: 'Masterclass 2 : Word, Outlook, PowerPoint', included: false },
-  { text: "Masterclass 3 : Gestion d'erreurs", included: false },
-];
-
-const pricingFeaturesComplete = [
-  { text: 'Les 9 Modules de La Machine', included: true },
-  { text: 'Les 2 Modules Bonus offerts', included: true },
-  { text: 'Les fiches récap PDF à télécharger', included: true },
-  { text: 'Les Fichiers Excel contenant les macros', included: true },
-  { text: 'Les Cas Pratiques', included: true },
-  { text: '1 accès à ma communauté privée', included: false },
-  { text: '1 accès aux Consultations', included: false },
-  { text: 'Attestation de fin de formation', included: false },
-  { text: 'Masterclass 1 : ChatGPT', included: false },
-  { text: 'Masterclass 2 : Word, Outlook, PowerPoint', included: false },
-  { text: "Masterclass 3 : Gestion d'erreurs", included: false },
-];
 
 export default function LaMachinePage() {
   return (
@@ -371,13 +344,9 @@ export default function LaMachinePage() {
                       ))}
                     </ul>
 
-                    {/* Price teaser */}
+                    {/* Accès */}
                     <div className="mt-8 pt-6 border-t border-white/20">
-                      <div className="flex items-end gap-2">
-                        <span className="text-white/70 text-sm">À partir de</span>
-                        <span className="text-3xl font-heading font-extrabold text-white">700€</span>
-                      </div>
-                      <p className="text-white/60 text-sm mt-1"></p>
+                      <p className="text-white/80 text-sm font-medium">Accès à vie à l&apos;ensemble du contenu</p>
                     </div>
                   </div>
 
@@ -788,46 +757,22 @@ export default function LaMachinePage() {
         <Container>
           <FadeIn direction="up">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-secondary/10 rounded-full">
-                <div className="w-2 h-2 rounded-full bg-gradient-to-r from-secondary to-primary" />
-                <span className="text-sm font-medium text-secondary">Choisis ta formule</span>
-              </div>
               <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-text-dark">
                 Investis dans <span className="text-secondary">ton avenir</span>
               </h2>
             </div>
           </FadeIn>
 
-          <div className="grid lg:grid-cols-3 gap-8 items-start max-w-5xl mx-auto">
-            <FadeIn direction="up" delay={0}>
+          <div className="max-w-md mx-auto">
+            <FadeIn direction="up">
               <PricingCard
-                title="Version Complète"
-                subtitle="Pour ceux qui veulent juste la théorie"
-                price="700€"
-                features={pricingFeaturesComplete}
-                ctaText="S'inscrire sur la liste d'attente"
-                ctaHref="#liste-attente"
-              />
-            </FadeIn>
-            <FadeIn direction="up" delay={100}>
-              <PricingCard
-                title="Version Premium"
-                subtitle="Pour ceux qui veulent me poser des questions"
-                price="1 000€"
-                features={pricingFeaturesPremium}
-                ctaText="S'inscrire sur la liste d'attente"
-                ctaHref="#liste-attente"
-                highlighted
-              />
-            </FadeIn>
-            <FadeIn direction="up" delay={200}>
-              <PricingCard
-                title="Version Ultime"
-                subtitle="Pour devenir les boss des macros"
-                price="1 800€"
+                title="La Machine"
+                subtitle="La formation complète pour devenir un boss des macros"
+                price=""
                 features={pricingFeaturesUltime}
                 ctaText="S'inscrire sur la liste d'attente"
                 ctaHref="#liste-attente"
+                highlighted
               />
             </FadeIn>
           </div>

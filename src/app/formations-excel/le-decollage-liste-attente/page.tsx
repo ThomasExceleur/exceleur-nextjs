@@ -270,7 +270,6 @@ export default function LeDecollagePage() {
                     {/* Price teaser */}
                     <div className="mt-8 pt-6 border-t border-white/20">
                       <div className="flex items-end gap-2">
-                        <span className="text-white/70 text-sm">À partir de</span>
                         <span className="text-3xl font-heading font-extrabold text-white">800€</span>
                       </div>
                     </div>
@@ -699,46 +698,22 @@ export default function LeDecollagePage() {
         <Container>
           <FadeIn direction="up">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-primary/10 rounded-full">
-                <div className="w-2 h-2 rounded-full bg-gradient-to-r from-primary to-secondary" />
-                <span className="text-sm font-medium text-primary">Choisis ta formule</span>
-              </div>
               <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-text-dark">
                 Investis dans <span className="text-primary">ton avenir</span>
               </h2>
             </div>
           </FadeIn>
 
-          <div className="grid lg:grid-cols-3 gap-8 items-start max-w-5xl mx-auto">
-            <FadeIn direction="up" delay={0}>
+          <div className="max-w-md mx-auto">
+            <FadeIn direction="up">
               <PricingCard
-                title="Version Complète"
-                subtitle="Pour ceux qui veulent juste la théorie"
+                title="Le Décollage"
+                subtitle="La formation complète pour devenir un boss d'Excel"
                 price="800€"
-                features={pricingFeatures.slice(0, 5).map((f) => ({ text: f, included: true }))}
-                ctaText="S'inscrire sur la liste d'attente"
-                ctaHref="#liste-attente"
-              />
-            </FadeIn>
-            <FadeIn direction="up" delay={100}>
-              <PricingCard
-                title="Version Premium"
-                subtitle="Pour ceux qui veulent pouvoir me poser des questions"
-                price="1 200€"
-                features={pricingFeatures.slice(0, 7).map((f) => ({ text: f, included: true }))}
-                ctaText="S'inscrire sur la liste d'attente"
-                ctaHref="#liste-attente"
-                highlighted
-              />
-            </FadeIn>
-            <FadeIn direction="up" delay={200}>
-              <PricingCard
-                title="Version Ultime"
-                subtitle="Pour devenir des boss d'Excel"
-                price="2 200€"
                 features={pricingFeatures.map((f) => ({ text: f, included: true }))}
                 ctaText="S'inscrire sur la liste d'attente"
                 ctaHref="#liste-attente"
+                highlighted
               />
             </FadeIn>
           </div>
