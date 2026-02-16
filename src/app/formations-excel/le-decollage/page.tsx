@@ -23,14 +23,17 @@ function getTimeLeft(deadline: Date) {
 }
 
 function useCountdown(deadline: Date) {
-  const [timeLeft, setTimeLeft] = useState(getTimeLeft(deadline));
+  const [mounted, setMounted] = useState(false);
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0, expired: false });
 
   useEffect(() => {
+    setMounted(true);
+    setTimeLeft(getTimeLeft(deadline));
     const timer = setInterval(() => setTimeLeft(getTimeLeft(deadline)), 1000);
     return () => clearInterval(timer);
   }, [deadline]);
 
-  return timeLeft;
+  return { ...timeLeft, mounted };
 }
 
 /* ==========================================================================
@@ -335,7 +338,7 @@ export default function LeDecollagePage() {
             Offre de lancement &mdash; Tarif sp&eacute;cial + 3 mois d&apos;Elyx offerts
           </p>
 
-          {!countdown.expired && (
+          {countdown.mounted && !countdown.expired && (
             <div className="flex items-center gap-1.5">
               {[
                 { value: countdown.days, label: 'j' },
@@ -1256,8 +1259,8 @@ export default function LeDecollagePage() {
                 c&apos;est un manque de structure.
               </p>
               <p>
-                Plus de <strong className="text-text-dark">400&nbsp;000 personnes</strong> suivent
-                mes conseils quotidiens sur Instagram et TikTok. J&apos;ai aussi &eacute;crit le
+                Plus d&apos;<strong className="text-text-dark">1&nbsp;million de personnes</strong> suivent
+                mes conseils quotidiens sur Instagram, TikTok, YouTube et LinkedIn. J&apos;ai aussi &eacute;crit le
                 livre &laquo;&nbsp;R&eacute;v&egrave;le l&apos;Exceleur qui est en toi&nbsp;!&nbsp;&raquo;
                 &eacute;dit&eacute; par <strong className="text-text-dark">Larousse</strong>.
               </p>
@@ -1330,8 +1333,19 @@ export default function LeDecollagePage() {
 
                 {/* Prix */}
                 <div className="text-center border-t border-gray-100 pt-8">
-                  <p className="text-6xl md:text-7xl font-heading font-extrabold mb-2">
+                  <div className="flex items-center justify-center gap-3 mb-1">
+                    <span className="text-2xl md:text-3xl font-heading font-bold text-text-muted line-through">
+                      800&euro;
+                    </span>
+                    <span className="inline-block px-2.5 py-1 bg-green-100 text-green-700 text-sm font-bold rounded-lg">
+                      -38%
+                    </span>
+                  </div>
+                  <p className="text-6xl md:text-7xl font-heading font-extrabold mb-1">
                     <span className="text-gradient">497&euro;</span>
+                  </p>
+                  <p className="text-sm text-primary font-medium mb-1">
+                    Tarif de lancement &mdash; offre limit&eacute;e
                   </p>
                   <p className="text-text-light mb-8">
                     ou 3x 165,67&euro; sans frais
@@ -1360,7 +1374,7 @@ export default function LeDecollagePage() {
                 </p>
               </div>
 
-              {!countdown.expired ? (
+              {countdown.mounted && !countdown.expired ? (
                 <div className="flex items-center gap-2 md:gap-3">
                   {[
                     { value: countdown.days, label: 'jours' },
