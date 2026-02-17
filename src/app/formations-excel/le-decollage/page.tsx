@@ -235,7 +235,7 @@ function CTASingle({ className = '' }: { className?: string }) {
   return (
     <a
       href="#offre"
-      className={`group relative inline-flex items-center justify-center gap-2 px-10 py-5 bg-primary text-white font-heading font-bold text-lg rounded-2xl shadow-button hover:shadow-button-hover hover:scale-[1.02] transition-all duration-300 overflow-hidden ${className}`}
+      className={`group relative inline-flex items-center justify-center gap-2 px-10 py-5 bg-white text-primary font-heading font-bold text-lg rounded-2xl shadow-[0_4px_20px_rgba(255,255,255,0.3),0_0_40px_rgba(203,106,237,0.25)] hover:shadow-[0_4px_25px_rgba(255,255,255,0.5),0_0_50px_rgba(203,106,237,0.35)] hover:scale-[1.02] transition-all duration-300 overflow-hidden ${className}`}
     >
       <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
       <span className="relative">Rejoindre Le D&eacute;collage</span>
@@ -392,7 +392,7 @@ export default function LeDecollagePage() {
           <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-[1.15] mb-6 normal-case">
             Si Excel te prend 15&nbsp;heures par semaine et que tu compenses en silence&hellip;
             <br />
-            <span style={{ backgroundImage: 'linear-gradient(135deg, #fff 0%, #E0A3F5 50%, #A8D8F4 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+            <span style={{ backgroundImage: 'linear-gradient(135deg, #fff 0%, #E0A3F5 50%, #A8D8F4 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', filter: 'drop-shadow(0 2px 8px rgba(255,255,255,0.4)) drop-shadow(0 4px 20px rgba(203,106,237,0.3))' }}>
               Alors sache que le probl&egrave;me n&apos;a jamais &eacute;t&eacute; ton niveau.
             </span>
           </h1>
