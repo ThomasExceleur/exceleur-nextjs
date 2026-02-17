@@ -1018,11 +1018,8 @@ export default function LeDecollagePage() {
                 {/* Content */}
                 <div className="lg:w-1/2">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg">
-                      <span className="text-lg font-heading font-bold text-white">{mod.number}</span>
-                    </div>
-                    <div className="px-4 py-1.5 bg-primary/10 rounded-full">
-                      <span className="text-sm font-medium text-primary">Module {mod.number}</span>
+                    <div className="px-5 py-2 rounded-xl bg-gradient-to-br from-primary to-secondary shadow-lg">
+                      <span className="text-sm font-heading font-bold text-white">Module {mod.number}</span>
                     </div>
                   </div>
 
@@ -1072,8 +1069,8 @@ export default function LeDecollagePage() {
                   className="p-6 rounded-2xl bg-white border border-gray-200 hover:border-secondary/30 hover:shadow-sm transition-all duration-300"
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="flex-shrink-0 w-9 h-9 rounded-lg bg-gradient-to-br from-secondary/20 to-secondary/5 text-secondary flex items-center justify-center text-xs font-bold">
-                      MC{i + 1}
+                    <span className="flex-shrink-0 px-3 py-1.5 rounded-lg bg-gradient-to-br from-secondary/20 to-secondary/5 text-secondary flex items-center justify-center text-xs font-bold whitespace-nowrap">
+                      Masterclass {i + 1}
                     </span>
                     <h4 className="font-heading font-bold text-text-dark text-sm leading-snug normal-case">
                       {mc.title}
