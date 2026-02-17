@@ -99,6 +99,7 @@ const modules = [
       "L'erreur de paramétrage méconnue qui a fait perdre dans la nature des milliers de cas positifs à la COVID-19 au Royaume-Uni en 2020 (et que tu fais peut-être aussi sans le savoir)",
       "Mon secret pour récupérer des classeurs corrompus et ne pas devoir recommencer plusieurs heures de travail",
     ],
+    image: '/images/formations/le-decollage/module2.png',
   },
   {
     number: 2,
@@ -108,6 +109,7 @@ const modules = [
       'Les 17 habitudes à développer pour créer des tableaux professionnels et résistants aux modifications',
       "L'astuce simple à mettre en place pour permettre à n'importe qui de comprendre ton fichier en moins de 2 minutes",
     ],
+    image: '/images/formations/le-decollage/module3.png',
   },
   {
     number: 3,
@@ -119,6 +121,7 @@ const modules = [
       '4 formules peu connues mais indispensables pour te sortir de certaines situations',
       "Et bien d'autres qui élèvent le total à plus de 70 formules avec lesquelles tu peux presque tout faire",
     ],
+    image: '/images/formations/le-decollage/module4.png',
   },
   {
     number: 4,
@@ -129,6 +132,7 @@ const modules = [
       "Comment anticiper l'erreur la plus fréquente sur Excel (celle qui t'arrive à coup sûr si tu utilises RECHERCHEV, RECHERCHEX ou INDEX/EQUIV)",
       'La méthode du tamis : comment récupérer instantanément toutes tes cellules contenant une erreur',
     ],
+    image: '/images/formations/le-decollage/module5.png',
   },
   {
     number: 5,
@@ -138,6 +142,7 @@ const modules = [
       'Comment mettre automatiquement à jour tes données à partir de ces fichiers, même si la taille des tableaux change',
       "Un exemple complet d'automatisation que je fais sous tes yeux, à partir d'un cas concret que j'ai moi-même rencontré",
     ],
+    image: '/images/formations/le-decollage/module6.png',
   },
   {
     number: 6,
@@ -148,6 +153,7 @@ const modules = [
       'La fonctionnalité qui te permet d\'insérer un graphique à l\'intérieur d\'une cellule',
       'Comment créer une carte interactive dans Excel',
     ],
+    image: '/images/formations/le-decollage/le-decollage-intro.png',
   },
 ];
 
@@ -328,7 +334,6 @@ function XIcon() {
    ========================================================================== */
 
 export default function LeDecollagePage() {
-  const [openModule, setOpenModule] = useState<number | null>(null);
   const countdown = useCountdown(DEADLINE);
 
   return (
@@ -371,19 +376,19 @@ export default function LeDecollagePage() {
           SECTION 1 - HERO
           ================================================================ */}
       <section className="relative pt-20 pb-24 lg:pt-28 lg:pb-32 overflow-hidden">
-        <div className="absolute inset-0 gradient-hero" />
+        {/* Gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-secondary to-accent" />
 
-        {/* Animated orbs */}
-        <div className="absolute top-10 right-[10%] w-80 h-80 bg-white/10 rounded-full blur-3xl animate-float-slow" />
-        <div className="absolute bottom-10 left-[5%] w-[500px] h-[500px] bg-accent/10 rounded-full blur-3xl animate-float-medium" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-secondary/5 rounded-full blur-3xl" />
+        {/* Decorative floating orbs */}
+        <div className="absolute top-20 right-10 w-72 h-72 bg-white/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 left-10 w-96 h-96 bg-accent/20 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/4 w-40 h-40 bg-secondary/30 rounded-full blur-2xl" />
 
-        {/* Dot pattern */}
+        {/* Grid pattern overlay */}
         <div
-          className="absolute inset-0 opacity-[0.07]"
+          className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)',
-            backgroundSize: '32px 32px',
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }}
         />
 
@@ -861,41 +866,64 @@ export default function LeDecollagePage() {
           SECTION 9 - PRESENTATION DU DECOLLAGE
           ================================================================ */}
       <section className="relative py-20 lg:py-28 overflow-hidden">
-        {/* Subtle mesh background */}
-        <div className="absolute inset-0 bg-mesh opacity-50" />
+        {/* Dark gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-text-dark via-gray-900 to-text-dark" />
 
-        <div className="relative max-w-4xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-            La formation
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-primary/30 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-secondary/30 to-transparent rounded-full blur-3xl" />
+
+        <div className="relative max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-white/60 text-lg block mb-2">Je te pr&eacute;sente</span>
+            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 normal-case">
+              <span className="bg-gradient-to-r from-white via-primary/80 to-secondary/80 bg-clip-text text-transparent">
+                Le D&eacute;collage
+              </span>
+            </h2>
+            <p className="text-white/80 max-w-2xl mx-auto text-lg">
+              Le syst&egrave;me bas&eacute; sur la R&egrave;gle des 95% pour devenir autonome sur
+              Excel en quelques semaines, sans apprendre des centaines de formules, sans
+              d&eacute;pendre d&apos;un coll&egrave;gue ou de ChatGPT, sans passer tes soir&eacute;es
+              &agrave; compenser &mdash; m&ecirc;me si tu n&apos;as jamais eu de vraie formation et
+              m&ecirc;me si tu penses ne pas &ecirc;tre fait pour &ccedil;a.
+            </p>
           </div>
 
-          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-text-dark mb-6 normal-case">
-            Le D&eacute;collage
-          </h2>
-          <p className="text-lg md:text-xl text-text-light leading-relaxed max-w-2xl mx-auto mb-10">
-            Le syst&egrave;me bas&eacute; sur la R&egrave;gle des 95% pour devenir autonome sur
-            Excel en quelques semaines, sans apprendre des centaines de formules, sans
-            d&eacute;pendre d&apos;un coll&egrave;gue ou de ChatGPT, sans passer tes soir&eacute;es
-            &agrave; compenser &mdash; m&ecirc;me si tu n&apos;as jamais eu de vraie formation et
-            m&ecirc;me si tu penses ne pas &ecirc;tre fait pour &ccedil;a.
-          </p>
-
-          {/* Product mockup */}
-          <div className="max-w-lg mx-auto">
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 rounded-3xl blur-2xl" />
-              <div className="relative rounded-2xl overflow-hidden shadow-card-elevated border border-white/50">
-                <Image
-                  src="/images/formations/le-decollage/le-decollage-exceleur.png"
-                  alt="Formation Le Décollage - Exceleur"
-                  width={600}
-                  height={400}
-                  className="w-full h-auto"
-                />
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Content cards */}
+            <div className="space-y-6">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/15 transition-all duration-300">
+                <h3 className="font-heading text-2xl font-bold text-accent mb-4">Pour qui ?</h3>
+                <p className="text-white/80 leading-relaxed">
+                  Pour tous ceux qui utilisent Excel au quotidien et qui en ont marre de compenser
+                  en silence. Comptables, chefs de projets, auditeurs, ing&eacute;nieurs, &eacute;tudiants&hellip;
+                  Tu n&apos;as pas besoin d&apos;&ecirc;tre &laquo;&nbsp;bon en maths&nbsp;&raquo; ni d&apos;avoir des
+                  bases techniques. Le D&eacute;collage part de z&eacute;ro.
+                </p>
               </div>
+
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/15 transition-all duration-300">
+                <h3 className="font-heading text-2xl font-bold text-accent mb-4">Comment ?</h3>
+                <p className="text-white/80 leading-relaxed">
+                  Gr&acirc;ce &agrave; une <strong className="text-white">m&eacute;thode unique</strong>, que j&apos;ai
+                  appel&eacute;e la <strong className="text-white">R&egrave;gle des 95%</strong> : un socle
+                  ma&icirc;tris&eacute; en profondeur qui couvre la quasi-totalit&eacute; de tes besoins r&eacute;els.
+                  Avec des cas pratiques, des questionnaires et des r&eacute;sum&eacute;s PDF pour que &ccedil;a reste.
+                </p>
+              </div>
+            </div>
+
+            {/* Image */}
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/40 to-secondary/40 rounded-3xl blur-2xl scale-95" />
+              <Image
+                src="/images/formations/le-decollage/le-decollage-exceleur.png"
+                alt="Capture d'écran de la formation Le Décollage"
+                width={600}
+                height={400}
+                className="relative rounded-2xl shadow-2xl border border-white/20"
+              />
             </div>
           </div>
         </div>
@@ -964,83 +992,71 @@ export default function LeDecollagePage() {
       {/* ================================================================
           SECTION 12 - MODULES
           ================================================================ */}
-      <section id="programme" className="py-20 lg:py-28">
-        <div className="max-w-3xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <p className="text-sm font-bold text-primary uppercase tracking-widest mb-3">
+      <section id="programme" className="py-20 lg:py-28 bg-white relative overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-primary/10 rounded-full">
+              <div className="w-2 h-2 rounded-full bg-gradient-to-r from-primary to-secondary" />
+              <span className="text-sm font-medium text-primary">6 modules complets</span>
+            </div>
+            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-text-dark normal-case">
               Le programme
-            </p>
-            <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-extrabold text-text-dark mb-3 normal-case">
-              Parmi ce que tu vas d&eacute;couvrir
             </h2>
-            <p className="text-lg text-text-light">
-              6 modules pour devenir autonome, &agrave; ton rythme.
+            <p className="text-lg text-text-light mt-3">
+              Parmi ce que tu vas d&eacute;couvrir
             </p>
           </div>
 
-          <div className="space-y-3">
-            {modules.map((mod) => {
-              const isOpen = openModule === mod.number;
-              return (
-                <div
-                  key={mod.number}
-                  className={`rounded-2xl overflow-hidden transition-all duration-300 ${
-                    isOpen
-                      ? 'bg-white shadow-card border-2 border-primary/20'
-                      : 'bg-white border border-gray-200 hover:border-primary/20 hover:shadow-sm'
-                  }`}
-                >
-                  <button
-                    onClick={() => setOpenModule(isOpen ? null : mod.number)}
-                    className="w-full px-6 py-5 text-left flex items-center justify-between gap-4 transition-colors"
-                  >
-                    <div className="flex items-center gap-4">
-                      <span className={`flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center text-sm font-bold transition-all duration-300 ${
-                        isOpen
-                          ? 'bg-gradient-to-br from-primary to-secondary text-white shadow-button'
-                          : 'bg-primary/10 text-primary'
-                      }`}>
-                        {mod.number}
-                      </span>
-                      <span className="font-heading font-bold text-text-dark text-base md:text-lg normal-case">
-                        {mod.title}
-                      </span>
+          <div className="space-y-8">
+            {modules.map((mod, index) => (
+              <div
+                key={mod.number}
+                className={`flex flex-col ${
+                  index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                } gap-8 lg:gap-12 items-center bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 lg:p-12 border border-gray-100 hover:shadow-xl transition-all duration-500`}
+              >
+                {/* Content */}
+                <div className="lg:w-1/2">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg">
+                      <span className="text-lg font-heading font-bold text-white">{mod.number}</span>
                     </div>
-                    <span
-                      className={`flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300 ${
-                        isOpen
-                          ? 'bg-primary text-white rotate-180'
-                          : 'bg-gray-100 text-gray-400'
-                      }`}
-                    >
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </span>
-                  </button>
-
-                  <div
-                    className={`grid transition-all duration-300 ease-out ${
-                      isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
-                    }`}
-                  >
-                    <div className="overflow-hidden">
-                      <div className="px-6 pb-6">
-                        <div className="w-full h-px bg-gradient-to-r from-primary/20 via-primary/10 to-transparent mb-5" />
-                        <ul className="space-y-3">
-                          {mod.items.map((item, i) => (
-                            <li key={i} className="flex items-start gap-3 text-text-light">
-                              <CheckIcon className="w-4 h-4 text-primary flex-shrink-0 mt-1" />
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                    <div className="px-4 py-1.5 bg-primary/10 rounded-full">
+                      <span className="text-sm font-medium text-primary">Module {mod.number}</span>
                     </div>
                   </div>
+
+                  <h3 className="font-heading text-2xl font-bold text-text-dark mb-6 normal-case">
+                    {mod.title}
+                  </h3>
+
+                  <ul className="space-y-4">
+                    {mod.items.map((item, itemIndex) => (
+                      <li key={itemIndex} className="flex items-start gap-3 group">
+                        <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:from-primary group-hover:to-secondary transition-all duration-300">
+                          <CheckIcon className="w-4 h-4 text-primary group-hover:text-white transition-colors" />
+                        </div>
+                        <span className="text-text-light leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              );
-            })}
+
+                {/* Image */}
+                <div className="lg:w-1/2">
+                  <div className="relative group">
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl blur-xl scale-90 group-hover:scale-100 transition-transform duration-500" />
+                    <Image
+                      src={mod.image}
+                      alt={`Module ${mod.number}`}
+                      width={500}
+                      height={300}
+                      className="relative rounded-2xl shadow-lg group-hover:shadow-2xl transition-all duration-500"
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
 
           {/* Masterclasses */}
