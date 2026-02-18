@@ -9,7 +9,7 @@ import { VideoTestimonial } from '@/components/ui/VideoTestimonial';
    COUNTDOWN TIMER
    ========================================================================== */
 
-const DEADLINE = new Date('2026-02-25T00:00:00+01:00'); // 24 février 2026 à minuit (heure de Paris)
+const DEADLINE = new Date('2026-02-24T23:59:00+01:00'); // 24 février 2026 à 23h59 (heure de Paris)
 
 function getTimeLeft(deadline: Date) {
   const diff = Math.max(0, deadline.getTime() - Date.now());
