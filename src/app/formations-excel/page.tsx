@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 // Formation cards data with enhanced styling - matching exceleur.fr content
 const formationsData = [
   {
-    slug: 'le-decollage-liste-attente',
+    slug: 'le-decollage',
     title: 'Le Décollage',
     subtitle: 'Enfin une vraie méthode pour devenir un monstre d\'efficacité sur Excel',
     description: 'La formation spécialement conçue pour faire de toi un dieu d\'Excel en t\'apprenant des compétences solides qui vont t\'accompagner tout au long de ta carrière.',
